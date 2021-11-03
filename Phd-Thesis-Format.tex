@@ -1,0 +1,228 @@
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+% Compile this file with the following command and use it by adding '%&format' 
+% at the top of the document with the content
+%
+% pdflatex -ini -jobname="format" "&pdflatex" mylatexformat.ltx """Phd-Thesis-Format.tex"""
+% 
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+
+
+%-------------------------------------------------------------------------------
+% This file provides a skeleton ATLAS paper.
+%-------------------------------------------------------------------------------
+% \pdfoutput=1
+% The \pdfoutput command is needed by arXiv/JHEP/JINST to ensure use of pdflatex.
+% It should be included in the first 5 lines of the file.
+% \pdfinclusioncopyfonts=1
+% This command may be needed in order to get \ell in PDF plots to appear. Found in
+% https://tex.stackexchange.com/questions/322010/pdflatex-glyph-undefined-symbols-disappear-from-included-pdf
+%-------------------------------------------------------------------------------
+% Specify where ATLAS LaTeX style files can be found.
+\RequirePackage{latex/atlaslatexpath}
+% Comment out the above line if the files are in a central location, e.g. $HOME/texmf.
+%-------------------------------------------------------------------------------
+%\documentclass[PAPER, atlasdraft=true, texlive=2018, USenglish]{atlasdoc}
+\documentclass[twoside,a4paper,11pt,smallheadings,BCOR5mm,USenglish]{scrbook}
+
+\usepackage[english]{babel}  %deutsche Überschriften etc.
+%\usepackage{lmodern} 
+\usepackage[utf8]{inputenc}
+
+\usepackage{atlaspackage}
+
+%-------------------------------------------------------------------------------
+% Personal Content from Master Thesis Template
+%-------------------------------------------------------------------------------
+
+%------------------------------------------------------------------------------
+% packages
+%-----------------------------------------------------------------------------
+% Skim outputted pdf with pdftk, for example: pdftk datei.pdf cat 2-10 15 output Dokument.pdf
+% TODO: Check if atlas packages are useful
+%\usepackage{atlasnote-00-04-07/atlasphysics}
+%\usepackage{style/atlasprocess}
+% \usepackage{style/atlasbiblatex}
+\usepackage{fancyvrb}
+\usepackage{ulem} % durchstreichen von text
+\usepackage{fancyhdr}
+\usepackage{adjustbox}
+\usepackage{fncychap}
+\addtokomafont{disposition}{\rmfamily} 
+\usepackage{graphicx}
+\usepackage{grffile} % for dots in filename
+\usepackage{multirow}
+\usepackage{xspace}
+%\usepackage{arydshln} %ermöglicht gestrichelte linien in tabellen mit \hdashline
+%\usepackage[margin=10pt,font=small,labelfont=bf,font=it]{caption,subfig}
+\usepackage[font=small,format=plain,labelfont=bf,textfont=it]{caption}
+\usepackage{floatrow}
+\floatsetup[table]{capposition=top}
+
+\usepackage{subfig}
+\captionsetup[subfloat]{captionskip=23pt} % space between subfloat caption and image
+%\captionsetup{labelfont=normalfont,textfont=normalfont}
+\captionsetup{textfont=normalfont}
+%\captionsetup[figure]{captionskip=53pt} % space between subfloat caption and image
+% \usepackage[hang]{subfigure} %option IT falls kursiv
+%\usepackage[labelfont=scriptsize,font = footnotesize,labelfont=sf]{subcaption}
+% \captionsetup[subfigure]{font=small,position=top}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{txfonts}
+\usepackage[figuresright]{rotating}
+\usepackage{tabularx}
+%\usepackage{cite} clash with ATLAS
+%\usepackage[pdftex]{graphicx}
+\usepackage{epstopdf}
+\usepackage{pifont} % to use xmark
+\usepackage{pdflscape}
+\usepackage{float} %H-Option für float-Umgebungen
+\usepackage[flushmargin,bottom]{footmisc} %plaziert Fußnoten am Ende der Seite unterhalb von floats und macht den Schriftsatz bündig
+%\usepackage[section]{placeins} %erstellt eine Barriere für floats, so dass sie nicht über eine section hinaus verschoben werden können (durch redefinition von \section)
+%%\usepackage{sidecap} %ermöglich die Positionierung einer Caption seitlich einer Grafik
+%\usepackage{esvect} %ermöglicht mit \vv{} lange Vektorpfeile
+%\usepackage{natbib}
+%\usepackage[style=alphabetic]{Style/biblatex/latex/biblatex}
+%\addbibresource{mybib.bib}
+% %\usepackage{aspell-de}
+
+%colorscheme: missing ref - blue, missing table - green, missing text - red, missing numbers - orange, need to check  - yellow, cyan - need translation
+\usepackage{lineno} %Zeilennummerierung
+%\linenumbers         %% durchnummerieren
+%\pagewiselinenumbers  %% auf jeder seite neu anfangen
+\modulolinenumbers[5] %Angabe alle wieviel Zeilen Nummer angezeigt wird
+%\usepackage{Style/axodraw4j} ------------------------------------->was ist das?
+\usepackage{pstricks}
+\usepackage{tikz}
+
+%\usepackage[compat=1.1.0]{tikz-feynman}
+\usepackage{tikz-feynman}
+%\usepackage{siunitx}
+\usepackage{setspace}
+%\usepackage{freiburgthesis}
+%\usepackage{feynmp-auto}
+\usepackage{feynmp-auto}
+%\usepackage{Style/feynman}
+\usepackage{booktabs}
+\usepackage{color}
+% \usepackage[pdftex,
+%   %colorlinks=true,
+%   %urlcolor=green,       % \href{...}{...} external (URL)
+%   %filecolor=green,     % \href{...} local file
+%   linkcolor=blue,       % \ref{...} and \pageref{...}
+%   %citecolor=blue,
+%   %pdftitle={Title},
+%   pdfauthor={Benjamin Jaeger <benjamin.jaeger@cern.ch>},
+%   pdfsubject={Particle Physics},
+%   pdfkeywords={High-Energy Physics, Particle Physics},
+%   % pagebackref,
+%   pdfcreator = {LaTeX with hyperref package},
+%   pdfproducer = {pdflatex},
+%   hyperfigures,
+%   pdfpagemode=UseOutlines, % None, UseThumbs, UseOutlines, FullScreen.
+%   bookmarksopen=true,
+%   bookmarksopenlevel={0},
+%   bookmarksnumbered=true
+% ]{hyperref}
+%\pdfimageresolution=600
+
+
+% \usepackage[capitalize]{cleveref} clashed with ATLAS
+
+\usepackage{titlesec}
+
+
+
+% The language of the document must be set: usually USenglish or USenglish.
+% british and american also work!
+% Commonly used options:
+%  atlasdraft=true|false This document is an ATLAS draft.
+%  texlive=YYYY          Specify TeX Live version (2016 is default).
+%  coverpage             Create ATLAS draft cover page for collaboration circulation.
+%                        See atlas-draft-cover.tex for a list of variables that should be defined.
+%  cernpreprint          Create front page for a CERN preprint.
+%                        See atlas-preprint-cover.tex for a list of variables that should be defined.
+%  NOTE                  The document is an ATLAS note (draft).
+%  PAPER                 The document is an ATLAS paper (draft).
+%  CONF                  The document is a CONF note (draft).
+%  PUB                   The document is a PUB note (draft).
+%  BOOK                  The document is of book form, like an LOI or TDR (draft).
+%  txfonts=true|false    Use txfonts rather than the default newtx.
+%  paper=a4|letter       Set paper size to A4 (default) or letter.
+
+%-------------------------------------------------------------------------------
+% Extra packages:
+% Commonly used options:
+%  biblatex=true|false   Use biblatex (default) or bibtex for the bibliography.
+%  backend=bibtex        Use the bibtex backend rather than biber.
+%  subfigure|subfig|subcaption  to use one of these packages for figures in figures.
+%  minimal               Minimal set of packages.
+%  default               Standard set of packages.
+%  full                  Full set of packages.
+%-------------------------------------------------------------------------------
+% Style file with biblatex options for ATLAS documents.
+\usepackage{atlasbiblatex}
+
+% Useful macros
+\usepackage{atlasphysics}
+% See doc/atlas_physics.pdf for a list of the defined symbols.
+% Default options are:
+%   true:  journal, misc, particle, unit, xref
+%   false: BSM, hepparticle, hepprocess, hion, jetetmiss, math, process,
+%          other, snippets, texmf
+% See the package for details on the options.
+
+% Macro to add to-do notes (for several authors). Uses the todonotes package.
+% \ATLnote{JS}{Jane}{green!20}{green!50!black!60}
+% add macros \JSnote and \JSinote for notes in the margin and inline.
+% Set output=false in order not to print out the notes.
+% Comment this out for the final version of the paper.
+\usepackage[output=true]{atlastodo}
+
+% Files with references for use with biblatex.
+% Note that biber gives an error if it finds empty bib files.
+% \addbibresource{Phd-Thesis.bib}
+\addbibresource{bib/ATLAS.bib}
+\addbibresource{bib/CMS.bib}
+\addbibresource{bib/ConfNotes.bib}
+\addbibresource{bib/PubNotes.bib}
+
+
+%-------------------------------------------------------------------------------
+% Format & Layout
+%-------------------------------------------------------------------------------
+\input{style/format_layout}
+
+\ATLnote{R}{Reminder}{green!20}{green!50!black!60}
+\ATLnote{Q}{Question}{orange!20}{orange!50!black!60}
+\ATLnote{TD}{Major Todo}{red!20}{red!50!black!60}
+
+% Paths for figures - do not forget the / at the end of the directory name.
+\graphicspath{{logos/}{figures/}}
+
+% Add your own definitions here (file Phd-Thesis-defs.sty).
+\usepackage{Phd-Thesis-defs}
+
+
+%-------------------------------------------------------------------------------
+% Generic document information.
+%-------------------------------------------------------------------------------
+
+% Title, abstract and document.
+% \input{Phd-Thesis-metadata}
+% Author and title for the PDF file.
+\hypersetup{pdftitle={Phd Thesis Benjamin Jäger},pdfauthor={Benjamin J\"ager}}
+
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+% End pre-compiled pre-amble
+\csname endofdump \endcsname
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+
+\begin{document}
+\end{documents}

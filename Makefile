@@ -235,6 +235,12 @@ cleanpdf:
 	-rm $(BASENAME)-draft-cover.pdf $(BASENAME)-preprint-cover.pdf
 	-rm $(BASENAME)-hepdata-main.pdf
 
+once: 
+	pdflatex $(BASENAME).tex
+
+format: 
+	pdflatex -ini -jobname="format" "&pdflatex" mylatexformat.ltx """Phd-Thesis-Format.tex"""
+
 cleanps:
 	-rm $(BASENAME).ps
 	-rm $(BASENAME)-draft-cover.ps $(BASENAME)-preprint-cover.ps
