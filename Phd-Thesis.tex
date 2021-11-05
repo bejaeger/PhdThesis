@@ -7,8 +7,7 @@
 % Technical things
 %-------------------------------------------------------------------------------
 % Include all chapters/sections so the references are present
-\includeonly{chapters/objects}
-
+% \includeonly{chapters/objects}
 
 
 %-------------------------------------------------------------------------------
@@ -24,23 +23,13 @@
 \listoftodos
 
 % -------------------------------------------------------------------------------
-\chapter{Introduction}
-\label{sec:intro}
-
+\include{chapters/introduction}
 % \Rnote{}{Test reminder todo note}
 % \Qinote{}{Test inline question todo note}
 % \TDnote{}{Test TODO todo note}
 
-%-------------------------------------------------------------------------------
-
-Place your introduction here.
-
-\chapter{Theoretical Background}
-\label{chap:theory}
-\section{The Standard Model of Particle Physics}
-\section{The anatomy of Proton-Proton Collision Events}
-\section{Higgs Boson Physics}
-
+% -------------------------------------------------------------------------------
+\include{chapters/theory}
 
 % %-------------------------------------------------------------------------------
 \include{chapters/experiment}
@@ -49,54 +38,16 @@ Place your introduction here.
 \include{chapters/objects}
 
 % %-------------------------------------------------------------------------------
-\chapter{Machine Learning in High-Energy-Physics}
-
-\section{Statistical Data Analysis in High-Energy-Physics}
-\section{Hypothesis Testing}
-\section{Expectation Value}
-\section{The Profile Likelihood Ratio and Test Statistic}
-\section{The Asimov Data Set}
-\section{The Profile Likelihood Fit}
+\include{chapters/statistics}
 
 % %-------------------------------------------------------------------------------
-\chapter{Cross-section Measurements in Higgs Physics}
-\section{Inclusive Cross-section Measurements}
-\section{Fiducial and Differential Cross-section Measurements}
-\section{Simplified Template Cross-section Measurements}
+\include{chapters/ml}
 
 % %-------------------------------------------------------------------------------
-\chapter{Machine Learning Techniques to Optimize the Signal Selection}
-\section{Deep Neural Network Classifier}
-\section{Classification between the ggF and VBF Signal and the Background Processes}
-\section{Multiclass Classification}
-\section{Statistical Analysis with Two-Dimensional Discriminant}
-\section{Prospects of Adversarial Neural Network to Mitigate Effects of Systematic Uncertainties}
-\section{Neural Network Importance Scores with the DeepLIFT Method}
+\include{chapters/hww}
 
 % %-------------------------------------------------------------------------------
-\chapter{The $H\rightarrow W^{\pm}W^{\mp^*}$ Analysis}
-
-You can find some text snippets that can be used in papers in \texttt{latex/atlassnippets.sty}.
-To use them, provide the \texttt{snippets} option to \texttt{atlasphysics}.
-
-\section{Characteristics of the Signal and Background Processes}
-\section{Data and Monte Carlo Samples}
-\section{Object Selection and Efficiency Correction}
-\section{Event Selection}
-\section{Systematic Experimental Uncertainties}
-\section{Systematic Theoretical Uncertainties}
-\section{Couplings Analysis Fit Results}
-\subsection{VBF Signal Results}
-\subsection{ggF Signal Results}
-\subsection{Results for Combined Fit}
-
-\section{The $H\rightarrow W^{\pm}W^{\mp^*}$ STXS Regions}
-\subsection{Results for Combined STXS Fit}
-
-
-% %-------------------------------------------------------------------------------
-\chapter{Summary}
-
+\include{chapters/summary}
 
 
 %-------------------------------------------------------------------------------
