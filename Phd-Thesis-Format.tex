@@ -30,7 +30,7 @@
 %\usepackage{lmodern} 
 \usepackage[utf8]{inputenc}
 
-\usepackage{atlaspackage}
+\usepackage[full]{atlaspackage}
 
 %-------------------------------------------------------------------------------
 % Personal Content from Master Thesis Template
@@ -72,15 +72,15 @@
 \usepackage{amsmath}
 \usepackage{mathtools}
 \usepackage{txfonts}
-\usepackage[figuresright]{rotating}
-\usepackage{tabularx}
+%\usepackage[figuresright]{rotating}
+%\usepackage{tabularx}
 %\usepackage{cite} clash with ATLAS
 %\usepackage[pdftex]{graphicx}
-\usepackage{epstopdf}
-\usepackage{pifont} % to use xmark
-\usepackage{pdflscape}
-\usepackage{float} %H-Option für float-Umgebungen
-\usepackage[flushmargin,bottom]{footmisc} %plaziert Fußnoten am Ende der Seite unterhalb von floats und macht den Schriftsatz bündig
+%\usepackage{epstopdf}
+%\usepackage{pifont} % to use xmark
+%\usepackage{pdflscape}
+%\usepackage{float} %H-Option für float-Umgebungen
+%\usepackage[flushmargin,bottom]{footmisc} %plaziert Fußnoten am Ende der Seite unterhalb von floats und macht den Schriftsatz bündig
 %\usepackage[section]{placeins} %erstellt eine Barriere für floats, so dass sie nicht über eine section hinaus verschoben werden können (durch redefinition von \section)
 %%\usepackage{sidecap} %ermöglich die Positionierung einer Caption seitlich einer Grafik
 %\usepackage{esvect} %ermöglicht mit \vv{} lange Vektorpfeile
@@ -167,7 +167,7 @@
 \usepackage{atlasbiblatex}
 
 % Useful macros
-\usepackage{atlasphysics}
+\usepackage[hepparticle]{atlasphysics}
 % See doc/atlas_physics.pdf for a list of the defined symbols.
 % Default options are:
 %   true:  journal, misc, particle, unit, xref
@@ -189,6 +189,7 @@
 \addbibresource{bib/CMS.bib}
 \addbibresource{bib/ConfNotes.bib}
 \addbibresource{bib/PubNotes.bib}
+\addbibresource{bib/Custom.bib}
 
 
 %-------------------------------------------------------------------------------
@@ -196,9 +197,10 @@
 %-------------------------------------------------------------------------------
 \input{style/format_layout}
 
-\ATLnote{R}{Reminder}{green!20}{green!50!black!60}
+\ATLnote{R}{Reminder}{blue!20}{blue!50!black!60}
 \ATLnote{Q}{Question}{orange!20}{orange!50!black!60}
 \ATLnote{TD}{Major Todo}{red!20}{red!50!black!60}
+\ATLnote{M}{Idea/Maybe}{green!20}{green!50!black!60}
 
 % Paths for figures - do not forget the / at the end of the directory name.
 \graphicspath{{logos/}{figures/}}
@@ -206,6 +208,8 @@
 % Add your own definitions here (file Phd-Thesis-defs.sty).
 \usepackage{Phd-Thesis-defs}
 
+% define \emph as italic
+\renewcommand\emph[1]{{\it{#1}}}
 
 %-------------------------------------------------------------------------------
 % Generic document information.
@@ -216,6 +220,30 @@
 % Author and title for the PDF file.
 \hypersetup{pdftitle={Phd Thesis Benjamin Jäger},pdfauthor={Benjamin J\"ager}}
 
+% ----------------------------------------------
+% Change `\cite` command to include Ref. or Refs
+\NewBibliographyString{refname}
+\NewBibliographyString{refsname}
+\DefineBibliographyStrings{english}{%
+  refname = {Ref\adddot~},
+  refsname = {Refs\adddot~}
+}
+\DeclareCiteCommand{\ccite}
+  {%
+  \ifnum\thecitetotal=1
+    \bibstring{refname}%
+  \else%
+    \bibstring{refsname}%
+  \fi%
+  \nolinebreak\addspace\bibopenbracket%
+  \usebibmacro{cite:init}%
+   \usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite:comp}}
+  {}
+  {\usebibmacro{cite:dump}%
+   \usebibmacro{postnote}%
+   \bibclosebracket}
 
 %-------------------------------------------------------------------------------
 %-------------------------------------------------------------------------------

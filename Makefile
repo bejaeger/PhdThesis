@@ -38,7 +38,7 @@ TWIKI    = https://twiki.cern.ch/twiki/bin/view/AtlasProtected/PubComLaTeXFAQ
 
 #-------------------------------------------------------------------------------
 # The main document filename
-BASENAME = Phd-Thesis
+BASENAME = t
 
 #-------------------------------------------------------------------------------
 # Adjust this according to your top-level figures directory
@@ -69,7 +69,7 @@ version:
 	fi
 
 # Standard pdflatex target
-run_pdflatex: $(BASENAME).pdf
+run_pdflatex: $(BASENAME).pdf 
 	@echo "Made $<"
 
 # Remove -pdf option to run latex instead of pdflatex

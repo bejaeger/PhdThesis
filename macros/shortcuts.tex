@@ -1,0 +1,81 @@
+% -----------------------------------------------------------------------
+% Short cuts
+
+\newcommand{\myc}[1]{Ref.~\cite{#1}}
+
+\newcommand{\HWW}{$H\rightarrow WW^*$}
+\newcommand{\HWWdet}{\ensuremath{H\,{\rightarrow}\,W^{\pm}W^{\mp^*}\,{\rightarrow}\,\ell^-\bar{\nu} \ell^+\nu}\hspace{0.07em}}
+\def\myurl{\hfil\penalty 100 \hfilneg \hbox}
+\newcommand{\HWWhalfdet}{\ensuremath{H\,{\rightarrow}\,$~$WW^*\,{\rightarrow}\,$~$\ell\nu\ell\nu}\xspace}
+\newcommand*{\ZeroJet}{\ensuremath{N_\text{jet}{=}\,0}\xspace}
+\newcommand*{\OneJet}{\ensuremath{N_\text{jet}{=}\,1}\xspace}
+\newcommand{\Ztautau}{\mbox{$Z/\gamma^*\,{\rightarrow}\,\tau\tau$}\,}
+\newcommand{\Nbjet}{\ensuremath{N_{\text{$b$-jet}}}}
+\newcommand{\Njet}{\ensuremath{N_{\text{jet}}}}
+\newcommand{\Ntrkjet}{\ensuremath{N_{\text{jet}}^{\text{trk jet}}}}
+%\newcommand{\Nbjetsub}{\ensuremath{N_{\text{$b$-jet}}}}
+\newcommand{\nbJet}{\ensuremath{N_{\text{$b$-jet}}}}
+\newcommand{\nbtrkjet}{\ensuremath{N_{\text{$b$-jet}}^{\text{track}}}}
+\newcommand{\nbcalojet}{\ensuremath{N_{\text{$b$-jet}}^{\text{calo}}}}
+\newcommand{\nbjet}{\ensuremath{N_{\text{$b$-jet}}}}
+\newcommand*{\Zpoiss}{\ensuremath{Z_{\text{exp}}^{\text{Poiss}}}}
+\newcommand{\Nbjetsub}{\ensuremath{N_{\text{$b$-jet}}^{\pT\,{>}\,20\,\GeV}}}
+\newcommand{\Nbjetnom}{\ensuremath{N_{\text{$b$-jet}}^{\pT\,{>}\,30\,\GeV}}}
+\newcommand{\Nbjetbetween}{\ensuremath{N_{\text{$b$-jet}}^{20\,\GeV{<}\,\pT\,{<}\,30\,\GeV}}}
+
+\newcommand*{\bcaloveto}{\ensuremath{N^{\pT>20\,\GeV}_{\text{$b$-calo-jet}} = 0}}
+\newcommand*{\btrkveto}{\ensuremath{N^{\pT>7\,\GeV, \text{WP77}}_{\text{$b$-track-jet}} = 0}}
+
+\newcommand*{\bcalotag}{\ensuremath{N^{\pT>20\,\GeV)}_{\text{$b$-calo-jet}} \ge 1}}
+\newcommand*{\topibcalotag}{\ensuremath{N^{\pT>20\,\GeV)}_{\text{$b$-calo-jet}} = 1}}
+\newcommand*{\btrktag}{\ensuremath{N^{\pT>7\,\GeV, \text{WP77}}_{\text{$b$-track-jet}} \ge 1}}
+\newcommand*{\topibtrktag}{\ensuremath{N^{\pT>7\,\GeV, \text{WP77}}_{\text{$b$-track-jet}} = 1}}
+% Label for alternative working point of 85
+\newcommand*{\albtrkveto}{\ensuremath{N^{\pT>7\,\GeV, \text{WP85}}_{\text{$b$-track-jet}} = 0}}
+\newcommand*{\albtrktag}{\ensuremath{N^{\pT>7\,\GeV, \text{WP85}}_{\text{$b$-track-jet}} \ge 1}}
+\newcommand*{\altopibtrktag}{\ensuremath{N^{\pT>7\,\GeV, \text{WP85}}_{\text{$b$-track-jet}} = 1}}
+\newcommand*{\caloandtrkveto}{\ensuremath{N^{\pT>20\,\GeV}_{\text{$b$-calo-jet}} = N^{\pT>7\,\GeV, \text{WP77}}_{\text{$b$-track-jet}} = 0}}
+\newcommand*{\caloandaltrkveto}{\ensuremath{N^{\pT>20\,\GeV}_{\text{$b$-calo-jet}} = N^{\pT>7\,\GeV, \text{WP85}}_{\text{$b$-track-jet}} = 0}}
+\newcommand*{\caloandtrktag}{\ensuremath{N^{\pT>20\,\GeV}_{\text{$b$-calo-jet}} \ge 1 \,\,\&\,\, N^{\pT>7\,\GeV, \text{WP77}}_{\text{$b$-track-jet}} \ge 1}}
+\newcommand*{\caloandaltrktag}{\ensuremath{N^{\pT>20\,\GeV}_{\text{$b$-calo-jet}} \ge 1 \,\,\&\,\, N^{\pT>7\,\GeV, \text{WP85}}_{\text{$b$-track-jet}} \ge 1}}
+\newcommand*{\topicaloandtrktag}{\ensuremath{N^{\pT>20\,\GeV}_{\text{$b$-calo-jet}} = 1 \,\,\&\,\, N^{\pT>7\,\GeV, \text{WP77}}_{\text{$b$-track-jet}} \ge 1}}
+\newcommand*{\topicaloandaltrktag}{\ensuremath{N^{\pT>20\,\GeV}_{\text{$b$-calo-jet}} = 1 \,\,\&\,\, N^{\pT>7\,\GeV, \text{WP85}}_{\text{$b$-track-jet}} \ge 1}}
+
+\newcommand{\cmark}{\ding{52}}%
+\newcommand{\xmark}{\ding{53}}%
+
+
+\newcommand*{\SRojDFMlliPtSubLeadte}{$N_{\mathrm{jet}}=0,\, m_{\ell\ell}^{10-30},\, p_{\mathrm{T,\ell_2}}^{15-20},\, \mu e$}
+\newcommand*{\SRojDFMlliPtSubLeadtm}{$N_{\mathrm{jet}}=0,\, m_{\ell\ell}^{10-30},\, p_{\mathrm{T,\ell_2}}^{15-20},\, e \mu$}
+\newcommand*{\SRojDFMlliPtSubLeadthe}{$N_{\mathrm{jet}}=0,\, m_{\ell\ell}^{10-30},\, p_{\mathrm{T,\ell_2}}^{>20},\, \mu e$}
+\newcommand*{\SRojDFMlliPtSubLeadthm}{$N_{\mathrm{jet}}=0,\, m_{\ell\ell}^{10-30},\, p_{\mathrm{T,\ell_2}}^{>20},\, e \mu$}
+\newcommand*{\SRojDFMlltPtSubLeadte}{$N_{\mathrm{jet}}=0,\, m_{\ell\ell}^{30-55},\, p_{\mathrm{T,\ell_2}}^{15-20},\, \mu e$}
+\newcommand*{\SRojDFMlltPtSubLeadtm}{$N_{\mathrm{jet}}=0,\, m_{\ell\ell}^{30-55},\, p_{\mathrm{T,\ell_2}}^{15-20},\, e \mu$}
+\newcommand*{\SRojDFMlltPtSubLeadthe}{$N_{\mathrm{jet}}=0,\, m_{\ell\ell}^{30-55},\, p_{\mathrm{T,\ell_2}}^{>20},\, \mu e$}
+\newcommand*{\SRojDFMlltPtSubLeadthm}{$N_{\mathrm{jet}}=0,\, m_{\ell\ell}^{30-55},\, p_{\mathrm{T,\ell_2}}^{>20},\, e \mu$}
+
+\newcommand*{\SRijDFMlliPtSubLeadte}{$N_{\mathrm{jet}}=1,\, m_{\ell\ell}^{10-30},\, p_{\mathrm{T,\ell_2}}^{15-20},\, \mu e$}
+\newcommand*{\SRijDFMlliPtSubLeadtm}{$N_{\mathrm{jet}}=1,\, m_{\ell\ell}^{10-30},\, p_{\mathrm{T,\ell_2}}^{15-20},\, e \mu$}
+\newcommand*{\SRijDFMlliPtSubLeadthe}{$N_{\mathrm{jet}}=1,\, m_{\ell\ell}^{10-30},\, p_{\mathrm{T,\ell_2}}^{>20},\, \mu e$}
+\newcommand*{\SRijDFMlliPtSubLeadthm}{$N_{\mathrm{jet}}=1,\, m_{\ell\ell}^{10-30},\, p_{\mathrm{T,\ell_2}}^{>20},\, e \mu$}
+\newcommand*{\SRijDFMlltPtSubLeadte}{$N_{\mathrm{jet}}=1,\, m_{\ell\ell}^{30-55},\, p_{\mathrm{T,\ell_2}}^{15-20},\, \mu e$}
+\newcommand*{\SRijDFMlltPtSubLeadtm}{$N_{\mathrm{jet}}=1,\, m_{\ell\ell}^{30-55},\, p_{\mathrm{T,\ell_2}}^{15-20},\, e \mu$}
+\newcommand*{\SRijDFMlltPtSubLeadthe}{$N_{\mathrm{jet}}=1,\, m_{\ell\ell}^{30-55},\, p_{\mathrm{T,\ell_2}}^{>20},\, \mu e$}
+\newcommand*{\SRijDFMlltPtSubLeadthm}{$N_{\mathrm{jet}}=1,\, m_{\ell\ell}^{30-55},\, p_{\mathrm{T,\ell_2}}^{>20},\, e \mu$}
+
+\newcommand*{\CRojDFtop}{\ZeroJet\ top control region}
+\newcommand*{\CRojDFWW}{\ZeroJet\ $WW$\ control region}
+\newcommand*{\CRojDFZtt}{\ZeroJet\ \Ztautau\ control region}
+\newcommand*{\CRijDFtop}{\OneJet\ top control region}
+\newcommand*{\CRijDFWW}{\OneJet\ $WW$\ control region}
+\newcommand*{\CRijDFZtt}{\OneJet\ \Ztautau\ control region}
+  
+\newcommand*{\MlliPtSubLeadte}{$m_{\ell\ell}^{10-30},\, p_{\mathrm{T,\ell_2}}^{15-20},\, \mu e$}
+\newcommand*{\MlliPtSubLeadtm}{$m_{\ell\ell}^{10-30},\, p_{\mathrm{T,\ell_2}}^{15-20},\, e \mu$}
+\newcommand*{\MlliPtSubLeadthe}{$m_{\ell\ell}^{10-30},\, p_{\mathrm{T,\ell_2}}^{>20},\, \mu e$}
+\newcommand*{\MlliPtSubLeadthm}{$m_{\ell\ell}^{10-30},\, p_{\mathrm{T,\ell_2}}^{>20},\, e \mu$}
+\newcommand*{\MlltPtSubLeadte}{$m_{\ell\ell}^{30-55},\, p_{\mathrm{T,\ell_2}}^{15-20},\, \mu e$}
+\newcommand*{\MlltPtSubLeadtm}{$m_{\ell\ell}^{30-55},\, p_{\mathrm{T,\ell_2}}^{15-20},\, e \mu$}
+\newcommand*{\MlltPtSubLeadthe}{$m_{\ell\ell}^{30-55},\, p_{\mathrm{T,\ell_2}}^{>20},\, \mu e$}
+\newcommand*{\MlltPtSubLeadthm}{$m_{\ell\ell}^{30-55},\, p_{\mathrm{T,\ell_2}}^{>20},\, e \mu$}
+

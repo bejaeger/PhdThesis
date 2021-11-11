@@ -1,0 +1,67 @@
+% -----------------------------------------------------------------------
+% Image helper functions
+
+\newcommand{\newImage}[1]{
+    \ifIMAGES
+        \centering
+        \IfFileExists{#1}{\includegraphics{#1}}{\includegraphics{figures/general/scorpion.jpg}}
+    \else
+    \fi
+}
+\newcommand{\newImageResize}[1]{
+    \ifIMAGES
+        \centering
+        \IfFileExists{#1}{
+            \resizebox{\textwidth}{!}{
+                \includegraphics{#1}
+            }
+        }
+        {
+            \includegraphics{figures/general/scorpion.jpg}
+        }
+    \else
+    \fi
+}
+\newcommand{\newImageResizeCustom}[2]{
+    \ifIMAGES
+        \centering
+        \IfFileExists{#1}{
+            \resizebox{#2\textwidth}{!}{
+                \includegraphics{#1}
+            }
+        }
+        {
+            \includegraphics{figures/general/scorpion.jpg}
+        }
+    \else
+    \fi
+}
+\newcommand{\newImageResizeHalf}[1]{
+    \ifIMAGES
+        \centering
+        \IfFileExists{#1}{
+            \resizebox{0.5\textwidth}{!}{
+                \includegraphics{#1}
+            }
+        }
+        {
+            \includegraphics{figures/general/scorpion.jpg}
+        }
+    \else
+    \fi
+}
+\newcommand{\newImageScale}[2]{
+    \ifIMAGES
+        \centering
+        \IfFileExists{#1}{\includegraphics[scale=#2]{#1}}{\includegraphics{figures/general/scorpion.jpg}}
+    \else
+    \fi
+}
+\newcommand{\newImageScaleRot}[2]{
+    \ifIMAGES
+        \centering
+        \IfFileExists{#1}{\includegraphics[scale=#2,angle=-90]{#1}}{\includegraphics{figures/general/scorpion.jpg}}
+    \else
+    \fi
+}
+

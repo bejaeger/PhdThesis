@@ -1,6 +1,35 @@
-\chapter{Theoretical Background}
+\chapter{Theoretical Foundation}
 \label{chap:theory}
 
 \section{The Standard Model of Particle Physics}
-\section{The Anatomy of Proton-Proton Collision Events}
+
 \section{Higgs Boson Physics}
+
+
+\section{The Anatomy of Proton-Proton Collision Events}
+
+Introduce impact parameter cause it's mentioned here \cref{subsec:inner-detector}.
+
+
+\section{High-Energy-Physics Measurements}
+
+\subsection{Particle detection}
+\subsection{Particle collider performance metrics}
+\Minote{}{Maybe put this part in a theory, more general section (proton-proton collisions?).}
+A crucial performance indicator of a particle accelerator is its \emph{instantaneous luminosity} $\mathcal{L}$ as it is proportional to the \emph{event rate}, 
+\begin{equation}
+    \frac{\mathrm{d}N}{\mathrm{d}t} = \sigma_{P} \mathcal{L},
+\end{equation}
+for a given physics process $P$ with cross section $\sigma_{P}$.
+The instantaneous luminosity depends on parameters of the accelerator and is given by
+\begin{equation}
+  \mathcal{L} = f_rn_b\frac{N_p^2}{4\pi \sigma_x \sigma_y}, 
+\end{equation}
+when assuming Gaussian shaped beam profiles. Here, $f_r$ denotes the rotational frequency of the two bunches, $n_b$ the total number of bunches inside the accelerator, and $N_p$ the numbers of particles within each colliding bunch. 
+The total number of events after time $T$ is given after integrating with respect to time, 
+\begin{equation}
+  N_{\text{Events}} = \sigma_{P} L_{\text{int}} = \sigma_{P} \int_{0}^{T} \mathcal{L} \mathrm{d}t,
+\end{equation}
+and is a crucial quantity typically measured in high-energy-physics experiments. 
+It becomes clear that increasing the integrated luminosity $L_\text{int}$ is one of the main goals of any collider experiment, as it is directly proportional to the number of expected events of a particular physics process. 
+
