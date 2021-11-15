@@ -72,6 +72,7 @@ version:
 run_pdflatex: $(BASENAME).pdf 
 	@echo "Made $<"
 
+
 # Remove -pdf option to run latex instead of pdflatex
 run_latexmk:
 	latexmk -pdf $(BASENAME)
