@@ -1,0 +1,149 @@
+
+\chapter{Physics Object Reconstruction and Particle Identification}
+\label{chap:objects}
+
+- Goal is to infer physics objects from the raw detector signals so that they can be used in physics analyses. 
+
+- physics objects are described with four-vectors.
+
+The combined physics objects in an event then provide information to associate the detector signals to a particular hard scatter process. 
+
+- Carsten: "algorithms under constant development as they greatly influence the efficiency and performance of the reconstruction process".
+- Arnold: "This raw data is then processed in several steps by various, sophisticated reconstruction and identification algorithms implemented in the ATHENA framework [170] in order to finally identify the measured signals with physics objects, such as electrons or jets, defined by relatively few parameters."
+
+- Valente: "These four-vectors are generally known as the physics objects of the collision as they represent the quarks, leptons and gauge bosons resulting from the p-p collisions of the LHC."
+
+- four-momentum reconstruction
+
+- Ruthmann: "The event and object reconstruction chain is defined and implemented in the Athena software framework [75]."
+
+- Dickinson talks about final state and the associated particles -> maybe a good idea? Good segway to explain that tau lepton reconstruction is not explained in the thesis
+
+- Reconstruction subject to experimental uncertainties which will be treated as sytematic uncertainties in the analysis presented in later chapters.
+
+- energy calibration are also mentioned.
+
+- What follows is....more detail given on clustering and jet reconstruction
+
+\section{Inner Detector Tracks and Vertex Reconstruction}
+The charged-particle hits measured in the ID are used to build tracks that are input to further reconstruction algorithms. 
+The track reconstruction uses a sequence of pattern recognition algorithms that are described in much more detail in \ccite{Cornelissen:1020106,Cornelissen_2008}. The sequences primarily consist of an \emph{inside-out} algorithm and an \emph{outside-in} algorithm. They complement each other in the tasks to find tracks associated to the hard-scatter interaction (inside-out algorithm), and tracks stemming from secondary decay vertices in the ID as well as tracks from photon conversions (outside-in algorithm).
+
+The \emph{inside-out} algorithm is seeded by three hits in the silicon detectors. An initial track collection is formed based on a window search and a combinatorial Kalman filter~\cite{fruhwirth_application_1987}. Two more steps follow: first, ambiguities in the initial track collection are resolved; second, the tracks are extended to hits in the TRT without manipulating the original tracks found from the silicon detectors measurements.
+
+The \emph{outside-in} algorithm starts with a global pattern recognition from all TRT hits. The identified segments are then traced back into the silicon detectors, excluding any hits already used in the inside-out stage.
+
+The track reconstruction efficiency, defined as the fraction of charged particles with $\pT > 400\,MeV$ and \absetaST{2.5} that are matched to a reconstructed track, has only a small dependence on the number of pile-up interactions and is well above \SI{70}{\percent} for a range \absetaST{2} and pile-up conditions of $\mu = 41$.~\cite{ATLAS-CONF-2012-042}. \Mnote{}{Not sure if I should mention this here. Should I then also mention the PV reco efficiency? Don't know yet. Probably not? Cause of this written in Sommers thesis: "The efficiencies shown in Fig. 3.1b is obtained in simulated events that also contain collisions with low momentum transfer. The efficiency to reconstruct the vertices of the interactions studied in this thesis is close to 100 percent". Also track reconstruction probs not useful as it does not reflect the high pT muons}
+
+The reconstructed tracks are then used to determine the positions of the collision vertices, known as \emph{primary vertices} (PV). To this end, an \emph{iterative vertex finding} approach \cite{PERF-2015-01} starts with selecting tracks that both satisfy certain quality criteria and are compatible with the interaction region. A vertex seed is chosen based on the selected tracks' density which is input to an \emph{adaptive vertex fitting} algorithm \ccite{0954-3899-34-12-N01}. 
+This algorithm iteratively (re-)fits tracks and seeds new vertex candidates if a track is incompatible with the currently assigned vertex until either all tracks are associated to a vertex or no further vertex candidates can be built, which requires at least two associated tracks.
+%This algorithm iteratively (re-)fits tracks including the constraint that they originate from that vertex, and seeds a new vertex candidate if they are incompatible. This is repeated until either all track are associated to a vertex or no further vertex candidates can be built, which requires at least two associated tracks.
+
+Once the PVs are found, the \emph{hard-scatter vertex} is chosen to be the one with the largest sum of all squared transverse momenta of tracks that are associated to that vertex. The other PVs are treated as \emph{pile-up vertices}.
+
+
+% - "reference comes from a reference given in the latest electron reco publication (CERN-EP-2019-145) where a reference is given to the tracking: \ccite{PERF-2015-08}."
+% - long reference: \ccite{Cornelissen:1020106}
+% - shorter summary in journal: \ccite{Cornelissen_2008}
+% - in thesis I used this reference \ccite{ATLAS-CONF-2012-042} that describes the algorithms briefly
+
+
+\section{Calorimeter clustering}
+\ccite{PERF-2014-07,ATL-LARG-PUB-2008-002}
+Each cell of the calorimeter system is read out and can be interpreted as a massless four-vector. In a first reconstruction step, these cells are grouped together to form so-called \emph{topological clusters} or \emph{topo-clusters}. Topo-clusters are used as input to other reconstruction algorithms to form jets, electrons, hadronically decaying $\tau$ leptons, or missing transverse energy. 
+The cells are calibrated at the electromagnetic scale (EM scale) so that the energy of electromagnetic interacting particles is correctly taken into account\footnote{The calibration of calorimeter cells is derived in dedicated test-beam measurements described for example in \cref{Abat_2010}}. The calorimeter does not fully account for the energy deposited by hadronic showers, however, which is known as a \emph{non-compensating} nature.
+To correct for the loss of energy, dedicated calibrations are performed, which are discussed in more detail in \cref{chap:calibration}.
+As the calorimeter cells are subject to significant noise contributions, the main goal of the \emph{topo-clustering algorithm} is to enhance the signal to noise ratio. The total noise can be described as
+\begin{equation}
+    \sigma_{\text{noise}} = \sqrt{ \left( \electronicnoise  \right)^2  + \left( \pileupnoise  \right)^2 },
+\end{equation}
+where \electronicnoise is the electronic noise, and \pileupnoise is the noise from pile-up and varies for different data taking conditions. 
+
+\begin{figure}
+    \subfloat[electronic noise]
+{    \newImageResizeHalf{figures/reconstruction/cells-electronic-noise.png}
+}    \subfloat[total noise]
+{    \newImageResizeHalf{figures/reconstruction/cells-total-noise.png}
+}
+\caption{Noise in calorimeter cells from (a) electronic noise at $\mu=0$ and (b) total noise including pile-up noise at instantaneous luminosities of $\mathcal{L} = \SI{e34}{\per\cm\per\s}$ corresponding to peak pile-up conditions of around $\mu\approx20$. Taken from \ccite{ATL-LARG-PUB-2008-002}.}
+\end{figure}
+% From https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/PERF-2014-07/
+% Probs get it from here cause other one is 50ns bunch crossing...
+% ATL-LARG-PUB-2008-002 -> Should find out what pile-up is expected with design lumi. Design maximum pile-up is 20!
+
+
+Topo-clusters are formed based on the cell-energy significance, $z_{\text{cell}}$, defined as the level of signal, $E_{\text{cell}}$, above the total noise, 
+\begin{equation}
+    z_{\text{cell}} = \frac{E_{\text{cell}}}{\sigma_{\text{noise}}}. 
+\end{equation}
+The algorithm consists of three steps defined by three parameters, $S$, $N$, and $P$:
+
+\begin{enumerate}
+    \item A seed calorimeter cell is found with 
+    \item All neighboring cells satisfying $blah$ are added
+    \item Finally, all neighboring cells with $blah$ are added
+\end{enumerate}
+
+The parameters that have been adopted for the ATLAS calorimeters are $S = 4$, $N = 2$, $P = 0$, so that the algorithm is sometimes referred to as ``420 clustering''. 
+
+- the initial set of identified clusters undergoes a step of splitting
+
+- PLOT: add plots of topocluster formation as in Valente's thesis?
+
+
+
+
+\section{Jets}
+(Schouten's intro very good!)
+
+- abundant in pp collisions
+- part of almost all physics final states
+- it's a "definition"
+- the closest thing to measure to what we actual want to get information of which is the parton level jet.
+
+\subsubsection{Jet constituents}
+- In recent years ATLAS has moved from purely calorimeter-based jets as a standard jet collection to one that uses information from both, the calorimeter and the ID. The latter jets are known as particle flow jets and have two basic ingredients: charged particle flow objects (CPFOs) and neutral particle flow objects (NPFOs). 
+
+
+\subsubsection{Jet finding}
+- needs to be infrared and collinear safe "for comparisons between experiment and QCD to be meaningful" (Schouten)
+- explain infrared and collinear safety (again, nice explanation in schouten's thesis: collinear and infrared singularties in QCD are removed when higher order calculations are included. However, fixed order calculations are what we have and measurements are implicitly a sum over all order)
+- anti kT algorithm satisfies these criteria
+- explain anti KT (take from master thesis?)
+    1. 
+    2. 
+    3. 
+    4.
+- ATLAS chose anti kT because it was yielded best results in various benchmark physics analyses (Schouten)
+
+- Small-R jets and R-scan jets? How are R-scan jets build?
+
+- description of energy calibration is left to a later chapter
+
+\subsection{Pile-up jet identification}
+
+
+\subsection{Flavor tagging}
+
+
+\section{Electron and Photon Reconstruction}
+- topo-clusters are seeds to finding superclusters. 
+- superclusters good to recover energy lost in bremsstrahlung photons or from electrons imitted by photon conversion
+See here: \ccite{EGAM-2018-01}
+
+\section{Muon Reconstruction}
+
+\section{Lepton Isolation}
+
+\section{Missing Transverse Energy}
+
+
+
+\section{Pile-up}
+->  Ruthmann has a nice section about it!
+From Sommer: "Additional in- elastic, minimum-bias like pp collisions (pile-up) are generated using Pythia8 and overlaid."
+Scope:
+- I should explain concepts like luminosity blocks  / bunch spacing and stuff in Data Taking Section
+- Then I can explain different pile-up conditions here.
+- This will be valuable to understand the noise term measurement which exactly tries to measure the noise term!
+- Also look back at discussion on skype with Brian about pile-up (actual mu vs average mu and so on)
