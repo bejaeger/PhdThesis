@@ -117,8 +117,10 @@ Muons are minimum-ionizing and escape the calorimeter system.
 Therefore, a large MS forms the outermost part of the ATLAS detector. 
 The MS serves two main purposes: measuring track hits for muon reconstruction as well as providing fast information to the trigger system.
 \Cref{fig:ATLASmuonspectrometer} shows the MS with its large superconducting toroid magnets in between of several chambers that detect the muon's ionization energy.
-The 8 barrel toroid magnets and 16 end-cap magnets cover the range \absetaST{1.4} and \absetaBT{1.6}{2.7}, respectively. They provide magnetic bending power of \numrange{0.5}{1}\,T to measure the muons' momenta. Precision-tracking chambers operate with an argon-based mixture and are arranged in three layers in both the barrel and end-cap regions. They cover a range \absetaST{2.7} and mostly consist of \emph{Monitored Drift Tubes}. Only the innermost layer in the region \absetaBT{2}{2.7} is made out of multiwire proportional chambers called \emph{Cathode Strip Chambers} that are more resistant against radiation damage. The detector chambers with fast readouts consist of \emph{Resistive Plate Chambers} (RPC) in the central-region within \absetaST{1.05} and \emph{Thin Gap Chambers} in the end-cap regions at \absetaBT{1.05}{2.4}. They provide information about traversing muons to the L1 trigger system that is discussed below within \numrange{15}{25}\,ns.
+The 8 barrel toroid magnets and 16 end-cap magnets cover the range \absetaST{1.4} and \absetaBT{1.6}{2.7}, respectively. They provide magnetic bending power of \numrange{0.5}{1}\,T to measure the muons' momenta. Precision-tracking chambers operate with an argon-based mixture and are arranged in three layers in both the barrel and end-cap regions. They cover a range \absetaST{2.7} and mostly consist of \emph{Monitored Drift Tubes}, that provide six to eight $\eta$ measurements. Only the innermost layer in the region \absetaBT{2}{2.7} is made out of multiwire proportional chambers called \emph{Cathode Strip Chambers} that are more resistant against radiation damage. They provide four space points in the $\eta$-$\phi$ plane. The detector chambers with fast readouts consist of \emph{Resistive Plate Chambers} (RPC) in the central-region within \absetaST{1.05} and \emph{Thin Gap Chambers} in the end-cap regions at \absetaBT{1.05}{2.4}. 
+Their main purpose is to provide fast information to the L1 trigger system (discussed below in \cref{sec:trigger-system}), but also provide information complementary to the precision trackers to allow for a three-dimensional track reconstruction of the muon candidates.
 
+% They provide information about traversing muons to the L1 trigger system that is discussed below within \numrange{15}{25}\,ns.
 %The RPCs are gaseous parallel electrode-plates without a wire and 
 
 
@@ -207,6 +209,7 @@ At very large angles (\absetaBT{3.1}{4.9}) the calorimeter needs to be especiall
 
 
 \subsection{Trigger System}
+\label{sec:trigger-system}
 Because of the very large rate of collision events of \SI{40}{\mega\hertz}, it is technically not feasible to store the detector response for each event.
 A dedicated trigger system therefore makes fast decisions and selects only events for readout which exhibit interesting features.
 The selections are based on the available data from different detector subsystems.
@@ -214,7 +217,7 @@ The selections are based on the available data from different detector subsystem
 % and selects them for readout. 
 %The nominal rate of collision events of produce much more data to be stored than is technically feasible. 
 The \RunTwo trigger system consists of a two-stage approach:
-The hardware-based \emph{Level-1} (L1) trigger reduces the rate from \SI{40}{\mega\hertz} to \SI{100}{\kilo\hertz} and provides inputs to the software-based \emph{High-Level Trigger} (HLT), which makes further selections to reduce the rate to around \SI{200}{\hertz}.
+The hardware-based \emph{Level-1} (L1) trigger reduces the rate from \SI{40}{\mega\hertz} to \SI{100}{\kilo\hertz} and provides inputs to the software-based \emph{High-Level Trigger} (HLT), which makes further selections to reduce the rate to around \SI{1000}{\hertz}.
 
 The L1 trigger uses information from both the MS and the entire calorimeter system with reduced granularity.
 The muon trigger chambers (RPCs and TGCs) detect muons with high transverse momenta, while the showering information from the calorimeters is used to search for electrons, photons, jets, hadronically decaying \tauleptons, as well large missing or total transverse energy.

@@ -51,8 +51,6 @@ Once the PVs are found, the \emph{hard-scatter vertex} is chosen to be the one w
 \section{Calorimeter Clustering}
 \ccite{PERF-2014-07,ATL-LARG-PUB-2008-002}
 Each cell of the calorimeter system is read out and can be interpreted as a massless four-vector. In a first reconstruction step, these cells are grouped together to form so-called \emph{topological clusters} or \emph{topo-clusters}. Topo-clusters are used as input to other reconstruction algorithms to form jets, electrons, hadronically decaying $\tau$ leptons, or missing transverse energy. 
-The cells are calibrated at the electromagnetic scale (EM scale) so that the energy of electromagnetic interacting particles is correctly taken into account\footnote{The calibration of calorimeter cells is derived in dedicated test-beam measurements described for example in \cref{Abat_2010}}. The calorimeter does not fully account for the energy deposited by hadronic showers, however, which is known as a \emph{non-compensating} nature.
-To correct for the loss of energy, dedicated calibrations are performed, which are discussed in more detail in \cref{chap:calibration}.
 As the calorimeter cells are subject to significant noise contributions, the main goal of the \emph{topo-clustering algorithm} is to enhance the signal to noise ratio. The total noise can be described as
 \begin{equation}
     \sigma_{\text{noise}} = \sqrt{ \left( \electronicnoise  \right)^2  + \left( \pileupnoise  \right)^2 },
@@ -91,6 +89,10 @@ The parameters that have been adopted for the ATLAS calorimeters are $S = 4$, $N
 - PLOT: add plots of topocluster formation as in Valente's thesis?
 
 
+The cells are calibrated at the electromagnetic scale (\emph{EM scale}) so that the energy of electromagnetic interacting particles is correctly taken into account\footnote{The calibration of calorimeter cells is derived in dedicated test-beam measurements described for example in \cref{Abat_2010}}. The calorimeter does not fully account for the energy deposited by hadronic showers, however, which is known as a \emph{non-compensating} nature.
+To correct for the loss of energy, dedicated calibrations are performed typically at the level of the fully reconstructed objects for which the topo-clusters were used. The calibration procedure for jets, for example, is discussed in more detail in \cref{chap:calibration}.
+An alternative approach is the so-called \emph{local hadronic cell weighting} (LCW), that applies energy corrections already at cluster level. Different variables can be defined to characterize a topo-cluster based on its shape and other properties. These observables known as \emph{cluster moments} are used to extract information about the hadronic signal content in a given cluster which in turn is used to correct the energy to the so-called \emph{LCW scale}. More information can be found in \ccite{PERF-2014-07}.
+
 
 
 \section{Jets}
@@ -114,17 +116,10 @@ As a jet is the closest signature of a quark or gluon that can be measured exper
 In particular, the jet definition needs to be insensitive to two theoretical divergences:
 
 - Two main considerations need to be thought about:
-    a: what kind of measurements are used for defining a jet -> jet constituents
+    a: what kind of detector signals are used for defining a jet -> jet constituents
     b: how to group these measurements together? 
 
 - A jet is entirely defined by the choice of constituents and the algorithm to group them together.
-
-
-\subsubsection{Jet constituents}
-- In recent years ATLAS has moved from purely calorimeter-based jets as a standard jet collection to one that uses information from both, the calorimeter and the ID. The latter jets are known as particle flow jets and have two basic ingredients: charged particle flow objects (CPFOs) and neutral particle flow objects (NPFOs). 
-- describe the goal of particle flow: to optimally exploit the detector. 
-
-\Minote{}{Think about dedicated subsection for difference between calo only jet and pflow? Or add pflow here?}
 
 
 \subsubsection{Jet finding}
@@ -153,71 +148,114 @@ To avoid double consideration of detector signals in the event reconstruction a 
 \Rinote{}{Need to make sure that this reflects the correct understanding of overlap removal}
 
 
+\subsubsection{Jet constituents}
+Jet definitions vary not only depending on the radius parameter used, but also on which inputs are used for the \emph{anti-$k_T$} algorithm. The inputs are known as \emph{jet constituents}. 
+
+Historically, jets purely based on calorimeter information have been used primarily. They use topo-clusters as constituents, either calibrated at the EM scale or the LCW scale. 
+In recent years, the ATLAS collaboration has moved to a more sophisticated definition for jets with $R=0.4$, that uses information from both, the calorimeter and the ID. These jets are known as \emph{particle flow jets} and have two basic ingredients: \emph{charged particle flow objects} (CPFOs) and \emph{neutral particle flow objects} (NPFOs). 
+
+- They are derived with a complex multi-stage algorithm. 
+- The main goal of particle flow jets is to use the detector as optimally as possible. 
+- The tracker provides more precise momentum measurements in the range of 20-40 GeV. 
+- Advantages: better JER! -> see section
+
+\Minote{}{Think about dedicated subsection for difference between calo only jet and pflow? Or add pflow here?}
+
 
 \subsection{Pile-up jet identification}
-Pile-up jets are jets with an origin other than the hard scatter. They are a nuisance to physics analyses as they can spoil the measurements when not being identified correctly. 
-\Cref{fig:pile-up-jets-illustration} illustrates the two categories of pile-up jets\footnote{It should be noted, that this distinction as well as \cref{fig:pile-up-jets-illustration} is mainly used for the purpose of a convenient description. In the actual experiment with many pile-up interactions this boundary is blurred, as every jet also has contributions from pile-up effects.}
-\emph{Stochastic pile-up}, reconstructed from energy deposits randomly clustered in certain regions, and \emph{QCD pile-up jets}, originating from pile-up vertices.
-
+Pile-up jets are defined as jets that have an origin other than the hard scatter. They are a nuisance to physics analyses as they can spoil the measurements when not being identified correctly. 
+\Cref{fig:pile-up-jets-illustration} illustrates the two categories of pile-up jets\footnote{It should be noted, that this distinction as well as \cref{fig:pile-up-jets-illustration} is mainly used for the purpose of a convenient description. In the actual experiment with many pile-up interactions this boundary is blurred, as every jet also has contributions from pile-up effects.}:
+\emph{stochastic pile-up}, reconstructed from energy deposits randomly clustered in certain regions, and \emph{QCD pile-up jets}, originating from pile-up vertices.
 \TDinote{}{Potential question on this: How many stochastic and qcd pile-up jets are expected? What dominates?}
-
-- To identify these types of jets a multivariate discriminant called \emph{Jet Vertex Tagger} (JVT)~\cite{ATLAS-CONF-2014-018} is used. 
-- The JVT uses a combination of two track-based variables to construct a two-dimensional likelihood that provides the relative probability for a given jet to stem from the hard scatter. 
-
-- Physics analyses typically select jets with a minimum JVT threshold for pile-up suppression.
-- In the work presented in this thesis, this value is set to JVT $> 0.59$. 
-- Calibrations are provided by analyzing data from $Z (\rightarrow \mu\mu)$ candidate events. 
-- The JVT achieves a hard scatter efficiency that is stable with increasing number of pile-up interactions. 
-- For pile-up conditions of around $\mu = 30$ a hard scatter jet efficiency of \SI{90}{\percent} is achieved for pile-up jet rates of \SI{1}{\percent}.
-- More information can be found in \ccite{ATLAS-CONF-2014-018}.
+To identify these types of jets a multivariate discriminant called \emph{Jet Vertex Tagger} (JVT)~\cite{ATLAS-CONF-2014-018} is used. 
+The JVT uses a combination of two track-based variables to construct a two-dimensional likelihood that represent the relative probability for a given jet to stem from the hard scatter. 
+To suppress pile-up jets, physics analyses typically require a minimum JVT threshold for jets in the central region \absetaST{2.4} and within a certain \pT range.
+%In the work presented in this thesis, this value is set to JVT $> 0.59$. 
+The JVT achieves a hard scatter efficiency that is almost perfectly stable with increasing number of pile-up interactions, identifying about \SI{90}{\percent} hard-scatter jets with a pile-up jet rate of about \SI{1}{\percent}. 
+JVT calibrations are provided by analyzing data from $Z (\rightarrow \mu\mu)$ candidate events. 
+More information can be found in \ccite{ATLAS-CONF-2014-018}.
 
 \TDinote{}{Checkout JVT extension to 120 GeV}
 
 
 \begin{figure}
-    \newImageResize{pile-up-jets-illustration.pdf}
+    \newImageResize{figures/reconstruction/pile-up-jets-illustration.pdf}
     \caption{Illustration of an event containing a hard-scatter jet, a pile-up jet from QCD, and a stochastic pile-up jet. Taken from \ccite{PERF-2016-06}.}
     \label{fig:pile-up-jets-illustration}
 \end{figure}
 
+
 \subsection{Flavour tagging}
-Different detector signals give information about the likelihood that a given jet originates from a certain quark flavour. This in turn is crucial input to classify different hard scatter events.
-A typical distinction is made between jets originating from $b$-quarks ($b$-jets), $c$-quarks and light-quarks\footnote{Light-jets refer to jets originating from $u$-, $d$-, $s$-quarks, or gluons.}, whereas the identification of $b$-jets is particularly important for the work presented in this thesis.
+Different jet properties give information about the likelihood that a given jet originates from a certain quark flavour. 
+%This in turn is crucial input to classify different hard scatter events.
+In this thesis, especially the identification of jets that originate from $b$-quarks ($b$-\emph{jets}) and thus contain $b$-hadrons is important. $b$-hadrons have a relatively long lifetime of about \SI{1.5}{\pico\second} before they decay. This leads to the formation of a secondary decay vertex that is far enough away from the hard-scatter vertex for it to be detectable with the track and vertex information from the ID. 
+Several low-level \emph{$b$-tagging algorithms} exist, that primarily exploit this distinct detector signature\footnote{Also other characteristics of the production and decay of $b$-hadrons are considered, such as the high $b$-hadron mass, the (charged) decay multiplicity, or $b$-quark fragmentation properties.} to identify (or \emph{tag}) jets as $b$-jets. They make use of impact-parameter measurements or directly aim at reconstructing the secondary vertices~\cite{ATL-PHYS-PUB-2017-013}.
 
-A neural network that uses a number of low-level taggers as input used to discriminate 
-The low-level taggers primarily use the information from tracks reconstructed in the ID and associated to jets. 
+The outputs of these low-level taggers are used to construct a final discriminant that provides the likelihood that a given jet is a $b$-jet. The work presented in this thesis uses a deep neural network discriminant, denoted as DL1r, that is trained with inputs from four low-level taggers~\cite{ATL-PHYS-PUB-2017-013}.
+By requiring jets to have a minimum DL1r output value, different $b$-jet tagging efficiencies can be achieved, which is calibrated with simulated \ttbar events~\cite{FTAG-2018-01}. 
+Because the algorithms rely on ID information, only jets with \absetaST{2.5} can be considered for $b$-tagging.
 
-% From master thesis:
-% Especially the identification of b-jets, also referred to as b-jet tagging or abbreviated b-tagging throughout this thesis, is important for many analyses and achieved with the precise track and vertex information of the ID. The mean lifetime of b-hadrons is sufficiently long - about 1.5 ps - to allow them to fly a measurable distance in the calorimeter - typically several millimeter - before decaying and producing secondary vertices. These secondary vertices can be tagged with dedicated algorithms
-
-- describe DL1r
-
-% From CONF note:
-Jets with $\pT > 20 GeV$ and $|\eta| < 2.5$ containing $b$-hadrons ($b$-jets) are identified using a neural network discriminant based on a number of lower level taggers which utilise relevant quantities such as the associated track impact parameters and information from secondary vertices. A working point is adopted that has an average 85\% $b$-jet tagging efficiency, as estimated from simulated ttbar events \ccite{ATL-PHYS-PUB-2017-013,FTAG-2018-01}.
-
-the latter reference is the ttbar calibration
 
 
 \section{Electron and Photon Reconstruction}
 \label{sec:electron-photon-reconstruction}
-- topo-clusters are seeds to finding superclusters. 
+\ccite{EGAM-2018-01}
+
+- electrons and photons are reconstructed from selected calorimeter topo-clusters and tracks.
+
+- ideal electron: track + cluster
+- ideal photon: no track + cluster
+- BUT: photon->ee AND electrons with bremstrahlung
+
+-> Therefore, superclusters!
+
+- mostly based on topo-clusters from the EM calorimeter are used. (except in the transition region, crack between EM barrel and end-caps: here scintillator and presampler info is used)
+
+- supercluster forming performed independently between electrons and photons. ambiguities resolved at a later stage.
+- supercluster seed:
+    1. EM topo-cluster > 1 GeV matched to track > 1 GeV for electrons
+    2. EM topo-cluster > 1.5 GeV NO track requirements
+- Addition of satellite clusters (MAYBE add plot with supercluster formation! seems actually quite intuitive)
+- "The seed clusters with their associated satellite clusters are called superclusters"
+
+- reconstruction of conversion vertices in the ID from gamma->ee conversions
+
+- after supercluster formation 
+    1. tracks matched to electron superclusters
+    2. conversion vertices matched to superclusters
+
+- resolution of ambiguities at analysis level
+
 - superclusters good to recover energy lost in bremsstrahlung photons or from electrons imitted by photon conversion
-See here: \ccite{EGAM-2018-01}
+See here 
+
+- calibration done with Z->ee event exploiting the known Z mass
+
+- electron and photon identification based on a set of variables:
+    - hadronic leakage
+    - EM shower profile (EM shower shape variables) in different EM layers
+        -> Because the ECAL strips layer has fine granularity in eta, shower shape variables can be constructed that are sensitive to the two-pronged structure characteristic of pi zero hadron decay.
+    - track conditions (number of hits) -> electron only
+    - track-cluster matching (distance in delta eta and delta phi between track and cluster) -> electron only 
+
+- isolation criteria
+   - "Background photons are usually accompanied by nearby hadronic activity, whereas prompt photons are well isolated." (Dickinson)
+    - 
+
 
 
 \section{Muon Reconstruction}
 Muons leave traces in the ID and the MS and deposit little energy in the calorimeters. 
 Different strategies exist to reconstruct muons, which differ in which detector subsystems are used.
-In the work presented in this thesis, muons are reconstructed from a global fit of matching ID tracks and initially separately reconstructed MS tracks and also taking into account the energy losses in the calorimeters. 
+In the work presented in this thesis, muons are reconstructed from a global fit of matching ID tracks and separately reconstructed MS tracks and also taking into account the energy losses in the calorimeters. 
 
-- MS tracks are reconstructed starting from identified straight-line track segments. 
-- Describe MS track finding
+Standalone MS tracks are reconstructed starting from straight-line track segments identified in the individual layers of the precision muon chambers (MDTs and CSCs). 
+These segments are combined by considering additional information from the hard scatter vertex, the magnetic field, and information from the trigger detectors (RPCs and TGCs). An iterative global track fitting procedure finds the final set of tracks by taking into account energy losses in the calorimeter as well as effects due to possible misalignments of the chambers, and resolving track ambiguities. \cite{MUON-2018-03}
 
 To select high-quality muon candidates several quality criteria are imposed. 
-The requirements are based on the number of hits in the ID and MS, the compatibility between the ID and MS tracks, and track fit properties~\cite{MUON-2018-03}.
+Requirements are primarily based on the number of hits in the ID and MS, the compatibility between the ID and MS tracks, and track fit properties~\cite{MUON-2018-03}.
 
-- Reconstruction efficiencies with tag-and-probe method also using \Jpsimumu and \Zmumu events~\cite{MUON-2018-03}. (Mention this?)
-
+The reconstruction efficiencies are derived with a tag-and-probe method using \Jpsimumu and \Zmumu candidate events~\cite{MUON-2018-03}. 
 The muon momentum scale and resolution are calibrated using \Jpsimumu and \Zmumu events by exploiting the known mass of the $Z$ boson~\cite{PERF-2015-10}. 
 
 %( From master thesis)
@@ -235,6 +273,7 @@ The muon momentum scale and resolution are calibrated using \Jpsimumu and \Zmumu
 % For muons, a quality-based identification method [25] is employed, selecting the “Tight” working point with an efficiency of ∼95% so as to maximise the sample purity. The impact parameter requirements are |𝑧0 sin𝜃| < 0.5 mm and |𝑑0|/𝜎𝑑0 < 5 (3) for electrons (muons)2. Leptons are required to be isolated from other activity in the event using maximum thresholds on both energy (using close-by clusters in the calorimeter) and 𝑝T (using close-by tracks). At least one of the offline reconstructed leptons must be matched to an online object that triggered the recording of the event. In the case where the 𝑒–𝜇 trigger is solely responsible for the recording of the event, each lepton must correspond to one of the trigger objects. This trigger matching scheme also requires the 𝑝T of the lepton to be at least 1 GeV above the trigger level threshold.
 
 \section{Lepton Isolation}
+
 
 
 \section{Missing Transverse Energy}
