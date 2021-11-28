@@ -2,8 +2,9 @@
 \chapter{Physics Object Reconstruction and Particle Identification}
 \label{chap:objects}
 
-- Goal is to infer physics objects from the raw detector signals so that they can be used in physics analyses. 
 
+- Goal is to infer \emph{physics objects} from the raw detector signals so that they can be used in physics analyses. 
+\TDinote{}{Introduce term physics object}
 - physics objects are described with four-vectors.
 
 The combined physics objects in an event then provide information to associate the detector signals to a particular hard scatter process. 
@@ -104,7 +105,7 @@ A useful characteristic of a jet is its origin, in particular, whether the jet i
 The information about which hadron a jet originates from, specifically whether a $b$-hadron was involved, is another important metric to characterize and classify different experimental signatures. A description of this process known as \emph{flavour tagging} concludes this section.
 A description of how the energy of the reconstructed jets is calibrated to match the energy of the initial quark or gluon is left to \cref{chap:calibration}. 
 
-\subsubsection{Jet definition}
+\subsection{Jet definition}
 \Minote{}{Maybe move this to the main intro to jets before the outline is explained.}
 - parton from collision event
 - parton showering
@@ -121,8 +122,10 @@ In particular, the jet definition needs to be insensitive to two theoretical div
 
 - A jet is entirely defined by the choice of constituents and the algorithm to group them together.
 
+- Different definitions come with different strategies for calibrations, etc.  and are also constantly improved. 
 
-\subsubsection{Jet finding}
+
+\subsection{Jet finding}
 The jet finding algorithm widely adopted in ATLAS is the so-called \emph{anti-$k_T$} algorithm~\cite{Cacciari:2008gp}. The algorithm is both infrared and collinear safe and yielded the best results in various benchmark physics analyses. \TDnote{}{maybe need to add reference?}
 It takes a set of input objects and in a first step computes the values of two distinct distance metrics for all their combinations.
 The first type of metric is defined as the distance between two objects $i$ and $j$, 
@@ -148,19 +151,21 @@ To avoid double consideration of detector signals in the event reconstruction a 
 \Rinote{}{Need to make sure that this reflects the correct understanding of overlap removal}
 
 
-\subsubsection{Jet constituents}
-Jet definitions vary not only depending on the radius parameter used, but also on which inputs are used for the \emph{anti-$k_T$} algorithm. The inputs are known as \emph{jet constituents}. 
+\subsection{Jet constituents}
+Jet definitions vary not only depending on the radius parameter used, but also on which inputs (or constituents) are used for the \emph{anti-$k_T$} algorithm. 
+%The inputs are known as \emph{jet constituents}. 
+Historically, jets purely based on calorimeter information were most commonly used. They use topo-clusters as constituents, either calibrated at the EM scale or the LCW scale. 
+During \RunTwo, the ATLAS collaboration moved to a more sophisticated definition of jets with $R=0.4$, that use information from both, the calorimeter and the ID. These jets are known as \emph{particle flow jets} and have two basic ingredients: \emph{charged particle flow objects} (CPFOs), consisting of high-quality tracks reconstructed in the ID, and \emph{neutral particle flow objects} (NPFOs), comprising energy depositions in the calorimeters identified as originating from neutral particles.
 
-Historically, jets purely based on calorimeter information have been used primarily. They use topo-clusters as constituents, either calibrated at the EM scale or the LCW scale. 
-In recent years, the ATLAS collaboration has moved to a more sophisticated definition for jets with $R=0.4$, that uses information from both, the calorimeter and the ID. These jets are known as \emph{particle flow jets} and have two basic ingredients: \emph{charged particle flow objects} (CPFOs) and \emph{neutral particle flow objects} (NPFOs). 
+The \emph{particle flow algorithm} is explained in more detail below.
+
+\subsection{The particle flow algorithm}
+- Much more detail in reference
 
 - They are derived with a complex multi-stage algorithm. 
 - The main goal of particle flow jets is to use the detector as optimally as possible. 
 - The tracker provides more precise momentum measurements in the range of 20-40 GeV. 
 - Advantages: better JER! -> see section
-
-\Minote{}{Think about dedicated subsection for difference between calo only jet and pflow? Or add pflow here?}
-
 
 \subsection{Pile-up jet identification}
 Pile-up jets are defined as jets that have an origin other than the hard scatter. They are a nuisance to physics analyses as they can spoil the measurements when not being identified correctly. 
@@ -192,7 +197,7 @@ In this thesis, especially the identification of jets that originate from $b$-qu
 Several low-level \emph{$b$-tagging algorithms} exist, that primarily exploit this distinct detector signature\footnote{Also other characteristics of the production and decay of $b$-hadrons are considered, such as the high $b$-hadron mass, the (charged) decay multiplicity, or $b$-quark fragmentation properties.} to identify (or \emph{tag}) jets as $b$-jets. They make use of impact-parameter measurements or directly aim at reconstructing the secondary vertices~\cite{ATL-PHYS-PUB-2017-013}.
 
 The outputs of these low-level taggers are used to construct a final discriminant that provides the likelihood that a given jet is a $b$-jet. The work presented in this thesis uses a deep neural network discriminant, denoted as DL1r, that is trained with inputs from four low-level taggers~\cite{ATL-PHYS-PUB-2017-013}.
-By requiring jets to have a minimum DL1r output value, different $b$-jet tagging efficiencies can be achieved, which is calibrated with simulated \ttbar events~\cite{FTAG-2018-01}. 
+By requiring jets to have a minimum DL1r output value, different $b$-jet tagging efficiencies can be obtained, which is calibrated with simulated \ttbar events~\cite{FTAG-2018-01}. 
 Because the algorithms rely on ID information, only jets with \absetaST{2.5} can be considered for $b$-tagging.
 
 
@@ -277,10 +282,58 @@ The muon momentum scale and resolution are calibrated using \Jpsimumu and \Zmumu
 
 
 \section{Missing Transverse Energy}
+\cite{PERF-2016-07}
+
+The colliding protons don't carry a significant amount of transverse energy prior to the collision event.
+The vectorial sum of all transverse energy measured in the detector is therefore expected to be zero for a given event, unless particles are present that are invisible to the detector. The computation of missing transverse energy thus provides an effective mechanism to indirectly measure neutrinos or other non-interacting particles. 
+
+Since ETmiss is based on the entire detector it is a complex quantity to measure. 
+Detector inefficiencies and resolution effects can lead to mismeasurements of the true ETmiss.
+
+The full ETmiss is composed of two main contributions and can be written as
+\begin{align}
+    E_{x,y}^\text{miss} &= \sum_{\text{obj}} E_{x,y}^\text{miss, obj} + E_{x,y}^\text{miss,soft-term}, \\
+    E_{\text{T}}^\text{miss} &= \sqrt{ \left( E_x^{\text{miss}} \right)^2 + \left(  E_y^{\text{miss}}\right)^2 }.
+    \label{eq:met}
+  \end{align}
+Here, ETMIss hard is the so-called \emph{hard term} that comprises fully reconstructed and calibrated physics objects such as electrons, photons, $\tau$-letpons, muons, and jets; ETMISS soft is known as \emph{soft term} and takes into account the energy measurements that cannot be assigned to any physics object.
+
+Two definitions of ETmiss that use different soft terms are used in the work presented in this thesis:
+
+1. \emph{track-based soft-term} (TST): sum of ID tracks associated to the hard-scatter vertex.
+2. \emph{calorimeter-based soft-term} (CST): sum of calorimeter clusters not assigned to any physics objects.
+
+- TST MET is used in the selection of events because of its better distinction between signal and background events. 
+- CST MET is used for building signal-sensitive variables such as mT because its lower resolution.
+
+
+% From MASTER
+% The soft-term is either calculated by using charged-particle tracks originating from the primary vertex using the information of the ID and denoted as \emph{track-based soft-term} (TST), or utilizes the non-assigned calorimeter clusters in the \emph{calorimeter-based soft-term} (CST).
+
+% From Paper:
+%  The missing transverse momentum Etmiss (with magnitude E miss ) is defined as the negative vector sum of TT
+%  the pT of all the selected leptons and jets, together with reconstructed tracks that are not associated with
+%  these objects but are consistent with originating from the primary pp collision [32]. A second definition
+%  of missing transverse momentum (in this case denoted pmiss) uses tracks also for the hadronic hard term, T
+%  replacing the calorimeter-measured jets with their associated tracks instead. The pmiss observable is used T
+%  directly in the selection of events because of its ability to discriminate better against the Z/γ∗ → ττ
+%  background, while the Emiss observable is used to build signal-sensitive variables such as mT due to its superior 
+% resolution.
+
+Another useful measure is the MET Significance, S, which assesses the compatibility of the missing ET to stem from object measurements, resolution effects or detector inefficiencies and thus helps to detect events with non-interacting particles. 
+A large value of S is an indication that a particle escaped the detector without being detected.
+
+- A simple estimate of the MET Significance is the ratio of MET and HT, [formula]
+
+- A more sophisticated version is the so called \emph{Object-based Missing transverse energy significance} that takes into account the resolution effects of the measured physics objects. 
+- More info in \cite{ATLAS-CONF-2018-038}.
 
 
 
 \section{Pile-up}
+
+\Qinote{}{Where should I talk about pile-up!? Maybe it fits in the LHC 15-18 running conditions chapter!}
+
 ->  Ruthmann has a nice section about it!
 From Sommer: "Additional in- elastic, minimum-bias like pp collisions (pile-up) are generated using Pythia8 and overlaid."
 Scope:
