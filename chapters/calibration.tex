@@ -1,29 +1,218 @@
 \chapter{Measurement of the Noise Term of the Jet Energy Resolution}
 \label{chap:calibration}
 
-\section{Jet Calibration Procedure}
-The so-called \emph{local hadronic cell weighting} (LCW) makes corrections already at cluster level by using information from the shape and internal signal distribution of a given cluster\footnote{Many variables can be defined to characterize a topo-cluster. These observables known as \emph{cluster moments} are used to extract information about the hadronic signal content in a given cluster which in turn is used to correct the energy. More information can be found in \ccite{PERF-2014-07}}.
+- Jets are complicated
 
-- Mention LCW scale that makes corrections already at cluster level.
+- Both the non-compensating nature and the differences between electromagnetic and hadronic showers pose great challenges for calibrating the energy correctly.
 
-- Also look at Schouten's thesis who has a very good explanation for these effects
-
-The more widely adopted strategy in ATLAS is to correct for the energy after the full objects have been reconstructed.
+- To correct for the loss of energy in a hadron shower, dedicated calibrations are performed typically at the level of the fully reconstructed objects.
 
 
+\section{Detector Response to Jets}
+- As mentioned in \cref{chap:objects}, reconstructed clusters are calibrated at the EM scale. 
+- Hadronic showers cannot be captured and some signals are lost (non-compensating). 
+%Most secondary hadrons produced in the nuclear interactions are charged or neutral pions.
+- A fraction of the energy of the particles participating in a hadronic shower cannot be captured due to several reasons:
+\begin{itemize}
+    \item Showering particles can transfer energy to atomic nuclei that are broken up during the interaction or remain in excited states.
+    \item Showering particles can decay to non-interacting secondaries (for example in $\pi \rightarrow \mu \nu_\mu$) that escape the detector.
+    \item Neutrons can be produced that undergo mostly elastic scattering and can thus escape the detector.
+\end{itemize}
+This phenomenon is known as \emph{non-compensating}.
+
+Other factors contribute to energy losses:
+- Dead material
+- clustering inefficiencies
+- non-accounted deposits: jet algorithm have a finite radius -> maybe there are deposits outside that cone coming from the original quark
+
+- The e/h ratio, where e is the response to electromagnetic and h the response to hadronic interactions, is an important quantity 
 
 
-\subsection{Jet energy scale}
-Great section on "Jet Corrections" in Schouten's thesis.
+While the charged pions further interact hadronically, the neutral pions decay almost instantaneously into a pair of photons, that are more directly absorbed in the calorimeters. This results in a fraction of the hadronic shower being of electromagnetic nature.
 
-\subsection{Jet energy resolution}
+R = e*fem(E) + h * (1 - fem(E)E)
 
-\section{Methodology of the Noise Term Measurement}
+
+
+\section{Jet Energy Corrections}
+
+- Dandoy: "corrections derived from MC simluation and from data, the latter is referred to as in-situ calibraitions."
+
+- Stages of calibration. 
+- Define different "scales"
+
+-> reconstructed jets (EMTopo, pflow, rscan) -> constituent scale
+
+-> pile-up subtracted scale
+
+-> JES scale
+
+-> GSC scale (only affects resolution, not JES on average! (discuss?))
+% From DANDOY: The GSC shifts the energy of individual jets while maintaining the mean energy response derived in the previous jet energy scale calibration.    
+
+-> in-situ calibration (only affects data! can keep this short as it does not affect JER measurements)
+
+\Minote{}{Could make a table for the above and provide use cases for each scale}
+
+
+An alternative approach to correct for energy losses is the so-called \emph{local hadronic cell weighting} (LCW), which applies energy corrections already at cluster level. Different variables can be defined to characterize a topo-cluster based on its shape and other properties. These observables, known as \emph{cluster moments}, are used to extract information about the hadronic signal content in a given cluster which in turn is used to correct the energy to the \emph{LCW scale}. More information can be found in \ccite{PERF-2014-07}.
+\Minote{}{Maybe put entire Rscan studies in a nice appendix? Explaining new jet finding, LCW cluster usage, JES, results? -> I think that would make a lot of sense as I don't know too much about these jets!}
+
+\begin{figure}
+    \newImageResize{figures/calibration/jes-calibration.pdf}
+    \caption{Summary of the different stages of the jet energy calibration. Each correction is applied to the four momentum of the jet. Taken from \ccite{JETM-2018-05}}
+    \label{fig:jes-calibration}
+\end{figure}
+
+
+
+\section{Jet Energy Resolution}
+
+
+\subsection{Contributing Effects and Parametrisation}
+% From Karl Jakobs Slides
+% For EM Calorimeter:
+- Shower fluctuations: number of particles produced in a shower -> 1 / sqrt(E)
+- Photo-electron statistics: inefficiencies converting photons to electrical signals -> 1/sqrt(E)
+- Shower leakage: out of radius of jet or out of detector  -> constant 
+- sampling fluctuations: Number of low-energy electrons crossing active layers -> 1 / sqrt(E)
+
+smaller effects:
+- track length fluctuations
+- landau fluctuations: asymptotic energy loss distribution for thin active layers is laundau instead of gaussian. 
+
+More effects from hadronic interactions:
+- Fluctuations in EM fraction
+- Fluctuations in neutron component
+- Fluctuations in invisible energy
+- Fluctuations in binding energy losses and nuclear excitation losses
+- Fluctuations in the number of heavily ionizing particles
+
+- Full N,S,C Formula for JER
+
+
+\subsection{Determination of the jet energy resolution in data}
+
+- determined for jets at JES
+
+- MC JES from fitting Gaussian to truth response Edet_JES / Etruth in bins of Etruth
+
+- JER scales with JES!!!
+
+- Explain Dijet balance method but keep this very brief and forward to paper "
+-> But keep plot to see improvement!
+
+- Noise term measured separately -> point to next section
+
+
+\section{Measurement of the Noise Term}
+
+- const scale noise with random cones scaled to JES 
+- adding electronic noise from 
+
+- Ingredients (put this in table):
+
+- zero-bias data sample with 2017 pile-up (for random cones)
+- zero-bias MC sample with 2017 pile-up -> for randon-cones non-closure uncertainty
+
+- standard dijet sample with 2017 pile-up (-> for JES scaling)
+- dijet sample without pile-up overlaid  (-> for electronic noise AND JES scaling)
+
+
+
+
+
 \subsection{The Random Cones Method}
+
+- zero bias data
+- random cones
+
+\begin{figure}
+    \subfloat[] {
+        \newImageResizeHalf{figures/calibration/zero-bias-event-deposits.pdf}
+    }
+    \subfloat[] {
+        \newImageResizeHalf{figures/calibration/random-cones-difference.pdf}
+    } \\
+    \subfloat[] {
+        \newImageResizeHalf{figures/calibration/const-noise-vs-eta.pdf}
+    }
+    \subfloat[] {
+        \newImageResizeHalf{figures/calibration/const-noise-vs-mu.pdf}
+    }
+    \caption{Taken from \ccite{SinglePublicPlotZeroBiasDeposits,PublicPlotsJER}.}
+    \label{fig:const-scale-noise}
+\end{figure}
+
+
+\begin{figure}
+    \subfloat[] {
+        \newImageResizeCustom{0.5}{figures/calibration/pile-up-jer-vs-pt.pdf}
+    }
+    \caption{Taken from \ccite{SinglePublicPlotZeroBiasDeposits}.}
+    \label{fig:pile-up-jer-vs-pt}
+\end{figure}
+
+
 \subsection{Extracting the electronic noise from Monte Carlo}
+- MC JER from sample with NO pile-up overlaid!
+
+
 \subsection{Systematic uncertainties}
-\subsection{Jet energy resolution combination}
-\section{Results for Small-Radius Jets}
-\subsection{Calorimeter jets}
-\subsection{Particle-flow jets}
-\section{Results for R-scan Jets}
+
+
+\begin{figure}
+    \subfloat[] {
+        \newImageResizeCustom{0.5}{figures/calibration/random-cones-non-closure.pdf}
+    }
+    \caption{Taken from \ccite{JETM-2018-05}.}
+    \label{fig:non-closure}
+\end{figure}
+
+
+\subsection{Noise Term Results}
+\subsubsection{Calorimeter jets}
+\subsubsection{Particle-flow jets}
+
+\begin{figure}
+    \subfloat[] {
+        \newImageResizeCustom{0.7}{figures/calibration/noise-term-results-pflow.pdf}
+    }
+    \caption{Taken from \ccite{JETM-2018-05}.}
+    \label{fig:noise-term-results-pflow}
+\end{figure}
+
+
+
+\subsubsection{Results for R-scan Jets}
+\Rinote{Probably I will put this in the backup}
+
+
+\section{Jet Energy Resolution Combination}
+
+- Input is dijet measurement and noise term
+
+\begin{figure}
+    \subfloat[] {
+        \newImageResizeHalf{figures/calibration/jer-combination-vs-pt.pdf}
+    }
+    \subfloat[] {
+        \newImageResizeHalf{figures/calibration/jer-combination-vs-eta.pdf}
+    } \\
+    \subfloat[] {
+        \newImageResizeHalf{figures/calibration/jer-unc-vs-pt.pdf}
+    }
+    \subfloat[] {
+        \newImageResizeHalf{figures/calibration/jer-unc-vs-eta.pdf}
+    }
+    \caption{Taken from \ccite{PublicPlotsJER}.}
+    \label{fig:jer-combination-results}
+\end{figure}
+
+
+
+\section{Future improvements}
+
+- split in mu bins!
+- Factoring in GSC
+- Different fit model

@@ -25,9 +25,9 @@
 \newcommand{\newImageResizeCustom}[2]{
     \ifIMAGES
         \centering
-        \IfFileExists{#1}{
-            \resizebox{#2\textwidth}{!}{
-                \includegraphics{#1}
+        \IfFileExists{#2}{
+            \resizebox{#1\textwidth}{!}{
+                \includegraphics{#2}
             }
         }
         {
