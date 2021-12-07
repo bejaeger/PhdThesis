@@ -1,8 +1,6 @@
 \chapter{The $H\rightarrow W^{\pm}W^{\mp^*}$ Analysis}
 \label{chap:hww}
 
-You can find some text snippets that can be used in papers in \texttt{latex/atlassnippets.sty}.
-To use them, provide the \texttt{snippets} option to \texttt{atlasphysics}.
 
 \section{Characteristics of the Signal and Background Processes}
 \begin{itemize}
@@ -20,7 +18,7 @@ To use them, provide the \texttt{snippets} option to \texttt{atlasphysics}.
 \label{subsec:overlap-removal}
 
 \subsection{Pile-up reweighting}
-In order to compare Monte Carlo simulated events with actual data, the amount of pile-up underlying the hard scatter needs to be account for. 
+In order to compare Monte Carlo simulated events with actual data, the amount of pile-up underlying the hard scatter needs to be account for.
 To this end, a method known as \emph{pile-up reweighting} assigns a dedicated \emph{pile-up weight} to each event so that the average pile-up in simulated collision events match the actual running conditions. The reweighting procedure is performed separately for the data recorded in the years 2015 and 2016, 2017, and 2018.
 
 
@@ -41,7 +39,65 @@ To this end, a method known as \emph{pile-up reweighting} assigns a dedicated \e
 
 \section{\HWW VBF+ggF Couplings Analysis Fit Results}
 \subsection{VBF signal results}
+
 \subsection{Results of combined VBF+ggF analysis}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Couplings
+\begin{figure}
+    \subfloat[] {
+        \newImageResizeHalf{figures/hww/post-fit/fig_11.pdf}
+    }
+    \subfloat[] {
+        \newImageResizeHalf{figures/hww/post-fit/fig_10d.pdf}
+    }
+    \caption{Post-fit distributions of the final discriminants used in the statistical analysis, including (a) the DNN output in the VBF signal region and (b) the \mT distribution in the combined ggF signal regions. Taken from \ccite{ATLAS-CONF-2021-014}.}
+    \label{fig:post-fit-final-discriminatns}
+\end{figure}
+
+\begin{figure}
+    \subfloat[] {
+        \newImageResizeCustom{0.7}{figures/hww/results/fig_12.pdf}
+    }
+    \caption{Cross-sections times branching fraction of the ggF versus the VBF signal, including the \SI{68}{\percent} and \SI{95}{\percent} confidence level two-dimensional likelihood contours. Taken from \ccite{ATLAS-CONF-2021-014}.}
+    \label{fig:avocado-plot}
+\end{figure}
+
+\begin{figure}
+    \subfloat[] {
+        \newImageResizeCustom{0.9}{figures/hww/results/tab_05.pdf}
+    }
+    \caption{Post-fit number of events for MC and data in all the signal regions used in the statistical analysis, as well as the bin with the highest VBF DNN output score. Taken from \ccite{ATLAS-CONF-2021-014}.}
+    \label{fig:post-fit-yields}
+\end{figure}
+
+% \begin{table}
+%     \subfloat[] {
+%         \newImageResizeCustom{0.9}{figures/hww/results/tab_06.pdf}
+%     }
+%     \caption{Taken from \ccite{ATLAS-CONF-2021-014}.}
+%     \label{fig:couplings-xsec-uncertainties}
+% \end{table}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% STXS
+\begin{table}
+    \subfloat[] {
+        \newImageResizeCustom{0.9}{figures/hww/results/fig_13.pdf}
+    }
+    \caption{Cross-sections measured in each of the STXS categories in the combined statistical analysis, normalised to the corresponding SM prediction. The uncertainties are broken down into a statistical and systematic component. The grey band represents the theory uncertainty on the signal production corresponding to the STXS category. Taken from \ccite{ATLAS-CONF-2021-014}.}
+    \label{fig:stxs-pois-bar-plot}
+\end{table}
+
+\begin{table}
+    \subfloat[] {
+        \newImageResize{figures/hww/results/tab_07.pdf}
+    }
+    \caption{Production cross-section times \HWW branching ratio in each STXS category measured in the combined statistical analysis. Taken from \ccite{ATLAS-CONF-2021-014}.}
+    \label{fig:stxs-xsec-uncertainties}
+\end{table}
+
 
 \section{The $H\rightarrow W^{\pm}W^{\mp^*}$ STXS Analysis}
 \subsection{Results of combined STXS fit}

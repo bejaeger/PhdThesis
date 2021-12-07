@@ -21,45 +21,50 @@
 \input{macros/commands}
 \input{macros/shortcuts}
 
+\author{Experiment Chapter, Benjamin Jäger}
+\date{\today}
+\title{Thesis - Draft v0.1}
 
 %-------------------------------------------------------------------------------
 % Content
 %-------------------------------------------------------------------------------
 \begin{document}
 
-% \maketitle
+\maketitle
 
 \tableofcontents
 
 % List of to-do notes.
 %\listoftodos
 
+\newcommand{\chapterdir}{chapters}
+
 % -------------------------------------------------------------------------------
-\include{chapters/introduction}
+\include{\chapterdir/introduction}
 
 % % -------------------------------------------------------------------------------
-\include{chapters/theory}
+\include{\chapterdir/theory}
 
 % %-------------------------------------------------------------------------------
-\include{chapters/experiment}
+\include{\chapterdir/experiment}
 
 % %-------------------------------------------------------------------------------
-\include{chapters/objects}
+\include{\chapterdir/objects}
 
 % % % ---------------------------------------
-\include{chapters/calibration}
+\include{\chapterdir/calibration}
 
 % % %-------------------------------------------------------------------------------
-\include{chapters/statistics}
+\include{\chapterdir/statistics}
 
 % % %-------------------------------------------------------------------------------
-\include{chapters/ml}
+\include{\chapterdir/ml}
 
 % % %-------------------------------------------------------------------------------
-\include{chapters/hww}
+\include{\chapterdir/hww}
 
 % % %-------------------------------------------------------------------------------
-\include{chapters/summary}
+\include{\chapterdir/summary}
 
 
 %-------------------------------------------------------------------------------
@@ -74,8 +79,6 @@
 \addcontentsline{toc}{part}{Appendix}
 %-------------------------------------------------------------------------------
 
-In a paper, an appendix is used for technical details that would otherwise disturb the flow of the paper.
-Such an appendix should be printed before the Bibliography.
 
 %-------------------------------------------------------------------------------
 % If you use biblatex and either biber or bibtex to process the bibliography
@@ -94,7 +97,7 @@ Such an appendix should be printed before the Bibliography.
 
 %-------------------------------------------------------------------------------
 % Auxiliary material - comment out the following line if you do not have any.
-\include{Phd-Thesis-auxmat}
+%\include{Phd-Thesis-auxmat}
 %-------------------------------------------------------------------------------
 
 %-------------------------------------------------------------------------------

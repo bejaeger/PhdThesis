@@ -7,10 +7,13 @@
 
 - To correct for the loss of energy in a hadron shower, dedicated calibrations are performed typically at the level of the fully reconstructed objects.
 
+%- Paper: paper presents the strategy used for the determination of the jet energy scale (JES) and resolution (JER) by the ATLAS experiment and its implementation as it pertains to the analysis of data from Run 2 of the LHC.
+
+%- This publication focuses on calibrating jets reconstructed with the anti-𝑘𝑡 [1] algorithm with radius parameter 𝑅 = 0.4.
 
 \section{Detector Response to Jets}
-- As mentioned in \cref{chap:objects}, reconstructed clusters are calibrated at the EM scale. 
-- Hadronic showers cannot be captured and some signals are lost (non-compensating). 
+- As mentioned in \cref{chap:objects}, reconstructed clusters are calibrated at the EM scale.
+- Hadronic showers cannot be captured and some signals are lost (non-compensating).
 %Most secondary hadrons produced in the nuclear interactions are charged or neutral pions.
 - A fraction of the energy of the particles participating in a hadronic shower cannot be captured due to several reasons:
 \begin{itemize}
@@ -25,7 +28,7 @@ Other factors contribute to energy losses:
 - clustering inefficiencies
 - non-accounted deposits: jet algorithm have a finite radius -> maybe there are deposits outside that cone coming from the original quark
 
-- The e/h ratio, where e is the response to electromagnetic and h the response to hadronic interactions, is an important quantity 
+- The e/h ratio, where e is the response to electromagnetic and h the response to hadronic interactions, is an important quantity
 
 
 While the charged pions further interact hadronically, the neutral pions decay almost instantaneously into a pair of photons, that are more directly absorbed in the calorimeters. This results in a fraction of the hadronic shower being of electromagnetic nature.
@@ -36,9 +39,9 @@ R = e*fem(E) + h * (1 - fem(E)E)
 
 \section{Jet Energy Corrections}
 
-- Dandoy: "corrections derived from MC simluation and from data, the latter is referred to as in-situ calibraitions."
+- Dandoy: "corrections derived from MC simluation and from data, the latter is referred to as \insitu calibraitions."
 
-- Stages of calibration. 
+- Stages of calibration.
 - Define different "scales"
 
 -> reconstructed jets (EMTopo, pflow, rscan) -> constituent scale
@@ -53,6 +56,10 @@ R = e*fem(E) + h * (1 - fem(E)E)
 -> in-situ calibration (only affects data! can keep this short as it does not affect JER measurements)
 
 \Minote{}{Could make a table for the above and provide use cases for each scale}
+
+- Definition of truth jets reconstructed using stable final-state particles
+%Truth jets are reconstructed using stable final-state particles and exclude muons, neutrinos, and particles from pile-up interactions. Truth jets are selected with the same 𝑝T > 7 GeV and |𝜂| < 4.5 thresholds as EMtopo and PFlow jets, and are geometrically matched to those jets using the angular distance Δ𝑅 with the requirement Δ𝑅 < 0.3.
+
 
 
 An alternative approach to correct for energy losses is the so-called \emph{local hadronic cell weighting} (LCW), which applies energy corrections already at cluster level. Different variables can be defined to characterize a topo-cluster based on its shape and other properties. These observables, known as \emph{cluster moments}, are used to extract information about the hadronic signal content in a given cluster which in turn is used to correct the energy to the \emph{LCW scale}. More information can be found in \ccite{PERF-2014-07}.
@@ -74,12 +81,12 @@ An alternative approach to correct for energy losses is the so-called \emph{loca
 % For EM Calorimeter:
 - Shower fluctuations: number of particles produced in a shower -> 1 / sqrt(E)
 - Photo-electron statistics: inefficiencies converting photons to electrical signals -> 1/sqrt(E)
-- Shower leakage: out of radius of jet or out of detector  -> constant 
+- Shower leakage: out of radius of jet or out of detector  -> constant
 - sampling fluctuations: Number of low-energy electrons crossing active layers -> 1 / sqrt(E)
 
 smaller effects:
 - track length fluctuations
-- landau fluctuations: asymptotic energy loss distribution for thin active layers is laundau instead of gaussian. 
+- landau fluctuations: asymptotic energy loss distribution for thin active layers is laundau instead of gaussian.
 
 More effects from hadronic interactions:
 - Fluctuations in EM fraction
@@ -95,7 +102,7 @@ More effects from hadronic interactions:
 
 - determined for jets at JES
 
-- MC JES from fitting Gaussian to truth response Edet_JES / Etruth in bins of Etruth
+- MC JES from fitting Gaussian to truth response EdetJES / Etruth in bins of Etruth
 
 - JER scales with JES!!!
 
@@ -104,11 +111,17 @@ More effects from hadronic interactions:
 
 - Noise term measured separately -> point to next section
 
+\begin{figure}
+    \newImageResize{figures/calibration/flow-chart-jer.png}
+    \caption{Overview of the different ingredients to perform the jet energy resolution measurement.}
+    \label{fig:flow-chart-jer}
+\end{figure}
+
 
 \section{Measurement of the Noise Term}
 
-- const scale noise with random cones scaled to JES 
-- adding electronic noise from 
+- const scale noise with random cones scaled to JES
+- adding electronic noise from
 
 - Ingredients (put this in table):
 
@@ -127,31 +140,32 @@ More effects from hadronic interactions:
 - zero bias data
 - random cones
 
+\Cref{fig:random-cones-balance} show different distributions used to measure the constituent scale pile-up noise with the random cones method.
+
 \begin{figure}
     \subfloat[] {
         \newImageResizeHalf{figures/calibration/zero-bias-event-deposits.pdf}
     }
     \subfloat[] {
         \newImageResizeHalf{figures/calibration/random-cones-difference.pdf}
-    } \\
+    }
+    \caption{(a) Sum of transverse momenta of neutral and charged particle flow objects in an area of $\Delta \eta \times \Delta \phi = 0.2 \times 0.2$ from a zero-bias event from the 2017 dataset. (b) Difference of the transverse momentum within two random cones with radius $R = 0.4$ using neutral and charged particle flow objects for the zero-bias dataset recorded in 2017.
+        Previously published in \ccite{SinglePublicPlotZeroBiasDeposits,PublicPlotsJER}.}
+    \label{fig:random-cones-balance}
+\end{figure}
+
+\begin{figure}
     \subfloat[] {
         \newImageResizeHalf{figures/calibration/const-noise-vs-eta.pdf}
     }
     \subfloat[] {
         \newImageResizeHalf{figures/calibration/const-noise-vs-mu.pdf}
     }
-    \caption{Taken from \ccite{SinglePublicPlotZeroBiasDeposits,PublicPlotsJER}.}
-    \label{fig:const-scale-noise}
+    \caption{Constituent-scale pile-up noise in \antikt $R=0.4$ jets (a) as a function of \absetadet and (b) as a function of $\mu$. Results are derived using the random cones method with either neutral and charged particle flow objects or topo-clusters at the electromagnetic scale as inputs. (a)
+        Previously published in \ccite{PublicPlotsJER}.}
+    \label{fig:const-scale-noise-results}
 \end{figure}
 
-
-\begin{figure}
-    \subfloat[] {
-        \newImageResizeCustom{0.5}{figures/calibration/pile-up-jer-vs-pt.pdf}
-    }
-    \caption{Taken from \ccite{SinglePublicPlotZeroBiasDeposits}.}
-    \label{fig:pile-up-jer-vs-pt}
-\end{figure}
 
 
 \subsection{Extracting the electronic noise from Monte Carlo}
@@ -165,7 +179,7 @@ More effects from hadronic interactions:
     \subfloat[] {
         \newImageResizeCustom{0.5}{figures/calibration/random-cones-non-closure.pdf}
     }
-    \caption{Taken from \ccite{JETM-2018-05}.}
+    \caption{Comparison between the pile-up noise term \Npileup determined using the random cone method (black solid circles) and the expectation from MC simulation (orange squares) as extracted from the difference in quadrature of MC simulation with (red downward triangles) and without (blue upward triangles) pile-up. Results are shown at the PFlow+JES energy scale for jets in the central region of the detector $\absetadet < 0.7$. Previously published in \ccite{JETM-2018-05}.}
     \label{fig:non-closure}
 \end{figure}
 
@@ -176,9 +190,18 @@ More effects from hadronic interactions:
 
 \begin{figure}
     \subfloat[] {
-        \newImageResizeCustom{0.7}{figures/calibration/noise-term-results-pflow.pdf}
+        \newImageResizeCustom{0.6}{figures/calibration/pile-up-jer-vs-pt.pdf}
     }
-    \caption{Taken from \ccite{JETM-2018-05}.}
+    \caption{The expected contribution to the jet energy resolution from pile-up extracted from 2017 data as a function of particle-jet \pT for \antikt jets with $R = 0.4$ in the central region of the detector $\absetadet < 0.7$. Previously published in \ccite{PublicPlotsJER}.}
+    \label{fig:pile-up-jer-vs-pt}
+\end{figure}
+
+
+\begin{figure}
+    \subfloat[] {
+        \newImageResizeCustom{0.6}{figures/calibration/noise-term-results-pflow.pdf}
+    }
+    \caption{Noise term of the jet energy resolution (JER) and its uncertainties as a function of \abseta. Previously published in \ccite{JETM-2018-05}.}
     \label{fig:noise-term-results-pflow}
 \end{figure}
 
@@ -194,24 +217,42 @@ More effects from hadronic interactions:
 
 \begin{figure}
     \subfloat[] {
+        \newImageResizeHalf{figures/calibration/combination-incl-noise-term-contribution.pdf}
+    }
+    \subfloat[] {
+        \newImageResizeHalf{figures/calibration/combination-unc-incl-noise-term-contribution.pdf}
+    }
+    \caption{(a) The relative jet energy resolution as a function of \pT for fully calibrated PFlow+JES jets. The error bars on points indicate the total uncertainties on the derivation of the relative resolution in dijet events, adding in quadrature statistical and systematic components. The expectation from Monte Carlo simulation is compared with the relative resolution as evaluated in data through the combination of the dijet balance and random cone techniques. (b) Absolute uncertainty on the relative jet energy resolution as a function of \pTjet. Uncertainties from the two \insitu measurements and from the data/MC simulation difference are shown separately. Taken from \ccite{JETM-2018-05}.}
+    \label{fig:jer-combination-incl-noise-term}
+\end{figure}
+
+
+
+\begin{figure}
+    \subfloat[] {
         \newImageResizeHalf{figures/calibration/jer-combination-vs-pt.pdf}
     }
     \subfloat[] {
         \newImageResizeHalf{figures/calibration/jer-combination-vs-eta.pdf}
-    } \\
+    }
+    \caption{The relative jet energy resolution for fully calibrated PFlow+JES jets (blue curve) and EM+JES jets (green curve) (a) as a function of \pTjet and (b) as a function of $\eta$. Taken from \ccite{JETM-2018-05}.}
+    \label{fig:jer-combination-results}
+\end{figure}
+
+\begin{figure}
     \subfloat[] {
         \newImageResizeHalf{figures/calibration/jer-unc-vs-pt.pdf}
     }
     \subfloat[] {
         \newImageResizeHalf{figures/calibration/jer-unc-vs-eta.pdf}
     }
-    \caption{Taken from \ccite{PublicPlotsJER}.}
-    \label{fig:jer-combination-results}
+    \caption{Fractional jet energy resolution systematic uncertainty summed across all components for \antikt $R = 0.4$ jets (a) as a function of jet \pTjet at $\eta = 0.2$ and (b) as a function of $\eta$ at $\pTjet = 30\,\GeV$. The total JER uncertainty is shown for both EM+JES and PFlow+JES jets. Taken from \ccite{JETM-2018-05}.}
+    \label{fig:jer-combination-uncertainties}
 \end{figure}
 
 
 
-\section{Future improvements}
+\section{Future Improvements}
 
 - split in mu bins!
 - Factoring in GSC
