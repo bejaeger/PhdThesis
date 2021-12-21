@@ -1,0 +1,133 @@
+\chapter{Measurement of the Noise Term of the Jet Energy Resolution}
+\label{chap:calibration}
+
+\section{Detector Response to Jets}
+
+\section{Jet Energy Corrections}
+
+
+
+\section{Jet Energy Resolution}
+
+
+\subsection{Contributing Effects and Parametrisation}
+
+
+\subsection{Determination of the jet energy resolution in data}
+
+
+
+\section{Measurement of the Noise Term}
+
+
+
+\subsection{The Random Cones Method}
+
+\Cref{fig:random-cones-balance} show different distributions used to measure the constituent scale pile-up noise with the random cones method.
+
+\begin{figure}
+    \subfloat[] {
+        \newImageResizeHalf{figures/calibration/zero-bias-event-deposits.pdf}
+    }
+    \subfloat[] {
+        \newImageResizeHalf{figures/calibration/random-cones-difference.pdf}
+    }
+    \caption{(a) Sum of transverse momenta of neutral and charged particle flow objects in an area of $\Delta \eta \times \Delta \phi = 0.2 \times 0.2$ from a zero-bias event from the 2017 dataset. (b) Difference of the transverse momentum within two random cones with radius $R = 0.4$ using neutral and charged particle flow objects for the zero-bias dataset recorded in 2017.
+        Previously published in \ccite{SinglePublicPlotZeroBiasDeposits,PublicPlotsJER}.}
+    \label{fig:random-cones-balance}
+\end{figure}
+
+\begin{figure}
+    \subfloat[] {
+        \newImageResizeHalf{figures/calibration/const-noise-vs-eta.pdf}
+    }
+    \subfloat[] {
+        \newImageResizeHalf{figures/calibration/const-noise-vs-mu.pdf}
+    }
+    \caption{Constituent-scale pile-up noise in \antikt $R=0.4$ jets (a) as a function of \absetadet and (b) as a function of $\mu$. Results are derived using the random cones method with either neutral and charged particle flow objects or topo-clusters at the electromagnetic scale as inputs. (a)
+        Previously published in \ccite{PublicPlotsJER}.}
+    \label{fig:const-scale-noise-results}
+\end{figure}
+
+
+
+\subsection{Extracting the electronic noise from Monte Carlo}
+
+\subsection{Systematic uncertainties}
+
+
+\begin{figure}
+    \subfloat[] {
+        \newImageResizeCustom{0.5}{figures/calibration/random-cones-non-closure.pdf}
+    }
+    \caption{Comparison between the pile-up noise term \Npileup determined using the random cone method (black solid circles) and the expectation from MC simulation (orange squares) as extracted from the difference in quadrature of MC simulation with (red downward triangles) and without (blue upward triangles) pile-up. Results are shown at the PFlow+JES energy scale for jets in the central region of the detector $\absetadet < 0.7$. Previously published in \ccite{JETM-2018-05}.}
+    \label{fig:non-closure}
+\end{figure}
+
+
+\subsection{Noise Term Results}
+\subsubsection{Calorimeter jets}
+\subsubsection{Particle-flow jets}
+
+\begin{figure}
+    \subfloat[] {
+        \newImageResizeCustom{0.6}{figures/calibration/pile-up-jer-vs-pt.pdf}
+    }
+    \caption{The expected contribution to the jet energy resolution from pile-up extracted from 2017 data as a function of particle-jet \pT for \antikt jets with $R = 0.4$ in the central region of the detector $\absetadet < 0.7$. Previously published in \ccite{PublicPlotsJER}.}
+    \label{fig:pile-up-jer-vs-pt}
+\end{figure}
+
+
+\begin{figure}
+    \subfloat[] {
+        \newImageResizeCustom{0.6}{figures/calibration/noise-term-results-pflow.pdf}
+    }
+    \caption{Noise term of the jet energy resolution (JER) and its uncertainties as a function of \abseta. Previously published in \ccite{JETM-2018-05}.}
+    \label{fig:noise-term-results-pflow}
+\end{figure}
+
+
+
+\subsubsection{Results for R-scan Jets}
+
+
+\section{Jet Energy Resolution Combination}
+
+\begin{figure}
+    \subfloat[] {
+        \newImageResizeHalf{figures/calibration/combination-incl-noise-term-contribution.pdf}
+    }
+    \subfloat[] {
+        \newImageResizeHalf{figures/calibration/combination-unc-incl-noise-term-contribution.pdf}
+    }
+    \caption{(a) The relative jet energy resolution as a function of \pT for fully calibrated PFlow+JES jets. The error bars on points indicate the total uncertainties on the derivation of the relative resolution in dijet events, adding in quadrature statistical and systematic components. The expectation from Monte Carlo simulation is compared with the relative resolution as evaluated in data through the combination of the dijet balance and random cone techniques. (b) Absolute uncertainty on the relative jet energy resolution as a function of \pTjet. Uncertainties from the two \insitu measurements and from the data/MC simulation difference are shown separately. Taken from \ccite{JETM-2018-05}.}
+    \label{fig:jer-combination-incl-noise-term}
+\end{figure}
+
+
+\begin{figure}
+    \subfloat[] {
+        \newImageResizeHalf{figures/calibration/jer-combination-vs-pt.pdf}
+    }
+    \subfloat[] {
+        \newImageResizeHalf{figures/calibration/jer-combination-vs-eta.pdf}
+    }
+    \caption{The relative jet energy resolution for fully calibrated PFlow+JES jets (blue curve) and EM+JES jets (green curve) (a) as a function of \pTjet and (b) as a function of $\eta$. Taken from \ccite{JETM-2018-05}.}
+    \label{fig:jer-combination-results}
+\end{figure}
+
+\begin{figure}
+    \subfloat[] {
+        \newImageResizeHalf{figures/calibration/jer-unc-vs-pt.pdf}
+    }
+    \subfloat[] {
+        \newImageResizeHalf{figures/calibration/jer-unc-vs-eta.pdf}
+    }
+    \caption{Fractional jet energy resolution systematic uncertainty summed across all components for \antikt $R = 0.4$ jets (a) as a function of jet \pTjet at $\eta = 0.2$ and (b) as a function of $\eta$ at $\pTjet = 30\,\GeV$. The total JER uncertainty is shown for both EM+JES and PFlow+JES jets. Taken from \ccite{JETM-2018-05}.}
+    \label{fig:jer-combination-uncertainties}
+\end{figure}
+
+
+
+\section{Future Improvements}
+

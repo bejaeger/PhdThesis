@@ -1,0 +1,51 @@
+\chapter{Introduction}
+\label{chap:introduction}
+
+% - To produce collision events at the highest energies, circular accelerators are built in order to gradually increase the energy of the particles.
+
+% \Minote{}{Mention previous experiments? Tevatron, ...other?}
+
+% The ATLAS experiment is operated by one of the world's largest scientific collaborations. A community of about 3000 scientific authors from 181 institutions and 41 countries~\cite{AtlasCollab} work towards making the most precise measurements of the Standard Model and potentially finding experimental hints for New Physics with the ATLAS detector.
+
+
+\subsection*{Contributions by the Author}
+\label{sec:contributions}
+
+In this thesis, the \cref{chap:theory,chap:experiment,chap:objects} review existing literature. \Cref{chap:calibration} first discusses necessary background knowledge on jet calibration before presenting the noise term measurement of the jet energy resolution. The author carried out all aspects of the noise term measurement and improved the measurement uncertainties by introducing several new methodologies and strategies described in the text. This measurement has been successfully performed for the first time for both particle-flow jets (published in \ccite{JETM-2018-05}) and \emph{R-scan} jets (jets with a radius of $R=0.2$ and $R=0.6$, publication currently in ATLAS internal review), as a result of the author's studies and research.
+
+The \cref{chap:statistics,chap:ml} summarize the statistical analysis methodologies that are used in the \HWW analysis which is presented in the following \cref{chap:hww}. The description of the \HWW analysis presents original research to which the author contributed significantly. Most notably, the author trained, validated, and incorporated a Deep Neural Network (DNN) to distinguish the VBF signal from background events in the VBF couplings analysis. This included the development of new strategies to use the DNN output score as the final discriminant in the statistical analysis. These studies also extended to the VBF STXS analysis, for which the same DNN was adopted and for which the author introduced several improvements.
+The author developed and studied the fit model used for the VBF couplings and STXS analysis intensively and implemented several improvements to the treatment of systematic uncertainties.
+Moreover, the author contributed significantly to the development and improvement of the analysis framework used, resulting in significant enhancements to several aspects of the overall workflow. This proved highly useful to many analyzers inside and outside the \HWW group.
+Besides these main contributions, the author frequently contributed to review meetings, performed several other smaller optimization and validation studies, is co-author of the internal supporting documentation, and provided final results for the analyses that are published in \ccite{ATLAS-CONF-2021-014,ATLAS-CONF-2020-045}.
+
+\Cref{chap:introduction,chap:summary} provide an introduction and a summary of this work and are of a purely supplementary nature.
+
+
+% \begin{itemize}
+%     \item HWW Analysis
+%           \begin{itemize}
+%               \item Framework, migration to R21, setup for full Run2, significant workflow enhancement
+%               \item Optimization studies for ggF regions
+%               \item Training, testing, incorporation of Deep Neural Network as VBF analysis final discriminant
+%               \begin{itemize}
+%                   \item Establish binning choice algorithm
+%               \end{itemize}
+%               \item Statistics Analysis including major improvements in the workflow
+%               \item Derivation of Theoretical Uncertainties
+%               \item Developed and implemented new treatment of Theoretical Uncertainties (pruning, smoothing)
+%               \item STXS Analysis Optimization (CR and SR merging studies)
+%               \item Prospect studies derived in cooperation with students about re-definition of HWW 2-jet analysis
+%               \item Contributed to several analysis meetings
+%           \end{itemize}
+%     \item Jet/Etmiss
+%           \begin{itemize}
+%               \item Derivation of noise term of JER for small-R jets as well as Rscan jets used by the entire collaboration
+%               \begin{itemize}
+%                   \item Developed new methods to derive Uncertainties
+%                   \item Measurement for PFlow jets for the first time
+%                   \item Extended to Rscan jets for the first time
+%               \end{itemize}
+%               \item Studies and comparison of new minimum bias generators as crucial input for new default pile-up generator in ATLAS
+%           \end{itemize}
+% \end{itemize}
+
