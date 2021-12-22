@@ -53,8 +53,8 @@ Once the PVs are found, the \emph{hard-scatter vertex} is chosen to be the one w
 
 \section{Calorimeter Clustering}
 %\ccite{PERF-2014-07,ATL-LARG-PUB-2008-002}
-Each cell of the calorimeter system is read out and can be interpreted as a massless four-vector. In a first reconstruction step, these cells are grouped together to form so-called \emph{topological clusters} or \emph{topo-clusters}. Topo-clusters are used as input to further reconstruction algorithms to form jets, electrons, hadronically decaying $\tau$ leptons, or missing transverse energy.
-As the calorimeter cells are subject to significant noise contributions, the main goal of the \emph{topo-clustering algorithm} is to enhance the signal to noise ratio. The total noise can be described as
+Each cell of the calorimeter system is read out and is interpreted as a massless four-vector. In the first reconstruction step, these cells are grouped together to form so-called \emph{topological clusters} or \emph{topo-clusters}. Topo-clusters are used as input to further reconstruction algorithms to form jets, electrons, hadronically decaying $\tau$ leptons, or missing transverse energy.
+As the calorimeter cells are subject to significant noise contributions, the main goal of the so-called \emph{topo-clustering algorithm} is to enhance the signal to noise ratio. The total noise can be written as
 \begin{equation}
     \sigma_{\text{noise}} = \sqrt{ \left( \electronicnoise  \right)^2  + \left( \pileupnoise  \right)^2 },
 \end{equation}
@@ -66,22 +66,20 @@ Topo-clusters are formed based on the cell-energy significance, $z_{\text{cell}}
 \begin{equation}
     z_{\text{cell}} = \frac{E_{\text{cell}}}{\sigma_{\text{noise}}}.
 \end{equation}
-The algorithm consists of three steps that are defined by three parameters, $S$, $N$, and $P$:
+The topo-cluster algorithm consists of three steps, each defined by a threshold value~\cite{PERF-2014-07}:
 \begin{enumerate}
-    \item A seed calorimeter cell is found with
-    \item All neighboring cells satisfying $blah$ are added
-    \item Finally, all neighboring cells with $blah$ are added
+    \item \textbf{Finding seeds:} A calorimeter cell is taken as a seed if $|z_{\text{cell}}| > S$
+    \item \textbf{Adding neighbours:} All neighbouring cells that have not been used as seed and satisfy $|z_{\text{cell}}| > N$ are added to the seed cell.
+    \item \textbf{Finalize: } All neighbouring cells with $|z_{\text{cell}}| > P$ are added.
 \end{enumerate}
-The standard values in the ATLAS calorimeters are $S = 4$, $N = 2$, $P = 0$, so that the algorithm is sometimes referred to as ``420 clustering''.
+The standard values in the ATLAS calorimeters are $S = 4$, $N = 2$, $P = 0$, so the algorithm is sometimes referred to as ``420 clustering''.
 
-- the initial set of identified clusters undergoes a step of splitting
+This initial set of identified clusters may have large topo-clusters resulting from the merging of energy depositions due to multiple particles very close to each other in the calorimeter.
+Therefore, another processing step, known as \emph{cluster splitting}, is performed to split topo-clusters with two or more local maxima. The details of this procedure are described in \ccite{ATL-LARG-PUB-2008-002}.
 
-- PLOT: add plots of topo-cluster formation as in Valente's thesis? YES!
-
+After the splitting, the topo-clusters represent three-dimensional energy depositions with their energy defined by the sum of the energies of cells.
+%- PLOT: add plots of topo-cluster formation as in Valente's thesis? YES!
 The cells are calibrated at the electromagnetic scale (\emph{EM scale}) which means that the energy of electromagnetic interacting particles is correctly taken into account\footnote{The calibration of calorimeter cells is derived in dedicated test-beam measurements described for example in \cref{Abat_2010}}. The calorimeter does not fully account for the energy deposited by hadrons, which has important consequences for the energy calibration of incident quarks and gluons, which is discussed in more detail in \cref{chap:calibration}.
-
-- Mention event-by-event origin correction
-% Therefore, an event-by-event correction to account for the position of the primary vertex in each event – referred to as an origin correction – is applied to every topo-cluster, based on its depth within the calorimeter and pseudorapidity. This method is to be contrasted with earlier approaches [7] that applied this correction only to the jet four-momentum rather than to its constituents.
 
 \Rinote{}{Relate this to the hadron shower description in the detection principles chapter.}
 
@@ -165,6 +163,11 @@ To avoid double consideration of detector signals in the event reconstruction a 
 %The inputs are known as \emph{jet constituents}. 
 Different inputs can be used for the \emph{anti-$k_T$} algorithm.
 Historically, the majority of physics analyses used jets reconstructed with only calorimeter information in the form of topo-clusters. Jets formed with topo-clusters at the EM scale are referred to as \emph{EMTopo} jets.
+\TDinote{}{Add note on origin correction}
+%- Mention event-by-event origin correction (in JET section!)
+% From JER paper
+% Only positive-energy topo-clusters are used as inputs to the jet reconstruction. A jet produced in the hard-scatter process is expected to originate from the primary vertex, defined as the reconstructed vertex with at least two associated tracks and the largest sum of squared track momentum.
+% Therefore, an event-by-event correction to account for the position of the primary vertex in each event – referred to as an origin correction – is applied to every topo-cluster, based on its depth within the calorimeter and pseudorapidity. This method is to be contrasted with earlier approaches [7] that applied this correction only to the jet four-momentum rather than to its constituents.
 During \RunTwo, the ATLAS collaboration introduced a more sophisticated definition of jets, that use information from both, the calorimeter and the ID, to exploit the superior measurements of the ID at low \pT.
 These jets are known as \emph{particle flow jets} (PFlow jets) and have two types of constituents: \emph{charged particle flow objects} (CPFOs), consisting of high-quality ID tracks compatible with the hard-scatter vertex, and \emph{neutral particle flow objects} (NPFOs), comprising energy depositions in the calorimeters identified as originating from neutral particles. The algorithm that defines the set of NPFOs per event is known as \emph{particle flow algorithm} and is explained in more detail below.
 PFlow jets have an improved energy and angular resolution, reconstruction efficiency, and pile-up stability compared to EMTopo jets\cite{PERF-2015-09}.
@@ -252,13 +255,13 @@ Because the algorithms rely on ID information, only jets with \absetaST{2.5} can
 
 \section{Electrons and Photons}
 \label{sec:electron-photon-reconstruction}
-Electrons and photons are reconstructed from topo-clusters mostly formed in the EM calorimeter\footnote{In the crack between the EM barrel and end-caps also information from the hadronic tile calorimeter and presampler is used.} and tracks from the ID.
+Electrons and photons are reconstructed from topo-clusters mostly formed in the EM calorimeter\footnote{In the crack between the EM barrel and end-caps also information from the hadronic tile calorimeter and presampler is used.} and tracks from the ID~\cite{EGAM-2018-01}.
 In a simplified picture, an electron can be defined as a cluster that is associated to a track and a photon as a cluster without a matched track.
 However, photons can convert to an electron pair in the ID by pair production\footnote{About \SI{20}{\percent} of photons convert at low \abseta in the ID, and up to \SI{65}{\percent} at $\abseta \approx 2.3$~\cite{EGAM-2018-01}.} and electrons radiate photons by bremsstrahlung, which makes distinguishing the two objects more challenging.
 A multi-stage reconstruction algorithm is therefore used, based on the formation of so-called \emph{superclusters} that take into account the effects of pair production and bremsstrahlung.
 In a first step, tracks that are loosely matched to clusters are refitted accounting for bremsstrahlung. Refitted tracks as well as photon-conversion vertices\footnote{The algorithm to reconstruct conversion vertices is documented in \ccite{PERF-2017-02}. Minor changes were introduced for \RunTwo, which is described in \ccite{EGAM-2018-01}.} are then matched to clusters.
 This is input to the supercluster formation algorithm, which is performed independently for electrons on photons.
-Electron (photon) superclusters are seeded by clusters with \pTGT{1}\,\GeV that are matched to tracks with at least four hits in the silicon detector (clusters with \pTGT{1.5}\,\GeV and without any track requirement).
+Electron (photon) superclusters are seeded by clusters with $\pTGT{1}\,\GeV$ that are matched to tracks with at least four hits in the silicon detector (clusters with $\pTGT{1.5}\,\GeV$ and without any track requirement).
 The seed clusters are extended by secondary clusters that capture the energy that may be deposited by photons from bremsstrahlung or appear as part of a splitted topo-cluster due to converted photons.
 The final electron and photon superclusters consist of a seed cluster and associated secondary clusters and are then matched to tracks and conversion vertices, respectively.
 Because the supercluster formation is performed independently between electrons and photons, potential ambiguities between the matched superclusters occur. A procedure to resolve these is applied which classifies a given matched supercluster as an electron candidate only, a photon candidate only, or as either an electron or photon candidate.
@@ -284,11 +287,11 @@ Different working points are defined and calibrated for typically a combination 
 
 \section{Muons}
 Muons leave traces in the ID and the MS and deposit little energy in the calorimeters.
-Different strategies exist to reconstruct muons that use different detector subsystems and algorithms.
+Different strategies exist to reconstruct muons that use different detector subsystems and algorithms~\cite{MUON-2018-03}.
 In the work presented in this thesis, muons are reconstructed from a global fit of matching ID tracks and separately reconstructed MS tracks and also taking into account the energy losses in the calorimeters.
 
 Standalone MS tracks are reconstructed starting from straight-line track segments identified in the layers of the precision muon chambers (MDTs and CSCs).
-These segments are combined by considering additional information from the hard scatter vertex, the magnetic field, and information from the trigger detectors (RPCs and TGCs). The MS tracks are then matched to ID tracks and an iterative global track fitting procedure finds the final set of muon tracks, by also taking into account energy losses in the calorimeter as well as effects due to possible misalignments of the chambers, and resolving track ambiguities. \cite{MUON-2018-03}
+These segments are combined by considering additional information from the hard scatter vertex, the magnetic field, and information from the trigger detectors (RPCs and TGCs). The MS tracks are then matched to ID tracks and an iterative global track fitting procedure finds the final set of muon tracks, by also taking into account energy losses in the calorimeter as well as effects due to possible misalignments of the chambers, and resolving track ambiguities.
 % The muon momentum scale and resolution are calibrated using \Jpsimumu and \Zmumu events by exploiting the known mass of the $Z$ boson~\cite{PERF-2015-10}.
 
 \subsection{Muon Reconstruction and Isolation}
