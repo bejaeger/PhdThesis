@@ -13,9 +13,17 @@
 \section{Object Selection and Efficiency Correction}
 \subsection{Lepton selection}
 \subsection{Jet selection}
+
+\TDinote{}{Checkout JVT extension to 120 GeV}
+
 \subsection{Missing transverse energy}
 \subsection{Overlap removal}
 \label{subsec:overlap-removal}
+
+The inputs to the \emph{anti-$k_T$} algorithm are typically used also in other object reconstruction algorithms such as in the reconstruction of electrons and photons (see \cref{sec:electron-photon-reconstruction}).
+To avoid double consideration of detector signals in the event reconstruction a dedicated procedure known as \emph{overlap removal} is performed in physics analyses that resolves these ambiguities. The procedure used for the work presented in this thesis is described in the relevant analysis chapter in \cref{subsec:overlap-removal}.
+\Rinote{}{Not sure where exactly this belongs. Also need to make sure that this reflects the correct understanding of overlap removal}
+
 
 \subsection{Pile-up reweighting}
 In order to compare Monte Carlo simulated events with actual data, the amount of pile-up underlying the hard scatter needs to be account for.
