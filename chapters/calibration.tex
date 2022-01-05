@@ -8,66 +8,105 @@
 - To correct for the loss of energy in a hadron shower, dedicated calibrations are performed typically at the level of the fully reconstructed objects.
 
 - "Introduce JES and JER abbreviation"
+- The JER describes the precision with which the energy of a jet can be measured.
 
 - A precise knowledge is crucial in order to be able to correct the JER in MC such that it matches the one found in data.
 
-- The following presents the calibrations for \antikt jets with a radius of $R = 0.4$. They are treated as massless four-vectors which means that their energy is equivalent to their momentum\footnote{The terms energy and momentum are thus used interchangeably throughout this thesis}.
+- The following presents the calibrations for \antikt jets with a radius of $R = 0.4$. They are treated as massless four-vectors which means that their energy is equivalent to their momentum\footnote{The terms energy and momentum are thus often used interchangeably throughout this thesis}.
 %- Paper: paper presents the strategy used for the determination of the jet energy scale (JES) and resolution (JER) by the ATLAS experiment and its implementation as it pertains to the analysis of data from Run 2 of the LHC.
 
 %- This publication focuses on calibrating jets reconstructed with the anti-𝑘𝑡 [1] algorithm with radius parameter 𝑅 = 0.4.
 
 
 \section{Detector Response to Jets}
-The response of the calorimeter to traversing particles describes the fraction of the particle's original energy that can be measured.
+The response of the calorimeter to traversing particles describes the fraction of the particle's original energy that can be measured. The jet response is thus the average detector response to the showering particles that form the jet.
+As mentioned in \cref{chap:objects}, the calorimeter cells are calibrated at the EM scale which means that EM interacting particles like photons and electrons are measured with a response of $e = 1$. The energy of hadrons cannot be fully captured and some fraction of the energy does not contribute to the calorimeter signals, resulting in a hadron response of $h < 1$. This is known as \emph{non-compensating} nature.
+A hadron shower produced by a jet consists of both components: 
+An EM component, that occurs because neutral pions decay into pairs of photons which creates EM sub-showers, and a non-EM component, which includes all hadronic interactions. 
+The jet response can thus be written as
+\begin{equation}
+    R(E) = e*\fEM(E) + h * \left(1 - \fEM(E)\right),
+\end{equation}
+where \fEM is the fraction of the jet that interacts electromagnetically. This fraction increases as the energy of the jet increases, because the number of possibilities for producing neutral pions that halt the hadronic decay chain increases. The uncalibrated calorimeter response is therefore \emph{non-linear} with increasing jet energy.
 
-As mentioned in \cref{chap:objects}, the calorimeter is calibrated at the EM scale which means that EM interacting particles like photons and electrons are measured with a response of $e = 1$. The energy of hadrons cannot be fully captured and some fraction of the energy does not contribute to the calorimeter signals, resulting in a hadron response of $h < 1$, which is known as a \emph{non-compensating} nature.
-Several mechanisms contribute this invisible energy:
+Several physics effects contribute to the non-compensating nature of the detector:
 \begin{itemize}
-    \item Showering particles transfer energy to atomic nuclei that are broken up during the interaction or remain in excited states. The energy is lost in the binding energy or excited states of the nucleons.
-    \item Showering particles decay to non-interacting secondaries (for example in $\pi \rightarrow \mu \nu_\mu$) that escape the detector.
-    \item Production of neutrons that mostly undergo elastic scattering and thus escape the detector.
+    \item Showering particles transfer energy to atomic nuclei that are broken up during the interaction or remain in excited states. The energy is lost in the binding energy or the excited states of the nuclei.
+    \item Showering particles decay to non-interacting secondaries (for example in $\pi \rightarrow \mu \nu_\mu$ decays) that escape the detector.
+    \item The production of neutrons that mostly undergo elastic scattering and thus escape the detector.
+\end{itemize}
+Beside these effects, other factors related to the experiment and reconstruction contribute to potential energy mismeasurements:
+\begin{itemize}
+    \item Non-functional (\emph{dead}) detector material.
+    \item Inefficiencies in the topo-clustering algorithm.
+    \item Energy deposits that are not taking into account due to the finite radius of the jet algorithm.
 \end{itemize}
 
-A hadron shower produced by a jet consists of two main components:
-- EM component: neutral pions decay into pairs of photons that develop EM showers.
-- non-EM component: all hadronic interactions
-
-- The response of the detector to an incident hadron can thus be written as
+To determine the jet response in the experiment, the reconstructed jet \pT is compared to the \pT of a well-calibrated or well-known \emph{reference object}. The reference object may constitute a well-measured physics object or system in data, as explained in \cref{subsec:insitu-calibration}, or a particle-level truth jet, when the jet response is studied in MC. 
+In the latter case, the truth jets are geometrically matched to the reconstructed jets by requiring them to be within a radius of $\Delta R = 0.3$. 
+The so-called \emph{truth response} is then defined as the ratio of the reconstructed jet \pT and the \pT of the matched truth jet,
 \begin{equation}
-    R(E) = e*\fEM(E) + h * \left(1 - \fEM(E)\right)
+    R_{\text{truth}} =  \frac{\pTreco}{\pTtruth},
 \end{equation}
+which is a useful quantity for calibrating the jet energy, explained in the next section.
+%When the energy of the reconstructed jet is calibrated so that $\pTreco = \pTcalib$, the mean jet response is what is considered to be the jet energy scale (JES) and the width of the jet response constitutes the jet energy resolution (JER). The mean and width are determined from a Gaussian fit to the core of the response distribution, as shown in \cref{fig:truth-response}. 
 
-
-- The electromagnetic fraction, \fEM, increases with energy as the more hadronic interactions occur, the more chances there are to produce neutral pions which halt the hadronic decay chain.
-- The uncalibrated calorimeter response is therefore \emph{non-linear} with increasing jet energy.
-
-- The goal of the energy correction is to correct for the non-linearity as well as the non-compensating nature and bring the response to unity.
+\FloatBarrier
+\begin{figure}[t]
+    \newImageResizeHalf{figures/calibration/truth-response.pdf}
+    \caption{Jet truth response.}
+    \label{fig:truth-response}
+\end{figure}
 
 
 \section{Jet Energy Corrections}
 \label{sec:jes-calibration}
-Beside the aforementioned effects that lead to invisible energy, other factors contribute to potential energy mismeasurements:
-- Dead material
-- clustering inefficiencies
-- non-accounted deposits: jet algorithm have a finite radius -> maybe there are deposits outside that cone coming from the original quark
+The goal of the jet energy correction is to correct for the non-linearity as well as the non-compensating nature and bring the average jet response to unity.
+To this end, a calibration procedure is performed that consists of several stages, each defining a particular \emph{energy scale}. The different steps are illustrated in \cref{tab:jes-calibration} and briefly explained in the following. More details can be found in \cref{JETM-2018-05}.
 
-- The jet energy calibration consists of several stages each defining a particular energy \emph{scale}. This is illustrated in \cref{tab:jes-calibration}.
-The different steps use either MC simulation or data and are also applied to either MC or data, depending on the correction.
+%The different steps use either MC simulation or data and are also applied to either MC or data, depending on the correction.
+\subsection{Pile-up correction}
+After the jet is reconstructed, the jet \pTreco is first corrected on an even-by-event basis to on average remove the energy coming from pile-up interactions. This is done in two steps: First, a correction based on the \pT density of the pile-up, $\rho$, and the jet area, $A$, is applied, and then a residual correction removes any residual \pT dependence on the number of primary vertices (to correct for in-time pile-up contributions), $N_\text{PV}$, and the average pile-up (to correct for out-of-time pile-up contributions), $\mu$. 
+The $\rho$ observable is estimated by the median \pT density of jets, calculated with jets reconstructed with the \kt algorithm\footnote{The \kt algorithm works similar to the \antikt algorithm (see \cref{subsubsec:jet-algorithm}) but with different definitions of the distance measures:
+\begin{align*}
+    d_{ij} &= \text{min}\left(p_{T_i}^2,p_{T_j}^2\right) \frac{\Delta R_{ij}^2}{R^2}, \\
+    d_{iB} &= p_{T_i}^2.
+    \label{eq:kt-distances}
+\end{align*}
+}
+ with radius parameter $R = 0.4$ and positive-energy topo-clusters at \absetaST{2} as input. The jet area is determined using a procedure known as ghost association, where particles are treated as four-vectors of infinitesimal magnitude, known as \emph{ghost particles}, during the jet reconstruction and assigned to the jet with which they are clustered. The area of a jet is calculated from the fraction of ghost particles associated to that jet.
+The residual correction is based on a comparison with geometrically matched truth jets. The energy after all pile-up corrections, referred to as the \emph{pile-up subtracted (energy) scale}, can be written as
+\begin{equation}
+    \pTPUsub = \pTreco - \rho \times A - \alpha \times \left( N_{\text{PV}} - 1\right) - \beta \times \mu, 
+\end{equation}
+where $\alpha$ and $\beta$ are derived from fits to the \pT dependence on $N_{\text{PV}}$ and $\mu$, respectively.
 
-- The reconstructed jet \pT is first corrected on an even-by-event basis to remove the pile-up contribution.
+\subsection{MC-based correction to the particle level}
+What follows is a purely MC-based calibration of the entire four-momentum of the jet. The energy and direction of the reconstructed jets is corrected to on average match the one of the associated truth jets. This is done by considering the average jet response, defined by the mean of a Gaussian fit to the core of the $\pTPUsub / \pTtrue$ response distribution. The average response is parametrized as a function of \pTPUsub and the \pT calibration factor (also denoted \emph{JES factor} throughout this thesis) then derived using a numerical inversion procedure~\cite{PERF-2011-03}. A similar procedure is used to correct biases in the reconstructed jet $\eta$, as detailed in \cref{JETM-2018-05}. 
+Jets calibrated with the MC-based corrections are considered to be at the \emph{JES scale}.
 
-- pile-up subtracted scale
-
-- JES scale
-
-- GSC scale (only affects resolution, not JES on average! (discuss?))
+\subsection{Global sequential calibration}
+The jet response is dependent on many factors related to the shower development in the calorimeter, such as the shower shape, the energy distribution and flavour of the showering particles, or the particle composition. 
+Differences are especially observed between quark-initiated and gluon-initiated jets. 
+% and leads to an increased JER.
+To reduce the impact these effects have on the JER, six (five) observables for PFlow jets (EMTopo jets) that model these effects are identified in the \emph{Global sequential calibration} (GSC). The jet truth response is parametrized as a function of these observables and a numerical inversion procedure~\cite{PERF-2011-03} is performed for each of them in sequence.
+These corrections reduce the JER while leaving the mean energy response unchanged. 
+Jets that have the GSC calibration applied are considered to be at the PFlow+JES+GSC scale (or EMTopo+JES+GSC scale).
+%- GSC scale (only affects resolution, not JES on average! (discuss?))
 % From DANDOY: The GSC shifts the energy of individual jets while maintaining the mean energy response derived in the previous jet energy scale calibration.    
 
--> in-situ calibration (only affects data! can keep this short as it does not affect JER measurements)
+\subsection{\textbf{\emph{In~situ}} calibration}
+\label{subsec:insitu-calibration}
+A final calibration step accounts for the residual differences between the jet response in data and MC, caused by imperfections in both the detector simulations and physics modelling. This calibration, known as \insitu calibration, is derived in data and only applied to data. 
+Different event topologies are exploited that allow to measure the jet response with respect to a well-calibrated reference object. The \insitu response is calculated in data and MC and the final correction factor is given by the following double ratio:
+\begin{equation}
+    c = \frac{R_{\insitu}^{\text{data}}}{R_{\insitu}^{\text{MC}}} = \frac{ \pTcalibData / \pTrefData}{\pTcalibMC / \pTrefMC}.
+\end{equation}
+The double ratio is parametrized as a function of \pTref and the final calibration obtained again with a numerical inversion procedure~\cite{PERF-2011-03}.
 
-\Minote{}{Could make a table for the above and provide use cases for each scale. Maybe jusst replace the figure from the paper, which really isn't all that great!}
+\Minote{}{Could make a table for the above and provide use cases for each scale. Maybe just replace the figure from the paper, which really isn't all that great!}
 
-- Definition of truth jets reconstructed using stable final-state particles
+%- Definition of truth jets reconstructed using stable final-state particles
 %Truth jets are reconstructed using stable final-state particles and exclude muons, neutrinos, and particles from pile-up interactions. Truth jets are selected with the same 𝑝T > 7 GeV and |𝜂| < 4.5 thresholds as EMtopo and PFlow jets, and are geometrically matched to those jets using the angular distance Δ𝑅 with the requirement Δ𝑅 < 0.3.
 
 
@@ -79,67 +118,64 @@ The different steps use either MC simulation or data and are also applied to eit
 
 
 \section{Jet Energy Resolution}
-The JER describes the precision with which the energy of a jet can be measured.
-Multiple effects related to the shower development in a (sampling) calorimeter contribute to the JER.
-%They scale differently with increasing energy of the jet. The measurements of a calorimeter are subject to the following fluctuations:
+Multiple physics and detector effects contribute to a sizeable JER. They scale differently with increasing energy of the jet. For calorimeter-based measurements, the effects can be grouped into three categories captured by three parameters: the \emph{noise term} ($N$), the \emph{stochastic term} ($S$), and the \emph{constant term} ($C$). 
 
-\Minote{}{Think about breaking this list up into 3: one for scalnig like stochastic term, one for constant term, one for noise term}
+The noise term captures resolution effects from energy deposits stemming from pile-up interactions and other noise such as electronic noise. These contributions are approximately independent of the jet energy. A detailed discussion of the noise term is provided in \cref{sec:noise-term-meas}.
 
+The stochastic term is dominated by fluctuations related to the shower development in the calorimeter, whose impact on the JER scale with $\sqrt{\ETjet}$:
+%The measurements of a calorimeter are subject to the following fluctuations:
 \begin{itemize}
-    \item Shower fluctuations: fluctuations in the number of particles produced in the shower, scales with $\sqrt{\ETjet}$
-    \item Sampling fluctuations: fluctuations in the number of ionising particles crossing the active layers, scales with $\sqrt{\ETjet}$
-    \item Photo-electron statistics: inefficiencies converting photons to electrical signals, scales with $\sqrt{\ETjet}$
-    \item Shower leakage: energy depositions outside of the jet radius or detector inefficiencies, scales with \ETjet
-    \item Fluctuations in \fEM
-    \item Fluctuations in the invisible energy (neutron production, binding energy losses, nuclear excitation losses)
-    \item Fluctuations in the number of heavily ionising particles
+    \item Shower fluctuations: fluctuations in the number of particles produced in the shower and in the EM fraction, \fEM.
+    \item Sampling fluctuations: fluctuations in the number of ionising particles crossing the active layers of the sampling calorimeter.
+    \item Photo-electron statistics: inefficiencies converting photons to electrical signals in the hadronic tile calorimeter.
+    \item Fluctuations in the invisible energy (neutron production, binding energy losses, nuclear excitation losses).
+    \item Fluctuations in the number of heavily ionising particles, such as alpha particles.
 \end{itemize}
+The constant term captures the effect of shower leakage for example from energy depositions outside the jet radius and detector inefficiencies. These effects scale with \ETjet. \footnote{The reason why this term is referred to as the constant term is because typically the relative JER is quoted, see \cref{eq:jer-parametrisation}} 
+
+Given these considerations, the relative JER can be parametrised as follows:
+\begin{equation}
+    \label{eq:jer-parametrisation}
+    \frac{\sigma_{p_{\rm T}}}{p_{\rm T}} = \frac{N}{p_{\rm T}} \oplus \frac{S}{\sqrt{p_{\rm T}}} \oplus C.
+\end{equation}
+which is denoted as \emph{N,S,C parametrisation} throughout this thesis.
+
 % % From Karl Jakobs Slides
 % smaller effects:
 % - track length fluctuations
 % - landau fluctuations: asymptotic energy loss distribution for thin active layers is laundau instead of gaussian.
 
-In addition, resolution effects from pile-up contributions and other noise such as electronic noise need to be accounted for in the JER. These contributions are approximately independent\footnote{Modulo threshold effects which can be neglected to first order} of the energy of the incident particle.
+It should be noted, that this parametrisation is based not only on the physics considerations mentioned above, it is also based on empirical evidence from MC studies. Especially the jet calibration, most notably the GSC, has a non-trivial impact on the JER, which makes it unfeasible to derive a formula for the JER from first principle. 
+Moreover, the aforementioned physics considerations are only considering calorimeter-type measurements. In the case of PFlow jets, even though some of the aforementioned effects are mitigated - because parts of the calorimeter measurements are replaced by more precise measurements from the ID - additional contributions to the JER need to be considered. The additional contributions are dominated by the imperfect cell subtraction in the PFlow algorithm (see \cref{subsec:pflow-algorithm}), an effect captured in a term called \emph{confusion term}. The confusion term quantifies the amount of incorrectly subtracted energy and is mostly relevant at medium jet \pT, which is detailed in \ccite{PERF-2015-09}.
+Despite these limitations of the N,S,C parametrisation for PFlow jets, it empirically proves to be an adequate formula to represent the PFlow jet energy and is therefore also used in the noise term measurement presented in \cref{sec:noise-term-meas}. 
 
-The relative JER expected for calorimeter-based measurements can thus be described with three independent contributions, the \emph{noise term} ($N$), \emph{stochastic term} ($S$), and \emph{constant term} ($C$):
+
+
+
+\subsection{Estimation of the jet energy resolution in Monte Carlo}
+The width of the truth response using fully calibrated jets \TDinote{(JES+GSC)}{Check if this is indeed the standard} divided by the mean,
 \begin{equation}
-    \label{eq:jer-parametrisation}
-    \frac{\sigma_{p_{\rm T}}}{p_{\rm T}} = \frac{N}{p_{\rm T}} \oplus \frac{S}{\sqrt{p_{\rm T}}} \oplus C
+    \mcjer = \sigma \left( \frac{\pTcalib}{\pTtruth} \right) / \mu \left( \frac{\pTcalib}{\pTtruth} \right),
 \end{equation}
+constitutes the standard definition of the JER in MC simulation. 
+The width and mean are taken from a Gaussian fit to the core of the distribution, as shown in \cref{fig:truth-response}. The division by the mean corrects for the residual non-closure of the jet calibration, which is sizeable at low \pT\footnote{After the JES calibration, the response diverges from unity by a maximum of about $5\% (3\%, 1\%)$ at $\pTtrue = 20 (30, 50)\,\GeV$~\cite{JETM-2018-05}.}.
 
-\Cref{fig:jer-parametrisation} shows an illustration of the effect of the different terms as a function of \pT, with typical values for the three contributions . The noise term is dominant at low \pT ($\pT \lesssim 40\,\GeV$), the stochasic term at medium \pT ($40 \lesssim \pT \lesssim 1000\,\GeV$), and the constant term at high \pT ($\pT \gtrsim 1000\,\GeV$).
+\Cref{fig:jer-parametrisation} shows an illustration of the effect of the different terms as a function of jet \pT, with typical values for the three parameters, N, S, and C. The noise term is dominant at low \pT ($\pT \lesssim 40\,\GeV$), the stochastic term at medium \pT ($40 \lesssim \pT \lesssim 1000\,\GeV$), and the constant term at high \pT ($\pT \gtrsim 1000\,\GeV$).
 
-- Mention that PFlow resolution is expected to be different as tracks are partially used.
+\TDinote{}{Show example of PFlow JER fit?}
+\TDinote{}{Then show breakdown of N, S, C terms? Beside it?}
+\TDinote{}{Maybe show EMTopo JER and PFlow JER?}
+
 
 \FloatBarrier
-\begin{figure}
+\begin{figure}[t]
     \newImageResizeHalf{figures/calibration/Breakdown-of-JER-parameters-MC16dMCJER.pdf}
     \caption{Illustration of JER parametrisation breakdown.}
     \label{fig:jer-parametrisation}
 \end{figure}
 
-
-
-\subsection{Derivation of the jet energy resolution in Monte Carlo}
-It can be defined in MC simulation by comparing the calibrated jet \pT with the truth jet \pT. The ratio of the two quantities,
-\begin{equation}
-    R_{\text{truth}} =  \frac{\pTcalib}{\pTtruth},
-\end{equation}
-is known as \emph{truth response} and is typically considered in different bins of \pTtruth.
-The width of the truth response divided by its mean,
-\begin{equation}
-    \mcjer = \sigma \left( \frac{\pTcalib}{\pTtruth} \right) / \mu \left( \frac{\pTcalib}{\pTtruth} \right),
-\end{equation}
-constitutes the standard definition of the JER in MC simulation. The width and mean are taken from a Gaussian fit to the core of the distribution, as shown in \cref{fig:truth-response}. The division by the mean corrects for the residual non-closure of the jet calibration, which is sizeable at low \pT and impacts the JER.
-
-\begin{figure}
-    \newImageResizeHalf{figures/calibration/truth-response.pdf}
-    \caption{Jet truth response.}
-    \label{fig:truth-response}
-\end{figure}
-
 \FloatBarrier
-\begin{figure}
+\begin{figure}[t]
     \newImageResize{figures/calibration/flow-chart-jer.png}
     \caption{Overview of the different ingredients to perform the jet energy resolution measurement.}
     \label{fig:flow-chart-jer}
@@ -147,23 +183,14 @@ constitutes the standard definition of the JER in MC simulation. The width and m
 
 
 \subsection{Determination of the jet energy resolution in data}
-- JER can be derived in data with different methods, typically by considering processes with a jet recoiling against a well measured reference object.
+Similar to the \insitu jet calibration, the JER can be derived in data by considering physics processes with a jet recoiling against a well-measured reference object. For \RunTwo, the ATLAS collaboration uses well-defined dijet systems in a method known as \emph{dijet balance} to measure the JER. 
+In events with clean signatures of two initial state quarks and two final state quarks ($2 \rightarrow 2$), the transverse momenta of the jets are expected to balance each other (they are known to be \emph{back-to-back}), so that any deviation from an exact balance can be attributed to resolution effects.
 
-- For \RunTwo, the ATLAS collaboration used well-defined dijet systems in a method known as \emph{dijet balance} to measure the JER in data.
-
-- In an event with a clean 2 -> 2 signature, the jet pTs are expected to balance each other so that any deviation from exact balance can be attributed to resolution effects.
-
-The dijet balance method selects jets measured in a well-calibrated detector region ($0.2 \leq \absetadet \leq 0.7$) as reference object. An asymmetry is defined to compare the reference pt, \pTref, with the momentum of the jet for which the resolution is to be measured, \pTprobe. The probe jet can be anywhere in the detector within \absetadetST{4.5}.
-
-- The JER is then extracted by an iterative fitting procedure.
-
-For more details on how the asymmetry is defined and the JER extracted, the interested reader is referred to \ccite{JETM-2018-05}. The resolution of the JER measured in data compared to the JER in MC is shown in \cref{fig:insitu-jer-dijet-only}.
-
-Uncertainties on the dijet JER measurement mostly stem from the presence of additional radiation in the events which spoil the perfect back-to-back signature, biases due to the event selection, or uncertainties from the JES.
-
-As can be seen, the uncertainties become very large at low \pT, and the dijet JER measurement is not able to probe the JER much lower than \pTjetST{50}\,\GeV, which is the regime at which the noise term becomes dominant.\footnote{JER measurements that use different event topologies such as \Zjets events are able to provide more precise results also as lower \pT. For \RunTwo, they were not included in the JER measurement due to other complexities. A detailed discussion about this goes beyond the scope of this thesis.}
-
-The noise term is therefore derived independently, which reduces the uncertainties at low \pT significantly. This method is explained in the following section.
+The dijet-balance method selects jets measured in a well-calibrated detector region ($0.2 \leq \absetadet \leq 0.7$) as reference object. An asymmetry is defined to compare the \pT of the reference jet, labelled as \pTref, with the momentum of the \emph{probe jet} for which the resolution is to be measured. The probe jet is allowed to be anywhere in the detector within \absetadetST{4.5}.
+The JER is then extracted in different bins of \pTref and \etadet by an iterative fitting procedure. For more details on how the asymmetry is defined, and the JER extracted, the interested reader is referred to \ccite{JETM-2018-05}. Uncertainties on the dijet JER measurement mostly stem from the presence of additional radiation in the events which spoil the perfect back-to-back signature, biases due to the event selection, and uncertainties from the JES. 
+The resolution of the JER measured in dijet data events compared to the JER in dijet MC is shown in \cref{fig:insitu-jer-dijet-only}.
+As can be seen, the uncertainties become large at low \pT, and the dijet JER measurement is not able to probe the JER to values much lower than $\pT = 50\,\GeV$, which is the regime at which the noise term becomes dominant.\footnote{JER measurements that use different event topologies such as \Zjets events are able to provide more precise results also at lower \pT. For the JER measurement presented in this thesis, they were not included due to other complexities. A detailed discussion about this goes beyond the scope of this thesis. However, the independent derivation of the noise term as presented in \cref{sec:noise-term-meas} is still useful, even if other JER measurements are included.}
+The noise term is therefore derived independently, to reduce the JER uncertainties at low \pT. This method is explained in the following section.
 
 \FloatBarrier
 \begin{figure}
@@ -181,8 +208,10 @@ The noise term is therefore derived independently, which reduces the uncertainti
 
 - Both terms are derived separately.
 
-- The pile-up noise term is derived with a dataset without any bias on the selection of the events (zero-bias data), which loosely described corresponds to a dataset with ``pile-up only''.
-In a method referred to as \emph{random cones method}, the energy found within two cones of radius \Rrandomcone is summed and compared to each other. This provides a measure of the fluctuations due to pile-up.
+- The pile-up noise term is derived with a dataset without any bias on the selection of the events (zero-bias data), which loosely described corresponds to a dataset with ``pile-up only'' which can be considered to be overlaid with any $pp$ collision event. 
+
+In a method referred to as \emph{random cones method}, the energy fluctuations expected due to pile-up within a cone of radius \Rrandomcone are estimated.
+%the energy found within two cones of radius \Rrandomcone is summed and compared to each other. This provides a measure of the fluctuations due to pile-up.
 
 The electronic noise is extracted from an MC sample that has no pile-up overlaid.
 
@@ -214,15 +243,26 @@ In order to estimate systematic uncertainties on the noise term meausrement, two
 
 \subsection{The Random Cones Method}
 \label{subsec:random-cones-method}
-- The momentum distribution of a single zero-bias event in shown in \cref{fig:random-cones-balance-a}.
 
-- For each event, the difference in the energy is taken that is found within two non-overalpping cones, each at random $\phi$ and \abseta but within the same \abseta range.
+%the energy found within two cones of radius \Rrandomcone is summed and compared to each other. This provides a measure of the fluctuations due to pile-up.
 
-- The resulting distribution is shown in \cref{fig:random-cones-balance-b}. The width is a measure of the fluctuations to which a jet with $R = \Rrandomcone$ is subjected.
+The momentum distribution of particle flow objects of a single zero-bias event is shown in \cref{fig:random-cones-balance-a}. 
+In the random cones method, for each such zero-bias event, the energy of the jet constituents (either particle flow objects or topo-clusters) found within two non-overlapping circular cones of radius \Rrandomcone is summed (labelled as \pTrandomcone) and subtracted from each other.
+The random cones are placed at random $\phi$ and at random \abseta within a restricted range.
+The width of the resulting distribution of the \pTrandomcone difference, $\Delta \pTrandomcone$, when performing this for many events, provides a measure of the expected energy fluctuations to which a jet with $R = \Rrandomcone$ is subjected.
+The distribution is shown in \cref{fig:random-cones-balance-b} for random cones placed within the central region of the detector (\absetaST{0.7}). The width of the distribution, labelled as $\sigmaRC$, is estimated by taking the \SI{68}{\percent} confidence interval, due to the non-Gaussian behavior.
+The noise term due to pile-up, \Npileupconstscale, is determined by 
+\begin{equation}
+    \Npileupconstscale = \frac{\sigmaRC}{2\sqrt{2}},
+\end{equation}
+where \sigmaRC is divided by 2 to obtain the half-width and by $\sqrt{2}$ to obtain the fluctuations corresponding to just a single random cone. 
 
-- As the energy corresponds to the energy of the constituents, the width of the distribution describes the noise at constituent scale.
+%The width is a measure of the energy fluctuations to which a jet with $R = \Rrandomcone$ is subjected.
 
-- \Cref{fig:const-scale-noise-results} shows the constituent scale noise as a function of \abseta as well as $mu$ for both, data and MC.
+As \pTrandomcone corresponds to the sum of energies at the scale of the jet constituents, \Npileup corresponds to the noise at the scale of the constituents.
+
+
+\Cref{fig:const-scale-noise-results} shows this constituent scale noise as a function of \abseta as well as $mu$ for both, data and MC.
 
 - The difference between data and MC is significant ($\approx 20\,\%$).
 
@@ -244,7 +284,7 @@ The effect is constant with pile-up and independent of the energy of the jet. As
 - A closure test can be performed by comparing the MC JER in a sample with and without pile-up is derived. The quadratic difference of the two resolutions is expected to reflect the contributions to the JER from pile-up. Figure \cref{non-closure} shows a comparison. The difference is quantified by comparing the noise term of the random cones noise (with $N/\pT$) to the $N$ extracted from a fit of the functional form $N/\pT \oplus S/\sqrt{\pT}$ to the quadratic difference. The stochastic term was found to be non-negligible in the quadratic difference reflecting the fact that also the energy deposits from pile-up are subject to stochastic fluctuations.
 
 \FloatBarrier
-\begin{figure}
+\begin{figure}[t]
     \subfloat[] {
         \newImageResizeHalf{figures/calibration/zero-bias-event-deposits.pdf}
         \label{fig:random-cones-balance-a}
@@ -258,7 +298,7 @@ The effect is constant with pile-up and independent of the energy of the jet. As
     \label{fig:random-cones-balance}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[t]
     \subfloat[] {
         \newImageResizeHalf{figures/calibration/const-noise-vs-eta.pdf}
     }
@@ -271,7 +311,7 @@ The effect is constant with pile-up and independent of the energy of the jet. As
 \end{figure}
 
 
-\begin{figure}
+\begin{figure}[t]
     \subfloat[] {
         \newImageResizeCustom{0.6}{figures/calibration/pile-up-jer-vs-pt.pdf}
     }
@@ -396,8 +436,9 @@ An eigenvalue decomposition is performed to reduce the final number of nuisance 
 
 
 \Minote{}{Not sure if I would like to show the uncertainty plot! Can raise a lot of discussions}
-s
-\begin{figure}
+
+\FloatBarrier
+\begin{figure}[t]
     \subfloat[] {
         \newImageResizeHalf{figures/calibration/jer-unc-vs-pt.pdf}
     }
@@ -411,7 +452,21 @@ s
 
 
 \section{Application of JER in Physics Analyses}
+The measured JER is used to improve comparisons between MC simulations and data by both, correcting the nominal JER of the MC simulations to on average match the one found in data, and propagating systematic uncertainties of the JER measurements. 
+To this end, a procedure known as \emph{smearing} is applied in which the transverse momenta of the jets are randomly varied according to a Gaussian function with a certain width $\sigma_{\text{smear}}$. 
 
+The nominal correction of the JER is only applied in regions of \pT and $\eta$ where the resolution in MC simulation is smaller than in data. In regions where the resolution in MC simulation is larger than in data, no nominal smearing is applied, but the full JER difference is taken as an additional systematic uncertainty.\footnote{Ideally, the JER of the MC simulation should be decreased (``unsmeared'') in scenarios like these. This, however, is technically non-trivial and computing intensive, as it requires the comparison with truth information that is not always accessible in the MC simulation samples. Therefore, a conservative uncertainty is applied instead. This is planned to be revisited for future analyses.}
+
+The systematic uncertainties are propagated by applying a Gaussian smearing with width
+\begin{equation}
+    \sigma_{\text{smear}} =  \left( \sigma_{\text{nom}} - |\sigma_{\text{variation}}|   \right)^2  - \sigma_{\text{nom}},
+\end{equation}
+where $\sigma_{\text{nom}}$ is the nominal value of the JER and $\sigma_{\text{variation}}$ corresponds to the JER after one-standard-deviation variation of a certain systematic uncertainty.
+
+
+
+% From paper
+% Also JER systematic uncertainties are propagated through physics analyses by smearing jets according to a Gaussian function with width 𝜎smear.
 
 
 \section{Future Improvements}

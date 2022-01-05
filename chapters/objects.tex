@@ -129,6 +129,7 @@ In practice, a jet is defined by two choices: the \emph{jet constituents}, i.e. 
 \Minote{}{Replace jet evolution figure.}
 
 \subsubsection{Jet algorithm}
+\label{subsubsec:jet-algorithm}
 The jet algorithm widely adopted in ATLAS is the so-called \emph{anti-$k_T$} algorithm~\cite{Cacciari:2008gp}, that is both infrared and collinear safe.
 It takes a set of input objects and in the first step computes the values of two distinct distance metrics for all their combinations.
 The first type of metric is defined as the distance between two objects, labelled as $i$ and $j$,
@@ -140,6 +141,7 @@ the second type is given by the distance between object $i$ and the beam,
 \begin{equation}
     d_{iB} = \frac{1}{p_{T_i}^2}.
 \end{equation}
+% The \antikt algorithm uses a parameter value of $p = -1$.
 The algorithm finds the minimum of all the computed values and proceeds as follows:
 \begin{itemize}
     \item If the smallest distance is of type $d_{ij}$, the objects $i$ and $j$ are combined, and the algorithm begins again with the list of distances including the one for the newly combined object.
@@ -148,6 +150,7 @@ The algorithm finds the minimum of all the computed values and proceeds as follo
 The procedure is repeated until no objects are left and only jets remain.
 The parameter $R$ in \cref{eq:dij} controls the radius and entirely defines the algorithm.
 Unless otherwise noted, the jets used in the work presented in this thesis use a radius parameter of $R = 0.4$.
+% Typically a minimum pT requirement is used.
 %In the \HWW analysis presented in \cref{chap:hww}, a radius  is used. 
 %The jet calibration measurements presented in \cref{chap:calibration} consider both, jets with $R = 0.4$ and so-called $R$-scan jets with $R = 0.2$ or $R = 0.6$.
 
@@ -172,8 +175,9 @@ PFlow jets have an improved energy and angular resolution, reconstruction effici
 \Cref{chap:calibration} discusses the improved jet energy resolution of PFlow jets.
 
 %- Mention truth jets / particle jets here? Constituents: Truth jets are reconstructed using stable final-state particles and exclude muons, neutrinos, and particles from pile-up interactions. Truth jets are selected with the same 𝑝T > 7 GeV and |𝜂| < 4.5 thresholds as EMtopo and PFlow jets, and are geometrically matched to those jets using the angular distance Δ𝑅 with the requirement Δ𝑅 < 0.3. -> probably something unique to calibration measurements (Or is it? If we evaluate uncertainties with truth samples they use truth jets I guess!)
-\Minote{}{Maybe mention truth jets here?}
 
+When the $pp$ collisions are studied in MC only, another jet definition is often exploited that is defined at particle level. These particle-level jets are known as \emph{truth jets} and are defined with the same jet algorithm as the reconstructed jets, but using all stable final-state particles except muons, neutrinos, and particles coming from pile-up interactions as inputs. They are typically compared to the reconstructed jets by matching them geometrically with a minimum requirement on $\Delta R$. 
+\TDinote{}{Read if the truth jet definition paragraph fits here}
 % Ghost association for track 
 % Tracks are matched to jets using ghost association [35], a procedure that treats them as four-vectors of infinitesimal magnitude during the jet reconstruction and assigns them to the jet with which they are clustered.
 
@@ -183,6 +187,7 @@ PFlow jets have an improved energy and angular resolution, reconstruction effici
 
 
 \subsection{The particle flow algorithm}
+\label{subsec:pflow-algorithm}
 The particle flow algorithm (PFlow algorithm) is a multi-stage procedure to identify energy deposits in the calorimeter that are likely to be caused by charged particles. The energy of the topo-clusters that can be clearly associated to a track is not considered in the reconstruction of PFlow jets, but their energy is ``\emph{removed}'' (or ``\emph{subtracted}'') from the calorimeter and instead the \pT of the track is used. A flow chart of the different steps of the algorithm is shown in \cref{fig:pflow-algorithm}. The procedure is explained below. More information can be found in \ccite{PERF-2015-09} and a description of the changes to the PFlow algorithm introduced for \RunTwo is described in \ccite{JETM-2018-05}.
 
 \subsubsection{Selection of tracks} Tracks considered for the energy subtraction must require stringent criteria: at least nine hits in the silicon detectors and no missing pixel hit when such a hit would be expected~\cite{PERF-2015-09}. They must have \absetaST{2.5} and $\pT < 0.5\,\GeV$ and must not be matched to electron or muon candidates. A parametrized maximum \pTtrack requirement excludes some tracks with $\pTtrack < 100\,\GeV$ from the algorithm. The parametrization aims at finding the tracks for which the ID measurements can be assumed inferior to the calorimeter measurements. No track above $\pTtrack = 100\,\GeV$ is considered.
