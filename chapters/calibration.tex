@@ -157,7 +157,7 @@ The width of the truth response using fully calibrated jets \TDinote{(JES+GSC)}{
 \begin{equation}
     \mcjer = \sigma \left( \frac{\pTcalib}{\pTtruth} \right) / \mu \left( \frac{\pTcalib}{\pTtruth} \right),
 \end{equation}
-constitutes the standard definition of the JER in MC simulation. 
+constitutes the standard definition of the JER in MC (MC JER) simulation. 
 The width and mean are taken from a Gaussian fit to the core of the distribution, as shown in \cref{fig:truth-response}. The division by the mean corrects for the residual non-closure of the jet calibration, which is sizeable at low \pT\footnote{After the JES calibration, the response diverges from unity by a maximum of about $5\% (3\%, 1\%)$ at $\pTtrue = 20 (30, 50)\,\GeV$~\cite{JETM-2018-05}.}.
 
 \Cref{fig:jer-parametrisation} shows an illustration of the effect of the different terms as a function of jet \pT, with typical values for the three parameters, N, S, and C. The noise term is dominant at low \pT ($\pT \lesssim 40\,\GeV$), the stochastic term at medium \pT ($40 \lesssim \pT \lesssim 1000\,\GeV$), and the constant term at high \pT ($\pT \gtrsim 1000\,\GeV$).
@@ -245,43 +245,31 @@ In order to estimate systematic uncertainties on the noise term meausrement, two
 \label{subsec:random-cones-method}
 
 %the energy found within two cones of radius \Rrandomcone is summed and compared to each other. This provides a measure of the fluctuations due to pile-up.
-
-The momentum distribution of particle flow objects of a single zero-bias event is shown in \cref{fig:random-cones-balance-a}. 
-In the random cones method, for each such zero-bias event, the energy of the jet constituents (either particle flow objects or topo-clusters) found within two non-overlapping circular cones of radius \Rrandomcone is summed (labelled as \pTrandomcone) and subtracted from each other.
+The random cones method can be used to measure the noise expected from pile-up in zero-bias data. The momentum distribution of particle flow objects of a single zero-bias event is shown in \cref{fig:random-cones-balance-a}. 
+For each such zero-bias event, the energy of the jet constituents (either particle flow objects or topo-clusters) found within two non-overlapping circular cones of radius \Rrandomcone is summed. 
 The random cones are placed at random $\phi$ and at random \abseta within a restricted range.
-The width of the resulting distribution of the \pTrandomcone difference, $\Delta \pTrandomcone$, when performing this for many events, provides a measure of the expected energy fluctuations to which a jet with $R = \Rrandomcone$ is subjected.
-The distribution is shown in \cref{fig:random-cones-balance-b} for random cones placed within the central region of the detector (\absetaST{0.7}). The width of the distribution, labelled as $\sigmaRC$, is estimated by taking the \SI{68}{\percent} confidence interval, due to the non-Gaussian behavior.
-The noise term due to pile-up, \Npileupconstscale, is determined by 
+The distribution of the difference of the energy within the cones, $\Delta \pTrandomcone = p_{\text{T}}^{\text{Rcone1}} - p_{\text{T}}^\text{Rcone2}$, when sampled over many events, provides a measure of the expected energy fluctuations to which a jet with $R = \Rrandomcone$ is subjected.
+% The width of the resulting distribution of the \pTrandomcone difference, $\Delta \pTrandomcone$, when performing this for many events, 
+The distribution is shown in \cref{fig:random-cones-balance-b} for random cones with radius $\Rrandomcone = 0.4$ placed within the central region of the detector (\absetaST{0.7}). The width of the distribution, labelled as $\sigmaRC$, is estimated by taking the \SI{68}{\percent} confidence interval, due to the non-Gaussian behavior.
+The noise term due to pile-up at the energy scale of the constituents, \Npileupconstscale, is determined by 
 \begin{equation}
     \Npileupconstscale = \frac{\sigmaRC}{2\sqrt{2}},
 \end{equation}
-where \sigmaRC is divided by 2 to obtain the half-width and by $\sqrt{2}$ to obtain the fluctuations corresponding to just a single random cone. 
+where \sigmaRC is divided by 2 to obtain the half-width and by $\sqrt{2}$ to obtain the fluctuations corresponding to just a single random cone~\cite{JETM-2018-05}. 
+The constituent scale noise as measured in data and MC is shown in \Cref{fig:const-scale-noise-results} as a function of \abseta and $\mu$.
+The difference between data and MC is observed to be significant ($\approx 20\,\%$), which is discussed in more detail in \cref{subsec:constituents-mismodelling}. 
 
-%The width is a measure of the energy fluctuations to which a jet with $R = \Rrandomcone$ is subjected.
+%As \pTrandomcone corresponds to the sum of energies at the scale of the jet constituents, \Npileup corresponds to the noise at the scale of the constituents.
 
-As \pTrandomcone corresponds to the sum of energies at the scale of the jet constituents, \Npileup corresponds to the noise at the scale of the constituents.
+The constituent scale noise needs to be scaled to the JES scale, which requires the same calibration factor to be applied as in the MC-based jet calibration to the particle level (see \cref{sec:jes-calibration}).
+Due to technical reasons\footnote{The JES scale factor is not available in bins of \pTtruth which is required for the random cones method}, this scaling is derived independently by using a dijet sample (see \cref{tab:noise-term-samples}). The scale factors applied to \Npileupconstscale are determined by taking the mean of the distribution of the ratio $\pTcalib / \pTPUsub$ in bins of \pTtruth. Truth jets with $\pT > 7\,\GeV$ are matched geometrically ($\Delta R < 0.3$) to the reconstructed jets for this purpose. 
+The resulting pile-up contribution to the relative JER in the central region of the detector (\absetaST{0.7}) is shown in \cref{fig:pile-up-jer-vs-pt}.
+The noise due to pile-up at JES scale, \Npileup, is finally quantified by fitting $N/\pT$ to this distribution. 
+Since the calorimeter granularity changes across $\eta$ (see \cref{subsec:calorimeter}), \Npileup is determined in several bins of \absetadet. The results are shown in TABLE XX.
+\TDinote{Result tables!}
+The noise term due to pile-up for PFlow jets is significantly lower than that of EMTopo jets, reflecting the superior resolution of track-based measurement at low \pT compared to calorimeter-based measurements. 
 
-
-\Cref{fig:const-scale-noise-results} shows this constituent scale noise as a function of \abseta as well as $mu$ for both, data and MC.
-
-- The difference between data and MC is significant ($\approx 20\,\%$).
-
-- The causes for this is the challenge to model pile-up correctly, as it is impacted by non-perturbative effects. The MC samples therefore rely on theoretical models which parameters are \emph{tuned} to correctly describe the data in as many variables as possible.
-
-The effect is constant with pile-up and independent of the energy of the jet. As such, the jet calibration can greatly reduce the effects of this mismodelling.
-
-- The constituent scale noise needs to be scaled with the same factor as the jet momentum is scaled when calibrated (see \cref{sec:jes-calibration}).
-
-- This scaling is derived\footnote{due to technical reasons, MC JES calibration is not available in pTtruth bins which is required here} with a dijet samples.
-- The JES scaling is provided by the mean of the distribution of the ratio pTcalibrated / pTpileupSubtracted.
-
-- The resulting pile-up contribution to the JER is shown in \cref{fig:pile-up-jer-vs-pt}.
-
-- The difference between pflow and emtopo becomes very significant at low pT.
-
-- The noise is quantified by fitting $N/\pT$ to this pile-up contribution
-
-- A closure test can be performed by comparing the MC JER in a sample with and without pile-up is derived. The quadratic difference of the two resolutions is expected to reflect the contributions to the JER from pile-up. Figure \cref{non-closure} shows a comparison. The difference is quantified by comparing the noise term of the random cones noise (with $N/\pT$) to the $N$ extracted from a fit of the functional form $N/\pT \oplus S/\sqrt{\pT}$ to the quadratic difference. The stochastic term was found to be non-negligible in the quadratic difference reflecting the fact that also the energy deposits from pile-up are subject to stochastic fluctuations.
+A closure test can be performed for the random cones method by comparing the MC JER in a sample with and without pile-up. The quadratic difference of the two resolutions is expected to reflect the contributions to the JER from pile-up. Figure \cref{non-closure} shows a comparison of the MC JER extracted in the different samples, as well the quadratic difference that is to be compared to the noise from the random cones as extracted from MC that is also displayed. The non-closure is quantified by comparing \Npileup as extracted from MC, to the parameter $N$ that is extracted from a fit of the functional form $N/\pT \oplus S/\sqrt{\pT}$ to the quadratic difference. The stochastic term is included because it is non-negligible in the quadratic difference, due to the fact that the energy deposits from pile-up are also subject to stochastic fluctuations.
 
 \FloatBarrier
 \begin{figure}[t]
@@ -328,6 +316,7 @@ The effect is constant with pile-up and independent of the energy of the jet. As
     \caption{Comparison between the pile-up noise term \Npileup determined using the random cone method (black solid circles) and the expectation from MC simulation (orange squares) as extracted from the difference in quadrature of MC simulation with (red downward triangles) and without (blue upward triangles) pile-up. Results are shown at the PFlow+JES energy scale for jets in the central region of the detector $\absetadet < 0.7$. Previously published in \ccite{JETM-2018-05}.}
     \label{fig:non-closure}
 \end{figure}
+
 
 \subsection{Extracting the electronic noise from Monte Carlo}
 - MC JER from sample with NO pile-up overlaid!
@@ -386,6 +375,16 @@ The uncertainties become very large at high $\eta$ which is where the detector g
     \label{fig:noise-term-results-pflow}
 \end{figure}
 
+
+\subsection{Mismodelling of the jet constituents}
+\label{subsec:constituents-mismodelling}
+The reason is the challenge to model pile-up correctly, as it is impacted by non-perturbative effects.
+
+ The MC samples therefore rely on theoretical models which parameters are \emph{tuned} to correctly describe the data in as many variables as possible.
+
+The effect is constant with pile-up and independent of the energy of the jet. As such, the jet calibration can greatly reduce the effects of this mismodelling.
+
+\TDinote{Checkout notes for pile-up task force meetings}
 
 
 \section{Jet Energy Resolution Combination}
