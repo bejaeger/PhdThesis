@@ -169,8 +169,16 @@ The width and mean are taken from a Gaussian fit to the core of the distribution
 
 \FloatBarrier
 \begin{figure}[t]
-    \newImageResizeHalf{figures/calibration/Breakdown-of-JER-parameters-MC16dMCJER.pdf}
-    \caption{Illustration of JER parametrisation breakdown.}
+    \subfloat[] {
+        \label{fig:jer-parametrisation-a}
+        \newImageResizeHalf{figures/calibration/NoiseTerm_withPileupResolution_EMPFlowJets_mc16d_00eta07_nominalFit.pdf}
+    
+    } 
+    \subfloat[] {
+        \label{fig:jer-parametrisation-b}
+        \newImageResizeHalf{figures/calibration/Breakdown-of-JER-parameters-MC16dMCJER.pdf}    
+    }
+    \caption{MC JER and Illustration of JER parametrisation breakdown.}
     \label{fig:jer-parametrisation}
 \end{figure}
 
@@ -488,6 +496,7 @@ where $\sigma_{\text{nom}}$ is the nominal value of the JER and $\sigma_{\text{v
 
 - split in mu bins!
 - Factoring in GSC (hmm...I have to think about that again!)
-- Different fit model
+- Different JER parametrisation for PFlow
+
 
 - Maybe put that in an appendix.
