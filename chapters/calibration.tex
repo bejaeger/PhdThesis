@@ -265,18 +265,39 @@ The noise term due to pile-up at the energy scale of the constituents, \Npileupc
 \end{equation}
 where \sigmaRC is divided by 2 to obtain the half-width and by $\sqrt{2}$ to obtain the fluctuations corresponding to just a single random cone~\cite{JETM-2018-05}.
 The constituent scale noise as measured in data and MC is shown in \Cref{fig:const-scale-noise-results} as a function of \abseta and $\mu$.
-The difference between data and MC is observed to be significant ($\approx 20\,\%$), which is discussed in more detail in \cref{subsec:constituents-mismodelling}.
+The difference between data and MC is observed to be significant ($\approx 20\,\%$). This discrepancy is confirmed in other studies of data recorded by the ATLAS experiment. The author contributed various studies to further understand this behavior, which is summarized in \cref{app:constituents-mismodelling}. 
+Since the effect is constant with pile-up and independent of the energy of the jet, the jet calibration can greatly minimize the impact of this mismodelling. 
 
 %As \pTrandomcone corresponds to the sum of energies at the scale of the jet constituents, \Npileup corresponds to the noise at the scale of the constituents.
 
 The constituent scale noise needs to be scaled to the JES scale, which requires the same calibration factor to be applied as in the MC-based jet calibration to the particle level (see \cref{sec:jes-calibration}).
 Due to technical reasons\footnote{The JES scale factor is not available in bins of \pTtruth which is required for the random cones method}, this scaling is derived independently by using a dijet sample (see \cref{tab:noise-term-samples}). The scale factors applied to \Npileupconstscale are determined by taking the mean of the distribution of the ratio $\pTcalib / \pTPUsub$ in bins of \pTtruth. Truth jets with $\pT > 7\,\GeV$ are matched geometrically ($\Delta R < 0.3$) to the reconstructed jets for this purpose.
 The resulting pile-up contribution to the relative JER in the central region of the detector (\absetaST{0.7}) is shown in \cref{fig:pile-up-jer-vs-pt}.
-The noise due to pile-up at JES scale, \Npileup, is finally quantified by fitting $N/\pT$ to this distribution and extracting $N$.
-Since the calorimeter granularity changes across $\eta$ (see \cref{subsec:calorimeter}), \Npileup is determined in several bins of \absetadet. The results are shown in TABLE XX.
-\TDinote{Result tables!}
-The noise term due to pile-up for PFlow jets is significantly lower than that of EMTopo jets, reflecting the superior resolution of track-based measurement at low \pT compared to calorimeter-based measurements.
+The noise due to pile-up is significantly lower in the case of PFlow jets than EMTopo jets, reflecting the superior resolution of track-based measurement at low \pT compared to calorimeter-based measurements.
 
+
+\subsubsection{Quantifying the pile-up noise}
+- Scaling of const scale to JES
+- Different options to do that
+- Fits N / pT 
+- Pile-up dependent noise term 
+- GSC complication
+
+Different considerations need to be made when quantifying the pile-up noise at JES scale, \Npileup. A straightforward approach is to fit $N/\pT$ to the distribution shown in \cref{fig:pile-up-jer-vs-pt}. This, however, assumes that the JES scaling is independent of the \pT of the jet, which is not the case due to the non-linearity of the calorimeter. The JES scale factor is about XX for jets with $\pT = 20\,\GeV$ and XX for jets with $\pT = 40\,\GeV$.
+This means that the pile-up noise is amplified more at lower \pT by multiplying the jet \pT with a larger JES factor. If this were to be considered, the noise term needs to be extended by a \pT-dependent term, $\Npileup = \NpileuppT$.
+
+- Studies of MC JER showed that the pT dependence of the noise term is mitigated by the GSC calibration. The GSC uses on global jet properties that cannot be defined on a constituent level as would be needed for the random cones method. 
+
+- Disadvantage of deriving something at constituent scale that is manipulated at the global level.
+
+- The noise due to pile-up at JES scale, \Npileup, is finally quantified by fitting $N/\pT$ to this distribution and extracting $N$.
+
+
+Since the calorimeter granularity changes across $\eta$ (see \cref{subsec:calorimeter}), \Npileup is determined in several bins of \absetadet. 
+The results are shown in TABLE XX. \TDinote{Result tables!}
+
+
+\subsubsection{Closure test}
 A closure test can be performed for the random cones method by comparing the MC JER in a sample with and without pile-up. The quadratic difference of the two resolutions is expected to reflect the contributions to the JER from pile-up. Figure \cref{non-closure} shows a comparison of the MC JER extracted in the different samples, as well the quadratic difference that is to be compared to the noise from the random cones as extracted from MC that is also displayed. The non-closure is quantified by comparing \Npileup as extracted from MC, to the parameter $N$ that is extracted from a fit of the functional form $N/\pT \oplus S/\sqrt{\pT}$ to the quadratic difference. The stochastic term is included because it is non-negligible in the quadratic difference, due to the fact that the energy deposits from pile-up are also subject to stochastic fluctuations.
 
 \FloatBarrier
@@ -328,14 +349,6 @@ A closure test can be performed for the random cones method by comparing the MC 
     \caption{Comparison between the pile-up noise term \Npileup determined using the random cone method (black solid circles) and the expectation from MC simulation (orange squares) as extracted from the difference in quadrature of MC simulation with (red downward triangles) and without (blue upward triangles) pile-up. Results are shown at the PFlow+JES energy scale for jets in the central region of the detector $\absetadet < 0.7$. Previously published in \ccite{JETM-2018-05}.}
     \label{fig:non-closure}
 \end{figure}
-
-
-\subsection{Estimating the pile-up noise}
-- Scaling of const scale to JES
-- Different options to do that
-- Fits N / pT 
-- Pile-up dependent noise term 
-- GSC complication
 
 
 \subsection{Extracting the electronic noise from Monte Carlo}
@@ -397,18 +410,6 @@ The uncertainties become very large at high $\eta$ which is where the detector g
     \label{fig:noise-term-results-pflow}
 \end{figure}
 
-
-
-
-\subsection{Mismodelling of the jet constituents}
-\label{subsec:constituents-mismodelling}
-The reason is the challenge to model pile-up correctly, as it is impacted by non-perturbative effects.
-
-The MC samples therefore rely on theoretical models which parameters are \emph{tuned} to correctly describe the data in as many variables as possible.
-
-The effect is constant with pile-up and independent of the energy of the jet. As such, the jet calibration can greatly reduce the effects of this mismodelling.
-
-\TDinote{Checkout notes for pile-up task force meetings}
 
 
 \section{Jet Energy Resolution Combination}
