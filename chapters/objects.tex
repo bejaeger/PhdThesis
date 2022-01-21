@@ -49,6 +49,7 @@ To classify whether the tracks are likely to come from the hard-scatter vertex o
 
 
 \section{Calorimeter Clustering}
+\label{sec:calo-clustering}
 %\ccite{PERF-2014-07,ATL-LARG-PUB-2008-002}
 Each cell of the calorimeter system is read out and interpreted as a massless four-vector. In the first reconstruction step, the cells are grouped together to form so-called \emph{topological clusters} or \emph{topo-clusters}. Topo-clusters are used as input to further reconstruction algorithms to form jets, electrons, or missing transverse energy, as described in the later sections.
 
@@ -71,8 +72,7 @@ The topo-clustering algorithm consists of three steps, each defined by a thresho
     \item \textbf{Adding neighbours:} All neighbouring cells that have not been used as seed and satisfy $|z_{\text{cell}}| > N$ are added to the seed cell.
     \item \textbf{Finalize: } All neighbouring cells with $|z_{\text{cell}}| > P$ are added.
 \end{enumerate}
-The standard values used for the ATLAS calorimeters in \RunTwo are $S = 4$, $N = 2$, $P = 0$.
-% so the algorithm is sometimes referred to as ``420 clustering''.
+The standard values used for the ATLAS calorimeters in \RunTwo are $S = 4$, $N = 2$, $P = 0$, so the algorithm is sometimes referred to as ``420 topo-clustering''.
 The initial set of identified clusters may have large topo-clusters resulting from the merging of energy depositions due to multiple particles very close to each other in the calorimeter.
 Therefore, another processing step, known as \emph{cluster splitting}, is performed to split topo-clusters with two or more local maxima. The details of this procedure are described in \ccite{ATL-LARG-PUB-2008-002}.
 

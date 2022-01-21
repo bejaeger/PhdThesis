@@ -126,6 +126,17 @@
 \NewDocumentCommand {\TOPpp} { o } {\AtlasMC[#1]{Top++}}
 \NewDocumentCommand {\VBFNLO} { o } {\AtlasMC[#1]{VBFNLO}}
 
+\newcommand*{\POWHEGBOXV}[1]{\textsc{Powheg-Box}~#1\xspace}
+\newcommand*{\POWPYTHIA}{\POWHEG{}+\PYTHIA}
+\newcommand*{\PYTHIAV}[1]{\textsc{Pythia}~#1\xspace}
+\newcommand*{\SHERPAV}[1]{\textsc{Sherpa}~#1\xspace}
+\newcommand*{\MGFiveNLO}{\textsc{MG5\_aMC@NLO}\xspace}
+\newcommand*{\HerwigV}[1]{Herwig~#1\xspace}
+\newcommand*{\HERWIGV}[1]{\textsc{Herwig}~#1\xspace}
+\newcommand*{\JIMMYV}[1]{\textsc{Jimmy}~#1\xspace}
+
+
+
 % common ME+PS combinations
 \NewDocumentCommand {\MGNLOHER} { o } {\AtlasMC[#1]{MadGraph5\_aMC@NLO+Herwig}}
 \NewDocumentCommand {\MGNLOPY} { o } {\AtlasMC[#1]{MadGraph5\_aMC@NLO+Pythia}}
