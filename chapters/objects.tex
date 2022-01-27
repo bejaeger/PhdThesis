@@ -95,7 +95,7 @@ The cells are calibrated at the electromagnetic scale (\emph{EM scale}) which me
 \emph{Jets} are the experimental manifestation of quarks and gluons.
 They consist of collimated sprays of particles in the detector and are abundant at the LHC.
 %, originating from the hadronisation of quarks and gluons, 
-Almost all physics analyses need to consider jets. Jets can be defined at various stages during their evolution in the detector, as illustrated in \Cref{fig:jet-evolution}. First, the quarks and gluons produced in the collision events undergo a process of parton showering (see \cref{sec:anatomy}) and produce a \emph{parton jet}. The partons then hadronise to form a spray of stable particles referred to as \emph{particle jet}. The hadrons in turn interact with the detector and are eventually measured in the calorimeter. At this stage, the object is called \emph{calorimeter jet} or simply \emph{jet}.
+Almost all physics analyses need to consider jets. Jets can be defined at various stages during their evolution in the detector, as illustrated in \Cref{fig:jet-evolution}. First, the quarks and gluons produced in the collision events undergo a process of parton showering (see \cref{sec:anatomy}) and produce a \emph{parton jet}. The partons then hadronise to form a spray of stable particles referred to as \emph{particle jet}. Finally, the hadrons interact with the detector and are eventually measured in the calorimeter. At this stage, the object is called \emph{calorimeter jet} or simply \emph{jet}.
 The main challenge of jet physics is to define the experimentally measured jet in a way that describes the original particle jet as accurately as possible.
 Only this will allow meaningful comparisons between experiment and theory.
 
@@ -162,7 +162,6 @@ Different inputs can be used for the \emph{anti-$k_T$} algorithm.
 Historically, the majority of physics analyses used jets reconstructed with only calorimeter information in the form of topo-clusters. 
 Prior to the jet algorithm, the positions of the topo-clusters are recomputed (a process known as \emph{origin correction}) to take into account the position of the identified hard-scatter vertex rather than the detector origin. 
 Jets formed with topo-clusters at the EM scale are referred to as \emph{EMTopo} jets.
-\TDinote{}{Add note on origin correction}
 %- Mention event-by-event origin correction (in JET section!)
 % From JER paper
 % Only positive-energy topo-clusters are used as inputs to the jet reconstruction. A jet produced in the hard-scatter process is expected to originate from the primary vertex, defined as the reconstructed vertex with at least two associated tracks and the largest sum of squared track momentum.
@@ -225,7 +224,7 @@ Applying basic selections on these variables yields a high efficiency exceeding 
 Jets that have an origin other than the hard scatter are classified as pile-up jets.
 They are a nuisance to physics analyses as they can spoil the measurements when not being identified correctly.
 \Cref{fig:pile-up-jets-illustration} illustrates the two categories of pile-up jets:
-\emph{stochastic pile-up jets}, reconstructed from energy deposits randomly clustered in certain regions, and \emph{QCD pile-up jets}, originating from genuine pile-up vertices.\footnote{It should be noted, that this distinction, as well as \cref{fig:pile-up-jets-illustration}, is mainly used for the purpose of a convenient description. The actual experiment is subject to many pile-up interactions so that this boundary is blurred, as every jet also has contributions from pile-up effects.}
+\emph{stochastic pile-up jets}, reconstructed from energy deposits randomly clustered in certain regions, and \emph{QCD pile-up jets}, originating from genuine pile-up vertices.\footnote{It should be noted, that this distinction, as well as \cref{fig:pile-up-jets-illustration}, is mainly used for the purpose of a convenient description. The actual experiment is subject to many pile-up interactions such that this boundary is blurred, as every jet also has contributions from pile-up.}
 To identify these types of jets a multivariate discriminant called \emph{Jet Vertex Tagger} (JVT)~\cite{ATLAS-CONF-2014-018} is used.
 The JVT is based on a combination of two track-based variables that allow to separate hard-scatter jets from pile-up jets. The variables are used to construct a two-dimensional likelihood that represents the relative probability for a given jet to stem from the hard scatter.
 To suppress pile-up jets, physics analyses typically require a minimum JVT threshold for jets in the central region \absetaST{2.4} and within a certain \pT range.
@@ -250,7 +249,7 @@ Different jet-related properties can be used for $b$-jet identification.
 %about the underlying physics process that occurred.
 %provide information about the likelihood that a given jet originates from a certain quark flavour.
 %This in turn is crucial input to classify different hard scatter events.
-The $b$-jets contain $b$-hadrons that have a relatively long lifetime of about \SI{1.5}{\pico\second} before they decay. This leads to the formation of a secondary decay vertex that is far enough away from the hard-scatter vertex to be detectable with the track and vertex information from the ID.
+The $b$-jets contain $b$-hadrons that have a relatively long lifetime of about \SI{1.5}{\pico\second} before they decay. This leads to the formation of a secondary decay vertex that is far enough away from the hard-scatter vertex for it to be detectable with the track and vertex information from the ID.
 Several low-level \emph{$b$-tagging algorithms} primarily exploit this distinct detector signature\footnote{Also other characteristics of the production and decay of $b$-hadrons are considered, such as the high $b$-hadron mass, the (charged) decay multiplicity, or $b$-quark fragmentation properties.}, to identify (or \emph{tag}) jets as $b$-jets. They also make use of other information such as impact-parameter measurements or reconstructed secondary vertices~\cite{ATL-PHYS-PUB-2017-013}.
 
 The outputs of the low-level taggers are used to construct a final discriminant that provides a likelihood that a given jet is a $b$-jet. The work presented in this thesis uses a deep neural network discriminant, denoted as DL1r, that is trained with inputs from four low-level taggers~\cite{ATL-PHYS-PUB-2017-013}.
