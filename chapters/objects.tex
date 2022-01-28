@@ -159,15 +159,15 @@ Unless otherwise noted, the jets used in the work presented in this thesis use a
 %Jet definitions vary not only depending on the radius parameter used, but also on which inputs (or constituents) are used for the \emph{anti-$k_T$} algorithm. 
 %The inputs are known as \emph{jet constituents}. 
 Different inputs can be used for the \emph{anti-$k_T$} algorithm.
-Historically, the majority of physics analyses used jets reconstructed with only calorimeter information in the form of topo-clusters. 
-Prior to the jet algorithm, the positions of the topo-clusters are recomputed (a process known as \emph{origin correction}) to take into account the position of the identified hard-scatter vertex rather than the detector origin. 
+Historically, the majority of physics analyses used jets reconstructed with only calorimeter information in the form of topo-clusters.
+Prior to the jet algorithm, the positions of the topo-clusters are recomputed (a process known as \emph{origin correction}) to take into account the position of the identified hard-scatter vertex rather than the detector origin.
 Jets formed with topo-clusters at the EM scale are referred to as \emph{EMTopo} jets.
 %- Mention event-by-event origin correction (in JET section!)
 % From JER paper
 % Only positive-energy topo-clusters are used as inputs to the jet reconstruction. A jet produced in the hard-scatter process is expected to originate from the primary vertex, defined as the reconstructed vertex with at least two associated tracks and the largest sum of squared track momentum.
 % Therefore, an event-by-event correction to account for the position of the primary vertex in each event – referred to as an origin correction – is applied to every topo-cluster, based on its depth within the calorimeter and pseudorapidity. This method is to be contrasted with earlier approaches [7] that applied this correction only to the jet four-momentum rather than to its constituents.
 During \RunTwo, the ATLAS collaboration introduced a more sophisticated definition of jets, that use information from both, the calorimeter and the ID, to exploit the superior measurements of the ID at low transverse momenta.
-These jets are known as \emph{particle flow jets} (PFlow jets) and have two types of constituents: \emph{charged particle flow objects} (CPFOs) and \emph{neutral particle flow objects} (NPFOs). The CPFOs consist of high-quality ID tracks that are compatible with the hard-scatter vertex by requiring $|z_0 \sin \theta| < 2$\,mm.
+These jets are known as \emph{particle flow jets} (PFlow jets) and have two types of constituents: \emph{charged particle flow objects} (CPFOs) and \emph{neutral particle flow objects} (NPFOs) which are together simply referred to as \emph{PFlow objects}. The CPFOs consist of high-quality ID tracks that are compatible with the hard-scatter vertex by requiring $|z_0 \sin \theta| < 2$\,mm.
 %distance of the closest approach of the track to the hard-scatter vertex along the $z$-axis.
 The NPFOs comprise origin-corrected topo-clusters in the calorimeters identified as originating from neutral particles. The algorithm that defines the set of NPFOs is known as \emph{particle flow algorithm} and is explained in more detail below. CPFOs and NPFOs are input to the \antikt algorithm with $R = 0.4$ to form the final set of PFlow jets.
 PFlow jets have an improved energy and angular resolution, reconstruction efficiency, and pile-up stability compared to EMTopo jets~\cite{PERF-2015-09}.
@@ -175,7 +175,7 @@ PFlow jets have an improved energy and angular resolution, reconstruction effici
 
 %- Mention truth jets / particle jets here? Constituents: Truth jets are reconstructed using stable final-state particles and exclude muons, neutrinos, and particles from pile-up interactions. Truth jets are selected with the same 𝑝T > 7 GeV and |𝜂| < 4.5 thresholds as EMtopo and PFlow jets, and are geometrically matched to those jets using the angular distance Δ𝑅 with the requirement Δ𝑅 < 0.3. -> probably something unique to calibration measurements (Or is it? If we evaluate uncertainties with truth samples they use truth jets I guess!)
 
-When the $pp$ collisions are studied in MC only, another jet definition is often exploited that is defined at particle level. These particle-level jets are known as \emph{truth jets} and are defined with the same jet algorithm as the reconstructed jets, but using all stable final-state particles except muons, neutrinos, and particles coming from pile-up interactions as inputs. They are typically compared to the reconstructed jets by matching them geometrically with a minimum requirement on $\Delta R$. 
+When the $pp$ collisions are studied in MC only, another jet definition is often exploited that is defined at particle level. These particle-level jets are known as \emph{truth jets} and are defined with the same jet algorithm as the reconstructed jets, but using all stable final-state particles except muons, neutrinos, and particles coming from pile-up interactions as inputs. They are typically compared to the reconstructed jets by matching them geometrically with a minimum requirement on $\Delta R$.
 \TDinote{}{Read if the truth jet definition paragraph fits here}
 % Ghost association for track 
 % Tracks are matched to jets using ghost association [35], a procedure that treats them as four-vectors of infinitesimal magnitude during the jet reconstruction and assigns them to the jet with which they are clustered.

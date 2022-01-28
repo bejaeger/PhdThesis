@@ -9,7 +9,7 @@
 \setlength{\oddsidemargin}{5mm}
 
 % line spacing
-\renewcommand{\baselinestretch}{1.2} 
+\renewcommand{\baselinestretch}{1.2}
 
 % \setlength{\textwidth}{5.5in}
 % \setlength{\evensidemargin}{1.1in}
@@ -33,74 +33,74 @@
 % \setlength{\oddsidemargin}{0.96cm} 
 
 
- \makeatletter
- \renewenvironment{table}
-     {\@float{table} \small}
-     {\end@float}
- \makeatother
+\makeatletter
+\renewenvironment{table}
+{\@float{table} \small}
+{\end@float}
+\makeatother
 
 %---------------------------------------------------------------------------------------------------------------
 % chapter titles
 %---------------------------------------------------------------------------------------------------------------
 % adapted from ``Sonny'' in fncychap.sty
 \makeatletter
-  % \ChNameVar{\huge}
-  \ChNameVar{\huge}
-  % \ChNumVar{\Huge}
- \ChNumVar{\huge}
+% \ChNameVar{\huge}
+\ChNameVar{\huge}
+% \ChNumVar{\Huge}
+\ChNumVar{\huge}
 %\ChTitleVar{\huge\sffamily\rmfamily}
 \ChTitleVar{\huge\sffamily}
-    %\ChTitleVar{\huge\sffamily\rmfamily}	
-   %\ChTitleVar{\huge\sffamily\bfseries}
-   \ChRuleWidth{0.8pt}
-   \ChNameUpperCase
-  \renewcommand{\DOCH}{%
-    % do not print ``chapter'' line
-  }
-  \renewcommand{\DOTI}[1]{%
-    \vspace{-3.5cm}
-    \sf \CTV\raggedleft\mghrulefill{\RW}\par\nobreak
-    \vskip 5\p@
-    \CNoV\raisebox{-2pt}{\thechapter} \hfill \CTV\FmTi{#1}\\[-1ex]\nobreak
-    \mghrulefill{\RW}\par\nobreak
-    \vskip 35\p@}
-  \renewcommand{\DOTIS}[1]{%
-    \vspace{-2.5cm}
-    \sf \CTV\raggedleft\mghrulefill{\RW}\par\nobreak
-    \vskip 5\p@
-    \hfill \CTV\FmTi{#1}\\[-1ex]\nobreak
-    \mghrulefill{\RW}\par\nobreak
+%\ChTitleVar{\huge\sffamily\rmfamily}	
+%\ChTitleVar{\huge\sffamily\bfseries}
+\ChRuleWidth{0.8pt}
+\ChNameUpperCase
+\renewcommand{\DOCH}{%
+  % do not print ``chapter'' line
+}
+\renewcommand{\DOTI}[1]{%
+  \vspace{-3.5cm}
+  \sf \CTV\raggedleft\mghrulefill{\RW}\par\nobreak
+  \vskip 5\p@
+  \CNoV\raisebox{-2pt}{\thechapter} \hfill \CTV\FmTi{#1}\\[-1ex]\nobreak
+  \mghrulefill{\RW}\par\nobreak
+  \vskip 35\p@}
+\renewcommand{\DOTIS}[1]{%
+  \vspace{-2.5cm}
+  \sf \CTV\raggedleft\mghrulefill{\RW}\par\nobreak
+  \vskip 5\p@
+  \hfill \CTV\FmTi{#1}\\[-1ex]\nobreak
+  \mghrulefill{\RW}\par\nobreak
   %  \vskip 35\p@
-  }
+}
 \makeatother
 
 \usepackage{titlesec}
 \titleformat{\chapter}[display]
-  {\sffamily\Large}
-  % {\filright\MakeUppercase{\chaptertitlename} \Huge\thechapter}
-  {\filleft\MakeUppercase{\chaptertitlename} \Huge\thechapter}
-  {6ex}
-  {\Huge\titlerule\vspace{1ex}\filleft}
-  [\vspace{1ex}\titlerule]
+{\sffamily\Large}
+% {\filright\MakeUppercase{\chaptertitlename} \Huge\thechapter}
+{\filleft\MakeUppercase{\chaptertitlename} \Huge\thechapter}
+{6ex}
+{\Huge\titlerule\vspace{1ex}\filleft}
+[\vspace{1ex}\titlerule]
 
 \titleformat{\section}[block]
-  {\fontsize{14}{15}\bfseries}%\sffamily}
-  {\thesection}
-  {1em}
-  {}
-  % {\MakeUppercase}
+{\fontsize{14}{15}\bfseries}%\sffamily}
+{\thesection}
+{1em}
+{}
+% {\MakeUppercase}
 
 \titleformat{\subsection}[block]
-  {\fontsize{12}{13}\bfseries}%\sffamily}
-  {\thesubsection}
-  {1em}
-  {}
+{\fontsize{12}{13}\bfseries}%\sffamily}
+{\thesubsection}
+{1em}
+{}
 
 \titleformat{\subsubsection}[hang]
-  {\fontsize{11}{15}\bfseries}%\sffamily}
-  {\thesubsection}
-  {1em}
-  {}
+{\fontsize{11}{15}\bfseries}%\sffamily}
+{\thesubsection}
+{1em}
+{}
 
 
 %---------------------------------------------------------------------------------------------------------------
@@ -112,8 +112,9 @@
 \renewcommand{\chaptermark}[1]{\markboth{\thechapter\ #1}{}}
 \renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}{}}
 \lhead[\fancyplain{}{\thepage}]
-      {\fancyplain{}{\sc\rightmark}}
+{\fancyplain{}{\sc\rightmark}}
 \rhead[\fancyplain{}{\hspace{15ex}{\sc\leftmark}}] %% !!! redefined below !!!
-      {\fancyplain{}{\thepage}}
+{\fancyplain{}{\thepage}}
 \cfoot{}
 \addtolength{\headheight}{3pt}
+

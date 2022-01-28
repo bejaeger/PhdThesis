@@ -3,7 +3,7 @@
 
 The SM of particle physics makes predictions about quarks and gluons, yet they cannot be measured in the detector directly. Quarks and gluons hadronize to form hadrons which give rise to particle showers in the detector that are reconstructed as jets.
 While \cref{chap:experiment} focused on the experimental setup to measure the signals deposited by hadrons, and \cref{chap:objects} described how the signals are reconstructed to form jets, this chapter gives an overview on the jet calibration procedure that is necessary to make meaningful comparisons between experimental measurements and theoretical predictions.
-The experimentally measured jet is calibrated to the level of the particle jet which is typically accessible in MC simulations (see \cref{chap:objects}). The calibration is experimentally challenging due to the rich environment at hadron colliders as well as the complicated nature of hadronic interactions in the detector. The intricacies of how the detector responds to incoming particle showers is therefore first described in \cref{sec:detector-response}. \Cref{sec:jes-calibration} then describes the multi-stage procedure to calibrate the jet energy to the scale of the particle jet, which is known as the \emph{jet energy scale}, or \emph{JES}.  
+The experimentally measured jet is calibrated to the level of the particle jet which is typically accessible in MC simulations (see \cref{chap:objects}). The calibration is experimentally challenging due to the rich environment at hadron colliders as well as the complicated nature of hadronic interactions in the detector. The intricacies of how the detector responds to incoming particle showers is therefore first described in \cref{sec:detector-response}. \Cref{sec:jes-calibration} then describes the multi-stage procedure to calibrate the jet energy to the scale of the particle jet, which is known as the \emph{jet energy scale}, or \emph{JES}.
 It is also crucial to measure the \emph{jet energy resolution}, or \emph{JER}, that is, the precision with which the energy of a jet can be measured. \Cref{sec:jer} introduces how the JER can be parametrized and \cref{sec:jer-measurement} discusses how the ATLAS collaboration measures the JER in data in \RunTwo. Particular focus is given on the measurement of the noise term of the JER, which arises due to multiple pile-up interactions and electronic noise. \Cref{sec:jer-in-analysis} concludes this chapter with a description on how the measured JER is used in physics analyses.
 %  and \cref{sec:improvements-jer-measurement} gives an outlook on potential future improvements for the JER measurements.
 
@@ -85,11 +85,11 @@ where $\alpha$ and $\beta$ are derived from fits to the \pT dependence on $N_{\t
 This energy scale can be considered as the \emph{pile-up subtracted (energy) scale} and corresponds to the energy scale of the jet constituents, such that it is also referred to as \emph{constituent scale}.
 
 \subsection{MC-based correction to the particle level}
-What follows is a purely MC-based calibration of the entire four-momentum of the jet. The energy and direction of the reconstructed jets is corrected to on average match the one of the associated truth jets.
+What follows is a purely MC-based calibration of the entire four-momentum of the jet, derived with simulated dijet events. The energy and direction of the reconstructed jets is corrected to on average match the one of the associated truth jets.
 Truth jets are therefore matched to the reconstructed jets with $\pT > 0.7$, by requiring them to be within $\Delta R = 0.3$. In addition, no other activity is allowed in the vicinity of the jets, which is ensured by requiring the reconstructed (truth) jets to have no other reconstructed (truth) jet of $\pT > 7\,\GeV$ within $\Delta R = 0.6$ ($\Delta R = 1.0$).
 The average jet response is then defined by the mean of a Gaussian fit to the core of the $\EPUsub / \Etrue$ response distribution and derived in bins of \Etrue.
- The jet calibration factor (also denoted \emph{JES factor} throughout this thesis) is taken as the inverse of the average energy response parametrised as a function of \EPUsub.
- The exact procedure, referred to as \emph{numerical inversion}, is outlined in \ccite{PERF-2011-03}. The resulting average response is shown in \cref{fig:jes-calibration-jet-response} for different bins of \etadet. A similar procedure is used to correct biases in the reconstructed jet $\etadet$, which is detailed in \cref{JETM-2018-05}.
+The jet calibration factor (also denoted \emph{JES factor} throughout this thesis) is taken as the inverse of the average energy response parametrised as a function of \EPUsub.
+The exact procedure, referred to as \emph{numerical inversion}, is outlined in \ccite{PERF-2011-03}. The resulting average response is shown in \cref{fig:jes-calibration-jet-response} for different bins of \etadet. A similar procedure is used to correct biases in the reconstructed jet $\etadet$, which is detailed in \cref{JETM-2018-05}.
 Jets calibrated with the MC-based corrections are considered to be at the \emph{JES scale} and referred to as PFlow+JES jets or EM+JES jets in the following.
 
 \begin{figure}
@@ -130,16 +130,17 @@ The relative JER can then be parametrised as
     \label{eq:jer-parametrisation}
     \frac{\sigma_{p_{\rm T}}}{p_{\rm T}} = \frac{N}{p_{\rm T}} \oplus \frac{S}{\sqrt{p_{\rm T}}} \oplus C.
 \end{equation}
-This parametrisation is based on both physics considerations as well as empirical evidence from studies of the JER in MC and data. 
+This parametrisation is based on both physics considerations as well as empirical evidence from studies of the JER in MC and data.
 The following explains how the three different terms in \cref{eq:jer-parametrisation} can be inferred from physics considerations and what other effects need to be considered.
 
-\paragraph{The noise term} captures resolution effects from energy deposits stemming from pile-up interactions and other noise such as electronic noise. 
+\paragraph{The noise term} captures resolution effects from energy deposits stemming from pile-up interactions and other noise such as electronic noise.
 %The noise at cell level, as discussed in \cref{sec:calo-clustering}, cannot trivially be translated into a noise at jet level, due to several reconstruction threshold effects in the topo-clustering algorithm or the jet algorithm, as well as the non-trivial effect of the jet calibration on the JER.
 These contributions are approximately independent of the jet energy and thus scale with $1 / \pT$ in the relative JER. A detailed discussion of the noise term and how it is measured in data is provided in \cref{sec:noise-term-meas}.
 
 \paragraph{The stochastic term} is dominated by fluctuations related to the shower development in the calorimeter. Their impact on the relative JER scales with $1 / \sqrt{\pT}$ and they arise from various sources:
 %The measurements of a calorimeter are subject to the following fluctuations:
 \begin{itemize}
+    %\setlength{\itemsep}{0.0em}
     % \item Shower fluctuations: fluctuations in the number of particles produced in the shower and in the EM fraction, \fEM.
     % \item Sampling fluctuations: fluctuations in the number of ionising particles crossing the active layers of the sampling calorimeter.
     % \item Photo-electron statistics: inefficiencies converting photons to electrical signals in the hadronic tile calorimeter.
@@ -152,15 +153,15 @@ These contributions are approximately independent of the jet energy and thus sca
 
 \paragraph{The constant term} captures the effect of shower leakage, for example from energy depositions outside the jet radius, and detector inefficiencies. These effects scale with the energy of the jet and thus are measured by a constant term in the relative JER.
 
-\paragraph{The physics considerations} outlined above only consider calorimeter-type measurements. 
+\paragraph{The physics considerations} outlined above only consider calorimeter-type measurements.
 In the case of PFlow jets, additional effects come into play that can have non-trivial effects on the JER.
 First it should be noted, that some of the aforementioned effects are mitigated with PFlow jets because parts of the calorimeter measurements are replaced by more precise measurements from the ID. This is what motivates using PFlow jets in the first place.
-However, another contribution to the PFlow JER needs to be considered, to account for the sizeable amount of incorrectly subtracted energy in the PFlow algorithm. 
-This amount is captured in a term known as \emph{confusion term} and fluctuations of it contribute to the JER. Details on the confusion term can be found in \ccite{PERF-2015-09}. It is unfeasible to derive from first principle how this effect scales with increasing energy of the jet and thus empirical studies need to be performed. 
+However, another contribution to the PFlow JER needs to be considered, to account for the sizeable amount of incorrectly subtracted energy in the PFlow algorithm.
+This amount is captured in a term known as \emph{confusion term} and fluctuations of it contribute to the JER. Details on the confusion term can be found in \ccite{PERF-2015-09}. It is unfeasible to derive from first principle how this effect scales with increasing energy of the jet and thus empirical studies need to be performed.
 
-\paragraph{Other non-trivial effects} on the JER are introduced by the jet energy calibration, most notably the MC-based correction to the particle level as well as the GSC. 
-Due to the non-linearity of the calorimeter, the applied JES factor is dependent on the jet \pT as shown in \cref{fig:jes-calibration-jet-response}. This means that also the energy fluctuations to which a jet is subjected are scaled by a larger factor at low \pT than at high \pT, which can spoil the parametrisation shown in \cref{eq:jer-parametrisation}. 
-As the energy response varies most at low \pT, the noise term is especially affected by this. 
+\paragraph{Other non-trivial effects} on the JER are introduced by the jet energy calibration, most notably the MC-based correction to the particle level as well as the GSC.
+Due to the non-linearity of the calorimeter, the applied JES factor is dependent on the jet \pT as shown in \cref{fig:jes-calibration-jet-response}. This means that also the energy fluctuations to which a jet is subjected are scaled by a larger factor at low \pT than at high \pT, which can spoil the parametrisation shown in \cref{eq:jer-parametrisation}.
+As the energy response varies most at low \pT, the noise term is especially affected by this.
 Another complexity is introduced by the GSC, which reduces the JER across the entire \pT range in a way that cannot be derived from first principle. The effect is also important at low \pT and partially compensates for the effects introduced by the MC-based correction.
 
 \paragraph{}
@@ -177,7 +178,7 @@ Despite the mentioned limitations, the JER parametrisation shown in \cref{eq:jer
 \end{figure}
 
 \subsection{Estimation of the jet energy resolution in Monte Carlo simulation}
-The JER can be derived in MC simulations from the width of the truth response distribution divided by its mean, 
+The JER can be derived in MC simulations from the width of the truth response distribution divided by its mean,
 \begin{equation}
     \responsejer = \sigma \left( \frac{\pTcalib}{\pTtruth} \right) / \mu \left( \frac{\pTcalib}{\pTtruth} \right),
 \end{equation}
@@ -185,8 +186,8 @@ where \pTcalib refers to jets that are fully calibrated. The width and mean are 
 
 \Cref{fig:jer-parametrisation-a,fig:jer-parametrisation-c} show the Response JER as a function of \pTtruth for PFlow+JES jets and EM+JES jets, respectively, including the fitting function when using the parametrisation shown in \cref{eq:jer-parametrisation}. It can be seen that the fitting function describes the trend of the JER very well for both jet collections.
 % It can be seen, that the parametrisation is not optimal but is workable enough!
-An illustration of the effect of the different terms as a function of the jet \pT is shown in \cref{fig:jer-parametrisation-b} and \cref{fig:jer-parametrisation-d}, respectively. The values of the three parameters, $N$, $S$, and $C$, correspond to the values found in the fit shown in \cref{fig:jer-parametrisation-a,fig:jer-parametrisation-c}. 
-It can be observed, that the impact of the noise term is considerably smaller for PFlow jets than for EMTopo jets. 
+An illustration of the effect of the different terms as a function of the jet \pT is shown in \cref{fig:jer-parametrisation-b} and \cref{fig:jer-parametrisation-d}, respectively. The values of the three parameters, $N$, $S$, and $C$, correspond to the values found in the fit shown in \cref{fig:jer-parametrisation-a,fig:jer-parametrisation-c}.
+It can be observed, that the impact of the noise term is considerably smaller for PFlow jets than for EMTopo jets.
 The noise term for PFlow jets stays sub-dominant even at low \pT, while for EMTopo jets it becomes dominant at $\pT \lesssim 30\,\GeV$. The stochastic term for both jet collections is dominant across a large \pT range up to $\pT \gtrsim 1000\,\GeV$, where the constant term becomes important.
 
 
@@ -195,18 +196,18 @@ The noise term for PFlow jets stays sub-dominant even at low \pT, while for EMTo
     \subfloat[] {
         \label{fig:jer-parametrisation-a}
         \newImageResizeHalf{figures/calibration/NoiseTerm_withPileupResolution_EMPFlowJets_mc16d_00eta07_nominalFit.pdf}
-    } 
+    }
     \subfloat[] {
         \label{fig:jer-parametrisation-b}
-        \newImageResizeHalf{figures/calibration/Breakdown-of-JER-parameters-MC16dMCJERPFlow.pdf}    
+        \newImageResizeHalf{figures/calibration/Breakdown-of-JER-parameters-MC16dMCJERPFlow.pdf}
     } \\
     \subfloat[] {
         \label{fig:jer-parametrisation-c}
         \newImageResizeHalf{figures/calibration/NoiseTerm_withPileupResolution_EMTopoJets_mc16d_00eta07_nominalFit.pdf}
-    } 
+    }
     \subfloat[] {
         \label{fig:jer-parametrisation-d}
-        \newImageResizeHalf{figures/calibration/Breakdown-of-JER-parameters-MC16dMCJER.pdf}    
+        \newImageResizeHalf{figures/calibration/Breakdown-of-JER-parameters-MC16dMCJER.pdf}
     }
     \caption{Response JER derived for fully calibrated (a) PFlow+JES jets and (c) EM+JES jets, including a fit with the parametrisation shown in \cref{eq:jer-parametrisation}. A breakdown of the effect of the different terms in the fitting function is also shown for the results obtained with (b) PFlow+JES jets and (d) EM+JES jets.}
     \label{fig:jer-parametrisation}
@@ -223,20 +224,22 @@ The noise term for PFlow jets stays sub-dominant even at low \pT, while for EMTo
 \section{Measurement of the Jet Energy Resolution in Data}
 \label{sec:jer-measurement}
 For \RunTwo, the ATLAS collaboration uses a combination of two types of measurements to determine the JER in data.
-To this end, several steps are performed that are summarized in the flow chart shown in \cref{fig:flow-chart-jer} and explained in this section.
-First, an \insitu method similar to the \insitu jet energy calibration is performed, which measures the JER over the full \pT range using dijet events. The uncertainties of this method become sizeable at low \pT which is why a second measurement is carried out, that measures the noise term of the JER independently. This reduces the JER uncertainties at low \pT where the noise term is most important. \Cref{sec:noise-term-meas} describes the noise term measurement in detail, as it was carried out by the author of this thesis. 
-Both measurements are finally combined in a statistical combination referred to as the \emph{JER combination}. 
+The full JER measurement involves several steps that are summarized in the flow chart shown in \cref{fig:flow-chart-jer} and explained in this section.
+The first type of measurement is an \insitu method, similar to the \insitu jet energy calibration, and measures the JER over the full \pT range using dijet events. The uncertainties of this method become sizeable at low \pT which is why a second measurement is carried out, that measures the noise term of the JER independently. This reduces the JER uncertainties at low \pT where the noise term is most important. \Cref{sec:noise-term-meas} describes the noise term measurement in detail, as it was carried out by the author of this thesis.
+Both measurements are finally combined in a statistical combination referred to as the \emph{JER combination}.
 
 \subsection{Jet energy resolution measurement using dijet events}
 %The dijet measurements derived in data by considering physics processes with a jet recoiling against a well-measured reference object. 
 % The dijet measurement leverages the well-defined dijet systems in a method known as \emph{dijet balance}.
 % In events that exhibit a clean $2 \rightarrow 2$ signature with two quarks in the initial- and final state, the transverse momenta of the jets are expected to balance each other, as they enter the detector \emph{back-to-back} in the $\eta$-$\phi$ plane. 
-The dijet \insitu JER measurement exploits the clean $2 \rightarrow 2$ signature of dijet events, with two quarks in the initial state and two quarks in the final state. In well-defined systems like these, the transverse momenta of the jets are expected to balance each other, as they enter the detector \emph{back-to-back} in the $\eta$-$\phi$ plane. This means any deviation from an exact balance can be attributed to resolution effects. This method of estimating the JER is referred to as \emph{Balance JER} in the following, and can be performed in data and in MC simulation.
-The Balance JER is measured with dijet events that are required to exhibit a clean back-to-back topology and have at least one jet in a well-calibrated reference region ($0.2 \leq \absetadet \leq 0.7$). 
-An asymmetry is then defined that compares the \pT of the well-measured jet in the reference region, \pTref, to the \pT of a \emph{probe jet}, for which the resolution is to be measured. The probe jet is allowed to be anywhere in the detector within \absetadetST{4.5}.
-The JER is finally extracted in different bins of \pTref and \etadet by an iterative fitting procedure to the asymmetry distribution. For more details on how the asymmetry is defined and the JER extracted, the interested reader is referred to \ccite{JETM-2018-05}. 
+The dijet \insitu JER measurement exploits the clean $2 \rightarrow 2$ signature of dijet events, with two quarks in the initial state and two quarks in the final state. In well-defined systems like these, the transverse momenta of the jets are expected to balance each other, as they enter the detector \emph{back-to-back} in the $\eta$-$\phi$ plane. This means any deviation from an exact balance can be attributed to resolution effects, which is exploited in the method referred to as \emph{dijet balance} method. The resulting JER is denoted as \emph{Balance JER} in the following.
+% and can be derived in data as well as in MC simulation.
 
-The results of the measurement of the Balance JER in dijet data is shown in \cref{fig:insitu-jer-dijet-only}, including a comparison to the Balance JER derived in a dijet MC sample.
+The Balance JER is derived with dijet events that satisfy certain selection criteria that ensure that the events exhibit a clean back-to-back topology and contain at least one jet in a well-calibrated reference region ($0.2 \leq \absetadet \leq 0.7$).
+An asymmetry can then defined that compares the \pT of the well-measured jet in the reference region, \pTref, to the \pT of a \emph{probe jet}, for which the resolution is to be measured. The probe jet is allowed to be anywhere in the detector within \absetadetST{4.5}.
+The JER is finally extracted in different bins of \pTref and \etadet by an iterative fitting procedure to the asymmetry distribution. For more details on how the asymmetry is defined and the JER extracted, the interested reader is referred to \ccite{JETM-2018-05}.
+
+The results of the measurement of the Balance JER in dijet data and MC simulation is shown in \cref{fig:insitu-jer-dijet-only}.
 As can be seen, the uncertainties become large at low \pT\footnote{Uncertainties on the dijet JER measurement mostly stem from the presence of additional radiation in the events which spoil the perfect back-to-back signature, biases due to the event selection, and uncertainties from the JES.}, and the dijet JER measurement is not able to probe the JER to values much lower than $\pT = 50\,\GeV$, which is the regime at which the noise term becomes important.\footnote{JER measurements that use different event topologies such as \Zjets events are able to provide more precise results also at lower \pT. For the JER measurement presented in this thesis, they were not included due to other complexities. A detailed discussion about this goes beyond the scope of this thesis. However, the independent derivation of the noise term as presented in \cref{sec:noise-term-meas} is still useful, even if other JER measurements are included.}
 The noise term is therefore derived independently, as described below.
 
@@ -253,19 +256,21 @@ The noise term is therefore derived independently, as described below.
 %The goal of the noise term measurement is to isolate and measure the impact of different noise contributions to the JER. 
 %The noise present at calorimeter-cell level was discussed in \cref{sec:calo-clustering}. 
 
-The goal of the noise term measurement is to quantify how much the fluctuations of noise contribute to the JER. 
-This requires to isolate the noise effects from other contributions to the JER which is challenging, especially when considering reconstruction threshold effects for example in the topo-clustering algorithm. 
-The energy of a calorimeter cell may be raised above the threshold level to be included in the 420 topo-clustering algorithm (see \cref{sec:calo-clustering}) only because of an interplay of different effects. The measurement of the noise term therefore relies on certain assumptions that are mentioned in the relevant sections below, which results in sizeable systematic uncertainties on the measurement. In the JER combination, the noise term measurement still reduces the JER uncertainties at low \pT.
+The goal of the noise term measurement is to quantify how much the fluctuations of noise contribute to the JER.
+This requires to isolate the noise effects from other contributions to the JER which is challenging, especially when considering reconstruction threshold effects for example in the topo-clustering algorithm:
+The energy of a calorimeter cell may be raised above the threshold to be included in the 420 topo-clustering algorithm (see \cref{sec:calo-clustering}) only because of an interplay of different effects. The measurement of the noise term therefore relies on certain assumptions that are mentioned in the relevant sections below, which results in sizeable systematic uncertainties on the measurement. In the JER combination, the noise term measurement still reduces the JER uncertainties at low \pT.
 
-The full noise term of the JER can be decomposed into two terms, 
+The full noise term of the JER can be decomposed into two terms,
 \begin{equation}
     \Nfull = \sqrt{ \left(\Npileup \right) +  \left( \Nmuzero \right) },
 \end{equation}
 where \Npileup is the noise due to pile-up and \Nmuzero the residual noise that is present without any collision events.
-The latter contribution is expected to be largely dominated by \emph{electronic noise} and is therefore denoted as electronic noise in the following. 
-Both terms are derived independently of each other.
+The latter contribution is expected to be largely dominated by \emph{electronic noise} and is therefore denoted as electronic noise in the following.
+Both terms are derived independently of each other in different stages that are shown on the left-hand side of \cref{fig:flow-chart-jer}.
 
-The pile-up noise term is derived in \emph{zero-bias data} recorded in 2017. ``Zero-bias events'' are a collection of $pp$ collision events triggered on random bunch crossings, that is, with zero bias on the selection of the events. Loosely described this dataset corresponds to events with ``pile-up only''. To validate the derivation in data a \emph{minimum-bias} MC sample with simulated dijet processes is used. ``Minimum bias'' refers to the selection of events with the minimum possible requirements necessary to ensure that an inelastic collision occurred.\footnote{Because simulated samples have to be actively produced and thus require at least some minimum requirements a zero-bias MC sample is not defined.}
+The pile-up noise term is derived in \emph{zero-bias data} recorded in 2017. ``Zero-bias data'' are a collection of $pp$ collision events triggered on random bunch crossings, that is, with zero bias on the selection of the events. Loosely described this dataset corresponds to events with ``pile-up only''. To validate the derivation in data a \emph{minimum-bias} MC sample with simulated dijet processes is used.
+%``Minimum bias'' refers to the selection of events with the minimum possible requirements necessary to ensure that an inelastic collision occurred.
+\footnote{Because simulated samples have to be actively produced and thus require at least some minimum requirements a zero-bias MC sample is not defined.}
 % @From https://indico.desy.de/event/4176/contributions/69707/attachments/45757/56182/1.pdf
 %‘Minimum bias’ is an experimentally defined term, referring to the selection of inelastic events
 %with the minimum possible requirements necessary to ensure that an inelastic collision occurred.
@@ -276,7 +281,9 @@ The pile-up noise term is derived in \emph{zero-bias data} recorded in 2017. ``Z
 
 % and is typically used to measure the pile-up activity in the detector that is present in any $pp$ collision event. 
 The electronic noise is estimated in a dedicated MC sample that consists of simulated dijet events with no pile-up overlaid.
-All dijet events are simulated with \PYTHIA 8.230~\cite{Sjostrand:2007gs} using the {\textsc NNPDF2.3LO}~\cite{Ball:2012cx} set of PDFs and the A3~\cite{ATL-PHYS-PUB-2014-021} tune.
+
+
+All MC simulation samples consist of dijet events that are simulated with \PYTHIA 8.230~\cite{Sjostrand:2007gs} using the {\textsc NNPDF2.3LO}~\cite{Ball:2012cx} set of PDFs and the A3~\cite{ATL-PHYS-PUB-2014-021} tune. The difference between the samples used for the noise term measurement lies in the event selection, that is, whether or not a hard scatter event must be present, and the amount of pile-up that is overlaid.
 
 
 % In order to estimate systematic uncertainties on the noise term meausrement, two more datasets are used: A minimum bias MC sample and a dijet MC sample with pile-up corresponding to the 2017 data taking conditions.
@@ -305,7 +312,7 @@ All dijet events are simulated with \PYTHIA 8.230~\cite{Sjostrand:2007gs} using 
 
 \subsubsection{Estimation of the pile-up noise in zero-bias data}
 \label{subsec:pile-up-noise}
-The pile-up noise is measured by first determining the noise at the scale of the jet constituents, with a method known as \emph{random cones method}, and then extrapolating the constituent scale noise to the JES scale. It is assumed that the pile-up noise is independent of the jet energy, which is validated by a closure test in MC. 
+The pile-up noise is measured by first determining the noise at the scale of the jet constituents, with a method known as \emph{random cones method}, and then extrapolating the constituent scale noise to the JES scale. It is assumed that the pile-up noise is independent of the jet energy, which is validated by a closure test in MC.
 
 % - As can be seen in the previous section, the measurement of the JER at low \pT has large uncertainties.
 % - Therefore, an independent measurement of the noise term is important to reduce the uncertainties at low \pT.
@@ -316,33 +323,33 @@ The pile-up noise is measured by first determining the noise at the scale of the
 %the energy found within two cones of radius \Rrandomcone is summed and compared to each other. This provides a measure of the fluctuations due to pile-up.
 \paragraph{The random cones method} can be used to measure the energy fluctuations expected from pile-up within a cone of radius \Rrandomcone. The momentum distribution of particle flow objects of a single zero-bias data event is shown in \cref{fig:random-cones-balance-a}.
 %The method is based on the assumption that the pile-up activity is spherically symmetric and independent of the hard scatter.
-For each zero-bias event, the energy of the jet constituents (either particle flow objects or topo-clusters) found within two non-overlapping circular cones of radius \Rrandomcone is summed.
+For each zero-bias event, the energies of all jet constituents (either PFlow objects or topo-clusters) found within two non-overlapping circular cones of radius \Rrandomcone are summed.
 The random cones are placed at random $\phi$ and at random \abseta within a restricted range.
 The distribution of the difference of the energy within the cones, $\Delta \pTrandomcone = p_{\text{T}}^{\text{Rcone1}} - p_{\text{T}}^\text{Rcone2}$, when sampled over many events, provides a measure of the expected energy fluctuations to which a jet with $R = \Rrandomcone$ is subjected.
 % The width of the resulting distribution of the \pTrandomcone difference, $\Delta \pTrandomcone$, when performing this for many events, 
-The distribution is shown in \cref{fig:random-cones-balance-b} for random cones with radius $\Rrandomcone = 0.4$ within the central region of the detector (\absetaST{0.7}). The width of the distribution, labelled as $\sigmaRC$, is estimated by taking the \SI{68}{\percent} \emph{confidence interval} (CI), due to the non-Gaussian behavior.
-The noise term due to pile-up at the energy scale of the constituents, \Npileupconstscale, is determined by
+The distribution is shown in \cref{fig:random-cones-balance-b} for random cones with radius $\Rrandomcone = 0.4$ within the central region of the detector (\absetaST{0.7}). The width of the distribution, labelled as $\sigmaRC$, is estimated by taking the \SI{68}{\percent} \emph{confidence interval} (CI), due to the non-Gaussian behavior\footnote{The non-Gaussian behavior is expected to predominantly come from topo-clustering threshold effects, that can lead to outliers in $\Delta pTrandomcone$.}.
+The noise term due to pile-up at constituent scale, \Npileupconstscale, is determined by
 \begin{equation}
     \Npileupconstscale = \frac{\sigmaRC}{2\sqrt{2}},
 \end{equation}
 where \sigmaRC is divided by 2 to obtain the half-width and by $\sqrt{2}$ to obtain the fluctuations corresponding to just a single random cone~\cite{JETM-2018-05}.
 The constituent scale noise as measured in data and MC is shown in \cref{fig:const-scale-noise-results} as a function of \abseta and $\mu$.
-The difference between data and MC is observed to be significant ($\approx 20\,\%$). This discrepancy is confirmed in other studies of data recorded by the ATLAS experiment. The author contributed various studies to further understand this behavior, which is summarized in \cref{app:constituents-mismodelling}. 
-Since the effect is constant with pile-up and independent of the energy of the jet, the jet calibration can greatly minimize the impact of this mismodelling. 
+The difference between data and MC is observed to be significant ($\approx 20\,\%$). This discrepancy is confirmed in other studies of data recorded by the ATLAS experiment. The author contributed various studies to further understand this behavior, which is summarized in \cref{app:constituents-mismodelling}.
+Since the effect is constant with pile-up and independent of the energy of the jet, the jet calibration can greatly mitigate the impact of this mismodelling.
 
 %As \pTrandomcone corresponds to the sum of energies at the scale of the jet constituents, \Npileup corresponds to the noise at the scale of the constituents.
 
-\paragraph{The constituent scale} noise needs to be scaled to the JES scale, which requires the same calibration factor to be applied as in the MC-based jet calibration to the particle level (see \cref{sec:jes-calibration}).
-Due to technical reasons\footnote{The JES scale factor is not available in bins of \pTtruth which is required for the random cones method}, this scaling is obtained from an MC sample with simulated dijet events and 2017 pile-up conditions. The scale factors applied to \Npileupconstscale are determined by taking the mean of the distribution of the ratio $\pTcalib / \pTPUsub$ in bins of \pTtruth. Truth jets with $\pT > 7\,\GeV$ are matched geometrically ($\Delta R < 0.3$) to the reconstructed jets for this purpose, and no other reconstructed (truth) jet with $\pT > 7\,\GeV$ is allowed within $\Delta R < 0.6$ ($\Delta R < 1$) of the reconstructed (truth) jet. 
-The resulting pile-up contribution to the relative JER in the central region of the detector (\absetaST{0.7}) is shown in \cref{fig:pile-up-jer-vs-pt}.
-The noise due to pile-up is significantly lower in the case of PFlow jets than EMTopo jets, reflecting the superior resolution of track-based measurement at low \pT compared to calorimeter-based measurements.
-
+\paragraph{The constituent scale} noise needs to be scaled to the JES scale.
+%, which requires the same calibration factor to be applied as in the MC-based jet calibration to the particle level (see \cref{sec:jes-calibration}).
+%Due to technical reasons\footnote{The JES scale factor is not available in bins of \pTtruth which is required for the random cones method}, 
+This scaling is obtained from an MC sample with simulated dijet events and 2017 pile-up conditions. The scale factors applied to \Npileupconstscale are determined by taking the mean of the distribution of the ratio $\pTcalib / \pTPUsub$ in bins of \pTtruth. Truth jets with $\pT > 7\,\GeV$ are matched geometrically ($\Delta R < 0.3$) to the reconstructed jets for this purpose, and no other reconstructed (truth) jet with $\pT > 7\,\GeV$ is allowed within $\Delta R < 0.6$ ($\Delta R < 1$) of the reconstructed (truth) jet.
+The pile-up noise at JES scale divided by the \pTtruth that corresponds to the scale factors can be interpreted as the pile-up contribution to the relative JER. This is presented in \cref{fig:pile-up-jer-vs-pt} for the central region of the detector.
+The pile-up contribution is significantly lower for PFlow jets than EMTopo jets, reflecting the superior resolution of track-based measurement at low \pT compared to calorimeter-based measurements.
 % Different considerations need to be made when quantifying the pile-up noise at JES scale, \Npileup. A straightforward approach is to fit $N/\pT$ to the distribution shown in \cref{fig:pile-up-jer-vs-pt}. 
 %However, due to the \pT dependence of the JES scaling this does not provide the most accurate fit results. 
 %Another option is to extract the pile-up noise in a given \pTtruth bin. 
-
-The noise due to pile-up at JES scale, \Npileup, is finally quantified by fitting $N/\pT$ to this distribution and extracting $N$.
-Since the calorimeter granularity changes across $\eta$ (see \cref{subsec:calorimeter}), \Npileup is determined in several bins of \absetadet. 
+The pile-up noise, \Npileup, is finally quantified by fitting $N/\pT$ to this distribution and extracting $N$.
+Since the calorimeter granularity changes across $\eta$ (see \cref{subsec:calorimeter}), \Npileup is determined in several bins of \absetadet.
 The results are shown in \cref{tab:prelim-jer-2018-noise-term-inputs}.
 
 % - Scaling of const scale to JES
@@ -358,7 +365,8 @@ The results are shown in \cref{tab:prelim-jer-2018-noise-term-inputs}.
 %- Disadvantage of deriving something at constituent scale that is manipulated at the global level.
 
 
-\paragraph{A closure test in MC} can be performed for the random cones method by comparing the Response JER extracted from two dijet MC samples, one with pile-up and one without pile-up. The quadratic difference of the Response JER measurements is expected to be dominated by contributions from pile-up. Figure \cref{fig:non-closure} shows a comparison of the Reponse JER extracted in the different samples, as well as the quadratic difference that is to be compared to the noise from the random cones as extracted from MC, which is also displayed. The non-closure uncertainty is quantified by comparing \Npileup as extracted from MC, to the parameter $N$ that is extracted from a fit of the functional form $N/\pT \oplus S/\sqrt{\pT}$ to the quadratic difference. The stochastic term is included because it is non-negligible in the quadratic difference, due to the fact that the energy deposits from pile-up are also subject to stochastic fluctuations.
+\paragraph{A closure test in MC} can be performed for the random cones method by comparing the Response JER extracted from two dijet MC samples, one with pile-up and one without pile-up. The quadratic difference of the Response JER measurements is expected to be dominated by contributions from pile-up. Figure \cref{fig:non-closure} shows a comparison of the Reponse JER extracted in the different samples, as well as their quadratic difference and the pile-up noise derived in MC simulation. The quadratic difference compared to the noise from MC provides an estimate of the closure of the random cones method.
+A non-closure uncertainty is thus quantified by comparing \Npileup as extracted from MC, to the parameter $N$ extracted from a fit of the functional form $N/\pT \oplus S/\sqrt{\pT}$ to the quadratic difference. The stochastic term is included here because it was found to be non-negligible in the quadratic difference, which is attributed mainly to the fact that the energy deposits from pile-up are also subject to stochastic fluctuations.
 
 \FloatBarrier
 \begin{figure}[t]
@@ -390,14 +398,14 @@ The results are shown in \cref{tab:prelim-jer-2018-noise-term-inputs}.
 \begin{figure}[t]
     \newImageResizeCustom{0.5}{figures/calibration/RandomCones_noise_over_eta_mc16d_MuDependenceStudy.pdf}
     % from /Users/bj/offline_cernbox/AuthorshipQualification/Figures/180901/results/random-cones/RandomCones_noise_over_eta_mc16d_MuDependenceStudy.pdf
-\caption{Constituent-scale pile-up noise in \antikt $R=0.4$ jets as a function of \absetadet for a low pile-up ($\mu < 35$) and high pile-up ($\mu > 35$). Results are derived using the random cones method with either neutral and selected charged particle flow objects or topo-clusters at the electromagnetic scale as inputs.}
-\label{fig:const-scale-noise-pileup-dependence}
+    \caption{Constituent-scale pile-up noise in \antikt $R=0.4$ jets as a function of \absetadet for low pile-up ($\mu < 35$) and high pile-up ($\mu > 35$). Results are derived using the random cones method with either neutral and selected charged particle flow objects or topo-clusters at the electromagnetic scale as inputs.}
+    \label{fig:const-scale-noise-pileup-dependence}
 \end{figure}
 
 
 
 \begin{figure}[t]
-        \newImageResizeHalf{figures/calibration/pile-up-jer-vs-pt.pdf}
+    \newImageResizeHalf{figures/calibration/pile-up-jer-vs-pt.pdf}
     \caption{The expected contribution to the jet energy resolution from pile-up extracted from 2017 data as a function of particle-jet \pT for \antikt jets with $R = 0.4$ in the central region of the detector $\absetadet < 0.7$. Previously published in \ccite{PublicPlotsJER}.}
     \label{fig:pile-up-jer-vs-pt}
 \end{figure}
@@ -405,7 +413,7 @@ The results are shown in \cref{tab:prelim-jer-2018-noise-term-inputs}.
 
 
 \begin{figure}[t]
-        \newImageResizeCustom{0.5}{figures/calibration/random-cones-non-closure.pdf}
+    \newImageResizeCustom{0.5}{figures/calibration/random-cones-non-closure.pdf}
     \caption{Comparison between the pile-up noise term \Npileup determined using the random cone method (black solid circles) and the expectation from MC simulation (orange squares) as extracted from the difference in quadrature of MC simulation with (red downward triangles) and without (blue upward triangles) pile-up. Results are shown at the PFlow+JES energy scale for jets in the central region of the detector $\absetadet < 0.7$. Previously published in \ccite{JETM-2018-05}.}
     \label{fig:non-closure}
 \end{figure}
@@ -416,43 +424,41 @@ The results are shown in \cref{tab:prelim-jer-2018-noise-term-inputs}.
 \label{subsec:electronic-noise-extraction}
 %Certain assumptions therefore need to be made to measure the noise term:
 % - noise at mu=0 separately measured from MC (with uncertainties)
-The electronic noise needs to be estimated separately from the pile-up noise. 
-This is necessary as the random cones method does not capture contributions to the JER from effects other than pile-up, because of the effective noise reduction in the 420 topo-clustering algorithm.
+%The electronic noise needs to be estimated separately from the pile-up noise.
+The electronic noise is estimated separately from the pile-up noise as the random cones method does not capture contributions to the JER from effects other than pile-up, mainly because of the effective noise reduction in the 420 topo-clustering algorithm.
 A finite \Nmuzero is still expected in the presence of a hard scatter event.
-For example, when considering a cell that receives signals that are just not enough to exceed the necessary energy thresholds for it to be included in the topo-clustering algorithm, additional electronic noise may lift the signals above the reconstruction threshold so that it is eventually considered in the jet reconstruction.
-The amount of noise expected due to this is estimated by extracting the parameter $N$ from a fit with the $N, S, C$ parametrisation to the Response JER derived in a dedicated MC sample that has no pile-up overlaid. 
+For example, when considering a cell that contains signals that are just not enough to exceed the necessary energy thresholds for it to be included in the topo-clustering algorithm, additional electronic noise may lift the signals above the reconstruction threshold so that it is eventually considered in the jet reconstruction.
+The amount of noise expected due to this is estimated by extracting the parameter $N$ from a fit with the $N, S, C$ parametrisation to the Response JER derived in a dedicated MC sample that has no pile-up overlaid.
 The results are shown in \cref{tab:prelim-jer-2018-noise-term-inputs}.
-Uncertainties on this extraction are significant as described in the following.
+Uncertainties on this extraction are significant and are described in the following section.
 
 \subsubsection{Systematic uncertainties and results}
 % The uncertainties of the assumptions included in the method need to be propagated to the final results. To this end, a variety of uncertainty sources need to be considered by varying different quantities. 
-A variety of uncertainty sources need to be considered in the noise term measurement. Uncertainties are propagated by varying different quantities as explained below. 
+A variety of uncertainty sources need to be considered in the noise term measurement. Uncertainties are propagated by varying different quantities as explained below.
 
-The dominant uncertainty on \Npileup is the uncertainty of the method itself derived from the closure test described in \cref{subsec:pile-up-noise}. The following is the complete list of uncertainties considered for the measurement of \Npileup:
+The dominant uncertainty on \Npileup is the uncertainty of the method itself, derived from the closure test described in \cref{subsec:pile-up-noise}. The following is the complete list of uncertainties considered for the measurement of \Npileup:
 \begin{itemize}
     \item \Npileup non-closure:
           The noise extracted from the quadratic difference between the Response JER derived in a sample with and without pile-up is compared to the noise from the random cones method in MC, as shown in \cref{fig:non-closure}. The difference is taken as an uncertainty.
     \item Definition of \sigmaRC:
           The definition of \sigmaRC is varied by using the 87\% CI divided by 1.5 and 50\% CI multiplied 1.5 instead of the 68\% CI.
-    \item JES conversion factor: the JES conversion factor is varied by using the mean of a Gaussian fit instead of the mean of $\pTcalib / \pTPUsub$.
+    \item JES scale factor: the JES conversion factor is varied by using the mean of a Gaussian fit instead of the mean of $\pTcalib / \pTPUsub$.
 \end{itemize}
 
 Systematics on the electronic noise, \Nmuzero, include the following:
 \begin{itemize}
-    \item MC vs data: JER measurements in 2010 without pile-up~\cite{PERF-2011-04} show that the noise term between data and MC is known to the level of 20\% uncertainty. This uncertainty is applied to \Nmuzero.
-    \item Fit extraction uncertainty: the value of \Nmuzero is extracted from a fit to the Response JER with the $N, S, C$ parametrisation. This parametrisation is known to be sub-optimal. As well, the three parameters are highly correlated which adds additional uncertainty on the extracted value, $N$. Therefore, an alternative method to extract the noise at $\mu=0$ is performed: the dijet sample with pile-up is split into several bins of pile-up ($\mu$) and the Response JER is derived in each of those bins. The parameter $N$ is again extracted from a fit with the $N, S, C$ parametrisation and the value of $N$ extrapolated to $\mu=0$. The difference between the extrapolated value and the value extracted from the sample without pile-up is taken as a systematic uncertainty.
+    \item MC vs data: JER measurements in 2010 without pile-up~\cite{PERF-2011-04} showed that the noise term between data and MC is known to the level of 20\% uncertainty. This uncertainty is applied to \Nmuzero.
+          % \item Fit extraction uncertainty: the value of \Nmuzero is extracted from a fit to the Response JER with the $N, S, C$ parametrisation. This parametrisation is known to be sub-optimal. As well, the three parameters are highly correlated which adds additional uncertainty on the extracted value, $N$. 
+          % TODO: REVIEW THIS!!!!!!!!!!!!!!!!!!
+    \item Method uncertainty (fit instability): An alternative method to extract the noise at $\mu=0$ is performed. To this end, the dijet sample with pile-up is split into several bins of pile-up ($\mu$) and the Response JER is derived in each of those bins. The parameter $N$ is extracted in each bin from a fit with the $N, S, C$ parametrisation. The value of $N$ is then extrapolated with both a linear and a quadratic fit to $\mu=0$. The maximum of the differences between the two extrapolated values and the nominal value is taken as a systematic uncertainty.
 \end{itemize}
 
-Additional uncertainties on \Npileup and \Nmuzero were tested and found to be negligible. These include variations of fit ranges as well as the errors on the parameters from the fits itself. Also, statistical uncertainties are found to be negligible. 
+The uncertainties are propagated to \Nfull, by varying them separately and observing the changes in \Nfull. The propagated uncertainty on \Nfull is then symmetrized and used in the JER combination. Additional uncertainties on \Npileup and \Nmuzero were tested and found to be negligible. These include variations of fit ranges as well as the errors on the parameters from the fits itself. Also, statistical uncertainties are found to be negligible.
 
-The uncertainties are propagated to \Nfull, by varying them separately and observing the changes in \Nfull. The propagated uncertainty on \Nfull is then symmetrized and used in the JER combination. 
-The results, including a breakdown of uncertainties, are shown in \cref{fig:noise-term-results-pflow} for PFlow jets.
-
+The results, including a breakdown of uncertainties, are shown in \cref{fig:noise-term-results-pflow} for PFlow jets. The values of the full noise term for both PFlow jets and EMTopo jets are presented in \cref{tab:prelim-jer-2018-noise-term-inputs}.
 % From Paper: The systematic uncertainties enter the combined JER fit unsymmetrized in 𝜂 but are symmetrized during the statistical combination, and so the one-sided components are symmetrized in Figure 28 to illustrate their final contribution to the total uncertainty.
-
 %\input{tables/calibration/noise-term-uncertainties}
-
-The uncertainties become very large at high $\eta$ which is where the detector granularity becomes significantly worse and the calorimeter-cell noise thresholds are expected to have an increased impact on the JER. This means that the assumptions in the method become less valid, which is captured by a large non-closure uncertainty. 
+The uncertainties become very large at high $\eta$ which is where the detector granularity becomes significantly worse and the calorimeter-cell noise thresholds are expected to have an increased impact on the JER. This means that the assumptions in the method become less valid, which is captured by a large non-closure uncertainty.
 %that the contribution of pile-up to the JER is independent of the presence of a hard scatter becomes less valid. The closure uncertainty covers this effect.
 
 %- electronic noise also more important at high eta
@@ -479,17 +485,17 @@ The uncertainties become very large at high $\eta$ which is where the detector g
 The JER combination is performed by fitting the dijet \insitu measurements with the functional form described in \cref{eq:jer-parametrisation} with the noise term fixed to the values found in the noise term measurement (see \cref{sec:noise-term-meas}).
 
 The resulting combined JER of PFlow jets is shown in \cref{fig:jer-combination-incl-noise-term-a}. The effect of the noise term is illustrated by displaying the nominally measured value, $N$, and its uncertainties divided by \pTjet (pink line including uncertainty band).
-The JER taken from MC (black dotted line) can be compared to the combined \insitu measurement (blue line). 
-The latter shows significantly smaller uncertainties compared to the results from the dijet balance method (black data points) or noise term measurement alone, which shows the benefit of the combination procedure. 
+The JER taken from MC (black dotted line) can be compared to the combined \insitu measurement (blue line).
+The latter shows significantly smaller uncertainties compared to the results from the dijet balance method (black data points) or noise term measurement alone, which shows the benefit of the combination procedure.
 %\TDnote{This is due to the fact that the combined measurement performs a simultaneous fit to all $\eta$ regions which leads to some uncertainties in the fit being constraint which is not reflected in the single measurements.}{Double-check this hypothesis.}
 
 The uncertainties of the noise term measurement are propagated to the final results by varying the value of $N$ for each uncertainty source separately and repeating the fit. The varied $N$ corresponds to the result that is obtained from the noise term measurement when the respective uncertainty is varied by one standard deviation.
-The same procedure is applied to the uncertainties from the dijet \insitu measurement. 
+The same procedure is applied to the uncertainties from the dijet \insitu measurement.
 % Mention correlation scheme? Therefore I have to explain the combination a bit more!
 An eigenvalue decomposition is performed to reduce the final number of nuisance parameters. This is done analogously to the eigenvalue decomposition used in the JES calibration for which a more detailed explanation can be found in \ccite{JETM-2018-05}.
 
 A comparison of the JER between PFlow and EMTopo jets is shown in \cref{fig:jer-combination-results-a} for the central region of the detector.
-At low \pT, PFlow jets outperform EMTopo jets and have a considerably lower JER. 
+At low \pT, PFlow jets outperform EMTopo jets and have a considerably lower JER.
 This is also the case for other $\eta$ regions below $\etadet < 2.5$, as shown in \cref{fig:jer-combination-results-b}.
 Above $\pT=100\,\GeV$ and beyond detector regions of $\etadet = 2.5$, the JER of PFlow and EMTopo jets become similar. This is the case because the two jet collections themselves become very comparable, as less or no tracks are used as inputs to the \antikt algorithm in these regions of phase space. However, one difference remains between PFlow and EMTopo jets, which is the pile-up subtraction (see \cref{subsec:pile-up-correction}), that makes use of tracks in the case of PFlow jets but not for EMTopo jets. This explains the small differences that are still seen between the two jet collections.
 
