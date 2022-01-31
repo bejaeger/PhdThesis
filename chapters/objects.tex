@@ -3,7 +3,7 @@
 \label{chap:objects}
 
 The complex phenomenology of $pp$ collisions and the high luminosities at the LHC expose the ATLAS detector to enormous particle multiplicities. It is therefore challenging to correctly interpret the detector signals recorded for a given bunch crossing and accurately reconstruct the different \emph{physics objects} that are produced.
-Physics objects are described with four-vectors and represent both elementary particles such as electrons, muons, or photons, and also composite particles and quantities derived using the entire event information.
+Physics objects are described with four-vectors and represent both elementary particles such as electrons, muons, or photons, and also composite particles such as \emph{jets} and quantities derived using the entire event information like the \emph{missing transverse energy}.
 The ATLAS experiment uses a variety of sophisticated reconstruction and identification algorithms\footnote{Reconstruction algorithms are implemented in the ATLAS \texttt{ATHENA} software framework~\cite{ATLAS-TDR-17}} to reconstruct the full event.
 % that are constantly being improved, 
 %like jets or quantities derived using the entire event information like missing transverse energy.
@@ -131,13 +131,13 @@ In practice, a jet is defined by two choices: the \emph{jet constituents}, i.e. 
 \subsubsection{Jet algorithm}
 \label{subsubsec:jet-algorithm}
 The jet algorithm widely adopted in ATLAS is the so-called \emph{anti-$k_T$} algorithm~\cite{Cacciari:2008gp}, that is both infrared and collinear safe.
-It takes a set of input objects and in the first step computes the values of two distinct distance metrics for all their combinations.
+In the first step, it takes a set of input objects and for all their combinations computes the values of two distinct distance metrics.
 The first type of metric is defined as the distance between two objects, labelled as $i$ and $j$,
 \begin{equation}
     d_{ij} = \text{min}\left(\frac{1}{p_{T_i}^2},\frac{1}{p_{T_j}^2}\right) \frac{\Delta R_{ij}^2}{R^2},
     \label{eq:dij}
 \end{equation}
-the second type is given by the distance between object $i$ and the beam,
+where $\Delta R$ is defined as shown in \cref{eq:delta-r}; the second type is given by the distance between object $i$ and the beam,
 \begin{equation}
     d_{iB} = \frac{1}{p_{T_i}^2}.
 \end{equation}
@@ -249,7 +249,7 @@ Different jet-related properties can be used for $b$-jet identification.
 %about the underlying physics process that occurred.
 %provide information about the likelihood that a given jet originates from a certain quark flavour.
 %This in turn is crucial input to classify different hard scatter events.
-The $b$-jets contain $b$-hadrons that have a relatively long lifetime of about \SI{1.5}{\pico\second} before they decay. This leads to the formation of a secondary decay vertex that is far enough away from the hard-scatter vertex for it to be detectable with the track and vertex information from the ID.
+The $b$-jets contain $b$-hadrons that have a relatively long lifetime of about \SI{1.5}{\pico\second} before they decay. This, in addition to the fact that energetic $b$-jets typically experience a large Lorentz boost, leads to the formation of a secondary decay vertex that is far enough away from the hard-scatter vertex for it to be detectable with the track and vertex information from the ID.
 Several low-level \emph{$b$-tagging algorithms} primarily exploit this distinct detector signature\footnote{Also other characteristics of the production and decay of $b$-hadrons are considered, such as the high $b$-hadron mass, the (charged) decay multiplicity, or $b$-quark fragmentation properties.}, to identify (or \emph{tag}) jets as $b$-jets. They also make use of other information such as impact-parameter measurements or reconstructed secondary vertices~\cite{ATL-PHYS-PUB-2017-013}.
 
 The outputs of the low-level taggers are used to construct a final discriminant that provides a likelihood that a given jet is a $b$-jet. The work presented in this thesis uses a deep neural network discriminant, denoted as DL1r, that is trained with inputs from four low-level taggers~\cite{ATL-PHYS-PUB-2017-013}.
@@ -276,7 +276,7 @@ The energy of the final electron and photon candidates is calibrated with \Zee e
 Information about the origin of the reconstructed electrons and photons is crucial for physics analyses.
 Electrons stemming from the hard scatter are referred to as \emph{prompt} electrons. They need to be distinguished from other signatures with similar energy deposits such as jets or converted photons, as well as from \emph{non-prompt} electrons produced in heavy-flavour hadron decays.
 Similarly, prompt photons from the hard scatter are important to separate from jets or photons produced within jets.
-To this end, different quantities are defined and grouped into two sets of criteria: \emph{identification criteria}, that characterize the quality of the reconstructed detector signals produced by electrons and photons themselves, and \emph{isolation requirements}, that describe the activity near the reconstructed objects. A brief overview is given below. More details can be found in \ccite{EGAM-2018-01}.
+To this end, different quantities are defined and grouped into two sets of criteria: \emph{identification criteria}, that characterize the quality of the reconstructed detector signals produced by electrons and photons themselves, and \emph{isolation requirements}, that describe the activity near the reconstructed objects in order to reject non-prompt electrons and photons. A brief overview is given below. More details can be found in \ccite{EGAM-2018-01}.
 
 \subsection{Electron and Photon Identification}
 A likelihood discriminant is defined to identify electrons. It is based on several quantities characterizing the shower shape in the EM calorimeter, the track conditions, the amount of energy deposited in the hadronic calorimeters, and the track-cluster compatibility. Different so-called operating \emph{working points} for identification are defined and tuned to achieve a certain efficiency for electron reconstruction. The efficiency for each working point is approximately constant across different detector regions and energies of the electron.
@@ -294,7 +294,7 @@ Different working points are defined and calibrated for typically a combination 
 
 \section{Muons}
 \label{sec:muon-reconstruction}
-Muons leave traces in the ID and the MS and deposit little energy in the calorimeters.
+Muons leave traces in the ID and the MS and deposit only a small fraction of their energy in the calorimeters.
 Different strategies exist to reconstruct muons that use different detector subsystems and algorithms~\cite{MUON-2018-03}.
 In the work presented in this thesis, muons are reconstructed from a global fit of matching ID tracks and separately reconstructed MS tracks and also taking into account the energy losses in the calorimeters.
 
@@ -309,7 +309,7 @@ Requirements are primarily based on the number of hits in the ID and MS, the com
 To select muons from the hard scatter (prompt muons) and reject muons originating from hadron decays or pile-up interactions (non-prompt muons), several variables are defined to quantify how isolated a given muon is.
 The isolation requirements are similar to the ones defined for electrons and photons and typically use a combination of track-based isolation and calorimeter-based isolation requirements.
 Further criteria are posed on the impact parameters of the muon tracks, to ensure that the muon is compatible with stemming from the hard-scatter vertex.
-The reconstruction, identification, and isolation efficiencies are derived with a tag-and-probe method using \Jpsimumu and \Zmumu candidate events~\cite{MUON-2018-03}.
+The reconstruction, identification, and isolation efficiencies are derived using \Jpsimumu and \Zmumu candidate events~\cite{MUON-2018-03}.
 
 %( From master thesis)
 % To calibrate the momentum scale of muons, dimuon decays of the Z boson or other known mass resonances are exploited. The identification efficiency and the trigger efficiency of the muon trigger system is measured using almost pure Z → μμ or J/Ψ → μμ samples with a tag-and-probe method [70].

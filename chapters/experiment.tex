@@ -57,7 +57,7 @@ Different types of particles, such as electrons, muons, or hadrons, originate fr
 %To reconstruct the trajectories of charged particles in the ATLAS detector, 
 Tracks from charged particles can be reconstructed by measuring discrete space points and recognizing patterns.
 The mostly non-destructive space point measurements are provided by detecting the signals (or \emph{hits}) left by traversing charged particles in finely segmented detector layers with known position. Different techniques are used in the ATLAS detector for this purpose:
-\paragraph{Silicon semiconductor sensors} detect electron-hole pairs that are induced in a p-n junction when a charged particle traverses the material. They can be segmented very finely and thus deliver precise spatial measurements.
+\paragraph{Silicon semiconductor sensors} detect electron-hole pairs that are created in a p-n junction when a charged particle traverses the material. They can be segmented very finely and thus deliver precise spatial measurements.
 \paragraph{Gas filled detectors} measure the current induced after a charged particle ionises a gas via a wire connected at high voltage. The detectors consist of tubes or chambers with different arrangements of electrodes. Their main advantage is a low material cost which makes them useful for covering large areas. \\
 % \paragraph{Transition radiation detectors} are based on gaseous ionisation detectors and additionally measure the transition radiation from charged particles that traverse through material with different dielectric constants. The amount of transition radiation is sensitive to the Lorentz factor, which in combination with a momentum measurement provides the ability to measure the mass of a charged particle. This is useful input for particle identification. \\
 \newline
@@ -72,11 +72,10 @@ To enable momentum measurements of charged particles, the tracking devices are i
 
 Calorimeters measure the energy of particles by fully absorbing them and transferring their energy to electrical signals.
 The ATLAS calorimeter is a so-called \emph{sampling calorimeter} where each of these tasks is handled by a dedicated material.
-Layers of high-density \emph{passive material} stop the particles and are alternated with layers of \emph{active material} that measure the signals induced by particles.
-The total measured signal is proportional to the energy of the incident particle.
+Layers of high-density \emph{passive material} are predominantly responsible for stopping the particles and are alternated with layers of \emph{active material} that focus on measuring the signals induced by the particles.
+The total signal measured is proportional to the energy of the incident particle.
 
-\TDinote{Reword above to reflect the fact that also active layer causes energy loss}
-% comment from Mike
+% comment from Mike (should be incorporated now!)
 % This description is not strictly correct. It implies that the passive material stops the particles, which is true only as a whole. To be precise, there is also energy loss in the active material but of course much less.
 % It is better to say that the absorber initiates showers, which are detected in the active layers. I see that you do this below.
 % We can talk about how to re-word this if you want but I would rather you do it.
@@ -86,13 +85,13 @@ The total measured signal is proportional to the energy of the incident particle
 % The ATLAS detector uses so-called \emph{sampling calorimeters} that comprise alternating layers of \emph{active material}, to actively measure the signals of the showering particles, and highly-dense \emph{passive material}, to initiate the showering and stop the particles.
 \paragraph{Calorimeter showers}\mbox{}\\
 As an incident particle interacts with the passive layers, a cascade of secondary particles forms.
-Each secondary particle carries a fraction of the original energy and itself interacts with the calorimeter. This results in the formation of a \emph{calorimeter shower} with gradually decreasing the energy per particle as the shower evolves.
+Each secondary particle carries a fraction of the original energy and itself interacts with the calorimeter. This results in the formation of a \emph{calorimeter shower} that consists of particles with gradually decreasing energy as the shower evolves.
 A distinction is made between \emph{electromagnetic showers} and \emph{hadronic showers}.
 
 % The incident particles interact with the absorbers through several mechanisms which results in cascades of secondary particles known as \emph{showers}. 
 Electromagnetic showers are initiated by electrons, positrons, and photons and are dominated by interactions through \emph{bremsstrahlung} (photon emission) and electron-positron \emph{pair-production}.
 %The repeated process of emitting photons (bremsstrahlung) and producing electron-positron pairs (pair-production) forms a cascade of particles with gradually decreasing energy in the detector.
-A material can be characterized by its radiation length, $X_0$, which denotes the length over which an electron or positron loses on average all but  $1/e$ of its energy via bremssstrahlung. Since the probability for interacting via bremsstrahlung is proportional to $1 / m^2$, where $m$ is the mass of the particle, muons only deposit little energy in the calorimeters and thus cannot be stopped.\footnote{While muons deposit only little energy in the calorimeters, it is important to consider these energy losses. This becomes more important as the energy of the muon increases, because the amount of energy that is lost due to bremsstrahlung increases with the energy of the muon. See also \cref{sec:muon-reconstruction}.}
+A material can be characterized by its radiation length, $X_0$, which denotes the length over which an electron or positron loses on average all but  $1/e$ of its energy via bremssstrahlung. Since the probability for interacting via bremsstrahlung is proportional to $1 / m^2$, where $m$ is the mass of the particle, muons deposit only a small fraction of their energy in the calorimeters and thus cannot be stopped.\footnote{While muons deposit only a small fraction of their energy in the calorimeters, it is important to consider these energy losses. This becomes more important as the energy of the muon increases, because the amount of energy that is lost due to bremsstrahlung increases with the energy of the muon. See also \cref{sec:muon-reconstruction}.}
 
 Hadronic showers are more complex due to the rich nature of hadronic interactions. An incident hadron initiates showers by inelastic hadronic interactions with nuclei. In the process, several new particles are created, most of which are mesons.
 The penetration depth of hadrons in a given material is characterized by their \emph{interaction length}, $\lambda$, which describes the length that a hadron travels on average without interacting.
@@ -150,17 +149,21 @@ More information about the ATLAS detector can be found in \ccite{PERF-2007-01}, 
 
 \subsection{The ATLAS coordinate system}
 The ATLAS experiment uses a right-handed cartesian coordinate system to describe the hard-scattering processes. The origin is set at the nominal interaction point, which is at the geometrical centre of the ATLAS detector. The $z$-axis is along the beam direction, the $y$-axis points upwards, and the $x$-axis points to the centre of the LHC. The azimuthal angle $\phi$ is measured against the $x$-axis in the $x$-$y$ plane and the polar angle $\theta$ is the angle taken from the beam axis.
-The transverse component of the energy, $\ETvec = \ET \hat{n}$, or momentum, $\pTvec = \pT \hat{n}$, of a particle is determined by the projection of the total energy or momentum onto the $x$-$y$ plane.
+Final-state particles of $pp$ collision events are often Lorentz-boosted along the $z$-axis.
+This is why the transverse component of the energy, $\ETvec = \ET \hat{n}$, or momentum, $\pTvec = \pT \hat{n}$, are often considered. They are determined by the projection of the total energy or momentum onto the $x$-$y$ plane.
 The position of a particle in the $z$-$y$ plane is typically described with the \emph{pseudorapidity} $\eta$, defined as\footnote{For massive objects the \emph{rapidity} $y = \frac{1}{2} \text{ln} \left( \frac{E + p_Z }{E-p_z} \right)$ is used, where $E$ is the energy and $p_z$ the momentum in $z$-direction. The rapidity is approximated by the pseudorapidity for $m \ll E$, which is typically the case in for physics objects in high energy physics.}
 \begin{equation}
     \eta = - \text{ln} \left( \tan \left( \frac{\theta}{2} \right) \right).
 \end{equation}
 This allows for an angular distance measurement $\Delta R$ between particles,
 \begin{equation}
+    \label{eq:delta-r}
     \Delta R = \sqrt{ \left( \Delta \eta \right) ^2 + \left( \Delta \phi \right) ^2 },
 \end{equation}
 that is invariant under Lorentz transformations along the $z$-axis.
 
+% Comment Bernd
+% Did you want to mention here are boosts along z are very common in pp colisons (which motivates this choice of coordinates)
 
 \subsection{The inner detector}
 \label{subsec:inner-detector}
@@ -173,7 +176,7 @@ In the central (barrel) region the tracking detectors are arranged in cylinders 
 The ID covers a range \absetaST{2.5} and is immersed in a \SI{2}{\tesla} magnetic field that is provided by a \SI{5.8}{\m} long solenoid magnet.
 The first tracking layer in the barrel is the insertable $b$-layer (IBL)~\cite{ATLAS-TDR-19,PIX-2018-001}, that was installed before \RunTwo and is especially important for the reconstruction of the interaction vertices.
 Three layers of silicon \emph{pixels} in the barrel and each end-cap typically provide four space points for each charged particle.
-Four layers (nine layers) of silicon-microstrip \emph{semiconductor trackers} (SCT) in the barrel (each end-cap) are composed of double layers of strips arranged at an angle of \SI{40}{\milli\radian} relative to each other. Four double layers are crossed by each track to provide an additional four space points.
+Four layers (nine layers) of silicon-microstrip \emph{semiconductor trackers} (SCT) in the barrel (each end-cap) are composed of double layers of strips arranged at an angle of \SI{40}{\milli\radian} relative to each other. Four double layers are crossed by each track to provide additional four space points.
 The fine granularity of the pixel and microstrip sensors provide high-precision measurements with resolutions in $R$-$\phi \times z$ ($R$-$\phi \times R$) of $10 \times 115\,\mu\text{m}$ and $17 \times 580\,\mu\text{m}$ for the pixel and microstrip barrels (end-caps), respectively.
 The \emph{transition radiation tracker} TRT consists of a large number of straw tubes filled with xenon-based gas that provide on average 36 additional hits. The TRT covers a range \absetaST{2.0} and provides information in only the $R$-$\phi$ plane with a resolution of \SI{130}{\micro\meter}.
 Apart from the position measurement, the TRT also generates and detects the amount of transition radiation, that is produced by high-energy charged particles when crossing two media of different dielectric constants. For this purpose, the TRT is interleaved with fibres and foils that provide the transition-radiation photons, which helps to differentiate electrons from charged pions.
@@ -194,7 +197,7 @@ Apart from the position measurement, the TRT also generates and detects the amou
         %\newImageScale{figures/experiment/ATLASinnerdetectorendcap.png}{.095}
     }
     %   }
-    \caption{Schematic of the ATLAS inner detector in (a) the central region and (b) the end-cap region. The illustration for the end-cap region does not include the IBL, as it was taken from an older reference. Taken from Refs.~\cite{ATL-PHYS-PUB-2015-009} and~\cite{PERF-2007-01}, respectively.}
+    \caption{Schematic of the ATLAS inner detector in (a) the central region and (b) the end-cap region, showing the different systems: the IBL (not shown for the end-cap region), the pixel detector, the SCT, and the TRT. Taken from Refs.~\cite{ATL-PHYS-PUB-2015-009} and~\cite{PERF-2007-01}, respectively.}
     \label{fig:ATLASinnerdetector}
 \end{sidewaysfigure}
 
@@ -211,13 +214,13 @@ Apart from the position measurement, the TRT also generates and detects the amou
 \label{subsec:calorimeter}
 The primary task of the ATLAS sampling calorimeter is to measure the energy of particles, but it is also sensitive to the position and direction of incident particles. The latter is enabled by the segmentation of the calorimeter into different cells in the $\eta-\phi$ plane and into several layers in the longitudinal direction.
 This also allows quantifying other characteristics of the showers, which is used for particle identification (see \cref{chap:objects}).
-The calorimeter signals provide fast information, so that they are used for trigger purposes, which is described further below.
+The calorimeter signals provide fast information, which makes them also suitable for trigger purposes, which is described further below.
 
 A schematic view of the calorimeter system is shown in \cref{fig:ATLAScalorimeters}.
 It can be divided into a \emph{LAr electromagnetic calorimeter} (ECAL), that targets the measurement of electromagnetic showers, and a hadronic calorimeter, that measures and contains hadronic activity. The hadronic calorimeter is further subdivided into the scintillator \emph{tile calorimeter}, the \emph{LAr hadronic end-caps} (HEC), and the \emph{LAr forward calorimeters} (Fcal).
 The entire system covers a large angle of \absetaST{4.9} with different materials used in different \abseta regions due to changing conditions.
 Depending on the \abseta region, the ECAL and hadronic calorimeter provide a stopping power of $22-38\,X_0$ and $7-10\,\lambda$, respectively.
-This limits the level of punch-through to the muon system almost entirely to the irreducible level of muons and neutrinos.
+This limits the level of punch-through to the muon system almost entirely, except for the irreducible level of muons and neutrinos. % remain irreducible. the irreducible level of muons and neutrinos.
 A summary of the most important material characteristics of the different segments is shown in \cref{tab:calorimeter-characteristics}.
 Details on the detector coverage and granularity are given in \cref{tab:ATLAScalorimeter-parameters}.
 
@@ -231,7 +234,7 @@ It is subdivided into a barrel part covering \absetaST{1.475} and an end-cap on 
 The barrel consists of two identical segments along the $z$-axis with a small gap of \SI{4}{\milli\meter} in between at $z=0$. A schematic of one of the barrel modules is shown in \cref{fig:ATLASmodules-a}. Each module is segmented in three layers in depth with varying granularity.
 The first layer is finely segmented in $\Delta \eta$ which provides essential inputs for photon and neutral pion identification. The second layer is finer in $\Delta \phi$ and larger in depth and measures the bulk of the electromagnetic showers. The third and coarsest layer in $\Delta \eta$ is designed to measure the broad tail of the electromagnetic showers.
 %Together, the three segments provide a stopping power of 24 radiation lengths ($X_0$) 
-The high granularity provides valuable space point measurements in addition to the data from the ID, reduces the sensitivity to \pileup, and allows handling of large collision rates. 
+The high granularity provides valuable space point measurements in addition to the data from the ID, reduces the sensitivity to \pileup, and allows handling of large collision rates.
 
 % Comment MIKE: It is also a matter of rate capability and reducing sensitivity to pileup.
 
