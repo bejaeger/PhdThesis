@@ -1,15 +1,51 @@
+%% Resources
+
+% Manu thesis: https://cds.cern.ch/record/2765038/files/CERN-THESIS-2021-035.pdf
+% Recommended: Dude thesis: https://cds.cern.ch/record/2791460?ln=en
+% Other dude thesis: https://cds.cern.ch/record/2799055?ln=en
+
+% (seems nice!) Overview of HEP in physics: https://arxiv.org/pdf/1806.11484.pdf
+% Other ML in HEP white paper: https://arxiv.org/pdf/1807.02876.pdf
+
+
 % %-------------------------------------------------------------------------------
 \chapter{Machine Learning in High Energy Physics}
 \label{chap:ml}
 
-Supervised learning techniques are particularly well suited for applications in High Energy Physics.
+- data-driven era, ML also more and more adopted in HEP
+- Different applications of ML: ...
 
-\section{Supervised Learning}
+- Supervised learning techniques are particularly well suited for applications in High Energy Physics.
+- Here, used to construct a classifier that predicts the likeliness an event is a signal. 
+- used in statistical analysis 
+
+\section{Supervised Learning for Classification}
+- labelled dataset (maybe some nice vectors as here: https://cds.cern.ch/record/2791460?ln=en)
+- train function single-class classification
 
 \section{Introduction to Neural Networks}
+- illustration of neural network components
+- Function approximator, see https://cds.cern.ch/record/2791460?ln=en, much quicker written in 1.3. here (https://arxiv.org/pdf/1806.11484.pdf)
+    - Introduction of loss functions makes it possible to frame the problem as an optimisation problem 
+    - neural networks are one way to optimise the function in an efficient manner
 
-\section{Deep Neural Network Classifiers}
 
-\section{Training Procedure and Hyperparameter Optimization}
+\subsection{Architecture of neural networks}
+- layers
+- weights
+- activation function
+- output function (sigmoid)
+
+\section{Training Procedure and Hyperparameters}
+- Weight initialisation
+- Optimization with back propagation, using gradient descent to update parameters
+    -> Learning rate
+- Loss function
+- Optimisers (stochastic gradient descent is a basic form)
+- problem of overfitting
+    - Regularisation techniques
+    - k-fold cross validation
+- Early stopping
+- Performance testing
 
 %\section{Multiclass Classification}
