@@ -157,7 +157,8 @@ These contributions are approximately independent of the jet energy and thus sca
 
 \paragraph{The physics considerations} outlined above only consider calorimeter-type measurements.
 In the case of PFlow jets, additional effects come into play that can have non-trivial effects on the JER.
-First it should be noted, that some of the aforementioned effects are mitigated with PFlow jets because the calorimeter measurements are partially replaced by more precise measurements from the ID. 
+First it should be noted, that some of the aforementioned effects are mitigated with PFlow jets because the calorimeter measurements are partially replaced by more precise track measurements from the ID. 
+The impact on the JER from the tracks is expected to be small.
 However, an additional contribution to the PFlow JER comes from the sizeable amount of incorrectly subtracted energy in the PFlow algorithm.
 This amount is captured in a term known as \emph{confusion term} and fluctuations of it contribute to the JER. Details on the confusion term can be found in \ccite{PERF-2015-09}. It is unfeasible to derive from first principle how this effect scales with increasing energy of the jet and thus empirical studies need to be performed.
 
@@ -180,7 +181,6 @@ This can be tested in MC simulated dijet events, where the JER can be derived fr
 The width and mean are taken from a Gaussian fit to the core of the distribution of the truth response. An example is shown in \cref{fig:truth-response}. The division by the mean in \cref{eq:response-jer} corrects for the residual non-closure of the jet calibration, which is sizeable at low \pT\footnote{For jets at JES scale, the response diverges from unity by a maximum of about $5\%\,(3\%, 1\%)$ at $\pTtrue = 20\,(30, 50)\,\GeV$~\cite{JETM-2018-05}.}. 
 The JER estimated with this method is referred to as \emph{Response JER} in the following and can only be derived in MC simulation.
 
-\FloatBarrier
 \begin{figure}[t]
     \newImageResizeHalf{figures/calibration/truth-response.pdf}
     \caption{Distribution of the truth response for fully calibrated EM+JES jets within $\abseta < 0.7$ and $30 < \pTtruth < 30\,\GeV$, including a Gaussian fit to extract the mean and standard deviation.}
@@ -339,37 +339,12 @@ The noise term due to pile-up at constituent scale, \Npileupconstscale, is deter
 \end{equation}
 where \sigmaRC is divided by 2 to obtain the half-width and by $\sqrt{2}$ to obtain the fluctuations corresponding to just a single random cone~\cite{JETM-2018-05}.
 The constituent-scale noise as measured in data and MC is shown in \cref{fig:const-scale-noise-results} as a function of \abseta and $\mu$.
+The $\abseta$ bins are chosen such that they align with the granularity changes of the calorimeter (see \cref{subsec:calorimeter}). 
 The difference between data and MC is observed to be significant ($\approx 20\,\%$). This discrepancy is confirmed in other studies of data recorded by the ATLAS experiment. The author of this thesis contributed various studies to further understand this behavior, which is summarized in \cref{app:constituents-mismodelling}.
 Since the effect is constant with pile-up and independent of the energy of the jet, the jet calibration can greatly mitigate the impact of this mismodelling.
 
 %As \pTrandomcone corresponds to the sum of energies at the scale of the jet constituents, \Npileup corresponds to the noise at the scale of the constituents.
 
-\paragraph{The constituent scale} noise derived in the previous step needs to be scaled to the JES scale.
-%, which requires the same calibration factor to be applied as in the MC-based jet calibration to the particle level (see \cref{sec:jes-calibration}).
-%Due to technical reasons\footnote{The JES scale factor is not available in bins of \pTtruth which is required for the random cones method}, 
-This scaling is obtained from an MC sample with simulated dijet events and 2017 pile-up conditions. The scale factors applied to \Npileupconstscale are determined by taking the mean of the distribution of the ratio $\pTcalib / \pTPUsub$ in bins of \pTtruth, where \pTcalib corresponds to the \pT of fully calibrated jets and \pTPUsub is defined as shown in \cref{eq:pTpusub}. Truth jets with $\pT > 7\,\GeV$ are matched geometrically ($\Delta R < 0.3$) to the reconstructed jets for this purpose, and no other reconstructed (truth) jet with $\pT > 7\,\GeV$ is allowed to be within $\Delta R < 0.6$ ($\Delta R < 1$) of the reconstructed (truth) jet.
-The pile-up noise at JES scale divided by \pTtruth can be interpreted as the contribution to the relative JER from pile-up. This is presented in \cref{fig:pile-up-jer-vs-pt} for the central region of the detector.
-The pile-up contribution is significantly lower for PFlow jets than EMTopo jets, reflecting the superior resolution of track-based measurement at low \pT compared to calorimeter-based measurements.
-% Different considerations need to be made when quantifying the pile-up noise at JES scale, \Npileup. A straightforward approach is to fit $N/\pT$ to the distribution shown in \cref{fig:pile-up-jer-vs-pt}. 
-%However, due to the \pT dependence of the JES scaling this does not provide the most accurate fit results. 
-%Another option is to extract the pile-up noise in a given \pTtruth bin. 
-The pile-up noise, \Npileup, is finally quantified by fitting $N/\pT$ to this distribution and extracting $N$.
-Since the calorimeter granularity changes across $\eta$ (see \cref{subsec:calorimeter}), \Npileup is determined in several bins of \absetadet.
-The results are shown in \cref{tab:prelim-jer-2018-noise-term-inputs}.
-
-% - Scaling of const scale to JES
-% - Different options to do that
-% - Fits N / pT 
-% - Pile-up dependent noise term 
-% - GSC complication
-
-%This, however, assumes that the JES scaling is independent of the \pT of the jet, which is not the case due to the non-linearity of the calorimeter. The JES scale factor is about XX for jets with $\pT = 20\,\GeV$ and XX for jets with $\pT = 40\,\GeV$.
-%This means that the pile-up noise is amplified more at lower \pT by multiplying the jet \pT with a larger JES factor. If this were to be considered, the noise term needs to be extended by a \pT-dependent term, $\Npileup = \NpileuppT$.
-
-%- Studies of Response JER showed that the pT dependence of the noise term is mitigated by the GSC calibration. The GSC uses on global jet properties that cannot be defined on a constituent level as would be needed for the random cones method. 
-%- Disadvantage of deriving something at constituent scale that is manipulated at the global level.
-
-\FloatBarrier
 \begin{figure}[t]
     \subfloat[] {
         \newImageResizeHalf{figures/calibration/zero-bias-event-deposits.pdf}
@@ -383,6 +358,56 @@ The results are shown in \cref{tab:prelim-jer-2018-noise-term-inputs}.
         Previously published in \ccite{SinglePublicPlotZeroBiasDeposits,PublicPlotsJER}.}
     \label{fig:random-cones-balance}
 \end{figure}
+
+\paragraph{The constituent scale} noise derived in the previous step needs to be scaled to the JES scale.
+%, which requires the same calibration factor to be applied as in the MC-based jet calibration to the particle level (see \cref{sec:jes-calibration}).
+%Due to technical reasons\footnote{The JES scale factor is not available in bins of \pTtruth which is required for the random cones method}, 
+This scaling is obtained from an MC sample with simulated dijet events and 2017 pile-up conditions. The scale factors applied to \Npileupconstscale are determined by taking the mean of the distribution of the ratio $\pTcalib / \pTPUsub$ in bins of \pTtruth, where \pTcalib corresponds to the \pT of fully calibrated jets and \pTPUsub is defined as shown in \cref{eq:pTpusub}. Truth jets with $\pT > 7\,\GeV$ are matched geometrically ($\Delta R < 0.3$) to the reconstructed jets for this purpose, and no other reconstructed (truth) jet with $\pT > 7\,\GeV$ is allowed to be within $\Delta R < 0.6$ ($\Delta R < 1$) of the reconstructed (truth) jet.
+The pile-up noise at JES scale divided by \pTtruth can be interpreted as the contribution to the relative JER from pile-up. This is presented in \cref{fig:pile-up-jer-vs-pt} for the central region of the detector.
+The pile-up contribution is significantly lower for PFlow jets than EMTopo jets, reflecting the superior resolution of track-based measurement at low \pT compared to calorimeter-based measurements.
+% Different considerations need to be made when quantifying the pile-up noise at JES scale, \Npileup. A straightforward approach is to fit $N/\pT$ to the distribution shown in \cref{fig:pile-up-jer-vs-pt}. 
+%However, due to the \pT dependence of the JES scaling this does not provide the most accurate fit results. 
+%Another option is to extract the pile-up noise in a given \pTtruth bin. 
+The pile-up noise, \Npileup, is finally quantified by fitting $N/\pT$ to this distribution and extracting $N$. The results are shown in \cref{tab:prelim-jer-2018-noise-term-inputs}.
+
+
+% TODO: Add discussion of binning. See Dag email from 2018-07-10
+% Hi all,
+
+% This is based on the discussion from today's JES/JER meeting.
+% https://indico.cern.ch/event/734005/
+
+% "Fine" |eta_det| bins based on response dependent calorimeter features (+less stats in forward region)
+% 0 - 0.2 - 0.7 - 1.0 - 1.3 - 1.8 - 2.5 - 2.8 - 3.2 - 3.5 - 4.5
+
+% Suggested "course" eta bins for JER combination + noise measurments
+% 0-0.7
+% 0.7-1.3
+% 1.3-1.8
+% 1.8-2.5
+% 2.5-3.2
+% 3.2-3.5 <= by far worst part of detector
+% 3.5-4.5
+
+% => 7 bins
+
+% Some results from Tae Hyoun (Matthew) Park's JER measurements for jets with pT in 110-150 GeV
+% Gray+black = data in-situ, green = MC truth
+% Note how well the in-situ capture the truth JER (!)
+% EM+JES:
+
+% - Scaling of const scale to JES
+% - Different options to do that
+% - Fits N / pT 
+% - Pile-up dependent noise term 
+% - GSC complication
+
+%This, however, assumes that the JES scaling is independent of the \pT of the jet, which is not the case due to the non-linearity of the calorimeter. The JES scale factor is about XX for jets with $\pT = 20\,\GeV$ and XX for jets with $\pT = 40\,\GeV$.
+%This means that the pile-up noise is amplified more at lower \pT by multiplying the jet \pT with a larger JES factor. If this were to be considered, the noise term needs to be extended by a \pT-dependent term, $\Npileup = \NpileuppT$.
+
+%- Studies of Response JER showed that the pT dependence of the noise term is mitigated by the GSC calibration. The GSC uses on global jet properties that cannot be defined on a constituent level as would be needed for the random cones method. 
+%- Disadvantage of deriving something at constituent scale that is manipulated at the global level.
+
 
 \paragraph{A closure test in MC} can be performed for the random cones method by comparing the Response JER extracted from two dijet MC samples, one with pile-up and one without pile-up. \Cref{fig:non-closure} shows a comparison of the Reponse JER extracted in the two samples, their quadratic difference, as well as the pile-up noise derived with the random cones method in MC simulation. 
 The quadratic difference of the Response JER measurements in these samples is expected to be dominated by contributions from pile-up.
@@ -403,7 +428,6 @@ Additional uncertainties on \Npileup were tested and found to be negligible. The
 % \end{itemize}
 
 
-\FloatBarrier
 \begin{figure}[t]
     \subfloat[] {
         \newImageResizeHalf{figures/calibration/const-noise-vs-eta.pdf}
@@ -495,13 +519,14 @@ Also, the uncertainty from comparing \Nmuzero with the alternative estimation ($
 % \input{tables/calibration/results/improved-single-n-inputs}
 % \input{tables/calibration/results/pT-dependent-noise-term-inputs}
 
+\input{tables/calibration/results/preliminary-jer-2018-inputs}
+
 \begin{figure}
     \newImageResizeCustom{0.6}{figures/calibration/noise-term-results-pflow.pdf}
     \caption{Noise term of the jet energy resolution (JER) and its uncertainties as a function of \abseta. Previously published in \ccite{JETM-2018-05}.}
     \label{fig:noise-term-results-pflow}
 \end{figure}
 
-\input{tables/calibration/results/preliminary-jer-2018-inputs}
 
 \subsection{Jet Energy Resolution Combination}
 \label{subsec:jer-combination}
