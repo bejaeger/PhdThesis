@@ -375,8 +375,10 @@ More information on the ATLAS trigger system can be found in \ccite{ATLAS-TDR-16
 Simulations of the ATLAS detector are required in order to generate full Monte Carlo events that can be compared to actual experimental data.
 The simulations need to consider the response of each individual detector system, the effect of material placed throughout the detector, detector imperfections, as well as data and trigger conditions.
 The ATLAS detector simulation is based on \textsc{Geant4}~\cite{Agostinelli:2002hh}.
+% From Deep Learning and its applications in physics
+%In the language of statistics and machine learning, the full simulation chain would be considered a generative model for the data as they can be used to generate synthetic data of the same complexity and format as the actual collision data.
 %Due to the complexity of the experiment a \emph{full simulation} is a very computing-intensive process. The ATLAS simulation infrastructure also allows for \emph{fast simulations} using simplified descriptions of the detector systems. This provides the opportunity for lower processing times with the drawback of decreased accuracies.
-The simulations produce outputs of identical format as the actual experimental data so that the same software can be used for further processing of the events.
+The simulations produce data of the same complexity and format as the actual experimental data, so that the same software can be used for further processing of the events.
 More information on the ATLAS simulation infrastructure can be found in \ccite{ATLAS-TDR-17,SOFT-2010-01}.
 %- full simulation of particle interaction with matter throughout detector 
 
