@@ -10,17 +10,19 @@
 
 % Machine Learning
 % Statistical data analysis (binned likelihood function)
- 
+
 % %-------------------------------------------------------------------------------
 \chapter{Machine Learning in High Energy Physics}
 \label{chap:ml}
+
+\Minote{}{Maybe use quot: Tom M. Mitchell provided a widely quoted, more formal definition of the algorithms studied in the machine learning field: "A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P if its performance at tasks in T, as measured by P, improves with experience E."[18]}
 
 - data-driven era, ML also more and more adopted in HEP
 - replacing traditional analysis strategies that rely on a series of boolean selections based on single observables.
 - Different applications of ML in ATLAS and throughout HEP community in general: hit reconstruction \ccite{PERF-2012-05} or track finding, object identification, classification of entire events. ().
 - ML can leverage multiple variables simultaneously.
 
-- Here, used to construct a classifier that predicts the likeliness of an event being a signal. 
+- Here, used to construct a classifier that predicts the likeliness of an event being a signal.
 - Can be done with supervised learning techniques that use MC simulations as labelled data
 - The classifier can be directly used in the final statistical analysis of the distribution
 
@@ -30,57 +32,104 @@
 
 
 \section{Core Concepts and Terminology in Machine Learning}
-% From [1] see above:
-- Search for function f : X -> Y, that maps the higher-dimensional observed data X on some target label Y of lower dimension, while optimizing a metric of choosing. 
-- The metric is known as loss function and labelled as L(y, f(x)). 
+The basic task of a machine learning algorithm is to find a function $f: X \rightarrow Y$, that maps some higher-dimensional data $X$ onto some target label $Y$, while optimizing a metric of choosing.
+This metric is known as \emph{loss function} and labelled as $L(y, f(x))$ in the following.
+The function that optimizes the loss function is found in a process referred to as \emph{training}, in which a learning algorithm is applied to a set of sample data, known as \emph{training data}.
+The space of functions to choose from is constrained by a \emph{model} that can come in various forms, such as boosted decision trees (BDTs), support vector machines (SVMs), or neural networks (NNs). The latter, in particular deep neural networks (DNNs), are by now the most powerful machine learning models and ubiquitous in HEP and many other technology-related fields. \TDnote{[XX]}{Add reference to footnote?} \footnote{The advent of deep neural networks and machine learning in general was facilitated by the growing amount of both computing resources and data, as well as software advancements, in the beginning of the 21$^{\text{th}}$ century}
+Details on DNNs are given below, as they are used in the work presented in this thesis.
+% % From [1] see above:
+% - Search for function f : X -> Y, that maps the higher-dimensional observed data X on some target label Y of lower dimension, while optimizing a metric of choosing. 
+% - The metric is known as loss function and labelled as L(y, f(x)). 
 
-- In a process known as \emph{training}, a learning algorithm is applied to find the function that optimizes the loss function.
+% - In a process known as \emph{training}, a learning algorithm is applied to find the function that optimizes the loss function.
 
-- The space of functions to choose from is constrained by a model that can come in various forms such as BDTs, support vector machines, or neural networks (see the following chapter).
+% - The space of functions to choose from is constrained by a model that can come in various forms such as BDTs, support vector machines, or neural networks (see the following chapter).
 
-- A major goal in machine learning is \emph{generalization}, that is the ability of a trained model to perform well on previously unseen data.  
-- If the model does not generalize, that is, if model parameters were chosen based on signatures that are unique to the training data, it is known to be \emph{overfitted}. 
-% - This is known as \emph{overtraining} (or \emph{overfitted.})
-- To prevent overfitting, various so-called \emph{regularization} techniques can be used during the training. 
-
-%- Their ability to reduce overfitting has been mostly assessed empirically, rather than from theoretical analysis, which is 
-
+A major goal in machine learning is \emph{generalization}, that is the ability of a trained model to perform well on previously unseen data.
+The opposite is the case, if model parameters are chosen based on signatures unique to the training data. This is known as \emph{overtraining} (or \emph{overfitting}). To prevent a model to be overfitted, various so-called \emph{regularization} techniques can be used during the training.
+Regularization methods are typically optimized based on how well a trained model generalizes, which in turn can be tested with data not used in the training.
 
 
 \section{Introduction to Neural Networks}
-- neural networks are one way to optimise the function in an efficient manner
+Neural networks consist of interconnected layers of artificial neurons\footnote{ NNs are therefore also called artificial neural networks (ANNs), which is more descriptive but usually used synonymously with the simple form ``neural networks''.}. An illustration of a fully-connected neural network, where each layer receives inputs only from the previous layer, is shown in \cref{fig:neural-net}. These types of NNs are known as \emph{feedforward} NNs.
+The first layer is called the \emph{input layer} and corresponds to the input vector, $\mathbf{x}$. The last layer is called the \emph{output layer} and contains the output vector of the network, $\mathbf{y}$. The layers in between are known as \emph{hidden layers}. Each neuron performs a transformation of the data from the respective previous layer based on an \emph{activation function}, labelled as $\mathbf{h}^l$ for the $l^\text{th}$ layer.
+The first layer thus corresponds to $\mathbf{h}^0 \equiv \mathbf{x}$, and the output layer to $\mathbf{h}^L \equiv \mathbf{y}$.
+The artificial neurons are connected via \emph{links} that have weights associated.
+A weight labelled with $w^{l}_{jk}$ connects the $k^\text{th}$ neuron in the $l^\text{th}$ layer to the $j^\text{th}$ neuron in $(l+1)^\text{th}$ layer.
+In addition, each neuron except the ones in the input layer has a so-called \emph{bias weight}, labelled as $w^{l}_{j0}$ for the $j^\text{th}$ neuron in the $l^\text{th}$ layer.
+%A neuron is ``activated'' by the data coming from the respective previous layer. 
+The activation of the $j^\text{th}$ neuron in the $l^{\text{th}}$ layer can then be written as
+\begin{equation}
+    h^{l}_j =  h^{l} \left( \sum_{k}   w^{l}_{jk} h^{l-1}_{k}  + w^{l}_{j0} \right),
+\end{equation}
+where the sum is over all neurons $k$ in the $(l-1)^\text{th}$ layer.
+% While the number of neurons in the input and output layer are typically chosen based on the problem at hand, the specifics for the hidden layers are usually optimized empirically.  
+This equation can be written in matrix form,
+\begin{equation}
+    \mathbf{h}^{l+1} =  h^{l} \left( W^{l} \mathbf{h}^{l}  + \mathbf{w}^{l}_{0} \right),
+\end{equation}
+by defining the weight matrix $W^l = \left(w^l_{jk} \right)$, and the vectors corresponding to the activation functions and bias terms in the $l^\text{th}$ layer as $\mathbf{h}^l$ and  $\mathbf{w}^{l}_0$, respectively.
+% In order to understand this transformation, a single artificial neuron is depicted in \cref{fig:single-neuron}. 
+The type of activation function can have different forms; typically choices are a sigmoid function,
+\begin{equation}
+    h(x)={\frac {1}{1+e^{-x}}},
+\end{equation}
+or a so-called Rectified Linear Unit (ReLU) function, defined as
+\begin{equation}
+    {h(x)=\max(0,x)}.    
+\end{equation}
+The same activation function is usually used across all hidden layers.
+The output layer typically has a dedicated activation function, tailored to the problem at hand.
 
-- illustration of neural network components
+The choice of activation functions as well as the number of layers and neurons is what determines the \emph{network architecture} in a feedforward NN. The weights of the NN are adjustable and are optimized during the training process, that is explained below.
 
-- Add formular with weights and biases and so on...
+% Quote from: http://neuralnetworksanddeeplearning.com/chap1.html
+%- Up to now, we've been discussing neural networks where the output from one layer is used as input to the next layer. Such networks are called feedforward neural networks.
 
-- layers: input, transformations, output
-- weights, biases
-- activation function, output function(sigmoid)
-- taken together is known as the network architecture
 
-- Loss function quantifies the difference between the true values and the current approximated values.
+
+\begin{figure}[t]
+    \newImageResizeCustom{0.9}{figures/data-analysis/neural-network-architecture.png}
+    \caption{Example illustration of a fully-connected neural network. The three dots indicate that neural networks can be defined with an arbitrary number of neurons and hidden layers.}
+    \label{fig:neural-net}
+\end{figure}
+
+
+% \begin{figure}[t]
+%     \newImageResizeCustom{0.7}{figures/data-analysis/single-neuron-illustration.png}
+%     \caption{Illustration of a single artificial neuron, including the inputs, $\mathbf{x}$ and $\mathbf{w}$, the bias, $b$, and the activation function $a(\cdot)$ as well as output weight.}
+%     \label{fig:single-neuron}
+% \end{figure}
 
 
 \section{Training Procedure and Hyperparameters}
-- In the work presented in this thesis, supervised learning is used to train a classifier, based on the labels (maybe some nice vectors as here: https://cds.cern.ch/record/2791460?ln=en) provided by MC simulations.
-%- The classifier is trained by choosing as a target value a boolean, that is true for signal events and false for other type of events. 
+% Read also here: http://neuralnetworksanddeeplearning.com/chap1.html#learning_with_gradient_descent
+
+The work presented in this thesis uses supervised learning techniques to train a classifier that distinguishes between signal-like and background like events. 
+The network is trained with MC simulated samples with ground-truth labels. 
+The loss function quantifies the difference between the true values and the values predicted by the current NN model and provides a suitable metric for how well the NN performs in the classification task.
+
+The weights are initialized randomly and are then adjusted during the training according to an optimization algorithm that aims at minimizing the loss function.
+The most widely used optimization algorithm is the \emph{gradient descent} or \emph{stochastic gradient descent} algorithm, based on deriving the gradients of the cost function for each weight.
+
+The weight updates can be written as 
+\begin{equation}
+    Wnew = - learning rate * gradient(Wbefore), 
+\end{equation}
+where $\alpha$ is known as the learning rate. 
+
+The gradients are computed with a method known as \emph{back propagation}~\ccite{Rumelhart_1986}.
 
 
-- Weight initialisation
-- Optimization with back propagation, using gradient descent to update parameters efficiently
-    -> Learning rate
-    
-- Loss function
 - Optimisers (stochastic gradient descent is a basic form)
 - Regularisation techniques: dropout
 - k-fold cross validation to prevent any bias but still exploit significant portion of available data set for training.
-    - Create figure for this (with miro!?)
+- Create figure for this (with miro!?)
 - Early stopping
 
-- The set of parameters that define the network architecture together with the parameters used in the training are together referred to as hyperparameters. 
+- The set of parameters that define the network architecture together with the parameters used in the training are together referred to as hyperparameters.
 
-- A main part of machine learning is to find the most optimal parameters, to optimize the performance. 
+- A main part of machine learning is to find the most optimal parameters, to optimize the performance.
 
 - grid search
 
