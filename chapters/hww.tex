@@ -38,6 +38,13 @@ To this end, a method known as \emph{pile-up reweighting} assigns a dedicated \e
 \section{ggF Analysis Regions}
 
 \section{Classification of VBF Signal and Background Using a Deep Neural Network}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Copied from previous \section{Neural Network Training}
+The work presented in this thesis uses supervised learning techniques to train a binary classifier that distinguishes between signal-like and background-like events. 
+Therefore, only a single output node is required, that uses a logistic sigmoid as activation function such that $y = \sigma(x)$, where $\sigma(x)$ is defined as in \cref{eq:logistic-sigmoid}.
+The network is trained with MC simulated $pp$ collision events that have ground-truth labels called \emph{target values} in the following. The target value, $t_n$, for a given event $n$ has a value of $t_n = 1$, if the event is a simulated signal event, and $t_n = 0$ otherwise.
+
 \subsection{Training variables}
 \subsection{Training hyperparameter optimization}
 %\subsection{Prospects Studies for Common VBF and ggF HWW 2-jet Analysis with Multiclass Classification}
