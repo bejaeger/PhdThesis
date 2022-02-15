@@ -17,6 +17,11 @@
 
 In recent years, machine learning (ML) applications became ubiquitous and - often unnoticed - drive much of humans' decision making. 
 Also HEP entered the data-driven era and more and more traditional analysis techniques have been replaced by modern ML tools.
+% - Add examples in one/two sentences here?
+% - mention classification task: 
+% FROM PHD: "and an event-level classifier using the 4-momenta of a particle collision to determine which process gave rise to the collision."
+% - mention supervised learning
+% - mention neural networks
 ML tools can analyse high-dimensional data simultaneously which in many cases makes them superior to traditional analysis strategies that often rely on boolean selections on single observables. 
 
 A formal definition of ML was provided in the book ``Machine Learning''~\ccite{mitchell1997machine}:
@@ -41,6 +46,8 @@ This chapter first provides an overview of the various applications of ML in HEP
 \section{Applications of Machine Learning in HEP}
 - ML is a fast moving field and more and more applications are being tested and adopted in HEP. The following provides only a very small selection of potential applications in HEP and aims at highlighting the different areas in HEP where ML models can be leveraged. 
 
+\Minote{}{Put the above in a footnote in the introduction!}
+
 - Different applications of ML in ATLAS and throughout HEP community in general: hit reconstruction \ccite{PERF-2012-05} or track finding, object identification, classification of entire events for example in the search for SUSY particles, New calibration techniques (general jet calibration) or tagging techniques (W Z boson tagging?). 
 % check here for references: https://arxiv.org/pdf/2103.12226.pdf
 
@@ -50,7 +57,7 @@ This chapter first provides an overview of the various applications of ML in HEP
 The basic task of a machine learning algorithm is to find a function $f: X \rightarrow Y$, that maps some higher-dimensional data $X$ onto some target label $Y$, while optimizing a metric of choosing.
 This metric is known as \emph{loss function} (also \emph{cost function}), $L(y, f(x))$.
 The function that optimizes the loss function is found in a process referred to as \emph{training}, in which \TDnote{a learning algorithm is applied to a set of sample data}{Not really sure if that's a good way to say it}, known as \emph{training data}.
-The space of functions to choose from is constrained by a \emph{model} that can come in various forms, such as boosted decision trees (BDTs), support vector machines (SVMs), or neural networks (NNs) (see \cref{sec:intro-neural-nets}). The latter, in particular deep neural networks (DNNs), are by now the most powerful machine learning models and ubiquitous in HEP and many other technology-related fields. \TDnote{[XX]}{Add reference to footnote?} \footnote{The advent of deep neural networks and machine learning in general was facilitated by the growing amount of both computing resources and data, as well as software advancements, in the beginning of the 21$^{\text{th}}$ century.}
+The space of functions to choose from is constrained by a \emph{model} with adjustable parameters that are optimized during the training. Examples of such models include: boosted decision trees (BDTs), support vector machines (SVMs), or neural networks (NNs) (see \cref{sec:intro-neural-nets}). The latter, in particular deep neural networks (DNNs), are the most widely used machine learning models today and ubiquitous in HEP and many other technology-related fields due to their great flexibility and ability to approximate more complex, non-linear functions. \TDnote{[XX]}{Add reference to footnote?} \footnote{The advent of deep neural networks and machine learning in general was facilitated by the growing amount of both computing resources and data, as well as software advancements, in the beginning of the 21$^{\text{th}}$ century.}
 %Details on DNNs are given below, as they are used in the work presented in this thesis.
 % % From [1] see above:
 % - Search for function f : X -> Y, that maps the higher-dimensional observed data X on some target label Y of lower dimension, while optimizing a metric of choosing. 
@@ -68,11 +75,11 @@ Regularization methods are typically improved during the training procedure in w
 
 \section{Introduction to Neural Networks}
 \label{sec:intro-neural-nets}
-Neural networks consist of interconnected layers of artificial neurons\footnote{ NNs are therefore also called artificial neural networks (ANNs), which is more descriptive but usually used synonymously with the simple form ``neural networks''.}. An illustration of a fully-connected neural network, where each layer receives inputs only from the previous layer, is shown in \cref{fig:neural-net}. These types of NNs are known as \emph{feedforward} NNs.
+Neural networks can be visualized as interconnected layers of artificial neurons\footnote{ NNs are therefore also called artificial neural networks (ANNs), which is more descriptive but usually used synonymously with the simple form ``neural networks''.}. An illustration of a fully-connected neural network, where each layer receives inputs only from the previous layer, is shown in \cref{fig:neural-net}. These types of NNs are known as \emph{feedforward} NNs.
 The first layer is called the \emph{input layer} and corresponds to the input vector, $\mathbf{x}$. The last layer is called the \emph{output layer}, $\mathbf{y}$, and the layers in between are known as \emph{hidden layers}. Each neuron performs a transformation of the data from the respective previous layer based on an \emph{activation function}, labelled as $h^{(l)}(\cdot)$ for the $l^\text{th}$ layer.
-The activation function of the first layer can thus be considered as the identity function, $h^{(0)}(\mathbf{x}) \equiv \mathbf{x}$.
+Hence, the activation function of the input layer can be considered as the identity function, $h^{(0)}(\mathbf{x}) \equiv \mathbf{x}$.
 The artificial neurons are connected via \emph{links} that have weights associated.
-A weight labelled with $w^{(l)}_{jk}$ connects the $k^\text{th}$ neuron in the $l^\text{th}$ layer to the $j^\text{th}$ neuron in $(l+1)^\text{th}$ layer.
+In the following notation, a weight labelled with $w^{(l)}_{jk}$ connects the $k^\text{th}$ neuron in the $l^\text{th}$ layer to the $j^\text{th}$ neuron in $(l+1)^\text{th}$ layer.
 In addition, each neuron except the ones in the input layer has a so-called \emph{bias} weight, labelled as $w^{(l)}_{j0}$ for the $j^\text{th}$ neuron in the $l^\text{th}$ layer.
 %A neuron is ``activated'' by the data coming from the respective previous layer. 
 The activation of the $j^\text{th}$ neuron in the $l^{\text{th}}$ layer can then be described by a recursive relation,
@@ -96,23 +103,29 @@ The full function of a simple network with one hidden layer and a single output 
 \begin{equation}
     y(\mathbf{x}, \mathbf{W}) = h^{(2)} \left( W^{(2)} h^{(1)} \left(  W^{(1)} \mathbf{x} + \mathbf{w}^{(1)}_{0}    \right) + w^{(2)}_{0} \right),
 \end{equation}
-which simply corresponds to a nonlinear function, controlled by a set of adjustable parameters of weights and bias weights, that are together labelled as $\mathbf{W}$. Here, the weight matrix $W^{(2)}$ is a vector and the activation function $h^{(2)}(\cdot)$ is the activation of the output neuron.
+which simply corresponds to a nonlinear function, controlled by a set of adjustable parameters of weights and bias weights (collectively referred to as weights and labelled as $\mathbf{W}$ in the following). Here, the weight matrix $W^{(2)}$ is a vector and the activation function $h^{(2)}(\cdot)$ is the activation of the output neuron.
+
+\TDinote{}{Maybe write about matrix from right away, avoid index war, and talk about transformations of LAYERS rather than single neurons}
 
 % In order to understand this transformation, a single artificial neuron is depicted in \cref{fig:single-neuron}. 
-The type of activation function can have different forms; typical choices are a logistic sigmoid,
+There are different forms of activation functions that can be used.
+Feedforward NNs generally use the same function in all hidden layers.
+A common choice is the so-called \emph{Rectified Linear Unit} (ReLU) function, defined as
+\begin{equation}
+    {h(x)= R(x) = \max(0,x)}.    
+\end{equation}
+A dedicated activation function is typically used for the output node, dependent on the problem.
+A natural choice for binary classification is a logistic sigmoid,
 \begin{equation}
     \label{eq:logistic-sigmoid}
     h(x)= \sigma(x) = {\frac {1}{1+e^{-x}}},
 \end{equation}
-or a so-called Rectified Linear Unit (ReLU) function, defined as
-\begin{equation}
-    {h(x)= R(x) = \max(0,x)}.    
-\end{equation}
-\Minote{}{Maybe remove the specifics and move them to the next chapter.}
-The same activation function is usually used across all hidden layers.
-The output layer typically has a dedicated activation function, tailored to the problem at hand.
+which restricts the output to values between zero and one and can thus be interpreted probabilistically.
+All activation functions must be continuously differentiable, in order for the training algorithm to succeed.
 
-The choice of activation functions as well as the number of layers and neurons is known as the \emph{network architecture} in a feedforward NN. 
+\TDinote{}{Add picture of sigmoid.}
+
+% The choice of activation functions as well as the number of layers and neurons is known as the \emph{network architecture} in a feedforward NN. 
 %The weights $\mathbf{W}$ of the NN are the free parameters that are to be optimized during the training process.
 
 % Quote from: http://neuralnetworksanddeeplearning.com/chap1.html
@@ -135,6 +148,7 @@ The choice of activation functions as well as the number of layers and neurons i
 
 
 \section{Neural Network Training}
+\label{sec:nn-training}
 % Read also here: http://neuralnetworksanddeeplearning.com/chap1.html#learning_with_gradient_descent
 
 % The work presented in this thesis uses supervised learning techniques to train a binary classifier that distinguishes between signal-like and background-like events. 
@@ -147,63 +161,80 @@ The training process is an iterative numerical procedure, during which the free 
 To determine the weight updates, gradient-based optimization algorithms are commonly used, that update a given weight based on the gradient of the loss function with respect to that weight, 
 \begin{equation}
     \label{eq:gradient-descent}
-    w^{(\tau+1)} = w^\tau - \eta \grad_{w^{(\tau)}} L(\mathbf{W}),
+    \mathbf{W}^{(\tau+1)} = \mathbf{W}^\tau - \eta \grad_{\mathbf{W}^{(\tau)}} L(\mathbf{W}^{(\tau)}),
 \end{equation}
-where $\eta$ is known as the \emph{learning rate}. 
-The initial weights, $w^{(0)}$, are chosen randomly.
-The weights are usually updated after a \emph{batch} of training samples, which is known as \emph{mini-batch gradient descent}. 
-After each batch of data, the loss is computed and the weights are adjusted according to \cref{eq:gradient-descent}, which requires the computation of the gradient of the loss function. 
-%The most widely used optimization algorithm is the \emph{gradient descent} or \emph{stochastic gradient descent} algorithm. 
-This is a non-trivial task as it cannot be solved analytically. 
-A method known as \emph{back propagation}~\ccite{Rumelhart_1986} is therefore used, that propagates the gradients to each weight.  
+where $\mathbf{W}^{(\tau)}$ are the weights at iteration $\tau$.
+The size of the update is controlled by the parameter $\eta$, which is known as the \emph{learning rate} and the initial weights, $w^{(0)}$, are chosen randomly.
 
-In supervised learning, the loss function typically quantifies the difference between the true values of the labelled sample data -- known as \emph{target values}, $t_n$ -- and the values predicted by the current NN model. A typical choice is the sum-of-squares loss function,
+A common approach is to evaluate the loss for a set of training samples, known as \emph{batches}.\footnote{The gradient descent algorithm that uses batches of data is sometimes referred to as \emph{mini-batch gradient descent}. Other algorithms are frequently used, such as the \emph{stochastic gradient descent} algorithm, that updates the weights after each training sample, or the \emph{gradient descent} algorithm, which evaluates the gradients based on the loss evaluated for the entire training data.} 
+The gradients of the resulting loss with respect to each weight are computed with a method known as \emph{backpropagation}~\ccite{Rumelhart_1986}. Backpropagation computes the gradients one layer at a time by applying the chain rule of differentiation, starting from the output layer and iterating backwards.
+This is made possible by choosing activation functions and loss functions that are continuously differentiable, so that the NN output is also fully differentiable with respect to each weight.
+\TDinote{}{Describe back propagation more?}
+
+% A common approach is to update the weights after a set of training samples, known as \emph{batches}, were passed through the network\footnote{The gradient descent algorithm that uses batches of data is sometimes referred to as \emph{mini-batch gradient descent}. Other algorithms are frequently used, such as the \emph{stochastic gradient descent} algorithm, that updates the weights after each training sample, and \emph{gradient descent} algorithm, which evaluates the gradients of the loss of the entire training data.}. 
+% , by first passing the data through the network and computing the loss, and then 
+% After each batch of data, the loss is computed and the weights are adjusted according to \cref{eq:gradient-descent}. 
+% This requires the computation of the gradient of the loss function, which is a non-trivial task \TD{and cannot be solved analytically}{Think/read about that one}. 
+%The computation of the gradients is done with a method called \emph{back propagation}~\ccite{Rumelhart_1986}.
+% is therefore used, that derives the gradient of the loss function with respect to each weight, by applying chain-rule differentiation.
+
+The loss function quantifies the difference between the true values of the labelled sample data -- known as \emph{target values}, $t_n$ -- and the values predicted by the current NN model. A typical choice is the sum-of-squares loss function,
 \begin{equation}
    L(\mathbf{W}) = \sum _{n=1}^{N}\left( y(\mathbf{x}_n, \mathbf{W})-t_n \right)^{2},
 \end{equation}
-where $N$ is the size of the batch, denoted as \emph{batchsize}. 
-Another commonly used loss function especially for classification tasks is the so-called \emph{cross-entropy loss},
+where $N$ is the size of the batch, denoted as \emph{batch size}. 
+
+Another commonly used loss function, in particular for binary classification tasks, is the so-called \emph{cross-entropy loss},
 \begin{equation}
     L(\mathbf{W}) = \sum _{n=1}^{N}\left( t_n \ln y_n + ( 1 - t_n) \ln (1 - y_n) \right).
 \end{equation}
 
+TDinote{}{Add discussion to add weights to each training sample.}
 
 \section{Hyperparameter optimization} 
 In practice, when training a neural network, significant effort needs to be put into finding a suitable parameter set (known as \emph{hyperparameters}) so that the performance metric is optimized and the network converges to a minimum both rapidly and reliably. 
 Several useful techniques exist that simplify hyperparameter optimization, as well as other training methods are explained below.
 
 \paragraph{Learning rate} \mbox{}\\
-The learning rate is one of the most crucial hyperparameters as it determines the stepsize of the weight updates. Choosing a learning rate that is too large, can prevent convergence and cause the loss function to fluctuate around the minimum. Too low a learning rate can lead to extremely slow or no convergence. 
+The learning rate is one of the most crucial hyperparameters as it determines the size of the weight updates. Choosing a learning rate that is too large, can prevent convergence and cause the loss function to fluctuate around the minimum. Too low a learning rate can lead to extremely slow or no convergence. 
 One method to mitigate this problem is using a \emph{learning rate schedule}, that adjusts the learning rate based on the progress during the training. As such, a larger learning rate can be used in the beginning of the training, that gets smaller over time.
-Typically, the convergence is tested when different learning rates and learning rate schedules are used.
+Typically, the learning rate is chosen by testing different values and observing the behavior of the loss function as a function of the training progress.
 
 % @see: https://ruder.io/optimizing-gradient-descent/
 % avoiding getting trapped in their numerous suboptimal local minima
 % A learning rate that is too small leads to painfully slow convergence, while a learning rate that is too large can hinder convergence and cause the loss function to fluctuate around the minimum or even to diverge.
 
-\paragraph{Optimizer}\mbox{}\\
-There are many variations of the gradient descent algorithm, known as \emph{gradient descent optimization algorithms}, that can improve the convergence of the training \ccite{ruder2017overview}. The \emph{AdaGrad}~\ccite{adagrad-duchi} algorithm is one such example. It adapts the learning rate based on the size of the gradients at each parameter, which, in layman's words, leads to rare features in the training data being given more weight than frequently occurring features. This helps to make the training converge faster and more reliably.
+\paragraph{Optimizers}\mbox{}\\
+There are many variations of the gradient descent algorithm presented in \cref{sec:nn-training}, that can improve the convergence of the training \ccite{ruder2017overview}. The \emph{AdaGrad}~\ccite{adagrad-duchi} algorithm is one such example that is used in the work presented in this thesis. It adapts the learning rate based on the size of the gradients at each parameter, which, in layman's words, leads to rare features in the training data being given more weight than frequently occurring features. This helps to make the training converge faster and more reliably.
+
+\paragraph{Regularization}\mbox{}\\
+To avoid overfitting and ensure generalization, several regularization methods exist \TDnote{REFERENCE}{REFERENCE}. 
+In the work presented in this thesis, so-called \emph{dropout}~\ccite{srivastava_dropout_2014,DBLP:journals/corr/abs-1207-0580} is used for regularization. In this method, a chosen percentage of neurons along with their connections are randomly disabled (or ``dropped'') for each iteration of the training. This means that during each training iteration a different ``thinned'' version of the original network is effectively used, which reduces the risk of overfitting. 
+Other forms of regularization are the so-called $L_2$ regularization, that applies a penalty to the loss function based on the size of the weights, or the more practical approach of early stopping, in which the training is stopped as soon as signs of overfitting are observed. 
+Another key factor is the size of the training data itself. The more training samples are available, the less likely it is for the network to be able to adjust to unique features of the training data.
 
 
 \paragraph{Dataset split and cross-validation}\mbox{}\\
-The trained model must generalize well, which can be tested by splitting the dataset into multiple parts. 
-This is often included in a proper performance metric based on which the final model selection is performed. 
+In practice, when training a neural network, the available dataset is generally split into multiple subsets, to allow testing the generalizability of the network as well as to avoid model selection bias.
+The following three subsets are generally defined:
+\begin{itemize}
+    \item Training set: the subset of data used in the training to fit the model parameters.
+    \item Validation set: the subset of data used to tune the set of hyperparameters (for example the learning rate or the number of hidden layers and neurons). As well, it is typically evaluated alongside the training set during the training to ``monitor'' the progress with an unbiased evaluation without affecting the training itself (for example to compare the loss function at each iteration with the loss of the training set). 
+    \item Test set: the subset of data that provides the final performance evaluation and final test of generalization of a trained model. This is also the subset that is used when the dataset is required for further statistical interpretations, as is typically the case in most HEP physics analyses.
+\end{itemize}
+
+To leverage the maximum of the available statistics, cross validation can be used. 
+
+- Two purposes in HEP: maximize training statistics, ability to use full MC set, that is have an unbiased estimator for each MC event.
+
+- cross validation to avoid any bias from using the prediction of an event that was also learned using the same event.
 
 - k-fold cross validation to prevent any bias but still exploit significant portion of available data set for training \cref{fig:k-fold-method}.
 - CV per definition removes any potential bias that may occur when data is evaluated with a model that was trained with same data.
 
-Train set: train data
-Validation set: used during training to ``monitor'' the progress (e.g. for learning rate schedule) of each fold and choose set of hyperparameters (type of input, network architecture, learning rate, regularization technique, optimizers)
-Test set: Used for final evaluation of training and test generalizability
-
-- The set of parameters that define the network architecture together with the parameters used in the training are together referred to as hyperparameters.
 
 - grid search
 
-\paragraph{Regularisation}\mbox{}\\
-
-- Regularisation techniques: dropout
-- Early stopping
 
 %\section{Multiclass Classification}
 
