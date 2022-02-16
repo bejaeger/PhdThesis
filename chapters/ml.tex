@@ -180,20 +180,33 @@ This is made possible by choosing activation functions and loss functions that a
 
 The loss function quantifies the difference between the true values of the labelled sample data -- known as \emph{target values}, $t_n$ -- and the values predicted by the current NN model. A typical choice is the sum-of-squares loss function,
 \begin{equation}
-   L(\mathbf{W}) = \sum _{n=1}^{N}\left( y(\mathbf{x}_n, \mathbf{W})-t_n \right)^{2},
+    \label{eq:mean-squared-loss}
+   L^{\text{SOS}}(\mathbf{W}) = \sum _{n=1}^{N}\left(L_n^{\text{SOS}}(\mathbf{W}) \right) = \sum _{n=1}^{N}\left( y(\mathbf{x}_n, \mathbf{W})-t_n \right)^{2},
 \end{equation}
 where $N$ is the size of the batch, denoted as \emph{batch size}. 
 
 Another commonly used loss function, in particular for binary classification tasks, is the so-called \emph{cross-entropy loss},
 \begin{equation}
-    L(\mathbf{W}) = \sum _{n=1}^{N}\left( t_n \ln y_n + ( 1 - t_n) \ln (1 - y_n) \right).
+    \label{eq:cross-entropy-loss}
+    L^{\text{CE}}(\mathbf{W}) = \sum _{n=1}^{N}\left(L_n^{\text{CE}}(\mathbf{W}) \right) = \sum _{n=1}^{N}\left( t_n \ln y_n + ( 1 - t_n) \ln (1 - y_n) \right).
 \end{equation}
 
-TDinote{}{Add discussion to add weights to each training sample.}
+It is also possible to assign a weight, $\omega$, to each training sample, that is applied as a multiplicative factor when computing the loss function and thus controls the relative penalty for incorrect predictions. The loss then becomes
+\begin{equation}
+    L_{\text{weighted}}(\mathbf{W}) = \sum _{n=1}^{N} \omega_n L_n(\mathbf{W}), 
+\end{equation}
+where $L_n(\mathbf{W})$ is the non-weighted loss as shown in \cref{eq:cross-entropy-loss,eq:mean-squared-loss}. 
+A common choice in HEP is to apply weights so that for each type of physics process the relative contribution in the training data is considered by accounting for the different cross-section normalizations.
+The weights may also be used to correct for class imbalances in the training data, for example signal versus background, or to encode some prior knowledge of the importance of different physics processes that goes beyond a flat normalization factor. The latter is useful when for example a particular background process has a low overall normalization but mainly populates the signal sensitive region. In cases like that, providing a larger weight may improve the classification accuracy for that background. 
+
 
 \section{Hyperparameter optimization} 
-In practice, when training a neural network, significant effort needs to be put into finding a suitable parameter set (known as \emph{hyperparameters}) so that the performance metric is optimized and the network converges to a minimum both rapidly and reliably. 
-Several useful techniques exist that simplify hyperparameter optimization, as well as other training methods are explained below.
+In practice, when training a neural network, significant effort needs to be put into finding a suitable set of network parameters and training parameters (collectively known as \emph{hyperparameters}) so that the chosen \emph{performance metric} is optimized and the network converges to a minimum both rapidly and reliably. 
+The metric that is optimized actively during the training is the loss function, which is used to assess the convergent behavior of the training. 
+The final performance metric that is used to select the trained model is problem dependent and can range from simple estimators, such as the classification accuracy in the case of classification tasks, to more complex assessments, as is typically the case in HEP physics analysis.
+In HEP, the performance metric should estimate as close as possible the performance of the final physics measurement. This, however, is complex because the measurement is usually performed with a sophisticated statistical procedure. 
+A common approach is therefore to evaluate the performance with simplified estimators extracted from the distribution of the network output, such as the expected discovery significance (as explained in \TDnote{REF}{REF to section}).
+To tune the set of hyperparameters, several useful training techniques exist that are explained below.
 
 \paragraph{Learning rate} \mbox{}\\
 The learning rate is one of the most crucial hyperparameters as it determines the size of the weight updates. Choosing a learning rate that is too large, can prevent convergence and cause the loss function to fluctuate around the minimum. Too low a learning rate can lead to extremely slow or no convergence. 
@@ -211,32 +224,31 @@ There are many variations of the gradient descent algorithm presented in \cref{s
 To avoid overfitting and ensure generalization, several regularization methods exist \TDnote{REFERENCE}{REFERENCE}. 
 In the work presented in this thesis, so-called \emph{dropout}~\ccite{srivastava_dropout_2014,DBLP:journals/corr/abs-1207-0580} is used for regularization. In this method, a chosen percentage of neurons along with their connections are randomly disabled (or ``dropped'') for each iteration of the training. This means that during each training iteration a different ``thinned'' version of the original network is effectively used, which reduces the risk of overfitting. 
 Other forms of regularization are the so-called $L_2$ regularization, that applies a penalty to the loss function based on the size of the weights, or the more practical approach of early stopping, in which the training is stopped as soon as signs of overfitting are observed. 
-Another key factor is the size of the training data itself. The more training samples are available, the less likely it is for the network to be able to adjust to unique features of the training data.
+Another key factor is the size of the training data itself. The more training samples are available, the less likely it is for the network to be able to adjust to unique features of the training data and thus suffer from overfitting.
 
 
 \paragraph{Dataset split and cross-validation}\mbox{}\\
 In practice, when training a neural network, the available dataset is generally split into multiple subsets, to allow testing the generalizability of the network as well as to avoid model selection bias.
-The following three subsets are generally defined:
+The following three subsets are generally defined, each fulfilling a particular task:
 \begin{itemize}
-    \item Training set: the subset of data used in the training to fit the model parameters.
+    \item Training set: the subset of data used to fit the model parameters.
     \item Validation set: the subset of data used to tune the set of hyperparameters (for example the learning rate or the number of hidden layers and neurons). As well, it is typically evaluated alongside the training set during the training to ``monitor'' the progress with an unbiased evaluation without affecting the training itself (for example to compare the loss function at each iteration with the loss of the training set). 
-    \item Test set: the subset of data that provides the final performance evaluation and final test of generalization of a trained model. This is also the subset that is used when the dataset is required for further statistical interpretations, as is typically the case in most HEP physics analyses.
+    \item Test set: the subset of data that provides the final performance evaluation and final test of generalizability. 
 \end{itemize}
 
-To leverage the maximum of the available statistics, cross validation can be used. 
+A naive approach is to split the dataset once, train the model with the training set, tune the hyperparameters by evaluating the performance on the validation set, and test how well the model performs on the fully independent test set. 
+This, however, comes at the cost of loosing statistical precision in each of the sets. 
+To overcome this, a method known as \emph{cross validation} can be used, that trains the model in different iterations, each with a different definition of the train, validation, and test set.
+Multiple forms of cross validation exist, the one used in the work presented in this thesis is known as \emph{k-fold cross validation}, in which the model is trained in $k$ iterations. A schematic of the dataset split for $k=5$ is shown in \cref{fig:k-fold-method}. 
+Cross validation comes with a significant increase in computing time, as $k$ independent models are trained, but it allows exploiting more of the available statistical power in the training and the evaluation of the performance metrics.
+% - Two purposes in HEP: maximize training statistics, ability to use full MC set, that is have an unbiased estimator for each MC event.
+% - cross validation to avoid any bias from using the prediction of an event that was also learned using the same event.
+% - k-fold cross validation to prevent any bias but still exploit significant portion of available data set for training \cref{fig:k-fold-method}.
 
-- Two purposes in HEP: maximize training statistics, ability to use full MC set, that is have an unbiased estimator for each MC event.
-
-- cross validation to avoid any bias from using the prediction of an event that was also learned using the same event.
-
-- k-fold cross validation to prevent any bias but still exploit significant portion of available data set for training \cref{fig:k-fold-method}.
-- CV per definition removes any potential bias that may occur when data is evaluated with a model that was trained with same data.
-
-
-- grid search
-
-
-%\section{Multiclass Classification}
+Another big advantage of cross validation is specific to HEP physics analyses. 
+Here, the dataset that is used for the training is usually required for further statistical interpretations. In cases like that, it is best practice to use the test set for further analysis. This removes any potential bias that may occur when data samples are evaluated with a model that was trained with same data sample.
+When cross validation is used each data sample falls in one of the test sets, such that the entire dataset can be used for further analysis.
+% best practice to avoid using the model output of a data sample if the model was trained with the same data sample. The
 
 \begin{figure}[t]
     \newImageResizeCustom{0.7}{figures/data-analysis/k-fold-illustration.png}
