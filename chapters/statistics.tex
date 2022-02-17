@@ -1,11 +1,75 @@
 \chapter{Statistical Analysis Techniques}
 \label{chap:statistics}
 
+Collider experiments such as the ATLAS detector at the LHC, simply put, can be regarded as counting experiments. 
+The counting is of the number of collision events in different phase space regions. 
+The number of events as measured in data can be compared with the value predicted by theory.
+Given the total amount of collision events that were produced, as measured by the integrated luminosity, the probabilities of the occurrence of different physics processes can thus be measured, known as cross-sections.
+To measure the cross sections, as well as make other statistical inferences, sophisticated statistical analyses are required. The following explains the statistical setup used for the work presented in this thesis.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Expectation value
+\section{Expectation Value}
+While in data, no information of the actual underlying physics process that gave rise to certain detector signals is available, MC simulations can be used to infer the expected contributions of different processes per phase space region.
+The physics processes are typically divided into signal processes and background processes, where the exact differentiation depends on the objectives of the analysis.
+Given a binned data distribution with $n_i$ events per bin $i$, the corresponding expectation value can be written as
+\begin{equation}
+    \text{E}[n_i] = \sum_{\mu_\sigma \in \mathbf{\mu}} \mu_\sigma s_{\sigma,i}(\mathbf{\theta}) + \sum_{\nu_\beta \in \mathbf{\nu}} \nu_\beta b_{\beta,i}(\mathbf{\theta}),
+\end{equation}
+where $s_{\sigma, i}$ is the expected number of events of signal category $\sigma$, and $b_{\beta,i}$ the expected number of background events of background category $\beta$.
+%The multipliers $\mu_\sigma$ ($\nu_\beta$) scale the amount of signal (background) and are called \emph{signal strengths} (\emph{normalization factors}). 
+The multipliers $\mu_\sigma$ scale the amount of signal events of category $\sigma$ and are known as \emph{signal strengths}. Typically, these are the \emph{parameters of interest} (POIs) in the statistical analysis. The number of signal categories depends on the specifics of the measurement. The multipliers $\nu_\beta$ have the same effect -- statistically speaking -- and scale the amount of background events of background category $\beta$. They are referred to as \emph{normalization factors} (NFs). For the background categories that can be measured well in a region that is pure in events of that category, the NFs are typically freely floating in the statistical analysis. For the other background categories the values are fixed to $\nu_\beta = 1$. 
+The expected number of events, $s$ and $b$, respectively, depend on a set of parameters, $\mathbf{theta}$, known as \emph{nuisance parameters}. These parameters encode the effect of systematic uncertainties as well as statistical uncertainties and are fit in the statistical analysis.
+
+% Check out master thesis
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Maximum Likelihood Method
+\section{Maximum Likelihood Method}
+A maximum likelihood estimation \TDnote{REF}{REF} is performed in order to extract the POIs.
+The MC simulations serve to construct a template that is fit to data so that the observed data is most likely under the assumed statistical model. \Mnote{}{Maybe rephrase cause this is close to wikipedia}
+The statistical model is based on a likelihood function, or simply \emph{likelihood} that consists of products of probability density functions. 
+The full likelihood can be written as
+\begin{equation}
+    L = LSRs \times LCRs \times Lsysts \times Lstat
+\end{equation}
+
+- Explain three terms: 
+    1. Extended Maximum Likelihood (see paper: https://www.sciencedirect.com/science/article/abs/pii/0168900290913348?via%3Dihub)
+        - Signal regions
+        - subsidiary measurements
+    2. Syst Likelihood with Gaussian constraints
+    3. Stats likelihood 
+
+In practice, it is convenient to minimize the negative log likelihood\footnote{It is numerically more stable to minimize the negative logarithm of the likelihood.},
+\begin{equation}
+    parameters* = arg min(parameters) - ln (L)
+\end{equation}
+The likelihood typically cannot be maximized analytically, hence, numeric procedures are used.
+The fitted $\hat{\mu}$ can be directly translated into an observed cross-section. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Hypothesis testing
 \section{Hypothesis testing}
-\section{Expectation value}
-\section{The profile likelihood ratio and test statistic}
-\section{Profiling systematic uncertainties}
-\section{The Asimov data set}
-\section{The profile likelihood fit}
-\section{Extraction of signal significance}
+To test the compatibility of the data with a hypothesized value of $\mu$ the following test statistic is considered,
+\begin{equation}
+    q_\mu = -2 \ln \lambda(\mu),
+\end{equation}
+that is based on the \emph{likelihood ratio},
+\begin{equation}
+    \label{eq:likelihoodratio}
+    \lambda(\mu) = \frac{ L \left( \mu, \hat{\hat{\theta}} \right) } { L \left( \hat{\mu} , \hat{\theta} \right) },
+\end{equation}
+where the values $\hat{\hat{\theta}}$ correspond to the ones that maximize the likelihood for a given value of the signal strength $\mu$, and $\hat{\theta}$ the ones that maximize the likelihood when simultaneously fitting the signal strength $\hat{\mu}$.
+
+- How to calculate discovery significance
+- Mention how to calculate p-value for measurement vs SM
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{The Asimov data set}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Extraction of simple sensitivity estimators}
+% Take significant portion from Master thesis
 
