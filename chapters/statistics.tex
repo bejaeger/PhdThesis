@@ -1,75 +1,178 @@
 \chapter{Statistical Analysis Techniques}
 \label{chap:statistics}
 
-Collider experiments such as the ATLAS detector at the LHC, simply put, can be regarded as counting experiments. 
+Collider experiments such as the ATLAS detector at the LHC, simply put, are counting experiments. 
+
 The counting is of the number of collision events in different phase space regions. 
+
 The number of events as measured in data can be compared with the value predicted by theory.
-Given the total amount of collision events that were produced, as measured by the integrated luminosity, the probabilities of the occurrence of different physics processes can thus be measured, known as cross-sections.
-To measure the cross sections, as well as make other statistical inferences, sophisticated statistical analyses are required. The following explains the statistical setup used for the work presented in this thesis.
+
+Given the total amount of collision events that were produced, as measured by the integrated luminosity, the probabilities of the occurrence of different physics processes can be measured, known as cross-sections.
+
+To measure the cross sections, as well as make other statistical inferences, sophisticated statistical analyses are required. 
+
+The following explains the statistical setup used for the work presented in this thesis.
+
+- frequentist
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Expectation value
 \section{Expectation Value}
-While in data, no information of the actual underlying physics process that gave rise to certain detector signals is available, MC simulations can be used to infer the expected contributions of different processes per phase space region.
-The physics processes are typically divided into signal processes and background processes, where the exact differentiation depends on the objectives of the analysis.
+While in data, no information of the actual underlying physics process that give rise to certain detector signals is available, MC simulations can be used to infer the expected contributions of different processes per measurement region.  
+%The measurement regions can be different bins of a distribution as well as different phase space regions selected according to kinematic and topological requirements.
+The physics processes are typically divided into signal processes and background processes, while the exact differentiation depends on the specifics of the analysis.
 Given a binned data distribution with $n_i$ events per bin $i$, the corresponding expectation value can be written as
 \begin{equation}
-    \text{E}[n_i] = \sum_{\mu_\sigma \in \mathbf{\mu}} \mu_\sigma s_{\sigma,i}(\mathbf{\theta}) + \sum_{\nu_\beta \in \mathbf{\nu}} \nu_\beta b_{\beta,i}(\mathbf{\theta}),
+    \text{E}[n_i] = \sum_{\sigma \in \pmb{\sigma}} \mu_\sigma s_{\sigma,i}(\pmb{\theta}_s, \pmb{\gamma}) + \sum_{\beta \in \pmb{\beta}} \nu_\beta b_{\beta,i}(\pmb{\theta}_b, \pmb{\gamma}),
 \end{equation}
-where $s_{\sigma, i}$ is the expected number of events of signal category $\sigma$, and $b_{\beta,i}$ the expected number of background events of background category $\beta$.
-%The multipliers $\mu_\sigma$ ($\nu_\beta$) scale the amount of signal (background) and are called \emph{signal strengths} (\emph{normalization factors}). 
-The multipliers $\mu_\sigma$ scale the amount of signal events of category $\sigma$ and are known as \emph{signal strengths}. Typically, these are the \emph{parameters of interest} (POIs) in the statistical analysis. The number of signal categories depends on the specifics of the measurement. The multipliers $\nu_\beta$ have the same effect -- statistically speaking -- and scale the amount of background events of background category $\beta$. They are referred to as \emph{normalization factors} (NFs). For the background categories that can be measured well in a region that is pure in events of that category, the NFs are typically freely floating in the statistical analysis. For the other background categories the values are fixed to $\nu_\beta = 1$. 
-The expected number of events, $s$ and $b$, respectively, depend on a set of parameters, $\mathbf{theta}$, known as \emph{nuisance parameters}. These parameters encode the effect of systematic uncertainties as well as statistical uncertainties and are fit in the statistical analysis.
+where the first sum is over all signal categories $\sigma \in \pmb{\sigma}$, each with an expected number of events of $s_{\sigma, i}$. The second sum is over all background categories $\beta \in \pmb{\beta}$ with expected number of background events of $b_{\beta,i}$.
+%The multipliers $\mu_\sigma$ ($\nu_\beta$) scale the amount of signal (background) and are called \emph{signal strengths} (\emph{normalisation factors}). 
+The multipliers $\mu_\sigma$ scale the amount of signal events of category $\sigma$ and are known as \emph{signal strengths}. Typically, these are the \emph{parameters of interest} (POIs) in the statistical analysis. The number of signal categories depends on the specifics of the measurement. The multipliers $\nu_\beta$ have the same effect, statistically speaking, and scale the amount of background events of background category $\beta$. They are referred to as \emph{normalisation factors} (NFs). For the background categories that can be measured well in a region that is pure in events of that category, the NFs are typically freely floating in the statistical analysis. For the other background categories the values are fixed to $\nu_\beta = 1$. 
+The expected number of events, $s$ and $b$, depend on a set of so-called \emph{nuisance parameters}, $\pmb{\theta}_s$, $\pmb{\theta}_b$, and $\pmb{\gamma}$. These parameters encode the effects of systematic uncertainties ($\pmb{\theta}_s$ and $\pmb{\theta}_b$) as well as statistical uncertainties ($\pmb{\gamma}$). Below, all nuisance parameters, including the NFs, are collectively denoted as $\pmb{\theta} = \{\pmb{\theta}_s, \pmb{\theta}_b, \pmb{\gamma}, \pmb{\nu}\}$. 
+% and are fit simultaneously with the signal strengths and NFs. 
 
 % Check out master thesis
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Maximum Likelihood Method
-\section{Maximum Likelihood Method}
-A maximum likelihood estimation \TDnote{REF}{REF} is performed in order to extract the POIs.
-The MC simulations serve to construct a template that is fit to data so that the observed data is most likely under the assumed statistical model. \Mnote{}{Maybe rephrase cause this is close to wikipedia}
-The statistical model is based on a likelihood function, or simply \emph{likelihood} that consists of products of probability density functions. 
-The full likelihood can be written as
+\section{The Likelihood Function}
+The expected number of events taken from MC simulations are used to construct a statistical template that is fit to the actual data using a maximum likelihood estimation \TDnote{REF}{REF, Sentence might be better in intro of stat}. 
+
+%in order to find the values of the POIs that make the observed data most likely under the assumed statistical model. 
+%To this end, the MC simulations serve to construct a template that is fit to data so that the observed data is most likely under the assumed statistical model. \Mnote{}{Maybe rephrase cause this is close to wikipedia}
+The statistical model is based on a likelihood function, or simply \emph{likelihood}, that consists of products of probability density functions (PDFs). The full likelihood can be written in terms of three distinct terms:
+% The statistical model is based on a template constructed with MC simulations that is fit to the data. 
+% The full likelihood can be written as
 \begin{equation}
-    L = LSRs \times LCRs \times Lsysts \times Lstat
+    \Likelihood = \Lmeas \times \Lsyst \times \Lstat.
 \end{equation}
 
-- Explain three terms: 
-    1. Extended Maximum Likelihood (see paper: https://www.sciencedirect.com/science/article/abs/pii/0168900290913348?via%3Dihub)
-        - Signal regions
-        - subsidiary measurements
-    2. Syst Likelihood with Gaussian constraints
-    3. Stats likelihood 
-
-In practice, it is convenient to minimize the negative log likelihood\footnote{It is numerically more stable to minimize the negative logarithm of the likelihood.},
+The first term, \Lmeas, measures the probability of measuring $n_i$ data events when $E[n_i]$ are expected with Poisson probabilities, 
 \begin{equation}
-    parameters* = arg min(parameters) - ln (L)
+    \Lmeas = \prod_{i \in \text{bins}} \text{Pois}(n_i | E[n_i] ),
 \end{equation}
-The likelihood typically cannot be maximized analytically, hence, numeric procedures are used.
-The fitted $\hat{\mu}$ can be directly translated into an observed cross-section. 
+The product goes over all the measurement regions, referred to as \emph{bins} below. The bins typically include a binned distribution of an observable in a signal-sensitive phase space region that discriminates well between signal and background, and phase space regions selected according to kinematic and topological requirements and pure in a particular type of background category. The latter regions are denoted as \emph{control regions} and allow determining the overall background normalisation in the data.
+
+The second term, \Lsyst, encodes the effect of the systematic uncertainties in the likelihood. Most commonly standard Gaussian functions are used,
+\begin{equation}
+    \Lsyst = \prod_{\theta \in \{ \pmb{\theta}_s,\pmb{\theta}_b \}} \text{Gauss}(0 | \theta, 1),
+\end{equation}
+where the NPs are normalized and scaled, such that they have a mean of zero and a unit standard deviation. 
+The effect on $\text{E}[n_i]$ when varying the values of the NPs by $\pm 1$ are derived per bin, either by propagating the effect of a previously measured uncertainty through the analysis -- as is typically the case for uncertainties related to the experiment -- or -- for uncertainties related to theory -- by comparing different theoretical models with each other and defining from the space of the theoretical models one standard deviation ad-hoc.
+There are different statistical techniques to describe the effect of each NP for NP values other than zero or unity.
+%A continuous description of the effect of each NP is required.
+In the work presented in this thesis, piece-wise linear interpolation is used \TDnote{REF}{REF}.
+
+
+The third and last term in the likelihood function, \Lstat, 
+accounts for the finite statistical precision on the MC template. For each bin, one uncertainty component is considered for the MC template, following the light version of the Barlow and Beeston procedure \TDnote{REF}{REF}. The nuisance parameters associated to the statistical uncertainties are typically labelled as $\pmb{\gamma} \in \pmb{\theta}$ and enter the likelihood as
+\begin{equation}
+    \Lstat = \prod_{i \in \text{bins}} \text{Gauss}(\beta_i | \gamma_i, \sqrt{\gamma_i \beta_i}),    
+\end{equation}
+where $\beta_i$ corresponds to $1 / \sigma_{\text{rel}, i}$, with $\sigma_{\text{rel}, i}$ being the relative statistical uncertainty in bin $i$. 
+
+\TDinote{Check whether this is indeed a Gaussian}
+
+% - Explain three terms: 
+%     1. Extended Maximum Likelihood (see paper: https://www.sciencedirect.com/science/article/abs/pii/0168900290913348?via%3Dihub)
+%         - Signal regions
+%         - subsidiary measurements
+%     2. Syst Likelihood with Gaussian constraints
+%     3. Stats likelihood 
+
+%The best-fit values of the parameters $\pmb{\theta}$, $\mu$, $\nu$ in the likelihood, that is the values that make the observed data most likely under the assumed statistical model, 
+
+The parameters of the likelihood, $\{\pmb{\mu}, \pmb{\theta} \}$, are fit simultaneously using a maximum likelihood method. 
+%This cannot be computed
+%The values of the parameters $\{\pmb{\theta}, \mu, \nu\}$, that make the observed data most likely under the assumed statistical model are known as \emph{best-fit values} and labelled as $ \{\hat{\pmb{\theta}}, \hat{\pmb{\mu}}, \hat{\pmb{\nu}} \}$.
+In practice, the so-called \emph{best-fit values}, $\{\hat{\pmb{\mu}}, \hat{\pmb{\theta}} \}$, are found by minimizing the negative logarithm of the likelihood:
+\begin{equation}
+    \label{eq:best-fit-values}
+    \{\hat{\pmb{\mu}}, \hat{\pmb{\theta}} \} = \text{arg} \min_{\{\pmb{\mu}, \pmb{\theta}\}} \left( - \ln (\Likelihood) \right),
+\end{equation}
+as it is numerically more stable.
+%using numeric procedures. 
+The fitted $\hat{\mu}$ can be directly translated into a physics measurement, for example into a cross-section. 
+
+% In practice, it is convenient to minimize the negative log likelihood
+%  of the POIs can then be extracted and translated into a physics quantity.
+%The likelihood typically cannot be maximized analytically, hence, numeric procedures are used.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Hypothesis testing
 \section{Hypothesis testing}
-To test the compatibility of the data with a hypothesized value of $\mu$ the following test statistic is considered,
+To test the compatibility of the data with a hypothesized value of $\mu$ for a single signal category, the following test statistic is considered,
 \begin{equation}
-    q_\mu = -2 \ln \lambda(\mu),
+    t_\mu = -2 \ln \lambda(\mu),
 \end{equation}
-that is based on the \emph{likelihood ratio},
+which is based on the \emph{likelihood ratio},
 \begin{equation}
     \label{eq:likelihoodratio}
-    \lambda(\mu) = \frac{ L \left( \mu, \hat{\hat{\theta}} \right) } { L \left( \hat{\mu} , \hat{\theta} \right) },
+    \lambda(\mu) = \frac{ \Likelihood \left( \mu, \hat{\hat{\pmb{\theta}}} \right) } { \Likelihood \left( \hat{\mu} , \hat{\pmb{\theta}} \right) },
 \end{equation}
-where the values $\hat{\hat{\theta}}$ correspond to the ones that maximize the likelihood for a given value of the signal strength $\mu$, and $\hat{\theta}$ the ones that maximize the likelihood when simultaneously fitting the signal strength $\hat{\mu}$.
+where the values $\hat{\hat{\pmb{\theta}}}$ correspond to the values that maximize the likelihood for a given value of the signal strength $\mu$, and $\hat{\pmb{\theta}}$ are defined as shown in \cref{eq:eq:best-fit-values}. 
 
-- How to calculate discovery significance
-- Mention how to calculate p-value for measurement vs SM
+To establish the discovery of a signal, the null hypothesis is defined as the background-only hypothesis $\mu = 0$.
+%the ones that maximize the likelihood when simultaneously fitting the signal strength $\hat{\mu}$.
+The test statistic used in these cases is constructed as 
+\begin{equation}
+    q_0 =
+     \begin{cases}
+       \lambda(0) & \text{for } \hat{\mu} \ge 0, \\
+       0 & \text{for } \hat{\mu} < 0,  \\
+     \end{cases}
+     \label{eq:q0}
+  \end{equation}
+where the test statistic is set to zero for negative values of $\mu$, as they are considered unphysical.
+The agreement between data and the hypothesized $\mu$ is quantified with the $p$-value, which indicates the probability of finding data that is less compatible than the observed data, assuming that the null hypothesis is correct.
+The $p$-value can be computed as
+\begin{equation}
+    \label{eq:p-value-discovery}
+    p_0 = \int_{q_0, \text{obs}}^{\infty} f \left( q_0 | \mu = 0 \right) dq_0,
+\end{equation}
+where $f \left( q_0 | \mu = 0 \right)$ is the PDF of the test statistic assuming the null hypothesis.
+The PDF is typically unknown but can be sampled from MC simulations. 
+In the large sample limit, it follows a $\chi^2$ distribution and the $p$-value can be written as~\cite{Cowan:2010js}
+\begin{equation}
+    \label{eq:p-value-approx}
+    p_0 = 1 - \Phi( \sqrt{q_0}),
+\end{equation}
+where $\Phi$ is the Gaussian cumulative distribution function. 
+In high energy physics, the $p$-value is often converted to Gaussian standard deviations, labelled as $Z$, by using the relation
+\begin{equation}
+    \label{eq:Z0}
+    Z = \Phi^{-1} ( 1 - p_0) \overset{\ref{eq:p-value-approx}}{=} \sqrt{q_0},
+\end{equation}
+where $\Phi^{-1}$ is the inverse of the Gaussian cumulative distribution function. 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \section{The Asimov data set}
+Considering a simple counting experiment with one measurement region and disregarding all uncertainties, the likelihood function can be written as
+\begin{equation}
+  \Likelihood(\mu) = \frac{(\mu s +b)^n}{n!} e^{-(\mu s+b)},
+\end{equation}
+where the expected number of signal and total background events, $s$ and $b$, respectively, are assumed to be known without uncertainty.
+Using \cref{eq:Z0}, a simple approximation for the discovery significance $Z$ can be found,
+% Assuming the nominal signal hypothesis with $\mu = 1$ one can replace the value $n$ by its Asimov value $s+b$ and can approximate the median significance, by using the definition of $q_0$ from \cref{eq:q0}, to obtain
+%By asimov data set the value $n$ can be replaces by $s+b$
+%% \begin{equation}
+%%   Z = \sqrt{q_0} = \sqrt{-2 \text{ln} \frac {L(0)}{L(\hat{\mu})}} = \sqrt{2 \left( n \text{ln}\left( \frac{n}{b} \right) + b - n \right)} = \sqrt{2 \left( \left(s + b\right) \text{ln}\left(1 + \frac{s}{b}\right) - s\right)}.
+%% \end{equation}
+\begin{equation}
+  Z = \sqrt{2 \left( \left(s + b\right) \text{ln}\left(1 + \frac{s}{b}\right) - s\right)},
+\end{equation}
+which is valid for large enough $b$.
+A more sophisticated approximation, that also accounts for uncertainties on the expected number of background events is given by
+\begin{equation}
+    Z = 
+    \begin{cases}
+    + \sqrt{ 2 \left( n \ln \left[ \frac{n \left( b + \sigma^2 \right)}{b^2 + n \sigma^2} \right] - \frac{b^2}{\sigma^2} \ln \left[ 1 + \frac{\sigma^2 \left(n - b \right) }{b \left( b + \sigma ^2 \right) } \right] \right)   } & \text{if } n \geq b, \\
+    - \sqrt{ 2 \left( n \ln \left[ \frac{n \left( b + \sigma^2 \right)}{b^2 + n \sigma^2} \right] - \frac{b^2}{\sigma^2} \ln \left[ 1 + \frac{\sigma^2 \left(n - b \right) }{b \left( b + \sigma ^2 \right) } \right] \right)   } & \text{if } n < b, \\
+\end{cases}
+\end{equation}
+where $\sigma$ is the uncertainty on the expected number of background events, $b$, and $n$ corresponds to the sum of the expected number of signal and background events, $n = s+b$.
+More information on how this formula is derived can be found in \ccite{ATL-PHYS-PUB-2020-025}.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Extraction of simple sensitivity estimators}
-% Take significant portion from Master thesis
+\TDinote{}{Mention how to calculate p-value for measurement vs SM?}
 
+% From master thesis
+% The common re-quirement for a signal to claim discovery is a minimum significance of Z = 5, which corresponds to p = 2.87 · 10−7.

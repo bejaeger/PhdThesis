@@ -164,7 +164,7 @@ To determine the weight updates, gradient-based optimization algorithms are comm
     \mathbf{W}^{(\tau+1)} = \mathbf{W}^\tau - \eta \grad_{\mathbf{W}^{(\tau)}} L(\mathbf{W}^{(\tau)}),
 \end{equation}
 where $\mathbf{W}^{(\tau)}$ are the weights at iteration $\tau$.
-The size of the update is controlled by the parameter $\eta$, which is known as the \emph{learning rate} and the initial weights, $w^{(0)}$, are chosen randomly.
+The size of the update is controlled by the parameter $\eta$, which is known as the \emph{learning rate}, and the initial weights, $w^{(0)}$, are chosen randomly.
 
 A common approach is to evaluate the loss for a set of training samples, known as \emph{batches}.\footnote{The gradient descent algorithm that uses batches of data is sometimes referred to as \emph{mini-batch gradient descent}. Other algorithms are frequently used, such as the \emph{stochastic gradient descent} algorithm, that updates the weights after each training sample, or the \emph{gradient descent} algorithm, which evaluates the gradients based on the loss evaluated for the entire training data.} 
 The gradients of the resulting loss with respect to each weight are computed with a method known as \emph{backpropagation}~\ccite{Rumelhart_1986}. Backpropagation computes the gradients one layer at a time by applying the chain rule of differentiation, starting from the output layer and iterating backwards.
@@ -181,14 +181,14 @@ This is made possible by choosing activation functions and loss functions that a
 The loss function quantifies the difference between the true values of the labelled sample data -- known as \emph{target values}, $t_n$ -- and the values predicted by the current NN model. A typical choice is the sum-of-squares loss function,
 \begin{equation}
     \label{eq:mean-squared-loss}
-   L^{\text{SOS}}(\mathbf{W}) = \sum _{n=1}^{N}\left(L_n^{\text{SOS}}(\mathbf{W}) \right) = \sum _{n=1}^{N}\left( y(\mathbf{x}_n, \mathbf{W})-t_n \right)^{2},
+   L^{\text{SOS}}(\mathbf{W}) = \sum _{n=1}^{N}L_n^{\text{SOS}}(\mathbf{W})= \sum _{n=1}^{N}\left( y(\mathbf{x}_n, \mathbf{W})-t_n \right)^{2},
 \end{equation}
 where $N$ is the size of the batch, denoted as \emph{batch size}. 
 
 Another commonly used loss function, in particular for binary classification tasks, is the so-called \emph{cross-entropy loss},
 \begin{equation}
     \label{eq:cross-entropy-loss}
-    L^{\text{CE}}(\mathbf{W}) = \sum _{n=1}^{N}\left(L_n^{\text{CE}}(\mathbf{W}) \right) = \sum _{n=1}^{N}\left( t_n \ln y_n + ( 1 - t_n) \ln (1 - y_n) \right).
+    L^{\text{CE}}(\mathbf{W}) = \sum _{n=1}^{N}L_n^{\text{CE}}(\mathbf{W}) = \sum _{n=1}^{N}\left( t_n \ln y_n + ( 1 - t_n) \ln (1 - y_n) \right).
 \end{equation}
 
 It is also possible to assign a weight, $\omega$, to each training sample, that is applied as a multiplicative factor when computing the loss function and thus controls the relative penalty for incorrect predictions. The loss then becomes
@@ -197,7 +197,7 @@ It is also possible to assign a weight, $\omega$, to each training sample, that 
 \end{equation}
 where $L_n(\mathbf{W})$ is the non-weighted loss as shown in \cref{eq:cross-entropy-loss,eq:mean-squared-loss}. 
 A common choice in HEP is to apply weights so that for each type of physics process the relative contribution in the training data is considered by accounting for the different cross-section normalizations.
-The weights may also be used to correct for class imbalances in the training data, for example signal versus background, or to encode some prior knowledge of the importance of different physics processes that goes beyond a flat normalization factor. The latter is useful when for example a particular background process has a low overall normalization but mainly populates the signal sensitive region. In cases like that, providing a larger weight may improve the classification accuracy for that background. 
+The weights may also be used to correct for class imbalances in the training data, for example signal versus background, or to encode some prior knowledge of the importance of different physics processes that goes beyond a flat normalization factor. The latter is useful when a particular background process has a low overall normalization but mainly populates the signal sensitive region. In cases like that, providing a larger weight may improve the classification accuracy for that background. 
 
 
 \section{Hyperparameter optimization} 
