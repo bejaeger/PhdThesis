@@ -196,8 +196,8 @@ It is also possible to assign a weight, $\omega$, to each training sample, that 
     L_{\text{weighted}}(\mathbf{W}) = \sum _{n=1}^{N} \omega_n L_n(\mathbf{W}), 
 \end{equation}
 where $L_n(\mathbf{W})$ is the non-weighted loss as shown in \cref{eq:cross-entropy-loss,eq:mean-squared-loss}. 
-A common choice in HEP is to apply weights so that for each type of physics process the relative contribution in the training data is considered by accounting for the different cross-section normalizations.
-The weights may also be used to correct for class imbalances in the training data, for example signal versus background, or to encode some prior knowledge of the importance of different physics processes that goes beyond a flat normalization factor. The latter is useful when a particular background process has a low overall normalization but mainly populates the signal sensitive region. In cases like that, providing a larger weight may improve the classification accuracy for that background. 
+A common choice in HEP is to apply weights so that for each type of physics process the relative contribution in the training data is considered by accounting for the different cross-section normalisations.
+The weights may also be used to correct for class imbalances in the training data, for example signal versus background, or to encode some prior knowledge of the importance of different physics processes that goes beyond a flat normalisation factor. The latter is useful when a particular background process has a low overall normalisation but mainly populates the signal sensitive region. In cases like that, providing a larger weight may improve the classification accuracy for that background. 
 
 
 \section{Hyperparameter optimization} 
