@@ -1,30 +1,132 @@
-Introduce impact parameter cause it's mentioned here \cref{subsec:inner-detector}.
+\todo{Introduce impact parameter cause it's mentioned in inner detector section}
+
+The theoretical framework described in \cref{sec:sm} allows making predictions about the probabilities of the possible outcomes of proton-proton collision events. 
+The necessary computations are complex and affected by many aspects, and are continuously being improved by the theoretical particle physics community.
+
+This chapter provides an overview of the physical observables that are defined at hadron colliders and about the characteristics that need to be considered when simulating the collision events. 
 
 
-% \subsection{Particle colliders}
-% \Minote{}{Maybe put this part in a theory, more general section (proton-proton collisions?).}
-% A crucial performance indicator of a particle accelerator is its \emph{instantaneous luminosity} $\mathcal{L}$ as it is proportional to the \emph{event rate}, 
-% \begin{equation}
-%     \frac{\mathrm{d}N}{\mathrm{d}t} = \sigma_{P} \mathcal{L},
-% \end{equation}
-% for a given physics process $P$ with cross section $\sigma_{P}$.
-% The instantaneous luminosity depends on parameters of the accelerator and is given by
-% \begin{equation}
-%   \mathcal{L} = f_rn_b\frac{N_p^2}{4\pi \sigma_x \sigma_y}, 
-% \end{equation}
-% when assuming Gaussian shaped beam profiles. Here, $f_r$ denotes the rotational frequency of the two bunches, $n_b$ the total number of bunches inside the accelerator, and $N_p$ the numbers of particles within each colliding bunch. 
-% The total number of events after time $T$ is given after integrating with respect to time, 
-% \begin{equation}
-%   N_{\text{Events}} = \sigma_{P} \intLumi = \sigma_{P} \int_{0}^{T} \mathcal{L} \mathrm{d}t,
-% \end{equation}
-% and is a crucial quantity typically measured in high-energy-physics experiments. 
-% It becomes clear that increasing the integrated luminosity \intLumi is one of the main goals of any collider experiment, as it is directly proportional to the number of expected events of a particular physics process. 
+\subsection{Collision rates}
+- Collision rate for process $P$ defined as
+\begin{equation}
+  \frac{\mathrm{d}N}{\mathrm{d}t} = \sigma_P \mathcal{L},
+\end{equation}
 
-% Lumi defined by Mike:
-% The luminosity measures the number of particles per unit area and time, and together with the probability of interaction (cross-section) determines the collision rate.
+- sigma: cross-section, determined from the so-called matrix element. 
+\begin{equation}
+  \sigma = \frac{|M|^2}{F} \int \text{d}Q
+\end{equation}
+which involves the Lorentz invariant phase space factor d$Q$ and the incident flux in the laboratory $F$ \cite{Halzen:1984mc}.
+
+- matrix element contains all the dynamical information of the process under investigation and represents the probability to go from an initial state $i$ to a final state $f$. 
+- it can be computed from the Lagrangian density by applying so-called Feynman rules.
 
 
-\subsection{Pile-up}
+- The luminosity, $\mathcal{L}$, is a crucial performance indicator of a particle accelerator as it is proportionality constant multiplying the cross-section to determine the \emph{event rate}.
+-  The instantaneous luminosity depends on parameters of the accelerator and is given by
+\begin{equation}
+  \mathcal{L} = f_rn_b\frac{N_p^2}{A}.
+\end{equation}
+Here $N_A$ and $N_B$ are the numbers of particles in the colliding bunches $A$ and $B$, $f_r$ is the rotational frequency of the two bunches, $n_b$ the total number of bunches inside the accelerator and $A$ the area of interaction. Assuming Gaussian shaped beam profiles the area of interaction can be written as $A = 4\pi \sigma_x \sigma_y$, with $\sigma_{x/y}$ being the horizontal and vertical beam widths.
+
+
+\subsection{Overview of proton-proton collision event}
+In proton-proton collisions ($pp$ collisions) additional difficulties arise because protons are not elementary particles. The proton is a compound state of quarks and gluons, also collectively called \emph{partons}.
+A schematic overview of a hard scattering process between two hadrons is illustrated in \cref{fig:ppcol}.
+The scattering can be described by a hard parton-parton interaction, known as \emph{hard scatter}, and further low energy processes resulting from the remaining proton remnants not involved in the hard scattering, forming the so called \emph{underlying event}.
+The incoming partons carry a momentum fraction of the proton, which is described by so called \emph{parton distribution functions} (PDFs).
+The initial and final-state particles of the hard scatter can radiate in form of \emph{inital} (ISR) or \emph{final-state radiation} (FSR). The final-state partons undergo the process of hadronization - also called \emph{fragmentation} - due to the confining nature of QCD.
+They form a spray of colour-neutral hadrons, which are known as particle \emph{jets}.
+
+\begin{figure}
+  \newImageScale{figures/schematic_ppcollision.png}{3.8}
+  \caption[Schematic view of a proton-proton collision.]{Schematic view of a proton-proton collision, taken from Ref.~\cite{Bhatti:2010bf}. Details can be found in the text.}
+  \label{fig:ppcol}
+\end{figure}
+
+\subsection{Partonic cross-sections and parton distribution functions}
+The incoming partons interact according to the laws of QCD.
+The \emph{strong coupling constant} $\alpha_s$ is dependent on the energy, which is known as the \emph{running} of the coupling constant shown in \cref{fig:alphas}.
+The divergent behaviour for small energies requires treating physics calculations and physics modelling differently dependent on the energy:
+At low energies, the physics can only be described by non-perturbative models. This regime is known as \emph{soft QCD} and comprises \emph{soft interactions} between partons.
+At high energies, where the coupling constant is small, perturbative calculations can be applied. Interactions at high energies are known as \emph{hard scatters}. \footnote{The fact that $\alpha_s$ becomes smaller at high energies is also known as \emph{asymptotic freedom} and implies that strongly interacting particles behave like free particles at high energies. Conversely, at small energies, the particles have a strong coupling. This characteristic of QCD leads to \emph{confinement} of quarks inside hadrons.}
+
+The cross section of a hard scattering process initiated by two hadrons with momenta $P_1$ and $P_2$ going into a final state Y can therefore be written as
+\begin{equation}
+  \sigma(P_1P_2 \to Y) = \sum_{i,j} \int \mathrm{d}x_1\mathrm{d}x_2 f_i(x_1,\mu_F^2) f_j(x_2,\mu_F^2) \hat{\sigma}_{ij \rightarrow Y}(x_1P_1,x_2P_2,\mu_F,\mu_R), 
+  \label{eq:hhxsec}
+\end{equation}
+where $f_i(x,\mu_F^2)$ are the PDFs, and $\hat{\sigma}_{ij \rightarrow Y}$ is the partonic cross-section. The parameter $\mu_F$, known as the \emph{factorization scale}, determines the scale at which the low energy processes are separated from the perturbative regime. All processes with an energy below the value of $\mu_F$ are considered part of the proton structure and are accounted for within the PDFs. Hence, these non-perturbative soft processes are separated from the hard partonic scattering cross-section. This is also known as the \emph{factorization theorem}.
+The sum in \cref{eq:hhxsec} runs over all initial state partons $i$ and $j$ inside the hadron, which carry the momentum fractions $x_1$ and $x_2$ of the full proton momentum.
+
+The PDFs are non-perturbative and correspond to the probability to observe a parton $i$ inside the proton with a momentum fraction $x_1$ of the total proton momentum.
+They currently cannot be predicted to the required precision from theoretical principles and thus need to be extracted from experimental data collected at dedicated scattering experiments.
+The so-called \emph{DGLAP (Dokshitzer-Gribov-Lipatov-Altarelli-Parisi) evolution equations} \cite{Dokshitzer:1977sg,GRIBOV197178,Altarelli:1977zs} allow transferring the PDFs to different energy scales.
+Different physics groups provide computations of PDF sets; one of the most recent, the MMHT2014 PDF set, can be seen in \cref{fig:pdfs}. \todo{Update pdf set and plot}
+%\Cref{fig:pdfs} shows the most recent PDFs from the MMHT2014 PDF set.
+%There are different gorups, which provide PDF computations.
+%\footnote{There are different groups, which provide PDF calculations. They are discussed in the most recent LHC Run 2 PDF recommendations \cite{Butterworth:2015oua}.}.
+%which include a combination of the CT14 \cite{Dulat:2015mca}, MMHT2014 \cite{Harland-Lang:2014zoa} and NNPDF3.0 \cite{Ball:2014uwa} PDF sets.
+%($\mathcal{O}(\alpha_s)$) Order of in mathematic form
+
+\begin{figure}
+  \newImageScale{figures/PDFs_MMHT14.png}{0.9}
+  \caption[Parton distribution functions provided by the MMHT2014 NNLO PDF set with associated 68\% confidence-level uncertainty bands at two different energy scales $Q$.]{Parton distribution functions provided by the MMHT2014 NNLO PDF set with associated 68\% confidence-level uncertainty bands at two different energy scales $Q$. Taken from Ref.~\cite{Harland-Lang:2014zoa}.}
+  \label{fig:pdfs}
+\end{figure}
+
+
+The partonic cross-section is calculated from matrix elements as discussed above.
+%The determination of the matrix element (ME) is done with so called \emph{Feynman rules}, which 
+The relevant partonic interactions at the LHC occur at high energies, that is, the cross sections can be calculated as a perturbation series in the running coupling $\alpha_s$:
+\begin{equation}
+  \hat{\sigma}_{ij \rightarrow Y} = \alpha^k_S \sum_{n=0}^{m} c^{(n)}\alpha_s^n,
+  \label{eq:alphaexp}
+\end{equation}
+where the coefficients $c^{(n)}$ are functions of the kinematic variables $x_1$ and $x_2$ and the factorization scale. The term corresponding to $m=0$ is usually referred to as \emph{leading order} (LO), the next higher order, $m=1$, as \emph{next-to-leading order} (NLO), and so on.
+The leading power $k$ in \cref{eq:alphaexp} is specified by the process under consideration. Most processes relevant for this thesis start contributing at $k=0$, while some sub-processes have $k=2$.\footnote{All cross sections of interest in this thesis are available at NLO, some of them at NNLO or even higher order. See chapter \cref{sec:dataandmc} for details.}
+%For the Higgs gluon-fusion cross-section there exist NNNLO calculations \cite{Anastasiou:2015ema}.}
+When computing particle-production cross-sections, all the different interaction modes that lead to the same particle being produced need to be taken into account. This also involves the inclusion of different orders in $\alpha_s$.
+The individual contributing processes can be displayed graphically with so called \emph{Feynman diagrams}. The corresponding set of rules, the \emph{Feynman rules}, provide the mathematical baseline for the computation of the matrix elements. The Feynman rules can be derived from the Lagrangian of the underlying theory.
+This procedure is detailed in various textbooks, for example in Ref.~\cite{Griffiths:111880}.
+
+%In so called \emph{Feynman diagrams} the scattering processes can be illustrated and the cross sections can be computed at fixed order using the \emph{Feynman rules}.
+When including higher orders in $\alpha_s$ in the matrix-element calculation, loop corrections and real gluon emissions introduce divergences in the cross section. %\cref{fig:loops} illustrates these contributions with exemplary Feynman diagrams for different orders in $\alpha_s$.
+%($\mathcal{O}(\alpha_s)$ and higher)
+%singularities in the cross-section.
+
+The arising infinities can be absorbed by redefining the coupling and mass parameters by introducing a dependence on the so called \emph{renormalization scale} $\mu_R$.
+\todo{say that this is an essential part of the SM, that it is renormalizable}
+\todo{Maybe provide dedicated section for this?!}
+
+%\todo{say more about collinear and soft divergencies? -> Ja wegen infrared safe später beim jet algorithm}
+There exist different approaches for choosing the scale $\mu_R$, at which the coupling $\alpha_s$ is evaluated, known as \emph{renormalization schemes}, but there is no prove of any of them being correct.
+Various textbooks, for example Ref.~\cite{Peskin:1995ev}, provide detailed discussions on different renormalization schemes.
+
+\Cref{fig:xsec} shows the cross sections for a variety of different processes. There is a huge span of many orders of magnitudes between different cross sections. Higgs boson production at a centre-of-mass energy of 13\,\TeV, for example, is highly suppressed ($10^{-2}\,\text{events}/s$) with respect to the total cross section ($10^8\,\text{events}/s$) when considering a luminosity of $10^{33}\mathrm{cm^{-1}s^{-1}}$.
+An important feature is that the cross sections are not dependent on the renormalization scale, as well as the factorization scale, when infinite orders in $\alpha_s$ would be included. There are remaining dependencies at fixed order. Resulting systematic uncertainties are most often quantified by varying the scales over some reasonable range and are incorporated in the analysis.
+%However, it is known that the theoretical error on a quantity, which is calculated to $\mathcal{O(\alpha_s^n}$, is always $\mathcal{O(\alpha_s^{n+1})}$. The remaining theoretical error can be quantified
+%MMHT2014 NNLO PDFs
+
+\begin{figure}
+  \newImageScale{figures/crosssections2012_v5.pdf}{0.45}
+  \caption[Cross sections for proton collisions as a function of centre-of-mass energy $\sqrt{s}$.]{Cross sections for proton collisions as a function of centre-of-mass energy $\sqrt{s}$. Proton-antiproton-collision cross-sections are considered for energies $\sqrt{s} < 4\,\TeV$ and proton-proton-collision cross-sections for higher energies. Taken from Ref.~\cite{ref:plotsStirling}.}
+  \label{fig:xsec}
+\end{figure}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% NEED SECTION ON:
+% Generation of MC events
+% Comment from BERND to "Detector simulation" section in experimental chapter::
+% I believe this statemtn "Simulations of the ATLAS detector are required in order to generate full Monte Carlo events” needs to be more precise. Why do we have to simulate collisions in the first place? Probably some discussion about quantum mechanics and its probabilistic nature which makes its way all the way to how we analyze data
+\subsection{Event Generation}
+
+
+
+
+\subsection{Soft QCD: Minimum bias, pile-up, ...?}
 % Mention in Event Generation subsection, see Master thesis!
 
 % Comment from Bernd:
@@ -43,13 +145,4 @@ Scope:
 Checkout this section for pile-up overlay
 
 https://indico.cern.ch/event/1003305/contributions/4236702/attachments/2202625/3728039/PileUpTaskForcePandPPlenaryMarch2021.pdf
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% NEED SECTION ON:
-% Generation of MC events
-% Comment from BERND to "Detector simulation" section in experimental chapter::
-% I believe this statemtn "Simulations of the ATLAS detector are required in order to generate full Monte Carlo events” needs to be more precise. Why do we have to simulate collisions in the first place? Probably some discussion about quantum mechanics and its probabilistic nature which makes its way all the way to how we analyze data
-\subsection{Event Generation}
-
 

@@ -219,25 +219,14 @@ An overview of the fermion content of the electroweak model is shown in \cref{ta
 
 \subsection{Spontaneous symmetry breaking and the Higgs mechanism}
 \label{sec:ewsymbreaking}
-- Local gauge invariance does not allow adding mass terms
-
-- Need mechanism to generate mass terms.
-- Spontaneous symmetry breaking can do that (Reference to anderson)
-- The SU(2)$_L$ $\times$ U(1)$_Y$ symmetry is spontaneously broken into U(1)$_\text{QED}$
-
-- This mechanism is spontaneous symmetry breaking
-- Simply put, the Lagrangian itself maintains the symmetry, but the state of lowest energy is not invariant and breaks the summetry.
-
--
+%- Local gauge invariance does not allow adding mass terms
+%- The SU(2)$_L$ $\times$ U(1)$_Y$ symmetry is spontaneously broken into U(1)$_\text{QED}$
+%- This mechanism is spontaneous symmetry breaking
+%- Simply put, the Lagrangian itself maintains the symmetry, but the state of lowest energy is not invariant and breaks the summetry.
 
 % - Could add mass terms disregarding local gauge invariance but this would render theory unrenormalizable
 
 
-% From Peskin and Schroeder
-% - In the theory of sup erconductiv􏰁 ity􏰔 for example􏰔 the Ab elian gauge invariance of electromagnetism is broken by pairs of electrons that condense in the ground state of a metal􏰎
-
-
-- including Higgs self couplings (see Master thesis)
 
 
 
@@ -249,23 +238,27 @@ An overview of the fermion content of the electroweak model is shown in \cref{ta
 \end{figure}
 
 An additional mechanism is needed in the SM to explain the finite masses of the weak gauge bosons. 
-A principle known as \emph{spontaneous symmetry breaking}, that has been first explored in the field of condensed-matter physics \todo{REF, Anderson?}, can therefore be applied to the SM to generate the necessary mass terms without violating local gauge invariance.
+A principle known as \emph{spontaneous symmetry breaking}, that has been first explored in the field of condensed-matter physics, \todo{REF, Anderson?} can therefore be applied to the SM to generate the necessary mass terms without violating local gauge invariance.
+% From Peskin and Schroeder
+% - In the theory of sup erconductiv􏰁 ity􏰔 for example􏰔 the Ab elian gauge invariance of electromagnetism is broken by pairs of electrons that condense in the ground state of a metal􏰎
 This was observed by three independent research teams in 1960\todo{DATE}: Brout and Englert \cite{PhysRevLett.13.321}, Peter Higgs \cite{PhysRevLett.13.508,HIGGS1964132} and Guralnik, Hagan and Kibble \cite{PhysRevLett.13.585}.
 The mechanism is known as the \emph{Brout-Englert-Higgs mechanism} (or simply \emph{Higgs mechanism}) or also \emph{electroweak symmetry breaking} (ESWB).
-The basic principle is to allow the state of lowest energy to violate gauge invariance while maintaining the gauge symmetry of the Lagrangian.
+%The underlying concept is that the Lagrangian itself maintains the symmetry, but the state of lowest energy is not invariant and breaks the gauge symmetry.
+The basic principle is to allow the state of lowest energy to violate gauge invariance while maintaining the gauge symmetry of the Lagrangian itself.
 
 % was published almost simultaneously by three independent groups in 1964: by Robert Brout and François Englert;[3] by Peter Higgs;[4] and by Gerald Guralnik, C. R. Hagen, and Tom Kibble.[5][6][7]
 
-The Higgs mechanism assumes a SU(2) doublet of complex scalar fields (in the following also denoted as \emph{Higgs doublet})
+The Higgs mechanism assumes a complex scalar field of the SU(2)$_L$ group (known as \emph{Higgs field})
 \begin{equation}
   \Phi = \myvec{ \Phi_\alpha \\ \Phi_\beta } = \frac{1}{\sqrt{2}} \myvec { \Phi_1 + i \Phi_3 \\ \Phi_2 + i \Phi_4}
 \end{equation}
-and introduce the so-called \emph{Higgs potential}, illustrated in \cref{fig:higgspotential}, of the form
+and introduces a potential of the form
 \begin{equation}
-  V(\Phi) = \mu^2\Phi^\dagger\Phi + \lambda \left| \Phi^\dagger\Phi \right|^2,
+  V(\Phi) = \mu^2\Phi^\dagger\Phi + \lambda \left| \Phi^\dagger\Phi \right|^2, 
   \label{eq:higgspotential}
 \end{equation}
-where the parameters are constraint to $\mu^2 < 0$ and $\lambda > 0$.
+where the parameters are specifically chosen to satisfy $\mu^2 < 0$ and $\lambda > 0$.
+This is the so-called \emph{Higgs potential} and is illustrated in \cref{fig:higgspotential}.
 The Lagrangian 
 \begin{equation}
   \mathcal{L}_{\text{Higgs}} = |D_\mu\Phi|^2 - V(\Phi), % - \frac{1}{4} W_{\mu\nu}^a W^{a\, \mu\nu} - \frac{1}{4} B_{\mu\nu} B^{\mu\nu},
@@ -277,12 +270,13 @@ with $D_\mu$ defined as shown in \cref{eq:covdevewk}, is invariant under local S
 %% \end{equation}
 %% is invariant under global SU(2) phase transformations
 %It is invariant under gauge transformations but not the ground state, which can be found at
-The minimum of the potential has a finite value and can be found on the circle of minima where
+
+The constraints on $\mu$ and $\lambda$ in the Higgs potential give rise to a non-zero \emph{vacuum expectation value}, $v$, of the Higgs field.
+The minimum of the potential can be found on the circle of minima where
 \begin{equation}
   |\Phi| = \sqrt{ \frac{\mu^2}{2\lambda} } \equiv \frac{ v }{\sqrt{2}}.
   \label{eq:higgsminima}
 \end{equation}
-Here, the \emph{vacuum expectation value} $v = \frac{\mu}{\sqrt{\lambda}}$ was introduced.
 The symmetry is spontaneously broken when a ground state is chosen. 
 %The arbitrary choice of a ground state is said to spontaneously break the symmetry. 
 
@@ -330,38 +324,36 @@ where the vacuum expectation value generates terms quadratic in the fields $W_\m
 \end{equation}
 No field quadratic in $A_\mu$ appears, which represents the fact that the photon is massless.
 
-In summary, adding the Lagrangian in \cref{eq:lagrangianhiggs} - where a complex scalar Higgs doublet together with an appropriate Higgs potential is introduced - to the electroweak model in \cref{eq:lagrangianewk}, provides the description of the weak gauge bosons $W^\pm$ and $Z$ being massive.
-Therefore, the Higgs potential is chosen such that it has a non-vanishing vacuum expectation value, which spontaneously breaks the symmetry. The arising three Goldstone bosons can be eliminated from the Lagrangian using its underlying local gauge symmetry. Therefore the unitary gauge is chosen, which results in three bosons acquiring a mass and the appearance of one remaining scalar field $H$. The photon remains massless, because the U(1)$_{\text{QED}}$ symmetry is unbroken.
+In addition, the Lagrangian shown in \cref{eq:lagrangianhiggs} comprises the expression
+\begin{equation}
+  \mathcal{L}_{\text{H,boson-coupling}} = M_W^2 W_\mu^+W^{-\,\mu} \left( \frac{2H}{v} + \frac{H^2}{v^2} \right) + \frac{1}{2} M_Z^2 Z_\mu Z^\mu \left( \frac{2H}{v} + \frac{H^2}{v^2} \right),
+  \label{eq:higgsbosoncoupling}
+\end{equation}
+which shows that the Higgs interactions are proportional to the mass squared of the coupled boson and that there exist triplet ($V^\dagger VH$) and quartic ($V^\dagger VHH$) interaction terms.
+
 %and choosing a specific gauge (the unitary gauge) the field $\Phi$ can be written as
 
 
-The predicted scalar field $H$ is known as the \emph{Higgs boson}.
-%Besides the Englert-Brout-Higgs-Guralnik-Hagen-Kibble mechanism giving masses to the weak gauge bosons, it predicts a scalar field $H$, referred to as the \emph{Higgs boson}.
-The kinetic term of the Lagrangian in \cref{eq:lagrangianhiggs} comprises the expression
-\begin{equation}
-  \mathcal{L}_{\text{H,self-coupling}} = \frac{1}{2}\partial_\mu H \partial^\mu H - \mu^2 H^2 - \lambda v H^3 - \frac{1}{4} \lambda H^4,
-  \label{eq:higgsselfcoupling}
-\end{equation}
-from which one can infer that the Higgs boson has a mass of
+The predicted scalar field $H$ is known as the \emph{Higgs boson} and has a mass of 
 \begin{equation}
   M_H = \sqrt{2} \mu = \sqrt{2 \lambda} v.
 \end{equation}
+As explained below, the Higgs boson also provides masses to fermions and thus couples to all massive elementary particles.
+
 % The parameters of the Higgs potential $\mu^2 = \lambda v^2$ can be fixed for one combination by measuring parameters of the electroweak theory, but the physical Higgs mass can not be predicted. 
-Moreover, the last two terms in \cref{eq:higgsselfcoupling} predict that the Higgs field couples to itself with cubic and quartic interactions.
-The couplings of the Higgs boson to the weak gauge bosons are already expressed in \cref{eq:lagrangianmasses}. Rewriting this equation and inserting the respective mass definitions the expression for the boson couplings can be written as
-\begin{equation}
-  \mathcal{L}_{\text{H,boson-coupling}} = M_W^2 W_\mu^+W^{-\,\mu} \left( \frac{2H}{v} + \frac{H^2}{v^2} \right) + \frac{1}{2} M_Z^2 Z_\mu Z^\mu \left( \frac{2H}{v} + \frac{H^2}{v^2} \right).
-  \label{eq:higgsbosoncoupling}
-\end{equation}
-The Higgs interactions are proportional to the mass squared of the coupled boson and there exist cubic ($V^\dagger VH$) and quartic ($V^\dagger VHH$) interaction terms.
-While the Higgs boson was discovered experimentally in 2012 \cite{Aad:2012tfa,Chatrchyan:2012xdj}, and is by now seen in several different production and decay modes, the Higgs boson self-couplings are still searched for.
+% Moreover, the last two terms in \cref{eq:higgsselfcoupling} predict that the Higgs field couples to itself with cubic and quartic interactions.
+% The couplings of the Higgs boson to the weak gauge bosons are already expressed in \cref{eq:lagrangianmasses}.
+
+%While the Higgs boson was discovered experimentally in 2012 \cite{Aad:2012tfa,Chatrchyan:2012xdj}, and is by now seen in several different production and decay modes, the Higgs boson self-couplings are still searched for.
 A more detailed descriptions on experimental Higgs boson physics and an overview of the current state of knowledge is given in \cref{sec:higgsphysics}.
 
 
 
 
-
-
+In summary, adding a complex scalar Higgs field to the electroweak model, together with a potential that exhibits a non-zero vacuum expectation value, provides the ingredients to obtain mass terms for the weak gauge bosons $W^\pm$ and $Z$ when choosing a ground state of the Higgs field which spontaneously breaks the symmetry.
+The three Goldstone bosons that arise can be eliminated from the Lagrangian by using its underlying local gauge symmetry. 
+This results in three bosons acquiring a mass and the appearance of one remaining scalar field $H$. 
+The photon remains massless, because the U(1)$_{\text{QED}}$ symmetry is unbroken. 
 
 
 
@@ -369,35 +361,68 @@ A more detailed descriptions on experimental Higgs boson physics and an overview
 
 
 \subsection{Fermion masses}
-- The fermion masses are generated by interaction terms of the fermion fields and the Higgs field.
-- This is possible because the left-chiral fermions appear as doublets under SU(2) transformations and can interact with the Higgs doublet.
+The masses of the fermions can be explained with the same Higgs field, $\Phi$, by introducing interaction terms between the fermion fields and the Higgs field.
+This is possible because both the left-handed fermions and the Higgs field appear as doublets under SU(2)$_L$ transformations.
+These interactions are known as \emph{Yukawa interactions} and have the form
+\begin{equation}
+  \mathcal{L}_\text{Yukawa} = - Y_f \left[ \bar{\psi_L} \Phi \psi_R + \bar{\psi_R} \Phi^\dagger \psi_L \right],
+  \label{eq:lyukawa}
+\end{equation}
+where $Y_f$ denotes the \emph{Yukawa coupling} of fermion $f$ to the Higgs field.
 
+\todo{QUARK yukawa couplings}
 
-\subsection{Renormalization}
+Given \cref{eq:lyukawa}, the following mass terms are obtained after spontaneous symmetry breaking:
+\begin{equation}
+  m_f = \frac{Y_f v}{\sqrt{2}}.
+\end{equation}
+The coupling strength between the fermions and the Higgs field is therefore proportional to the mass of the fermions.
+
+%\subsection{Renormalization}
 % From modern particle physics book
 % As shown by ‘t Hooft, only theories with local gauge invariance are renormalisable, such that the cancellation of all infinities takes place among only a finite number of interaction terms.
 
+\subsection{The Final Standard Model Lagrangian}
+To summarize the previous sections, the final Standard Model Lagrangian is obtained from \cref{eq:lqcd,eq:lagrangianewk,eq:lagrangianhiggs,eq:lyukawa} and can be written as
+\begin{equation}
+  \mathcal{L}_\text{SM} = \mathcal{L}_\text{QCD} + \mathcal{L}_\text{EWK} + \mathcal{L}_\text{Higgs} + \mathcal{L}_\text{Yukawa}.
+\end{equation}
+The covariant derivate includes all gauge fields and is defined as
+\begin{equation}
+  D_\mu = \partial_\mu + i g_s \frac{\lambda^a}{2} G_\mu^a + igW_\mu^aT^a + ig'B_\mu \frac{Y}{2}.
+\end{equation}
+
+% It satisfies a SU(3)$_C$ $\times$ SU(2)$_\text{L}$ $\times$ U(1)$_Y$ gauge symmetry and provides masses to the gauge bosons and fermions via the concept of electroweak symmetry breaking. This is manifested in the couplings of the Higgs field to fermions, which are proportional to the mass of the fermions, and the couplings to the gauge bosons, which are proportional to the mass squared of the gauge bosons.
+
+
 \subsection{Free parameters of the SM}
-- SM makes predictions but some of the parameters are free
+The SM has been very successful in making predictions that were later confirmed by experimental data (see \cref{eq:sm-limitations}). However, the SM has many free parameters that need to be measured experimentally and cannot be derived from theoretical principles.  
+In total there are 19 free parameters that can be represented with different parametrizations:
+\begin{itemize}
+  \item 9 fermion masses (or Yukawa couplings)
+  \item 2 parameters describing the Higgs field: $\mu$ and $\lambda$ or $v$ and $m_H$
+  \item four mixing angles of the CKM matrix
+  \item 3 couplings constants: $\alpha$, $G_f$, $\alpha_s$ (or $g'$, $g_w$, $g_s$)
+\end{itemize}
 
-- 25 free parameters
-
-- twelve Yukawa couplings
-
-- three couplings constants: alpha, Gf, alphas (or g', gw, gs)
-
-- two parameters describing higgs potential ($\mu$ and $\lambda$) or vev and higgs mass
-
-- eight mixing angles of the PMNS and CKM matrices
+In total 14 parameters are associated with the Higgs field, four with the flavour sector, and only three with the gauge interactions. This underlines the fact that the Higgs boson plays a major role in the SM.
 
 
-- -> 14 of these are associated to the higgs field, eight with the flavour sector and only three with the gauge interactions
+\subsection{Limitations of the SM}
 
-% From Brian but I think that is very useful to have here!
 
-% Dickinson: In order to study physics at the highest energies and smallest distance scales, collider experiments focus on hard scatter interactions, in which there is a large momentum transfer (Q2) between two incident particles. 
+\subsubsection{Gravitation}
 
-% Dickinson Thesis:
-% Perturbation theory: If the highest order term included in a calculation of   is linear in ↵S, the calculation is called “leading order” (LO). If the sum is completed up to the quadratic, cubic, or quartic term in ↵S, the calculation is called “next-to-leading order” (NLO), “next-to-next-to-leading order” (NNLO), or “next-to-next-to-next-to-leading order” (N3LO).
+\subsubsection{Higgs boson}
+
+\subsubsection{Dark matter}
+
+\subsubsection{Neutrinos}
+Right-handed neutrinos are not part of the SM and therefore masses terms cannot be added. However, from neutrino oscillation experiments it was found that neutrinos have masses.
+
+Extensions of the SM suggest to add mass terms which would add an additional 6 free parameters to the SM
+
+
+
 
 
