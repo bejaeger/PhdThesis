@@ -15,13 +15,13 @@ For a given process $p$, the event rate can be written as
 \end{equation}
 where $\sigma_p$ is the cross-section for process $p$, and $\mathcal{L}$ the luminosity.
 
-The cross-section,
+The cross-section expresses the quantum mechanical probability that an interaction will occur and can be written as,
 \begin{equation}
   \sigma = \frac{|M|^2}{F} \int \text{d}Q,
 \end{equation}
-is determined from the so-called matrix element, $M$, and also involves the Lorentz invariant phase space factor d$Q$ and the incident flux in the laboratory, $F$ \cite{Halzen:1984mc}.
+where $M$ is the so-called matrix element, d$Q$ the Lorentz-invariant phase-space factor, and $F$ the Lorentz-invariant flux factor \cite{Halzen:1984mc}. \todo{Check citation}
 The matrix element contains all the dynamical information of the process under investigation and represents the probability of going from an initial state $i$ to a final state $f$. 
-A system of rules was invented by Richard Feynman (known as \emph{Feynman rules}) to compute the matrix elements from the Lagrangians. It makes use of graphical representations of the mathematical expressions, known as \emph{Feynman graphs}. More information on the procedure to compute matrix elements can be found in \todo{REF}.
+A system of rules was invented by Richard Feynman (known as \emph{Feynman rules}) to compute the matrix elements from the Lagrangians. It makes use of graphical representations of the mathematical expressions, known as \emph{Feynman graphs}. More information on the procedure to compute matrix elements can be found in \todo{Maybe move the whole Feynman graph thingy to the partonic cross section below}.
 
 The luminosity, $\mathcal{L}$, is a crucial performance indicator at particle colliders because it only depends on parameters of the accelerator.
 %is the proportionality constant that multiplies the cross-section to determine the \emph{event rate} and 
@@ -37,6 +37,7 @@ The integrated luminosity,
 is typically quoted to quantify the size of a dataset collected at a collider experiment.
 
 \subsection{Overview of proton-proton collision event}
+\label{subsec:pp-collision-overview}
 The phenomenology of proton-proton collisions ($pp$ collisions) is complex because protons are not elementary particles. Protons are compound states of so-called \emph{partons} made up of quarks and gluons.
 The scattering of two protons can be described by a hard parton-parton interaction, known as \emph{hard scatter}, and further low energy processes, resulting from the remaining proton remnants not involved in the hard scattering and forming the so-called \emph{underlying event}.
 A schematic overview of a hard $pp$ scattering process is illustrated in \cref{fig:ppcol}.
@@ -61,7 +62,7 @@ With these considerations, the cross section of a hard scattering process betwee
   \sigma(p_1p_2 \to Y) = \sum_{i,j} \int_0^1 \mathrm{d}x_1 \int_0^1 \mathrm{d}x_2 f_i(x_1,\mu_F^2) f_j(x_2,\mu_F^2) \hat{\sigma}_{ij \rightarrow Y}(x_1p_1,x_2p_2,\mu_F,\mu_R), 
   \label{eq:hhxsec}
 \end{equation}
-where $f_i(x,\mu_F^2)$ are the PDFs, and $\hat{\sigma}_{ij \rightarrow Y}$ is the partonic cross-section of going from initial partons $i$ and $j$ to the final state $Y$.
+where $f_i(x,\mu_F^2)$ are the PDFs, and $\hat{\sigma}_{ij \rightarrow Y}$ is the partonic cross-section of going from the initial partons $i$ and $j$ to the final state $Y$.
 The parameter $\mu_F$, known as the \emph{factorization scale}, marks the boundary between the low energy processes and the perturbative regime. 
 All processes with an energy below the value of $\mu_F$ are considered part of the proton structure and are accounted for within the PDFs. Hence, these non-perturbative soft processes are separated from the hard partonic scattering cross-section, a method that is also known as the \emph{factorization theorem}.
 The sum in \cref{eq:hhxsec} runs over all initial state partons $i$ and $j$ inside the hadron, and the integral goes over the momentum fractions $x_1$ and $x_2$ of the full proton momentum.
@@ -85,57 +86,116 @@ The so-called \emph{DGLAP (Dokshitzer-Gribov-Lipatov-Altarelli-Parisi) evolution
 
 %The partonic cross-sections can be computed using Feynman rules.
 %The determination of the matrix element (ME) is done with so called \emph{Feynman rules}, which 
-The partonic cross-sections depend on the factorization scale, $\mu_F$, and the renormalization scale, $\mu_R$. 
-The partonic cross-sections can be calculated as a perturbation series in the running coupling $\alpha_s$:
+The partonic cross-section also depends on the factorization scale, $\mu_F$, as well as another scale called \emph{renormalization scale}, $\mu_R$, that is further explained below.
+%Choosing its value sufficiently large, allows calculating the partonic cross-section as a perturbation series in the running  coupling $\alpha_s$,
+When the factorisation scale is chosen sufficiently large, the partonic cross-sections can be calculated as a perturbation series in the running coupling $\alpha_s$,
 \begin{equation}
   \hat{\sigma}_{ij \rightarrow Y} = \alpha^k_S \sum_{n=0}^{m} c^{(n)}\alpha_s^n,
   \label{eq:alphaexp}
 \end{equation}
-where the coefficients $c^{(n)}$ are functions of the kinematic variables $x_1$ and $x_2$ and $\mu_F$. The term corresponding to $m=0$ is usually referred to as \emph{leading order} (LO), the next higher order, $m=1$, as \emph{next-to-leading order} (NLO), and so on.
-The leading power $k$ in \cref{eq:alphaexp} is specified by the process under consideration. Most processes relevant for this thesis start contributing at $k=0$, while some sub-processes have $k=2$.\footnote{All cross sections of interest in this thesis are available at NLO, some of them at NNLO or even higher order. See chapter \cref{sec:dataandmc} for details.}
-%For the Higgs gluon-fusion cross-section there exist NNNLO calculations \cite{Anastasiou:2015ema}.}
-When computing particle-production cross-sections, all the different interaction modes that lead to the same particle being produced need to be taken into account. This also involves the inclusion of different orders in $\alpha_s$.
-The individual contributing processes can be displayed graphically with so called \emph{Feynman diagrams}. The corresponding set of rules, the \emph{Feynman rules}, provide the mathematical baseline for the computation of the matrix elements. The Feynman rules can be derived from the Lagrangian of the underlying theory.
-This procedure is detailed in various textbooks, for example in Ref.~\cite{Griffiths:111880}.
+where the coefficients $c^{(n)}$ are functions of the kinematic variables, $x_1$ and $x_2$, and the two scales. 
 
-%In so called \emph{Feynman diagrams} the scattering processes can be illustrated and the cross sections can be computed at fixed order using the \emph{Feynman rules}.
-When including higher orders in $\alpha_s$ in the matrix-element calculation, loop corrections and real gluon emissions introduce divergences in the cross section. %\cref{fig:loops} illustrates these contributions with exemplary Feynman diagrams for different orders in $\alpha_s$.
+The cross sections are calculated to fixed order by including all relevant combinations of incoming partons, $i$ and $j$, that lead to the final state $Y$. The higher order terms can be neglected as they are suppressed by higher orders of $\alpha_s$. 
+If the highest order term is linear, that is $m=0$, the calculation is called \emph{leading order} (LO). If $m=1$ or $m=2$, the calculation is called \emph{next-to-leading order} (NLO) or \emph{next-to-next-to-leading order} (NNLO),  etc. 
+The leading power $k$ in \cref{eq:alphaexp} is determined by the process under consideration. Most processes relevant to this thesis start contributing at $k=0$, while some sub-processes contribute with $k=2$.\footnote{All cross sections of interest in this thesis are available at NLO, some of them at NNLO or even higher order. See chapter \cref{sec:dataandmc} for details.}
+%For the Higgs gluon-fusion cross-section there exist NNNLO calculations \cite{Anastasiou:2015ema}.}
+The different processes that contribute to the cross sections can be depicted graphically with so-called \emph{Feynman diagrams}. 
+With the corresponding set of rules, known as \emph{Feynman rules}, the Feynman diagrams provide a graphical representation of the mathematical expressions found in the Lagrangian and can be used to compute the matrix elements. 
+The procedure is detailed in various textbooks, for example in \ccite{Griffiths:111880}.
+% A system of rules was invented by Richard Feynman (known as \emph{Feynman rules}) to compute the matrix elements from the Lagrangians. 
+% It makes use of graphical representations of the mathematical expressions, known as \emph{Feynman graphs}. More information on the procedure to compute matrix elements can be found in \todo{Maybe move the whole Feynman graph thingy to the partonic cross section below}.
+
+When higher order terms are included in the matrix-element calculations, quantum loop corrections and real gluon emissions introduce divergences in the cross sections. 
+% When including higher orders in $\alpha_s$ in the matrix-element calculation, loop corrections and real gluon emissions introduce divergences in the cross section. 
+%\cref{fig:loops} illustrates these contributions with exemplary Feynman diagrams for different orders in $\alpha_s$.
 %($\mathcal{O}(\alpha_s)$ and higher)
 %singularities in the cross-section.
+The infinities can be absorbed in the SM by a procedure known as \emph{renormalisation}, by making the coupling parameters dependent on the renormalisation scale, $\mu_R$.\footnote{Theories that allow for such a treatment are known as renormalisable, which is an essential property of the SM.}
+The renormalization scale acts as a cut off energy scale, above which the processes that introduce infinities are not contributing anymore. 
+The essential property of renormalisation is that the physics descriptions below that cut off are independent of the dynamics of the theory above it. 
+The drawback is that another arbitrary scale is introduced in addition to the factorization scale.
+However, the more orders are included in the cross-section calculations, the less strong is the dependence on $\mu_F$ and $\mu_R$. 
+The remaining dependence at fixed order is typically included as a systematic uncertainty in physics measurements.
+%There are remaining dependencies at fixed order. Resulting systematic uncertainties are most often quantified by varying the scales over some reasonable range and are incorporated in the analysis.
 
-The arising infinities can be absorbed by redefining the coupling and mass parameters by introducing a dependence on the so called \emph{renormalization scale} $\mu_R$.
-\todo{say that this is an essential part of the SM, that it is renormalizable}
-\todo{Maybe provide dedicated section for this?!}
-
+In practice, the value of $\mu_F$ and $\mu_R$ is often chosen to be identical, with a typical value near the scale of momentum transfer expected for hard scattering processes.
+Various textbooks, for example Ref.~\cite{Peskin:1995ev}, provide discussions on the details of the renormalisation procedure.
 %\todo{say more about collinear and soft divergencies? -> Ja wegen infrared safe später beim jet algorithm}
-There exist different approaches for choosing the scale $\mu_R$, at which the coupling $\alpha_s$ is evaluated, known as \emph{renormalization schemes}, but there is no prove of any of them being correct.
-Various textbooks, for example Ref.~\cite{Peskin:1995ev}, provide detailed discussions on different renormalization schemes.
+% There exist different approaches for choosing the scale $\mu_R$, at which the coupling $\alpha_s$ is evaluated, known as \emph{renormalization schemes}, but there is no prove of any of them being correct.
 
-\Cref{fig:xsec} shows the cross sections for a variety of different processes. There is a huge span of many orders of magnitudes between different cross sections. Higgs boson production at a centre-of-mass energy of 13\,\TeV, for example, is highly suppressed ($10^{-2}\,\text{events}/s$) with respect to the total cross section ($10^8\,\text{events}/s$) when considering a luminosity of $10^{33}\mathrm{cm^{-1}s^{-1}}$.
-An important feature is that the cross sections are not dependent on the renormalization scale, as well as the factorization scale, when infinite orders in $\alpha_s$ would be included. There are remaining dependencies at fixed order. Resulting systematic uncertainties are most often quantified by varying the scales over some reasonable range and are incorporated in the analysis.
+\todo{Not sure if the below is needed! I reference it in the pp collision section but it might not be needed? Unclear? The risk is that I need to introduce things like Branching Fraction OR differential xsecs and also, I'm not doing an SM measurement but more a Higgs meausurement.}
+\Cref{fig:xsec} shows the $pp$ collision cross sections for several different processes, displaying the huge span of values over many orders of magnitudes. 
+Given a centre-of-mass energy of 13\,\TeV and a luminosity of $10^{33}\mathrm{cm^{-1}s^{-1}}$, the production of Higgs bosons, for example, is highly suppresed ($10^{-2}\,\text{events}/s$) compared to the total cross section ($10^8\,\text{events}/s$).
+% An important feature is that the cross sections are not dependent on the renormalization scale, as well as the factorization scale, when infinite orders in $\alpha_s$ would be included. 
+% There are remaining dependencies at fixed order. Resulting systematic uncertainties are most often quantified by varying the scales over some reasonable range and are incorporated in the analysis.
 %However, it is known that the theoretical error on a quantity, which is calculated to $\mathcal{O(\alpha_s^n}$, is always $\mathcal{O(\alpha_s^{n+1})}$. The remaining theoretical error can be quantified
 %MMHT2014 NNLO PDFs
 
 \begin{figure}
-  \newImageScale{figures/crosssections2012_v5.pdf}{0.45}
-  \caption[Cross sections for proton collisions as a function of centre-of-mass energy $\sqrt{s}$.]{Cross sections for proton collisions as a function of centre-of-mass energy $\sqrt{s}$. Proton-antiproton-collision cross-sections are considered for energies $\sqrt{s} < 4\,\TeV$ and proton-proton-collision cross-sections for higher energies. Taken from Ref.~\cite{ref:plotsStirling}.}
+  \newImageResizeCustom{0.9}{figures/anatomy/xsecs.pdf}
+  \caption[Summary of production cross-sections measurements for $pp$ collisions at different centre-of-mass energy, $\sqrt{s}$.]{
+    Summary of production cross-section measurements for $pp$ collisions at different centre-of-mass energies, $\sqrt{s}$. Taken from \ccite{ATL-PHYS-PUB-2022-009}.
+    }
   \label{fig:xsec}
 \end{figure}
-
+% Figure 03a:
+% Summary of several Standard Model total and fiducial production cross-section measurements (a) with associated references (b) and (c). The measurements are corrected for branching fractions, compared to the corresponding theoretical expectations. In some cases, the fiducial selection is different between measurements in the same final state for different centre-of-mass energies √s, resulting in lower cross section values at higher √s.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % NEED SECTION ON:
 % Generation of MC events
-% Comment from BERND to "Detector simulation" section in experimental chapter::
-% I believe this statemtn "Simulations of the ATLAS detector are required in order to generate full Monte Carlo events” needs to be more precise. Why do we have to simulate collisions in the first place? Probably some discussion about quantum mechanics and its probabilistic nature which makes its way all the way to how we analyze data
-\subsection{Event Generation}
+% Comment from BERND to "Detector simulation" section in experimental chapter:
+% I believe this statement "Simulations of the ATLAS detector are required in order to generate full Monte Carlo events” needs to be more precise. Why do we have to simulate collisions in the first place? Probably some discussion about quantum mechanics and its probabilistic nature which makes its way all the way to how we analyze data
+\subsection{Event Simulation}
+- $pp$ collisions are quantum mechanical and therefore intrinsically probabilistic
 
+- Simulated $pp$ collision events are therefore used to compare the data against what is expected given the current knowledge of particle physics.
+% They are an integral part at hadron colliders 
+- A full simluated event needs to cover all aspects of $pp$ collision events summarized in \cref{subsec:pp-collision-overview}: The matrix element, the non-perturbative regime in particular the modelling of hadronization and showering process, the detector response, as well as other nuisances at hadron colliders like the underlying event or multiple overlaid $pp$ collisions.
+
+- MC tools are typically utilized for many of these steps.
+- Parameters of MC are tuned to fit the data, especially for the non-perturbative regime
+
+- Simulated $pp$ collision events have the advantage that information on the event such as the total momentum or type of interacting particles can be directly assigned to the event. This provides an extra layer of information known as \emph{truth information} that is accessible in simulated events but not in data.
+- An overview is given in the following
+
+% Dandoy
+% A good MC simulation will cover all aspects of particle evolution detailed in Section 2.1, including matrix element calculation, hadronization and showering of final states, and simulation of detector geometry and response.
+\paragraph{Matrix element}
+Matrix element calculations are performed with MC generators that randomly sample from the SM expectations to generate hard scatter events. Different MC generators allow generating events at different orders in perturbation theory. 
+\paragraph{Parton showering}
+\emph{Parton showering} occurs because there is a finite quantum probability for a parton to split into two partons. The \emph{QCD splitting functions} \cite{Altarelli:1977zs} provide the theoretical foundation for dedicated parton-shower models which accurately describe this behaviour.
+%There is also the possibility of hard gluon being emitted in the initial or final state, which spoils the measurement of the total transverse momentum of the event.
+\paragraph{Hadronization}
+The partons hadronize when their energy decreases and the strong coupling becomes large. There are several phenomenological approaches for modelling this non-perturbative process, one of which is the \emph{Lund-String-Model}. 
+It is based on the fact that the force between two strong interacting particles is constant, implying that the potential increases linearly with increasing distance.
+At a certain distance between the partons the potential energy is sufficient to create a quark/antiquark pair from the vacuum. This procedure is repeated until neutral colored hadrons are formed.
+\paragraph{Decays}
+The particles produced in the scattering process or in the process of hadronization are often unstable and further decay. Many of these decays, for example decaying $b$-hadrons, provide useful information about the event. %Dedicated algorithms exist to find the particles which initiate the decay chains.
+\paragraph{Underlying event}
+The hard scatter is accompanied by many soft processes from the remaining partons in the colliding protons. 
+These interactions are typically modelled independently of the hard scattering process and overlaid.
+\paragraph{Pile-up}
+Another nuisance in $pp$ collision events is the overlap of more than one scattering event in the detector. This is known as \emph{pile-up}. A distinction is drawn between \emph{in-time pile-up}, referring to the amount of multiple interactions per bunch crossing, and \emph{out-of-time pile-up}, which stands for overlapping events from previous $pp$ collisions or following bunches due to the limited time resolution of the detector components.
+Given the probabilities of different types of interactions, pile-up collisions predominantly consist of inelastic, low energy transfer $pp$ collision events. 
+Their impact is taken into account by generating them separately and overlaying them with the generated hard scatter.
+\paragraph{Detector simulation}
+\todo{Not clear where to provide details of detector simulation. Here or in the experimental chapter. It might be more meaningful in the hadron collider physics chapter. We could have a small reference to this here from the experiment chapter that might go into more detail about ATLAS. We can keep it general here.}
+
+The detector geometry and the response to different particles is simulated using the {\verb GEANT4 } toolkit \cite{Agostinelli:2002hh}. 
+This involves the consideration of all detector inefficiencies. 
+\todo{Make this a bit nicer here by looking at some phd theses}
+%These need to be accounted for with a dedicated software, which simulates the detector signal. 
+%Passing the MC simulated events through this software provides the necessary output to compare the simulation to real data. 
+%The ATLAS experiment uses detector simulations based on {\verb GEANT4 } \cite{Agostinelli:2002hh} with the possibility to have \emph{full simulations}, with very detailed detector descriptions, and also \emph{fast simulations}, with a decreased simulation accuracy to achieve lower processing times.
 
 
 
 \subsection{Soft QCD: Minimum bias, pile-up, ...?}
 % Mention in Event Generation subsection, see Master thesis!
+
+\todo{Not clear if a dedicated chapter is needed here. My preference is NO at the moment! Details can be provided int he dedicated JER chapter to not blow up the theory part.}
 
 % Comment from Bernd:
 %Before you can talk about "hard-scatter vertex or from pile-up”, you may have to introduce them. E.g. have a section on Hadron collider physics that goes through these terms?
@@ -143,8 +203,7 @@ An important feature is that the cross sections are not dependent on the renorma
 \Rinote{}{Where else should I talk about pile-up!? what is pile-up? HERE! Pile-up reweighting? analysis section. Pile-up as nuisance for jet measurements? -> JER calibration chapter, pile-up in LHC section as something intrinsic to pp collision event?}
 
 ->  Ruthmann has a nice section about it!
-From Sommer: "Additional in- elastic, minimum-bias like pp collisions (pile-up) are generated using Pythia8 and overlaid."
-Scope:
+
 - I should explain concepts like luminosity blocks  / bunch spacing and stuff in Data Taking Section
 - Then I can explain different pile-up conditions here.
 - This will be valuable to understand the noise term measurement which exactly tries to measure the noise term!

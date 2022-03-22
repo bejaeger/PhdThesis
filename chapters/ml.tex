@@ -68,7 +68,7 @@ The space of functions to choose from is constrained by a \emph{model} with adju
 % - The space of functions to choose from is constrained by a model that can come in various forms such as BDTs, support vector machines, or neural networks (see the following chapter).
 
 A major goal in machine learning is \emph{generalization}, that is the ability of a trained model to perform well on previously unseen data.
-The opposite is the case if model parameters are chosen based on signatures unique to the training data. This is known as \emph{overtraining} (or \emph{overfitting}). To prevent a model to be overfitted, various so-called \emph{regularization} techniques can be used during the training.
+The opposite is the case if the model parameters are chosen based on signatures unique to the training data. This is known as \emph{overtraining} (or \emph{overfitting}). To prevent a model to be overfitted, various so-called \emph{regularization} techniques can be used during the training.
 Regularization methods are typically tuned during the training procedure in which other parameters are also optimized, which is explained further below.
 %based on how well a trained model generalizes, which can be tested with data not used in the training.
 
@@ -108,7 +108,7 @@ The full function, that a simple network with one hidden layer and a single outp
 \end{equation}
 where the label $\pmb{w}$ was introduced to denote collectively the weights linking the neurons and bias weights.
 This function simply corresponds to a nonlinear function, controlled by a set of adjustable parameters. Here, the weight matrix $W^{(2)}$ is a vector and the activation function $h^{(2)}(\cdot)$ is the activation of the output neuron.
-
+\todo{First add fully general formula and then use the example with 1 hidden layer.}
 % In order to understand this transformation, a single artificial neuron is depicted in \cref{fig:single-neuron}. 
 There are different forms of activation functions that can be used.
 Feedforward NNs generally use the same function in all hidden layers.
@@ -203,6 +203,7 @@ The final performance metric, that is used to select the model, is problem depen
 In HEP, the performance metric should estimate as close as possible the performance of the final physics measurement. This, however, is complex because the measurement is usually performed with a sophisticated statistical procedure. 
 A common approach is therefore to evaluate the performance with simplified estimators extracted from the distribution of the network output, such as the expected discovery significance (as explained in \cref{sec:hypothesis-testing}).
 Several useful training techniques exist, that make finding a suitable training configuration easier.
+\todo{In the above, don't blah blah about performance metrics just yet. Add that as a separate section somewhere}
 
 \paragraph{Learning rate} \mbox{}\\
 The learning rate is one of the most crucial hyperparameters as it determines the size of the weight updates. Choosing a learning rate that is too large, can prevent convergence and cause the loss function to fluctuate around the minimum. Too low a learning rate can lead to extremely slow or no convergence. 
