@@ -1,35 +1,43 @@
 
 
 % From Master's thesis:
-The SM of particle physics is a collection of relativistic quantum field theories (QFT) and describes the interactions between all known fundamental particles.
+The SM of particle physics is a collection of relativistic quantum field theories (QFT) that describe the interactions between all known fundamental particles.
+Mathematically, it can be described as a SU(3)$_C$ $\times$ SU(2)$_L$ $\times$ U(1)$_Y$ local gauge theory, the details of which are explained in this section.
+% The mathematical formulation SU(3)$_C$ $\times$ SU(2)$_L$ $\times$ U(1)$_Y$ local gauge symmetry that gives rise to the interactions between all known fundamental particles.
+
 %It evolved during the 60’s and 70’s due to a strong interplay between experimental observations and theoretical developments. 
+The particle content of the SM is first described in \cref{subsec:particle-content}. \Cref{subsec:formalism} then briefly describes the theoretical principles that build the basis for the mathematical description of the SM. 
+ Details are provided in \cref{subsec:qed,subsec:qcd,subsec:ew-model,subsec:ewsymbreaking,subsec:fermion-masses,subsec:free-pars-sm}. This section concludes by describing the open questions of the SM that motivate precision measurements of the Higgs boson such as the one presented in this thesis.
 
-- Introduction to QFT and gauge group
 
-- Lagrangian formalism
-- local gauge invariance: without local gauge invariance:
+%On a phenomenological level, fundamental physics can be described in terms of elementary particles and forces. 
+% - Introduction to QFT and gauge group
+% - Lagrangian formalism
+% - local gauge invariance: without local gauge invariance:
+
 % From Pich The Standard Model
 % Thus, once a given phase convention has been adopted at one reference point x0, the same convention must be taken at all space-time points. This looks very unnatural.
-- highly successful in describing QED
 
-WHAT HAPPENS IN THIS SECTiION:
+% - highly successful in describing QED
+% WHAT HAPPENS IN THIS SECTiION:
 
-- First overview of particles and forces
-- Formalism
-- QED, QCD, electroweak model
-- Problem: no masses for bosons -> Higgs mechanism
-- Final Lagrangian and parameters to be measured experimentally of the SM
-- Limitations of the SM
+% - First overview of particles and forces
+% - Formalism
+% - QED, QCD, electroweak model
+% - Problem: no masses for bosons -> Higgs mechanism
+% - Final Lagrangian and parameters to be measured experimentally of the SM
+% - Limitations of the SM
 
 \subsection{Particles and Forces}
-\label{sec:particle-content}
+\label{subsec:particle-content}
 %In QFT all fundamental fields have an associated particle, that can be thought of as excitations (or vibrations) of the fields.
-On a \TDnote{phenomenological}{other word?} level, fundamental physics can be described in terms of elementary particles and forces.
+QFT describes nature in terms of fundamental fields. Each field is associated to an elementary particle that can be thought of as an excitation (or vibration) of the underlying field.\footnote{To simplify terminology, the objects are mostly referred to as particles rather than fields in this chapter, but the relationship is important to be kept in mind.} This association allows describing fundamental physics in terms of elementary particles. 
 
-The SM includes three of the four known fundamental interactions: The \emph{electromagnetic interaction} -- described by the theory of \emph{quantum electrodynamics} (QED) --, the \emph{strong interaction} -- using \emph{quantum chromodynamics} (QCD) [15] -- and the \emph{weak interaction}. The electromagnetic and the weak interaction are unified in the \emph{electroweak model} [16–18]. The fourth known fundamental interaction, \emph{gravitation}, is not part of the SM but can be fully neglected in present particle physics experiments due to its weak strength.
-
+% On a \TDnote{phenomenological}{other word?} level, fundamental physics can be described in terms of elementary particles and forces.
 % All currently known particles and forces included in the SM are listed in \TDnote{REF}{REF}.
 The elementary particles included in the SM are listed in \TDnote{REF}{REF}. They can be grouped into two main types: \emph{fermions} with half-integer spin, that are sometimes referred to as \emph{matter particles}, and \emph{bosons} with integer spin, that are the \emph{mediators} (or \emph{force carriers}) of the fundamental forces.
+
+The SM includes three of the four known fundamental interactions: The \emph{electromagnetic interaction} -- described by the theory of \emph{quantum electrodynamics} (QED) --, the \emph{strong interaction} -- using \emph{quantum chromodynamics} (QCD) [15] -- and the \emph{weak interaction}. The electromagnetic and the weak interaction are unified in the \emph{electroweak model} [16–18]. The fourth known fundamental interaction, \emph{gravitation}, is not part of the SM but can be fully neglected in present particle physics experiments due to its weak strength.
 
 The fermions can be grouped into three generations each with two leptons and two quarks. The different types of leptons and quarks are referred to as lepton- and quark \emph{flavours}.
 Their interactions with each other can be described by exchanges of so-called \emph{gauge bosons}.
@@ -40,33 +48,32 @@ The boson that mediates the electromagnetic interaction is the massless \emph{ph
 The strong interaction is transmitted via eight massless gluons and acts only on quarks and gluons themselves.
 Due to the property of \emph{confinement} in QCD, quarks cannot be found in isolation. They are confined within hadrons that consist, for example, of a quark and an anti-quark (known as \emph{mesons}) or three quarks (known as \emph{baryons}).
 
-The massive gauge bosons, \Wplus, \Wminus, and \Zboson, are the mediators of the weak interaction which acts on all fermions. As well, the \Wmp and \Zboson undergo self-interactions.
+The massive gauge bosons, \Wplus, \Wminus, and \Zboson, are the mediators of the weak interaction which acts on all fermions. Similar to gluons the \Wmp and \Zboson undergo self-interactions.
 
 The final particle of the SM is the electrically neutral \emph{Higgs boson}. It is the only spin-0 scalar particle and plays a special role in the SM in the mechanism of \emph{electroweak symmetry breaking}, which gives rise to the masses of the \Wpm and \Zboson bosons. More details about Higgs boson physics are provided in \TDnote{REF}{REF}.
 
 
 \subsection{Formalism and Principles}
+\label{subsec:formalism}
 % - Action: S = Int ( Lagrangian ) dt -> EOMs
 % - Lagrangian = Int (Lagrange density ) d3x
 % -> Lagrange density is commonly referred to as Lagrangian 
 % - In QFT, we define EOMs for fields by specifying the Lagrange density (Lagrangian)
 
 % Particles can be thought of as excitations (or vibrations) of corresponding fundamental fields. 
-QFT describes nature in terms of fundamental fields. Each field is associated to an elementary particle that can be thought of as an excitation (or vibration) of the underlying field.\footnote{To simplify terminology, the objects are mostly referred to as particles rather than fields in this chapter, but the relationship is important to be kept in mind.}
-
-The equations of motions of a given physical system can be derived from the action,
+The equations of motion of a given physical system can be derived from the action,
 \begin{equation}
   \label{eq:action}
   S = \int \Lagrangian d^3x dt,
 \end{equation}
-by following the action principle.\footnote{The derivation can be found in any standard text QFT such as REF (Peskin schroeder?).}.
+by following the action principle.\footnote{The derivation of the equations of motion can be found in any standard text QFT such as REF (Peskin schroeder?).}.
 In QFT, the dynamics of a system are therefore expressed in terms of the Lagrange densities (often just denoted \emph{Lagrangian}), \Lagrangian. 
 The Lagrangian is a function of the fields, $\psi$, and their derivatives, $\partial \psi$, that is $\Lagrangian \rightarrow \Lagrangian\left(\psi, \partial\psi)\right)$. The fields are themselves dependent on the space-time coordinate, $\psi \rightarrow \psi(x)$\footnote{For cleaner notation, the dependence on $x$ is usually not explicitely mentioned in the following equations}. 
 
-For a given field, $\psi$, the principles of QFT demand to include all possible terms in the Lagrangian related to the field. 
+For a given field, $\psi$, the principles of QFT demand to include all possible interaction terms in the Lagrangian that are related to the field\footnote{This follows what is sometimes referred to as the totalitarian principle of quantum mechanics, that satirically states: ``Everything not forbidden is compulsory''.}.
 The number and type of terms that can be included, however, is strongly constraint by requiring the theory to be invariant under certain symmetry transformations of the fields. 
 The SM is governed by the principle of \emph{local gauge invariance}. 
-Local gauge invariance implies, that the physical content of the theory should stay the same when performing certain re-definitions of the particle fields independently at every space-time point.
+Local gauge invariance implies, that the physical content of the theory stays the same when performing certain re-definitions of the particle fields independently at every space-time point.
 The structure of the Lagrangian is therefore determined by requiring invariance under field transformations of the sort,
 \begin{equation}
   \psi \rightarrow e^{-iT} \psi,
@@ -108,6 +115,7 @@ In the equations below, the Einstein-summation convention is used, that is terms
 
 
 \subsection{Quantum electrodynamics}
+\label{subsec:qed}
 %The above derivations are shortly recapped: Starting from the Lagrangian of a freely moving relativistic fermion one can impose the requirement of local U(1) gauge invariance. This demands to add a new field $A_\mu$ toghether with an interaction term, which is incorporated in the Lagrangian by introducing a covariant derivative $D_\mu$. Additionally, the kinetic term in \cref{eq:kinetictermqed} needs to be added for the new field, which leads to the final Lagrangian for QED, shown in \cref{eq:Lagrangianqed}.
 QED is the reflection of an underlying $U(1)$ local gauge symmetry of the complex-valued fermion fields, $\psi_f$, known as \emph{Dirac spinors}.
 The Lagrangian that is invariant under $\psi_f \rightarrow e^{i \omega(x)} \psi_f$ transformations can be written as
@@ -132,6 +140,7 @@ It should be noted that U(1)$_{\text{QED}}$ is not part of the original symmetry
 
 
 \subsection{Quantum chromodynamics}
+\label{subsec:qcd}
 QCD is a non-abelian gauge theory associated to the SU(3)$_C$ symmetry. The subindex $C$ refers to the colour and is the conserved quantity under SU(3)$_C$ transformations.
 The local gauge invariant QCD Lagrangian reads
 \begin{equation}
@@ -143,7 +152,7 @@ The covariant derivate is given by
 \begin{equation}
     D_\mu = \partial_\mu + i g_s \frac{\lambda^a}{2} G_\mu^a,
 \end{equation}
-which includes the eight gluon fields $G_\mu^a$ (with $a = 1, \ldots, 8$), as well as the strong coupling constant, $g_s$, and the Gell-Mann matrices, $\lambda^a$, which are the generators of the SU(3)$_C$ group.
+which includes eight gluon fields $G_\mu^a$ (with $a = 1, \ldots, 8$), as well as the strong coupling constant, $g_s$, and the Gell-Mann matrices, $\lambda^a$, which are the generators of the SU(3)$_C$ group.
 The field tensors, $G_{\mu\nu}^a$, are defined as
 \begin{equation}
   \label{eq:qcd-tensor}
@@ -158,7 +167,7 @@ The gluons are massless, as no term quadratic in the gluon fields are allowed wh
 
 
 \subsection{The electroweak model}
-
+\label{subsec:ew-model}
 \input{tables/theory/ew-fermion-content}
 % - the chirality can be determined with... right-chiral fermions are singlets under SU(2)L transformations
 % - This also means that no right-chiral neutrinos exist in the SM as they don't interact with any of the forces
@@ -185,7 +194,7 @@ The fermion fields transform as
 \end{align}
 where $T^a = \frac{\sigma^a}{2}$ (with $a = 1, 2, 3$) are the generators of the SU(2)$_L$ group with Pauli matrices, $\sigma^a$.
 The associated conserved quantity is the \emph{weak isospin}, $T$, where $T^3 = \pm \frac{1}{2}$ for SU(2)$_L$ doublets and $T^3 = 0$ for SU(2)$_L$ singlets.
-The U(1)$_Y$ symmetry is associated to the \emph{hypercharge}, $Y$, and can not be directly associated to the QED gauge group.
+The U(1)$_Y$ symmetry is associated to the \emph{hypercharge}, $Y$, and cannot be directly associated to the QED gauge group.
 The relation to the electromagnetic interaction and the physical electric charge $Q$ is
 \begin{equation}
   Q = T^3 + \frac{Y}{2}.
@@ -354,7 +363,7 @@ The predicted scalar field $H$ is known as the \emph{Higgs boson} and has a mass
 As explained below, the Higgs boson also provides masses to fermions and thus couples to all massive elementary particles.
 A more detailed descriptions on experimental Higgs boson physics and an overview of the current state of knowledge is given in \cref{sec:higgsphysics}.
 
-% The parameters of the Higgs potential $\mu^2 = \lambda v^2$ can be fixed for one combination by measuring parameters of the electroweak theory, but the physical Higgs mass can not be predicted. 
+% The parameters of the Higgs potential $\mu^2 = \lambda v^2$ can be fixed for one combination by measuring parameters of the electroweak theory, but the physical Higgs mass cannot be predicted. 
 % Moreover, the last two terms in \cref{eq:higgsselfcoupling} predict that the Higgs field couples to itself with cubic and quartic interactions.
 % The couplings of the Higgs boson to the weak gauge bosons are already expressed in \cref{eq:lagrangianmasses}.
 
@@ -368,6 +377,7 @@ A more detailed descriptions on experimental Higgs boson physics and an overview
 
 
 \subsection{Fermion masses}
+\label{subsec:fermion-masses}
 The masses of the fermions can be explained by introducing interaction terms between the fermion fields and the Higgs field. 
 This is possible because both the left-handed fermions and the Higgs field appear as doublets under SU(2)$_L$ transformations.
 
@@ -383,11 +393,11 @@ The interactions, that are known as \emph{Yukawa interactions}, can then be writ
   \mathcal{L}_\text{Yukawa} = - \sum_{i} Y_l^i \bar{\psi}^{i}_{L} \Phi \psi^{i}_{R} - \sum_{ij} Y_{\text{u-type}}^{ij} \bar{\psi}^{i}_{L} \Phi \psi^{i}_{\text{u-type},R} + Y_{\text{d-type}}^{ij} \bar{\psi}^{i}_{L} \Phi^C \psi^{j}_{\text{d-type}, R} + \text{h.c.}, 
   \label{eq:lyukawa}
 \end{equation}
-where the first sum runs over all leptons, and the second sum over all quarks.
-The left-handed fields are given as $\psi^{i}_{L}$ and include three lepton doublets as well as three quark doublets. 
-The right-handed lepton fields are labelled $\psi_R^i$ and the quark fields $\psi^{i}_{\text{u-type},L}$, $\psi^{i}_{\text{d-type},L}$.
+where the first sum runs over all leptons, the second sum over all quarks, and h.c. stands for the Hermitian conjugate of the previous terms.
+The left-handed fields are given as $\psi^{i}_{L}$ and include the three lepton- and quark doublets. 
+The right-handed lepton fields are labelled as $\psi_R^i$ and the quark fields $\psi^{i}_{\text{u-type},L}$, $\psi^{i}_{\text{d-type},L}$.
 The labels ``u-type'' and ``d-type'' refer to, respectively, up-type quarks, $u$, $s$, $t$, and down-type quarks, $d$, $c$, $b$. 
-The so-called \emph{Yukawa couplings} are shown as $Y_l^i$ for leptons and $Y_{\text{u-type}}^{ij}$ and $Y_{\text{d-type}}^{ij}$. The $Y_{\text{u-type}}^{ij}$ and $Y_{\text{d-type}}^{ij}$ are $3 \times 3$ matrices accounting for the fact that the eigenstates of the weakly interacting quarks do not correspond to their mass eigenstates. A rotation of the quark fields can therefore be performed accounting for the mixing. 
+The so-called \emph{Yukawa couplings} are shown as $Y_l^i$ for leptons and $Y_{\text{u-type}}^{ij}$ and $Y_{\text{d-type}}^{ij}$ for up-type and down-type quarks, respectively. The $Y_{\text{u-type}}^{ij}$ and $Y_{\text{d-type}}^{ij}$ are $3 \times 3$ matrices accounting for the fact that the eigenstates of the weakly interacting quarks do not correspond to their mass eigenstates. A rotation of the quark fields can be performed accounting for the mixing. 
 The relation between the states is specified by the \emph{Cabibbo–Kobayashi–Maskawa (CKM) matrix} \cite{doi:10.1143/PTP.49.652}, $\pmb{V}$, as
 % From Peskin
 % The off diagonal terms in Vij allow weak􏲩interaction transitions b e􏲩 tween quark generations.
@@ -427,6 +437,7 @@ which means that the coupling strength between the fermions and the Higgs field 
 % As shown by ‘t Hooft, only theories with local gauge invariance are renormalisable, such that the cancellation of all infinities takes place among only a finite number of interaction terms.
 
 \subsection{The Final Standard Model Lagrangian}
+\label{subsec:final-lagrangian}
 To summarize the previous sections, the final Standard Model Lagrangian is obtained from \cref{eq:lqcd,eq:lagrangianewk,eq:lagrangianhiggs,eq:lyukawa} and can be written as
 \begin{align}
   \mathcal{L}_\text{SM} &= \mathcal{L}_\text{QCD} + \mathcal{L}_\text{EWK} + \mathcal{L}_\text{Yukawa} + \mathcal{L}_\text{Higgs} \\
@@ -445,6 +456,7 @@ The sum over $f$ in the third term includes all fermions, left-handed and right-
 
 
 \subsection{Free parameters of the SM}
+\label{subsec:free-pars-sm}
 The SM has been very successful in making predictions that were later confirmed by experimental data (see \cref{eq:sm-limitations}). However, the SM has many free parameters that need to be measured experimentally and cannot be derived from theoretical principles.  
 In total there are 19 free parameters that can be represented with different parametrizations:
 \begin{itemize}
@@ -452,26 +464,119 @@ In total there are 19 free parameters that can be represented with different par
   \item 2 parameters describing the Higgs field: $\mu$ and $\lambda$ (or $v$ and $m_H$)
   \item 4 parameters to fully specify the CKM matrix, typically parametrized as 3 quark-mixing angles ($\theta_1$, $\theta_2$, $\theta_3$) and a CP-violating phase ($\theta_\delta$).
   \item 3 couplings constants: $\alpha$, $G_f$, $\alpha_s$ (or $g'$, $g_w$, $g_s$)
+  \item 1 phase associated to CP violating terms in QCD, $\theta_{\text{QCD}}$
 \end{itemize}
-In total 14 parameters are associated with the Higgs field, four with the flavour sector, and only three with the gauge interactions. This underlines the fact that the Higgs boson plays a major role in the SM.
+In total 14 parameters are associated with the Higgs field, four with the flavour sector, and only three with the gauge interactions. This underlines the special role the Higgs boson plays in the SM.
 
 
 \subsection{Limitations of the SM}
+\label{subsec:limitations}
+Despite the extraordinary success of accurately predicting and explaining experimental measurements, the SM has several shortcomings.
+There are several observable phenomona that cannot be explained by the SM as well as many open questions related to theory. 
+There are models and theories beyond the SM that attempt to address these shortcomings, but experimental indication that either of them is realised in nature is still pending.
+%none of them have made predictions that have been confirmed by experiments to date. 
+Notable examples of such theories are supersymmetry, GUT, or more simple extensions of the SM such as the 2HDM \todo{REFs}. 
+This section provides an overview of some of the biggest unsolved problems of the SM and fundamental physics in general.
 
 
-\subsubsection{Gravitation}
+% From Arnold:
+% While several such theories have been developed that based on differing concepts attempt to improve on the shortcomings of the Standard Model, e.g. Supersymmetry or String Theory, experimental indications that either of them is actually realised in Nature are still pending.
 
-\subsubsection{Higgs boson}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Experimental ones (not sure yet if I should make this distinction)
 
 \subsubsection{Dark matter}
+The SM is able to explain the behavior of the currently observable matter in the universe, which makes up about 5\% of the energy of the universe. 
+As known from astrophysical measurements such as measurements of galaxy rotations \todo{REF}, another 27\% of the universe's energy is made up of so-called \emph{dark matter}. To date, the SM has no viable candidate to explain the nature of dark matter. 
+
+% Another 26\% of the universe's energy is made up of so-called dark matter. 
+% - The SM explains the observable mass which makes up about 5\% of the energy of the universe. 
+% - The rest of the matter, making up about 26\% is known as dark matter. (known from measurements of orbiting galaxis)
+% - The SM cannot explain the nature of dark matter, to date. 
+% from Thomson
+%velocity distributions of stars as they orbit the galactic centre)
+
+\subsubsection{Dark energy}
+About 68\% of the universe's energy constitutes so-called \emph{dark energy}. Dark energy is attributed to the non-zero cosmological constant that appears in Einstein's equation of general relativity and is also sometimes referred to as \emph{vacuum energy}. It is used to explain the acceleration of the expansion of the universe \todo{REF}. The SM provides no suitable explanation for the large value of the vacuum energy. 
+
+%The SM has no explanation for the large value of the vacuum energy. 
+% - Dark energy is the energy needed in order to explain the acceleration of the expansion of the universe. 
+% - This is sometimes called vacuum energy and related to the cosmological constant problem. The SM has no explanation for the measured size of the vacuum energy.
+% From Thomson
+%- dark energy is attributed to a non-zero cosmological constant of Einstein's equations of general relativity
 
 \subsubsection{Neutrinos}
-Right-handed neutrinos are not part of the SM and therefore masses terms cannot be added. However, from neutrino oscillation experiments it was found that neutrinos have masses.
+Right-handed neutrinos are not part of the SM because they do not couple to any of the other particles.
+Therefore, Dirac mass terms from Yukawa interactions (see \cref{subsec:Yukawa}) are typically not added to the SM. 
+However, it is known that neutrinos oscillate\todo{REF}, which implies that they have finite masses.
+While it is possible to add mass terms for neutrinos ad-hoc without violating any of the theoretical principles, it is not clear exactly which terms to use, as the nature of neutrinos is not settled\footnote{Neutrinos could for example either be Dirac fermions or Majorana fermions. Majorana fermions are particles that are their own anti-particles, which stands in contrast to Dirac fermions. Different mathematical descriptions are required to describe the different types of particles in the Lagrangian.}. 
+Nevertheless, the SM is sometimes described with additional terms for the neutrinos. If this is the case an additional seven free parameters (three for the masses and four to describe the mixing between neutrinos) are introduced to the SM.
 
-Extensions of the SM suggest to add mass terms which would add an additional 6 free parameters to the SM
-
+%It is possible to add Dirac mass terms by implying the existence of right-handed neutrinos. 
+%- One possibility is to add Dirac mass terms, which would add an additional 6 free parameters to the SM. 
+%- However, it is not clear if Neutrinos are indeed sterile (Dirac) and unknown why Neutrino masses are so small and if they get their masses from the same process as the other SM particles
+% Wikipedia on Majorana:
+% A Majorana fermion (/maɪəˈrɑːnə ˈfɛərmiːɒn/[1]), also referred to as a Majorana particle, is a fermion that is its own antiparticle. They were hypothesised by Ettore Majorana in 1937. The term is sometimes used in opposition to a Dirac fermion, which describes fermions that are not their own antiparticles.
+% The nature of the neutrinos is not settled—they may turn out to be either Dirac or Majorana fermions.
 % From Pich 2012
 %The experimental evidence of neutrino oscillations shows that νe, νμ and ντ are also mixtures of mass eigenstates. However, the neu
 
+\subsubsection{Matter-antimatter symmetry}
+It is widely believed that the universe was created with equal amounts of matter and antimatter.
+However, the currently observable universe consists of significantly more matter than antimatter. 
+The SM does not provide a theoretical explanation for this large asymmetry. 
+
+% the SM cannot explain why there is more matter than antimatter in the observable universe. 
+% - No mechanism in the SM can explain the asymmetry sufficiently. 
+% From Thomson
+% However, even if CP violation is observed in neutrino oscillations, it seems quite possible that the CP violation in the Standard Model is insufficient to explain the observed matter–antimatter asymmetry of the Universe.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Theoretical ones (not sure yet if I should make this distinction)
+
+\subsubsection{Large number of free parameters}
+As discussed in \cref{subsec:free-pars-sm}, the SM has several free parameters that need to be added to the theory ad hoc and cannot be derived from first principles. 
+From an experimentalist point of view, this is not a problem per se, but it suggests that there might be a more fundamental theory with fewer parameters that can ultimately explain the relationships between the current SM parameters.
+
+% Thomson: 
+% [The SM] ... is a model constructed from a number of beauti- ful and profound theoretical ideas put together in a somewhat ad hoc fashion in order to reproduce the experimental data.
+
+\subsubsection{Gravitation}
+The current understanding of gravity is still shaped by Einstein's theory of general relativity. No quantum theory of gravity has been fully developed, which is why it is not part of the SM. 
+The interaction strength of gravity is very weak compared to all other fundamental forces, which is why it can be safely neglected in current high energy physics experiment.
+% Due to the small strength of gravity, compared to the other fundamental forces, gravity can be fully neglected in current high energy physics experiments. 
+% - Quantum theory of gravity not fully developed. Versions that exist predict the graviton, the particle mediating gravity to be a spin 2 particle.
+% - Classical theory of gravity, general relativity
+
+\subsubsection{Strong CP problem}
+No theoretical principle forbids CP violation in the strong interaction. However, no such process has been found and the strong CP phase, $\theta_{\text{QCD}}$, has been experimentally constraint to be smaller than $10^{-10}$ \todo{REF}. This is considered a \emph{fine-tuning} problem because it is highly unlikely that the reason for such a small interaction is due to chance alone. 
+% Not sure if I should add that
+The so-called Peccei-Quinn theory~\cite{PhysRevLett.38.1440} and modifications of it provide a solution by introducing a scalar field known as axion. However, no experimental evidence of the existence of such a particle has been found to date.
+%there is no explanation of why these interactions are so small which makes
+% - There is nothing that would forbid CP violation in the strong interaction, however, no CP-violating processes have been observed to date. 
+% This is considered a ``fine-tuning'' problem.
 
 
+% Not sure if I should include this it's kind of weird! I don't understand it, let's say that. Why is it a problem, can't you ALWAYS ask that question? Why is there this particle. Why are there electrons? Not sure if I get that quite right. 
+% \subsubsection{The fermion generations}
+% The SM has no explanation for why there are three generations of fermions. 
+
+
+\subsubsection{Higgs boson}
+While several physics problems were solved by introducing the Higgs boson to the SM, other mysteries remain. 
+One of the biggest open questions is related to the mass of the Higgs boson itself. 
+Assuming that there is no new physics up to the Planck scale, quantum loop corrections to the Higgs boson mass would be extremely large (at the order of the Planck scale). 
+This means, that the bare mass of the Higgs boson\footnote{The observable mass of an elementary particle is given by the difference of two terms that are completely independent of each other, the particles bare mass and corrections from quantum fluctuations.}
+needs to almost perfectly balance the quantum corrections to keep the Higgs mass in the \GeV\ range. The precision required for such a balance is extremely high and considered ``unnatural''. 
+This is known as the hierarchy problem and is one of the main motivations to search for new particles with masses in the \TeV\ range. Their existence would affect the quantum contributions to the Higgs mass, eliminating the need of ``fine-tuning'' the bare Higgs mass to an incredible precision, as is assumed so far in the SM. 
+
+The Higgs boson takes a special role in the SM because it is the only fundamental scalar. Its nature makes it a suitable candidate in many models beyond the SM to predict couplings between the Higgs boson and particles from new physics~\cite{2019BHeinemann}.
+This highly motivates precision measurements of the Higgs boson to be able to detect small deviations from the SM predictions. 
+
+% - Due to these inexplicabilities the Higgs boson (and the fact that it's the least well measured EM particle) is widely considered to be the answer to many other questions in fundamental physics
+
+% Hierarchy Problem from Thomson:
+% Just as quantum loop corrections contributed to the W-boson mass (see Section 16.4), quantum loops in the Higgs boson propaga- tor, such as those indicated in Figure 18.3, contribute to the Higgs boson mass. This in itself is not a problem. However, if the Standard Model is part of theory that is valid up to very high mass scales, such as that of a Grand Unified Theory ΛGUT ∼ 1016 GeV or the Planck scale ΛP ∼ 1019 GeV, these corrections become very large. Because of these quantum corrections, which are quadratic in Λ, it is difficult to keep the Higgs mass at the electroweak scale of 102 GeV. This is known as the Hierarchy problem. It can be solved by fine-tuning the new contributions to the Higgs mass such that they tend to cancel to a high degree of precision.
+
+% Why Higgs measurements?
+% The experimental study of the Higgs boson at the LHC is undoubtedly one of the most exciting areas in contemporary particle physics. Within the Standard Model, the Higgs boson is unique; it is the only fundamental scalar in the theory. Establish- ing the properties of the Higgs boson such as its spin, parity and branching ratios is essential to understand whether the observed particle is the Standard Model Higgs boson or something more exotic.
