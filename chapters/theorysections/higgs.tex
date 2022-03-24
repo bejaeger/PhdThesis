@@ -1,12 +1,213 @@
-\subsection{Higgs Production Modes}
-\subsection{Higgs Decay Modes}
+
+% FROM MASTER THESIS
+% The theoretical developments which lead to the prediction of the Higgs boson where discussed in the previous chapters.
+% The experimental discovery of the Higgs boson was achieved in 2012 by the ATLAS and CMS Collaboration at the LHC \cite{Aad:2012tfa,Chatrchyan:2012xdj}.
+% Since then many dedicated analyses have been measuring the properties of the Higgs boson \cite{2015arXiv150605669A,DIMARCO2016746}, as well as its couplings to other particles very well \cite{2016JHEP...08..045A}.
+% %The LHC \RunOne\ results for Higgs boson measurements are reviewed in Ref.~\cite{2016JHEP...08..045A}.
+% Up to now, all results are consistent within the given uncertainties with the predictions made by the SM.
+% The current combination of the mass measurements from the ATLAS and CMS experiment of the Higgs boson is \cite{Aad:2015zhl}
+% \begin{equation}
+%   m_H = 125.09 \pm 0.21\text{(stat.)} \pm 0.11\text{(syst.)} \GeV.
+% \end{equation}
+% The most recent result analyzing data of \RunTwo\ from the ATLAS Collaboration is $m_H = 124.97\pm0.28\,\GeV$ \cite{ATLAS-CONF-2017-046} and from the CMS Collaborations $m_H = 125.26 \pm 0.21\,\GeV$ \cite{Sirunyan:2272260}.
+% This section shortly discusses the most important processes to consider, when dealing with Higgs boson interactions.
+
+
+The theoretical developments which lead to the prediction of the Higgs boson where discussed in the previous chapters.
+
+- Give outline of different production and decay modes of the Higgs (focusing on the details of WW decays)
+
+- Describe what cross section measurements are 
+
+- Give outline of current status of Higgs measurments, focusing on cross section measurements.
+
+
+\subsection{Higgs Boson Production Modes}
+\label{sec:higgsprod}
+As illustrated in \cref{fig:higgsprodfeyn}, the Higgs boson is produced at the LHC via four main production modes: \emph{gluon fusion} (ggF), \emph{vector-boson fusion} (VBF), \emph{Higgs-strahlung} from $W$ or $Z$ boson (VH) and $t\bar{t}$ fusion (ttH).
+%- as illustrated in \cref{fig:higgsprodfeyn} with a choice of Feynman diagrams.
+%associated production with a $t\bar{t}$ pair (also called \emph{$t\bar{t}$ fusion})
+\Cref{fig:higgsprodxsec} shows the most recent results for the corresponding cross-section calculations with an indication of the achieved accuracy for each process.
+
+The ggF process ($pp\rightarrow H$) is the leading mechanism at the LHC and characterized by a fermion loop coupling to the Higgs boson. Top-quark loops have the largest contribution due to the high mass of the top quark. The ggF cross-section is calculated with an effective theory to NNNLO in QCD and includes electroweak corrections at NLO precision \cite{Anastasiou:2016cez}.
+
+The second largest contribution to Higgs boson production comes from vector-boson fusion ($pp\rightarrow qqH$), with the characteristic of two quarks accompanying the Higgs boson in the final state.
+This feature can be exploited in the event selection to isolate and measure the subsequent decays of the Higgs boson. Additionally, the VBF production provides information about the couplings of the Higgs boson to the $W$ and $Z$ bosons. Observation of the VBF production mode of the Higgs boson was found by a combined measurement of the ATLAS and CMS Collaborations\cite{Khachatryan:2016vau}.
+
+Similar features exhibits the Higgs-strahlung process ($pp \rightarrow WH$, $pp \rightarrow ZH$), which has a final state topology with one additional vector boson besides the Higgs boson. 
+
+The Higgs boson production in association with a $t\bar{t}$ pair ($pp \rightarrow ttH$) is difficult to measure due to the relatively low production cross-section and the less prominent final state. It plays an important role in Higgs boson physics, since it allows direct access to the Yukawa coupling of the top quark. The most recent results of the ATLAS Collaboration yield evidence for the $t\bar{t}$-fusion production of the Higgs boson \cite{ATLAS-CONF-2017-077}.
+
+Other Higgs boson production processes in association with $b\bar{b}$ ($pp\rightarrow bbH$) or a single-top quark ($pp \rightarrow tH$) have smaller contribution at the LHC at centre-of-mass energies of 13\,\TeV.
+
+\captionsetup[subfloat]{captionskip=25pt} % space between subfloat caption and image
+\unitlength=1mm
+\begin{figure}
+  \centering
+\subfloat[Gluon fusion]{  
+\begin{fmffile}{HiggsProduction_GluonFusion}
+\begin{fmfgraph*}(60,22) 
+\fmfleft{i1,i2}
+\fmfright{o1,o2,o3}
+\fmf{phantom}{i1,v1,o1} 
+\fmffreeze 
+\fmf{phantom}{i2,v2,o3}
+\fmffreeze
+\fmf{gluon, label=$g$, label.dist=+12.0}{i1,v1} 
+\fmf{gluon, label=$g$, label.dist=+12.0}{i2,v2}
+\fmf{fermion, label=$t$, label.dist=-12.0}{v1,v2,v3,v1}
+\fmf{dashes, label=$H$,plain}{v3,o2}
+\end{fmfgraph*}
+\end{fmffile}
+}
+\quad
+\subfloat[Vector-boson fusion]{
+\begin{fmffile}{HiggsProduction_VBF}
+\begin{fmfgraph*}(60,25) 
+\fmfleft{i1,i2}
+\fmfright{o1,o2,o3}
+\fmf{phantom}{i1,v1,o1}
+\fmffreeze
+\fmf{phantom}{i2,v2,o3}
+\fmffreeze
+\fmfstraight
+\fmf{phantom}{v1,v3,v2}
+\fmffreeze
+\fmf{fermion, label=$q$}{i1,v1}
+\fmf{fermion, label=$q$}{i2,v2}
+\fmf{fermion, label=$q^\prime$}{v1,o1}
+\fmf{fermion, label=$q^\prime$}{v2,o3}
+\fmf{boson, label=$W/Z$}{v1,v3,v2}
+\fmffreeze 
+\fmf{dashes, label=$H$,plain}{v3,o2}
+\end{fmfgraph*}
+\end{fmffile}
+}
+\\
+\vskip1em
+\subfloat[Higgs-strahlung]{
+\begin{fmffile}{HiggsProduction_HiggsStrahlung} 
+\begin{fmfgraph*}(60,25) 
+\fmfleft{i1,i2}
+\fmfright{o1,o2}
+\fmf{fermion, label=$q$}{i1,v1}
+\fmf{fermion, label=$q'$}{v1,i2}
+\fmf{boson, label=$W/Z$}{v1,v2,o1}
+\fmf{dashes, label=$H$}{v2,o2}
+\end{fmfgraph*}
+\end{fmffile}
+}
+\quad
+\subfloat[$t\bar{t}$ fusion]{
+\begin{fmffile}{HiggsProduction_ttbar}
+\begin{fmfgraph*}(60,25) 
+\fmfleft{i1,i2}
+\fmfright{o1,o2,o3}
+\fmf{phantom}{i1,v1,o1}
+\fmffreeze
+\fmf{phantom}{i2,v2,o3}
+\fmffreeze
+\fmfstraight
+\fmf{phantom}{v1,v3,v2}
+\fmffreeze
+\fmf{gluon, label=$g$, label.dist=+12.0}{i1,v1}
+\fmf{gluon, label=$g$, label.dist=+12.0}{i2,v2}
+\fmf{fermion, label=$t$}{o3,v2,v3,v1,o1}
+\fmf{dashes, label=$H$,plain}{v3,o2}
+\end{fmfgraph*}
+\end{fmffile}
+}
+\caption{Representative Feynman diagrams for the four main production modes of the Higgs boson at the LHC.}
+\label{fig:higgsprodfeyn}
+\end{figure}
+\captionsetup[subfloat]{captionskip=5pt} % space between subfloat caption and image
+%% \begin{figure}
+%%   \newImageScale{figures/Higgs_Prod_XSec.pdf}{0.5}
+%%   \caption{Higgs boson production cross-sections and their theory uncertainties for different values of the LHC centre of mass energy. \cite{YR4}}
+%%   \label{fig:higgsprodxsec}
+%% \end{figure}
+
+
+\subsection{Higgs Boson Decay Channels}
+The Higgs boson couples to all massive particles and thus has several decay modes. The \emph{branching ratios} of the most relevant decays are displayed in \cref{fig:higgsbr}. The decay to a pair of bottom quarks is the leading process followed by the $H\rightarrow WW^*$ decay mode.
+
+An overwhelming fraction of events at a hadron collider, like the LHC, is dominated by QCD effects.
+The Higgs boson decay to a pair of $b$-quarks with a purely hadronic final state is therefore very difficult to separate from other events.
+Nevertheless it is possible to measure this decay by using for example the VBF or Higgs-strahlung production mode and exploiting the presence of the gauge bosons in the final state in the event selection. With this strategy evidence for the $H\rightarrow b\bar{b}$ decay was recently found in the VH production mode \cite{Aaboud:2017xsd,Sirunyan:2017elk}.
+
+The most sensitive channels for the Higgs boson discovery in 2012 were the Higgs boson decay to two photons, the $H \rightarrow ZZ^* \rightarrow llll$ process, and the $H \to WW^*$ decay.
+%Higgs boson initially was discovered in the decay to two photons and the $H \rightarrow ZZ^* \rightarrow llll$ channel \todo{REF}.
+The first two decays have relatively small branching ratios but exhibit very clean final-state signatures due to the presence of leptons and photons.
+This allows an excellent selection of signal events with a good control over the background.
+Additionally, the mass of the Higgs boson can be fully reconstructed in these channels by computing the invariant mass of the reconstructed decay products.
+%at a hadron collider, where an overwhelming fraction of events is dominated by QCD effects.
+%This is equally important since it allows an excellent selection of signal events and a good control over the background. 
+% the largest fraction of events are dominated by QCD effects.
+%QCD dominated events
+%events at a hadron collider, since the final states are dominated by QCD effects.
+
+The $H \rightarrow WW^*$ decay also gives a good handle over the background when selecting leptonically decaying $W$ bosons.
+The neutrinos stemming from the $W$ boson decays, however, prevent from the ability to fully reconstruct the mass of the Higgs boson, because they cannot be directly detected with the ATLAS experiment.
+Results of the analysis of \HWW\ decays conducted by the ATLAS Collaboration and CMS Collaboration for data of \RunOne\ can be found in Ref.~\cite{PhysRevD.92.012006} and Ref.~\cite{2013arXiv1312.1129C}, respectively; a corresponding analysis of \RunTwo\ data is given in \cref{sec:ggfanalysis}, focusing on the gluon fusion production-mode.
+
+A similar final state as the one in \HWW\ processes, can be exploited when looking at Higgs boson decays into $\tau$-leptons \cite{Aad:2015vsa,Sirunyan:2276465}. The Higgs boson decay to $Z\gamma$, where leptonically decaying $Z$ bosons provide the most sensible final state, or $\mu\mu$, are very rare and thus the Higgs boson is still searched for in these channels. % \cite{Aaboud:2017uhw,Aaboud:2017ojs}.
+
+The final states with charm quarks and gluons, making up a considerable fraction of all Higgs decays, are currently too difficult to differentiate from other events at a hadron collider.
+
+% The H → µµ
+%decay is a sensitive channel in which the Higgs coupling to second-generation fermions can be measured
+%with a clean final-state signature at the LHC.
+
+%background events can be reduced very effectively
+%, which have relatively small branching ratios. Nevertheless this was achieved due to the precise knowledge of the background.
+
+%Altough the branching ratios for these decays are relatively small this could be achieved due to the excellent background rejection by selecting leptons, as well as the precise knowledge of the expected background in these decay modes.
+
+
+%% (Left) The SM Higgs boson production cross sections as a function
+%% of the center of mass energy, √
+%% s, for pp collisions. The theoretical uncertainties [46]
+%% are indicated as bands. (Right) The branching ratios for the main decays of the SM
+%% Higgs boson near mH = 125GeV. The theoretical uncertainties [44,45] are indicated
+%% as bands.
+
+%% \begin{figure}
+%%   \newImageScale{figures/Higgs_Prod_XSec.pdf}{0.5}
+%%   \caption{Higgs boson production cross-sections and their theory uncertainties for different values of the LHC centre of mass energy. \cite{YR4}}
+%%   \label{fig:higgsprodxsec}
+%% \end{figure}
+
+\captionsetup[subfloat]{captionskip=5pt} % space between subfloat caption and image
+\begin{figure}
+  \begin{center}
+    \subfloat[]{
+      \newImageScale{figures/Higgs_Prod_XSec.pdf}{0.37}
+      \label{fig:higgsprodxsec}
+    }
+    \subfloat[]{
+      \newImageScale{figures/SMHiggsBR.pdf}{0.37}
+      \label{fig:higgsbr}
+    }
+  \end{center}
+  \caption[(a) Higgs boson production cross-sections as a function of the LHC centre-of-mass energy. (b) Branching ratios of the Higgs boson for a mass range around 125\,\GeV.]{(a) Higgs boson production cross-sections as a function of the LHC centre-of-mass energy. (b) Branching ratios of the Higgs boson for a mass range around 125\,\GeV. The line widths represent the respective theory uncertainties. Taken from Ref.~\cite{YR4}.}
+  %  \label{fig:higgsbr}
+\end{figure}
+
+
+
+
+
+
 \subsection{Properties of HWW Decays}
 - VBF Higgs -> ww cross section must be exactly the SM value, otherwise VBS xsec converges!
 -> Maybe add this to HWW analysis
 
-\section{Higgs Boson Measurements}
 
-\subsection{Inclusive cross-section measurements}
-\subsection{Fiducial and differential cross-section measurements}
-\subsection{Simplified Template Cross-section Measurements}
-\subsection{Current status}
+
+\subsection{Higgs Boson Measurements}
+
+\subsubsection{Inclusive cross-section measurements}
+\subsubsection{Fiducial and differential cross-section measurements}
+\subsubsection{Simplified Template Cross-section Measurements}
+
+\subsection{Current Experimental Status}

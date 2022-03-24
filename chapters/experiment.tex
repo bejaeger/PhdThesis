@@ -373,9 +373,11 @@ More information on the ATLAS trigger system can be found in \ccite{ATLAS-TDR-16
 
 \subsection{Detector simulation}
 \todo{Shorten this section by referencing section in anatomy section. Include the new wording for software infrastructure?}
-Simulations of the ATLAS detector are required in order to generate full Monte Carlo events that can be compared to actual experimental data.
-The simulations need to consider the response of each individual detector system, the effect of material placed throughout the detector, detector imperfections, as well as data and trigger conditions.
+
+%Simulations of the ATLAS detector are required in order to generate full Monte Carlo events that can be compared to actual experimental data.
+
 The ATLAS detector simulation is based on \textsc{Geant4}~\cite{Agostinelli:2002hh}.
+The simulations considers all aspects of the ATLAS detector such as the response of each individual detector system, the effect of material placed throughout the detector, detector imperfections, as well as data and trigger conditions.
 % From Deep Learning and its applications in physics
 %In the language of statistics and machine learning, the full simulation chain would be considered a generative model for the data as they can be used to generate synthetic data of the same complexity and format as the actual collision data.
 %Due to the complexity of the experiment a \emph{full simulation} is a very computing-intensive process. The ATLAS simulation infrastructure also allows for \emph{fast simulations} using simplified descriptions of the detector systems. This provides the opportunity for lower processing times with the drawback of decreased accuracies.
@@ -388,7 +390,7 @@ More information on the ATLAS simulation infrastructure can be found in \ccite{A
 \section{Data Acquisition during 2015-2018}
 \label{sec:run-2-data-taking}
 
-\Minote{}{I should mention the detectors that measure the luminosity}
+\Minote{}{should I mention the detectors that measure the luminosity?}
 
 The operation of the LHC during \RunTwo between April 2015 and December 2018 was a great success and even exceeded the goals set in terms of luminosity production. At a centre-of-mass energy of $\sqrt{s} = 13\,\TeV$, the peak instantaneous luminosity was more than twice as high as its design value reaching up to $\instLumi = \SI{2.1e34}{\per\cm\per\s}$ in 2018.
 \Cref{fig:run-2-data-taking-a} shows the integrated luminosity delivered by the LHC (156\ifb), recorded by the ATLAS detector (147\ifb), and certified as being of ``good'' data quality (139\ifb).

@@ -1,11 +1,47 @@
 \todo{Introduce impact parameter cause it's mentioned in inner detector section}
 
-The theoretical framework described in \cref{sec:sm} allows making predictions about the probabilities of possible outcomes of proton-proton collision events. 
-The necessary computations are complex and affected by many aspects, and are continuously being improved by the theoretical particle physics community.
-This section provides an overview of the physical observables that are defined at hadron colliders, and gives details on the characteristics that need to be considered when simulating the collision events. 
+The theoretical framework described in \cref{sec:sm} allows making predictions about the probabilities of interactions between elementary particles. 
+These predictions can be tested by studying the outcomes of particle collisions produced by accelerators such as the LHC. 
+
+In order to reach the highest energies, the LHC accelerates proton beams. 
+This leads to a rich and complex environment when the protons collide because they are not elementary particles.
+% The phenomenology of proton-proton collisions ($pp$ collisions) is complex because protons are not elementary particles. 
+Protons are compound states of so-called \emph{partons} made up of quarks and gluons that interact with each other according to the laws of QCD.
+A correct understanding of QCD processes is therefore essential for the success of physics programs at $pp$ collider experiments.
+
+This section provides details on the relevant aspects to get from QCD calculations to observables that can be measured in collider experiments such as the ATLAS detector. 
+The SM expectations of the observables are quantified using simulated $pp$ collision events. 
+% The $pp$ collisions are quantum mechanical by nature and therefore intrinsically probabilistic.
+% Therefore, simulated $pp$ collision events generated with the \emph{Monte Carlo} (MC) method are used to compare the data against what is expected given the current knowledge of particle physics.
+They are an essential ingredient for extracting physics parameters from the collision data, as described later in this section.
+
+
+
+% The SM expectation of the observables is quantified using simluated $pp$ collision events 
+% Later in this section, the procedure to simulate $pp$ collision events is described, 
+% including the relevant details of QCD
+% This section provides an overview of how to get from QCD calculations to physical observables that can be measured at collider experiments such as the ATLAS detector.
+
+% The necessary computations are complex and affected by many aspects, and are continuously being improved by the theoretical particle physics community.
+% This section provides an overview of the physical observables that are defined at hadron colliders, and gives details on the characteristics that need to be considered when simulating the collision events. 
 
 % What is that sentence???
 % As we will see we can separate the process of calculating cross sections between quarks and other soft QCD things.
+
+\subsection{Overview of proton-proton collision event}
+\label{subsec:pp-collision-overview}
+A schematic overview of a hard $pp$ scattering process is illustrated in \cref{fig:ppcol}.
+The scattering of two protons can be described by a hard parton-parton interaction, known as \emph{hard scatter}, and further low energy processes.
+The partons participating in the hard scatter carry a momentum fraction of the proton described by \emph{parton distribution functions} (PDFs).
+The hard scatter is accompanied by the so-called \emph{underlying event} consisting of low energy interactions between the proton remnants that are not involved in the hard scatter.
+The initial and final-state particles can radiate in the form of \emph{inital} (ISR) or \emph{final-state radiation} (FSR). The final-state partons undergo a process called \emph{hadronization} - also called \emph{fragmentation} - due to the confining nature of QCD. They form a spray of colour-neutral hadrons, which are known as particle \emph{jets}.
+
+\begin{figure}
+  \newImageResizeCustom{0.8}{figures/anatomy/schematic_ppcollision.png}
+  \caption[Schematic view of a proton-proton collision.]{Schematic view of a proton-proton collision. Details can be found in the text. Taken from Ref.~\cite{Bhatti2010}. }
+  \label{fig:ppcol}
+\end{figure}
+
 
 \subsection{Collision rates}
 The whole physics program at collider experiments can more or less be broken down into the measurement of event rates. Comparing the event rates measured in data with the predictions from simulations allow for meaningful statistical inferences.
@@ -36,25 +72,21 @@ The integrated luminosity,
 \end{equation}
 is typically quoted to quantify the size of a dataset collected at a collider experiment.
 
-\subsection{Overview of proton-proton collision event}
-\label{subsec:pp-collision-overview}
-The phenomenology of proton-proton collisions ($pp$ collisions) is complex because protons are not elementary particles. Protons are compound states of so-called \emph{partons} made up of quarks and gluons.
-The scattering of two protons can be described by a hard parton-parton interaction, known as \emph{hard scatter}, and further low energy processes, resulting from the remaining proton remnants not involved in the hard scattering and forming the so-called \emph{underlying event}.
-A schematic overview of a hard $pp$ scattering process is illustrated in \cref{fig:ppcol}.
-The incoming partons carry a momentum fraction of the proton, which is described with \emph{parton distribution functions} (PDFs).
-The initial and final-state particles of the hard scatter can radiate in the form of \emph{inital} (ISR) or \emph{final-state radiation} (FSR). The final-state partons undergo a process called \emph{hadronization} - also called \emph{fragmentation} - due to the confining nature of QCD. They form a spray of colour-neutral hadrons, which are known as particle \emph{jets}.
-
-\begin{figure}
-  \newImageResizeCustom{0.8}{figures/schematic_ppcollision.png}
-  \caption[Schematic view of a proton-proton collision.]{Schematic view of a proton-proton collision, taken from Ref.~\cite{Bhatti:2010bf}. Details can be found in the text.}
-  \label{fig:ppcol}
-\end{figure}
 
 \subsection{Partonic cross-sections and parton distribution functions}
-The incoming partons interact according to the laws of QCD.
-\todo{Difference between strong coupling constant alphas and g', as described in theory chapter!}
+
+
+\begin{figure}
+  \newImageResizeCustom{0.8}{figures/anatomy/alphas.png}
+  \caption[Summary of measurements of the strong coupling constant $\alpha_s$ as a function of the energy scale $Q$.]{Summary of measurements of the strong coupling constant $\alpha_s$ as a function of the energy scale $Q$. Taken from \ccite{PDG2020}. }
+  \label{fig:pdfs}
+\end{figure}
+
+
+% The incoming partons interact according to the laws of QCD.
+\todo{Difference between strong coupling constant alphas and g', as described in theory chapter!: alphas = gs hoch 2 / (2pi) or something similar}
 An important property of QCD is the energy dependence of the strong coupling constant, $\alpha_s$, as shown in \cref{fig:alphas}.\footnote{The $\alpha_s$ constant is also sometimes referred to as ``running'' coupling constant as it is, in fact, not a constant.} 
-Especially the behaviour at low energies, where $\alpha_s$ diverges, has important consequences for physics calculations. It requires to separate the treatment of physics at low energies and high energies: At low energies, the physics can only be described by non-perturbative models. This regime is known as \emph{soft QCD} and comprises \emph{soft interactions} between partons.
+Especially the behaviour at low energies, where $\alpha_s$ diverges, has important consequences for defining physics observables. It requires to separate the treatment of physics at low energies and high energies: At low energies, the physics can only be described by non-perturbative models. This regime is known as \emph{soft QCD} and comprises \emph{soft interactions} between partons.
 At higher energies, perturbative calculations of the matrix elements can be applied. \footnote{The fact that $\alpha_s$ becomes smaller at high energies is also known as \emph{asymptotic freedom} and implies that strongly interacting particles behave like free particles at high energies. Conversely, at small energies, the particles have a strong coupling. This characteristic of QCD leads to \emph{confinement} of quarks inside hadrons.}
 
 With these considerations, the cross section of a hard scattering process between two protons, $p_1$ and $p_2$, can be written as
@@ -118,8 +150,11 @@ However, the more orders are included in the cross-section calculations, the les
 The remaining dependence at fixed order is typically included as a systematic uncertainty in physics measurements.
 %There are remaining dependencies at fixed order. Resulting systematic uncertainties are most often quantified by varying the scales over some reasonable range and are incorporated in the analysis.
 
-In practice, the value of $\mu_F$ and $\mu_R$ is often chosen to be identical, with a typical value near the scale of momentum transfer expected for hard scattering processes.
+In practice, the value of $\mu_F$ and $\mu_R$ is often chosen to be identical, with a typical value near the scale of momentum transfer for the hard scattering process under consideration.
 Various textbooks, for example Ref.~\cite{Peskin:1995ev}, provide discussions on the details of the renormalisation procedure.
+% From Arnold:
+% Thus, in order to deal with the UV and collinear divergences, two non-physical scales are introduced. The dependence of observables on the choice of these scales naturally decreases with increasing accuracy of the calculations; it eventually vanishes when all-orders of the perturbative series are considered. A common choice is μ2 F = μ2 R = Q2, where Q2 represents the hard scale of the process under consideration; e.g. Q2 = M2 for the production of a resonance with mass M, or Q2 = p2 T in the case of the pair-production of massless particles with transverse momentum pT.
+
 %\todo{say more about collinear and soft divergencies? -> Ja wegen infrared safe später beim jet algorithm}
 % There exist different approaches for choosing the scale $\mu_R$, at which the coupling $\alpha_s$ is evaluated, known as \emph{renormalization schemes}, but there is no prove of any of them being correct.
 
@@ -148,17 +183,18 @@ Given a centre-of-mass energy of 13\,\TeV and a luminosity of $10^{33}\mathrm{cm
 % Comment from BERND to "Detector simulation" section in experimental chapter:
 % I believe this statement "Simulations of the ATLAS detector are required in order to generate full Monte Carlo events” needs to be more precise. Why do we have to simulate collisions in the first place? Probably some discussion about quantum mechanics and its probabilistic nature which makes its way all the way to how we analyze data
 \subsection{Event Simulation}
-- $pp$ collisions are quantum mechanical and therefore intrinsically probabilistic
-
-- Simulated $pp$ collision events are therefore used to compare the data against what is expected given the current knowledge of particle physics.
+The $pp$ interactions follow the laws of QFT and are therefore probabilistic by nature.
+Simulated $pp$ collision events are therefore generated with the \emph{Monte Carlo} (MC) method to compare the data against what is expected from the SM.
+%given the current knowledge of particle physics.
+%  are therefore used 
 % They are an integral part at hadron colliders 
-- A full simluated event needs to cover all aspects of $pp$ collision events summarized in \cref{subsec:pp-collision-overview}: The matrix element, the non-perturbative regime in particular the modelling of hadronization and showering process, the detector response, as well as other nuisances at hadron colliders like the underlying event or multiple overlaid $pp$ collisions.
+A full simluated event needs to consider all aspects of $pp$ collisions summarized in \cref{subsec:pp-collision-overview}: The matrix element, the non-perturbative regime in particular the modelling of hadronization and showering process, and radiation. In addition, the detector response and geometry needs to be simulated, as well as other nuisances at hadron colliders such as the underlying event or multiple $pp$ collisions.
+The simulated $pp$ collision events have the advantage that information on the event such as the total momentum or the type of interacting particles can be directly assigned to the event. This provides an extra layer of information known as \emph{truth information} that is accessible in simulated events but not in data.
+The following provides more details on the different aspects the simulation needs to cover.
 
-- MC tools are typically utilized for many of these steps.
-- Parameters of MC are tuned to fit the data, especially for the non-perturbative regime
-
-- Simulated $pp$ collision events have the advantage that information on the event such as the total momentum or type of interacting particles can be directly assigned to the event. This provides an extra layer of information known as \emph{truth information} that is accessible in simulated events but not in data.
-- An overview is given in the following
+% - MC tools are typically utilized for many of these steps.
+% - Parameters of MC are tuned to fit the data, especially for the non-perturbative regime
+% - An overview is given in the following
 
 % Dandoy
 % A good MC simulation will cover all aspects of particle evolution detailed in Section 2.1, including matrix element calculation, hadronization and showering of final states, and simulation of detector geometry and response.
@@ -181,35 +217,35 @@ Another nuisance in $pp$ collision events is the overlap of more than one scatte
 Given the probabilities of different types of interactions, pile-up collisions predominantly consist of inelastic, low energy transfer $pp$ collision events. 
 Their impact is taken into account by generating them separately and overlaying them with the generated hard scatter.
 \paragraph{Detector simulation}
-\todo{Not clear where to provide details of detector simulation. Here or in the experimental chapter. It might be more meaningful in the hadron collider physics chapter. We could have a small reference to this here from the experiment chapter that might go into more detail about ATLAS. We can keep it general here.}
+%\todo{Not clear where to provide details of detector simulation. Here or in the experimental chapter. It might be more meaningful in the hadron collider physics chapter. We could have a small reference to this here from the experiment chapter that might go into more detail about ATLAS. We can keep it general here.}
+The exact detector geometry and the response to different particles must be simulated, which is typically done using the {\verb GEANT4 } toolkit \cite{Agostinelli:2002hh}. 
+% using the 
+The simulation must consider all detector inefficiencies, the material distribution in the detector, as well as physics properties such as the interaction lengths, the lifetime, and decay rates of incident particles.
 
-The detector geometry and the response to different particles is simulated using the {\verb GEANT4 } toolkit \cite{Agostinelli:2002hh}. 
-This involves the consideration of all detector inefficiencies. 
-\todo{Make this a bit nicer here by looking at some phd theses}
+% \todo{Make this a bit nicer here by looking at some phd theses}
 %These need to be accounted for with a dedicated software, which simulates the detector signal. 
 %Passing the MC simulated events through this software provides the necessary output to compare the simulation to real data. 
 %The ATLAS experiment uses detector simulations based on {\verb GEANT4 } \cite{Agostinelli:2002hh} with the possibility to have \emph{full simulations}, with very detailed detector descriptions, and also \emph{fast simulations}, with a decreased simulation accuracy to achieve lower processing times.
 
 
+% \subsection{Soft QCD: Minimum bias, pile-up, ...?}
+% % Mention in Event Generation subsection, see Master thesis!
 
-\subsection{Soft QCD: Minimum bias, pile-up, ...?}
-% Mention in Event Generation subsection, see Master thesis!
+% \todo{Not clear if a dedicated chapter is needed here. My preference is NO at the moment! Details can be provided int he dedicated JER chapter to not blow up the theory part.}
 
-\todo{Not clear if a dedicated chapter is needed here. My preference is NO at the moment! Details can be provided int he dedicated JER chapter to not blow up the theory part.}
+% % Comment from Bernd:
+% %Before you can talk about "hard-scatter vertex or from pile-up”, you may have to introduce them. E.g. have a section on Hadron collider physics that goes through these terms?
 
-% Comment from Bernd:
-%Before you can talk about "hard-scatter vertex or from pile-up”, you may have to introduce them. E.g. have a section on Hadron collider physics that goes through these terms?
+% \Rinote{}{Where else should I talk about pile-up!? what is pile-up? HERE! Pile-up reweighting? analysis section. Pile-up as nuisance for jet measurements? -> JER calibration chapter, pile-up in LHC section as something intrinsic to pp collision event?}
 
-\Rinote{}{Where else should I talk about pile-up!? what is pile-up? HERE! Pile-up reweighting? analysis section. Pile-up as nuisance for jet measurements? -> JER calibration chapter, pile-up in LHC section as something intrinsic to pp collision event?}
+% ->  Ruthmann has a nice section about it!
 
-->  Ruthmann has a nice section about it!
+% - I should explain concepts like luminosity blocks  / bunch spacing and stuff in Data Taking Section
+% - Then I can explain different pile-up conditions here.
+% - This will be valuable to understand the noise term measurement which exactly tries to measure the noise term!
+% - Also look back at discussion on skype with Brian about pile-up (actual mu vs average mu and so on)
 
-- I should explain concepts like luminosity blocks  / bunch spacing and stuff in Data Taking Section
-- Then I can explain different pile-up conditions here.
-- This will be valuable to understand the noise term measurement which exactly tries to measure the noise term!
-- Also look back at discussion on skype with Brian about pile-up (actual mu vs average mu and so on)
+% Checkout this section for pile-up overlay
 
-Checkout this section for pile-up overlay
-
-https://indico.cern.ch/event/1003305/contributions/4236702/attachments/2202625/3728039/PileUpTaskForcePandPPlenaryMarch2021.pdf
+% https://indico.cern.ch/event/1003305/contributions/4236702/attachments/2202625/3728039/PileUpTaskForcePandPPlenaryMarch2021.pdf
 
