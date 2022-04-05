@@ -44,6 +44,8 @@
 \newcommand{\TSTMET}{\ensuremath{\text{TST} E_{\text{T}}^{\text{miss}}}\xspace}
 \newcommand{\CSTETmiss}{\ensuremath{\text{CST} E_{\text{T}}^{\text{miss}}}\xspace}
 
+\newcommand{\Mt}{\ensuremath{m_{\text{T}}}\xspace}
+
 \newcommand{\Npileup}{\ensuremath{N^{\text{pile-up}}}\xspace}
 \newcommand{\NpileuppT}{\ensuremath{N^{\text{pile-up}\left(\pT\right)}}\xspace}
 \newcommand{\Npileupconstscale}{\ensuremath{N^{\text{pile-up}}_{\text{const scale}}}\xspace}
@@ -75,7 +77,7 @@
 \newcommand{\mll}{\ensuremath{m_{\ell\ell}}}
 \newcommand{\mLL}{\ensuremath{m_{\ell\ell}}}
 \newcommand{\Mll}{\ensuremath{m_{\ell\ell}}}
-\newcommand{\Ptll}{\ensuremath{p_\text{T}^{\ell\ell}}}
+\newcommand{\Ptll}{\ensuremath{\pmb{p}_\text{T}^{\ell\ell}}}
 
 \newcommand{\mcjer}{\ensuremath{\sigma_{\text{MCJER}}}\xspace}
 \newcommand{\responsejer}{\ensuremath{\sigma_{\text{Response JER}}}\xspace}
@@ -159,4 +161,190 @@
 
 \newcommand*{\electronicnoise}{\ensuremath{\sigma_{\text{noise}}^{\text{electronic}}}\xspace}
 \newcommand*{\pileupnoise}{\ensuremath{\sigma_{\text{noise}}^{\text{pileup}}}\xspace}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The following is copied from:
+% https://gitlab.cern.ch/atlas-physics-office/HIGG/ANA-HIGG-2018-47/ANA-HIGG-2018-47-PAPER/-/blob/master/ANA-HIGG-2018-47-PAPER-defs.sty
+\newcommand{\hwwlnln}{\ensuremath{H{\rightarrow\,}WW^{\ast}{\rightarrow\,}\ell\nu\ell\nu}\xspace}
+\newcommand{\hww}{\ensuremath{H{\rightarrow\,}WW^{\ast}}\xspace}
+\newcommand{\htautau}{\ensuremath{H{\rightarrow\,}\tau\tau}\xspace}
+\newcommand{\hwwenmn}{\ensuremath{H{\rightarrow\,}WW^{\ast}{\rightarrow\,}e\nu\mu\nu}\xspace}
+%\newcommand{\Zee}{\ensuremath{Z \rightarrow ee}\xspace}
+% \newcommand{\Zmm}{\ensuremath{Z \rightarrow \mu\mu}\xspace}
+\newcommand{\Zeemm}{\ensuremath{Z/\gamma^{*} \rightarrow ee/\mu\mu}\xspace}
+% \newcommand{\Zeemm}{\ensuremath{Z \rightarrow ee/\mu\mu}\xspace}
+% \newcommand{\Ztt}{\ensuremath{Z \rightarrow \tau\tau}\xspace}
+\newcommand{\Zeemmtt}{\ensuremath{Z/\gamma^{*} \rightarrow ee/\mu\mu/\tau\tau}\xspace}
+\newcommand{\DY}{\ensuremath{Z/\gamma^{\ast}}\xspace}
+
+\def\ttH{\ensuremath{t\bar{t}H}\xspace}
+\def\ttbar{\ensuremath{t\bar{t}}\xspace}
+\def\mtop{\ensuremath{m_{\mathrm{top}}}\xspace}
+
+\newcommand{\Nlep}{\ensuremath{N_{\textrm{lep}}}\xspace}
+\newcommand{\pTH}{\ensuremath{\pT^{H}}\xspace}
+\newcommand{\pTHjj}{\ensuremath{\pT^{Hjj}}\xspace}
+\newcommand{\yll}{\ensuremath{|y_{\ell\ell}|}\xspace}
+\newcommand{\yH}{\ensuremath{|y_{H}|}\xspace}
+\newcommand{\pTj}{\ensuremath{\pT(j_{1})}\xspace}
+
+\newcommand{\mjjm}[2]{${#1}\leq\mjj<{#2}$ GeV}
+\newcommand{\mjjge}[1]{$\mjj\geq{#1}$ GeV}
+\newcommand{\mjjle}[1]{$\mjj<{#1}$ GeV}
+\newcommand{\pthm}[2]{${#1}\leq \pTH<{#2}$ GeV}
+\newcommand{\pthge}[1]{$\pTH\geq{#1}$ GeV}
+\newcommand{\pthle}[1]{$\pTH<{#1}$ GeV}
+
+\newcommand{\pTsublead}{\ensuremath{p_{\mathrm{T}}^{\mathrm{sublead}}}\xspace}
+\newcommand{\pTlead}{\ensuremath{p_{\mathrm{T}}^{\mathrm{lead}}}\xspace}
+\newcommand{\pTll}{\ensuremath{\pT^{\ell\ell}}\xspace}
+\let\ptll\pTll
+\newcommand{\pTtot}{\ensuremath{\pT^{\mathrm{tot}}}\xspace}
+\newcommand{\pttot}{\pTtot}
+\newcommand{\mt}{\mT}
+\newcommand{\mTtwo}{\ensuremath{m_{\textrm T2}}\xspace}
+\newcommand{\mtw}{\mT^{W}}
+\newcommand{\mtlep}{\mT^{\ell}}
+\newcommand{\maxmtlep}{\mathrm{max}\left(\mT^{\ell}\right)}
+\newcommand{\dphillMET}{\ensuremath{\Delta\phi_{\ell\ell,\MET}}\xspace}
+\newcommand{\dyll}{\ensuremath{\Delta y_{\ell\ell}}\xspace}
+\newcommand{\mtautau}{\ensuremath{m_{\tau\tau}}\xspace}
+\newcommand{\mjj}{\ensuremath{m_{jj}}\xspace}
+\newcommand{\dyjj}{\ensuremath{\Delta y_{jj}}\xspace}
+\newcommand*{\trkmet}{\ensuremath{E_{\text{T}}^{\text{miss, track}}}\xspace}
+\newcommand*{\trkmetrel}{\ensuremath{E_{\text{T,rel}}^{\text{miss, track}}}\xspace}
+
+\newcommand{\METSig}{\ensuremath{E_{\text{T}}^{\text{miss}} \text{ significance}}\xspace}
+\newcommand*{\vpT}{\mbox{\boldmath\ensuremath{p_{\text{T}}}}\xspace}
+\newcommand*{\vpTl}{\mbox{\boldmath\ensuremath{p}}\ensuremath{_{\text{T}}^{\ell}}\xspace}
+\newcommand*{\vpTlone}{\mbox{\boldmath\ensuremath{p}}\ensuremath{_{\text{T}}^{\ell_{1}}}\xspace}
+\newcommand*{\vpTltwo}{\mbox{\boldmath\ensuremath{p}}\ensuremath{_{\text{T}}^{\ell_{2}}}\xspace}
+\newcommand*{\pTjone}{\mbox{\ensuremath{p}}\ensuremath{_{\text{T}}^{\text{j}_{1}}}\xspace}
+\newcommand*{\pTjtwo}{\mbox{\ensuremath{p}}\ensuremath{_{\text{T}}^{\text{j}_{2}}}\xspace}
+\newcommand*{\pTjthree}{\mbox{\ensuremath{p}}\ensuremath{_{\text{T}}^{\text{j}_{3}}}\xspace}
+\newcommand*{\vpTll}{\mbox{\boldmath\ensuremath{p}}\ensuremath{_{\text{T}}^{\ell\ell}}\xspace}
+\newcommand*{\vpTjets}{\mbox{\boldmath\ensuremath{p}}\ensuremath{_{\text{T}}^{\text{jets}}}\xspace}
+\newcommand*{\vmet}{\mbox{\boldmath\ensuremath{E_{\text{T}}^{\text{miss}}}}\xspace}
+\newcommand{\ZDY}{\ensuremath{Z/\mathrm{DY}}}
+\newcommand{\summlj}{\ensuremath{\sum_{\ell,j} m_{\ell j}}\xspace}
+\newcommand{\mlj}{\ensuremath{ m_{\ell j}}\xspace}
+\newcommand{\mlonejone}{\ensuremath{ m_{\ell_1 j_1}}\xspace}
+\newcommand{\mlonejtwo}{\ensuremath{ m_{\ell_1 j_2}}\xspace}
+\newcommand{\mltwojone}{\ensuremath{ m_{\ell_2 j_1}}\xspace}
+\newcommand{\mltwojtwo}{\ensuremath{ m_{\ell_2 j_2}}\xspace}
+% \newcommand{\lepetacent}{\ensuremath{\eta_\ell^{\mathrm{centrality}}}\xspace}
+\newcommand{\lepetacent}{\ensuremath{\sum_\ell C_\ell}\xspace}
+
+\newcommand{\Njets}{\ensuremath{N_\textrm{jet}}\xspace}
+%\newcommand{\Nbjetsub}{\ensuremath{N_{b\textrm{-jet}, (\pT>20~\gev)}}\xspace}
+\newcommand{\NjetThirty}{\ensuremath{N_{\textrm{jet},(\pT>30~\gev)}}}
+%\newcommand{\ZeroJet30}{\ensuremath{N_{\textrm{jet}(\pT>30~\gev)}}\xspace}
+%\newcommand{\OneJet30}{\ensuremath{N_{\textrm{jet}(\pT>30~\gev)}}\xspace}
+%\newcommand{\TwoJet30}{\ensuremath{N_{\textrm{jet}(\pT>30~\gev)}}\xspace}
+\newcommand{\ZeroOneJet}{\ensuremath{N_\textrm{jet}\,{=}\,0\;\mathrm{and}\;{=}\,1}\xspace}
+\newcommand{\ZeroOneJetSimple}{\ensuremath{N_\textrm{jet}\,{\le}\,1}\xspace}
+\newcommand{\OneTwoJetSimple}{\ensuremath{N_\textrm{jet}\,{\ge}\,1}\xspace}
+\newcommand{\OneTwoJet}{\OneJet\ and ${\ge}\,2$\xspace}
+\newcommand{\AllJet}{\ZeroJet, ${=}\,1$, and ${\ge}\,2$\xspace}
+% \newcommand{\em}{\ensuremath{e \mu}\xspace}
+\newcommand{\me}{\ensuremath{\mu e}\xspace}
+\newcommand{\emme}{\ensuremath{e\mu/\mu e}\xspace}
+\newcommand{\eemm}{\ensuremath{ee/\mu\mu}\xspace}
+
+\newcommand\no           {\!\!}
+\newcommand\np           {\no\no}
+\newcommand\nq           {\np\np}
+\newcommand\SR           {\textrm{\footnotesize\sc sr}}
+\newcommand\CR           {\textrm{\footnotesize\sc cr}}
+\newcommand\MC           {\textrm{\footnotesize\sc mc}}
+%\newcommand\pass         {{\rm pass}}
+%\newcommand\fail         {{\rm fail}}
+\newcommand\CRmc         {\textsc{mc}}
+\newcommand\CRnorm       {\textsc{NR}}
+\newcommand\CRdata       {\textsc{data}}
+\newcommand\NMC          {N_{\MC}}
+\newcommand\BSR          {B_{\SR}}
+\newcommand\BCR          {B_{\CR}}
+\newcommand\NSR          {N_{\SR}}
+\newcommand\NCR          {N_{\CR}}
+
+\def\dbline{\noalign{\vskip 0.10truecm\hrule\vskip 0.05truecm\hrule\vskip 0.10truecm}}
+\def\sgline{\noalign{\vskip 0.10truecm\hrule\vskip 0.10truecm}}
+
+\newcommand{\GGTOWW}{G\textsc{G2WW}\xspace}
+\newcommand{\MCATNLO}{MC@NLO}
+\newcommand{\aMCATNLO}{aMC@NLO}
+\newcommand{\Alpgen}{\textsc{Alpgen}}
+\newcommand{\MGFive}{\textsc{MG5\_aMC}}
+\newcommand{\PythiaSix}{PYTHIA~6\xspace}
+\newcommand{\PythiaEight}{PYTHIA~8\xspace}
+\newcommand{\NNLOPS}{\textsc{NNLOPS}}
+\newcommand{\Powheg}{\textsc{Powheg}}
+%\newcommand{\POWHEG}{\textsc{POWHEG}}
+\newcommand{\PowhegvTwo}{\textsc{POWHEG-BOX} v2\xspace}
+\newcommand{\PowhegvOne}{\textsc{POWHEG-BOX} v1\xspace}
+\def\powhegbox{\textsc{PowhegBox}\xspace}
+\newcommand{\Minlo}{\textsc{MiNLO}\xspace}
+\newcommand{\sherpa}{\textsc{SHERPA}\xspace}
+\def\openloops{\textsc{OpenLoops}\xspace}
+\newcommand{\HERWING}{\textsc{HERWIG}}
+\newcommand{\HERWINGplus}{\textsc{HERWIG}}
+% \newcommand{\HRES}{\textsc{HRes}\xspace} % now in atlasmisc.sty
+\newcommand{\GeantFour}{\textsc{Geant}4\xspace}
+\newcommand{\HDECAY}{H\textsc{decay}}
+\def\evtgen{\textsc{EvtGen}\xspace}
+%\newcommand{\EvtGen}{\textsc{EvtGen} v1.2.0\xspace}
+% \newcommand{\AZNLO}{\textsc{AZNLO}\xspace} % now in atlasmisc.sty
+\newcommand{\q}{\ensuremath{\tilde{q}_{\mathrm{ \mu}}}}
+\newcommand{\qz}{\ensuremath{q_{\mathrm{ 0}}}}
+\def\nnpdfnlo{\texttt{NNPDF3.0nlo}\xspace}
+\def\nnpdftwo{\texttt{NNPDF2.3lo}\xspace}
+\def\nnpdfnnlo{\texttt{NNPDF3.0nnlo}\xspace}
+\def\hdamp{\ensuremath{h_{\mathrm{damp}}}\xspace}
+
+\newcommand{\fb}{\ensuremath{\mathrm{fb^{-1}}}}
+\newcommand{\RunTwoLumi}{\ensuremath{\mathrm{139~fb^{-1}}}}
+
+
+\newcommand{\ww}{\ensuremath{WW}}
+\newcommand{\BR}{\ensuremath{B}\xspace}
+\newcommand{\Bww}{\ensuremath{\BR_{\ww}}}
+
+%%%% STXS bins
+\newcommand{\qqHLowMjj}{{EW \ensuremath{qqH}-2\textit{j}, low \mjj-low \pTH}\xspace}
+\newcommand{\qqHLowMjjMath}{{\quad \mjjm{350}{700},\,\pthle{200}}\xspace}
+\newcommand{\qqHMedMjj}{{EW \ensuremath{qqH}-2\textit{j}, med \mjj-low \pTH}\xspace}
+\newcommand{\qqHMedMjjMath}{{\quad \mjjm{700}{1000},\,\pthle{200}}\xspace}
+\newcommand{\qqHHighMjj}{{EW \ensuremath{qqH}-2\textit{j}, high \mjj-low \pTH}\xspace}
+\newcommand{\qqHHighMjjMath}{{\quad \mjjm{1000}{1500},\,\pthle{200}}\xspace}
+\newcommand{\qqHVHighMjj}{{EW \ensuremath{qqH}-2\textit{j}, very high \mjj-low \pTH}\xspace}
+\newcommand{\qqHVHighMjjMath}{{\quad \mjjge{1500},\,\pthle{200}}\xspace}
+\newcommand{\qqHHighPt}{{EW \ensuremath{qqH}-2\textit{j}, high \pTH}\xspace}
+\newcommand{\qqHHighPtMath}{{\quad \mjjge{350},\,\pthge{200}}\xspace}
+
+\newcommand{\ggHZeroJ}{{\ensuremath{ggH}-0\textit{j}, low \pTH}\xspace}
+\newcommand{\ggHZeroJMath}{\quad \pthle{200}\xspace}
+\newcommand{\ggHOneJVLowPt}{{\ensuremath{ggH}-1\textit{j}, very low \pTH}\xspace}
+\newcommand{\ggHOneJVLowPtMath}{\quad \pthle{60}\xspace}
+\newcommand{\ggHOneJLowPt}{{\ensuremath{ggH}-1\textit{j}, low \pTH}\xspace}
+\newcommand{\ggHOneJLowPtMath}{\quad \pthm{60}{120}\xspace}
+\newcommand{\ggHOneJMedPt}{{\ensuremath{ggH}-1\textit{j}, med \pTH}\xspace}
+\newcommand{\ggHOneJMedPtMath}{\quad \pthm{120}{200}\xspace}
+\newcommand{\ggHTwoJ}{{\ensuremath{ggH}-2\textit{j}, low \pTH}\xspace}
+\newcommand{\ggHTwoJMath}{\quad \pthle{200}\xspace}
+\newcommand{\ggHHighPt}{{\ensuremath{ggH}, high \pTH}\xspace}
+\newcommand{\ggHHighPtMath}{\quad \pthge{200}\xspace}
+
+\newcommand{\xSecggHZeroJ}{$\sigma_{{ggH}-0j,\,\pTH\,<\,200\,\mathrm{GeV}} \cdot \mathcal{B}_{\hww}$\xspace}
+\newcommand{\xSecggHOneJVLowPt}{$\sigma_{{ggH}-1j,\leq\,\pTH\,<\,60\,\mathrm{GeV}} \cdot \mathcal{B}_{\hww}$\xspace}
+\newcommand{\xSecggHOneJLowPt}{$\sigma_{{ggH}-1j,\,60\,\leq\,\pTH<\,120\,\mathrm{GeV}} \cdot \mathcal{B}_{\hww}$\xspace}
+\newcommand{\xSecggHOneJMedPt}{$\sigma_{{ggH}-1j,\,120\,\leq\,\pTH<\,200\,\mathrm{GeV}} \cdot \mathcal{B}_{\hww}$\xspace}
+\newcommand{\xSecggHTwoJ}{$\sigma_{{ggH}-2j,\,\pTH\,<\,200\,\mathrm{GeV}} \cdot \mathcal{B}_{\hww}$\xspace}
+\newcommand{\xSecggHHighPt}{$\sigma_{{ggH},\,\pTH\,\geq\,200\,\mathrm{GeV}} \cdot \mathcal{B}_{\hww}$\xspace}
+
+\newcommand{\xSecqqHLowMjj}{$\sigma_{\mathrm{EW}\,qqH-2j,\,350\,\leq\,\mjj\,<\,700\,\mathrm{GeV},\,\pTH\,<\,200\,\mathrm{GeV}} \cdot \mathcal{B}_{\hww}$\xspace}
+\newcommand{\xSecqqHMedMjj}{$\sigma_{\mathrm{EW}\,qqH-2j,\,700\,\leq\,\mjj\,<\,1000\,\mathrm{GeV},\,\pTH\,<\,200\,\mathrm{GeV}} \cdot \mathcal{B}_{\hww}$\xspace}
+\newcommand{\xSecqqHHighMjj}{$\sigma_{\mathrm{EW}\,qqH-2j,\,1000\,\leq\,\mjj\,<\,1500\,\mathrm{GeV},\,\pTH\,<\,200\,\mathrm{GeV}} \cdot \mathcal{B}_{\hww}$\xspace}
+\newcommand{\xSecqqHVHighMjj}{$\sigma_{\mathrm{EW}\,qqH-2j,\,\mjj\,\geq\,1500\,\mathrm{GeV},\,\pTH\,<\,200\,\mathrm{GeV}} \cdot \mathcal{B}_{\hww}$\xspace}
+\newcommand{\xSecqqHHighPt}{$\sigma_{\mathrm{EW}\,qqH-2j,\,\mjj\,\geq\,350\,\mathrm{GeV},\,\pTH\,\geq\,200\,\mathrm{GeV}} \cdot \mathcal{B}_{\hww}$\xspace}
 

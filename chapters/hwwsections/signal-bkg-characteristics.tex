@@ -1,55 +1,55 @@
 
-The Higgs couples to a pair of oppositely charged $W$ bosons via the process of EWSB that was discussed in \cref{sec:sm}. Due to the high mass of the \Wboson boson (80 GeV \todo{check mass and add REF}), only one of them is created on shell, the other one is produced off shell indicated by a star in $W^*$.
+The Higgs couples to a pair of oppositely charged $W$ bosons via the process of EWSB that was discussed in \cref{sec:sm}. Due to the high mass of the \Wboson boson ($m_W = 80.354 \pm 0.007\,\GeV$ \cite{PDG2020}), only one of them is created on shell, the respective other boson is produced off shell indicated by a star in ``\HWW''.
 
-The $W$ bosons are short-lived (lifetime of \todo{check reference}) so that only their decay products can be measured. The possible decay modes including their branching fractions are shown in \cref{fig:w-branching-ratios}. The analysis presented in this thesis targets \Wboson boson decays into \emph{light leptons} (simply referred to as leptons in the following), that is electrons and muons including their associated neutrinos.
-As discussed in more detail in \cref{sec:object-selection}, \HWW decays are targeted that exhibit one electron and one muon in the final state.
+The $W$ bosons are short-lived $\left( \tau \approx \mathcal{O}\left(10^{-25}\,\text{s}\right)\,\text{\cite{PDG2020}}  \right)$ so that only their decay products can be measured. The possible decay modes including their branching fractions are shown in \cref{fig:w-branching-ratios}. The analysis presented in this thesis targets \Wboson boson decays into \emph{light leptons} (simply referred to as leptons in the following), that is electrons and muons including their associated neutrinos.
+As discussed in more detail in \cref{sec:object-selection}, the presented analysis targets \HWW decays that exhibit one electron and one muon in the final state.
 % Belongs more to object selection!
 %- Only muon+electron or electron+muon events considered, otherwise background from Drell-Yan overwhelming
 
 %It can be assumed that the Higgs boson is produced at rest, so that the two \Wboson bosons are emitted in opposite directions in the transverse plane. 
 %For this reason, and because of the property of the electroweak interaction to couple only to left-handed neutrinos as well as angular momentum conservation, the \HWWdet process exhibits a distinct kinematic feature that can be exploited in the event selection.
 %It arises as a direct consequence of angular momentum conservation and the property of the electroweak interactions to only couple to left-handed neutrinos. 
-Because the \Wboson bosons couple only to left-handed neutrinos and the spin-0 nature of the Higgs boson, the \HWWdet process exhibits a distinct kinematic feature that can be exploited in the event selection.
+Because of both the \Wboson bosons coupling only to left-handed neutrinos and the spin-0 nature of the Higgs boson, the \HWWdet process exhibits a distinct kinematic feature that can be exploited in the event selection.
 The spin projections of the \Wboson bosons must sum to zero, because angular momentum must be conserved.
 Similarly, the leptons from the \Wboson decays must have spin projections that are aligned, which ultimately leads to
 an enhanced fraction of \HWWdet events in which the two leptons are emitted in the same direction at small angle \DPhill.
-\Cref{fig:spin-correlations} illustrates this by showing the different spin configurations possible, including the resulting final state kinematics.\footnote{This provides a slightly simplified picture disregarding interference effects between different \Wboson boson polarisation states. When they are considered, however, similar conclusions can be drawn~\cite{Maina_2021}.}
+\Cref{fig:spin-correlations} illustrates this by showing the different spin configurations possible, including the resulting final state kinematics.\footnote{This provides a slightly simplified picture that disregards interference effects between different \Wboson boson polarisation states. When they are considered, however, similar conclusions can be drawn~\cite{Maina_2021}.}
 As a consequence, several observables that are correlated to the angular separation between the leptons can be exploited to discriminate between \HWW decays and other background events. For example, the mass of the dilepton system,
 \begin{equation}
-    \Mll = \sqrt{\left| \vec{p}_{\text{T}}^{\ell\ell} \right|^2+ \left( E_{\ell\ell} \right)^2},
+    \Mll = \sqrt{\left| \Ptll \right|^2+ \left( E_{\ell\ell} \right)^2},
 \end{equation}
 is more likely to take smaller values, and the magnitude of the vectorial sum of the \pT of both leptons,
 \begin{equation}
-    \Ptll = |\vec{p}_\text{T}^{\ell_1} + \vec{p}_\text{T}^{\ell_2}|,
+    \Ptll = |\pmb{p}_\text{T}^{\ell_1} + \pmb{p}_\text{T}^{\ell_2}|,
 \end{equation}
-is expected to be larger due to the angular correlations. 
+is expected to be shifted towards larger values due to the angular correlations. 
 
-The presence of the neutrinos in the final state have two important consequences.
-First, they result in a significant missing transverse energy, also enhanced by the angular correlations described above. 
-Second, no information about the longitudinal momentum of the Higgs so that only the transverse mass can be measured in the final state
-% From master thesis
-% The mass of the Higgs boson can therefore only be reconstructed in the transverse plane
+The presence of the neutrinos in the final state have two important consequences:
+First, they lead to events with significant missing transverse energy. This is also amplified by the angular correlations described above, as the neutrinos are more likely to be emitted in the same direction. 
+Second, not enough information is available about the longitudinal momentum of the Higgs boson in order to reconstruct its full mass. The mass of the Higgs boson can therefore only be reconstructed in the transverse plane, which is calculated as
+\begin{equation}
+  \Mt = \sqrt{ \left( E_{\ell\ell}+\MET \right)^2 - \left| \Ptll + \pmb{E}_{\text{T}}^{\text{miss}} \right|^2 },
+\end{equation}
+where $E_{\ell\ell} = \sqrt{ |\Ptll|^2 + \Mll^2}$ is the energy of the lepton system.
 
+The signature of the final state also depends on how the Higgs boson is produced.
+In the VBF production mode, two energetic jets with large invariant mass are present in the final state. This is a prominent feature that clearly distinguishes VBF produced \HWW events from events produced via the ggF production mode, where no additional jet is expected at leading order. Additional jets may still arise (for both production modes) due to ISR and FSR. The mentioned characteristics are depicted in \cref{fig:ggF-VBF-Hww-feyn} and are what drive the event categorisation discussed in \cref{sec:event-categorisation}. 
 
-- Final state objects also dependent on production mode
-- Production of Higgs:
-- ggF highest xsec, no additional jets in leading order
-- VBF, prominent mode due to two energetic jets that can be selected
+In this analysis, the contributions from other Higgs production modes such as VH or ttH are marginal because of both their small cross sections as well as the fact that they have additional particles in the final state based on which the events can be efficiently rejected.
 
-
-- Other Higgs production considered as background, effect marginal
-VH Higgs
-ttH+tH
+Events where the Higgs boson decays into a pair of $\tau$ leptons can have a similar final state signature as the \HWWdet\ decays when the $\tau$ leptons decay leptonically. 
+Because both the branching fractions of $\tau$ leptons decaying into muons or electrons are small ($\approx$ 17-18 \% \cite{PDG2020}) and the process exhibits slightly different kinematics, contributions from $H \to \tau\tau$ processes are small in this analysis. 
+\todo{Might need to back up that statement}
 
 
 \todo{update w decay ratios}
 \begin{figure}
     \newImageResizeCustom{0.5}{figures/hww/introduction/wdecays/wdecays.pdf}
-    \caption{Different decay modes of the $W$ boson with indication of their branching ratios. Values are taken from Ref.~\cite{PDG2020}.}{Different decay modes of the $W$ boson with indication of their branching ratios.}
+    \caption[Different decay modes of the $W$ boson with indication of their branching ratios.]{Different decay modes of the $W$ boson with indication of their branching ratios. Values are taken from Ref.~\cite{PDG2020}.}
     \label{fig:w-branching-ratios}
 \end{figure}
 
-
+\todo{update illustration}
 \begin{figure}
     \newImageResizeCustom{0.7}{figures/hww/introduction/HWW_angular_correlation.png}
     \caption[Angular correlations in the \HWWdet\ decay.]{Illustration of the angular correlations in the \HWWdet\ decay. The narrow arrows indicate the flight direction of the particles, the double arrows visualize their spin. The spin projections of the $W$ bosons sum to zero and they decay into leptons with aligned spin projections. This results in an enhanced fraction of events with leptons that have a small opening angle as well as two neutrinos being emitted in opposite directions. Taken from Ref.~\cite{PhysRevD.92.012006}.}
