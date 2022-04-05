@@ -1,0 +1,18 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Copied from previous \section{Neural Network Training}
+The work presented in this thesis uses supervised learning techniques to train a binary classifier that distinguishes between signal-like and background-like events. 
+For such a purpose, only a single output node is required, that uses a logistic sigmoid as activation function such that $y = \sigma(x)$, where $\sigma(x)$ is defined as in \cref{eq:logistic-sigmoid}.
+The network is trained with MC simulated $pp$ collision events that have ground-truth labels called \emph{target values} in the following. The target value, $t_n$, for a given event $n$ has a value of $t_n = 1$, if the event is a simulated signal event, and $t_n = 0$ otherwise.
+
+\subsection{Training variables}
+\subsection{Training hyperparameter optimization}
+%\subsection{Prospect Studies for Common VBF and ggF HWW 2-jet Analysis with Multiclass Classification}
+
+- set of input variables
+- weights corresponding to different processes in training data set
+- network architecture
+- learning rate (batch size)
+- optimizer
+- regularization technique
+- choice of k-fold method
+\subsection{Model validation}

@@ -23,7 +23,7 @@ Applications of ML in ATLAS and throughout the HEP community include but are not
 % check here for references: https://arxiv.org/pdf/2103.12226.pdf
 
 \TDinote{}{Find references for mentioned ML applications!}
-
+\todo{Mention Higgs analysis and that we use ML for binary classification using supervised learning!!}
 % - Add examples in one/two sentences here?
 % - mention classification task: 
 % FROM PHD: "and an event-level classifier using the 4-momenta of a particle collision to determine which process gave rise to the collision."
@@ -77,37 +77,24 @@ Regularization methods are typically tuned during the training procedure in whic
 \label{sec:intro-neural-nets}
 Neural networks can be visualized as interconnected layers of artificial neurons\footnote{ NNs are therefore also called artificial neural networks (ANNs), which is more descriptive but usually used synonymously with the simple form ``neural networks''.}. \Cref{fig:neural-net} illustrates a fully-connected neural network, where each layer receives inputs only from the previous layer. These types of NNs are known as \emph{feedforward} NNs.
 The first layer is called the \emph{input layer} and takes the input vector $\pmb{x}$, the last layer is the \emph{output layer}, with output $\pmb{y}$, and the layers in between are known as \emph{hidden layers}. 
-Each layer performs a transformation of the data from the respective previous layer based on an \emph{activation function}, labelled as $h^{(l)}(\cdot)$ for the $l^\text{th}$ layer. Hence, the activation function of the input layer can be considered as the identity function, $h^{(0)}(\pmb{x}) \equiv \pmb{x}$. 
-The result of the transformation is denoted as $\pmb{z}^{(l)} = h^{(l)}(\cdot)$, which means the output of the neural network corresponds to $ \pmb{z}^{(L)} \equiv \pmb{y}$.
-
-The artificial neurons are connected via \emph{links} that have weights associated, which are described with the weight matrix $W^{(l)} = \left(w^{(l)}_{jk} \right)$\footnote{In this notation, the weight labelled as $w^{(l)}_{jk}$ connects the $k^\text{th}$ neuron in the $(l-1)^\text{th}$ layer to the $j^\text{th}$ neuron in $(l)^\text{th}$ layer.}, that holds the weights connecting the $(l-1)^{\text{th}}$ layer with the $l^{\text{th}}$ layer.
-In addition, each neuron except the ones in the input layer has a so-called \emph{bias} weight, described with the bias vector $\pmb{w}^{(l)}_0$ for the $l^\text{th}$ layer.
-The transformation that the $l^{\text{th}}$ layer performs can then be expressed by the following recursive relation:
-% In addition, each neuron except the ones in the input layer has a so-called \emph{bias} weight, labelled as $w^{(l)}_{j0}$ for the $j^\text{th}$ neuron in the $l^\text{th}$ layer.
-% %A neuron is ``activated'' by the data coming from the respective previous layer. 
-% The activation of the $j^\text{th}$ neuron in the $l^{\text{th}}$ layer can then be described by a recursive relation,
-% \begin{equation}
-%     h^{(l)}_j =  h^{(l)} \left( \sum_{k}   w^{(l)}_{jk} h^{(l-1)}_{k}  + w^{(l)}_{j0} \right),
-% \end{equation}
-% where the sum is over all neurons $k$ in the $(l-1)^\text{th}$ layer.
-% While the number of neurons in the input and output layer are typically chosen based on the problem at hand, the specifics for the hidden layers are usually optimized empirically.  
-% This equation can be written in matrix form to describe the transformation of the entire layer,
+Each layer performs a transformation of the data from the respective previous layer based on an \emph{activation function}, labelled as $h^{(l)}(\cdot)$ for the $l^\text{th}$ layer, and weights that connect the artificial neurons to each other. The weights connecting the $(l-1)^{\text{th}}$ layer with the $l^{\text{th}}$ layer can be written as a matrix, $W^{(l)} = \left(w^{(l)}_{jk} \right)$\footnote{In this notation, the weight labelled as $w^{(l)}_{jk}$ connects the $k^\text{th}$ neuron in the $(l-1)^\text{th}$ layer to the $j^\text{th}$ neuron in $(l)^\text{th}$ layer.}. In addition, each neuron except the ones in the input layer has a so-called \emph{bias} weight, described by the bias vector $\pmb{w}^{(l)}_0$ for the $l^\text{th}$ layer.
+% . Hence, the activation function of the input layer can be considered as the identity function, $h^{(0)}(\pmb{x}) \equiv \pmb{x}$. 
+% The result of the transformation is denoted as $\pmb{z}^{(l)} = h^{(l)}(\cdot)$, which means the output of the neural network corresponds to $ \pmb{z}^{(L)} \equiv \pmb{y}$.
+% The artificial neurons are connected via \emph{links} that have weights associated, which are described with the weight matrix $W^{(l)} = \left(w^{(l)}_{jk} \right)$\footnote{In this notation, the weight labelled as $w^{(l)}_{jk}$ connects the $k^\text{th}$ neuron in the $(l-1)^\text{th}$ layer to the $j^\text{th}$ neuron in $(l)^\text{th}$ layer.}, that holds the weights connecting the $(l-1)^{\text{th}}$ layer with the $l^{\text{th}}$ layer.
+% In addition, each neuron except the ones in the input layer has a so-called \emph{bias} weight, described with the bias vector $\pmb{w}^{(l)}_0$ for the $l^\text{th}$ layer.
+The transformation that the $l^{\text{th}}$ layer performs can then be expressed recursively as,
 \begin{equation}
     \label{eq:recursive-neuron-activation}
-    \pmb{z}^{(l)} =  h^{(l)} \left( W^{(l)} \pmb{z}^{(l-1)}  + \pmb{w}^{(l)}_{0} \right).
+    \pmb{z}^{(l)} =  h^{(l)} \left( W^{(l)} \pmb{z}^{(l-1)}  + \pmb{w}^{(l)}_{0} \right),
 \end{equation}
-%where $\pmb{w}^{(l)}_0$ is the vector holding the bias weights. 
-%\Cref{eq:recursive-neuron-activation} is thus a lin
-% Taking a simple network with $N$ inputs, one hidden layer with $H$ artificial neurons, and a single output neuron, the full neural network function can be written as,
-% \begin{equation}
-%     y(\pmb{x}, \pmb{W}) = \sigma \left( \sum_{h=1}^H w^{(2)}_{kh}h^{(1)}\left(  \sum_{n=1}^{N} w^{(1)}_{hn}x_n + w^{(1)}_{h0}    \right) + w^{(2)}_{0} \right),
-% \end{equation}
-The full function, that a simple network with one hidden layer and a single output neuron encodes, can therefore be written as,
+which implies that the activation function of the input layer can be considered as the identity function, $h^{(0)}(\pmb{x}) \equiv \pmb{x}$, and the output of the neural network corresponds to $ \pmb{z}^{(L)} \equiv \pmb{y}$.
+
+The full function that a simple network with only one hidden layer and a single output neuron encodes, can therefore be written as,
 \begin{equation}
     y(\pmb{x}, \pmb{w}) = h^{(2)} \left( W^{(2)} h^{(1)} \left(  W^{(1)} \pmb{x} + \pmb{w}^{(1)}_{0}    \right) + w^{(2)}_{0} \right),
 \end{equation}
-where the label $\pmb{w}$ was introduced to denote collectively the weights linking the neurons and bias weights.
-This function simply corresponds to a nonlinear function, controlled by a set of adjustable parameters. Here, the weight matrix $W^{(2)}$ is a vector and the activation function $h^{(2)}(\cdot)$ is the activation of the output neuron.
+where the label $\pmb{w}$ in $y(\pmb{x}, \pmb{w})$ is introduced to denote collectively the weights linking the neurons and bias weights.
+This function simply corresponds to a nonlinear function, controlled by a set of adjustable parameters. Here, the weight matrix $W^{(2)}$ is a simple vector and the activation function $h^{(2)}(\cdot)$ is the activation of the output neuron.
 \todo{First add fully general formula and then use the example with 1 hidden layer.}
 % In order to understand this transformation, a single artificial neuron is depicted in \cref{fig:single-neuron}. 
 There are different forms of activation functions that can be used.
@@ -152,21 +139,40 @@ All activation functions must be continuously differentiable, in order for the t
 \section{Neural Network Training}
 \label{sec:nn-training}
 % Read also here: http://neuralnetworksanddeeplearning.com/chap1.html#learning_with_gradient_descent
-
+\begin{figure}[t]
+    \subfloat[Illustration of a simple neural network.] {
+        \newImageResizeCustom{0.7}{figures/data-analysis/simple-nn.png}
+    }
+    \begin{align*}
+        %\stackrel{\text{(1)}}{=}
+        \frac{\partial L}{\partial w_2} &=  \frac{\partial L}{\partial y} \frac{\partial y}{\partial w_2} \\
+        \frac{\partial L}{\partial w_1} &=  \frac{\partial L}{\partial y} \frac{\partial y}{\partial w_1} = \frac{\partial L}{\partial y} \frac{\partial y}{\partial z_1} \frac{\partial z_1}{\partial w_1}
+    \end{align*}
+    \subfloat[Example gradient calculations]{
+        \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad
+        }
+    \caption{Example of a simple neural network used to illustrate the backpropagation algorithm.}
+    \label{fig:simple-nn}
+\end{figure}
+\todo{Add colors around gradients according to figure}
 % The work presented in this thesis uses supervised learning techniques to train a binary classifier that distinguishes between signal-like and background-like events. 
 % Therefore, only a single output node is required, that uses a logistic sigmoid as activation function such that $y = \sigma(x)$, where $\sigma(x)$ is defined as in \cref{eq:logistic-sigmoid}.
 % The network is trained with MC simulated $pp$ collision events that have ground-truth labels called \emph{target values} in the following. The target value, $t_n$, for a given event $n$ has a value of $t_n = 1$, if the event is a simulated signal event, and $t_n = 0$ otherwise.
 % \Minote{}{The above can potentially go into the HWW chapter, as it is specific! Would need to define target values}
-
 The training process is an iterative numerical procedure, during which the free parameters of the network, $\pmb{w}$, are updated so that the loss function, $L(\pmb{w})$, is minimized. To determine the weight updates, gradient-based optimization algorithms are commonly used, that update a given weight based on the gradient of the loss function with respect to that weight, 
 \begin{equation}
     \label{eq:gradient-descent}
     \pmb{w}^{(\tau+1)} = \pmb{w}^\tau - \eta \grad_{\pmb{w}^{(\tau)}} L(\pmb{w}^{(\tau)}),
 \end{equation}
-where $\pmb{w}^{(\tau)}$ denote the weights at iteration $\tau$.
+where $\pmb{w}^{(\tau)}$ denotes the weights at iteration $\tau$.
 The size of the update is controlled by the parameter $\eta$, which is known as the \emph{learning rate}, and the initial weights, $\pmb{w}^{(0)}$, are chosen randomly. A common approach is to evaluate the loss for a set of training samples, known as \emph{batches}.\footnote{The gradient descent algorithm that uses batches of data is sometimes referred to as \emph{mini-batch gradient descent}. Other algorithms are frequently used, such as the \emph{stochastic gradient descent} algorithm, that updates the weights after each training sample, or the \emph{gradient descent} algorithm, which evaluates the gradients based on the loss evaluated for the entire training data.} 
+
 The gradients of the resulting loss with respect to each weight are computed with a method known as \emph{backpropagation}~\cite{Rumelhart_1986}. Backpropagation computes the gradients one layer at a time by applying the chain rule of differentiation, starting from the output layer and iterating backwards.
-This is made possible by choosing activation functions and loss functions that are continuously differentiable, so that the NN output is also fully differentiable with respect to each weight.
+The algorithm is best explained using the example of a simple NN with three layers and only one node each. Such a network is visualized in \cref{fig:simple-nn}, including example calculation of the gradients of the loss with respect to the first and second weight.
+As can be seen, the chain rule is applied once (twice) for calculating the gradient $\frac{\partial L}{\partial w_2}$ $\left( \frac{\partial L}{\partial w_1}\right)$. 
+The crucial benefit of backpropagation is that one can re-use gradients that were computed before. 
+This simple case can be easily extended to more complex scenarios with more layers and nodes, where the procedure is performed for every weight re-using gradients from later layers.
+It should be noted, that the backpropagation algorithm relies on the activation functions and loss functions being continuously differentiable, so that the NN output is also fully differentiable with respect to each weight.
 
 % A common approach is to update the weights after a set of training samples, known as \emph{batches}, were passed through the network\footnote{The gradient descent algorithm that uses batches of data is sometimes referred to as \emph{mini-batch gradient descent}. Other algorithms are frequently used, such as the \emph{stochastic gradient descent} algorithm, that updates the weights after each training sample, and \emph{gradient descent} algorithm, which evaluates the gradients of the loss of the entire training data.}. 
 % , by first passing the data through the network and computing the loss, and then 
@@ -175,6 +181,7 @@ This is made possible by choosing activation functions and loss functions that a
 %The computation of the gradients is done with a method called \emph{back propagation}~\ccite{Rumelhart_1986}.
 % is therefore used, that derives the gradient of the loss function with respect to each weight, by applying chain-rule differentiation.
 
+\todo{Maybe rephrase target values?}
 The loss function quantifies the difference between the true values of the labelled sample data -- known as \emph{target values}, $t_n$ -- and the values predicted by the current NN model. A typical choice is the sum-of-squares loss function,
 \begin{equation}
     \label{eq:mean-squared-loss}
@@ -215,7 +222,13 @@ Typically, the learning rate is chosen by testing different values and observing
 % A learning rate that is too small leads to painfully slow convergence, while a learning rate that is too large can hinder convergence and cause the loss function to fluctuate around the minimum or even to diverge.
 
 \paragraph{Optimizers}\mbox{}\\
-There are many variations of the gradient descent algorithm presented in \cref{sec:nn-training}, that can improve the convergence of the training. An overview is for example given in \ccite{ruder2017overview}. The \emph{AdaGrad}~\ccite{adagrad-duchi} algorithm is one such example that is used in the work presented in this thesis. It adapts the learning rate based on the size of the gradients at each parameter, which, in layman's words, leads to rare features in the training data being given more importance than frequently occurring features. This helps to make the training converge faster and more reliably.
+There are many variations of the gradient descent algorithm that can improve the convergence of the training. An overview of different methods is for example given in \ccite{ruder2017overview}. The \emph{AdaGrad}~\cite{adagrad-duchi} algorithm is one such example that is used in the work presented in this thesis. It adapts the learning rate individually for each parameter by introducing a matrix, $\pmb{G}_{\tau} = \sum_{t=0}^{\tau} \left( \grad_{\pmb{w}^{(t)}} L(\pmb{w}^{(t)}) \right)^2$, that holds the sum of squares of the past gradients for each parameter. 
+The weight updates are then given as,
+\begin{equation}
+    \pmb{w}^{(\tau+1)} = \pmb{w}^\tau - \frac{\eta}{\sqrt{\pmb{G}_\tau + \epsilon}}  \grad_{\pmb{w}^{(\tau)}} L(\pmb{w}^{(\tau)}), 
+\end{equation}
+where $\epsilon$ is a small, non-zero floating point used to avoid numerical instability.
+Introducing this parameter-specific learning rate largely reduces the dependence on the choice of the initial learning rate, as rare features in the training data are automatically being given more importance than frequently occurring ones, which helps to make the training converge faster and more reliably.
 
 \paragraph{Regularization}\mbox{}\\
 To avoid overfitting and ensure generalization, several regularization methods exist. 
@@ -241,7 +254,7 @@ While cross validation comes with a significant increase in computing time, it a
 % - Two purposes in HEP: maximize training statistics, ability to use full MC set, that is have an unbiased estimator for each MC event.
 % - cross validation to avoid any bias from using the prediction of an event that was also learned using the same event.
 % - k-fold cross validation to prevent any bias but still exploit significant portion of available data set for training \cref{fig:k-fold-method}.
-Another majore advantage of cross validation is specific to HEP physics analyses. 
+Another major advantage of cross validation is specific to HEP physics analyses. 
 Here, the dataset that is used for the training is usually required for further statistical interpretations. In cases like that, it is best practice to use the test set for further analysis as it removes any potential bias that may occur when data samples are evaluated with a model that was trained with same data sample.
 When cross validation is used each data sample falls in one of the test sets, such that the entire dataset can be used for further analysis.
 % best practice to avoid using the model output of a data sample if the model was trained with the same data sample. The

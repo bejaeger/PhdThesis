@@ -2,7 +2,7 @@
 
 % From Master's thesis:
 The SM of particle physics is a collection of relativistic quantum field theories (QFT) that describe the interactions between all known fundamental particles.
-Mathematically, it can be described as a SU(3)$_C$ $\times$ SU(2)$_L$ $\times$ U(1)$_Y$ local gauge theory, the details of which are explained in this section.
+Mathematically, it is as a SU(3)$_C$ $\times$ SU(2)$_L$ $\times$ U(1)$_Y$ local gauge theory, the details of which are explained in this section.
 % The mathematical formulation SU(3)$_C$ $\times$ SU(2)$_L$ $\times$ U(1)$_Y$ local gauge symmetry that gives rise to the interactions between all known fundamental particles.
 
 %It evolved during the 60’s and 70’s due to a strong interplay between experimental observations and theoretical developments. 
@@ -38,24 +38,23 @@ The particle content of the SM is first described in \cref{subsec:particle-conte
 
 
 %In QFT all fundamental fields have an associated particle, that can be thought of as excitations (or vibrations) of the fields.
-QFT describes nature in terms of fundamental fields. Each field is associated to an elementary particle that can be thought of as an excitation (or vibration) of the underlying field.\footnote{To simplify terminology, the objects are mostly referred to as particles rather than fields in this chapter, but the relationship is important to be kept in mind.} This association allows describing fundamental physics in terms of elementary particles. 
+In QFT, nature is described in terms of fundamental fields and interactions between them. Each field is associated to an elementary particle that can be thought of as an excitation (or vibration) of the underlying field. This association allows describing fundamental physics in terms of elementary particles. 
+%\footnote{To simplify terminology, the objects are mostly referred to as particles rather than fields in this chapter, but the relationship is important to be kept in mind.} 
 
 % On a \TDnote{phenomenological}{other word?} level, fundamental physics can be described in terms of elementary particles and forces.
 % All currently known particles and forces included in the SM are listed in \TDnote{REF}{REF}.
-The elementary particles included in the SM are listed in \cref{fig:particles-infographic}. They can be grouped into two main types: \emph{fermions} with half-integer spin, that are sometimes referred to as \emph{matter particles}, and \emph{bosons} with integer spin, that are the \emph{mediators} (or \emph{force carriers}) of the fundamental forces.
+The particle content of the SM is summarized in \cref{fig:particles-infographic}. The elementary particles can be grouped into two main types: \emph{fermions} with half-integer spin, sometimes called \emph{matter particles}, and \emph{bosons} with integer spin, which are the \emph{mediators} (or \emph{force carriers}) of the fundamental forces.
 
-The SM includes three of the four known fundamental interactions: The \emph{electromagnetic interaction} -- described by the theory of \emph{quantum electrodynamics} (QED) --, the \emph{strong interaction} -- using \emph{quantum chromodynamics} (QCD) [15] -- and the \emph{weak interaction}. The electromagnetic and the weak interaction are unified in the \emph{electroweak model} [16–18]. The fourth known fundamental interaction, \emph{gravitation}, is not part of the SM but can be fully neglected in present particle physics experiments due to its weak strength.
+The fermions can be grouped into three generations, each containing two leptons and two quarks. The different types of leptons and quarks are referred to as \emph{flavours}.
+Each fermion has a corresponding antiparticle that has the same mass and spin but opposite internal quantum numbers and \emph{chirality}.
+Quarks have an additional property called \emph{colour}, which can take three possible values typically labelled as red, green, and blue\footnote{In fact, also linear combinations of the three colours are realized in nature, as discussed later in this chapter.}.
 
-The fermions can be grouped into three generations each with two leptons and two quarks. The different types of leptons and quarks are referred to as lepton- and quark \emph{flavours}.
-Their interactions with each other can be described by exchanges of so-called \emph{gauge bosons}.
-Every fermion has a corresponding antiparticle that has the same mass and spin but opposite internal quantum numbers and opposite \emph{chirality}.
-Quarks have an additional property called \emph{colour}, which can take three possible values or any linear combinations of these values.
+The interactions between the fermions can be described by exchanges of so-called \emph{gauge bosons}.
+The SM includes three of the four known fundamental interactions: The \emph{electromagnetic interaction}, the \emph{strong interaction}, and the \emph{weak interaction}. The electromagnetic and the weak interactions are unified in the \emph{electroweak theory}. The fourth known fundamental interaction, \emph{gravitation}, is not part of the SM but can be fully neglected in present particle physics experiments due to its weak strength.
 
-The boson that mediates the electromagnetic interaction is the massless \emph{photon} that interacts with all charged fermions.
-The strong interaction is transmitted via eight massless gluons and acts only on quarks and gluons themselves.
-Due to the property of \emph{confinement} in QCD, quarks cannot be found in isolation. They are confined within hadrons that consist, for example, of a quark and an anti-quark (known as \emph{mesons}) or three quarks (known as \emph{baryons}).
-
-The massive gauge bosons, \Wplus, \Wminus, and \Zboson, are the mediators of the weak interaction which acts on all fermions. Similar to gluons the \Wmp and \Zboson undergo self-interactions.
+The boson that mediates the electromagnetic interaction is the massless \emph{photon} that interacts with all charged fermions. Electromagnetic interactions are described by the theory of \emph{quantum electrodynamics} (QED). The strong interaction, described in \emph{quantum chromodynamics} (QCD), is transmitted via eight massless gluons. QCD acts on matter particles that carry colour, that is quarks and gluons themselves. 
+Due to the property of \emph{confinement} in QCD, quarks cannot be found in isolation. They are confined within hadrons, that consist for example of a quark and an anti-quark (known as \emph{mesons}) or three quarks (known as \emph{baryons}).
+The weak interaction is mediated by three massive gauge bosons, \Wplus, \Wminus, and \Zboson, and acts on all fermions. Similar to gluons the \Wpm and \Zboson bosons are able to interact with themselves.
 
 The final particle of the SM is the electrically neutral \emph{Higgs boson}. It is the only spin-0 scalar particle and plays a special role in the SM in the mechanism of \emph{electroweak symmetry breaking}, which gives rise to the masses of the \Wpm and \Zboson bosons. More details in particular about physics involving the Higgs boson are provided in \cref{sec:higgs-phen}.
 
@@ -73,9 +72,9 @@ The equations of motion of a given physical system can be derived from the actio
   \label{eq:action}
   S = \int \Lagrangian d^3x dt,
 \end{equation}
-by following the action principle.\footnote{The derivation of the equations of motion can be found in any standard textbook about QFT such as \ccite{Peskin:1995ev}.}.
-In QFT, the dynamics of a system are therefore expressed in terms of the Lagrange densities (often just denoted \emph{Lagrangian}), \Lagrangian. 
-The Lagrangian is a function of the fields, $\psi$, and their derivatives, $\partial \psi$, that is $\Lagrangian \rightarrow \Lagrangian\left(\psi, \partial\psi)\right)$. The fields are themselves dependent on the space-time coordinate, $\psi \rightarrow \psi(x)$\footnote{For cleaner notation, the dependence on $x$ is usually not explicitely mentioned in the following equations}. 
+by following the action principle.\footnote{The derivation of the equations of motion can be found in any standard textbook about QFT, for example in \ccite{Peskin:1995ev}.}.
+In QFT, the dynamics of a system are therefore expressed in terms of the Lagrange densities, \Lagrangian. 
+The Lagrange densities, often simply denoted \emph{Lagrangian}, is a function of the fields, $\psi$, and their derivatives, $\partial \psi$, that is $\Lagrangian \rightarrow \Lagrangian\left(\psi, \partial\psi)\right)$. The fields are themselves dependent on the space-time coordinate, $\psi \rightarrow \psi(x)$\footnote{For cleaner notation, the dependence on $x$ is usually not explicitely mentioned in this thesis.}. 
 
 For a given field, $\psi$, the principles of QFT demand to include all possible interaction terms in the Lagrangian that are related to the field\footnote{This follows what is sometimes referred to as the totalitarian principle of quantum mechanics, that satirically states: ``Everything not forbidden is compulsory''.}.
 The number and type of terms that can be included, however, is strongly constraint by requiring the theory to be invariant under certain symmetry transformations of the fields. 
@@ -85,20 +84,21 @@ The structure of the Lagrangian is therefore determined by requiring invariance 
 \begin{equation}
   \psi \rightarrow e^{-iT} \psi,
 \end{equation}
-where $T$ is the generator of a certain symmetry group and also dependent on the space-time coordinate, $T \rightarrow T(x)$. 
-One of the features of gauge theories is that new fields can be added to the Lagrangian that transform in a way that preserve the gauge symmetry. 
+where $T$ is the generator of a certain symmetry group and generally dependent on the space-time coordinate, $T \rightarrow T(x)$. 
+Gauge theories require the introduction of so-called gauge fields, that transform in a way so that the theory stays locally gauge invariant.
 % Pich
 % This is only possible if one adds an extra piece to the Lagrangian, transforming in such a way as to cancel the ∂μθ term in Eq. (6).
 % In order to maintain the symmetry, the Lagrangian may need to be manipulated by introducing new fields.
-These fields are known as gauge fields (or gauge bosons) and give rise to particle interactions that give rise to the fundamental forces of nature. 
+These fields give rise to particle interactions that give rise to the fundamental forces of nature. 
 Historically, the first local gauge theory that was established was QED. It follows a U(1) local gauge symmetry and entails the photon as the associated gauge field. 
-The SM is a reflection of a SU(3)$_C$ $\times$ SU(2)$_L$ $\times$ U(1)$_Y$ local gauge symmetry that gives rise to the existence of the gauge bosons described in the previous section. The following sections provide an overview of the full Lagrangian of the SM, by going through the different symmetry groups. Throughout this thesis, natural units are used, that is $c = \hbar = 1$. This means that the mass, momentum and energy are all given in units of electronvolt (\eV).
-In the equations below, the Einstein-summation convention is used, that is terms with equal indices are considered to be summed. If not mentioned otherwise, greek-letter indices take integer values from 1 to 4, latin-characte indices take integer values from 1 to 3.
+The SM is a reflection of a SU(3)$_C$ $\times$ SU(2)$_L$ $\times$ U(1)$_Y$ local gauge symmetry that gives rise to the existence of all gauge bosons mentioned in the previous section. 
+%The following sections provide an overview of the Lagrangian of the SM, by going through the different symmetry groups. 
 
+Throughout this thesis, natural units are used, that is $c = \hbar = 1$. This leads to the mass, momentum, and energy of particles all being given in units of electronvolt (\eV).
+In the equations in the following sections, the Einstein-summation convention is used, that is terms with equal indices are considered to be summed. If not mentioned otherwise, greek-letter indices take integer values from 1 to 4, while latin-character indices take integer values from 1 to 3.
 
 % - renormalization:
 % We consider that the physics is understood up to a given cut-off/scale Lambda.
-
 
 %The SM is governed by the principle of local gauge invariance and the associated symmetry group is SU(3)$_C$ $\times$ SU(2)$_L$ $\times$ U(1)$_Y$. 
 
@@ -468,7 +468,7 @@ This section provides an overview of some of the biggest unsolved problems of th
 
 \subsubsection{Dark matter}
 The SM is able to explain the behavior of the currently observable matter in the universe, which makes up about 5\% of the energy of the universe. 
-As known from astrophysical measurements such as measurements of galaxy rotations \todo{REF}, another 27\% of the universe's energy is made up of so-called \emph{dark matter}. To date, the SM has no viable candidate to explain the nature of dark matter. 
+As known from astrophysics, such as from measurements of galaxy rotations \todo{REF}, another 27\% of the universe's energy is made up of so-called \emph{dark matter}. To date, the SM has no viable candidate to explain the nature of dark matter. 
 
 % Another 26\% of the universe's energy is made up of so-called dark matter. 
 % - The SM explains the observable mass which makes up about 5\% of the energy of the universe. 
@@ -490,8 +490,8 @@ About 68\% of the universe's energy constitutes so-called \emph{dark energy}. Da
 Right-handed neutrinos are not part of the SM because they do not couple to any of the other particles.
 Therefore, Dirac mass terms from Yukawa interactions (see \cref{subsec:Yukawa}) are typically not added to the SM. 
 However, it is known that neutrinos oscillate\todo{REF}, which implies that they have finite masses.
-While it is possible to add mass terms for neutrinos ad-hoc without violating any of the theoretical principles, it is not clear exactly which terms to use, as the nature of neutrinos is not settled\footnote{Neutrinos could for example either be Dirac fermions or Majorana fermions. Majorana fermions are particles that are their own anti-particles, which stands in contrast to Dirac fermions. Different mathematical descriptions are required to describe the different types of particles in the Lagrangian.}. 
-Nevertheless, the SM is sometimes described with additional terms for the neutrinos. If this is the case an additional seven free parameters (three for the masses and four to describe the mixing between neutrinos) are introduced to the SM.
+While it is possible to add mass terms for neutrinos ad-hoc, without violating any of the theoretical principles, it is not clear exactly which terms to use, as the nature of the neutrinos is not settled\footnote{Neutrinos could for example either be Dirac fermions or Majorana fermions. Majorana fermions are particles that are their own anti-particles, which stands in contrast to Dirac fermions. Different mathematical descriptions are required to describe the different types of particles in the Lagrangian.}. 
+Nevertheless, the SM is sometimes described with additional terms for the neutrinos, which adds an additional seven free parameters (three for the masses and four to describe the mixing between neutrinos).
 
 %It is possible to add Dirac mass terms by implying the existence of right-handed neutrinos. 
 %- One possibility is to add Dirac mass terms, which would add an additional 6 free parameters to the SM. 
@@ -547,12 +547,14 @@ The so-called Peccei-Quinn theory~\cite{PhysRevLett.38.1440} and modifications o
 While several physics problems were solved by introducing the Higgs boson to the SM, other mysteries remain. 
 One of the biggest open questions is related to the mass of the Higgs boson itself. 
 Assuming that there is no new physics up to the Planck scale, quantum loop corrections to the Higgs boson mass would be extremely large (at the order of the Planck scale). 
-This means, that the bare mass of the Higgs boson\footnote{The observable mass of an elementary particle is given by the difference of two terms that are completely independent of each other, the particles bare mass and corrections from quantum fluctuations.}
-needs to almost perfectly balance the quantum corrections to keep the Higgs mass in the \GeV\ range. The precision required for such a balance is extremely high and considered ``unnatural''. 
-This is known as the hierarchy problem and is one of the main motivations to search for new particles with masses in the \TeV\ range. Their existence would affect the quantum contributions to the Higgs mass, eliminating the need of ``fine-tuning'' the bare Higgs mass to an incredible precision, as is assumed so far in the SM. 
+This means, that the bare mass of the Higgs boson\footnote{The observable mass of an elementary particle is given by the difference of two terms that are fully independent of each other, the particles bare mass and corrections to it from quantum fluctuations.}
+needs to almost perfectly balance the quantum corrections to keep the effective Higgs mass in the \GeV\ range. The precision required for such a balance is extremely high and considered ``unnatural''. 
+This is known as the hierarchy problem and is one of the main motivations for the search for new particles with masses in the \TeV\ range at the LHC. Their existence would affect the quantum contributions to the Higgs mass, eliminating the need of ``fine-tuning'' the bare Higgs mass to an incredible precision, as is assumed so far in the SM. 
 
-The Higgs boson takes a special role in the SM because it is the only fundamental scalar. Its nature makes it a suitable candidate in many models beyond the SM to predict couplings between the Higgs boson and particles from new physics~\cite{2019BHeinemann}.
-This highly motivates precision measurements of the Higgs boson to be able to detect small deviations from the SM predictions. 
+The Higgs boson plays a special role in the SM because it is the only fundamental scalar. Its nature makes it a suitable candidate in many models beyond the SM to find new physics through couplings with the Higgs boson. 
+This highly motivates performing precision measurements of the Higgs boson to be able to detect small deviations from the SM predictions. 
+For an extensive review of different theoretical models, the interested reader is referred to \ccite{2019BHeinemann}.
+
 
 % - Due to these inexplicabilities the Higgs boson (and the fact that it's the least well measured EM particle) is widely considered to be the answer to many other questions in fundamental physics
 

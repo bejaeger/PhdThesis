@@ -1,137 +1,60 @@
 \chapter{The $H\rightarrow W^{\pm}W^{\mp^*}$ Analysis}
 \label{chap:hww}
 
+- Why HWW?
+- ggF and VBF production: More details on analysis of VBF produced Higgs
+- STXS measurement
+
+- Describe outline of chapter with a few introductory words on each section?
+    -> See Master thesis. Needs to be much much shorter but might be nice
+
+
+\section{Previous Results}
+\label{sec:prev-results}
+\input{\chapterdir/hwwsections/prev-results}
+
 
 \section{Characteristics of the Signal and Background Processes}
-\begin{itemize}
-    \item Introduce all variables needed in the analysis
-    \item Provide table with backgrounds an characteristics...see S Gadatsch thesis Table 5.1 page 126
-\end{itemize}
-
+\label{sec:signal-bkg-characteristics}
+\input{\chapterdir/hwwsections/signal-bkg-characteristics}
 
 
 \section{Data and Monte Carlo Samples}
-
-\input{tables/hww/samples}
-
-
-\section{Object Selection and Efficiency Correction}
-\subsection{Lepton selection}
-\subsection{Jet selection}
-
-\TDinote{}{Checkout JVT extension to 120 GeV}
-
-\subsection{Missing transverse energy}
-\subsection{Overlap removal}
-\label{subsec:overlap-removal}
-
-The inputs to the \emph{anti-$k_T$} algorithm are typically used also in other object reconstruction algorithms such as in the reconstruction of electrons and photons (see \cref{sec:electron-photon-reconstruction}).
-To avoid double consideration of detector signals in the event reconstruction a dedicated procedure known as \emph{overlap removal} is performed in physics analyses that resolves these ambiguities. The procedure used for the work presented in this thesis is described in the relevant analysis chapter in \cref{subsec:overlap-removal}.
-\Rinote{}{Not sure where exactly this belongs. Also need to make sure that this reflects the correct understanding of overlap removal}
+\label{sec:data-mc-samples}
+\input{\chapterdir/hwwsections/datamcsamples}
 
 
-\subsection{Pile-up reweighting}
-In order to compare Monte Carlo simulated events with actual data, the amount of pile-up underlying the hard scatter needs to be account for.
-To this end, a method known as \emph{pile-up reweighting} assigns a dedicated \emph{pile-up weight} to each event so that the average pile-up in simulated collision events match the actual running conditions. The reweighting procedure is performed separately for the data recorded in the years 2015 and 2016, 2017, and 2018.
+\section{Object Identification and Selection}
+\label{sec:object-selection}
+\input{\chapterdir/hwwsections/object-selection}
 
 
+\section{Event Categorisation}
+\label{sec:event-categorisation}
+\input{\chapterdir/hwwsections/event-categorisation}
 
-\section{Event Selection}
-\section{VBF Analysis Regions}
-\section{ggF Analysis Regions}
 
-\section{Classification of VBF Signal and Background Using a Deep Neural Network}
+\section{Background Estimation}
+\label{sec:bkg-estimation}
+\input{\chapterdir/hwwsections/bkg-estimation}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Copied from previous \section{Neural Network Training}
-The work presented in this thesis uses supervised learning techniques to train a binary classifier that distinguishes between signal-like and background-like events. 
-Therefore, only a single output node is required, that uses a logistic sigmoid as activation function such that $y = \sigma(x)$, where $\sigma(x)$ is defined as in \cref{eq:logistic-sigmoid}.
-The network is trained with MC simulated $pp$ collision events that have ground-truth labels called \emph{target values} in the following. The target value, $t_n$, for a given event $n$ has a value of $t_n = 1$, if the event is a simulated signal event, and $t_n = 0$ otherwise.
 
-\subsection{Training variables}
-\subsection{Training hyperparameter optimization}
-%\subsection{Prospects Studies for Common VBF and ggF HWW 2-jet Analysis with Multiclass Classification}
-
-- set of input variables
-- weights corresponding to different processes in training data set
-- network architecture
-- learning rate (batch size)
-- optimizer
-- regularization technique
-- choice of k-fold method
-\subsection{Model validation}
+\section{Classification of VBF Signal and Background Events Using a Deep Neural Network}
+\label{sec:dnn}
+\input{\chapterdir/hwwsections/dnn}
 
 
 \section{Systematic Uncertainties}
-\subsection{Systematic experimental uncertainties}
-\subsection{Systematic theoretical uncertainties}
-\subsection{Treatment of systematic uncertainties}
+\label{sec:systematics}
+\input{\chapterdir/hwwsections/systematics}
+
 
 \section{The Statistical Model}
+\label{sec:stats-analysis}
+\input{\chapterdir/hwwsections/stats-analysis}
 % From Hannah Arnold Thesis
 % - using the HistFactory tool [326] and the RooStats/ RooFit framework [327, 328].
 
-\section{\HWW VBF+ggF Couplings Analysis Fit Results}
-\subsection{VBF signal results}
-
-\subsection{Results of combined VBF+ggF analysis}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Couplings
-\begin{figure}
-    \subfloat[] {
-        \newImageResizeHalf{figures/hww/post-fit/fig_11.pdf}
-    }
-    \subfloat[] {
-        \newImageResizeHalf{figures/hww/post-fit/fig_10d.pdf}
-    }
-    \caption{Post-fit distributions of the final discriminants used in the statistical analysis, including (a) the DNN output in the VBF signal region and (b) the \mT distribution in the combined ggF signal regions. Taken from \ccite{ATLAS-CONF-2021-014}.}
-    \label{fig:post-fit-final-discriminatns}
-\end{figure}
-
-\begin{figure}
-    \subfloat[] {
-        \newImageResizeCustom{0.7}{figures/hww/results/fig_12.pdf}
-    }
-    \caption{Cross-sections times branching fraction of the ggF versus the VBF signal, including the \SI{68}{\percent} and \SI{95}{\percent} confidence level two-dimensional likelihood contours. Taken from \ccite{ATLAS-CONF-2021-014}.}
-    \label{fig:avocado-plot}
-\end{figure}
-
-\begin{figure}
-    \subfloat[] {
-        \newImageResizeCustom{0.9}{figures/hww/results/tab_05.pdf}
-    }
-    \caption{Post-fit number of events for MC and data in all the signal regions used in the statistical analysis, as well as the bin with the highest VBF DNN output score. Taken from \ccite{ATLAS-CONF-2021-014}.}
-    \label{fig:post-fit-yields}
-\end{figure}
-
-% \begin{table}
-%     \subfloat[] {
-%         \newImageResizeCustom{0.9}{figures/hww/results/tab_06.pdf}
-%     }
-%     \caption{Taken from \ccite{ATLAS-CONF-2021-014}.}
-%     \label{fig:couplings-xsec-uncertainties}
-% \end{table}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% STXS
-\begin{table}
-    \subfloat[] {
-        \newImageResizeCustom{0.9}{figures/hww/results/fig_13.pdf}
-    }
-    \caption{Cross-sections measured in each of the STXS categories in the combined statistical analysis, normalised to the corresponding SM prediction. The uncertainties are broken down into a statistical and systematic component. The grey band represents the theory uncertainty on the signal production corresponding to the STXS category. Taken from \ccite{ATLAS-CONF-2021-014}.}
-    \label{fig:stxs-pois-bar-plot}
-\end{table}
-
-\begin{table}
-    \subfloat[] {
-        \newImageResize{figures/hww/results/tab_07.pdf}
-    }
-    \caption{Production cross-section times \HWW branching ratio in each STXS category measured in the combined statistical analysis. Taken from \ccite{ATLAS-CONF-2021-014}.}
-    \label{fig:stxs-xsec-uncertainties}
-\end{table}
-
-
-\section{The $H\rightarrow W^{\pm}W^{\mp^*}$ STXS Analysis}
-\subsection{Results of combined STXS fit}
+\section{Results}
+\label{sec:hww-results}
+\input{\chapterdir/hwwsections/results}
