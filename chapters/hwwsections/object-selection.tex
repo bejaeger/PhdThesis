@@ -1,10 +1,60 @@
+- The physics objects relevant to reconstruct \HWWdet candidate events and to suppress background contributions are: muons, electrons, jets -- including $b$-jet identification --, missing transverse energy. 
+- Details on the reconstruction and identification of these objects are given in \cref{chap:objects}.
+- Further quality criteria are imposed on the objects to facilitate a high selection efficiency of signal event candidates while minimizing the contamination of background events.
+- All the selection criteria are applied to both data and simulated events.
+
+Highly based on \ccite{PLACEHODLER:FOR:PAPER}.
+
+\subsection{Scale factors}
+The simulated events are processed through a complex detector simulation in order to be directly comparable to data events. This procedure cannot be performed with arbitrary accuracy, hence differences between data and simulation are expected. They are accounted for at the level of the fully reconstructed event by applying data-to-simulation \emph{scale factors} (SFs). The SFs are derived in dedicated analyses and generally given as 
+\begin{equation}
+    SF = \frac{\epsilon_\text{data}}{\epsilon_{\text{MC}}},
+\end{equation}
+where $\epsilon_\text{data}$ and $\epsilon_\text{MC}$ are efficiencies measured in data and simulation, respectively. 
+They are assigned as weights to each event and their uncertainties are incorporated in the final statistical analysis. 
+A distinction can be drawn between SFs that affect only the global normalization of an event (\emph{efficiency SF}), and SFs that affect the four-momentum of individual objects (\emph{four-momentum SF}). Only the latter SFs can alter the shape of distributions, which has important consequences for the statistical analysis. 
+
+\subsection{Vertex selection}
+The primary vertices (PV) are reconstructed using tracks from the ID with \ptGT{500}\MeV. Each event is required to have at least one reconstructed PV with at least two associated tracks. The hard scatter is chosen to be the PV with the largest sum of squared track transverse momenta. 
+
 
 \subsection{Lepton selection}
+In order to maximise the purity of events with prompt leptons and reject background contributions from particle misidentifications, several identification, isolation, impact parameter, and other criteria are imposed on the leptons.
+
+\subsubsection{Electron and muon common selections}
+Lepton candidates must be compatible with originating from the hard scatter vertex, ensured by requiring the impact parameters to be $|z_0\sin\theta|<0.5$ and $|d_0| / \sigma_{d_0} < 5 (3)$ for electrons (muons). 
+
+The leptons that triggered the recording of the event (\emph{online} leptons) are matched to the fully reconstructed leptons (\emph{offline} leptons) to reduce the contamination of events with misidentifications.
+To this end, at least one offline lepton must be matched to an online object.
+If the event was recorded only based on the dilepton trigger, both offline leptons much be matched to the online ones. 
+In addition, the matched offline leptons must have a \pT that is at least 1\,\GeV above the respective trigger threshold.
+
+Leptons are required to be isolated, which is ensured using maximum thresholds on both the \emph{track} isolation variable \pTvarcone (with $R_{\text{max}} = 0.2$ ($R_{\text{max}} = 0.3$) for electrons (muons))) and the \emph{calorimeter} isolation variables \ETconetwenty. 
+\todo{Find details on isolation}
+
+\subsubsection{Electron selections}
+Electron candidates are considered in a range of $|\eta| \,{<}\, 2.47$, excluding $1.37\,{<}\,|\eta|\,{<}\,1.52$, which corresponds to the transition region between the barrel and the end-caps of the electromagnetic calorimeter. 
+The choice of electron identification criteria is dependent on the \pT\ of the lepton: electrons with $\pT \,{<}\,25\,\GeV$ ($\pT\,{>}\,25\,\GeV$) must satisfy the ``Tight'' likelihood working point (``Medium'' likelihood working point\footnote{A looser selection is applied for electrons with larger \pT because the background contamination from misidentifications become less important.}) that has an efficiency of about 70\% (85\%) for these electrons (muons).~\cite{EGAM-2018-01} 
+% NOT SURE ABOUT THAT!?
+% Furthermore, only those electrons are selected that are exclusively reconstructed as electrons and not as both electrons and photons.
+
+\subsubsection{Muon selections}
+Muon candidates are reconstructed using information from the ID as well as the muon system and are required to satisfy \absetaST{2.5}. 
+The identification is based on a cut-based approach~\cite{MUON-2018-03}, using the ``Tight'' working point that has an efficiency of about 95\% to select actual muons. 
+% so as to maximise the sample purity.
+
 \subsection{Jet selection}
+- reconstruction, pT cut
+- JVT
+- b-tagging
 
 \TDinote{}{Checkout JVT extension to 120 GeV}
 
 \subsection{Missing transverse energy}
+- TrackMET, Calo MET
+- MET Significance
+
+
 \subsection{Overlap removal}
 \label{subsec:overlap-removal}
 
@@ -14,5 +64,11 @@ To avoid double consideration of detector signals in the event reconstruction a 
 
 
 \subsection{Pile-up reweighting}
+%% MAYBE this can also go in the MC samples section? 
+%% Not sure
+
+- Exact data taking conditions not known at the time the MC is generated
+
+
 In order to compare Monte Carlo simulated events with actual data, the amount of pile-up underlying the hard scatter needs to be account for.
 To this end, a method known as \emph{pile-up reweighting} assigns a dedicated \emph{pile-up weight} to each event so that the average pile-up in simulated collision events match the actual running conditions. The reweighting procedure is performed separately for the data recorded in the years 2015 and 2016, 2017, and 2018.
