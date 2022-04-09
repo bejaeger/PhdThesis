@@ -1,16 +1,47 @@
-\todo{Could either describe all SRs first (ggF,VBF) and then all bkg estimation techniques, OR do both for each analysis in a section. (Separate via process (signal or bkg) or via analysis (ggF vs VBF)?)}
-- Including STXS binning
+
+- Selections are made on event observables to define different regions of phase space that optimise the signal purity. 
+- First a common selection is applied for all signal categories, then different reconstructed regions are defined that target the measurement of different production modes of the Higgs boson. 
+- 
+- A table of all cuts is provided
+
+- Furthermore, the production modes are further subdivided into several kinematic bins in the STXS categorisation scheme that is discussed in ....
+
 - Define ``vocabulary'' for regions, bins, categories, processes, ...
 
-- STXS categorisation plot
-- Expected event yields in each stxs region (or maybe later!?)
 
-- Table of all regions entering the analysis? -> Checkout google doc! OR put in Stats model section
+
+\subsection{Preselection}
+A common event preselection is applied before the events are divided into specific analysis regions targeting different signal categories. 
+As discussed in the previous sections, the analysis selects events with exactly two leptons with different flavour and opposite charge as well as satisfying trigger matching criteria. 
+The transverse momenta of the leptons must satisfy \ptGT{22}\,GeV and \ptGT{15}\,GeV for the higher-\pT (\emph{leading}) and lower-\pT (\emph{subleading}) lepton, respectively.
+To minimize the contamination from low mass meson resonances as well as di-tau backgrounds from low-mass Dell-Yan production, the invariant mass of the dilepton system is required to be $\mll > 10\,\GeV$.
+
+The distribution of the number of jets in the event at the preselection level is shown in \cref{fig:njets}. 
+The background composition varies significantly across jet bins, which motivates splitting the data sample into separate \Njet categories.
+In total four mutually exclusive reconstructed regions are defined.
+One region targets the VBF production mode and must satisfy \TwoJet. 
+Three categories are defined targeting the ggF production mode: \ZeroJet, \OneJet, \TwoJet. 
+An additional preselection is applied for the ggF categories on the missing transverse momentum, $\pTmiss > 20\,\GeV$, to exploit the presence of neutrinos in the signal.
+
+The follow gives details on the specific cuts that are applied to each category and take into account the different event topologies as well as the different background composition.
 
 \subsection{VBF 2-jet Analysis Regions}
+The distinct VBF topology is exploited by rejecting events that contain either an additional jet with \ptGT{30}\,GeV between the two leading jets in pseudorapity (known as \emph{central jet veto} (CJV)) or a lepton at larger pseudorapidities than both of the jets (known as \emph{outside lepton veto} (OLV)). 
+In addition, a selection is made on the invariant mass of the jets $\mjj > 120\,\GeV$, which has only minimal impact but serves to separate analyses targeting the $V(\to qq)H$ production mode. 
+
+The VBF analysis is then performed by using a deep neural network model (DNN) that is trained to classify signal and background events. Details of the DNN analysis are described in \cref{sec:dnn}.
+
+
 \subsection{ggF Analysis Regions}
+
+
 \subsubsection{0-jet}
 \subsubsection{1-jet}
 \subsubsection{2-jet}
 
 \subsection{STXS categorisation}
+-> ggF is written as ggH
+-> VBF is denoted as EW qqH that is more inclusive than VBF as it also includes V(->qq)H. 
+
+- STXS categorisation plot
+- Expected event yields in each stxs region (or maybe later!?)

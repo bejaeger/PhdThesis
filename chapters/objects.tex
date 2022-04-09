@@ -246,6 +246,7 @@ Applying basic selections on these variables yields a high efficiency exceeding 
 
 
 \subsection{Flavour tagging}
+\label{subsec:flavour-tagging}
 The process of classifying a jet as originating from a certain quark flavour is known as \emph{flavour tagging}, which is a crucial ingredient for many physics analyses. Especially important for the work presented in this thesis is the identification of jets that originate from $b$-quarks, called $b$-\emph{jets}.
 
 Different jet-related properties can be used for $b$-jet identification.
@@ -329,6 +330,7 @@ The reconstruction, identification, and isolation efficiencies are derived using
 
 
 \section{Missing Transverse Energy}
+\label{sec:met}
 The colliding protons do not carry a significant amount of transverse energy prior to the collision events.
 The vectorial sum of all transverse energy measured in the detector is therefore expected to be approximately zero for a given event, unless particles are present that are invisible to the detector. The computation of missing transverse energy, labelled as \ETmissvec, thus provides an effective mechanism to indirectly measure neutrinos or other non-interacting particles.
 The \ETmissvec observable can be written as
@@ -338,18 +340,18 @@ The \ETmissvec observable can be written as
     = \ETmiss \hat{u}_{\ETmiss}
     \label{eq:met}
 \end{equation}
-and consists of two main contributions: The so-called \emph{hard term}, $\vec{E}_{\text{T}}^\text{ obj}$, that takes into account fully reconstructed and calibrated physics objects such as electrons, photons, $\tau$-letpons, muons, and jets, and the \emph{soft term}, $\vec{E}_{\text{T}}^\text{ soft-term}$, that sums all energy or momentum measurements that cannot be assigned to any physics object.
+and consists of two main contributions: The so-called \emph{hard term}, $\vec{E}_{\text{T}}^\text{ obj}$, that takes into account all fully reconstructed and calibrated physics objects such as electrons, photons, $\tau$-letpons, muons, and jets, and the \emph{soft term}, $\vec{E}_{\text{T}}^\text{ soft-term}$, that sums all energy or momentum measurements that cannot be assigned to any physics object.
 Since most physics processes are invariant under $\phi$ translations, the magnitude, \ETmiss, is typically referenced instead of the vector quantity \ETmissvec.
 In the work presented in this thesis, the soft term is determined by the sum of \pT of all ID tracks that are associated to the hard-scatter vertex.
 
-An alternative definition of \ETmiss, that is referred to as missing transverse momentum and labelled as \pTmiss, uses tracks for the hard term, replacing the fully reconstructed objects.
-For certain physics analyses, the \pTmiss observable shows slightly better discrimination power against event signatures that need to be rejected (see for example \cref{chap:hww}). The standard \ETmiss as defined in \cref{eq:met}, however, has a superior resolution and is thus more widely adopted in ATLAS.
+An alternative definition of \ETmiss referred to as missing transverse momentum or \pTmiss uses tracks for the hard term, replacing the fully reconstructed objects.
+For certain physics analyses, the \pTmiss observable shows slightly better discrimination power against certain event signatures that need to be rejected (see for example \cref{chap:hww}). The standard \ETmiss as defined in \cref{eq:met}, however, has a superior resolution and is thus more widely adopted in ATLAS.
 The performance of \ETmiss reconstruction is studied with event samples very pure in events with genuine \ETmiss ($W \rightarrow e\nu$) and without genuine \ETmiss (\Zmumu)~\cite{PERF-2016-07}.
 
 % 2. \emph{calorimeter-based soft-term} (CST): sum of calorimeter clusters not assigned to any physics objects.
 % - CST MET is used for building signal-sensitive variables such as mT because its lower resolution.
 Since \ETmiss measurements are based on the entire detector, it is a complex quantity to determine precisely. Detector inefficiencies and resolution effects can lead to mismeasurements of the true \ETmiss.
-Another observable, known as \emph{missing transverse energy significance} and labelled as $S$, therefore assesses the probability of the \ETmiss to originate from only these irreducible causes.
+Another observable known as \emph{missing transverse energy significance}, $S$, therefore assesses the probability of the \ETmiss to originate from only these irreducible causes.
 % Another quantity is therefore defined that assesses the probability of the \ETmiss to originate from only these aforementioned, irreducible causes.
 % The observable is called \emph{missing transverse energy significance}, labelled as $S$, and helps to detect events where non-interacting particles are present.
 % A large value of S is an indication that a particle escaped the detector without being detected.

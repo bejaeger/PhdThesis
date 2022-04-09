@@ -1,74 +1,142 @@
-- The physics objects relevant to reconstruct \HWWdet candidate events and to suppress background contributions are: muons, electrons, jets -- including $b$-jet identification --, missing transverse energy. 
+- The physics objects relevant to reconstruct \HWWdet candidate events and to suppress background contributions are: muons, electrons, jets -- including $b$-jet identification --, missing transverse energy.
 - Details on the reconstruction and identification of these objects are given in \cref{chap:objects}.
 - Further quality criteria are imposed on the objects to facilitate a high selection efficiency of signal event candidates while minimizing the contamination of background events.
-- All the selection criteria are applied to both data and simulated events.
+- All the selection criteria are applied to both data and simulated events and summarized in \cref{tab:objectselectionleptons}.
 
 Highly based on \ccite{PLACEHODLER:FOR:PAPER}.
 
-\subsection{Scale factors}
-The simulated events are processed through a complex detector simulation in order to be directly comparable to data events. This procedure cannot be performed with arbitrary accuracy, hence differences between data and simulation are expected. They are accounted for at the level of the fully reconstructed event by applying data-to-simulation \emph{scale factors} (SFs). The SFs are derived in dedicated analyses and generally given as 
+\subsection{Scale factors and pile-up weights}
+In order to guarantee fair comparisons between simulated events and data, all known differences between the samples need to be accounted for.
+To this end, weights are assigned to either the full event or individual physics objects. This corrects for differences in global sample distributions, such as the number of pile-up interactions, or differences in the outcome of the reconstruction algorithms.
+Uncertainties on these corrections are propagated to the final statistical analysis by variations of the weights.
+\todo{maybe this intro is too much blah blah!}
+
+\subsubsection{Scale factors}
+The simulated events are processed through a complex detector simulation in order to be directly comparable to data events. This procedure cannot be performed with arbitrary accuracy, hence differences between data and simulation are expected.
+They are accounted for at the level of the fully reconstructed event by applying data-to-simulation \emph{scale factors} (SFs). The SFs are derived in dedicated analyses and generally given as
 \begin{equation}
     SF = \frac{\epsilon_\text{data}}{\epsilon_{\text{MC}}},
 \end{equation}
-where $\epsilon_\text{data}$ and $\epsilon_\text{MC}$ are efficiencies measured in data and simulation, respectively. 
-They are assigned as weights to each event and their uncertainties are incorporated in the final statistical analysis. 
-A distinction can be drawn between SFs that affect only the global normalization of an event (\emph{efficiency SF}), and SFs that affect the four-momentum of individual objects (\emph{four-momentum SF}). Only the latter SFs can alter the shape of distributions, which has important consequences for the statistical analysis. 
+where $\epsilon_\text{data}$ and $\epsilon_\text{MC}$ are efficiencies measured in data and simulation, respectively.
+The SFs are either applied to the full event (\emph{efficiency SF}) or only to the four-momentum of individual objects (\emph{four-momentum SF}). Only the latter SFs can alter the shape of distributions, which has important consequences for the statistical analysis.
+
+\subsubsection{Pile-up reweighting}
+The exact data taking conditions are typically not known at the time the simulated events are generated.
+Therefore, it is important to correct for potential differences in the underlying pile-up conditions that is assumed in the simulated events and found in data.
+% In order to compare Monte Carlo simulated events with actual data, the amount of pile-up underlying the hard scatter needs to be account for.
+To this end, a method known as \emph{pile-up reweighting} is performed that assigns a dedicated \emph{pile-up weight} to each event so that the distribution of the number of pile-up interactions in the simulated event sample is, on average, the same as that found in data. Due to different running conditions, the reweighting procedure is performed separately for the data recorded in the years 2015 and 2016, 2017, and 2018.
+
 
 \subsection{Vertex selection}
-The primary vertices (PV) are reconstructed using tracks from the ID with \ptGT{500}\MeV. Each event is required to have at least one reconstructed PV with at least two associated tracks. The hard scatter is chosen to be the PV with the largest sum of squared track transverse momenta. 
+The primary vertices (PV) are reconstructed using tracks from the ID with \ptGT{500}\MeV. Each event is required to have at least one reconstructed PV with at least two associated tracks. The hard scatter is chosen to be the PV with the largest sum of squared track transverse momenta.
 
 
 \subsection{Lepton selection}
 In order to maximise the purity of events with prompt leptons and reject background contributions from particle misidentifications, several identification, isolation, impact parameter, and other criteria are imposed on the leptons.
 
 \subsubsection{Electron and muon common selections}
-Lepton candidates must be compatible with originating from the hard scatter vertex, ensured by requiring the impact parameters to be $|z_0\sin\theta|<0.5$ and $|d_0| / \sigma_{d_0} < 5 (3)$ for electrons (muons). 
+Lepton candidates must be compatible with originating from the hard scatter vertex, ensured by requiring the impact parameters to be $|z_0\sin\theta|<0.5$ and $|d_0| / \sigma_{d_0} < 5 (3)$ for electrons (muons).
 
 The leptons that triggered the recording of the event (\emph{online} leptons) are matched to the fully reconstructed leptons (\emph{offline} leptons) to reduce the contamination of events with misidentifications.
 To this end, at least one offline lepton must be matched to an online object.
-If the event was recorded only based on the dilepton trigger, both offline leptons much be matched to the online ones. 
-In addition, the matched offline leptons must have a \pT that is at least 1\,\GeV above the respective trigger threshold.
+If the event was recorded only based on the dilepton trigger, both offline leptons much be matched to the online ones.
+In addition, the matched offline leptons must have a \pT that is at least 1\GeV\ above the respective trigger threshold.
 
-Leptons are required to be isolated, which is ensured using maximum thresholds on both the \emph{track} isolation variable \pTvarcone (with $R_{\text{max}} = 0.2$ ($R_{\text{max}} = 0.3$) for electrons (muons))) and the \emph{calorimeter} isolation variables \ETconetwenty. 
+Leptons are required to be isolated, which is ensured using maximum thresholds on both the \emph{track} isolation variable \pTvarcone (with $R_{\text{max}} = 0.2$ ($R_{\text{max}} = 0.3$) for electrons (muons))) and the \emph{calorimeter} isolation variables \ETconetwenty.
 \todo{Find details on isolation}
 
 \subsubsection{Electron selections}
-Electron candidates are considered in a range of $|\eta| \,{<}\, 2.47$, excluding $1.37\,{<}\,|\eta|\,{<}\,1.52$, which corresponds to the transition region between the barrel and the end-caps of the electromagnetic calorimeter. 
-The choice of electron identification criteria is dependent on the \pT\ of the lepton: electrons with $\pT \,{<}\,25\,\GeV$ ($\pT\,{>}\,25\,\GeV$) must satisfy the ``Tight'' likelihood working point (``Medium'' likelihood working point\footnote{A looser selection is applied for electrons with larger \pT because the background contamination from misidentifications become less important.}) that has an efficiency of about 70\% (85\%) for these electrons (muons).~\cite{EGAM-2018-01} 
+Electron candidates are considered in a range of $|\eta| \,{<}\, 2.47$, excluding $1.37\,{<}\,|\eta|\,{<}\,1.52$, which corresponds to the transition region between the barrel and the end-caps of the electromagnetic calorimeter.
+The choice of electron identification criteria is dependent on the \pT\ of the lepton: electrons with $\pT \,{<}\,25\,\GeV$ ($\pT\,{>}\,25\,\GeV$) must satisfy the ``Tight'' likelihood working point (``Medium'' likelihood working point\footnote{A looser selection is applied for electrons with larger \pT because the background contamination from misidentifications become less important.}) that has an efficiency of about 70\% (85\%) for these electrons (muons).~\cite{EGAM-2018-01}
 % NOT SURE ABOUT THAT!?
 % Furthermore, only those electrons are selected that are exclusively reconstructed as electrons and not as both electrons and photons.
 
 \subsubsection{Muon selections}
-Muon candidates are reconstructed using information from the ID as well as the muon system and are required to satisfy \absetaST{2.5}. 
-The identification is based on a cut-based approach~\cite{MUON-2018-03}, using the ``Tight'' working point that has an efficiency of about 95\% to select actual muons. 
+Muon candidates are reconstructed using information from the ID as well as the muon system and are required to satisfy \absetaST{2.5}.
+The identification is based on a cut-based approach~\cite{MUON-2018-03}, using the ``Tight'' working point that has an efficiency of about 95\% to select actual muons.
 % so as to maximise the sample purity.
 
 \subsection{Jet selection}
-- reconstruction, pT cut
-- JVT
-- b-tagging
+Jets used in this analysis are reconstructed with the \antikt algorithm with a radius parameter $R = 0.4$ and using particle flow objects as inputs.
+They are fully calibrated corresponding to the descriptions given in \cref{sec:jes-calibration} and must satisfy \absetaST{4.5} and \ptGT{20}GeV.
+Jets that are used for jet counting, that is, to categorise the events in different analysis regions, are required to have \ptGT{30}GeV.
+In order to identify $b$-jets, the DL1r neural network discriminant is employed (see \cref{subsec:flavour-tagging}), using a working point that has an average of 85\% $b$-jet tagging efficiency for jets with \ptGT{20}GeV and \absetaST{2.5}~\cite{FTAG-2018-01}.
+Furthermore, the Jet Vertex Tagger is used to reject jets stemming from pile-up interactions by requiring a minimum value of JVT $> 0.59$ for jets with \ptBT{20}{60}GeV and \absetaST{2.4}.
+\TDinote{}{Checkout JVT extension to 120 GeV???}
 
-\TDinote{}{Checkout JVT extension to 120 GeV}
 
 \subsection{Missing transverse energy}
-- TrackMET, Calo MET
-- MET Significance
+The amount of energy invisible to the detector is quantified with three different observables in this analysis that are all discussed in \cref{sec:met}.
+The missing transverse energy, \ETmiss, is used to construct all other observables dependent on \ETmiss such as the transverse momentum \mT.
+The missing transverse momentum, \pTmiss, is used in the selection of events because it has a better discrimination power especially against the \Zjets background.
+Finally, the \METSig observable is used in the DNN that is employed in the VBF analysis regions, because
+it provides additional discrimination power between signal and background events.
 
 
 \subsection{Overlap removal}
 \label{subsec:overlap-removal}
 
-The inputs to the \emph{anti-$k_T$} algorithm are typically used also in other object reconstruction algorithms such as in the reconstruction of electrons and photons (see \cref{sec:electron-photon-reconstruction}).
-To avoid double consideration of detector signals in the event reconstruction a dedicated procedure known as \emph{overlap removal} is performed in physics analyses that resolves these ambiguities. The procedure used for the work presented in this thesis is described in the relevant analysis chapter in \cref{subsec:overlap-removal}.
-\Rinote{}{Not sure where exactly this belongs. Also need to make sure that this reflects the correct understanding of overlap removal}
+The event reconstruction can lead to ambiguous definitions of the reconstructed objects.\footnote{This is mostly due to the fact that the same sets of lower-level reconstructed objects such as tracks or calorimeter clusters are used in multiple reconstruction algorithms for example for electrons, photons, or jets.}
+To resolve these ambiguities and avoid double consideration of detector signals, a dedicated \emph{overlap removal} procedure is performed for each event, which works as follows~\cite{PLACEHOLDER:PAPER}:
+\begin{itemize}
+    \item If two electrons share an ID track, the electron with lower \ET is removed.
+          %\item An electron is removed that shares an ID track with a muon.
+    \item If a muon shares an ID track with an electron, the electron is removed.
+    \item A jet is removed if it is in the vicinity of an electron defined by $\DeltaR(\text{jet}, e) < 0.2$ and the jet is not identified as a $b$-jet.
+    \item For any surviving jets, the electron is removed if $\DeltaR(\text{jet}, e) < 0.4$.
+    \item A jet is removed if it is in the vicinity of a muon defined by $\DeltaR(\text{jet}, \mu) < 0.2$, has less than three associated tracks with \ptGT{500}\,MeV, and is not identified as a $b$-jet.
+    \item For any surviving jets, the muon is removed if $\DeltaR(\text{jet}, \mu) < 0.4$.
+\end{itemize}
+
+% The inputs to the \emph{anti-$k_T$} algorithm are typically used also in other object reconstruction algorithms such as in the reconstruction of electrons and photons (see \cref{sec:electron-photon-reconstruction}).
+
+% To avoid double consideration of detector signals in the event reconstruction a dedicated procedure known as \emph{overlap removal} is performed in physics analyses that resolves these ambiguities. The procedure used for the work presented in this thesis is described in the relevant analysis chapter in \cref{subsec:overlap-removal}.
+% \Rinote{}{Not sure where exactly this belongs. Also need to make sure that this reflects the correct understanding of overlap removal}
 
 
-\subsection{Pile-up reweighting}
-%% MAYBE this can also go in the MC samples section? 
-%% Not sure
-
-- Exact data taking conditions not known at the time the MC is generated
 
 
-In order to compare Monte Carlo simulated events with actual data, the amount of pile-up underlying the hard scatter needs to be account for.
-To this end, a method known as \emph{pile-up reweighting} assigns a dedicated \emph{pile-up weight} to each event so that the average pile-up in simulated collision events match the actual running conditions. The reweighting procedure is performed separately for the data recorded in the years 2015 and 2016, 2017, and 2018.
+
+
+
+\begin{table}
+    \centering
+    \begin{tabular}{l@{\hskip 0.5in} l}
+        \toprule
+        Electrons                &                                                              \\
+        \midrule
+        Transverse momentum      & UPDATE                                                       \\
+        Detector acceptance      & $|\eta| < 2.47$, excluding $1.37 < |\eta| < 1.52$            \\
+        Impact parameter         & $|z_0\sin\theta| < 0.5$,\quad $|d_0|/\sigma_{d_0} < 5$       \\
+
+        Identification           & $\left\{\begin{tabular}{@{\ }l@{} l}
+                ``Tight'',  & \hspace{0.5em} for $\pT < 25\,\GeV$ \\
+                ``Medium'', & \hspace{0.5em} for $\pT > 25\,\GeV$
+            \end{tabular}\right.$                    \\
+        Isolation                & UPDATE                                                       \\
+        \midrule
+        Muons                    &                                                              \\
+        \midrule
+        Reconstruction algorithm & Global fit including ID tracks and MS tracks                 \\
+        Transverse momentum      & UPDATE                                                       \\
+        Detector acceptance      & $|\eta| < 2.5$                                               \\
+        Impact parameter         & $|z_0\sin\theta| < 0.5$, \quad $|d_0|/\sigma_{d_0} < 3$      \\
+        Identification           & ``Tight''                                                    \\
+        Isolation                & UPDATe                                                       \\
+        \midrule
+        Jets                     &                                                              \\
+        \midrule
+        Reconstruction algorithm & anti-$k_T$ ($R = 0.4$) using particle flow objects           \\
+        Transverse momentum      & $\left\{\begin{tabular}{@{\ }l@{} l}
+                $\pT > 30\,\GeV$, & \hspace{0.5em} for jet counting \\
+                $\pT > 20\,\GeV$, & \hspace{0.5em} else
+            \end{tabular}\right.$                    \\
+        Detector acceptance      & \absetaST{4.5}                                               \\
+        Pile-up rejection        & $\text{JVT} > 0.59$ (for $\pT < 60\,\GeV$ and $|\eta| <2.4$) \\
+        $b$-tagging algorithm        & DL1r with 85\% efficient working point                       \\
+        $b$-tagging acceptance       & \ptjetGT{20}\,GeV and \absetaST{2.5}                         \\
+        \bottomrule
+    \end{tabular}
+    \caption{List of object selection criteria, acceptances, and algorithms used in the \HWWdet\ analysis.}
+    \label{tab:objectselectionleptons}
+\end{table}
