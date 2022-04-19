@@ -8,52 +8,38 @@ The network is trained with simulated $pp$ collision events that have ground-tru
 % DNN that is implemented through Keras [116] and 341 TensorFlow [117],
 
 \subsection{Optimization and performance metrics}
-The task at hand is to construct a function that separates signal processes as well as possible from background processes.
+The task at hand is to construct a function that separates the VBF signal process as well as possible from the background processes.
+To this end, the cross entropy loss is used as a measure of the separation and the parameters of the neural network model are learned using backpropagation.
+In this analysis, the more meaningful measure of the separation is the expected discovery significance (see \cref{chap:statistics}) of the VBF signal process over the background processes. 
+It would therefore be natural to directly optimise the discovery significance when training the neural network. 
+However, this is not trivial because the loss function must be differentiable with respect to the parameters of the network\footnote{There are attempts to achieve exactly this, as shown in \ccite{ELWOODZ0INML}.} which is not the case for the discovery significance as it is a discrete function of the number of signal and background events. 
+In practice, the cross entropy loss is highly anti-correlated with the discovery significance, which is shown in \cref{FIG}.
+The training is therefore performed based on the cross entropy loss and the discovery significance is used only to evaluate the trained model. The significance is computed based on the distribution of the output of the neural network. 
+% \begin{itemize}
+%     \item The cross entropy loss is used during the training to learn the parameters of the neural network. 
+%     \item The discovery significance shown in \cref{eq:discovery-significance} is used as an evaluation metric of a trained model.
+%     \item Information about systematic uncertainties is included in the discovery significance to perform the final optimisation and choose the neural network. 
+% \end{itemize}
 
-% Add differentiable loss function here?
-
-In typical ML applications, the performance of such a binary classifier is often estimated with measures such as the \emph{accuracy}, the percentage of correct positive and negative assignments, or the area under the receiver operating characteristic (ROC) curve~\cite{BRADLEY19971145}. 
-For HEP applications, other metrics are more suitable. In the case of a physics search, the discovery significance of the signal process over the background process determines the sensitivity and thus performance of the analysis. 
-
-- For physics measurements, the uncertainty on the final measurement quantity is what becomes most relevant. 
-
-- Ideally, the full statistical analysis that is performed to produce the final measurement results should be considered as a performance metric of a neural network model.
-- This, however, is extremely computing intensive and there are good alternatives that approximate the final results well.
-
-- Loss function vs significance: could add significance as loss\cite{ELWOODZ0INML}
-
-- In this analysis:
-
-\begin{itemize}
-    \item Use cross entropy during the training to update the parameters. 
-    \item Use statistical significance calculated based on the distribution of the output of the model. 
-    \item Add information about systematic uncertainties to significance -> Choose model based on that
-\end{itemize}
-
-- Use in final analysis
-
+% The training of the neural network itself, however, uses the cross entropy loss function to learn the optimal parameters. This function must be differentiable with respect to the parameters of the model in order to use backpropagation. 
+% Therefore, it is not trivial to use the discovery significance in the training of the neural network itself.
+% The parameters of the neural network are learned by using backpropagation to minimize the cross entropy loss. 
 
 % The task at hand is to construct a function that separates signal processes as well as possible from background processes, based on the statistical significance of the signal process over the background processes.
 
-During the training of the neural network, a differentiable loss function is required in order to perform backpropagation.
-The loss function must be fully differentiable with respect to the parameters of the model in order to perform gradient descent optimisation.
-This requires the definition of a metric that can be optimised to achieve exactly this. 
-For binary classification, the cross entropy loss is the most common choice and also used in this analysis during the training.
-
-
+% During the training of the neural network, a differentiable loss function is required in order to perform backpropagation.
+% The loss function must be fully differentiable with respect to the parameters of the model in order to perform gradient descent optimisation.
+% This requires the definition of a metric that can be optimised to achieve exactly this. 
+% For binary classification, the cross entropy loss is the most common choice and also used in this analysis during the training.
 % FROM ARTICLE
 % parameters learned by the model are determined by minimizing a chosen loss function.
-
-- optimization during training: needs to be differentiable w.r.t. network parameters  -> loss function
-
-- ultimate figure of merit: likelihood fit
-- technically unfeasible
-
-- simple significance can be used
-- simple significance with added uncertainties!
-
--> show that it is highly correlated with the loss function of the network
-- Plot with loss vs significance
+% - optimization during training: needs to be differentiable w.r.t. network parameters  -> loss function
+% - ultimate figure of merit: likelihood fit
+% - technically unfeasible
+% - simple significance can be used
+% - simple significance with added uncertainties!
+% -> show that it is highly correlated with the loss function of the network
+% - Plot with loss vs significance
 
 \subsection{Training optimization}
 
