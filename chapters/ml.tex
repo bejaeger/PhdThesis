@@ -205,43 +205,45 @@ The weights may also be used to correct for class imbalances in the training dat
 
 \section{Hyperparameter optimization} 
 In practice, when training a neural network, significant effort needs to be put into finding a suitable set of network parameters and training parameters (collectively known as \emph{hyperparameters}) so that the chosen \emph{performance metric} is optimized and the network converges to a minimum both rapidly and reliably. 
-The metric that is optimized actively during the training is the loss function, which is used to assess the convergent behavior of the training. 
-The final performance metric, that is used to select the model, is problem dependent and can range from simple estimators, such as the classification accuracy in the case of classification tasks, to more complex assessments, as is typically the case in HEP physics analysis.
-In HEP, the performance metric should estimate as close as possible the performance of the final physics measurement. This, however, is complex because the measurement is usually performed with a sophisticated statistical procedure. 
-A common approach is therefore to evaluate the performance with simplified estimators extracted from the distribution of the network output, such as the expected discovery significance (as explained in \cref{sec:hypothesis-testing}).
-Several useful training techniques exist, that make finding a suitable training configuration easier.
-\todo{In the above, don't blah blah about performance metrics just yet. Add that as a separate section somewhere. }
+Several useful training techniques and learning algorithms exist, that make finding a suitable training configuration easier.
+
+\paragraph{Performance metrics}
+% The metric that is optimized direclty during the training is the loss function, which is used to assess the convergent behavior of the training. 
+% The final performance metric, that is used to select the model, is problem dependent and can range from simple estimators, such as the classification accuracy in the case of classification tasks, to more complex assessments, as is typically the case in HEP physics analysis.
+% In HEP, the performance metric should estimate as close as possible the performance of the final physics measurement. This, however, is complex because the measurement is usually performed with a sophisticated statistical procedure. 
+% A common approach is therefore to evaluate the performance with simplified estimators extracted from the distribution of the network output, such as the expected discovery significance (as explained in \cref{sec:hypothesis-testing}).
+% Several useful training techniques and learning algorithms exist, that make finding a suitable training configuration easier.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%% Take the following in consideration and write a separate "optimisation/performance metrics" subsection (copied from hww section)
-The task at hand is to construct a function that separates signal processes as well as possible from background processes.
-In typical ML applications, the performance of such a binary classifier is often estimated with measures such as the \emph{accuracy}, the percentage of correct positive and negative assignments, or the area under the receiver operating characteristic (ROC) curve~\cite{BRADLEY19971145}. 
-For HEP applications, other metrics are more suitable. In the case of a physics search, the discovery significance of the signal process over the background process is a more fitting measure as it directly determines the sensitivity and thus performance of an analysis. 
+The performance metric used to select the model is problem dependent.
+In typical ML applications, the performance of a binary classifier is often estimated with measures such as the \emph{accuracy}, the percentage of correct positive and negative assignments, or the area under the receiver operating characteristic (ROC) curve~\cite{BRADLEY19971145}. 
+For HEP applications, other metrics are more meaningful. In the case of a physics search, the discovery significance of the signal process over the background process directly determines the sensitivity and thus performance of an analysis. 
+For a physics measurement, the uncertainty on the final measurement quantity may be used to assess the performance of a neural network model.\footnote{Ideally in HEP, the full statistical analysis that is performed to produce the final measurement results should be considered as a final performance metric of a model. This, however, is typically extremely computing intensive and often there are simple alternatives that approximate the final results very well.}
 
-The training itself is based on yet another metric that must be differentiable with respect to the parameters of the model in order to perform backpropagation. 
-For binary classification, the cross entropy loss is commonly chosen. 
+It would be natural to directly apply the aforementioned performance metrics as a loss function and optimise them when training the neural network.
+However, this is not possible for most metrics because the loss function must be differentiable with respect to the parameters of the network in order to perform backpropagation. The discovery significance, for example, is a discrete function of the number of signal and background events and not differentiable in its simple form.\footnote{New studies explore the possibility to redefine the discovery significance to make it differentiable and directly use it in the training~\cite{ELWOODZ0INML}.}
+They are therefore computed based on the trained models (or snapshots during the training) in order to select the best performing one and have no impact on the training itself.
+
+To validate the methodology, it is meaningful to show that the loss function that is optimised during the training is correlated with the performance metric. 
+\Cref{fig:loss-vs-sign} shows the anti-correlating behavior between the cross entropy loss, that is most commonly chosen for binary classification tasks, and the discovery significance as a function of the training iterations.
+
+%For binary classification, the cross entropy loss is most commonly chosen. 
+% The metric used during the training must be differentiable with respect to the parameters of the model in order to perform backpropagation. 
+% The training itself is based on yet another metric that must be differentiable with respect to the parameters of the model in order to perform backpropagation. 
 % The parameters of the model are learned by minimizing the cross entropy loss. 
 % The loss function must be fully differentiable with respect to the parameters of the model
 % Add differentiable loss function here?
 
-- For physics measurements, the uncertainty on the final measurement quantity is what becomes most relevant. 
-
-- Ideally, the full statistical analysis that is performed to produce the final measurement results should be considered as a performance metric of a neural network model.
-- This, however, is extremely computing intensive and there are good alternatives that approximate the final results well.
-
-- Loss function vs significance: could add significance as loss\cite{ELWOODZ0INML}
-
 
 \paragraph{Learning rate} \mbox{}\\
 The learning rate is one of the most crucial hyperparameters as it determines the size of the weight updates. Choosing a learning rate that is too large, can prevent convergence and cause the loss function to fluctuate around the minimum. Too low a learning rate can lead to extremely slow or no convergence. 
-One method to mitigate this problem is using a \emph{learning rate schedule}, that adjusts the learning rate based on the progress during the training. As such, a larger learning rate that gets smaller over time can be used in the beginning of the training. 
-Typically, the learning rate is chosen by testing different values and observing the behavior of the loss function as a function of the training progress.
+One method to mitigate this problem is using a \emph{learning rate schedule}, that adjusts the learning rate based on some evaluation metrics computed during the training. A larger learning rate that gets smaller over time can hence be used in the beginning of the training. 
+Typically, the final learning rate is chosen by testing different values and observing the behavior of the loss function as a function of the training progress.
 
 % @see: https://ruder.io/optimizing-gradient-descent/
-% avoiding getting trapped in their numerous suboptimal local minima
-% A learning rate that is too small leads to painfully slow convergence, while a learning rate that is too large can hinder convergence and cause the loss function to fluctuate around the minimum or even to diverge.
 
 \paragraph{Optimizers}\mbox{}\\
-There are many variations of the gradient descent algorithm that can improve the convergence of the training. An overview of different methods is for example given in \ccite{ruder2017overview}. The \emph{AdaGrad}~\cite{adagrad-duchi} algorithm is one such example that is used in the work presented in this thesis. It adapts the learning rate individually for each parameter by introducing a matrix, $\pmb{G}_{\tau} = \sum_{t=0}^{\tau} \left( \grad_{\pmb{w}^{(t)}} L(\pmb{w}^{(t)}) \right)^2$, that holds the sum of squares of the past gradients for each parameter. 
+There are many variations of the gradient descent algorithm that can improve the convergence of the training. An overview of different methods is given for example in \ccite{ruder2017overview}. The \emph{AdaGrad}~\cite{adagrad-duchi} algorithm is one such example that is used in the work presented in this thesis. It adapts the learning rate individually for each parameter by introducing a matrix, $\pmb{G}_{\tau} = \sum_{t=0}^{\tau} \left( \grad_{\pmb{w}^{(t)}} L(\pmb{w}^{(t)}) \right)^2$, that holds the sum of squares of the past gradients for each parameter. 
 The weight updates are then given as,
 \begin{equation}
     \pmb{w}^{(\tau+1)} = \pmb{w}^\tau - \frac{\eta}{\sqrt{\pmb{G}_\tau + \epsilon}}  \grad_{\pmb{w}^{(\tau)}} L(\pmb{w}^{(\tau)}), 
@@ -249,9 +251,13 @@ The weight updates are then given as,
 where $\epsilon$ is a small, non-zero floating point used to avoid numerical instability.
 Introducing this parameter-specific learning rate largely reduces the dependence on the choice of the initial learning rate, as rare features in the training data are automatically being given more importance than frequently occurring ones, which helps to make the training converge faster and more reliably.
 
+% The intuition behind the algorithm: From https://towardsdatascience.com/learning-parameters-part-5-65a2f3583f7d
+% AdaGrad decays the learning rate very aggressively (as the denominator grows). As a result, after a while, the frequent parameters will start receiving very small updates because of the decayed learning rate.
+% Decay the learning rate for parameters in proportion to their update history (more updates means more decay).
+
 \paragraph{Regularization}\mbox{}\\
-To avoid overfitting and ensure generalization, several regularization methods exist. 
-In the work presented in this thesis, so-called \emph{dropout}~\cite{srivastava_dropout_2014,DBLP:journals/corr/abs-1207-0580} is used for regularization. In this method, a chosen percentage of neurons along with their connections are randomly disabled (or ``dropped'') for each iteration of the training. This means that during each training iteration a different ``thinned'' version of the original network is effectively used, which reduces the risk of overfitting. 
+There are several regularization methods to avoid overfitting and ensure generalization. 
+In the work presented in this thesis, so-called \emph{dropout}~\cite{srivastava_dropout_2014,DBLP:journals/corr/abs-1207-0580} is used for regularization. In this method, a chosen percentage of neurons along with their connections are randomly disabled (or ``dropped'') for each iteration of the training. This means that during each training iteration a different ``thinned'' version of the original network is used effectively, which reduces the risk of overfitting. 
 Other forms of regularization are the so-called $L_2$ regularization, that applies a penalty to the loss function based on the overall size of the weights, or the more practical approach of early stopping, in which the training is stopped as soon as signs of overfitting are observed. 
 Another key factor is the size of the training data itself. The more training samples are available, the less likely it is for the network to be able to adjust to unique features of the training data and thus suffer from overfitting.
 
@@ -268,13 +274,13 @@ The following three subsets are generally defined, each fulfilling a particular 
 A naive approach is to split the dataset once, train the model with the training set, tune the hyperparameters by evaluating the performance on the validation set, and test how well the model performs on the fully independent test set. 
 This, however, comes at the cost of loosing statistical precision in each of the sets. 
 To overcome this, a method known as \emph{cross validation} can be used, that trains the model in different iterations, each with a different definition of the train, validation, and test set.
-Multiple forms of cross validation exist, the one used in the work presented in this thesis is known as \emph{k-fold cross validation}, in which $k$ models are trained and deployed accordingly. A schematic of the dataset split for $k=5$ is shown in \cref{fig:k-fold-method}. 
+There are multiple forms of cross validation, the one used in the work presented in this thesis is known as \emph{k-fold cross validation}, in which $k$ models are trained and deployed accordingly. A schematic of the dataset split for $k=5$ is shown in \cref{fig:k-fold-method}. 
 While cross validation comes with a significant increase in computing time, it allows exploiting more of the available statistical power in the training and the evaluation of the performance metrics.
 % - Two purposes in HEP: maximize training statistics, ability to use full MC set, that is have an unbiased estimator for each MC event.
 % - cross validation to avoid any bias from using the prediction of an event that was also learned using the same event.
 % - k-fold cross validation to prevent any bias but still exploit significant portion of available data set for training \cref{fig:k-fold-method}.
 Another major advantage of cross validation is specific to HEP physics analyses. 
-Here, the dataset that is used for the training is usually required for further statistical interpretations. In cases like that, it is best practice to use the test set for further analysis as it removes any potential bias that may occur when data samples are evaluated with a model that was trained with same data sample.
+Here, the dataset that is used for the training is usually required for further statistical interpretations. In cases like that, it is best practice to use the test set for further analysis as it removes any potential bias that may occur when data samples are evaluated with a model that was trained with the same data sample.
 When cross validation is used each data sample falls in one of the test sets, such that the entire dataset can be used for further analysis.
 % best practice to avoid using the model output of a data sample if the model was trained with the same data sample. The
 

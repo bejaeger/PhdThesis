@@ -9,12 +9,16 @@ The network is trained with simulated $pp$ collision events that have ground-tru
 
 \subsection{Optimization and performance metrics}
 The task at hand is to construct a function that separates the VBF signal process as well as possible from the background processes.
-To this end, the cross entropy loss is used as a measure of the separation and the parameters of the neural network model are learned using backpropagation.
-In this analysis, the more meaningful measure of the separation is the expected discovery significance (see \cref{chap:statistics}) of the VBF signal process over the background processes. 
-It would therefore be natural to directly optimise the discovery significance when training the neural network. 
-However, this is not trivial because the loss function must be differentiable with respect to the parameters of the network\footnote{There are attempts to achieve exactly this, as shown in \ccite{ELWOODZ0INML}.} which is not the case for the discovery significance as it is a discrete function of the number of signal and background events. 
-In practice, the cross entropy loss is highly anti-correlated with the discovery significance, which is shown in \cref{FIG}.
-The training is therefore performed based on the cross entropy loss and the discovery significance is used only to evaluate the trained model. The significance is computed based on the distribution of the output of the neural network. 
+The cross entropy loss is used during the training as a measure of this separation and the discovery significance (see \cref{chap:statistics}) of the VBF signal process over the background processes is used as a final performance metric to select the final model.
+The $k$-fold cross validation method is used to avoid any bias and the final model is selected based on the significance corresponding to the validation set. The test set is used as a final validation to ensure generalisation. 
+The significance is computed based on the distribution of the output of the neural network for the full data sample. 
+\todo{MAYBE explain bin-by-bin significance and binning optimisation?}
+
+% It would therefore be natural to directly optimise the discovery significance when training the neural network. 
+% However, this is not trivial because the loss function must be differentiable with respect to the parameters of the network\footnote{There are attempts to achieve exactly this, as shown in \ccite{ELWOODZ0INML}.} which is not the case for the discovery significance as it is a discrete function of the number of signal and background events. 
+
+% In practice, the cross entropy loss is highly anti-correlated with the discovery significance, which is shown in \cref{FIG}.
+% The training is therefore performed based on the cross entropy loss and the discovery significance is used only to evaluate the trained model. 
 % \begin{itemize}
 %     \item The cross entropy loss is used during the training to learn the parameters of the neural network. 
 %     \item The discovery significance shown in \cref{eq:discovery-significance} is used as an evaluation metric of a trained model.
@@ -41,7 +45,7 @@ The training is therefore performed based on the cross entropy loss and the disc
 % -> show that it is highly correlated with the loss function of the network
 % - Plot with loss vs significance
 
-\subsection{Training optimization}
+\subsection{Training procedure}
 
 multidimensional optimization problem:
 ML related

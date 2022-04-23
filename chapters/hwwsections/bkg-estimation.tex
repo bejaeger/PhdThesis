@@ -1,7 +1,7 @@
 \todo{Provide table with backgrounds and characteristics...see S Gadatsch thesis Table 5.1 page 126???}
 
 One of the crucial tasks of a physics analysis is to estimate the different background contributions in the SR as accurately as possible.
-In this thesis, three different methods are applied for this purpose: 
+In this thesis, three different methods are applied for this purpose:
 The top quark, \Zjets, and continuum $qqWW$ background (not for the VBF category) are estimated using subsidiary measurements in so-called control regions (CRs), processes with misidentified leptons are estimated using a data-driven method known as the \emph{fake factor method}, and all other background contributions are estimated solely based on simulated samples normalised to the theoretical cross sections for the specific processes.
 The following provides an overview of the different estimation strategies, treated separately for each analysis category.
 
@@ -27,9 +27,9 @@ For the ggF-enriched \TwoJet category, a CR is nonetheless found by requiring $\
     \mTtwo^2 = \underset{{p\mkern-9.5mu/}_1+{p\mkern-9.5mu/}_2={p\mkern-9.5mu/}_\text{T}}{\textrm{min}} \left[\textrm{max}\{\mt^2(p_\text{T}^a,{p\mkern-9.5mu/}_1),\mt^2(p_\text{T}^b,{p\mkern-9.5mu/}_2)\}\right],
 \end{equation}
 where the minimization goes over all possible two-momenta, ${p\mkern-9.5mu/}_{1,2}$, such that their sum gives the observed missing transverse momentum ${p\mkern-9.5mu/}_\text{T}$, and where each of $p_\text{T}^a$ and $p_\text{T}^b$ is the combined transverse momentum of a charged lepton and a jet~\cite{PLACEHOLDER:PAPER:CITATION}.
-For the VBF-enriched \TwoJet category, no $WW$ CR pure enough in $WW$ processes can be defined. 
-The $qqWW$ background is therefore estimated from simulated samples normalised to their theoretical cross section. 
-To validate the consistency between the simulated samples and data, a $WW$ validation region (VR) is used, defined by requiring \todo{WW VR selections}. 
+For the VBF-enriched \TwoJet category, no $WW$ CR pure enough in $WW$ processes can be defined.
+The $qqWW$ background is therefore estimated from simulated samples normalised to their theoretical cross section.
+To validate the consistency between the simulated samples and data, a $WW$ validation region (VR) is used, defined by requiring \todo{WW VR selections}.
 
 \todo{WW VR figure}
 
@@ -41,7 +41,7 @@ The purity of the $WW$ process in the CRs as well as the normalisation factors a
 The $t\bar{t}$ and $Wt$ processes are normalised with a combined template using the same NF, extracted from dedicated top-quark CRs.
 The relative contribution of $t\bar{t}$ and $Wt$ processes are comparable between the CRs and SRs and its uncertainties are accounted for by treating the relevant sources of uncertainties separately.
 
-The top-quark CRs in the \ZeroJet, \OneJet, and VBF-enriched \TwoJet\ category are defined by requiring the presence of $b$-jets. 
+The top-quark CRs in the \ZeroJet, \OneJet, and VBF-enriched \TwoJet\ category are defined by requiring the presence of $b$-jets.
 For the \ZeroJet\ category, a $b$-jet with $20 < \pT < 30\,$GeV is required.
 For the \OneJet\ category, exactly one $b$-jet with $\pT > 30\,$GeV and no $b$-jet with $20 < \pT < 30\,$GeV is required. These specific selections ensure that the ratio between $t\bar{t}$ and $Wt$ processes is similar between the CR and the SR without compromising the purity of top-quark processes in the CR.
 The top-quark CR in the VBF-enriched \TwoJet category is defined by requiring the presence of exactly one $b$-jet with $\pT > 30\,$GeV.
@@ -50,25 +50,112 @@ In the ggF-enriched \TwoJet\ region, an alternative strategy is used that does n
 The purity of the $WW$ process in the CRs as well as the normalisation factors are summarized in \cref{table-NFs-purities}.
 
 \subsubsection{\Ztautau background}
-The \Ztautau\ background is normalised using dedicated CRs, defined separately for each analysis category. 
+The \Ztautau\ background is normalised using dedicated CRs, defined separately for each analysis category.
 The CR in the \ZeroJet category requires a large opening angle of the leptons of $\DPhill > 2.8$.
 For the \OneJet and two \TwoJet categories, the \mtautau observable is exploited to separate the \Ztautau CRs from the SRs by selecting the region around the nominal $Z$ boson mass.
-The specific selections are $\mtautau - m_Z < 25\,$GeV for the \OneJet and ggF-enriched \TwoJet category and $|\mtautau - m_Z| \le 25\,$GeV for the VBF-enriched \TwoJet category. 
+The specific selections are $\mtautau - m_Z < 25\,$GeV for the \OneJet and ggF-enriched \TwoJet category and $|\mtautau - m_Z| \le 25\,$GeV for the VBF-enriched \TwoJet category.
 
 In order to increase the statistical precision of the CRs, some selections made in the SR are relaxed or dropped.
-In the \ZeroJet and \OneJet category, no \pTmiss requirement is applied and the \mll\ selection is relaxed to $\mll < 80\,$GeV. 
+In the \ZeroJet and \OneJet category, no \pTmiss requirement is applied and the \mll\ selection is relaxed to $\mll < 80\,$GeV.
 In the VBF-enriched \TwoJet category, the $\mll$ requirement is relaxed to $\mll < 70\,$GeV and the region above $\mtautau = m_Z + 25\,$GeV is additionally considered.
 
 The purity of the \Ztautau\ process in the CRs as well as the normalisation factors are summarized in \cref{table-NFs-purities}.
 
 \todo{Table with bkg selection HIGHLIGHTING the important cuts for orthogonality}
 
-\subsection{Backgrounds with misidentified leptons}
-
-- Explain fake factor method!
-
-
 \subsection{Backgrounds estimated with simulated samples}
-Several processes are estimated using simulated samples normalised to their theoretical cross-sections. These involve Higgs boson processes not considered as signal in this analysis, which are $ttH$ and $VH$ produced Higgs bosons as well as processes with $H\to\tau\tau$ decays, and the background contributions from $ggWW$, EW $WW$, Other $VV$, and triboson processes. Additionally, in the VBF-enriched \TwoJet category, the $qqWW$ background is estimated using simulated samples and validated in a validation region. 
+Several processes are estimated using simulated samples normalised to their theoretical cross-sections. These involve Higgs boson processes not considered as signal in this analysis, which are $ttH$ and $VH$ produced Higgs bosons as well as processes with $H\to\tau\tau$ decays, and the background contributions from $ggWW$, EW $WW$, Other $VV$, and triboson processes. Additionally, in the VBF-enriched \TwoJet category, the $qqWW$ background is estimated using simulated samples and validated in a validation region.
 
+
+\subsection{Backgrounds with misidentified leptons}
+The $W$+jets and multijet processes enter the signal region if one ($W$+jets) or two (multijet) leptons are misidentified.
+Their contributions are estimated using a data-driven technique known as \emph{fake factor method} where a control sample is defined from which the expected number of events in the analysis regions are extrapolated by applying an extrapolation factor known as \emph{fake factor}.
+The control sample is defined with alternative object selection criteria orthogonal to the nominal selections designed to be enriched in candidate events with misidentified leptons.
+The fake factor is derived in a separate analysis and can be regarded as the probability of a lepton being misidentified, given the control sample selections.
+For each analysis region, the same event selections are applied to the control sample as in the nominal analysis and the contributions of backgrounds with misidentified leptons are estimated by multiplying the expected number of events in the control sample with the fake factor, after subtracting the expected contribution from processes with two real, prompt leptons.
+
+\todo{maybe last sentence is mentioned twice?}
+
+\subsubsection{Control sample definition}
+The control sample is distinguished from the nominal selection by using an alternative lepton selection. 
+One of the two prompt lepton candidates is required to fail the full identification criteria defined in \cref{chap:object-selection} but satisfies a looser set of criteria, referred to as \emph{anti-identified} lepton.
+\Cref{tab:leptonID} summarizes the lepton selections for fully identified and anti-identified leptons. 
+
+%Paper
+%They are estimated using a data-driven technique8 where 464 control samples are established in which all nominal selections are applied with the exception that one of 465 the two lepton candidates fails to meet the full identification criteria defined in Section 4, but satisfies a 466 looser set of identification criteria (referred to as an anti-identified lepton).
+
+\begin{table}
+    \scalebox{0.9}{
+        \begin{tabular}{c|c||c|c}
+            \toprule
+            % \dbline
+            \multicolumn{2}{c||}{Electron}                                       & \multicolumn{2}{c}{Muon}                                                                                                      \\
+            identified                                                           & anti-identified                                  & identified                          & anti-identified                      \\
+            \midrule
+            % \sgline
+            \multicolumn{2}{c||}{$\pt$  > 15 $\mathrm{GeV}$}                     & \multicolumn{2}{c}{$\pt$   > 15 $\mathrm{GeV}$ }                                                                              \\
+            \multicolumn{2}{c||}{$|\eta|  <2.47$,excluding  $1.37<|\eta|< 1.52$} & \multicolumn{2}{c}{$|\eta|  <2.5$}                                                                                            \\
+            \multicolumn{2}{c||}{$|z_{0}\sin\theta|<0.5$ mm }                    & \multicolumn{2}{c}{$|z_{0}\sin\theta|<0.5$ mm }                                                                               \\
+            \multicolumn{2}{c||}{$|d_{0}|/\sigma(d_{0})<5$ }                     & $|d_{0}|/\sigma(d_{0}) <  3$                     & $|d_{0}|/\sigma(d_{0}) <  15$                                              \\
+            Pass LHTight if $\pt < 25 \;\mathrm{GeV}$                            & \multirow{3}{*}{Pass LHLoose}                    & \multirow{3}{*}{Pass Quality Tight} & \multirow{3}{*}{Pass Quality Medium} \\
+            Pass LHMedium if $\pt > 25 \;\mathrm{GeV}$                           &                                                  &                                     &                                      \\
+            Pass FCTight isolation                                               &                                                  & Pass FCTight isolation              &                                      \\
+            \multicolumn{2}{c||}{ {\scshape Author} $= 1$}                       &                                                  &                                                                            \\
+                                                                                 & Veto against identified electron                 &                                     & Veto against identified muon         \\
+            % \dbline
+            \bottomrule
+        \end{tabular}
+    }
+    \caption{Requirements for fully identified and anti-identified leptons.}
+    \label{tab:leptonID}
+\end{table}
+
+\todo{Check how this compares to the object selection chapter!}
+
+
+
+\subsubsection{Extrapolation to analysis regions}
+
+The background with misidentified leptons is estimated based on the following expression:
+\begin{equation}
+    N_{\text{id,id}}^{\text{Mis-Id}} = F_2 \left( N_{\text{id,\sout{id}}}^{\text{data}} - N_{\text{id,\sout{id}}}^{\text{sim, 2 prompt}} \right) + F_1 \left( N_{\text{\sout{id},id}}^{\text{data}} - N_{\text{\sout{id},id}}^{\text{sim, 2 prompt}} \right) + F_1F_2 \left( N_{\text{\sout{id},\sout{id}}}^{\text{data}} - N_{\text{\sout{id},\sout{id}}}^{\text{sim, 2 prompt}} \right).
+\end{equation}
+
+- Explain terms!
+
+
+\subsubsection{Derivation of the fake factors}
+The fake factors are estimated using a data sample enriched in \Zjets events and a selection that targets events with two leptons originating from the $Z$ boson decay and a jet that serves as candidate for being misidentified as a lepton (referred to as Mis-Id candidate). 
+
+A three-lepton selection is therefore applied, where each lepton must satisfy \ptGT{15}\,GeV.
+The two leptons that qualify as $Z$ decay particles are selected by requiring two leptons in the event to be of opposite charge and same flavour and to have an invariant mass close the $Z$ boson mass. If these two leptons are electrons (muons), a requirement of $80 < m_{ee} < 110\,$GeV ($70 < m_{ee} < 110\,$GeV) is applied.
+The two leptons are required to be fully identified except of the isolation requirement, that is loosened to a ``loose'' working point selection, and the identification working point, that must be ``loose-with-$b$-layer'' for electrons and muons must be of ``medium'' quality. Relaxing these criteria allows for a better statistical precision in the fake factor derivation.\todo{rewrite the sentence about loosened id and iso criteria.}
+In addition, at least one of the two leptons must be associated to the online object that triggered the single-lepton trigger used in the analysis as described in \cref{sec:data-mc-samples}.
+If more than one pair of leptons satisfies these requirements, the pair with the invariant mass closest to the $Z$ boson mass is chosen.
+The respective other lepton in the event serves as the Mis-Id candidate.
+The fake factor is then defined as the ratio of events, where this Mis-Id candidate is fully identified, $N_{\text{id}}^{\text{data}}$, and anti-identified, $N_{\text{\sout{id}}}^{\text{data}}$, each time subtracting the expected number of events with three real, prompt leptons,
+\begin{equation}
+    F = \frac{ N_{\text{id}}^{\text{data}} - N_{\text{id}}^{\text{3 real prompt}}}{N_{\text{\sout{id}}}^{\text{data}} - N_{\text{\sout{id}}}^{\text{3 real prompt}}}.
+\end{equation}
+The events with three real, prompt leptons, $N_{\text{id/\sout{id}}}^{\text{3 real prompt}}$, are estimated using simulated samples and are primarily due to leptonically decaying $WZ$ production. 
+To reduce the contamination of these processes, a requirement of $m_T^W = \sqrt{2E^{\textrm{miss}}_\textrm{T} E^{\text{Mis-Id cand.}}_\textrm{T} (1-\cos\phi)} < 50\;\textrm{GeV}$ is additionally applied in the \Zjets selection.
+The normalisation of the $WZ$ contribution is extracted from a control region, defined by inverting the $m_T^W$ selection and requiring the Mis-Id candidate to pass the full identification criteria. 
+This region is very pure in $WZ$ events so that a precise normalisation factor of $0.99 \pm 0.01$ can be extracted and applied in the \Zjets selection. 
+
+- Uncertianty from EW subtraction?
+% From ralf:
+%Uncertainties from the normalization of the W Z process in the control region and its extrapolation to regions the fake factors are estimated from are summarized as the EW subtraction uncertainty.
+
+
+\todo{Think of better name as '3 real prompt' and harmonize with text}
+
+% not sure if I want to add the following
+% The underlying assumption is that the misidentification efficiency only depends on properties of the jet misidentified as a lepton, not on the remainder of the event, which is reasonable given the that the jet and lepton reconstruction only takes information from specific detector regions.
+
+- MAYBE show pT/eta distributions for id and anti-id mis-id candidate
+- Show fake factor Plot
+
+- Mention correction factor
+
+- Talk about muon fake factor extrapolation?
 
