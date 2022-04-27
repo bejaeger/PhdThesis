@@ -1,5 +1,57 @@
-\subsection{Systematic experimental uncertainties}
+This analysis is affected by several sources of systematic uncertainties.
+They can be grouped into \emph{experimental uncertainties} and \emph{theoretical uncertainties}.
+The experimental uncertainties are related to the detector performance and associated to the identification, reconstruction, and trigger efficiencies, as well as the limited knowledge of the scale and resolution of energy and momentum measurements.
+The theoretical uncertainties for both the signal and background processes arise from the imprecise knowledge of the parton showering process and underlying event, missing higher order calculations, and uncertainties in the strong coupling constant $\alpha_s$ as well as the PDFs. In some cases, further process-specific uncertainties are taken into account.
+% In a multi-category analysis, the sign and magnitude of these experimental uncertainties are calculated separately in each category.
+All uncertainties are taken into account by constructing the respective varied templates of the statistical model and using them to define the corresponding nuisance parameters, as described in \cref{chap:statistics}.
 
-\subsection{Systematic theoretical uncertainties}
+\subsection{Experimental uncertainties}
+Experimental uncertainties are typically derived in separated calibration measurements and constraint in the likelihood by Gaussians with widths corresponding to the derived nominal uncertainty.
+They can be further divided into uncertainties affecting the entire event, known as \emph{scale-factor} (SF) uncertainties, and uncertainties specific to individual physics objects, known as \emph{four-vector} (P4) uncertainties.
+While the former is applied to the events as a flat scale factor and thus cannot change the shape of observable distributions, the latter can cause events to migrate between different histogram bins and thus induce a shape difference between the nominal and the varied template.
+A complete list of experimental uncertainties considered is provided in \cref{tab:exp-uncertainties} including references to the relevant calibration measurements. 
+More details on the uncertainties related to jets, in particular the jet energy resolution, are provided in \cref{chap:calibration}. 
+
+% From MASTER thesis:
+% Experimental uncertainties are usually derived externally by dedicated calibration measurements, based on actual data measurements. The constraint terms for the introduced nuisance parameters are represented by Gaussians with a width of the provided nominal uncertainty. Since the subsidiary measurements are generally based on many events, this assumption is supported by the central limit theorem.
+
+Additionally, the uncertainties associated to the background with misidentified leptons are considered as experimental uncertainties. They enter via the uncertainties derived for the fake factors, as explained in \cref{subsec:misid-bkg}, and thus only impact the normalisation of the statistical templates.
+They are listed in \cref{tab:ff-uncertainties}.
+
+
+% NOT SURE IF I SHOULD DO THE FOLLOWING! START WITHOUT, maybe reconsider
+% - Discuss some of the largest SHAPE uncertainties in VBF? 
+%     -> I studied it quite a bit so could definitely add some content. 
+%     -> In results section?
+% A review of all the values of the uncertainties would go beyond the scope of this thesis and luckily many of them are negligible for the final results. The following highlights the most important experimental uncertainties for the VBF analysis, to which the author of this thesis contributed. 
+
+
+
+QUESTIONS:
+- Mention NP names!?
+Ralf's thesis: Nope
+Carsten's thesis: Yep
+Hannah Arnold: Yep
+Dickinson: Nope and very short. Includes 'constraint type' when mentioning systematics
+
+- One large table, multiple small tables!?
+
+- INCLUDE BREAKDOWN PLOT IN RESULTS!?
+
+
+\begin{table}[ht]
+    \begin{center}
+        \input{tables/hww/uncertainties/exp-systs.tex}
+    \end{center}
+    \caption{Summary of experimental uncertainties considered, including their total number of nuisance parameters (NPs).
+    }
+    \label{tab:exp-uncertainties}
+\end{table}
+
+
+
+\subsection{Theoretical uncertainties}
+
 
 \subsection{Treatment of systematic uncertainties}
+

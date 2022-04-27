@@ -9,9 +9,10 @@ The network is trained with simulated $pp$ collision events that have ground-tru
 
 \subsection{Optimization and performance metrics}
 The task at hand is to construct a function that separates the VBF signal process as well as possible from the background processes.
-The cross entropy loss is used during the training as a measure of this separation and the discovery significance (see \cref{chap:statistics}) of the VBF signal process over the background processes is used as a final performance metric to select the final model.
-The $k$-fold cross validation method is used to avoid any bias and the final model is selected based on the significance corresponding to the validation set. The test set is used as a final validation to ensure generalisation. 
-The significance is computed based on the distribution of the output of the neural network for the full data sample. 
+The cross entropy loss is therefore used during the training and the discovery significance (see \cref{chap:statistics}) of the VBF signal process over the background processes is used as a final performance metric to select the final model.
+The $k$-fold cross validation method is used to avoid any bias and the final model is selected based on the significance corresponding to the validation set. 
+The test set is used as a final validation to ensure generalisation. 
+The significance is computed based on the distribution of the output of the neural network for the full training sample. 
 \todo{MAYBE explain bin-by-bin significance and binning optimisation?}
 
 % It would therefore be natural to directly optimise the discovery significance when training the neural network. 
@@ -45,64 +46,110 @@ The significance is computed based on the distribution of the output of the neur
 % -> show that it is highly correlated with the loss function of the network
 % - Plot with loss vs significance
 
+\subsection{Full DNN development cycle}
+Implementing a neural network model into an analysis is a multi-stage procedure. 
+The steps involved are illustrated in the flow-chart shown in \cref{fig:full-dnn-cycle-flow-chart} and can be summarized as follows:
+
+\begin{enumerate}
+    \item Create and preprocess the training samples
+    \item Repeated cycles of training, validating, and optimizing the neural network
+    \item Deploy neural network in physics analysis
+\end{enumerate}
+
+
 \subsection{Training procedure}
-
-multidimensional optimization problem:
-ML related
-- network architecture
-- learning rate (batch size)
-- optimizer
-- regularization technique
-- choice of k-fold method
-Physics related
-- set of input features (observables)
-- weights corresponding to different processes in training data set
+For a given set of available ML tools and the current state of knowledge about these tools, the optimisation of a DNN is mostly based on empirical approaches where cycles of DNN training, validation, and modification are performed repeatedly. 
+% Requires some ad-hoc decisions to be made. 
+During the course of the author's doctoral studies, some approaches have evolved, which means that certain parts of the training procedure have been optimised based on earlier versions of the training setup than the version used for the final DNN. 
+The following outlines roughly the different stages of the training, to motivate the procedures and decisions that were taken that resulted in the development of the final DNN used in this analysis. 
+The parameters and procedure used for the final DNN are summarized in \cref{tab:hyper-parameters}.
 
 
-
-- Historical developments, features freezes, limitations of computing resources/turnaround time
-
-- Flow chart for historical strategy:
-
-Fixed: batchsize, reLU activation, sigmoid as output activation, cross-entropy loss
-
-STAGE 1 OPTIMIZATION (FOM: simple significance, 80/20 split)
-Temporary: regularisation, adagrad (adaptive learning rate! (no need to overoptimize it)), architecture
--> Choose input variables. 
-
-Fixed: batchsize, input features
-
-STAGE 2 OPTIMIZATION (FOM: simple significance, 80/20 split)
--> Test optimizer -> Adagrad is good
--> Test different architectures -> A larger one was better
--> Double-check regularisation -> adjust dropout
-
-Fixed: batchsize, input features, optimizer, architecture, regularisation
-
-STAGE 3 OPTIMIZATION (FOM: simple significance including systematics!, k-fold)
--> Choice of k-fold: try to go higher than 5-fold. No favorable results and more bookkeeping, keep 5-fold
--> Physics weights optimization (always scanning learning rate) -> choose weights!
-
-Fixed: Everything
+\begin{table}[ht]
+    \begin{center}
+    \input{tables/hww/dnn/dnn-info.tex}
+    \end{center}
+    \caption{Hyperparameters and training procedure used for the development of the final DNN.
+    }
+    \label{tab:DNN-info}
+    % Nominal values, statistical uncertainties and EWSUBTR uncertainties produced on tag kon_improveZjetsFFStats_v2
+\end{table}
 
 
-Model choice: Choose model with highest significance in validation set!
-Model validation: Validate model comparing against test set!
+
+-> PLOTS!
+
+INPUTS:
+- Correlation plot between all input variables is useful! (SFUsMLKit (FreeForestML)) (with percentage correlation)
+- Correlation plot from SFUs correlation thingy
+- Input variables!
+
+-  VBF weighting (maybe redo) -> adam elwood argument about weight for incorrect signal classification vs incorrect bkg classification
+-  FINAL loss vs epochs
+
+Optimisation: 
+- Input variables
+- Architecture
+
+Final optimisation:
+-  BKG weights (EWWW scan)!
+-  Significances W/ and W/O uncertainties, W/ rebinning! (final optimisation)
+
+Final validation:
+- Train set vs Test set DNN distribution
 
 
-% \subsubsection{Neural network hyperparameter optimization}
-% %\subsection{Prospect Studies for Common VBF and ggF HWW 2-jet Analysis with Multiclass Classification}
+MAYBE:
+-  Different optimiser (adagrad, adam, rmsprop)
+
+
+
+% - Historical developments, features freezes, limitations of computing resources/turnaround time
+% The following therefore is an attempt to only a rough outline of the different stages of the training, which, due to both historical developments and the empirical nature of ML, should not be taken at face value but rather viewed as an attempt to motivate the decisions that were made to develop the final DNN used in the analysis.  
+% For all the above reasons, the following should not be taken at face value, but should be viewed as an attempt to roughly describe the approaches and procedures that have led to the development of the final DNN. 
+% The optimisation problem is multi-dimensional, which means that, for example, optimising a parameter $B$ after optimising parameter $A$ may result in the value of parameter $A$ no longer being optimal. 
+
+\paragraph{Stage 1 - establish robust training}
+\begin{itemize}
+    \item reLU activation, sigmoid as output activation, cross-entropy loss
+    \item batchsize: chosen to be 512
+    \item learning rate, optimiser: adagrad (adaptive learning rate! (no need to overoptimize it))
+    \item prelim regularisation
+    \item prelim. architecture: layers = 128, 64, 32, 24, 16, 8
+\end{itemize}
+
+\paragraph{Stage 2 - find set of features}
+\begin{itemize}
+    \item Optimise set of input features
+    \item Optimize architectures
+    \item Adjust dropout (repeat)
+\end{itemize}
+
+\paragraph{Stage 3 - final optimisation}
+\begin{itemize}
+    \item Use and optimise k-fold method (5-fold is enough)
+    \item Optimise physics weights while scanning for optimal learning rate
+\end{itemize}
+
+The physics related parameters are the set of input features (observables), and the weights corresponding to different processes in training data set. 
 % ML related
 % - network architecture
 % - learning rate (batch size)
 % - optimizer
 % - regularization technique
 % - choice of k-fold method
-% \subsubsection{Physics input optimization}
-% Physics related
-% - set of input features (observables)
-% - weights corresponding to different processes in training data set
+
+The training procedure in stage 1 and stage 2 was following a 70/10/20 split of training and test sample. This means, 70\% of the training data was used directly for the training, 10\% for validation during the training, and 20\% to test the final model. The simple significance as shown in \cref{eq:simple-sign} using statistical uncertainties only is used as a performance metric.
+In stage 3, the k-fold cross-validation is used, as explained in \cref{chap:ml}, and an additional performance metric is considered that is based on the knowledge about systematic uncertainties established in previous iterations of the analysis. The systematic uncertainties of the background processes are used in \cref{eq:simple-sign}. The difference between the significances can be seen in \cref{fig:significance-final-optimisation}.
+
+Model choice: Choose model with highest significance in validation set!
+Model validation: Validate model comparing against test set!
+
+
 
 
 \subsection{Final model validation}
+
 - compare distribution of different subsets to double-check for overtraining
+
+- Plots with data (also LINEAR ONE! that was not approved by ATLAS? is that allowed?!)

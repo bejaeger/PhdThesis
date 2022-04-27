@@ -61,7 +61,7 @@ The second term, \Lsyst, encodes the effect of the systematic uncertainties in t
     \Lsyst = \prod_{\theta \in \{ \pmb{\theta}_s,\pmb{\theta}_b \}} \text{Gauss}(0 | \theta, 1),
 \end{equation}
 where the NPs are normalized and scaled, such that they have a mean of zero and a unit standard deviation.
-The effect of most NPs is modelled by varied templates -- that is varied values of $\text{E}[n_i]$ -- corresponding to the $\pm 1$ variation of the respective NP. This is done by either propagating the effect of a previously measured uncertainty through the analysis -- as is typically the case for uncertainties related to the experiment -- or -- for uncertainties related to theory -- by comparing different theoretical models with each other and ad-hoc defining one standard deviation from the space of the theoretical models.
+The effect of most NPs is modelled by varied templates -- that is varied values of $\text{E}[n_i]$ -- corresponding to the $\pm 1$ variation of the respective NP. This is done either by propagating the effect of a previously measured uncertainty through the analysis -- as is typically the case for uncertainties related to the experiment -- or -- for uncertainties related to theory -- by comparing different theoretical models with each other and defining one standard deviation ad-hoc from the space of available theoretical models.
 There are different statistical techniques to provide a continuous description of the effect of each NP for NP values other than zero or unity.
 %A continuous description of the effect of each NP is required.
 In the work presented in this thesis, piece-wise interpolation is used \TDnote{REF}{Double-check piece-wise interpolation and add reference}.
@@ -74,7 +74,7 @@ accounts for the finite statistical precision on the MC template. For each bin, 
 where $\beta_i$ corresponds to $1 / \sigma_{\text{rel}, i}$, with $\sigma_{\text{rel}, i}$ being the relative statistical uncertainty in bin $i$. 
 
 \TDinote{Check whether this is indeed a Gaussian}
-
+\TDinote{Talk about shape uncertainties and normalisation uncertainties?}
 % - Explain three terms: 
 %     1. Extended Maximum Likelihood (see paper: https://www.sciencedirect.com/science/article/abs/pii/0168900290913348?via%3Dihub)
 %         - Signal regions
@@ -167,6 +167,7 @@ Using \cref{eq:Z0}, a simple approximation for the discovery significance $Z$ ca
 which is valid for large enough $b$.
 A more sophisticated approximation, that also accounts for uncertainties on the expected number of background events is given by
 \begin{equation}
+    \label{eq:simple-sign}
     Z = 
     \begin{cases}
     + \sqrt{ 2 \left( n \ln \left[ \frac{n \left( b + \sigma^2 \right)}{b^2 + n \sigma^2} \right] - \frac{b^2}{\sigma^2} \ln \left[ 1 + \frac{\sigma^2 \left(n - b \right) }{b \left( b + \sigma ^2 \right) } \right] \right)   } & \text{if } n \geq b, \\
@@ -177,6 +178,6 @@ where $\sigma$ is the uncertainty on the expected number of background events, $
 More information on how this formula is derived can be found in \ccite{ATL-PHYS-PUB-2020-025}.
 
 \TDinote{}{Mention how to calculate p-value for measurement vs SM?}
-
+\TDinote{}{Mention how breakdown is derived in profile likelihood fit}
 % From master thesis
 % The common re-quirement for a signal to claim discovery is a minimum significance of Z = 5, which corresponds to p = 2.87 · 10−7.
