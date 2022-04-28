@@ -64,12 +64,12 @@ In the case of cross-section measurements, the first type of uncertainties are f
 
 For both the ggF and VBF signal process, the uncertainties are estimated that arise from the choice of PDF including the uncertainties on $\alpha_s$, the choice of parton shower model and matrix element matching.
 The PDF uncertainty is estimated by taken the standard deviation of in total 30 independent Hessian-reduced error sets corresponding to the PDFLHC15 set \cite{Butterworth:2015oua}. 
+\todo{Double check whether this is the sandard deviation!}
 The parton shower and matrix element matching uncertainty is derived from the sample comparisons indicated in \cref{tab:mcsamples}.
-Uncertainties due to higher-order contributions not being included in the cross-section calculations and migration effects on the ggF cross sections in different \Njets categories are estimated according to the descriptions given in \ccite{deFlorian:2016spz,Stewart:2011cf,Stewart:2013faa,Liu:2013hba,Boughezal:2013oha,Gangal:2013nxa}.
+Cross-section uncertainties due to higher-order contributions not being included in the cross-section calculations and migration effects on the ggF cross sections in different \Njets categories are estimated according to the descriptions provided in \ccite{deFlorian:2016spz,Stewart:2011cf,Stewart:2013faa,Liu:2013hba,Boughezal:2013oha,Gangal:2013nxa}.
 This includes uncertainties from the choice of factorization and renormalization scales, the choice of resummation scales, and the ggF migrations between the \ZeroJet and \OneJet regions or between the $N_{\text{jet}} \ge 1$  and \TwoJet categories.
 For the ggF migration uncertainties in the \TwoJet categories the so-called Steward Tackmann procedure is used, where the inclusive cross sections in categories $N_{\text{jet}} \ge N$ and $N_{\text{jet}} \ge N+1$ are assumed to be independent and therefore the uncertainty on the exclusive cross section in the $N_{\text{jet}} = N$ can be estimated by the quadrature sum of the uncertainties of the inclusive cross sections.
 %OR THIS: where uncertainties in exclusive jet bins are estimated based on scale variations in inclusive bins.
-
 
 % From paper
 %For signal processes, the approach described in Refs. [11, 124] is used for estimating the variations due 528 to the impact of higher-order contributions not included in the calculations and migration effects on the 529 푁jet ggF cross sections. In particular, the uncertainty from the choice of factorization and renormalization 530 scales, the choice of resummation scales, and the ggF migrations between the 0-jet and 1-jet phase-space 531 bins or between the 1-jet and ≥ 2-jet bins are considered [11, 125–128].
@@ -84,6 +84,90 @@ For the ggF migration uncertainties in the \TwoJet categories the so-called Stew
 % Uncertainties on the predicted Standard Model cross section of process p are not included on the measurement of cross section  p. However, these uncertainties are included on measurements of the signal strength μp, since this result parameterizes the cross section in terms of the SM prediction. In addition, if a process q 6= p is not measured simultaneously, but is fixed to the SM expectation, then theory uncertainties on the inclusive SM  q are included on the measurement of both  p and μp.Migrationuncertaintiesareincludedonmeasurements of both  p and μp.
 \subsubsection{Background uncertainties}
 
+\paragraph{qqWW} 
+\todo{Change label qqWW to qq -> WW cause that's what it is in the plots too}
+- 
+
+% QCD scale uncertainties.
+Uncertainties arising from the choice of the renormalisation ($\mu_R$) and factorisation scales ($\mu_F$) are derived by both coherent and incoherent variations of ${\mu^{\text{var}_R , \mu^{\text{var}}_F } = {v_R, v_F } × {\mu^{\text{nom}_R , \mu^{\text{nom}}_F }$, with $v_R, v_F = 0.5, 1, 2$ excluding the combinations ${v_R, v_F } = {0.5, 2}, {2, 0.5}$. 
+This defines 7 different variations and the total scale uncertainty is estimated to be the maximum variation. 
+%defining a 7-point 2168 envelope. The total scale uncertainty is defined by the maximum variation of the 7-point envelope.
+
+% PDF uncertainties:
+The PDF and alpha_s uncertainties are evaluated from the standard deviation of 100 NNPDF3.0NLO replicas. 
+The PDF replicas and αhigh,low s are included as alternative weights in the nominal Sherpa samples.
+
+% CKKW
+- Merging scale (CKKW)
+-> Take larger variation
+
+% QSF
+- Resummation scale (QSF)
+-> Take larger variation
+
+% CSSKIN
+- Parton shower recoil scheme
+
+NO Pow+Pythia8 vs Pow+H7 comparison for shower cause it's covered by QSF and CSSKIN
+
+\paragraph{ggWW} 
+-> What happens exactly for 0-jet and 1-jet!?
+
+\paragraph{EW qq -> WWqq}
+Uses MadGraph+Pythia8 at reco level with the following uncertainties derived.
+
+% QCD scale:
+%For this LO sample, varying the μR (renormalization) scale has no effect because the ME does not include 2342 any powers of αs, but varying the factorization scale μF is expected to give a conservative uncertainty 2343 band that covers differences between the LO and NLO predictions (see, for example, Figure 3 of [121])
+
+% EW scale (alpha)
+% Int note: The main effect of missing EW scales is expected to come from the NLO EW correction.
+% Paper: he EW 푊푊 process, which contributes most significantly in the highest VBF DNN bin, 538 is assigned an additional normalization uncertainty of 15% due to NLO EW corrections, as calculated 539 using the leading-log approximation [129].
+
+% Shower
+% MadGraph+Pythia8 vs MadGraph+Herwig7 
+
+% PDF+alpha_s 
+% SAME AS qqWW!
+% IntNote: 100 NNPDF replicas around 2335 the nominal. Similarly, the effect of αs was evaluated using three replicas with different settings of αs.
+
+
+\paragraph{Background with top quarks}
+
+% Matching uncertainty
+% Int Note: The difference between the prediction of Powheg+Pythia8 and the aMCAtNlo+Pythia8 sample is taken as a matching uncertainty.
+
+% Shower uncertainty
+% Powheg+Pythia8 and Powheg+Herwig7
+
+% QCD scale with 7-point envelope
+% LIKE qqWW!
+
+% Initial State Radiation (ISR) and Final State Radiation (FSR)
+% -> missing hpdamp factor!?
+
+% PDF uncertainty with 100 NNPDF3.0 replicas (MISSES ALPHA S!?)
+
+% Single Top Interference (Wt only)
+
+
+\paragraph{\Ztautau background}
+% QCD scale: 7-point envelope
+% LIKE qqWW
+
+% PDF: NNPDF3.0 100 NNPDF replicas
+% alpha_s: two NNPDF3.0nnlo αs variations.
+
+% GENERATOR:
+% INT NOTE: Sherpa 2.2.1 handles simulation of the matrix element and parton shower with a custom tune. Uncertainty 2447 associated with this choice of generator is evaluated by comparing with MadGraph5_aMC@NLO, which 2448 is interfaced to Pythia8 with the A14 tune for modelling of the parton shower and underlying event.
+
+
+\paragraph{Other backgrounds}
+% Int note: A flat -50%/+100% uncertainty on the overall normalization of V γ processes is applied to account for 2494 potential mismodelling of this background. For Non-WW diboson processes, a 12% normalization 2495 uncertainty is applied. This uncertainty was evaluated for the Z+jets fake factor estimate (section 7.2) 2496 and includes contributions from QCD scale, PDF and αS. This uncertainty is also applied for triboson 2497 processes.
+
+
+\paragraph{STXS signal uncertainties}
+% Same uncertainties but for each truth bin:
+% ONLY cross-section uncertainties, from INT NOTE: As such, the samples or weight variations used to evaluate the signal uncertainties 2509 must be normalized to the same cross-section at truth-level in each STXS bin, prior to examining their 2510 effects on the yield in signal region
 
 
 
