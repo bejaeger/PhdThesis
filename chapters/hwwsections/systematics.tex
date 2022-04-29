@@ -162,20 +162,25 @@ An additional uncertainty due to the choice of electroweak scale and the missing
 
 \paragraph{Background with top quarks}
 
-% Matching uncertainty
-% Int Note: The difference between the prediction of Powheg+Pythia8 and the aMCAtNlo+Pythia8 sample is taken as a matching uncertainty.
-
+The uncertainty arising from the choice of parton shower model, the choice of QCD scales, and choice of PDF, is estimated as described in the common section above. 
 % Shower uncertainty
 % Powheg+Pythia8 and Powheg+Herwig7
 
 % QCD scale with 7-point envelope
 % LIKE qqWW!
 
+% PDF uncertainty with 100 NNPDF3.0 replicas (MISSES ALPHA S!?)
+
+The uncertainty due to the matching procedure between matrix element calculations and the parton shower are estimated by comparing the predictions of MC simulations based on Powheg+Pythia8 and aMCAtNlo+Pythia8. 
+% Matching uncertainty
+% Int Note: The difference between the prediction of Powheg+Pythia8 and the aMCAtNlo+Pythia8 sample is taken as a matching uncertainty between 
+
+Additional uncertainties are considered due to additional initial state (ISR) or final state radiation (FSR). 
+The parameters determining the amount of ISR and FSR are therefore varied up and down. 
 % Initial State Radiation (ISR) and Final State Radiation (FSR)
 % -> missing hpdamp factor!?
 
-% PDF uncertainty with 100 NNPDF3.0 replicas (MISSES ALPHA S!?)
-
+For the $Wt$ process only, an additional uncertainty is considered due to interference effects between processes with single top quarks and $t\bar{t}$ processes. This uncertainty uses an alternative diagram removal scheme \cite{Frixione:2008yi}. %(DR instead of DS scheme) . 
 % Single Top Interference (Wt only)
 
 
@@ -183,12 +188,14 @@ An additional uncertainty due to the choice of electroweak scale and the missing
 % QCD scale: 7-point envelope
 % LIKE qqWW
 
+The uncertainty due to the choice of QCD scales, the choice of PDF, and  $\alpha_s$ is estimated as described in the common section above. 
 % PDF: NNPDF3.0 100 NNPDF replicas
 % alpha_s: two NNPDF3.0nnlo αs variations.
 
+The nominal \SHERPAV{2.2.1} generator handles simulation of the matrix element and parton shower with a custom tune. To estimate the uncertainty arising from that choice the nominal sample is compared to a sample generated with \textsc{MadGraph5\_aMC@NLO+Pythia8} and the A14 tune. 
+
 % GENERATOR:
 % INT NOTE: Sherpa 2.2.1 handles simulation of the matrix element and parton shower with a custom tune. Uncertainty 2447 associated with this choice of generator is evaluated by comparing with MadGraph5_aMC@NLO, which 2448 is interfaced to Pythia8 with the A14 tune for modelling of the parton shower and underlying event.
-
 
 \paragraph{Other backgrounds}
 % Int note: A flat -50%/+100% uncertainty on the overall normalization of V γ processes is applied to account for 2494 potential mismodelling of this background. For Non-WW diboson processes, a 12% normalization 2495 uncertainty is applied. This uncertainty was evaluated for the Z+jets fake factor estimate (section 7.2) 2496 and includes contributions from QCD scale, PDF and αS. This uncertainty is also applied for triboson 2497 processes.
