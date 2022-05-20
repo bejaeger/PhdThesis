@@ -2,7 +2,12 @@
 
 % From Master's thesis:
 The SM of particle physics is a collection of relativistic quantum field theories (QFT) that describe the interactions between all known fundamental particles.
-Mathematically, it can be described as a SU(3)$_C$ $\times$ SU(2)$_L$ $\times$ U(1)$_Y$ local gauge theory, the details of which are explained in this section.
+Mathematically, it is a non-abelian gauge theory with the gauge group
+\begin{equation}
+  \label{eq:sm-gauge-group}
+  \text{SU(3)}_C \times \text{SU(2)}_L \times \text{U(1)}_Y,
+\end{equation}
+the details of which are explained in this section.
 % The mathematical formulation SU(3)$_C$ $\times$ SU(2)$_L$ $\times$ U(1)$_Y$ local gauge symmetry that gives rise to the interactions between all known fundamental particles.
 %It evolved during the 60’s and 70’s due to a strong interplay between experimental observations and theoretical developments. 
 \Cref{subsec:particle-content} provides a high-level overview of the particles and forces that are part of the SM. \Cref{subsec:formalism} then briefly outline the theoretical principles that build the basis for the mathematical description of the SM. \Cref{subsec:qed,subsec:qcd,subsec:ew-model,subsec:ewsymbreaking,subsec:fermion-masses,subsec:final-lagrangian} discuss the mathematical formulation of the SM, including a detailed description of the \emph{Higgs mechanism} of \emph{electroweak symmetry breaking} (EWSB).
@@ -44,7 +49,7 @@ This association makes it possible to describe fundamental physics using element
 % On a \TDnote{phenomenological}{other word?} level, fundamental physics can be described in terms of elementary particles and forces.
 % All currently known particles and forces included in the SM are listed in \TDnote{REF}{REF}.
 The particle content of the SM is summarized in \cref{fig:particles-infographic}. The particles can be grouped into two main types: 
-\emph{fermions} with half-integer spin and \emph{bosons} with integer spin. The fermions (sometimes called \emph{matter particles}) interact with each other via exchanges of \emph{gauge bosons} (also called \emph{force carriers}) that mediate the fundamental forces. 
+\emph{fermions} with half-integer spin and \emph{bosons} with integer spin. The interaction between the fermions (sometimes called \emph{matter particles}) are interpreted as exchanges of \emph{gauge bosons} (also called \emph{force carriers}) that mediate the fundamental forces. 
 % \emph{fermions} with half-integer spin (sometimes called \emph{matter particles}) and \emph{bosons} with integer spin (known as the \emph{mediators} or \emph{force carriers} of the fundamental forces).
 
 The fermions can be grouped into three generations, each containing two leptons and two quarks. The different types of leptons and quarks are referred to as (quark or lepton) \emph{flavours}.
@@ -71,22 +76,22 @@ The final particle of the SM is the electrically neutral \emph{Higgs boson}. It 
 % In physics, equations of motion are equations that describe the behavior of a physical system in terms of its motion as a function of time.[1] More specifically, the equations of motion describe the behavior of a physical system as a set of mathematical functions in terms of dynamic variables.
 
 % Particles can be thought of as excitations (or vibrations) of corresponding fundamental fields. 
-In order to describe the behaviour of a physical system, the respective equations of motions can be derived from the action,
+In order to describe the behaviour of a physical system, the equations of motions can be derived from the action,
 \begin{equation}
   \label{eq:action}
   S = \int \Lagrangian d^3x dt,
 \end{equation}
 by following the action principle.\footnote{The derivation of the equations of motion can be found in any standard textbook on QFT, e.g. in \ccite{Peskin:1995ev}.}
-The dynamics of a system can therefore be fully specified by providing the adequate Lagrange density, \Lagrangian. The Lagrange density, often simply denoted \emph{Lagrangian}, generally is a function of the fields $\psi$, and their derivatives $\partial \psi$, so that $\Lagrangian \rightarrow \Lagrangian\left(\psi, \partial\psi\right)$. The fields are themselves generally dependent on the space-time coordinate, $\psi \rightarrow \psi(\pmb{x})$.\footnote{For cleaner notation, these dependencies are not explicitly mentioned throughout this thesis.}
+The dynamics of a system are therefore fully specified by the Lagrange density, \Lagrangian. The Lagrange density, often simply denoted \emph{Lagrangian}, generally is a function of the fields $\psi$, and their derivatives $\partial \psi$, so that $\Lagrangian \rightarrow \Lagrangian\left(\psi, \partial\psi\right)$. The fields are themselves generally dependent on the space-time coordinate, $\psi \rightarrow \psi(x)$.\footnote{For cleaner notation, these dependencies are not explicitly mentioned throughout this thesis.}
 
 For a given field, $\psi$, the principles of QFT demand to include all possible interaction terms in the Lagrangian that are related to the field\footnote{This follows what is sometimes referred to as the ``totalitarian principle'' of quantum mechanics, that satirically states: ``Everything not forbidden is compulsory'', meaning that everything allowed by the laws of physics must actually happen or exist.}.
-The number and type of terms that can be included, however, is strongly constraint by requiring the theory to be invariant under certain symmetry transformations of the fields. 
-The SM is governed by the principle of \emph{local gauge invariance}. 
-Local gauge invariance implies, that the physical content of the theory stays the same when performing re-definitions of the particle fields,
+The number and type of terms that can be included in the SM, however, is strongly constraint by requiring the theory to be invariant under symmetry transformations of the fields following the SM gauge group in \cref{eq:sm-gauge-group}.
+The SM is governed by the principle of \emph{local gauge invariance}, which implies that the physical content of the theory stays the same when performing transformations of the particle fields,
 \begin{equation}
   \psi \rightarrow e^{-iT} \psi,
 \end{equation}
-independently at every space-time point. Here, $T$ is the generator of a certain symmetry group and generally dependent on the space-time coordinate, $T \rightarrow T(\pmb{x})$. 
+independently at every space-time point. Here, $T$ is the generator of a symmetry group which is generally dependent on the space-time coordinate, $T \rightarrow T(x)$. 
+\todo{Maybe remove the transformation equation. A bit distracting/random here?}
 % Gauge theories require the introduction of so-called gauge fields, that transform in a way so that the theory stays locally gauge invariant.
 % Pich
 % This is only possible if one adds an extra piece to the Lagrangian, transforming in such a way as to cancel the ∂μθ term in Eq. (6).
@@ -94,6 +99,8 @@ independently at every space-time point. Here, $T$ is the generator of a certain
 Gauge theories require the addition of so-called gauge fields, which give rise to particle interactions that give rise to the fundamental forces of nature. 
 Historically, the first local gauge theory that was established was QED. It follows a U(1) local gauge symmetry and entails the photon as the associated gauge field. 
 The SM can be elegantly described by demanding a SU(3)$_C$ $\times$ SU(2)$_L$ $\times$ U(1)$_Y$ local gauge symmetry and explains the existence of all gauge bosons mentioned in the previous section. 
+\todo{Maybe mention this only here and not in the introduction?}
+The fermions, in contrast, are added a priori to the theory and do not follow from fundamental principles.
 %The following sections provide an overview of the Lagrangian of the SM, by going through the different symmetry groups. 
 The following sections will outline the mathematical framework of the SM.
 In all equations natural units are used, that is, $c = \hbar = 1$, which leads to the mass, momentum, and energy of particles all being given in units of electronvolt (\eV).
@@ -129,7 +136,7 @@ The Lagrangian that is invariant under $\psi_f \rightarrow e^{i \omega(x)} \psi_
   \mathcal{L}_{\text{QED}} = \sum_f \bar{\psi}_f(i\gamma^\mu D_\mu - m_f)\psi_f - \frac{1}{4}F_{\mu\nu}F^{\mu\nu},
   \label{eq:Lagrangianqed}
 \end{equation}
-where the sum goes over all electrically charged fermions with masses $m_f$ and $\gamma^\mu$ refers to the four $4 \times 4$ gamma matrices.
+where the sum goes over all electrically charged fermions with masses $m_f$, and $\gamma^\mu$ refers to the four $4 \times 4$ gamma matrices.
 Here, $D_\mu$ is the \emph{covariant derivative} defined as
 \begin{equation}
   D_\mu = \partial_\mu + ieA_\mu,
@@ -147,7 +154,7 @@ It should be noted that U(1)$_{\text{QED}}$ is not part of the original symmetry
 
 \subsection{Quantum chromodynamics}
 \label{subsec:qcd}
-QCD is a non-abelian gauge theory associated to the SU(3)$_C$ symmetry. The subindex $C$ refers to the colour which is the conserved quantity under SU(3)$_C$ transformations.
+QCD is a non-abelian gauge theory associated to a SU(3)$_C$ symmetry. The subindex $C$ refers to the colour which is the conserved quantity under SU(3)$_C$ transformations.
 The locally gauge invariant QCD Lagrangian reads
 \begin{equation}
   %  \mathcal{L}_{\text{QCD}} = -\frac{1}{4}G_{\mu\nu}^aG^{a\,\mu\nu} + \bar{q}^i\left( i\gamma^\mu D_\mu-m \right)^j_i q_j,
@@ -186,7 +193,7 @@ The weak and electromagnetic forces are unified in the electroweak model~\cite{G
   \label{eq:ew-sym-group}
   \text{SU(2)}_L \times \text{U(1)}_Y.
 \end{equation}
-The unification is based on two major empirical findings:
+The electroweak gauge group is based on two major empirical findings:
 The first is, that only \emph{left-chiral}\footnote{
   The \emph{chirality} of a fermion can be determined with the projection operators $P_L$ and $P_R$ like
   \begin{equation*}
@@ -220,8 +227,8 @@ The CKM matrix is unitary and fully specified with 4 parameters and encodes the 
   \psi_R & \rightarrow e^{iY\omega} \psi_R,
 \end{align}
 under SU(2)$_L$ $\times$ U(1)$_Y$ transformations, where $T^a=\frac{\sigma^a}{2}$ are the Pauli matrices and generators of the SU(2)$_L$ group.
-The associated conserved quantity is called \emph{weak isospin}, $T$, of which the third component is conserved in weak interactions and given by $T^{(3)} = \pm \frac{1}{2}$ for SU(2)$_L$ doublets and $T^{(3)} = 0$ for SU(2)$_L$ singlets.
-The U(1)$_Y$ symmetry is associated to the \emph{hypercharge}, $Y$, and cannot be directly associated to the QED gauge group.
+The associated conserved quantity is the \emph{weak isospin} $T$, of which the third component is conserved in weak interactions and given by $T^{(3)} = \pm \frac{1}{2}$ for SU(2)$_L$ doublets and $T^{(3)} = 0$ for SU(2)$_L$ singlets.
+The U(1)$_Y$ symmetry is associated to the \emph{hypercharge} $Y$, and cannot be directly associated to the QED gauge group.
 The relation to the electromagnetic interaction and the physical electric charge $Q$ is
 \begin{equation}
   Q = T^{(3)} + \frac{Y}{2}.
@@ -250,14 +257,8 @@ The tensor $B_{\mu\nu}$ has the same structure as the electromagnetic field stre
 \todo{Give details on structure constants? for QCD AND Electroweak model}
 
 \noindent The Lagrangian of \cref{eq:lagrangianewk} describes 4 massless bosons. No terms quadratic in the vector fields are allowed due to the requirement of local gauge invariance. 
-Another mechanism is required to explain the existence of the massive gauge fields \Wpm and \Zboson.
+Another mechanism is required to explain the existence of the masses of the gauge fields \Wpm and \Zboson.
 % and $\gamma$. 
-% Moreover, also the simple inclusion of fermion mass terms is forbidden, given that a term
-% \begin{equation}
-%   -m_f \bar{\psi} \psi = -m_f \left( \bar{\psi}_R\psi_L + \bar{\psi}_L\psi_R \right)
-%   \label{eq:fermionmassterm}
-% \end{equation}
-% violates SU(2)$_L$ gauge invariance because $\psi_L$ transforms as a doublet and $\psi_R$ as a singlet. 
 
 
 % From experiments one expects two charged bosons $W^\pm$ and two neutral bosons, the $Z$ and the photon.
@@ -304,20 +305,21 @@ The Lagrangian
   \mathcal{L}_{\text{Higgs}} = |D_\mu\phi|^2 - V(\phi), % - \frac{1}{4} W_{\mu\nu}^a W^{a\, \mu\nu} - \frac{1}{4} B_{\mu\nu} B^{\mu\nu},
   \label{eq:lagrangianhiggs}
 \end{equation}
-with $D_\mu$ defined as shown in \cref{eq:covdevewk}, is invariant under local SU(2)$_L$ $\times$ U(1)$_Y$ transformations.
-The parameters of the potential, $\phi$, are specifically chosen to satisfy $\mu^2 < 0$ and $\lambda > 0$.
-This choice provides a characteristic shape to the so-called \emph{Higgs potential}, which is depicted in \cref{fig:higgspotential}, and gives rise to a non-zero \emph{vacuum expectation value}, $v$, of the Higgs field.
+where $D_\mu$ is defined as shown in \cref{eq:covdevewk}, is invariant under local SU(2)$_L$ $\times$ U(1)$_Y$ transformations.
+The parameters of the potential $V(\phi)$ are specifically chosen to satisfy $\mu^2 < 0$ and $\lambda > 0$.
+This choice provides the \emph{Higgs potential} with a characteristic shape, depicted in \cref{fig:higgspotential}, and gives rise to a set of degenerate ground state configurations satisfying
+\begin{equation}
+  |\phi| = \sqrt{ \frac{\mu^2}{2\lambda} } \equiv \frac{ v }{\sqrt{2}},
+  \label{eq:higgsminima}
+\end{equation}
+where $v$ is the non-zero \emph{vacuum expectation value} of the Higgs field.
 %% We find that the Lagrangian for such a field
 %% \begin{equation}
 %% \end{equation}
 %% is invariant under global SU(2) phase transformations
 %It is invariant under gauge transformations but not the ground state, which can be found at
-The minimum of the potential can be found on the circle of minima where
-\begin{equation}
-  |\phi| = \sqrt{ \frac{\mu^2}{2\lambda} } \equiv \frac{ v }{\sqrt{2}}.
-  \label{eq:higgsminima}
-\end{equation}
-Once a ground state is chosen, the SU(2)$_L$ $\times$ U(1)$_Y$ symmetry becomes spontaneously broken.
+%The minimum of the potential can be found on the circle of minima where
+%Once a ground state is chosen, the SU(2)$_L$ $\times$ U(1)$_Y$ symmetry becomes spontaneously broken.
 % The symmetry is therefore spontaneously broken when a ground state is chosen. 
 %The arbitrary choice of a ground state is said to spontaneously break the symmetry. 
 Without loss of generality the ground state can be chosen to be
@@ -325,45 +327,46 @@ Without loss of generality the ground state can be chosen to be
   \phi_0 = \frac{1}{\sqrt{2}} \myvec{0 \\ v},
   \label{eq:groundstate}
 \end{equation}
-that is $\phi_1 = \phi_2 = \phi_4 = 0$ and $\phi_3 = \frac{v}{\sqrt{2}}$. 
+that is, $\phi_1 = \phi_2 = \phi_4 = 0$ and $\phi_3 = \frac{v}{\sqrt{2}}$, which spontaneously breaks the SU(2)$_L$ $\times$ U(1)$_Y$ symmetry.
 Expanding the field $\phi$ around the minimum to first order in the fields yields
 \begin{equation}
   \phi(x) = e^{i\frac{\phi(x)}{v}}\frac{1}{\sqrt{2}} \myvec{ 0 \\ v + h(x) },
     \label{eq:higgsexp}
 \end{equation}
 where the extra term $e^{i\frac{\phi(x)}{v}}$ describes the fluctuations of the fields $\phi_1, \phi_2, \phi_4$ around the vacuum $\phi_0$.
-These fields are known as the \emph{Goldstone bosons} and have no direct physical implications. They can be eliminated from the Lagrangian by choosing an appropriate gauge, the \emph{unitary gauge}, so that only one real, physical field, $h(x)$, remains:
+These fields are known as the \emph{Goldstone bosons} and have no direct physical implications. They can be eliminated from the Lagrangian by choosing an appropriate gauge, the \emph{unitary gauge}, so that 
 \begin{equation}
   \phi(x) = \frac{1}{\sqrt{2}} \myvec{ 0 \\ v + h(x) }.
   \label{eq:expanded-groundstate}
 \end{equation}
-This field is known as the \emph{Higgs field} and associated to a neutral scalar boson, the \emph{Higgs boson}, $H$, with a mass of 
+There remains only one real physical field, $h(x)$, which is called the \emph{Higgs field} and is associated with a neutral scalar boson, the \emph{Higgs boson}, labelled $H$.
+The mass of the Higgs boson follows by inserting \cref{eq:expanded-groundstate} into \cref{eq:higgs-potential},
 \begin{equation}
   m_H = \sqrt{2} \mu = \sqrt{2 \lambda} v.
 \end{equation}
-Inserting \cref{eq:higgsexp} into \cref{eq:lagrangianhiggs} and using the following linear combinations to obtain the physical gauge fields,
+Inserting \cref{eq:higgsexp} into \cref{eq:lagrangianhiggs} and using the linear combinations,
 \begin{align}
-  W_\mu^\pm &= \frac{1}{\sqrt{2}} \left( W_\mu^1 \mp iW_\mu^2 \right) \\
-  Z_\mu &= \cos\theta_\text{w} W_\mu^3 - \sin\theta_\text{w} B_\mu \\
+  W_\mu^\pm &= \frac{1}{\sqrt{2}} \left( W_\mu^1 \mp iW_\mu^2 \right),  \\
+  Z_\mu &= \cos\theta_\text{w} W_\mu^3 - \sin\theta_\text{w} B_\mu, \\
   A_\mu &= \cos\theta_\text{w} B_\mu - \sin\theta_\text{w} W_\mu^3,
 \end{align}
-where $\theta_\text{w}$ is the so-called \emph{weak mixing angle} defined as $\sin\theta_\text{w}^2 = \frac{g'^2}{g^2+g'^2}$, results in the following expression in the Lagrangian
+where $\theta_\text{w}$ is the \emph{weak mixing angle} defined as $\sin\theta_\text{w}^2 = \frac{g'^2}{g^2+g'^2}$, leads to the following terms in the Lagrangian
 \begin{equation}
   \mathcal{L}_m = \frac{1}{4} \left( v + H \right)^2  \left(g^2 W_\mu^+W^{-\,\mu} + \frac{g^2}{2\cos\theta_\text{w}^2} Z_\mu Z^\mu \right).
   \label{eq:lagrangianmasses}
 \end{equation}
-One can identify terms quadratic in $\Wpm$ and $Z$, generated by the non-vanishing expectation value, $v$, giving rise to the masses
+One can identify terms quadratic in the physical fields $\Wpm$ and $Z$, generated by the non-vanishing expectation value $v$, giving rise to the masses
 \begin{align}
   m_W &= \frac{vg}{2}, \\
   m_Z &= \frac{m_W}{\cos \theta_\text{w}},
   \label{eq:boson-masses}
 \end{align}
-of the gauge bosons.
-The mass of the $W$ boson can also be related to the Fermi constant, $G_F$, via $m_W = \frac{g}{4 * \sqrt{2}G_F}$. 
+of the weak gauge bosons.
+The mass of the $W$ boson can be related to the Fermi constant, $G_F$, via $m_W = \frac{g}{4 * \sqrt{2}G_F}$. 
 No field quadratic in $A_\mu$ appears, which reflects the fact that the photon is massless.
 
 % DIFFERENT Formulation: It is worth while to decompose the Lagrangian into its different pieces:
-The Lagrangian in \cref{eq:lagrangianmasses} can be re-written as follows after substituting the masses of the gauge bosons:
+The Lagrangian in \cref{eq:lagrangianmasses} can be re-written after substituting the masses of the gauge bosons,
 \begin{equation}
   \mathcal{L}_{\text{H,boson-coupling}} = m_W^2 W_\mu^+W^{-\,\mu} \left( \frac{2H}{v} + \frac{H^2}{v^2} \right) + \frac{1}{2} m_Z^2 Z_\mu Z^\mu \left( \frac{2H}{v} + \frac{H^2}{v^2} \right),
   \label{eq:higgsbosoncoupling}
@@ -371,10 +374,8 @@ The Lagrangian in \cref{eq:lagrangianmasses} can be re-written as follows after 
 which shows that the interaction between the Higgs boson and the massive gauge bosons is proportional to the square of the mass of the coupled bosons and involves triplet ($V^\dagger VH$) and quartic ($V^\dagger VHH$) couplings.
 
 %and choosing a specific gauge (the unitary gauge) the field $\phi$ can be written as
-
-As shown below, introducing a complex SU(2)$_L$ doublet does not only give rise to the $\Wpm$ and $Z$ boson masses, but can also be used to construct mass terms for fermions. Hence, the Higgs field couples to all massive elementary particles.
-A more detailed descriptions on experimental Higgs boson physics and an overview of the current state of knowledge is given in \cref{sec:higgsphysics}.
-
+% As shown below, introducing a complex SU(2)$_L$ doublet does not only give rise to the $\Wpm$ and $Z$ boson masses, but can also be used to construct mass terms for fermions. Hence, the Higgs field couples to all massive elementary particles.
+% A more detailed descriptions on experimental Higgs boson physics and an overview of the current state of knowledge is given in \cref{sec:higgsphysics}.
 % The parameters of the Higgs potential $\mu^2 = \lambda v^2$ can be fixed for one combination by measuring parameters of the electroweak theory, but the physical Higgs mass cannot be predicted. 
 % Moreover, the last two terms in \cref{eq:higgsselfcoupling} predict that the Higgs field couples to itself with cubic and quartic interactions.
 % The couplings of the Higgs boson to the weak gauge bosons are already expressed in \cref{eq:lagrangianmasses}.
@@ -391,28 +392,34 @@ A more detailed descriptions on experimental Higgs boson physics and an overview
 \subsection{Fermion masses}
 \label{subsec:fermion-masses}
 \todo{Maybe add in the beginning that simple inclusion of fermion mass terms is forbidden in electroweak model. As commented out at the end of the EW section.}
-The masses of the fermions can be explained by introducing interaction terms between the fermion fields and the Higgs field. 
-This is possible because both the left-handed fermions and the Higgs field appear as doublets under SU(2)$_L$ transformations.
 
-For leptons, only electrons, muons, taus, that appear in the lower part of the SU(2)$_L$ doublet (see \cref{tab:ewfermioncontent}), need to become massive, as neutrinos are assumed to be massless in the SM.
-For up-type quarks to become massive, the fermion fields are coupled to the charge conjugate of the Higgs field that becomes
+The previous section explained how the Higgs mechanism naturally gives rise to mass terms for the $\Wpm$ and $Z$ bosons. The finite fermion masses, however, do not directly follow and the simple inclusion of fermion mass terms is forbidden, given that a term
 \begin{equation}
-  \phi^C = \frac{1}{\sqrt{2}} \myvec{v + H \\ 0},
+  -m_f \bar{\psi} \psi = -m_f \left( \bar{\psi}_R\psi_L + \bar{\psi}_L\psi_R \right)
+  \label{eq:fermionmassterm}
 \end{equation}
-when choosing a ground state similar to \cref{eq:expanded-groundstate}.
+violates SU(2)$_L$ gauge invariance.
+% because $\psi_L$ transforms as a doublet and $\psi_R$ as a singlet. 
 
-The interactions, that are known as \emph{Yukawa interactions}, can then be written in the form
+The masses of the fermions can be explained with an ad-hoc solution by introducing interaction terms between the left-handed fermion fields and the Higgs field, both appearing as doublets under SU(2)$_L$ transformations.
+%This is possible because both the left-handed fermions and the Higgs field appear as doublets under 
+For leptons, only electrons, muons, taus, that appear in the lower part of the SU(2)$_L$ doublet (see \cref{tab:ewfermioncontent}), require mass terms, as neutrinos are assumed to be massless in the SM\footnote{See \cref{subsec:limitations} for a brief discussion on neutrino masses.}.
+For up-type quarks ($u$, $s$, and $t$ quark) to become massive, the fermion fields are coupled to the charge conjugate of the Higgs field,
+\begin{equation}
+  \phi^C = \frac{1}{\sqrt{2}} \myvec{v + h(x) \\ 0},
+\end{equation}
+after choosing a ground state similar to \cref{eq:expanded-groundstate}.
+The interactions are known as \emph{Yukawa interactions} and can then be written in the form
 \begin{equation}
   \mathcal{L}_\text{Yukawa} = - \sum_{i} Y_l^i \bar{\psi}^{i}_{L} \phi \psi^{i}_{R} - \sum_{ij} Y_{\text{u-type}}^{ij} \bar{\psi}^{i}_{L} \phi \psi^{i}_{\text{u-type},R} + Y_{\text{d-type}}^{ij} \bar{\psi}^{i}_{L} \phi^C \psi^{j}_{\text{d-type}, R} + \text{h.c.}, 
   \label{eq:lyukawa}
 \end{equation}
 where the first sum runs over all leptons, the second sum over all quarks, and h.c. stands for the Hermitian conjugate of the previous terms.
 The left-handed fields are given as $\psi^{i}_{L}$ and include the three lepton- and quark doublets. 
-The right-handed lepton fields are labelled as $\psi_R^i$ and the quark fields $\psi^{i}_{\text{u-type},L}$, $\psi^{i}_{\text{d-type},L}$.
-The labels ``u-type'' and ``d-type'' refer to, respectively, up-type quarks, $u$, $s$, $t$, and down-type quarks, $d$, $c$, $b$. 
-The so-called \emph{Yukawa couplings} are shown as $Y_l^i$ for leptons and $Y_{\text{u-type}}^{ij}$ and $Y_{\text{d-type}}^{ij}$ for up-type and down-type quarks, respectively. The $Y_{\text{u-type}}^{ij}$ and $Y_{\text{d-type}}^{ij}$ are $3 \times 3$ matrices accounting for the fact that the eigenstates of the weakly interacting quarks do not correspond to their mass eigenstates. 
+The right-handed lepton fields are labelled as $\psi_R^i$ and the quark fields as $\psi^{i}_{\text{u-type},L}$, $\psi^{i}_{\text{d-type},L}$.
+The labels ``u-type'' and ``d-type'' refer, respectively, to the up-type quarks ($u$, $s$, $t$) and down-type quarks ($d$, $c$, $b$). 
+The \emph{Yukawa couplings} are labelled as $Y_l^i$ for leptons and as $Y_{\text{u-type}}^{ij}$ and $Y_{\text{d-type}}^{ij}$ for up-type and down-type quarks, respectively. The $Y_{\text{u-type}}^{ij}$ and $Y_{\text{d-type}}^{ij}$ are $3 \times 3$ matrices accounting for the fact that the eigenstates of the weakly interacting quarks do not correspond to their mass eigenstates. 
 %A rotation of the quark fields can be performed accounting for the mixing. 
-
 % Mass terms for quarks can be added in a similar but slightly more involved way. The down-type quarks participating in the electroweak interaction (denoted $d'$, $s'$, $b'$) are a mixture of the quark mass eigenstates (denoted $d$, $s$, $b$). 
 % For each quark doublet there are two mass terms generated. For lepton doublets only one mass term is added because right-handed neutrinos are not part of the SM. Assuming only one generation of fermions, with quarks $u$ and $d$ and leptons $e$ and $\nu_e$, the Yukawa term can therefore be written as
 % \begin{equation}
@@ -420,9 +427,8 @@ The so-called \emph{Yukawa couplings} are shown as $Y_l^i$ for leptons and $Y_{\
 %   \label{eq:lyukawa}
 % \end{equation}
 % where $\psi_{l}$ stands for lepton fields and $\psi_{q}$ for the quark fields.
-
-The mass terms appear from \cref{eq:lyukawa} once a ground state of $\phi$ is chosen and the Yukawa terms have been diagonalized resulting in nine independent parameters, $Y_f$. 
-They take the form:
+The mass terms appear from \cref{eq:lyukawa} once a ground state of $\phi$ is chosen and the Yukawa terms have been diagonalized, resulting in nine independent parameters $Y_f$. 
+They take the form
 \begin{equation}
   m_f = \frac{Y_f v}{\sqrt{2}},
 \end{equation}
@@ -438,6 +444,7 @@ To summarize the previous sections, the final Standard Model Lagrangian is obtai
 \begin{align}
   \mathcal{L}_\text{SM} &= \mathcal{L}_\text{QCD} + \mathcal{L}_\text{EWK} + \mathcal{L}_\text{Yukawa} + \mathcal{L}_\text{Higgs} \\
    &= - \frac{1}{4}W_{\mu\nu}^aW^{\mu\nu}_{a} - \frac{1}{4} B_{\mu\nu}B^{\mu\nu} - \frac{1}{4}G_{\mu\nu}^aG^{\mu\nu}_{a} \\
+   \label{eq:dirac-term}
    & \quad + \sum_f i \bar{\psi}_f\gamma^\mu D_\mu\psi_f \\
    & \quad - \sum_{i} Y_l^i \bar{\psi}^{i}_{L} \phi \psi^{i}_{R} - \sum_{ij} Y_{\text{u-type}}^{ij} \bar{\psi}^{i}_{L} \phi \psi^{i}_{\text{u-type},R} + Y_{\text{d-type}}^{ij} \bar{\psi}^{i}_{L} \phi^C \psi^{j}_{\text{d-type}, R} + \text{h.c.},  \\
    & \quad + |D_\mu\phi|^2 - \mu^2\phi^\dagger\phi + \lambda \left(\phi^\dagger\phi \right)^2
@@ -446,15 +453,15 @@ The covariant derivate includes all gauge fields,
 \begin{equation}
   D_\mu = \partial_\mu + i g_s \frac{\lambda^a}{2} G_\mu^a + igT^aW_\mu^a + ig'\frac{Y}{2}B_\mu.
 \end{equation}
-The sum over $f$ in the third term includes all fermions, left-handed and right-handed.
-
+The sum over $f$ in \cref{eq:dirac-term} includes all fermions, left-handed and right-handed.
+\todo{Find one or two more sentences}
 % It satisfies a SU(3)$_C$ $\times$ SU(2)$_\text{L}$ $\times$ U(1)$_Y$ gauge symmetry and provides masses to the gauge bosons and fermions via the concept of electroweak symmetry breaking. This is manifested in the couplings of the Higgs field to fermions, which are proportional to the mass of the fermions, and the couplings to the gauge bosons, which are proportional to the mass squared of the gauge bosons.
 
 
 \subsection{Free parameters of the SM}
 \label{subsec:free-pars-sm}
 The SM has been very successful in making predictions that were later confirmed by experimental data (see \cref{eq:sm-limitations}). However, the SM has many free parameters that need to be measured experimentally and cannot be derived from theoretical principles.  
-In total there are 19 free parameters that can be represented with different parametrizations:
+In total there are 19 free parameters that can be represented in different ways. The most common ones are summarized below:
 \begin{itemize}
   \item 9 fermion masses (or Yukawa couplings)
   \item 2 parameters describing the Higgs field: $\mu$ and $\lambda$ (or $v$ and $m_H$)
@@ -463,17 +470,22 @@ In total there are 19 free parameters that can be represented with different par
   \item 1 phase associated to CP violating terms in QCD, $\theta_{\text{QCD}}$
 \end{itemize}
 In total 14 parameters are associated with the Higgs field, four with the flavour sector, and only three with the gauge interactions. This underlines the special role the Higgs boson plays in the SM.
-
+\todo{Find one or two more sentences}
 
 \subsection{Limitations of the SM}
 \label{subsec:limitations}
-Despite the extraordinary success of accurately predicting and explaining experimental measurements, the SM has several shortcomings.
+Despite the extraordinary success of accurately predicting and explaining an enormous amount experimental measurements, the SM has several shortcomings.
+\todo{the SM success is also mentioned elsewhere. Align!}
 There are several observable phenomona that cannot be explained by the SM as well as many open questions related to theory. 
 There are models and theories beyond the SM that attempt to address these shortcomings, but experimental indication that either of them is realised in nature is still pending.
 %none of them have made predictions that have been confirmed by experiments to date. 
-Notable examples of such theories are supersymmetry, GUT, or more simple extensions of the SM such as the 2HDM \todo{REFs}. 
+Notable examples of such theories are supersymmetric theories (see e.g. \ccite{Golfand:1971iw,Volkov:1973ix,Wess:1974tw,Salam:1974ig,Wess:1974jb,Ferrara:1974pu,Fayet:1976et}), dark matter models (e.g. \ccite{Baumgart_2009,Kaplan_2009,Dienes_2012}), or more simple extensions of the SM such as the \emph{two-Higgs-doublet models} \cite{Branco_2012}.
 This section provides an overview of some of the biggest unsolved problems of the SM and fundamental physics in general.
 
+% HIGGS and Dark Matter
+%https://home.cern/news/news/physics/atlas-probes-dark-matter-using-higgs-boson
+
+% Maybe also read introduction of Deciphering the nature of the Higgs boson!
 
 % From Arnold:
 % While several such theories have been developed that based on differing concepts attempt to improve on the shortcomings of the Standard Model, e.g. Supersymmetry or String Theory, experimental indications that either of them is actually realised in Nature are still pending.
@@ -482,8 +494,8 @@ This section provides an overview of some of the biggest unsolved problems of th
 % Experimental ones (not sure yet if I should make this distinction)
 
 \subsubsection{Dark matter}
-The SM is able to explain the behavior of the currently observable matter in the universe, which makes up about 5\% of the energy of the universe. 
-As known from astrophysics, such as from measurements of galaxy rotations \todo{REF}, another 27\% of the universe's energy is made up of so-called \emph{dark matter}. To date, the SM has no viable candidate to explain the nature of dark matter. 
+The SM is able to explain the behavior of the currently observable matter in the universe, which makes up about 5\% of the total energy of the universe. 
+As known from astrophysics experiments such as measurements of galaxy rotations \todo{REF}, another 27\% of the universe's energy is made up of another type of matter called \emph{dark matter}. To date, the SM has no viable candidate to explain the nature of dark matter. 
 
 % Another 26\% of the universe's energy is made up of so-called dark matter. 
 % - The SM explains the observable mass which makes up about 5\% of the energy of the universe. 
