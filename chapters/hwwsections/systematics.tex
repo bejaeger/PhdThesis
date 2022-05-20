@@ -83,35 +83,40 @@ For the ggF migration uncertainties in the \TwoJet categories the so-called Stew
 % Uncertainties on the predicted Standard Model cross section of process p are not included on the measurement of cross section  p. However, these uncertainties are included on measurements of the signal strength μp, since this result parameterizes the cross section in terms of the SM prediction. In addition, if a process q 6= p is not measured simultaneously, but is fixed to the SM expectation, then theory uncertainties on the inclusive SM  q are included on the measurement of both  p and μp.Migrationuncertaintiesareincludedonmeasurements of both  p and μp.
 \subsubsection{Background uncertainties}
 
-The following provides an overview of the estimation of the theoretical uncertainties underlying the background predictions. 
-
-\paragraph{Common uncertainty estimates between background processes}
-Some estimations are common between different processes, they include:
+%The following provides an overview of the estimation of the theoretical uncertainties underlying the background predictions. 
+% \paragraph{Common uncertainty estimates between background processes}
+The method used to estimate some background uncertainties are common for different processes. They are referenced in the paragraphs below, that provide specifics on the uncertainties of different processes, and include:
 \begin{itemize}
-    \item Uncertainties arising from the choice of the renormalisation ($\mu_R$) and factorisation scales ($\mu_F$, together denoted \emph{QCD scales}) are derived using both coherent and incoherent variations of $\{\mu^{\text{var}}_R , \mu^{\text{var}}_F \} = \{v_R, v_F \} \times \{\mu^{\text{nom}}_R , \mu^{\text{nom}}_F \}$, with $v_R, v_F = 0.5, 1, 2$ excluding the combinations $\{v_R, v_F \} = \{0.5, 2\}, \{2, 0.5\}$. 
+    \item Uncertainties arising from the choice of the nominal renormalisation ($\mu_R^\text{nom}$) and factorisation scales ($\mu_F^\text{nom}$), together denoted \emph{QCD scales}. They are estimated using both coherent and incoherent variations $\{\mu^{\text{var}}_R , \mu^{\text{var}}_F \} = \{v_R, v_F \} \times \{\mu^{\text{nom}}_R , \mu^{\text{nom}}_F \}$ with $v_R, v_F = 0.5, 1, 2$ excluding the combinations $\{v_R, v_F \} = \{0.5, 2\}, \{2, 0.5\}$. 
     The maximum of these 7 different variations are taken as the total scale uncertainty. This uncertainty is referred to as \emph{7-point QCD scale} uncertainty.
-    \item If the \nnpdfnnlo~\cite{Ball:2014uwa} set of PDFs is used the uncertainty due to that choice is estimated by the standard deviation of 100 NNPDF3.0NLO replicas. 
-    \begin{equation}
-    \text{Error}^{R}_{J}(PDF)=\sqrt{\frac{1}{99}\sum_{i=1}^{100}\left(\left.\frac{NSR^R_J}{NCR_J}\right|_i-\left\langle\frac{NSR^R_J}{NCR_J}\right\rangle\right)^2}.
-    \end{equation}
-    \item The uncertainty due to the strong coupling constant, $\alpha_s$, is estimated based on two variations and taking their symmetrized average according to
+    \item The uncertainty in case the \nnpdfnnlo (or \nnpdfnlo) ~\cite{Ball:2014uwa} set of PDFs is used. It is estimated by taking the standard deviation of the predictions of 100 \nnpdfnnlo (or \nnpdfnlo) replicas.
+    % \begin{equation}
+    %     \sigma_{\text{PDF}} = \sqrt{ \frac{1}{99} \sum_{i=1}^{100} \left(  n^\text{var}_i - \mu \right) }
+    % % \text{Error}^{R}_{J}(PDF)=\sqrt{\frac{1}{99}\sum_{i=1}^{100}\left(\left.\frac{NSR^R_J}{NCR_J}\right|_i-\left\langle\frac{NSR^R_J}{NCR_J}\right\rangle\right)^2}.
+    % \end{equation}
+    \item The uncertainty due to the strong coupling constant, $\alpha_s$. It is estimated by taking the symmetrized average of the expected event count when varying $\alpha_s$ up and down, 
      \begin{equation}
-        \text{Error}^{R}_{J}(\alpha_s)=\frac{1}{2}\left[\frac{NSR^R_J(\alpha_s^{\text{high}})}{NCR_J(\alpha_s^{\text{high}})}-\frac{NSR^R_J(\alpha_s^{\text{low}})}{NCR_J(\alpha_s^{\text{low}})}\right].
+        \sigma_{\alpha_s}^\text{up/down} = 1 \pm 0.5 \frac{ \text{max}(N^\text{up},N^\text{down}) - \text{min}(N^\text{up},N^\text{down})}{N^\text{nom}}
+        % \text{Error}^{R}_{J}(\alpha_s)=\frac{1}{2}\left[\frac{NSR^R_J(\alpha_s^{\text{high}})}{NCR_J(\alpha_s^{\text{high}})}-\frac{NSR^R_J(\alpha_s^{\text{low}})}{NCR_J(\alpha_s^{\text{low}})}\right].
     \end{equation}
-    \item Shower uncertainty based on comparison between Pythia8 and Herwig7 showering models.
+    where $N^\text{nom}$ are the nominally expected yields and $N^\text{up}$ and $N^\text{down}$ are the expected yields when $\alpha_s$ is varied up and down, respectively.
+    \item The uncertainty due the choice of the shower model. It is estimated by comparing the nominal MC simulations with an alternative sample as indicated in \cref{tab:mcsamples}. 
+    \item The uncertainty due to the choice of the matching procedure between the matrix element and the parton shower. This is also estimated by comparing the nominal MC simulations with an alternative sample as indicated in \cref{tab:mcsamples}.  
+    % \item Shower uncertainty based on comparison between alternative shower models (usually \textsc{Pythia8} vs \textsc{Herwig7}) indicated in \cref{tab:mcsamples}.
+    % \item Matching uncertainty based on comparison between different matrix element generators as indicated in \cref{tab:mcsamples}.
 \end{itemize}
 
 \paragraph{qqWW} 
 \todo{Change label qqWW to qq -> WW cause that's what it is in the plots too}
 - 
-Uncertainties due to QCD scale choices, the choice of PDF, and $\alpha_s$ are estimated as discussed in the common uncertainties section above.
+The uncertainties due to the QCD scale choices, the choice of PDF, and $\alpha_s$ are estimated as discussed in the above.
 
 % Uncertainties due to scale choices are estimated with the 7-point QCD scale uncertainty and the PDF uncertainty with the set of 100 NNPDF3.0NLO replicas as explained above. 
 % PDF uncertainties:
 % The PDF and $alpha_s$ uncertainties are evaluated from the standard deviation of 100 NNPDF3.0NLO replicas. 
 % The PDF replicas and alphahigh,low s are included as alternative weights in the nominal Sherpa samples.
 
-The uncertainty due to the parton showering model is covered by two separate comparisons based on generator-level samples.
+The uncertainty due to the choice of parton shower model is covered by two separate comparisons based on generator-level samples.
 The first accounts for the uncertainty due to the resummation scale choice in the nominal sample that determines the matching of the NLO matrix elements with the parton shower. 
 To assess the uncertainty, the resummation scale is varied by a factor of two up and down.
 The second comparison varies how the momentum recoil is evaluated in the parton shower provided by the Sherpa generator. The strategy used in the nominal MC simulation is described in \cite{Hoeche:2009rj}, the alternative approach is detailed in \cite{Schumann:2007mg}. 
@@ -175,8 +180,7 @@ The uncertainty due to the matching procedure between matrix element calculation
 % Matching uncertainty
 % Int Note: The difference between the prediction of Powheg+Pythia8 and the aMCAtNlo+Pythia8 sample is taken as a matching uncertainty between 
 
-Additional uncertainties are considered due to additional initial state (ISR) or final state radiation (FSR). 
-The parameters determining the amount of ISR and FSR are therefore varied up and down. 
+Additional uncertainties are considered due to additional initial state (ISR) or final state radiation (FSR). The parameters determining the amount of ISR and FSR are therefore varied up and down. 
 % Initial State Radiation (ISR) and Final State Radiation (FSR)
 % -> missing hpdamp factor!?
 
@@ -193,11 +197,13 @@ The uncertainty due to the choice of QCD scales, the choice of PDF, and  $\alpha
 % alpha_s: two NNPDF3.0nnlo αs variations.
 
 The nominal \SHERPAV{2.2.1} generator handles simulation of the matrix element and parton shower with a custom tune. To estimate the uncertainty arising from that choice the nominal sample is compared to a sample generated with \textsc{MadGraph5\_aMC@NLO+Pythia8} and the A14 tune. 
+\todo{Maybe simply refer to table}
 
 % GENERATOR:
 % INT NOTE: Sherpa 2.2.1 handles simulation of the matrix element and parton shower with a custom tune. Uncertainty 2447 associated with this choice of generator is evaluated by comparing with MadGraph5_aMC@NLO, which 2448 is interfaced to Pythia8 with the A14 tune for modelling of the parton shower and underlying event.
 
 \paragraph{Other backgrounds}
+
 % Int note: A flat -50%/+100% uncertainty on the overall normalization of V γ processes is applied to account for 2494 potential mismodelling of this background. For Non-WW diboson processes, a 12% normalization 2495 uncertainty is applied. This uncertainty was evaluated for the Z+jets fake factor estimate (section 7.2) 2496 and includes contributions from QCD scale, PDF and αS. This uncertainty is also applied for triboson 2497 processes.
 
 

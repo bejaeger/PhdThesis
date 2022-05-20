@@ -2,12 +2,12 @@
 
 % From Master's thesis:
 The SM of particle physics is a collection of relativistic quantum field theories (QFT) that describe the interactions between all known fundamental particles.
-Mathematically, it is as a SU(3)$_C$ $\times$ SU(2)$_L$ $\times$ U(1)$_Y$ local gauge theory, the details of which are explained in this section.
+Mathematically, it can be described as a SU(3)$_C$ $\times$ SU(2)$_L$ $\times$ U(1)$_Y$ local gauge theory, the details of which are explained in this section.
 % The mathematical formulation SU(3)$_C$ $\times$ SU(2)$_L$ $\times$ U(1)$_Y$ local gauge symmetry that gives rise to the interactions between all known fundamental particles.
-
 %It evolved during the 60’s and 70’s due to a strong interplay between experimental observations and theoretical developments. 
-The particle content of the SM is first described in \cref{subsec:particle-content}. \Cref{subsec:formalism} then briefly describes the theoretical principles that build the basis for the mathematical description of the SM, that is outlined in \cref{subsec:qed,subsec:qcd,subsec:ew-model,subsec:ewsymbreaking,subsec:fermion-masses,subsec:final-lagrangian,subsec:free-pars-sm}. This section concludes by describing the open questions of the SM that motivate precision measurements of the Higgs boson such as the one presented in this thesis.
-
+\Cref{subsec:particle-content} provides a high-level overview of the particles and forces that are part of the SM. \Cref{subsec:formalism} then briefly outline the theoretical principles that build the basis for the mathematical description of the SM. \Cref{subsec:qed,subsec:qcd,subsec:ew-model,subsec:ewsymbreaking,subsec:fermion-masses,subsec:final-lagrangian} discuss the mathematical formulation of the SM, including a detailed description of the \emph{Higgs mechanism} of \emph{electroweak symmetry breaking} (EWSB).
+The free parameters of the SM are then summarized in \cref{subsec:free-pars-sm} and \cref{subsec:limitations} concludes this section by describing the open questions of the SM that motivate conducting more precise measurements such as the one presented in \cref{chap:hww} of this thesis.
+The SM is covered in all its detail in the literature, e.g. \ccite{Peskin:1995ev,Halzen:1984mc,Thomson:2013zua}, which serve as the primary resources for the following descriptions.
 
 %On a phenomenological level, fundamental physics can be described in terms of elementary particles and forces. 
 % - Introduction to QFT and gauge group
@@ -31,32 +31,33 @@ The particle content of the SM is first described in \cref{subsec:particle-conte
 \label{subsec:particle-content}
 
 \begin{figure}
-  \newImageResizeCustom{0.99}{figures/theory/particles-infographic/particles-infographic.pdf}
-  \caption[Overview of particles in the SM.]{Overview of the particles in the SM. Adapted from \ccite{CBurgardParticlesInfographic}. Values taken from \ccite{PDG2020}.}  
+  \newImageResizeCustom{1}{figures/theory/particles-infographic/particles-infographic.pdf}
+  \caption[Overview of particles in the SM.]{Overview of the particles in the SM. Their charge, color, mass, and spin are indicated. More details are given in the text. The graphic is adapted from \ccite{CBurgardParticlesInfographic} and the values taken from \ccite{PDG2020}.}  
   \label{fig:particles-infographic}
 \end{figure}
-
+\todo{Maybe put graphic on full page alone to make it bigger}
 
 %In QFT all fundamental fields have an associated particle, that can be thought of as excitations (or vibrations) of the fields.
-In QFT, nature is described in terms of fundamental fields and interactions between them. Each field is associated to an elementary particle that can be thought of as an excitation (or vibration) of the underlying field. This association allows describing fundamental physics in terms of elementary particles. 
+QFT describes nature in terms of fundamental fields and their interactions. Each field is associated with an elementary particle that can be thought of as a quantum excitation of the underlying field. 
+This association makes it possible to describe fundamental physics using elementary particles.
 %\footnote{To simplify terminology, the objects are mostly referred to as particles rather than fields in this chapter, but the relationship is important to be kept in mind.} 
-
 % On a \TDnote{phenomenological}{other word?} level, fundamental physics can be described in terms of elementary particles and forces.
 % All currently known particles and forces included in the SM are listed in \TDnote{REF}{REF}.
-The particle content of the SM is summarized in \cref{fig:particles-infographic}. The elementary particles can be grouped into two main types: \emph{fermions} with half-integer spin, sometimes called \emph{matter particles}, and \emph{bosons} with integer spin, which are the \emph{mediators} (or \emph{force carriers}) of the fundamental forces.
+The particle content of the SM is summarized in \cref{fig:particles-infographic}. The particles can be grouped into two main types: 
+\emph{fermions} with half-integer spin and \emph{bosons} with integer spin. The fermions (sometimes called \emph{matter particles}) interact with each other via exchanges of \emph{gauge bosons} (also called \emph{force carriers}) that mediate the fundamental forces. 
+% \emph{fermions} with half-integer spin (sometimes called \emph{matter particles}) and \emph{bosons} with integer spin (known as the \emph{mediators} or \emph{force carriers} of the fundamental forces).
 
-The fermions can be grouped into three generations, each containing two leptons and two quarks. The different types of leptons and quarks are referred to as \emph{flavours}.
-Each fermion has a corresponding antiparticle that has the same mass and spin but opposite internal quantum numbers and \emph{chirality}.
+The fermions can be grouped into three generations, each containing two leptons and two quarks. The different types of leptons and quarks are referred to as (quark or lepton) \emph{flavours}.
 Quarks have an additional property called \emph{colour}, which can take three possible values typically labelled as red, green, and blue\footnote{In fact, also linear combinations of the three colours are realized in nature, as discussed later in this chapter.}.
+Additionally, each fermion has a corresponding antiparticle that has the same mass but ``opposite'' internal quantum numbers, that is, oppositely signed charge and anti-colour if applicable.
 
-The interactions between the fermions can be described by exchanges of so-called \emph{gauge bosons}.
+%The interactions between the fermions can be described by exchanges of so-called \emph{gauge bosons}.
 The SM includes three of the four known fundamental interactions: The \emph{electromagnetic interaction}, the \emph{strong interaction}, and the \emph{weak interaction}. The electromagnetic and the weak interactions are unified in the \emph{electroweak theory}. The fourth known fundamental interaction, \emph{gravitation}, is not part of the SM but can be fully neglected in present particle physics experiments due to its weak strength.
+The gauge boson that mediates the electromagnetic interaction is the massless \emph{photon} that interacts with all charged fermions. Electromagnetic interactions are described by the theory of \emph{quantum electrodynamics} (QED). The strong interaction is transmitted via eight massless gluons, following the rules of \emph{quantum chromodynamics} (QCD). QCD acts on matter particles that carry colour, that is, quarks and gluons themselves. 
+Due to a property known as \emph{confinement} in QCD\footnote{Confinement arises because of the energy dependence of the strength of the QCD interactions, which is discussed in \cref{subsec:factorisation}.}, quarks cannot be found in isolation. They are confined within hadrons that consist, for example, of a quark and an anti-quark (known as \emph{mesons}) or three quarks (known as \emph{baryons}).
+The weak interaction is mediated by three massive gauge bosons, \Wplus, \Wminus, and \Zboson, and acts on all fermions. Similar to gluons, the \Wpm and \Zboson bosons are able to interact with themselves.
 
-The boson that mediates the electromagnetic interaction is the massless \emph{photon} that interacts with all charged fermions. Electromagnetic interactions are described by the theory of \emph{quantum electrodynamics} (QED). The strong interaction, described in \emph{quantum chromodynamics} (QCD), is transmitted via eight massless gluons. QCD acts on matter particles that carry colour, that is quarks and gluons themselves. 
-Due to the property of \emph{confinement} in QCD, quarks cannot be found in isolation. They are confined within hadrons, that consist for example of a quark and an anti-quark (known as \emph{mesons}) or three quarks (known as \emph{baryons}).
-The weak interaction is mediated by three massive gauge bosons, \Wplus, \Wminus, and \Zboson, and acts on all fermions. Similar to gluons the \Wpm and \Zboson bosons are able to interact with themselves.
-
-The final particle of the SM is the electrically neutral \emph{Higgs boson}. It is the only spin-0 scalar particle and plays a special role in the SM in the mechanism of \emph{electroweak symmetry breaking}, which gives rise to the masses of the \Wpm and \Zboson bosons. More details in particular about physics involving the Higgs boson are provided in \cref{sec:higgs-phen}.
+The final particle of the SM is the electrically neutral \emph{Higgs boson}. It is the only spin-0 scalar particle and plays a special role in the SM in the mechanism of electroweak symmetry breaking through which the \Wpm and \Zboson bosons gain their masses. An overview of the physics involving the Higgs boson is provided in \cref{sec:higgs-phen}.
 
 
 \subsection{Formalism and Principles}
@@ -66,36 +67,37 @@ The final particle of the SM is the electrically neutral \emph{Higgs boson}. It 
 % -> Lagrange density is commonly referred to as Lagrangian 
 % - In QFT, we define EOMs for fields by specifying the Lagrange density (Lagrangian)
 
+% ONE MORE SENTENCE:
+% In physics, equations of motion are equations that describe the behavior of a physical system in terms of its motion as a function of time.[1] More specifically, the equations of motion describe the behavior of a physical system as a set of mathematical functions in terms of dynamic variables.
+
 % Particles can be thought of as excitations (or vibrations) of corresponding fundamental fields. 
-The equations of motion of a given physical system can be derived from the action,
+In order to describe the behaviour of a physical system, the respective equations of motions can be derived from the action,
 \begin{equation}
   \label{eq:action}
   S = \int \Lagrangian d^3x dt,
 \end{equation}
-by following the action principle.\footnote{The derivation of the equations of motion can be found in any standard textbook about QFT, for example in \ccite{Peskin:1995ev}.}.
-In QFT, the dynamics of a system are therefore expressed in terms of the Lagrange densities, \Lagrangian. 
-The Lagrange densities, often simply denoted \emph{Lagrangian}, is a function of the fields, $\psi$, and their derivatives, $\partial \psi$, that is $\Lagrangian \rightarrow \Lagrangian\left(\psi, \partial\psi)\right)$. The fields are themselves dependent on the space-time coordinate, $\psi \rightarrow \psi(x)$\footnote{For cleaner notation, the dependence on $x$ is usually not explicitely mentioned in this thesis.}. 
+by following the action principle.\footnote{The derivation of the equations of motion can be found in any standard textbook on QFT, e.g. in \ccite{Peskin:1995ev}.}
+The dynamics of a system can therefore be fully specified by providing the adequate Lagrange density, \Lagrangian. The Lagrange density, often simply denoted \emph{Lagrangian}, generally is a function of the fields $\psi$, and their derivatives $\partial \psi$, so that $\Lagrangian \rightarrow \Lagrangian\left(\psi, \partial\psi\right)$. The fields are themselves generally dependent on the space-time coordinate, $\psi \rightarrow \psi(\pmb{x})$.\footnote{For cleaner notation, these dependencies are not explicitly mentioned throughout this thesis.}
 
-For a given field, $\psi$, the principles of QFT demand to include all possible interaction terms in the Lagrangian that are related to the field\footnote{This follows what is sometimes referred to as the totalitarian principle of quantum mechanics, that satirically states: ``Everything not forbidden is compulsory''.}.
+For a given field, $\psi$, the principles of QFT demand to include all possible interaction terms in the Lagrangian that are related to the field\footnote{This follows what is sometimes referred to as the ``totalitarian principle'' of quantum mechanics, that satirically states: ``Everything not forbidden is compulsory'', meaning that everything allowed by the laws of physics must actually happen or exist.}.
 The number and type of terms that can be included, however, is strongly constraint by requiring the theory to be invariant under certain symmetry transformations of the fields. 
 The SM is governed by the principle of \emph{local gauge invariance}. 
-Local gauge invariance implies, that the physical content of the theory stays the same when performing certain re-definitions of the particle fields independently at every space-time point.
-The structure of the Lagrangian is therefore determined by requiring invariance under field transformations of the sort,
+Local gauge invariance implies, that the physical content of the theory stays the same when performing re-definitions of the particle fields,
 \begin{equation}
   \psi \rightarrow e^{-iT} \psi,
 \end{equation}
-where $T$ is the generator of a certain symmetry group and generally dependent on the space-time coordinate, $T \rightarrow T(x)$. 
-Gauge theories require the introduction of so-called gauge fields, that transform in a way so that the theory stays locally gauge invariant.
+independently at every space-time point. Here, $T$ is the generator of a certain symmetry group and generally dependent on the space-time coordinate, $T \rightarrow T(\pmb{x})$. 
+% Gauge theories require the introduction of so-called gauge fields, that transform in a way so that the theory stays locally gauge invariant.
 % Pich
 % This is only possible if one adds an extra piece to the Lagrangian, transforming in such a way as to cancel the ∂μθ term in Eq. (6).
 % In order to maintain the symmetry, the Lagrangian may need to be manipulated by introducing new fields.
-These fields give rise to particle interactions that give rise to the fundamental forces of nature. 
+Gauge theories require the addition of so-called gauge fields, which give rise to particle interactions that give rise to the fundamental forces of nature. 
 Historically, the first local gauge theory that was established was QED. It follows a U(1) local gauge symmetry and entails the photon as the associated gauge field. 
-The SM is a reflection of a SU(3)$_C$ $\times$ SU(2)$_L$ $\times$ U(1)$_Y$ local gauge symmetry that gives rise to the existence of all gauge bosons mentioned in the previous section. 
+The SM can be elegantly described by demanding a SU(3)$_C$ $\times$ SU(2)$_L$ $\times$ U(1)$_Y$ local gauge symmetry and explains the existence of all gauge bosons mentioned in the previous section. 
 %The following sections provide an overview of the Lagrangian of the SM, by going through the different symmetry groups. 
-
-Throughout this thesis, natural units are used, that is $c = \hbar = 1$. This leads to the mass, momentum, and energy of particles all being given in units of electronvolt (\eV).
-In the equations in the following sections, the Einstein-summation convention is used, that is terms with equal indices are considered to be summed. If not mentioned otherwise, greek-letter indices take integer values from 1 to 4, while latin-character indices take integer values from 1 to 3.
+The following sections will outline the mathematical framework of the SM.
+In all equations natural units are used, that is, $c = \hbar = 1$, which leads to the mass, momentum, and energy of particles all being given in units of electronvolt (\eV).
+Moreover, the Einstein-summation convention is used, that is, terms with equal indices are considered to be summed. If not mentioned otherwise, greek-letter indices take integer values from 1 to 4, while latin-character indices take integer values from 1 to 3.
 
 % - renormalization:
 % We consider that the physics is understood up to a given cut-off/scale Lambda.
@@ -120,23 +122,24 @@ In the equations in the following sections, the Einstein-summation convention is
 \subsection{Quantum electrodynamics}
 \label{subsec:qed}
 %The above derivations are shortly recapped: Starting from the Lagrangian of a freely moving relativistic fermion one can impose the requirement of local U(1) gauge invariance. This demands to add a new field $A_\mu$ toghether with an interaction term, which is incorporated in the Lagrangian by introducing a covariant derivative $D_\mu$. Additionally, the kinetic term in \cref{eq:kinetictermqed} needs to be added for the new field, which leads to the final Lagrangian for QED, shown in \cref{eq:Lagrangianqed}.
-QED is the reflection of an underlying $U(1)$ local gauge symmetry of the complex-valued fermion fields, $\psi_f$, known as \emph{Dirac spinors}.
+\todo{Explain w(x) in the eqaution and does it need to be bold x?}
+QED can be regarded as a reflection of an underlying $U(1)$ local gauge symmetry of the complex-valued fermion fields, $\psi_f$, known as \emph{Dirac spinors}.
 The Lagrangian that is invariant under $\psi_f \rightarrow e^{i \omega(x)} \psi_f$ transformations can be written as
 \begin{equation}
   \mathcal{L}_{\text{QED}} = \sum_f \bar{\psi}_f(i\gamma^\mu D_\mu - m_f)\psi_f - \frac{1}{4}F_{\mu\nu}F^{\mu\nu},
   \label{eq:Lagrangianqed}
 \end{equation}
-where the sum goes over all electrically charged fermions with mass $m_f$.
-Here, $D_\mu$ is the \emph{covariant derivative}, defined as
+where the sum goes over all electrically charged fermions with masses $m_f$ and $\gamma^\mu$ refers to the four $4 \times 4$ gamma matrices.
+Here, $D_\mu$ is the \emph{covariant derivative} defined as
 \begin{equation}
   D_\mu = \partial_\mu + ieA_\mu,
 \end{equation}
-which includes the gauge field $A_\mu$, associated with the photon. The requirement of local gauge symmetry prohibits terms quadratic in $A_\mu$, resulting in the prediction of the photon being massless.\footnote{Terms in the Lagrangian that are quadratic in a certain field give rise to particle masses.}
-The so-called \emph{field tensors} are defined as
+which includes the gauge field $A_\mu$ that is associated with the photon. The requirement of local gauge symmetry prohibits terms quadratic in $A_\mu$, resulting in the prediction of the photon being massless.\footnote{Terms in the Lagrangian that are quadratic in a certain field give rise to particle masses.}
+The so-called \emph{field tensor} is defined as
 \begin{equation}
   F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu,
 \end{equation}
-where $\gamma^\mu$ refers to the four $4x4$ gamma matrices, and $\partial_\mu$ are the partial derivatives.
+where $\partial_\mu$ are the partial derivatives. This tensor provides an elegant mathematical object representing the electromagnetic field and can also be used, for example, to describe Maxwell's equations of classical electrodynamics.
 
 The symmetry group associated to QED is denoted U(1)$_{\text{QED}}$ and the conserved quantity is the electric charge.\footnote{This is a reflection of Noether's theorem, which states that each symmetry is related to a conserved quantity.}
 It should be noted that U(1)$_{\text{QED}}$ is not part of the original symmetry group of the SM. As explained below, U(1)$_{\text{QED}}$ arises from a SU(2)$_L$ $\times$ U(1)$_Y$ symmetry that is spontaneously broken.
@@ -144,27 +147,29 @@ It should be noted that U(1)$_{\text{QED}}$ is not part of the original symmetry
 
 \subsection{Quantum chromodynamics}
 \label{subsec:qcd}
-QCD is a non-abelian gauge theory associated to the SU(3)$_C$ symmetry. The subindex $C$ refers to the colour and is the conserved quantity under SU(3)$_C$ transformations.
-The local gauge invariant QCD Lagrangian reads
+QCD is a non-abelian gauge theory associated to the SU(3)$_C$ symmetry. The subindex $C$ refers to the colour which is the conserved quantity under SU(3)$_C$ transformations.
+The locally gauge invariant QCD Lagrangian reads
 \begin{equation}
   %  \mathcal{L}_{\text{QCD}} = -\frac{1}{4}G_{\mu\nu}^aG^{a\,\mu\nu} + \bar{q}^i\left( i\gamma^\mu D_\mu-m \right)^j_i q_j,
   \mathcal{L}_{\text{QCD}} = \sum_f \bar{\psi}_f(i\gamma^\mu D_\mu - m_f)\psi_f - \frac{1}{4}G_{\mu\nu}^aG^{\mu\nu}_{a},  \label{eq:lqcd}
 \end{equation}
-where the sum runs over all quark fields, $\psi_f$, where the fields are represented as spinor triplet. 
+where the sum runs over all quark fields, $\psi_f$, that take the form of spinor triplets. 
+\todo{Sum over A in lambdaA GmuA in the equation?}
 The covariant derivate is given by
 \begin{equation}
     D_\mu = \partial_\mu + i g_s \frac{\lambda^a}{2} G_\mu^a,
 \end{equation}
-which includes eight gluon fields $G_\mu^a$ (with $a = 1, \ldots, 8$), as well as the strong coupling constant, $g_s$, and the Gell-Mann matrices, $\lambda^a$, which are the generators of the SU(3)$_C$ group.
-The field tensors, $G_{\mu\nu}^a$, are defined as
+which includes eight gluon fields $G_\mu^a$ (with $a = 1, \ldots, 8$), the strong coupling constant $g_s$, and the Gell-Mann matrices $\lambda^a$ that are the generators of the SU(3)$_C$ group.
+The field tensors $G_{\mu\nu}^a$ are defined as
 \begin{equation}
   \label{eq:qcd-tensor}
   G_{\mu\nu}^a = \partial_\mu G_\nu^a - \partial_\nu G_\mu^a - g_s f^{abc}G_\mu^b G_\nu^c,
 \end{equation}
 where $f^{abc}$ are the structure constants of SU(3)$_C$. 
+The last term in \cref{eq:qcd-tensor} arises from the non-commuting elements of the SU(3)$_C$ group and gives rise to triple and quartic gluon self-interactions. 
+% Triple and quartic self-interactions are part of QCD because gluons themselves carry a combination of a colour and anti-colour. 
 % Invariant under ... transformation, where ... are the group generators
-
-The gluons are massless, as no term quadratic in the gluon fields are allowed when requiring local gauge invariance. Other than photons, however, gluons can interact with each other, a feature that arises from the non-commuting elements of the SU(3)$_C$ group. Triple and quartic self-interactions between gluons are therefore part of QCD because gluons themselves carry a combination of a colour and anti-colour. 
+Similar to photons, the gluons are massless because no terms quadratic in the gluon fields are allowed when requiring local gauge invariance. 
 %which is similar to the requirement of a massless photon in QED. 
 
 
@@ -176,20 +181,20 @@ The gluons are massless, as no term quadratic in the gluon fields are allowed wh
 % - This also means that no right-chiral neutrinos exist in the SM as they don't interact with any of the forces
 
 % "Also called: The Glashow􏰁Weinb erg􏰁Salam Theory of Weak Interactions"
-The weak and electromagnetic force are unified in the electroweak model~\cite{GLASHOW1961579,SALAM1964168,PhysRevLett.19.1264} by imposing local gauge invariance under transformations of the symmetry group
+The weak and electromagnetic forces are unified in the electroweak model~\cite{GLASHOW1961579,SALAM1964168,PhysRevLett.19.1264} by imposing local gauge invariance under transformations of the symmetry group
 \begin{equation}
   \label{eq:ew-sym-group}
   \text{SU(2)}_L \times \text{U(1)}_Y.
 \end{equation}
-The subindex $L$ reflects the empirical finding that only \emph{left-chiral}\footnote{
+The unification is based on two major empirical findings:
+The first is, that only \emph{left-chiral}\footnote{
   The \emph{chirality} of a fermion can be determined with the projection operators $P_L$ and $P_R$ like
   \begin{equation*}
     \psi       = P_L \psi + P_R \psi = \frac{1}{2} \left( 1 - \gamma^5 \right) \psi + \frac{1}{2} \left( 1 + \gamma^5 \right) \psi = \psi_R + \psi_L,                                \\
   \end{equation*}
   where $\gamma^5 = i\gamma^0\gamma^1\gamma^2\gamma^3$. The chirality becomes identical to the helicity for massless particles.
-} (also denoted \emph{left-handed}) fermions interact via the weak interaction.
-The fermions are therefore grouped into left-handed doublets, $\psi_L$, and right-handed singlets, $\psi_R$, under SU(2)$_L$ transformations. An overview of the fermion content is shown in \cref{tab:ewfermioncontent}.
-The quarks participating in the electroweak interaction, labelled as $u', d', c'$, are a mixture of the quark mass eigenstates. Their relation is specified by the \emph{Cabibbo–Kobayashi–Maskawa (CKM) matrix} \cite{doi:10.1143/PTP.49.652}, $\pmb{V}$, as
+} (also denoted \emph{left-handed}) fermions interact via the weak interaction, indicated with an $L$ in \cref{eq:ew-sym-group}. An overview of the fermion content is shown in \cref{tab:ewfermioncontent}, that groups the fermions into left-handed doublets, $\psi_L$, and right-handed singlets, $\psi_R$, under SU(2)$_L$ transformations. 
+The second finding is that the quarks participating in the electroweak interaction, labelled as $u', d', c'$, are a mixture of the quark mass eigenstates. Their relation is specified by the \emph{Cabibbo–Kobayashi–Maskawa (CKM) matrix} \cite{doi:10.1143/PTP.49.652}, $\pmb{V}$, as
 % From Peskin
 % The off diagonal terms in Vij allow weak􏲩interaction transitions b e􏲩 tween quark generations.
 \begin{equation}
@@ -206,9 +211,10 @@ The quarks participating in the electroweak interaction, labelled as $u', d', c'
    b
  \end{pmatrix}.
 \end{equation}
-The CKM matrix is unitary and fully specified with 4 parameters. It encodes the strength of the flavour-changing electroweak interactions.
+The CKM matrix is unitary and fully specified with 4 parameters and encodes the strength of the flavour-changing electroweak interactions.
+\todo{Maybe add one more sentence describing the rotation that is necessary? see P.Sommer thesis}
 
-\noindent The fermion fields transform as
+\noindent The fermion fields then transform as
 \begin{align}
   \psi_L & \rightarrow e^{iY\omega} e^{iT^a\omega^a} \psi_L, \qquad (a = 1, 2, 3) \\
   \psi_R & \rightarrow e^{iY\omega} \psi_R,
@@ -226,28 +232,33 @@ The relation to the electromagnetic interaction and the physical electric charge
   \mathcal{L}_{\text{EWK}} = \sum_f i\bar{\psi}_{f}\gamma^\mu D_\mu \psi_{f} - \frac{1}{4}W_{\mu\nu}^aW^{\mu\nu}_{a} - \frac{1}{4} B_{\mu\nu}B^{\mu\nu}, 
   \label{eq:lagrangianewk}
 \end{equation}
-where the sum runs over all fermions, $f$, including the left-handed and right-handed counterparts.
+where the sum runs over all fermions $f$, including their left-handed and right-handed counterparts.
 %, whose occurrence as left-handed and right-handed particles is explicitly mentioned.
 The covariant derivative is defined as
 \begin{equation}
   D_\mu = \partial_\mu + igT^aW_\mu^a + ig'\frac{Y}{2}B_\mu 
   \label{eq:covdevewk}
 \end{equation}
-and includes four gauge fields. The fields $W^a_\mu$ (with a = 1, 2, 3) are the gauge fields of SU(2)$_L$ with associated coupling $g$ and $B_\mu$ is the gauge field of U(1)$_Y$ with coupling $g'$.
-The field tensors are given by
+and includes four gauge fields. The fields $W^a_\mu$ (with a = 1, 2, 3) are the gauge fields of SU(2)$_L$ with associated coupling $g$, and $B_\mu$ is the gauge field of U(1)$_Y$ with coupling $g'$.
+The field tensors in \cref{eq:lagrangianewk} are given by
 \begin{align}
   W_{\mu\nu}^a & = \partial_\mu W_\nu^a - \partial_\nu W_\mu^a - g \epsilon^{abc} W^b_\mu W^c_\nu, \label{eq:Wtensor} \\
   B_{\mu\nu}   & = \partial_\mu B_\nu - \partial_\nu B_\mu,
 \end{align}
-where $\epsilon^{abc}$ are the structure constants of SU(2)$_L$. The third term on the right-hand side of \cref{eq:Wtensor} arises because of the non-abelian nature of SU(2)$_L$ and gives rise to triple and quartic self-interactions between the gauge fields $W_{\mu}^a$.
+where $\epsilon^{abc}$ are the structure constants of SU(2)$_L$. The third term on the right-hand side of \cref{eq:Wtensor} arises because of the non-abelian nature of SU(2)$_L$ and gives rise to triple and quartic self-interactions of the gauge fields $W_{\mu}^a$.
 The tensor $B_{\mu\nu}$ has the same structure as the electromagnetic field strength tensor obtained in QED.
+\todo{Give details on structure constants? for QCD AND Electroweak model}
 
-\noindent The Lagrangian in \cref{eq:lagrangianewk} describes 4 massless bosons. No terms quadratic in the vector fields are allowed due to the requirement of local gauge invariance. Moreover, also the simple inclusion of fermion mass terms is forbidden, given that a term
-\begin{equation}
-  -m_f \bar{\psi} \psi = -m_f \left( \bar{\psi}_R\psi_L + \bar{\psi}_L\psi_R \right)
-  \label{eq:fermionmassterm}
-\end{equation}
-violates SU(2)$_L$ gauge invariance, since $\psi_L$ transforms as a doublet and $\psi_R$ as a singlet. The physical fields, \Wpm, \Zboson, $\gamma$ naturally appear in the Higgs mechanism explained below.
+\noindent The Lagrangian of \cref{eq:lagrangianewk} describes 4 massless bosons. No terms quadratic in the vector fields are allowed due to the requirement of local gauge invariance. 
+Another mechanism is required to explain the existence of the massive gauge fields \Wpm and \Zboson.
+% and $\gamma$. 
+% Moreover, also the simple inclusion of fermion mass terms is forbidden, given that a term
+% \begin{equation}
+%   -m_f \bar{\psi} \psi = -m_f \left( \bar{\psi}_R\psi_L + \bar{\psi}_L\psi_R \right)
+%   \label{eq:fermionmassterm}
+% \end{equation}
+% violates SU(2)$_L$ gauge invariance because $\psi_L$ transforms as a doublet and $\psi_R$ as a singlet. 
+
 
 % From experiments one expects two charged bosons $W^\pm$ and two neutral bosons, the $Z$ and the photon.
 
@@ -264,10 +275,13 @@ violates SU(2)$_L$ gauge invariance, since $\psi_L$ transforms as a doublet and 
   }
   \label{fig:higgspotential}
 \end{figure}
-An additional mechanism is needed in the SM to explain the finite masses of the weak gauge bosons. 
-A principle known as \emph{spontaneous symmetry breaking}, that has been first explored in the field of condensed-matter physics, can be applied to elementary particle physics to generate the necessary mass terms without violating local gauge invariance.
-This was first formulated by three independent research teams in 1964: Brout and Englert~\cite{PhysRevLett.13.321}, Higgs~\cite{PhysRevLett.13.508,HIGGS1964132}, and Guralnik, Hagan, and Kibble \cite{PhysRevLett.13.585}.\footnote{Their work was inspired by previous advancements in the theory of superconductivity~\cite{PhysRev.108.1175}, as well as Anderson, who proposed the mechanism of spontaneous symmetry breaking for generating mass terms in a non-relativistic scenario already in 1963~\cite{PhysRev.130.439}.}
-Today the mechanism is usually called \emph{Higgs mechanism} or also \emph{electroweak symmetry breaking} (ESWB).
+
+%naturally appear in the Higgs mechanism explained below.
+%An additional mechanism is needed in the SM to explain the finite masses of the weak gauge bosons. 
+
+A principle known as \emph{spontaneous symmetry breaking}, that was first explored in the field of condensed-matter physics, can be applied to elementary particle physics to generate mass terms for the weak gauge bosons without violating local gauge invariance.
+This was first formulated by three independent research teams in 1964: Brout and Englert~\cite{PhysRevLett.13.321}, Higgs~\cite{PhysRevLett.13.508,HIGGS1964132}, and Guralnik, Hagan, and Kibble \cite{PhysRevLett.13.585}.\footnote{Their work was inspired by previous advancements in the theory of superconductivity~\cite{PhysRev.108.1175} and specifically P. W. Anderson, who proposed the mechanism of spontaneous symmetry breaking for generating mass terms in a non-relativistic scenario already in 1963~\cite{PhysRev.130.439}.}
+Today the mechanism is most often called \emph{Higgs mechanism} or \emph{electroweak symmetry breaking} (ESWB).
 The basic principle is to allow the state of lowest energy to violate local gauge invariance while maintaining the gauge symmetry of the Lagrangian itself.
 
 % From Peskin and Schroeder
@@ -376,6 +390,7 @@ A more detailed descriptions on experimental Higgs boson physics and an overview
 
 \subsection{Fermion masses}
 \label{subsec:fermion-masses}
+\todo{Maybe add in the beginning that simple inclusion of fermion mass terms is forbidden in electroweak model. As commented out at the end of the EW section.}
 The masses of the fermions can be explained by introducing interaction terms between the fermion fields and the Higgs field. 
 This is possible because both the left-handed fermions and the Higgs field appear as doublets under SU(2)$_L$ transformations.
 

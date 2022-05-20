@@ -1,0 +1,97 @@
+\documentclass{standalone}
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{intersections}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+\providecommand{\width}{7cm}% width of picture
+% \providecommand{\height}{2cm}% height of picture (not used)
+\providecommand{\aspectRatio}{2.33}% aspect ratio of picture
+\providecommand{\IPxRatio}{0.3}% x-position of origin (percent of width)
+\providecommand{\arrowHeight}{0.73}% arrow height (percent of height)
+\providecommand{\lineHeight}{0.83}% arrow height (percent of height)
+\providecommand{\angleOne}{120}% angle of jet 1 from positive x-axis
+\providecommand{\angleTwo}{30}% angle of jet 2 from positive x-axis
+\begin{tikzpicture}[scale=1, >=Stealth]
+
+  % Define the image boundary coordinates and set the bounding box
+  % accordingly.
+  \useasboundingbox
+    let \n{IPx}={\width*\IPxRatio}, \n{height}={\width/\aspectRatio}
+    in
+    [name path=frame]
+    (-\n{IPx}, 0) coordinate (bottom left)
+    (\width-\n{IPx}, 0) coordinate (bottom right)
+    (-\n{IPx}, \n{height}) coordinate (top left)
+    (\width-\n{IPx}, \n{height}) coordinate (top right)
+    (bottom left) rectangle (top right);
+
+  % Define the intersections of the jet lines with the image boundary
+  % in the top.
+  \path
+    let \n{IPx}={\width*\IPxRatio}, \n{height}={\width/\aspectRatio}
+    in
+    (\angleOne:{\n{height}/sin(\angleOne)}) coordinate (j1 target)
+    (\angleTwo:{\n{height}/sin(\angleTwo)}) coordinate (j2 target);
+
+  % Calculate the intersections of the jet lines with the frame and
+  % call them (j1) and (j2).
+  \path[name path=j1 line]
+    ($ (0,0) !0.05! (j1 target) $) -- ($ (0,0) !1.1! (j1 target) $);
+  \path[name path=j2 line]
+    ($ (0,0) !0.05! (j2 target) $) -- ($ (0,0) !1.1! (j2 target) $);
+  \path[name intersections={of=frame and j1 line, by=j1 endpoint}]
+    (j1 endpoint) coordinate (j1);
+  \path[name intersections={of=frame and j2 line, by=j2 endpoint}]
+    (j2 endpoint) coordinate (j2);
+
+  % Fill the red and blue areas
+  \fill[color=blue!10]
+    (0,0) -- (j2) -- (top right) -- (bottom right) -- cycle;
+  \fill[color=blue!10]
+    (0,0) -- (j1) -- (top left) -- (bottom left) -- cycle;
+  \fill[color=red!10]
+    (0,0) -- (j1) -- (top left) -- (top right) -- (j2) -- cycle;
+
+  % Draw the dashed cross at the origin
+  \draw [dashed, very thin]
+    (bottom left) -- (bottom right)
+    (0, 0) -- (0,0 |- top left);
+
+  % Draw the blue lines indicating C=1
+  \draw[blue, thick]
+    ($ (0,0) !\lineHeight! (j1 target) $) -- (0,0) -- ($ (0,0) !\lineHeight! (j2 target) $);
+
+  % Draw the red line indicating C=0. The angle is calculated by
+  % converting the jet angles to rapidity, averaging them and
+  % converting back.
+  \draw[red, thick]
+    let \n{etaOne}={-ln(tan(\angleOne/2))},
+        \n{etaTwo}={-ln(tan(\angleTwo/2))},
+        \n{angleZero} ={2*atan(exp(-(\n{etaOne}+\n{etaTwo})/2))},
+        \n{height}={\width/\aspectRatio}
+    in
+    (\n{angleZero}:{\n{height}/sin(\n{angleZero})}) coordinate (C target)
+    (0,0) -- ($ (0,0) !\lineHeight! (C target) $) node[red, above] {$C=0$};
+
+
+  % Draw the black arrows
+  \draw[black, very thick, <-]
+    ($ (0,0) !\arrowHeight! (j1 target) $)
+    -- node[midway, sloped, below] {Jet 1} (0,0);
+  \draw[black, very thick, ->]
+    (0,0) -- node[midway, sloped, below] {Jet 2}
+    ($ (0,0) !\arrowHeight! (j2 target) $);
+
+
+  % Draw the labels
+  \node[above, blue] at ($ (0,0) !\lineHeight! (j1 target) $) {$C=1$};
+  \node[above, blue] at ($ (0,0) !\lineHeight! (j2 target) $) {$C=1$};
+  \node[black] at (\angleTwo+15:0.4*\width) {$0<C<1$};
+  \node[black] at (\angleTwo-20:0.5*\width) {$C>1$};
+
+
+  \end{tikzpicture}
+\end{document}
