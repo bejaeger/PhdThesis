@@ -52,7 +52,7 @@ The \POWHEG\ prediction is accurate to NLO in QCD corrections and tuned to match
 %The PDF4LHC15~\cite{PDF4LHC15} parton distribution function (PDF) set and the AZNLO tune~\cite{Aad:2014xaa} of \PYTHIAV{8} are used. 
 The MC prediction is normalised to an approximate-NNLO QCD cross section with NLO electroweak corrections~\cite{PhysRevLett.99.161803, Ciccolini:2007ec, PhysRevLett.105.011801}.
 
-The uncertainties due to the parton shower and hadronization model for the ggF and VBF Higgs boson signal samples are
+The uncertainties due to the parton shower and hadronisation model for the ggF and VBF Higgs boson signal samples are
 evaluated using the events in the nominal sample generated with \POWHEG\ but interfaced to an alternative showering program
 \HERWIGV{7}~\cite{Bahr:2008pv,Bellm:2015jjp} instead of \PYTHIAV{8}. To estimate the uncertainty related to the matching between the matrix element and the parton shower for ggF and VBF production, MC events produced with the \MGFiveNLO~\cite{Alwall:2014hca} generator and interfaced to \HERWIGV{7} are used. They are accurate to NLO in QCD corrections and utilize the \texttt{NNPDF30\_nlo\_as\_0118}~\cite{Ball:2014uwa} parton distribution function (PDF) set.
 In both cases, the H7UE set of tuned parameters~\cite{Bellm:2015jjp} and the \texttt{MMHT2014LO} PDF set~\cite{Harland-Lang:2014zoa} are used for the underlying event.
@@ -108,7 +108,7 @@ The \nnpdfnnlo set of PDFs is used, along with the dedicated set of tuned parton
 Electroweak $WW$ production in association with two jets ($WWjj$) is
 generated using \MGFiveNLO~\cite{Alwall:2014hca} with LO matrix elements using the \texttt{NNPDF2.3LO} PDF set.
 For the nominal sample, \MGFiveNLO\ is interfaced with \PYTHIAV{8.244} using the
-A14 tune to model the parton shower, hadronization, and underlying event. An
+A14 tune to model the parton shower, hadronisation, and underlying event. An
 alternative sample is utilized to evaluate the shower model uncertainty, for
 which \MGFiveNLO\ is instead interfaced with \HERWIGV{7}.
 
@@ -127,14 +127,14 @@ uncertainty. The accuracy of the matrix elements is at LO for up to four
 final-state partons. The \texttt{NNPDF2.3LO} PDF set~\cite{Ball:2012cx} is
 used. Events are interfaced to \PYTHIAV{8.186}~\cite{Sjostrand:2007gs} with the
 A14 tune~\cite{ATL-PHYS-PUB-2014-021} to model the parton shower,
-hadronization, and underlying event.
+hadronisation, and underlying event.
 %The overlap between matrix element and parton shower emissions was removed using the CKKW-L merging procedure~\cite{Lonnblad:2001iq,Lonnblad:2011xx}. The A14 tune~\cite{ATL-PHYS-PUB-2014-021} of \PYTHIA[8] was used with the \NNPDF[2.3lo] PDF set~\cite{Ball:2012cx}. The decays of bottom and charm hadrons were performed by \EVTGEN[1.2.0]~\cite{Lange:2001uf}. The $V$+jets samples were normalized to a next-to-next-to-leading-order (NNLO) prediction~\cite{Anastasiou:2003ds}.
 
 \subsubsection{Top-quark samples}
 
 The production of \ttbar\ events is modelled using the \powhegbox~v2 generator at NLO with the \nnpdfnlo PDF set and the \hdamp\ parameter\footnote{The \hdamp\ parameter is a resummation damping factor and one of the parameters that controls the matching of \Powheg\ matrix elements to the parton shower and thus effectively regulates the high-\pt\ radiation against which the \ttbar\ system recoils.} set to $1.5\times$\mtop~\cite{ATL-PHYS-PUB-2016-020}.
 In order to correct for a known mismodelling of the leading lepton \pt due to missing higher-order corrections, an NNLO reweighting is applied to the sample~\cite{NNLOReweighting}.
-The events are interfaced to \PYTHIAV{8.230} to model the parton shower, hadronization, and underlying event, with parameters set according to the A14 tune and using the \nnpdftwo set of PDFs~\cite{Ball:2012cx}.
+The events are interfaced to \PYTHIAV{8.230} to model the parton shower, hadronisation, and underlying event, with parameters set according to the A14 tune and using the \nnpdftwo set of PDFs~\cite{Ball:2012cx}.
 % \input{top_isrfsr_powpy_short} describes the estimation of systematic uncertainties for ttbar and single top, to be used later? JONAS 
 
 The associated production of top quarks with $W$ bosons (mainly $Wt$) is modelled using the \powhegbox~v2 generator at NLO in QCD using the five-flavor scheme and the \nnpdfnlo set of PDFs.
