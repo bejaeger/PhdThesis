@@ -242,6 +242,9 @@ once:
 format: 
 	pdflatex -ini -jobname="format" "&pdflatex" mylatexformat.ltx """Phd-Thesis-Format.tex"""
 
+feynman: 
+	cd figures/feynman-graphs; for l in $$(ls | grep .mp); do mpost $$l; done; cd -
+
 cleanps:
 	-rm $(BASENAME).ps
 	-rm $(BASENAME)-draft-cover.ps $(BASENAME)-preprint-cover.ps

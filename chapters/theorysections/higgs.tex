@@ -1,33 +1,21 @@
 
-% FROM MASTER THESIS
-% The theoretical developments which lead to the prediction of the Higgs boson where discussed in the previous chapters.
-% The experimental discovery of the Higgs boson was achieved in 2012 by the ATLAS and CMS Collaboration at the LHC \cite{Aad:2012tfa,Chatrchyan:2012xdj}.
-% Since then many dedicated analyses have been measuring the properties of the Higgs boson \cite{2015arXiv150605669A,DIMARCO2016746}, as well as its couplings to other particles very well \cite{2016JHEP...08..045A}.
-% %The LHC \RunOne\ results for Higgs boson measurements are reviewed in Ref.~\cite{2016JHEP...08..045A}.
-% Up to now, all results are consistent within the given uncertainties with the predictions made by the SM.
-% The current combination of the mass measurements from the ATLAS and CMS experiment of the Higgs boson is \cite{Aad:2015zhl}
-% \begin{equation}
-%   m_H = 125.09 \pm 0.21\text{(stat.)} \pm 0.11\text{(syst.)} \GeV.
-% \end{equation}
-% The most recent result analyzing data of \RunTwo\ from the ATLAS Collaboration is $m_H = 124.97\pm0.28\,\GeV$ \cite{ATLAS-CONF-2017-046} and from the CMS Collaborations $m_H = 125.26 \pm 0.21\,\GeV$ \cite{Sirunyan:2272260}.
-% This section shortly discusses the most important processes to consider, when dealing with Higgs boson interactions.
 
-The theoretical framework of the SM, as discussed in the previous chapters, has been extremely successful, making several predictions that were later confirmed by experimental measurements\footnote{Mention W boson, Z boson discovery}. 
+
+The SM has been extremely successful in making predictions that were later confirmed by experimental measurements. Examples are the observation of the $W$ and $Z$ bosons in 1983 by the UA1 and UA2 collaborations, or the top quark discovery in 1995 by the CDF and D0 experiments. \todo{Maybe references}
+% The observation of the $W$ and $Z$ bosons by the UA1 and UA2 collaborations in 1983 are just two examples of this.
 % The discovery of the long sought-after Higgs boson in 2012 by the ATLAS and CMS Collaborations~\cite{Aad:2012tfa,Chatrchyan:2012xdj} marks the highlight of this success story. 
-The discovery of a new particle in 2012 by the ATLAS and CMS Collaborations~\cite{Aad:2012tfa,Chatrchyan:2012xdj} marked the highlight of this success story, as by now the experimental evidence is overwhelming that the measured particle is the long sought-after Higgs boson predicted by the SM.
+The success story culminated in the discovery of a new particle by the ATLAS and CMS Collaborations in 2012~\cite{Aad:2012tfa,Chatrchyan:2012xdj}, as by now the experimental evidence is overwhelming that the measured particle is the long sought-after Higgs boson predicted by the SM. This year (2022) marks the ten years anniversary of the Higgs boson discovery which is celebrated with a paper \cite{NATURE-Paper} that summarizes all state-of-the art Higgs measurements.
+The paper demonstrates that the observation of the Higgs in 2012 was only the beginning of an era, the era of Higgs precision measurements.
 
-The Higgs boson plays a special role in the SM for many reasons: It is the only scalar particle and is connected to a large fraction of the free parameters of the SM. It is also the only particle that is not a consequence of the principle of local gauge invariance, but added in an ad-hoc solution that is necessary to explain the masses of the massive bosons. Furthermore, the Higgs boson is a prime candidate for searching for physics beyond the SM. It plays an important role in many of the SM extensions, such as 2HDMs, .... , or dark matter models.
-
-For these reasons, the observation of the Higgs boson in 2012 was only the beginning of an era; an era of Higgs precision measurements. Precisely measuring the properties and cross-sections of the Higgs boson is needed in order to understand the exact role it plays in nature. 
+This section starts with a brief motivation for conducting Higgs boson measurements. \Cref{subsec:higgschannels} then provides an overview of the different production and decay modes of the Higgs boson and discusses their experimental accessibility at the LHC (\cref{subsec:exp-accessibility}). \Cref{subsec:xsec-measurements} outlines the different type of Higgs cross-section measurements that are conducted at the LHC, before \cref{subsec:} concludes with a brief overview of the experimental status at the time of writing.
+Many more details on the status of Higgs boson physics can be found in \cref{PDG2020}.
 
 % So far, there is no indication of deviations from the SM. 
 % - Properties of the Higgs boson in agreement with the spin-parity JP = 0+ predicted by the SM. 
 % - Cross-sections all in agreement with the SM predictions. Firmly establishing VBF production in this thesis.
 % - There is no indication that the found particle is not the SM. 
 %The contrary, the experimental evidence is overwhelming that the measured particle is indeed the particle predicted by the SM.
-This section first provides an overview of the different production and decay modes, and their experimental accessibility at the LHC.
-The status of the experimental measurements of the Higgs boson concludes this section.
-Many more details on the status of Higgs boson physics can be found in \cref{PDG2020}.
+
 % Wikipedia
 %Since the Higgs field is scalar, the Higgs boson has no spin. The Higgs boson is also its own antiparticle, is CP-even, and has zero electric and colour charge.[163]
 % The Standard Model spin-parity JP = 0+
@@ -35,186 +23,93 @@ Many more details on the status of Higgs boson physics can be found in \cref{PDG
 % \todo{Maybe add such a section -> Look for resources first!}
 
 \subsection{Motivation for Higgs physics}
+\todo{Round up this section!}
+The Higgs boson plays a special role in the SM. 
+It is the only fundamental particle with a spin of zero and connected to a large fraction of the free parameters of the SM (see \cref{subsec:free-pars-sm}). 
+It is also the only boson that is not a consequence of the principle of local gauge invariance, but is added in an ad-hoc solution in the mechanism of EWSB. 
+Furthermore, the Higgs boson is a prime candidate for searching for physics beyond the SM and thus relevant to many of the open fundamental questions (see \cref{subsec:limitations}). \cite{2019BHeinemann}
+This includes, for example, dark matter models (e.g. \ccite{Baumgart_2009,Kaplan_2009,Dienes_2012}) which predict interactions of the Higgs boson with yet unknown particles that are candidates for dark matter, or investigations of the process of EWSB itself by testing two-Higgs-doublet models~\cite{Branco_2012} that predict the existence of additional particles similar to the Higgs boson.
 
-% From ML paper: Section 3.7 in https://arxiv.org/pdf/1807.02876.pdf
-% New physics may manifest itself as unusual or rare events. One approach is to accurately identify the Standard
-% Model processes and search for anomalies. Classifying the Standard Model events is a challenging task, as it
-% consists of many complicated physics processes. Multi-class machine learning algorithms are well-suited for
-% this classification problem. Once an event is classified as likely to be from a known physics process, it can be
-% filtered out, and remaining events can be further analyzed for hints of new physics.
+The above highly motivates performing precision measurements of the Higgs sector to test both the predictions of the SM and theories beyond the SM at an ever greater statistical precision. 
 
-\todo{Move part from intro to here!}
-The Higgs boson plays a special role in the SM because it is the only fundamental scalar. Its nature makes it a suitable candidate in many models beyond the SM to find new physics through couplings with the Higgs boson. 
-This highly motivates performing precision measurements of the Higgs boson to be able to detect small deviations from the SM predictions. 
-For an extensive review of different theoretical models, the interested reader is referred to \ccite{2019BHeinemann}.
+Only with a precise knowledge of Higgs processes and an understanding of what exact role the Higgs boson plays in nature, fundamental physics gets closer to answering open fundamental questions.  
 
+
+% From gianotti
+% o gain even deeper insights into the Higgs boson and its role in fundamental physics
+
+OR: Precisely measuring the properties and cross-sections of the Higgs boson is needed in order to understand the exact role it plays in nature. 
+
+% From nature
+% The measurements of those production and decay rates probe the strength of the interactions between the Higgs boson and the particles involved. This allows a test of an essential prediction of the SM: that the interaction strengths scale with particle masses.
+
+% provide stringent constraints on many models of new phenomena beyond the
+% Standard Model.
 
 
 \subsection{Higgs boson production and decay modes}
-\label{sec:higgschannels}
-The Higgs boson directly couples to all massive particles and therefore can be produced in a variety of production modes and has multiple possible decay channels.
-The different channels are dependent on the mass of the Higgs boson itself, which in the most recent measurements is determined to be $125.1\,\GeV$ \todo{REF}. 
+\label{subsec:higgschannels}
+The Higgs boson directly couples to all massive particles and therefore has various production and decay modes.
+The relative contribution of the various modes (or channels) are dependent on the mass of the Higgs boson, which in the most recent combined measurement by the ATLAS and CMS collaboration is determined to be $m_H=125.09 \pm 0.21(stat.) \pm 0.11(syst.)\,\GeV$ \cite{HIGG-2014-14}. 
 %This offers a rich field of experimental signatures that can be explored by experiments.
 
-The production cross-sections depend on the centre-of-mass energy of the collider. 
-At the LHC, the following four production modes that are illustrated in \cref{fig:higgsprodfeyn} dominate: \emph{gluon fusion} (ggF), \emph{vector-boson fusion} (VBF), \emph{Higgs-strahlung} from $W$ or $Z$ boson (VH), and $t\bar{t}$ fusion (ttH).
+\paragraph{Production modes} The Higgs production cross-sections depend on the centre-of-mass energy of the collider.
+At the LHC, the four production modes illustrated in \cref{fig:higgsprodfeyn} dominate.
+Their corresponding cross-sections are shown in \cref{fig:higgsprodxsec}.
+\emph{gluon fusion} (ggF), \emph{vector-boson fusion} (VBF), \emph{Higgs-strahlung} from $W$ or $Z$ boson (VH), and $t\bar{t}$ fusion (ttH).
 %- as illustrated in \cref{fig:higgsprodfeyn} with a choice of Feynman diagrams.
 %associated production with a $t\bar{t}$ pair (also called \emph{$t\bar{t}$ fusion})
-\Cref{fig:higgsprodxsec} shows the most recent results for the corresponding cross-section calculations with an indication of the accuracy achieved for each process.
-
-The ggF process ($pp\rightarrow H$) is the leading mechanism at the LHC and characterized by a virtual fermion loop coupling to the Higgs boson. 
+The \emph{gluon fusion} (ggF) process is the leading mechanism at the LHC and characterized by a virtual fermion loop coupling to the Higgs boson and no additional object in the final state (therefore labelled as $pp\rightarrow H$). 
 The fermions in the loop are dominated by top-quarks because of their high mass. 
 %The ggF cross-section is calculated with an effective theory to NNNLO in QCD and includes electroweak corrections at NLO precision \cite{Anastasiou:2016cez}.\todo{double-check}
-The second-largest contribution to the Higgs boson production comes from the VBF process ($pp\rightarrow qqH$), where two incoming quarks radiate a vector boson that fuse into the Higgs.
-A main characteristic of the VBF production is the two quarks in the final state that appear at large angle and with a large invariant mass.
+The second-largest contribution to the Higgs boson production comes from the \emph{vector-boson fusion} (VBF) process, where two incoming quarks radiate a vector boson that fuse into the Higgs.
+A main characteristic of the VBF production mode is the two quarks in the final state that appear at large angle and with a large invariant mass ($pp\rightarrow qqH$).
 %The VBF Two quarks at large radii and with large invariant mass in the final state.
-This feature can be exploited to distinguish between collision events and select the subsequent decays of the Higgs boson. 
-In addition, the VBF production mode provides information about the couplings of the Higgs boson to the $W$ and $Z$ bosons. 
+% This feature can be exploited to distinguish between collision events and select the subsequent decays of the Higgs boson. 
+% In addition, the VBF production mode provides information about the couplings of the Higgs boson to the $W$ and $Z$ bosons. 
 %Observation of the VBF production mode of the Higgs boson was found by a combined measurement of the ATLAS and CMS Collaborations\cite{Khachatryan:2016vau}.
-The Higgs-strahlung process ($pp \rightarrow WH$, $pp \rightarrow ZH$) exhibits similar features, having one additional vector boson besides the Higgs boson in the final state.
-The Higgs boson production in association with a $t\bar{t}$ pair ($pp \rightarrow ttH$) is difficult to measure due to the relatively low production cross-section and the less distinct final state. It plays an important role in Higgs boson physics, however, since it allows to directly measure the Yukawa coupling of the top quark. 
+The \emph{Higgs-strahlung} process from $W$ or $Z$ bosons (VH) exhibits similar features, having one additional vector boson besides the Higgs boson in the final state ($pp \rightarrow WH$ and $pp \rightarrow ZH$).
+The $t\bar{t}$ \emph{fusion} (ttH) process where the Higgs is produced in association with a $t\bar{t}$ pair is difficult to measure due to the relatively low production cross-section and the less distinct final state ($pp \rightarrow ttH$). It plays an important role in Higgs boson physics, however, since it allows to directly measure the Yukawa coupling of the top quark. 
 %The most recent results of the ATLAS Collaboration yield evidence for the $t\bar{t}$-fusion production of the Higgs boson \cite{ATLAS-CONF-2017-077}.
 The Higgs boson production in association with a $b\bar{b}$ pair ($pp\rightarrow bbH$) or a single-top quark ($pp \rightarrow tH$) have small contributions at the LHC.
 
-
-Once the Higgs boson is produced, it decays almost instantaneously (within approximately $10^{-22}$ seconds).
-The coupling to vector bosons is proportional to the boson's mass squared, and the coupling to fermions is proportional to the mass of the fermions. The \emph{branching ratios} of the most relevant decays are displayed in \cref{fig:higgsbr}. 
-The decay to a pair of bottom quarks ($H\rightarrow b\bar{b}$) is the leading process followed by the $H\rightarrow WW^*$ decay mode. Since the mass of the Higgs boson is lower than the summed mass of two $\Wpm$ or $Z$ bosons, this decay mode is suppressed and one of the decaying vector bosons appears as a virtual particle\footnote{Virtual particles have the same properties as on-shell particles, but can violate momentum and energy conservation for a short period.} \todo{Check footnote}.
-
-The $H\rightarrow b\bar{b}$ decay accounts for 58\% of all Higgs boson decays. The experimental sensitivity to measure $H\rightarrow b\bar{b}$ decays is nonetheless limited because of their purely hadronic final state and the fact that an overwhelming fraction of collision events at hadron colliders such as the LHC are also dominated by QCD processes. This makes it difficult to isolate the Higgs decays. The VBF or Higgs-strahlung production modes are therefore typically used to exploit the  presence of the additional particles in the final state in the selection of events.
-%It is nonetheless possible to measure this decay by using the VBF or Higgs-strahlung production mode and 
-%Using this strategy evidence for the $H\rightarrow b\bar{b}$ decay was recently found in the VH production mode \cite{Aaboud:2017xsd,Sirunyan:2017elk}.\todo{UPDATE}
-
-The most sensitive channels for the Higgs boson discovery in 2012 were the Higgs boson decays to two photons, the $H \rightarrow ZZ^* \rightarrow llll$ process, and $H \to WW^*$ decays.
-%Higgs boson initially was discovered in the decay to two photons and the $H \rightarrow ZZ^* \rightarrow llll$ channel \todo{REF}.
-The first two decays have relatively small branching ratios but exhibit very clean final-state signatures due to the presence of leptons and photons that can be very precisely measured.
-This allows selecting signal events very efficiently while having a good control over the background.
-In addition, the mass of the Higgs boson can be fully reconstructed in these channels by computing the invariant mass of the reconstructed decay products.
-%at a hadron collider, where an overwhelming fraction of events is dominated by QCD effects.
-%This is equally important since it allows an excellent selection of signal events and a good control over the background. 
-% the largest fraction of events are dominated by QCD effects.
-%QCD dominated events
-%events at a hadron collider, since the final states are dominated by QCD effects.
-
-The $H \rightarrow WW^*$ decay also provides a good handle over the background when considering leptonically decaying $W$ bosons.
-The neutrinos stemming from the $W$ boson decays, however, prevent to fully reconstruct the mass of the Higgs boson, since they cannot be directly detected by the ATLAS experiment.
-\todo{Update}
-Results of the analysis of \HWW\ decays conducted by the ATLAS Collaboration and CMS Collaboration for data of \RunOne\ can be found in Ref.~\cite{PhysRevD.92.012006} and Ref.~\cite{2013arXiv1312.1129C}, respectively; a corresponding analysis of \RunTwo\ data is given in \cref{sec:ggfanalysis}, focusing on the gluon fusion production-mode.
-
-Events with Higgs decays to $\tau$-leptons exhibit a similar final state as \HWW\ processes.
-%Latest cross-section measurements can be found in \todo{REF. Not sure if it's necessary}
-%A similar final state as the one in \HWW\ processes, can be exploited when looking at Higgs boson decays into $\tau$-leptons \cite{Aad:2015vsa,Sirunyan:2276465}. 
-The Higgs boson decay to $Z\gamma$ are very rare and thus the Higgs boson is still searched for in these channels. \todo{Add Ref.}
-% , where leptonically decaying $Z$ bosons provide the most sensible final state, or $\mu\mu$,  % \cite{Aaboud:2017uhw,Aaboud:2017ojs}.
-The final states with charm quarks and gluons, making up a considerable fraction of all Higgs decays, are currently too difficult to differentiate from other events at a hadron collider.
-
-% The H → µµ
-%decay is a sensitive channel in which the Higgs coupling to second-generation fermions can be measured
-%with a clean final-state signature at the LHC.
-
-%background events can be reduced very effectively
-%, which have relatively small branching ratios. Nevertheless this was achieved due to the precise knowledge of the background.
-
-%Altough the branching ratios for these decays are relatively small this could be achieved due to the excellent background rejection by selecting leptons, as well as the precise knowledge of the expected background in these decay modes.
+\paragraph{Decay modes}
+Once the Higgs boson is produced, it decays almost instantaneously with lifetime of about $10^{-22}$ seconds \cite{PDG2020}.
+Therefore, it is only possible to measure its decay products.
+As discussed in \cref{sec:sm}, the coupling between the Higgs boson and the vector bosons (fermions) is predicted to be proportional to the squared mass of the vector bosons (the mass of the fermions). The resulting \emph{branching ratios} of the most relevant decays are displayed in \cref{fig:higgsbr}. 
+The decay to a pair of bottom quarks ($H\rightarrow b\bar{b}$) is the leading process followed by the $H\rightarrow WW^*$ decay mode. Since the mass of the Higgs boson is lower than the summed mass of two $\Wpm$ or $Z$ bosons, the decay to vector bosons is suppressed and one of the decaying vector bosons appears as a virtual particle\footnote{Virtual particles have the same properties as on-shell particles, but can violate momentum and energy conservation for a short period.} \todo{Check footnote}.
 
 
-%% (Left) The SM Higgs boson production cross sections as a function
-%% of the center of mass energy, √
-%% s, for pp collisions. The theoretical uncertainties [46]
-%% are indicated as bands. (Right) The branching ratios for the main decays of the SM
-%% Higgs boson near mH = 125GeV. The theoretical uncertainties [44,45] are indicated
-%% as bands.
-
-%% \begin{figure}
-%%   \newImageScale{figures/Higgs_Prod_XSec.pdf}{0.5}
-%%   \caption{Higgs boson production cross-sections and their theory uncertainties for different values of the LHC centre of mass energy. \cite{YR4}}
-%%   \label{fig:higgsprodxsec}
-%% \end{figure}
-
-
-\subsection{Higgs boson cross-section measurements}
-% From PDG
-% For a given mH, the sensitivity of a channel depends on the production cross section of the Higgs boson, its decay branching fraction, the reconstructed mass resolution, the selection efficiency and
-
-% From PDG
-% In order to optimise search sensitivity and also to separate the various Higgs
-% boson production modes, ATLAS and CMS split events into several mutually exclusive categories
-For a given mass of the Higgs boson, the expected cross-sections per production mode can be calculated from the SM Lagrangian. 
-
-Since the total decay width of the Higgs boson ($\approx 4\,\MeV$~\cite{deFlorian:2016spz}) is much smaller than its mass, the narrow-width approximation holds, which allows measuring the Higgs cross-sections as a product of the production cross-section and the branching ratios of the decay modes.
-The historically first measurements of the Higgs boson were based on the total amount of Higgs bosons produced per production mode. These inclusive measurements are typically reported as production mode cross-sections or signal strength measurements, where the signal strength is defined as $\mu = \frac{\text{Expected number of events}}{\text{Number of events predicted by the SM}}$. 
-As more data has been collected at the LHC in recent years, the experimental sensitivity has increased and now enables measurements of Higgs production cross-sections also differentially in several kinematic or topological observables. 
-This allows for example to measure cross sections exclusively in regions of phase space where only a small fraction of the total produced Higgs bosons are expected, and thus improves the resolution with which SM predictions can be probed.
-Differential measurements also allow for easier interpretability of the results, for example in Effective Field Theories (EFT) \todo{REF}.
-The following briefly outlines the different types of measurements that are performed in the field of Higgs boson physics. 
-
-\paragraph{Inclusive production cross-section measurements}
-Inclusive production mode cross-sections and signal strength measurements are maximally dependent on theoretical assumptions related to the decay properties of the Higgs boson.
-These kinds of measurements are typically performed when a new signal is searched for (for example for the Higgs discovery in 2012) or to experimentally establish different production modes in the SM.
-However, they cannot resolve small deviations from the SM predictions that occur in regions of phase space where only a small fraction of the total produced Higgs bosons are expected.
-
-\paragraph{Differential cross-section measurements}
-Differential measurements allow for a finer scan of Higgs production cross sections differential in certain kinematic or topological variables.
-They use well-defined measurement regions, known as \emph{fiducial regions}, that allow unfolding the detector effects. 
-This allows for comparisons between experiment data and theory at generator level and minimizes the dependency on theoretical assumptions. 
-Due to the rather complex unfolding procedure, the use of advanced analysis techniques such as neural networks is discouraged, which limits the experimental sensitivity.
-It is also not easily possible to statistically combine different differential measurements. 
-
-% - Least theory dependent
-% - Not easily possible to combine measurements, as unfolding procedure very tailored to analysis selection. 
-
-\paragraph{Simplified template cross-section measurements}
-The \emph{Simplified Template Cross-Sections} (STXS) framework provides a way to maximize experimental sensitivity while still allowing for differential cross-section measurements.
-To achieve this, mutually exclusive regions of phase space are defined based purely on the production mode of the Higgs boson and agnostic to different Higgs decay channels. The regions, often referred to as \emph{STXS bins}, are defined at generator level and agreed upon between experiments. \todo{Check wording for generator level}
-These design choices allow combining Higgs measurements between different decay channels as well as experiments, ultimately enabling the most precise measurements.
-The measurements of the production mode cross-sections are performed in regions of phase space defined at the level of the fully reconstructed collision events. They are defined as similar as possible to the generator-level bins. This allows using sophisticated analysis techniques like neural networks.
-
-The specific bins are chosen following two main principles: First, the goal is for the experimental acceptance to be constant within each, which reduces the dependency on theoretical assumptions. Second, regions that are expected to be sensitive to physics effects from beyond the SM are isolated, so that they can be experimentally assessed separately.
-
-As the amount of available data increases, the STXS binning evolves in stages, each time increasing the number of bins. 
-\Cref{fig:stxs-stage12} shows as an example the bins defined in Stage 1.2 of the STXS framework for Higgs measurements with two quarks in the final state ($pp \to qqH$), which is inclusive in Higgs bosons produced via VBF or quark-initiated $VH$ processes. 
-Different bins are defined for the number of jets in the event, as well as the transverse momentum of the Higgs, $p_T^{H}$, and the invariant mass of the dijet system, $m_{jj}$\footnote{The dijet system in a given event is typically defined by the two jets with largest transverse momentum}. A further splitting is performed based on the transverse momentum of the combined system of the Higgs boson and the two jets, labelled as $p_T^{Hjj}$. 
-A measurement of these STXS bins is presented in \cref{chap:hww} of this thesis, using the $H \to WW^*$ decay channel. Further details on the binning choice and event characteristics per STXS bin can be found there.
-
+\captionsetup[subfloat]{captionskip=10pt} % space between subfloat caption and image
 \begin{figure}
-  \newImageResizeCustom{0.9}{figures/theory/stxs-stage12.png}
-  \caption{Schematic of the STXS Stage 1.2 bins for Higgs boson production with two quarks in the final state. Adapted from \ccite{deFlorian:2016spz}.}
-  \label{fig:stxs-stage12}
+  \begin{center}
+    \subfloat[]{
+      % use valgin if pie chart is shown for decays
+      \includegraphics[scale=0.37]{figures/theory/Higgs_Prod_XSec.pdf}
+      \label{fig:higgsprodxsec}
+    }
+    % \hspace{-5em}
+    % \captionsetup[subfloat]{captionskip=50pt} % space between subfloat caption and image
+    % \subfloat[]{
+    %   \includegraphics[scale=0.8,valign=t]{figures/theory/h-decay-pie/h-decay-pie.pdf}
+    %   \label{fig:higgsbr}
+    % }
+        \subfloat[]{
+            \newImageScale{figures/theory/SMHiggsBR.pdf}{0.37}
+            \label{fig:higgsbr}
+          }
+  \end{center}
+  \caption{(a) Higgs boson production cross-sections as a function of the LHC centre-of-mass energy. The line widths represent the respective theory uncertainties. Taken from Ref.~\cite{YR4}. (b) Branching ratios of the Higgs boson for a mass of 125\,\GeV. Values taken from Ref.~\cite{PDG2020}.}
+  %  \label{fig:higgsbr}
 \end{figure}
-
-% From PDG
-%For a given mH, the sensitivity of a channel depends on the production cross section of the Higgs
-% boson, its decay branching fraction, the reconstructed mass resolution, the selection efficiency and
-% the level of background in the final state. For a low-mass Higgs boson (110 GeV < mH < 150 GeV)
-% for which the SM width would be only a few MeV, five decay channels play an important role
-% at the LHC. In the H → γγ and H → ZZ∗ → 4` channels, all final state particles can be
-% very precisely measured and the reconstructed mH resolution is excellent (typically 1-2%). While
-% the H → W+W− → ` +ν`` 0−ν¯`
-% 0 channel has relatively large branching fraction, however, due
-% to the presence of neutrinos which are not reconstructed in the final state, the mH resolution,
-% obtained through observables sensitive to the Higgs boson mass such as the transverse mass, is poor
-% (approximately 20%). The H → b ¯b and the H → τ +τ
-% − channels suffer from large backgrounds and
-% lead to an intermediate mass resolution of about 10% and 15% respectively.
-
-
-% PDG
-% In order to optimise search sensitivity and also to separate the various Higgs
-% boson production modes, ATLAS and CMS split events into several mutually exclusive categories
-
-% For phrasing from PDG
-% None of the other production modes have been firmly established by the experiments
-% individually. However, the table shows that, for the VBF production mode, the combination had a
-% large sensitivity and produced a combined observation of 5.4σ, therefore establishing this process
-% with a rate compatible with that expected in the SM.
-
+\captionsetup[subfloat]{captionskip=5pt} % space between subfloat caption and image
 
 \captionsetup[subfloat]{captionskip=25pt} % space between subfloat caption and image
 \unitlength=1mm
 \begin{figure}
   \centering
 \subfloat[Gluon fusion]{  
-\begin{fmffile}{HiggsProduction_GluonFusion}
+\begin{fmffile}{\feyndir/HiggsProduction_GluonFusion}
 \begin{fmfgraph*}(60,22) 
 \fmfleft{i1,i2}
 \fmfright{o1,o2,o3}
@@ -231,7 +126,7 @@ A measurement of these STXS bins is presented in \cref{chap:hww} of this thesis,
 }
 \quad
 \subfloat[Vector-boson fusion]{
-\begin{fmffile}{HiggsProduction_VBF}
+\begin{fmffile}{\feyndir/HiggsProduction_VBF}
 \begin{fmfgraph*}(60,25) 
 \fmfleft{i1,i2}
 \fmfright{o1,o2,o3}
@@ -255,7 +150,7 @@ A measurement of these STXS bins is presented in \cref{chap:hww} of this thesis,
 \\
 \vskip1em
 \subfloat[Higgs-strahlung]{
-\begin{fmffile}{HiggsProduction_HiggsStrahlung} 
+\begin{fmffile}{\feyndir/HiggsProduction_HiggsStrahlung} 
 \begin{fmfgraph*}(60,25) 
 \fmfleft{i1,i2}
 \fmfright{o1,o2}
@@ -268,7 +163,7 @@ A measurement of these STXS bins is presented in \cref{chap:hww} of this thesis,
 }
 \quad
 \subfloat[$t\bar{t}$ fusion]{
-\begin{fmffile}{HiggsProduction_ttbar}
+\begin{fmffile}{\feyndir/HiggsProduction_ttbar}
 \begin{fmfgraph*}(60,25) 
 \fmfleft{i1,i2}
 \fmfright{o1,o2,o3}
@@ -290,30 +185,124 @@ A measurement of these STXS bins is presented in \cref{chap:hww} of this thesis,
 \label{fig:higgsprodfeyn}
 \end{figure}
 \captionsetup[subfloat]{captionskip=5pt} % space between subfloat caption and image
+
+
+\subsection{Experimental sensitivity of Higgs production at the LHC}
+\label{subsec:exp-accessibility}
+% From PDG
+%For a given mH, the sensitivity of a channel depends on the production cross section of the Higgs
+% boson, its decay branching fraction, the reconstructed mass resolution, the selection efficiency and
+% the level of background in the final state. For a low-mass Higgs boson (110 GeV < mH < 150 GeV)
+% for which the SM width would be only a few MeV, five decay channels play an important role
+% at the LHC. In the H → γγ and H → ZZ∗ → 4` channels, all final state particles can be
+% very precisely measured and the reconstructed mH resolution is excellent (typically 1-2%). While
+% the H → W+W− → ` +ν`` 0−ν¯`
+% 0 channel has relatively large branching fraction, however, due
+% to the presence of neutrinos which are not reconstructed in the final state, the mH resolution,
+% obtained through observables sensitive to the Higgs boson mass such as the transverse mass, is poor
+% (approximately 20%). The H → b ¯b and the H → τ +τ
+% − channels suffer from large backgrounds and
+% lead to an intermediate mass resolution of about 10% and 15% respectively.
+
+% PDG
+% In order to optimise search sensitivity and also to separate the various Higgs
+% boson production modes, ATLAS and CMS split events into several mutually exclusive categories
+
+% For phrasing from PDG
+% None of the other production modes have been firmly established by the experiments
+% individually. However, the table shows that, for the VBF production mode, the combination had a
+% large sensitivity and produced a combined observation of 5.4σ, therefore establishing this process
+% with a rate compatible with that expected in the SM.
+
+Physics analyses typically focus on a combination of production and decay mode to measure the number of Higgs bosons produced. The experimental sensitivity of a particular channel is dependent on the respective production cross-section and decay branching ratio, and also highly impacted by the signature of the final state, as it determines, for example, how efficient the signal can be reconstructed in the ATLAS detector or how well it can be distinguished from non-Higgs processes. 
+%The different processes are typically first analyzed separately and then combined to obtain the most accurate measurements possible.
+
+%and how well it can be distinguished from other types of events at hadron colliders. 
+The $H\rightarrow b\bar{b}$ decay accounts for 58\% of all Higgs boson decays, but the experimental sensitivity to measure events with this decay mode is limited. The reason is the purely hadronic final state of $H\rightarrow b\bar{b}$ decays, which makes it difficult to distinguish these Higgs events from the overwhelming background of QCD events at the LHC. 
+The VBF or Higgs-strahlung production modes are therefore typically used where the presence of the additional particles in the final state can be exploited in the event selection.
+%It is nonetheless possible to measure this decay by using the VBF or Higgs-strahlung production mode and 
+%Using this strategy evidence for the $H\rightarrow b\bar{b}$ decay was recently found in the VH production mode \cite{Aaboud:2017xsd,Sirunyan:2017elk}.\todo{UPDATE}
+
+The most sensitive channels for the Higgs boson discovery in 2012 were the Higgs boson decays to two photons ($H \to \gamma\gamma$), the $H \rightarrow ZZ^* \rightarrow llll$, and $H \to WW^*$ process.
+%Higgs boson initially was discovered in the decay to two photons and the $H \rightarrow ZZ^* \rightarrow llll$ channel \todo{REF}.
+The first two channels have relatively small branching ratios but exhibit very clean final-state signatures due to the presence of leptons and photons that can be very precisely measured and allow for a good handle over the background.
+In addition, the mass of the Higgs boson can be fully reconstructed in these channels by computing the invariant mass of the reconstructed decay products.
+%at a hadron collider, where an overwhelming fraction of events is dominated by QCD effects.
+%This is equally important since it allows an excellent selection of signal events and a good control over the background. 
+% the largest fraction of events are dominated by QCD effects.
+%QCD dominated events
+%events at a hadron collider, since the final states are dominated by QCD effects.
+The $H \rightarrow WW^*$ decay also provides a good handle over the background when considering leptonically decaying $W$ bosons.
+The neutrinos stemming from the $W$ boson decays, however, prevent to fully reconstruct the mass of the Higgs boson, since they cannot be directly detected by the ATLAS experiment.
+
+% Results of the analysis of \HWW\ decays conducted by the ATLAS Collaboration and CMS Collaboration for data of \RunOne\ can be found in Ref.~\cite{PhysRevD.92.012006} and Ref.~\cite{2013arXiv1312.1129C}, respectively; a corresponding analysis of \RunTwo\ data is given in \cref{sec:ggfanalysis}, focusing on the gluon fusion production-mode.
+
+Events with $H \to \tau\tau $ decays exhibit a similar final state as the \HWW\ process and especially in the case of leptonically decaying $\tau$-leptons allows for an excellent background rejection. 
+% htautau paper: https://arxiv.org/abs/2201.08269
+
+The analysis of Higgs boson decays to second-generation fermions are challenging due to their small branching ratios, as is the case for $H \to \mu\mu$ decays, or because of an overwhelming QCD background, as is the case for $H \to c\bar{c}$ decays.
+% 125 considerably more challenging measurements of Higgs boson couplings to second-generation fermions are
+% explored via searches for the 𝐻 → 𝜇+𝜇 −
+% [32] and, for the first time, 𝐻 → 𝑐𝑐¯ [33] decays.
+% From nature:
+% The considerably more challenging measurements of Higgs boson couplings to second-generation fermions are explored via searches for the 𝐻 → 𝜇+𝜇−[32] and, for the first time, 𝐻 → 𝑐𝑐¯ [33] decays. Due to the large multi-jet background, the latter decay mode is currently accessed only via the 𝑊𝐻 and 𝑍𝐻 production. Finally, the inputs to the combination are complemented by the latest direct searches for Higgs boson decays into invisible particles which escape the detector undetected [34, 35].
+%Latest cross-section measurements can be found in \todo{REF. Not sure if it's necessary}
+%A similar final state as the one in \HWW\ processes, can be exploited when looking at Higgs boson decays into $\tau$-leptons \cite{Aad:2015vsa,Sirunyan:2276465}. 
+The Higgs boson decays to $Z\gamma$ ($H \to Z\gamma$) are also very rare and therefore provide limited sensitivity to perform Higgs measurements.
+% , where leptonically decaying $Z$ bosons provide the most sensible final state, or $\mu\mu$,  % \cite{Aaboud:2017uhw,Aaboud:2017ojs}.
+The final states with gluons ($H \to gg$) make up a considerable fraction of all Higgs decays but are currently too difficult to differentiate from other events at the LHC.
+
+
+\subsection{Higgs boson cross-section measurements}
+\label{subsec:xsec-measurements}
+% From PDG
+% For a given mH, the sensitivity of a channel depends on the production cross section of the Higgs boson, its decay branching fraction, the reconstructed mass resolution, the selection efficiency and
+
+% From PDG
+% In order to optimise search sensitivity and also to separate the various Higgs
+% boson production modes, ATLAS and CMS split events into several mutually exclusive categories
+The expected cross-sections per production mode can be calculated from the SM Lagrangian, once the Higgs mass is fixed.
+Since the total decay width of the Higgs boson ($\approx 4\,\MeV$~\cite{deFlorian:2016spz}) is much smaller than its mass, the narrow-width approximation holds, which allows measuring the Higgs cross-sections as a product of the production cross-section times the branching ratios of the decay modes.
+For a process with an initial state $i$ and a final state $f$, the number of observed Higgs boson events is therefore typically expressed in terms of a \emph{signal strength} defined as 
+\begin{equation}
+  \label{eq:signal-strength}
+  \mu_{if} = \left(\sigma_i / \sigma_i^\text{SM} \right) \times \left( \BR_f / \BR_f^\text{SM} \right),
+\end{equation}
+where ``SM'' denotes the corresponding prediction of the SM. 
+The following briefly outlines the different types of cross-section measurements that are performed in the field of Higgs boson physics. 
+
+% This allows, for example, measuring cross sections in exclusive regions of phase space which improves the resolution with which SM predictions can be probed.
+%Differential measurements also allow for easier interpretability of the results, for example in Effective Field Theories (EFT) \todo{REF}.
+
+\paragraph{Inclusive production cross-section measurements}
+Historically, the first measurements of the Higgs boson were based on the total amount of Higgs bosons produced per production mode.
+These inclusive production mode cross-sections are maximally dependent on theoretical assumptions related to the decay properties of the Higgs boson.
+They are typically performed when a new signal is searched for (as done for the Higgs discovery in 2012) or to experimentally establish different production modes in the SM.
+However, inclusive measurements cannot resolve small deviations from the SM predictions that may occur in regions of phase space where only a small fraction of the total produced Higgs bosons are expected.
+
+\paragraph{Differential cross-section measurements}
+As more data has been collected at the LHC in recent years, Higgs production processes can be measured differentially in various kinematic and topological variables, thus allowing to probe the SM predictions at a greater resolution.
+Differential measurements use well-defined measurement regions, known as \emph{fiducial regions}, that allow unfolding the detector effects. 
+This enables comparisons between experimental data and theory at generator level and thus minimizes the dependency on theoretical assumptions. 
+Due to the rather complex unfolding procedure, the use of advanced analysis techniques such as neural networks is discouraged, which limits the sensitivity of differential measurements.
+Another drawback is that it is not easily possible to statistically combine different differential measurements. 
+
+% - Least theory dependent
+% - Not easily possible to combine measurements, as unfolding procedure very tailored to analysis selection. 
+
+\paragraph{Simplified template cross-section measurements}
+The \emph{Simplified Template Cross-Sections} (STXS) framework provides a way to maximize experimental sensitivity while still allowing for differential measurements.
+To achieve this, mutually exclusive kinematic regions of SM Higgs boson production are defined, based purely on the production mode and kinematics of the Higgs boson and agnostic to the different Higgs decay channels. The kinematic regions that are often referred to as \emph{STXS bins} are defined at generator level and agreed upon between experiments.
+This design choices allow combining Higgs measurements of different decay channels as well as experiments, which enables more precise cross-section measurements.
+% The measurements of the production mode cross-sections are performed in regions of phase space defined at the level of the fully reconstructed collision events. They are defined as similar as possible to the generator-level bins. This allows using sophisticated analysis techniques like neural networks.
+The specific bins are chosen following two main principles: First, the experimental acceptance should be constant within each bin, which reduces the dependency on theoretical assumptions. Second, regions that are expected to be sensitive to physics effects beyond the SM are isolated, so that they can be separately assessed experimentally.
+As the amount of available data increases, the STXS binning evolves in stages, each time increasing the number of bins. 
+
 %% \begin{figure}
 %%   \newImageScale{figures/Higgs_Prod_XSec.pdf}{0.5}
 %%   \caption{Higgs boson production cross-sections and their theory uncertainties for different values of the LHC centre of mass energy. \cite{YR4}}
 %%   \label{fig:higgsprodxsec}
 %% \end{figure}
-
-
-
-
-\captionsetup[subfloat]{captionskip=5pt} % space between subfloat caption and image
-\begin{figure}
-  \begin{center}
-    \subfloat[]{
-      \newImageScale{figures/theory/Higgs_Prod_XSec.pdf}{0.37}
-      \label{fig:higgsprodxsec}
-    }
-    \subfloat[]{
-      \newImageScale{figures/theory/SMHiggsBR.pdf}{0.37}
-      \label{fig:higgsbr}
-    }
-  \end{center}
-  \caption[(a) Higgs boson production cross-sections as a function of the LHC centre-of-mass energy. (b) Branching ratios of the Higgs boson for a mass range around 125\,\GeV.]{(a) Higgs boson production cross-sections as a function of the LHC centre-of-mass energy. (b) Branching ratios of the Higgs boson for a mass range around 125\,\GeV. The line widths represent the respective theory uncertainties. Taken from Ref.~\cite{YR4}.}
-  %  \label{fig:higgsbr}
-\end{figure}
 
 
 
@@ -328,35 +317,103 @@ A measurement of these STXS bins is presented in \cref{chap:hww} of this thesis,
 \subsection{Current Experimental Status}
 % Can be done on weekend with more time and potential hangover!
 % https://indico.cern.ch/event/1030068/timetable/#20211018.detailed
+The data from \RunOne\ of the LHC already allowed for precise measurements of several properties of the Higgs boson.
+The mass of the Higgs boson is measured to be
+\begin{equation}
+  m_H = 125.09 \pm 0.21\text{(stat.)} \pm 0.11\text{(syst.)} \GeV,
+\end{equation}
+by the latest combined measurement of the ATLAS and CMS experiment~\cite{HIGG-2014-14}.\footnote{Analyses performed by the ATLAS and CMS Collaboration using \RunTwo\ data measure a mass of $m_H = 124.97\pm0.28\,\GeV$~\cite{ATLAS-CONF-2017-046} and $m_H = 125.26 \pm 0.21\,\GeV$~\cite{Sirunyan_2020}, respectively.}
+Measurements of the spin and CP of the Higgs boson confirm the SM predictions of a spin-parity of $J^P = 0^+$~\cite{HIGG-2013-17-witherratum,CMS-HIG-14-018}. Alternative hypotheses have been excluded at more than 99.9\% confidence level.
+% such as its mass, spin, or parity are measured , and cross-section measurements in various regions of phase-space firmly establish the Higgs boson in the SM. 
 
-\todo{READ Nature paper for this and refer to it!!!}
+The data collected at \RunTwo of the LHC allow for even more precise measurements that focus on the investigation of all Higgs boson production and decay processes, firmly establishing the Higgs boson in the SM. 
+The latest combined Higgs measurements of the kinematic properties of Higgs boson production as well as the Higgs coupling to other particles performed by the ATLAS collaboration are nicely summarized in \ccite{NaturePaper}.
+%  They constitute the most precise measurements at the time of writing.
+The results are based on a combination of several Higgs boson analyses, one of which is the \HWW\ analysis that is presented in detail in \cref{chap:hww} of this thesis. 
+The following summarizes the main results.
 
-The properties of the Higgs boson such as its mass, spin, or parity are measured to an ever greater precision, and cross-section measurements in various regions of phase-space firmly establish the Higgs boson in the SM. 
-The following provides an overview of the experimental status of Higgs measurements at the time of writing, which allows placing the measurements presented in this thesis in a broader context. 
+% The following provides an overview of the experimental status of Higgs measurements at the time of writing, which allows placing the measurements presented in this thesis in a broader context. 
 
 % ==>> Experimental status
 % - Listing the most recent measurements?!
 % - Give outline of current status of Higgs measurements, focusing on cross section measurements.
-% - A more comprehensive and complete overview is given in \cref{PDG2020}.
+% - A more comprehensive and complete overview is given in \cref{PDG2020}..
 
-\paragraph{Higgs mass measurements}
+\paragraph{Higgs production}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The fully inclusive Higgs boson signal strength is measured to be \cite{NaturePaper}
+\begin{equation*}
+   \mu =1.05 \pm 0.06 = 1.05\pm 0.03\, (\text{stat.})\, \pm 0.03\, (\text{exp.})\, \pm 0.04\, (\text{sig.\ th.})\, \pm 0.02\, (\text{bkg.\ th.}),
+\end{equation*}
+when assuming that all production and decay processes scale with the same signal strength $\mu = \mu_{if}$ (see \cref{eq:signal-strength}).
 
-\paragraph{Higgs properties}
-Measurements of the spin and CP of the Higgs boson confirm the SM predictions of a spin-parity of $J^P = 0^+$. Alternative hypotheses have been excluded with a confidence of
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Prod mode cross section
+The cross sections of the different Higgs production modes times the branching ratio are measured for specific combinations of production and decay processes. The results are shown in \cref{fig:prod-per-channel} and shows the importance of the analysis of \HWW\ decays, as they provide some of the most precise measurements in particular for the ggF and VBF production of the Higgs. 
+
+\begin{figure}
+  \newImageResizeCustom{1}{figures/theory/higgs-measurements/fig4.pdf}
+  \caption{Ratio of observed rate to predicted SM event rate for different combinations of
+  Higgs boson production and decay processes. The horizontal bar on each point denotes the 68\% confidence interval. The narrow grey bands indicate the theory uncertainties in the SM cross-section times the branching
+fraction predictions. The $p$-value for compatibility of the measurement and the SM prediction is
+72\%. Figure and caption taken from \ccite{NaturePaper}.}
+  \label{fig:h-couplings}
+\end{figure}
 
 
-\paragraph{Higgs production mode cross sections}
-- Latest inclusive measurements (https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/CONFNOTES/ATLAS-CONF-2020-027/)
-- Latest STXS combination
-- Refer to HWW measurement
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Decay fractions
+% \todo{Maybe putting the decay fraction results is not necessary here!}
+% The Higgs decay branching ratios can be measured by fixing the production mode cross section to the respective SM expectation and assuming that there are no non-SM decays. The results can be seen in \cref{fig:br-per-channel}.
 
-\paragraph{Higgs to bosons}
-Directly probing the EWSB
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% - Latest STXS combination (from nature)
+The results of the Higgs boson production mode cross-sections measured in several kinematic regions are shown in \cref{fig:stxs-stage12}. The region partitioning follows the so-called Stage 1.2 STXS scheme. 
+The classification of Higgs boson production into 5 classes ($t\bar{t}H$, $tH$, $qq'\to Hqq'$, $pp\to VH$, and $gg\to H$) is detailed in \cite{NaturePaper}. 
 
-\paragraph{Higgs to fermions}
-Yukawa couplings
+% From nature paper
+% Higgs boson production is first classified according to the nature of the initial state and the associated particles, the latter including the decay products of $W$ and $Z$ bosons if they are present. These classes are: $t\bar{t}H$ and $tH$ processes; $qq'\to Hqq'$ processes, with contributions from both VBF and quark-initiated $VH$ (where $V=W, Z$) production with a hadronic decay of the vector boson; $pp\to VH$ production with a leptonic decay of the vector boson ($V(\ell\ell,\ell\nu)H$), including $gg\to ZH \to \ell\ell H$ production; and finally the ggF process combined with $gg\to ZH \to q\bar{q}H$ production to form a single $gg\to H$ process. The contribution of the $b\bar{b}H$ production process is taken into account as a $1\%$~\cite{YR4} increase of the \ggtoH\ yield in each kinematic region, since the acceptances for both processes are similar for all input analyses~\cite{YR4}.
+
+% \Cref{fig:stxs-stage12} shows as an example the bins defined in Stage 1.2 of the STXS framework for Higgs measurements with two quarks in the final state ($pp \to qqH$), which is inclusive in Higgs bosons produced via VBF or quark-initiated $VH$ processes. 
+% Different bins are defined for the number of jets in the event, as well as the transverse momentum of the Higgs, $p_T^{H}$, and the invariant mass of the dijet system, $m_{jj}$\footnote{The dijet system in a given event is typically defined by the two jets with largest transverse momentum}.
+% %  A further splitting is performed based on the transverse momentum of the combined system of the Higgs boson and the two jets, labelled as $p_T^{Hjj}$. 
+
+\begin{figure}
+  \newImageResizeCustom{1}{figures/theory/higgs-measurements/fig8.pdf}
+  \caption{Observed and predicted Higgs boson production cross sections in different
+  kinematic regions. The vertical bar on each point denotes the 68\% confidence interval. The $p$-value for compatibility of the combined measurement and the SM prediction is 94\%. Kinematic regions are defined separately for each production process, based on the jet multiplicity, the transverse momentum of the Higgs ($p_{\textrm{T}}^H$) and vector bosons ($p_{\textrm{T}}^W$ and $p_{\textrm{T}}^Z$) and the two-jet invariant mass ($m_{jj}$).
+The `VH-enriched' and `VBF-enriched' regions with the respective requirements of $m_{jj}\in[60, 120)$ \GeV\ and $m_{jj}\notin[60,120)$ \GeV\ are enhanced in signal events from $VH$ and VBF productions, respectively. Figure and caption taken from \ccite{NaturePaper}.
+  }
+  \label{fig:stxs-stage12}
+\end{figure}
+
+
+\paragraph{Higgs couplings}
+The couplings of the Higgs boson to individual particles can be measured by parametrizing the cross section times branching ratios for the individual Higgs processes in terms of coupling strengths modifiers, $\kappa$, following the $\kappa$-framework \cite{LHCHandbookV3}. 
+The modifier $\kappa_p$ for a production or decay via the coupling to a given particle $p$ is defined as  $\kappa_p^2 = \sigma_p / \sigma_p^\text{SM}$ or $\kappa_p^2 = \Gamma_p/\Gamma_p^\text{SM}$, respectively, where $\Gamma_p$ is the partial decay width into a pair of particles $p$.\cite{NaturePaper}
+Different statistical models with varying assumptions that are detailed in \cite{NaturePaper} may be considered. 
+When assuming that there are only SM processes and independently treating coupling strength modifiers for all included particles ($W$, $Z$, $t$, $b$, $c$, $\tau$, and $\mu$) the results can be visualized as shown in \cref{fig:h-couplings}. This shows a remarkable consistency of the SM. 
+
+\begin{figure}
+  \newImageResizeCustom{0.7}{figures/theory/higgs-measurements/fig6_paper.pdf}
+  \caption{
+    Reduced Higgs boson coupling strength modifiers and their uncertainties. They are defined as $\kappa_F \cdot m_F / \text{vev}$ for fermions
+($F=t,b,\tau,\mu$) and $\sqrt{\kappa_V}\cdot m_V/\text{vev}$ for vector bosons as a
+function of their masses $m_F$ and $m_V$. Two fit scenarios with $\kappa_c =
+\kappa_t$ (coloured circle markers), or $\kappa_c$ left free-floating in the fit (grey
+cross markers) are shown. Loop-induced processes are assumed to have the SM structure, and Higgs boson decays to non-SM particles are not allowed. The vertical bar on each point denotes the 68\% confidence interval. The $p$-value for compatibility of the combined measurement and the SM prediction are 56\% and 65\% for the respective scenarios. The lower panel shows the values of the coupling strength modifiers. The grey arrow points in the direction of the best-fit value and the corresponding grey uncertainty bar extends beyond the lower panel range. Figure and caption taken from \ccite{NaturePaper}.}
+  \label{fig:h-couplings}
+\end{figure}
 
 
 \paragraph{Searches for rare Higgs production modes and decays}
-- H->Zy
-- H->invisible
+
+% From nature
+% Even with the current precision of measurements there is room for possible interpretations of the data in terms of new phenomena beyond the SM. 
+
+Investigated for example by searching for events with Higgs decays to particles that are invisible to the detector \cite{ATLASInvisible1,Aad_2022}.
+
+% From nature
+% Finally, the inputs to the combination are complemented by the latest direct searches for Higgs boson
+% 129 decays into invisible particles which escape the detector undetected [34, 35].
+

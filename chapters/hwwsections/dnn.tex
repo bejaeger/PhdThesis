@@ -14,7 +14,7 @@ The $k$-fold cross validation method is used to avoid any bias and the final mod
 The test set is used as a final validation to ensure generalisation. 
 The significance is computed based on the distribution of the output of the neural network for the full training sample. 
 \todo{MAYBE explain bin-by-bin significance and binning optimisation?}
-
+\todo{Mention performance metric: The discovery significance is used as a performance metric to select the best performing model and have no impact on the training itself.}}
 % It would therefore be natural to directly optimise the discovery significance when training the neural network. 
 % However, this is not trivial because the loss function must be differentiable with respect to the parameters of the network\footnote{There are attempts to achieve exactly this, as shown in \ccite{ELWOODZ0INML}.} which is not the case for the discovery significance as it is a discrete function of the number of signal and background events. 
 
@@ -131,7 +131,7 @@ MAYBE:
     \item Optimise physics weights while scanning for optimal learning rate
 \end{itemize}
 
-The physics related parameters are the set of input features (observables), and the weights corresponding to different processes in training data set. 
+The physics related parameters are the set of input features (observables), and the weights corresponding to different processes in training dataset. 
 % ML related
 % - network architecture
 % - learning rate (batch size)
