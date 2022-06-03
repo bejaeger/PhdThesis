@@ -1,18 +1,16 @@
 \chapter{Statistical Analysis Techniques}
 \label{chap:statistics}
-\todo{Move after JER chapter}
 Collider experiments such as the ATLAS detector at the LHC, simply put, are counting experiments. 
 Sophisticated statistical methods are used to extract physics parameters such as cross sections from the counting experiments while accounting for all underlying uncertainties. 
 % to express the counting measurements in terms of physics parameters such as cross sections and to allow for a full consideration of the underlying uncertainties. 
-This chapter briefly outlines the statistical concepts used in the \HWWhalfdet\ analysis that is presented \cref{chap:hww}.
-Here, the number of events measured in data is compared to the expectation value taken from MC simulated samples. The expectation value is a complex quantity and depends on many parameters, which is discussed in \cref{sec:exp-value}.
+This chapter briefly outlines the statistical concepts used in the measurement of \HWW\ decays presented \cref{chap:hww}.
+The number of Higgs boson events measured in data is compared to the expectation value taken from MC simulated samples. The expectation value is a complex quantity and depends on many parameters, which is discussed in \cref{sec:exp-value}.
 \Cref{sec:likelihood} then describes how the MC simulations are used to construct a statistical template that is fit to the actual data using a maximum likelihood estimation. This allows the extraction of the physics parameters from the fitted MC template.
 The procedure to test different signal hypotheses with frequentist methods, for example to claim the discovery of a new signal, is outlined in \cref{sec:hypothesis-testing}.
 This chapter is based to a large extent on \ccite{Cowan:2010js}.
-\todo{Maybe add additional section explaining how breakdown of uncertainties works}
 % The counting is of the number of collision events in different phase space regions. 
 % The number of events as measured in data can be compared with the value predicted by theory.
-% Given the total amount of collision events that were produced, as measured by the integrated luminosity, the probabilities of the occurrence of different physics processes can be measured, known as cross-sections.
+% Given the total amount of collision events that were produced, as measured by the integrated luminosity, the probabilities of the occurrence of different physics processes can be measured, known as cross sections.
 % To measure the cross sections, as well as make other statistical inferences, sophisticated statistical analyses are required. 
 % The following explains the statistical setup used for the work presented in this thesis.
 
@@ -30,9 +28,9 @@ Given a binned data distribution with $n_i$ data events per bin $i$, the corresp
     \text{E}[n_i] = \sum_{\sigma \in \pmb{\sigma}} \mu_\sigma s_{\sigma,i}(\pmb{\theta}_s, \pmb{\gamma}) + \sum_{\beta \in \pmb{\beta}} \nu_\beta b_{\beta,i}(\pmb{\theta}_b, \pmb{\gamma}),
 \end{equation}
 where the first sum is over all signal categories $\sigma \in \pmb{\sigma}$, each with an associated expected number of events $s_{\sigma, i}$, and the second sum is over all background categories $\beta \in \pmb{\beta}$ with expected number of background events $b_{\beta,i}$. 
-%The multipliers $\mu_\sigma$ ($\nu_\beta$) scale the amount of signal (background) and are called \emph{signal strengths} (\emph{normalisation factors}). 
+%The multipliers $\mu_\sigma$ ($\nu_\beta$) scale the amount of signal (background) and are called \emph{signal strengths} (\emph{normalization factors}). 
 The multipliers $\mu_\sigma$ scale the amount of signal events of category $\sigma$ and are known as \emph{signal strengths}. 
-The number of signal categories depends on the specifics of the analysis. The multipliers $\nu_\beta$ have the same effect, from the statistical point of view, and scale the amount of background events of background category $\beta$. They are referred to as \emph{normalisation factors} (NFs). 
+The number of signal categories depends on the specifics of the analysis. The multipliers $\nu_\beta$ have the same effect, from the statistical point of view, and scale the amount of background events of background category $\beta$. They are referred to as \emph{normalization factors} (NFs). 
 The expected number of events, $s$ and $b$, depend on a set of so-called \emph{nuisance parameters} (NPs), $\pmb{\theta}_s$, $\pmb{\theta}_b$, and $\pmb{\gamma}$. These parameters encode the effects of systematic uncertainties ($\pmb{\theta}_s$ and $\pmb{\theta}_b$) as well as statistical uncertainties ($\pmb{\gamma}$). In the following, all NPs, including the NFs, are collectively referred to as $\pmb{\theta} = \{\pmb{\theta}_s, \pmb{\theta}_b, \pmb{\gamma}, \pmb{\nu}\}$. 
 % and are fit simultaneously with the signal strengths and NFs. 
 
@@ -57,7 +55,7 @@ The first term, \Lmeas, measures the probability of measuring $n_i$ data events 
 \begin{equation}
     \Lmeas = \prod_{i \in \text{bins}} \text{Pois}(n_i | E[n_i] ),
 \end{equation}
-where the product goes over all regions (also \emph{bins}) included in the measurement. The bins typically include a binned distribution of an observable in a signal-sensitive phase space region that discriminates well between signal and background, and phase space regions that are pure in specific background categories and selected according to kinematic and topological requirements. The latter bins are denoted as \emph{control regions} and allow determining the normalisation of certain background categories in the data.\TDinote{}{Maybe the above is too specific here?}
+where the product goes over all regions (also \emph{bins}) included in the measurement. The bins typically include a binned distribution of an observable in a signal-sensitive phase space region that discriminates well between signal and background, and phase space regions that are pure in specific background categories and selected according to kinematic and topological requirements. The latter bins serve as subsidiary measurements that allow determining the normalization of certain background categories from the data.
 
 The second term, \Lsyst, encodes the effect of the systematic uncertainties in the likelihood. Most commonly standard Gaussian functions are used,
 \begin{equation}
@@ -67,7 +65,7 @@ where the NPs are normalized and scaled, such that they have a mean of zero and 
 The effect of most NPs is modelled by varied templates -- that is varied values of $\text{E}[n_i]$ -- corresponding to the $\pm 1$ variation of the respective NP. This is done by either propagating the effect of a previously measured uncertainty through the analysis -- as is typically the case for uncertainties related to the experiment -- or -- for the majority of uncertainties related to theory -- by comparing different theoretical models with each other and defining one standard deviation ad-hoc from the space of available theoretical models.
 There are different statistical techniques to provide a continuous description of the effect of each NP.
 %A continuous description of the effect of each NP is required.
-In the work presented in this thesis, piece-wise interpolation is used \TDnote{REF}{Double-check piece-wise interpolation and add reference}.
+In the work presented in this thesis, piece-wise interpolation is used. \TDinote{}{Double-check piece-wise interpolation and add reference}.
 
 The third and last term in \cref{eq:likelihood-three-terms}, \Lstat, accounts for the finite statistical precision of the MC template. For each bin, one uncertainty component is considered in the MC template, following the light version of the Barlow and Beeston procedure~\cite{BARLOW1993219}. 
 The statistical uncertainties encoded with the NPs $\pmb{\gamma}$ enter the likelihood as
@@ -77,7 +75,7 @@ The statistical uncertainties encoded with the NPs $\pmb{\gamma}$ enter the like
 where $\beta_i$ corresponds to $1 / \sigma_{\text{rel}, i}$, with $\sigma_{\text{rel}, i}$ being the relative statistical uncertainty in bin $i$. 
 
 \TDinote{}{Check whether this is indeed a Gaussian}
-\TDinote{}{Talk about shape uncertainties and normalisation uncertainties?}
+\TDinote{}{Talk about shape uncertainties and normalization uncertainties?}
 % - Explain three terms: 
 %     1. Extended Maximum Likelihood (see paper: https://www.sciencedirect.com/science/article/abs/pii/0168900290913348?via%3Dihub)
 %         - Signal regions

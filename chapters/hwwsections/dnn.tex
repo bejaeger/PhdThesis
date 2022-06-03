@@ -13,9 +13,9 @@ The cross entropy loss is therefore used during the training and the discovery s
 The $k$-fold cross validation method is used to avoid any bias and the final model is selected based on the significance corresponding to the validation set. 
 The test set is used as a final validation to ensure generalisation. 
 The significance is computed based on the distribution of the output of the neural network for the full training sample. 
-\todo{MAYBE explain bin-by-bin significance and binning optimisation?}
+\todo{MAYBE explain bin-by-bin significance and binning optimization?}
 \todo{Mention performance metric: The discovery significance is used as a performance metric to select the best performing model and have no impact on the training itself.}
-% It would therefore be natural to directly optimise the discovery significance when training the neural network. 
+% It would therefore be natural to directly optimize the discovery significance when training the neural network. 
 % However, this is not trivial because the loss function must be differentiable with respect to the parameters of the network\footnote{There are attempts to achieve exactly this, as shown in \ccite{ELWOODZ0INML}.} which is not the case for the discovery significance as it is a discrete function of the number of signal and background events. 
 
 % In practice, the cross entropy loss is highly anti-correlated with the discovery significance, which is shown in \cref{FIG}.
@@ -23,7 +23,7 @@ The significance is computed based on the distribution of the output of the neur
 % \begin{itemize}
 %     \item The cross entropy loss is used during the training to learn the parameters of the neural network. 
 %     \item The discovery significance shown in \cref{eq:discovery-significance} is used as an evaluation metric of a trained model.
-%     \item Information about systematic uncertainties is included in the discovery significance to perform the final optimisation and choose the neural network. 
+%     \item Information about systematic uncertainties is included in the discovery significance to perform the final optimization and choose the neural network. 
 % \end{itemize}
 
 % The training of the neural network itself, however, uses the cross entropy loss function to learn the optimal parameters. This function must be differentiable with respect to the parameters of the model in order to use backpropagation. 
@@ -33,8 +33,8 @@ The significance is computed based on the distribution of the output of the neur
 % The task at hand is to construct a function that separates signal processes as well as possible from background processes, based on the statistical significance of the signal process over the background processes.
 
 % During the training of the neural network, a differentiable loss function is required in order to perform backpropagation.
-% The loss function must be fully differentiable with respect to the parameters of the model in order to perform gradient descent optimisation.
-% This requires the definition of a metric that can be optimised to achieve exactly this. 
+% The loss function must be fully differentiable with respect to the parameters of the model in order to perform gradient descent optimization.
+% This requires the definition of a metric that can be optimized to achieve exactly this. 
 % For binary classification, the cross entropy loss is the most common choice and also used in this analysis during the training.
 % FROM ARTICLE
 % parameters learned by the model are determined by minimizing a chosen loss function.
@@ -58,9 +58,9 @@ The steps involved are illustrated in the flow-chart shown in \cref{fig:full-dnn
 
 
 \subsection{Training procedure}
-For a given set of available ML tools and the current state of knowledge about these tools, the optimisation of a DNN is mostly based on empirical approaches where cycles of DNN training, validation, and modification are performed repeatedly. 
+For a given set of available ML tools and the current state of knowledge about these tools, the optimization of a DNN is mostly based on empirical approaches where cycles of DNN training, validation, and modification are performed repeatedly. 
 % Requires some ad-hoc decisions to be made. 
-During the course of the author's doctoral studies, some approaches have evolved, which means that certain parts of the training procedure have been optimised based on earlier versions of the training setup than the version used for the final DNN. 
+During the course of the author's doctoral studies, some approaches have evolved, which means that certain parts of the training procedure have been optimized based on earlier versions of the training setup than the version used for the final DNN. 
 The following outlines roughly the different stages of the training, to motivate the procedures and decisions that were taken that resulted in the development of the final DNN used in this analysis. 
 The parameters and procedure used for the final DNN are summarized in \cref{tab:hyper-parameters}.
 
@@ -87,48 +87,48 @@ INPUTS:
 -  VBF weighting (maybe redo) -> adam elwood argument about weight for incorrect signal classification vs incorrect bkg classification
 -  FINAL loss vs epochs
 
-Optimisation: 
+optimization: 
 - Input variables
 - Architecture
 
-Final optimisation:
+Final optimization:
 -  BKG weights (EWWW scan)!
--  Significances W/ and W/O uncertainties, W/ rebinning! (final optimisation)
+-  Significances W/ and W/O uncertainties, W/ rebinning! (final optimization)
 
 Final validation:
 - Train set vs Test set DNN distribution
 
 
 MAYBE:
--  Different optimiser (adagrad, adam, rmsprop)
+-  Different optimizer (adagrad, adam, rmsprop)
 
 
 
 % - Historical developments, features freezes, limitations of computing resources/turnaround time
 % The following therefore is an attempt to only a rough outline of the different stages of the training, which, due to both historical developments and the empirical nature of ML, should not be taken at face value but rather viewed as an attempt to motivate the decisions that were made to develop the final DNN used in the analysis.  
 % For all the above reasons, the following should not be taken at face value, but should be viewed as an attempt to roughly describe the approaches and procedures that have led to the development of the final DNN. 
-% The optimisation problem is multi-dimensional, which means that, for example, optimising a parameter $B$ after optimising parameter $A$ may result in the value of parameter $A$ no longer being optimal. 
+% The optimization problem is multi-dimensional, which means that, for example, optimising a parameter $B$ after optimising parameter $A$ may result in the value of parameter $A$ no longer being optimal. 
 
 \paragraph{Stage 1 - establish robust training}
 \begin{itemize}
     \item reLU activation, sigmoid as output activation, cross-entropy loss
     \item batchsize: chosen to be 512
-    \item learning rate, optimiser: adagrad (adaptive learning rate! (no need to overoptimize it))
+    \item learning rate, optimizer: adagrad (adaptive learning rate! (no need to overoptimize it))
     \item prelim regularisation
     \item prelim. architecture: layers = 128, 64, 32, 24, 16, 8
 \end{itemize}
 
 \paragraph{Stage 2 - find set of features}
 \begin{itemize}
-    \item Optimise set of input features
+    \item optimize set of input features
     \item Optimize architectures
     \item Adjust dropout (repeat)
 \end{itemize}
 
-\paragraph{Stage 3 - final optimisation}
+\paragraph{Stage 3 - final optimization}
 \begin{itemize}
-    \item Use and optimise k-fold method (5-fold is enough)
-    \item Optimise physics weights while scanning for optimal learning rate
+    \item Use and optimize k-fold method (5-fold is enough)
+    \item optimize physics weights while scanning for optimal learning rate
 \end{itemize}
 
 The physics related parameters are the set of input features (observables), and the weights corresponding to different processes in training dataset. 
@@ -140,7 +140,7 @@ The physics related parameters are the set of input features (observables), and 
 % - choice of k-fold method
 
 The training procedure in stage 1 and stage 2 was following a 70/10/20 split of training and test sample. This means, 70\% of the training data was used directly for the training, 10\% for validation during the training, and 20\% to test the final model. The simple significance as shown in \cref{eq:simple-sign} using statistical uncertainties only is used as a performance metric.
-In stage 3, the k-fold cross-validation is used, as explained in \cref{chap:ml}, and an additional performance metric is considered that is based on the knowledge about systematic uncertainties established in previous iterations of the analysis. The systematic uncertainties of the background processes are used in \cref{eq:simple-sign}. The difference between the significances can be seen in \cref{fig:significance-final-optimisation}.
+In stage 3, the k-fold cross-validation is used, as explained in \cref{chap:ml}, and an additional performance metric is considered that is based on the knowledge about systematic uncertainties established in previous iterations of the analysis. The systematic uncertainties of the background processes are used in \cref{eq:simple-sign}. The difference between the significances can be seen in \cref{fig:significance-final-optimization}.
 
 Model choice: Choose model with highest significance in validation set!
 Model validation: Validate model comparing against test set!

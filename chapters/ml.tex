@@ -42,11 +42,11 @@ For this reason, more and more traditional HEP analysis techniques are being rep
 % The advent of deep neural networks in the beginning of the 21$^{\text{th}}$ century was facilitated by the growing amount of both computing resources and data, as well as software advancements.
 % The various ML applications in HEP are detailed in the literature \cite{MLinHEPReview,Guest_2018,MLforNewPhysics}.
 % Some examples where ML tools already find adoption in the ATLAS collaboration include hit reconstruction tasks and track finding~\cite{PERF-2012-05}, object identification such as flavor-tagging \cite{ATL-PHYS-PUB-2017-013}, or classification of entire events as performed by various physics analyses of the ATLAS collaboration.
-This chapter introduces the ML technique of \emph{supervised learning} using \emph{neural networks}\footnote{Neural networks are the most widely used machine learning models to date, due to their great flexibility and ability to approximate arbitrary, non-linear functions.} to develop a binary classifier.
+This chapter introduces the concepts necessary to develop a binary classifier by using \emph{supervised learning} techniques with \emph{neural networks}\footnote{Neural networks are the most widely used machine learning models to date, due to their great flexibility and ability to approximate arbitrary, non-linear functions.}.
 This technique is used in the analysis of \HWW decays that is presented in \cref{chap:hww}, where a \emph{deep neural network} (DNN)\footnote{A deep neural network is conceptually equivalent to a neural network, but is commonly used to denote models with many parameters.} is trained to separate VBF, \HWW events from other types of events.
 
 \Cref{sec:core-concepts} introduces the core concepts and relevant terminology used in ML.
-\Cref{sec:intro-neural-nets} describes the structure of neural networks before \cref{sec:nn-training} explains the learning procedure to which the networks are subjected. \Cref{sec:hyperpar-opt} provides details on how a neural network model is optimized and selected in practice.
+\Cref{sec:intro-neural-nets} describes the structure of neural networks, before \cref{sec:nn-training} explains the learning procedure to which the networks are subjected. \Cref{sec:hyperpar-opt} provides details on how a neural network model is optimized and selected in practice.
 
 % This chapter first discusses the core concepts of ML, before introducing neural networks and the details of the learning procedure are described.
 
@@ -226,9 +226,9 @@ For each event in the training data, a weight, $\omega$, can be applied as a mul
 \end{equation}
 %where $L_n(\pmb{w})$ is the non-weighted loss as shown in \cref{eq:cross-entropy-loss}.
 This allows controlling the relative penalty for incorrect predictions at the level of individual training samples, which is particularly useful for HEP, where different processes in the training data have different effects on the final analysis measurement making it useful to treat them differently.
-% A common choice in HEP is to apply weights so that for each type of physics process the relative contribution in the training data corresponds to their cross-section normalisations.
+% A common choice in HEP is to apply weights so that for each type of physics process the relative contribution in the training data corresponds to their cross-section normalizations.
 A common choice in HEP is to apply weights so that the contribution of each physics process is normalized to its theoretical cross-section prediction.
-The weights may also be used to correct for class imbalances in the training data, for example signal versus background, or to encode some prior knowledge of the importance of different physics processes that goes beyond a flat normalisation factor. The latter is useful for example if a particular background process has a low overall normalisation but mainly populates the signal sensitive region, or if the expected contribution of a background process involves large uncertainties.
+The weights may also be used to correct for class imbalances in the training data, for example signal versus background, or to encode some prior knowledge of the importance of different physics processes that goes beyond a flat normalization factor. The latter is useful for example if a particular background process has a low overall normalization but mainly populates the signal sensitive region, or if the expected contribution of a background process involves large uncertainties.
 In such cases, assigning a larger weight may improve the classification accuracy for the respective background process and thus improve the measurement.
 
 The gradients of the loss with respect to each weight are computed with a method known as \emph{backpropagation}~\cite{Rumelhart_1986}. Backpropagation computes the gradients one layer at a time by applying the chain rule of differentiation, starting from the output layer and iterating backwards.
@@ -258,18 +258,18 @@ Several useful training techniques and learning algorithms exist, that make find
 % A common approach is therefore to evaluate the performance with simplified estimators extracted from the distribution of the network output, such as the expected discovery significance (as explained in \cref{sec:hypothesis-testing}).
 % Several useful training techniques and learning algorithms exist, that make finding a suitable training configuration easier.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%% Take the following in consideration and write a separate "optimisation/performance metrics" subsection (copied from hww section)
+%%%%%%%%%%%%%%%%%%%%%%%%%% Take the following in consideration and write a separate "optimization/performance metrics" subsection (copied from hww section)
 The performance metric used to select the model is problem dependent.
 In typical ML applications, the performance of a binary classifier is often estimated with measures such as the \emph{accuracy}, the percentage of correct positive and negative assignments, or the area under the receiver operating characteristic (ROC) curve~\cite{BRADLEY19971145}. 
 For HEP applications, other metrics are more meaningful. In the case of a physics search, the discovery significance of the signal process over the background process directly determines the sensitivity and thus performance of an analysis. 
 For a physics measurement, the uncertainty on the final measurement quantity may be used to assess the performance of a neural network model.
 % \footnote{Ideally in HEP, the full statistical analysis that is performed to produce the final measurement results should be considered as a final performance metric of a model. This, however, is typically extremely computing intensive and often there are simple alternatives that approximate the final results very well.}
 
-It would be natural to directly apply the aforementioned performance metrics as a loss function and optimise based on them when training the neural network.
+It would be natural to directly apply the aforementioned performance metrics as a loss function and optimize based on them when training the neural network.
 However, this is not possible for most metrics because the loss function must be differentiable with respect to the parameters of the network in order to perform backpropagation. The discovery significance, for example, is a discrete function of the number of signal and background events and not differentiable in its simple form.\footnote{New studies explore the possibility to redefine the discovery significance to make it differentiable and directly use it in the training~\cite{ELWOODZ0INML}.}
 % They are instead used as a performance metric to select the best performing model and have no impact on the training itself.
 
-To validate the methodology, it is meaningful to show that the loss function optimised during the training is correlated with the performance metric. 
+To validate the methodology, it is meaningful to show that the loss function optimized during the training is correlated with the performance metric. 
 \Cref{fig:loss-vs-sign} shows the anti-correlating behavior between the cross-entropy loss, as defined in \cref{eq:cross-entropy-loss}, and the discovery significance, as defined in \cref{eq:discovery-significance}.
 
 \begin{figure}[t]

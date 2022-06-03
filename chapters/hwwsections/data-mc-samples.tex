@@ -20,7 +20,7 @@ The $e$--$\mu$ trigger requires a minimum $\pt$ threshold of 17\,\GeV for electr
 % https://gitlab.cern.ch/atlas-physics-office/HIGG/ANA-HIGG-2018-47/ANA-HIGG-2018-47-PAPER/-/blob/master/sections/DataAndSimSamples.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
-This analysis heavily relies on simulated $pp$ collision events to validate and optimise the analysis strategy and, more importantly, to extract the final signal strength and cross-section measurement after a fit to the data (as discussed in \cref{sec:stats-analysis}). 
+This analysis heavily relies on simulated $pp$ collision events to validate and optimize the analysis strategy and, more importantly, to extract the final signal strength and cross-section measurement after a fit to the data (as discussed in \cref{sec:stats-analysis}). 
 
 Most signal and background processes are simulated using a combination of MC generators calculating the hard scatter, such as \Powheg, and programs that model the parton showering, hadronisation, and underlying event, such as \PythiaEight.
 For all MC samples, the events were processed through the ATLAS detector simulation~\cite{SOFT-2010-01} based on
@@ -34,7 +34,7 @@ The statistical uncertainties on the MC predictions are given by the sum of the 
     \sigma = \sqrt{\sum_i w_i^2},
 \end{equation}
 where $N$ is the total number of generated events (sometimes referred to as \emph{raw events}). Typically, the number of simulated raw events is significantly larger than the number of events expected in data, in order to ensure high statistical precision. 
-The overall normalisation of each process is determined by theoretical cross-section predictions.
+The overall normalization of each process is determined by theoretical cross-section predictions.
 The following provides details on the MC generators and the accuracies of the available cross-section calculations for each process. The content is quoted from \cite{PLACEHOLDER:FOR:PAPER} directly.
 
 
@@ -45,12 +45,12 @@ Higgs boson production and decay into pairs of $W$ bosons or leptonically decayi
 The ggF production is simulated at next-to-next-to-leading order (NNLO) accuracy in QCD\footnote{When higher orders (NLO, NNLO) are specified, QCD is implied if not explicitly stated.} using the \POWHEG~NNLOPS program~\cite{Nason:2004rx, Frixione:2007vw, Alioli:2010xd, Hamilton:2013fea, Hamilton:2015nsa}, interfaced with \PYTHIAV{8.212}~\cite{Sjostrand:2014zea} for parton shower and non-perturbative effects.
 The simulation achieves NNLO accuracy for arbitrary inclusive $gg\to H$ observables by reweighting the Higgs boson rapidity\footnote{The rapidity is defined in terms of a particle's energy $E$ and momentum in the direction of the beam pipe $p_z$ as $y = \frac{1}{2}\ln\frac{E+p_z}{E-p_z}$.} spectrum in Hj-MiNLO~\cite{Hamilton:2012np, Campbell:2012am, Hamilton:2012rf} to that of HNNLO~\cite{Catani:2007vq}.
 %The PDF4LHC15 parton distribution function (PDF) set and the AZNLO tune of \PYTHIAV{8} are used. 
-The gluon fusion prediction from the MC samples is normalised to the N$^3$LO cross section in QCD plus electroweak corrections at next-to-leading order (NLO)~\cite{deFlorian:2016spz, Anastasiou:2016cez, Anastasiou:2015vya, Dulat:2018rbf, Harlander:2009mq, Harlander:2009bw, Harlander:2009my, Pak:2009dg, Actis:2008ug, Actis:2008ts, Bonetti:2018ukf}.
+The gluon fusion prediction from the MC samples is normalized to the N$^3$LO cross section in QCD plus electroweak corrections at next-to-leading order (NLO)~\cite{deFlorian:2016spz, Anastasiou:2016cez, Anastasiou:2015vya, Dulat:2018rbf, Harlander:2009mq, Harlander:2009bw, Harlander:2009my, Pak:2009dg, Actis:2008ug, Actis:2008ts, Bonetti:2018ukf}.
 
 VBF events are generated with \POWHEG~\cite{Nason:2004rx, Frixione:2007vw, Alioli:2010xd, Nason:2009ai}, interfaced with \PYTHIAV{8.230}~\cite{Sjostrand:2014zea}~with the dipole recoil option enabled to model the parton shower, hadronisation and underlying event.
 The \POWHEG\ prediction is accurate to NLO in QCD corrections and tuned to match calculations with effects due to finite heavy-quark masses and soft-gluon resummations up to next-to-next-to-leading-logarithm (NNLL).
 %The PDF4LHC15~\cite{PDF4LHC15} parton distribution function (PDF) set and the AZNLO tune~\cite{Aad:2014xaa} of \PYTHIAV{8} are used. 
-The MC prediction is normalised to an approximate-NNLO QCD cross section with NLO electroweak corrections~\cite{PhysRevLett.99.161803, Ciccolini:2007ec, PhysRevLett.105.011801}.
+The MC prediction is normalized to an approximate-NNLO QCD cross section with NLO electroweak corrections~\cite{PhysRevLett.99.161803, Ciccolini:2007ec, PhysRevLett.105.011801}.
 
 The uncertainties due to the parton shower and hadronisation model for the ggF and VBF Higgs boson signal samples are
 evaluated using the events in the nominal sample generated with \POWHEG\ but interfaced to an alternative showering program
@@ -71,7 +71,7 @@ The prediction is normalized to the cross section computed at NLO QCD and NLO EW
 The sample is inclusive in Higgs decay modes and the cross section is computed assuming a Higgs boson mass of $\SI{125.09}{\GeV}$.
 
 %% Now mentioned before ttH
-%All Higgs boson sample normalisations account for the decay branching ratios calculated with \textsc{HDECAY}~\cite{Djouadi:1997yw, Spira:1997dg, Djouadi:2006bz} and \textsc{PROPHECY4F}~\cite{Bredenstein:2006ha, Bredenstein:2006rh, Bredenstein:2006nk}.
+%All Higgs boson sample normalizations account for the decay branching ratios calculated with \textsc{HDECAY}~\cite{Djouadi:1997yw, Spira:1997dg, Djouadi:2006bz} and \textsc{PROPHECY4F}~\cite{Bredenstein:2006ha, Bredenstein:2006rh, Bredenstein:2006nk}.
 
 \subsubsection{Diboson and multi-boson samples}
 

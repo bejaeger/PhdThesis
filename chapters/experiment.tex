@@ -372,26 +372,20 @@ More information on the ATLAS trigger system can be found in \ccite{ATLAS-TDR-16
 
 
 \subsection{Detector simulation}
-\todo{Shorten this section by referencing section in anatomy section. Include the new wording for software infrastructure?}
-
 %Simulations of the ATLAS detector are required in order to generate full Monte Carlo events that can be compared to actual experimental data.
-
 The ATLAS detector simulation is based on \textsc{Geant4}~\cite{Agostinelli:2002hh}.
 The simulations considers all aspects of the ATLAS detector such as the response of each individual detector system, the effect of material placed throughout the detector, detector imperfections, as well as data and trigger conditions.
 % From Deep Learning and its applications in physics
 %In the language of statistics and machine learning, the full simulation chain would be considered a generative model for the data as they can be used to generate synthetic data of the same complexity and format as the actual collision data.
 %Due to the complexity of the experiment a \emph{full simulation} is a very computing-intensive process. The ATLAS simulation infrastructure also allows for \emph{fast simulations} using simplified descriptions of the detector systems. This provides the opportunity for lower processing times with the drawback of decreased accuracies.
-The simulations produce data of the same complexity and format as the actual experimental data, so that the same software can be used for further processing of the events.
+The simulations produce data of the same complexity and format as the actual experimental data, so the same software can be used for further processing of the events.
 More information on the ATLAS simulation infrastructure can be found in \ccite{ATLAS-TDR-17,SOFT-2010-01}.
 %- full simulation of particle interaction with matter throughout detector 
 
 
-
+\todo{should I mention the detectors that measure the luminosity?}
 \section{Data Acquisition during 2015-2018}
 \label{sec:run-2-data-taking}
-
-\Minote{}{should I mention the detectors that measure the luminosity?}
-
 The operation of the LHC during \RunTwo between April 2015 and December 2018 was a great success and even exceeded the goals set in terms of luminosity production. At a centre-of-mass energy of $\sqrt{s} = 13\,\TeV$, the peak instantaneous luminosity was more than twice as high as its design value reaching up to $\instLumi = \SI{2.1e34}{\per\cm\per\s}$ in 2018.
 \Cref{fig:run-2-data-taking-a} shows the integrated luminosity delivered by the LHC (156\ifb), recorded by the ATLAS detector (147\ifb), and certified as being of ``good'' data quality (139\ifb).
 The recorded luminosity reflects the small inefficiency of the data acquisition infrastructure as well as the fact that the ATLAS detector is fully activated for readout only after a short ramp-up period in the tracking detectors that is started once the LHC produces stable beam collisions.
@@ -407,16 +401,14 @@ An alternative beam production scheme had to be used because of an issue in the 
 % In 2017, the LHC performance was hampered by the so-called 16L2 issue: frozen air in an interconnection between magnets in the arc connecting Point 1 (ATLAS) with Point 2 (ALICE)In 2017, the LHC performance was hampered by the so-called 16L2 issue: frozen air in an interconnection between magnets in the arc connecting Point 1 (ATLAS) with Point 2 (ALICE)
 More details on the LHC running conditions during \RunTwo can be found in \ccite{Steerenberg:2696126}.
 
-\TDinote{}{Should I make the lumi plots larger? Mike's preference}
-\TDinote{}{Make sure pile-up is defined beforehand}
-
 \begin{figure}[t]
     \subfloat[]{
-        \newImageScale{figures/reconstruction/run2-lumi.pdf}{.36}
+        \newImageScale{figures/reconstruction/run2-lumi.pdf}{.38}
         \label{fig:run-2-data-taking-a}
     }
+    \hspace{-3.95em}
     \subfloat[]{
-        \newImageScale{figures/reconstruction/run2-pileup.pdf}{.36}
+        \newImageScale{figures/reconstruction/run2-pileup.pdf}{.38}
         \label{fig:run-2-data-taking-b}
     }
     \caption{(a) Collected luminosity and (b) Mean number of interactions per crossing for $pp$ collisions during \RunTwo of the LHC. More information is provided in the text. Taken from \ccite{PublicLumiResults}.}

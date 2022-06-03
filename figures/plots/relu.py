@@ -16,8 +16,8 @@ phi_z = ReLU(z)
 #
 plt.plot(z, phi_z, linewidth=3, color="#0b80c3")
 plt.axvline(0.0, color='grey', linestyle=':')
-plt.xlabel('x')
-plt.ylabel('$R(x)$')
+plt.xlabel('x', fontsize=20)
+plt.ylabel('$R(x)$', fontsize=20)
 
 plt.yticks([-0.1, 0, 2])
 plt.xticks(np.arange(min(z), max(z)+1, 2))

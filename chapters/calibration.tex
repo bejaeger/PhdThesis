@@ -1,9 +1,7 @@
 \chapter{Measurement of the Jet Energy Resolution}
 \label{chap:calibration}
-
-\todo{Refer to theory section, see comment in .tex file}
+\Minote{}{Refer to theory section, see comment in .tex file}
 % As seen in the anatomy section, particle interaction probabilities vary by a huge span. This necessitates a precise knowledge of the detector and resolutions of measurements. Things like Pile-up are a nuisance in this endeavor, also seen in the anatomy section, and needs to be properly accounted for.
-
 The SM of particle physics makes predictions about the dynamics of quarks and gluons, yet these particles cannot be directly measured in the detector. Quarks and gluons hadronize to form hadrons which give rise to particle showers in the detector that are reconstructed as jets.
 While \cref{chap:experiment} focused on the experimental setup to measure the signals deposited by hadrons, and \cref{chap:objects} described how the signals are reconstructed to form jets, this chapter gives an overview of the procedures that are used in the ATLAS experiment to calibrate the energy of measured jets. Only calibrated jets allow making meaningful comparisons between experimental measurements and theoretical predictions.
 The experimentally measured jet is calibrated to the level of the particle jet. The calibration is experimentally challenging due to the rich environment at hadron colliders as well as the complicated nature of hadronic interactions in the detector. The intricacies of how the detector responds to incoming particle showers is therefore first described in \cref{sec:detector-response}. \Cref{sec:jes-calibration} then describes the multi-stage procedure to calibrate the energy of PFlow jets and EMTopo jets to the scale of the particle jet, which is known as the \emph{jet energy scale}, or \emph{JES}.
@@ -335,7 +333,7 @@ For each zero-bias event, the energies of all jet constituents (either PFlow obj
 The random cones are placed at random $\phi$ and at random \abseta within a selected range.
 The distribution of the difference of the energy within the cones, $\Delta \pTrandomcone = p_{\text{T}}^{\text{Rcone1}} - p_{\text{T}}^\text{Rcone2}$, when sampled over many events, provides a measure of the expected energy fluctuations to which a jet with $R = \Rrandomcone$ is subjected.
 % The width of the resulting distribution of the \pTrandomcone difference, $\Delta \pTrandomcone$, when performing this for many events, 
-The distribution is shown in \cref{fig:random-cones-balance-b} for random cones with radius $\Rrandomcone = 0.4$ within the central region of the detector (\absetaST{0.7}). The width of the distribution, labelled as $\sigmaRC$, is quantified by taking the \SI{68}{\percent} \emph{confidence interval} (CI), due to the non-Gaussian behavior\footnote{The non-Gaussian behaviour is expected to be predominantly caused by topo-clustering threshold effects, that can lead to outliers in the $\Delta \pTrandomcone$ observable.}.
+The distribution is shown in \cref{fig:random-cones-balance-b} for random cones with radius $\Rrandomcone = 0.4$ within the central region of the detector (\absetaST{0.7}). The width of the distribution, labelled as $\sigmaRC$, is quantified by taking the \SI{68}{\percent} \emph{confidence interval} (CI), due to the non-Gaussian behavior\footnote{The non-Gaussian behavior is expected to be predominantly caused by topo-clustering threshold effects, that can lead to outliers in the $\Delta \pTrandomcone$ observable.}.
 The noise term due to pile-up at constituent scale, \Npileupconstscale, is determined by
 \begin{equation}
     \Npileupconstscale = \frac{\sigmaRC}{2\sqrt{2}},
@@ -553,9 +551,6 @@ At low \pT, PFlow jets outperform EMTopo jets and have a considerably lower JER 
 %, as shown in \cref{fig:jer-combination-results-b}.
 Above $\pT=100\,\GeV$ and beyond detector regions of $\etadet = 2.5$ (not shown), the JER of PFlow jets and EMTopo jets become similar, because the two jet collections themselves become very comparable, as less or no tracks are used as inputs to the \antikt algorithm in these regions of phase space. However, one difference remains between PFlow and EMTopo jets, which is the pile-up subtraction step in the jet calibration procedure (see \cref{subsec:pile-up-correction}). This explains the small differences that are still observed between the two jet collections.
 
-Minote{}{Maybe explain the difference between EMTopo and PFlow jets already in the jet definitions section in objects.tex}
-
-
 \FloatBarrier
 \begin{figure}[t]
     \subfloat[] {
@@ -569,8 +564,6 @@ Minote{}{Maybe explain the difference between EMTopo and PFlow jets already in t
     \caption{(a) The relative jet energy resolution as a function of \pT for fully calibrated PFlow+JES jets. The error bars on points indicate the total uncertainties on the derivation of the relative resolution in dijet events, adding in quadrature statistical and systematic components. The expectation from Monte Carlo simulation is compared with the relative resolution as evaluated in data through the combination of the dijet balance and random cone techniques. (b) Absolute uncertainty on the relative jet energy resolution as a function of \pTjet. Uncertainties from the two \insitu measurements and from the data/MC simulation difference are shown separately. Figure and caption taken from \ccite{JETM-2018-05}.}
     \label{fig:jer-combination-incl-noise-term}
 \end{figure}
-
-
 \begin{figure}[t]
     \subfloat[] {
         \newImageResizeHalf{figures/calibration/jer-combination-vs-pt.pdf}
@@ -584,8 +577,6 @@ Minote{}{Maybe explain the difference between EMTopo and PFlow jets already in t
     \label{fig:jer-combination-results}
 \end{figure}
 
-
-
 % \FloatBarrier
 % \begin{figure}[t]
 %     \subfloat[] {
@@ -597,8 +588,6 @@ Minote{}{Maybe explain the difference between EMTopo and PFlow jets already in t
 %     \caption{Fractional jet energy resolution systematic uncertainty summed across all components for \antikt $R = 0.4$ jets (a) as a function of jet \pTjet at $\eta = 0.2$ and (b) as a function of $\eta$ at $\pTjet = 30\,\GeV$. The total JER uncertainty is shown for both EM+JES and PFlow+JES jets. Taken from \ccite{JETM-2018-05}.}
 %     \label{fig:jer-combination-uncertainties}
 % \end{figure}
-
-
 
 \section{Application of the Measured Jet Energy Resolution in Physics Analyses}
 \label{sec:jer-in-analysis}
