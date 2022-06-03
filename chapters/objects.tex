@@ -2,12 +2,12 @@
 \chapter{Physics Object Reconstruction and Identification}
 \label{chap:objects}
 
-Due to the complex phenomenology of $pp$ collisions and the high luminosities at the LHC the ATLAS detector is exposed to enormous particle multiplicities. It is therefore challenging to correctly interpret the detector signals recorded for a given bunch crossing and accurately reconstruct the different \emph{physics objects} that are produced.
-Reconstructed physics objects represent both elementary particles such as electrons, muons, or photons, and composite particles such as \emph{jets} or quantities derived using the entire event information like the \emph{missing transverse energy}.
-The ATLAS experiment uses a variety of sophisticated reconstruction and identification algorithms\footnote{Reconstruction algorithms are implemented within the extensive ATLAS software suite~\cite{ATL-SOFT-PUB-2021-001}.}, that are under constant development, to reconstruct these physics objects, and describes them with four-vectors.
+Due to the complex phenomenology of $pp$ collisions and the high luminosities at the LHC, the ATLAS detector is exposed to enormous particle multiplicities. It is therefore challenging to correctly interpret the detector signals recorded for a given bunch crossing and accurately reconstruct the different \emph{physics objects} that are produced.
+Reconstructed physics objects represent both elementary particles such as electrons, muons, or photons, and composite particles such as \emph{jets}, or quantities derived using the entire event information like the \emph{missing transverse energy}.
+The ATLAS experiment uses a variety of sophisticated reconstruction and identification algorithms\footnote{Reconstruction algorithms are implemented within the extensive ATLAS software suite~\cite{ATL-SOFT-PUB-2021-001}.} to reconstruct these physics objects that are described as four-vectors.
 % that are constantly being improved, 
 %like jets or quantities derived using the entire event information like missing transverse energy.
-This chapter provides details on the algorithms used to reconstruct and identify the physics objects relevant for the work presented in this thesis.
+This chapter provides details on the algorithms relevant for the work presented in this thesis.
 
 \Minote{}{Maybe I want to explicitely mention the chapters: First two chapters outline basic reconstructions that are used in object reconstructions, jets, electrons and photons, muons, missing et}
 
@@ -28,7 +28,7 @@ The track reconstruction uses a sequence of pattern recognition algorithms that 
 %They complement each other in the tasks to find tracks associated to the hard-scatter interaction (inside-out algorithm), and tracks stemming from secondary decay vertices in the ID as well as tracks from photon conversions (outside-in algorithm).
 The inside-out algorithm is seeded by three hits in the silicon detectors. An initial track collection is formed based on a window search and a combinatorial Kalman filter~\cite{fruhwirth_application_1987}. Two more steps follow: First, the ambiguities in the initial track collection are resolved, and then the tracks are extended to hits in the TRT without manipulating the original tracks from the silicon detector measurements. Tracks reconstructed with the inside-out algorithm can be considered as the trajectories of charged particles originating from the interaction region.
 
-The outside-in algorithm starts with a global pattern recognition from all TRT hits. The identified segments are then traced back into the silicon detectors, excluding any hits already used in the inside-out stage. The outside-in algorithm is designed to reconstruct tracks stemming from secondary vertices in the ID, for example, from heavy-flavour hadron decays or from photons converting into an electron-positron pair via pair-production.
+The outside-in algorithm starts with a global pattern recognition from all TRT hits. The identified segments are then traced back into the silicon detectors, excluding any hits already used in the inside-out stage. The outside-in algorithm is designed to reconstruct tracks stemming from secondary vertices in the ID, for example, from heavy-flavor hadron decays or from photons converting into an electron-positron pair via pair-production.
 
 % The track reconstruction efficiency, defined as the fraction of charged particles with $\pT > 400\,\MeV$ and \absetaST{2.5} that are matched to a reconstructed track, has only a small dependence on the number of pile-up interactions and is well above \SI{70}{\percent} for a range \absetaST{2} and pile-up conditions of $\mu = 41$~\cite{ATLAS-CONF-2012-042}. \Mnote{}{Not sure if I should mention this here. Should I then also mention the PV reco efficiency? Don't know yet. Probably not? Cause of this written in Sommers thesis: "The efficiencies shown in Fig. 3.1b is obtained in simulated events that also contain collisions with low momentum transfer. The efficiency to reconstruct the vertices of the interactions studied in this thesis is close to 100 percent". Also track reconstruction probs not useful as it does not reflect the high pT muons}
 
@@ -104,7 +104,7 @@ The main challenge of jet physics is to define and calibrate the experimentally 
 
 This section describes the most important aspects of jet reconstruction in the ATLAS experiment.
 % A useful characteristic of a jet is its origin, in particular, whether the jet is more likely to stem from the hard-scatter vertex or a pile-up vertex. The strategy to identify so-called \emph{pile-up jets} is discussed further below.
-% The information about which hadron a jet originates from, specifically whether a $b$-hadron was involved, is another important metric to characterize and classify different experimental signatures. A description of this process known as \emph{flavour tagging} concludes this section.
+% The information about which hadron a jet originates from, specifically whether a $b$-hadron was involved, is another important metric to characterize and classify different experimental signatures. A description of this process known as \emph{flavor tagging} concludes this section.
 The description of how the energy of the reconstructed jets are calibrated is left to \cref{chap:calibration}.
 
 \subsection{Jet definition}
@@ -245,14 +245,14 @@ Applying basic selections on these variables yields a high efficiency exceeding 
 \end{figure}
 
 
-\subsection{Flavour tagging}
-\label{subsec:flavour-tagging}
-The process of classifying a jet as originating from a certain quark flavour is known as \emph{flavour tagging}, which is a crucial ingredient for many physics analyses. Especially important for the work presented in this thesis is the identification of jets that originate from $b$-quarks, called $b$-\emph{jets}.
+\subsection{flavor tagging}
+\label{subsec:flavor-tagging}
+The process of classifying a jet as originating from a certain quark flavor is known as \emph{flavor tagging}, which is a crucial ingredient for many physics analyses. Especially important for the work presented in this thesis is the identification of jets that originate from $b$-quarks, called $b$-\emph{jets}.
 
 Different jet-related properties can be used for $b$-jet identification.
 %, called \emph{$b$-tagging},
 %about the underlying physics process that occurred.
-%provide information about the likelihood that a given jet originates from a certain quark flavour.
+%provide information about the likelihood that a given jet originates from a certain quark flavor.
 %This in turn is crucial input to classify different hard scatter events.
 The $b$-jets contain $b$-hadrons that have a relatively long lifetime of about \SI{1.5}{\pico\second} before they decay. This, in addition to the fact that energetic $b$-jets typically experience a large Lorentz boost, leads to the formation of a secondary decay vertex that is far enough away from the hard-scatter vertex for it to be detectable with the track and vertex information from the ID.
 Several low-level \emph{$b$-tagging algorithms} primarily exploit this distinct detector signature\footnote{Also other characteristics of the production and decay of $b$-hadrons are considered, such as the high $b$-hadron mass, the (charged) decay multiplicity, or $b$-quark fragmentation properties.}, to identify (or \emph{tag}) jets as $b$-jets. They also make use of other information such as impact-parameter measurements or reconstructed secondary vertices~\cite{ATL-PHYS-PUB-2017-013}.
@@ -279,7 +279,7 @@ Objects falling in the latter category are explicitly marked ambiguous, which pr
 The energy of the final electron and photon candidates is calibrated with \Zee events, which is described in more detail in \ccite{EGAM-2018-01}.
 
 Information about the origin of the reconstructed electrons and photons is crucial for physics analyses.
-Electrons stemming from the hard scatter are referred to as \emph{prompt} electrons. They need to be distinguished from other signatures with similar energy deposits such as jets or converted photons, as well as from \emph{non-prompt} electrons produced in heavy-flavour hadron decays.
+Electrons stemming from the hard scatter are referred to as \emph{prompt} electrons. They need to be distinguished from other signatures with similar energy deposits such as jets or converted photons, as well as from \emph{non-prompt} electrons produced in heavy-flavor hadron decays.
 Similarly, prompt photons from the hard scatter are important to separate from jets or photons produced within jets.
 To this end, different quantities are defined and grouped into two sets of criteria: \emph{identification criteria}, that characterize the quality of the reconstructed detector signals produced by electrons and photons themselves, and \emph{isolation requirements}, that describe the activity near the reconstructed objects in order to reject non-prompt electrons and photons or signatures falsely identified as such. A brief overview is given below. More details can be found in \ccite{EGAM-2018-01}.
 

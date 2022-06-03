@@ -29,18 +29,30 @@
 % The ``tasks T'' in HEP often correspond to classification tasks, the ``performance P'' of which can be measured with a metric that compares the true label with the label predicted by the model. 
 % The iterative updating of the model that is being learned by the ``computer program'', so that the metric is optimized, can be thought of as the ``learning'' process, also known as ``training''. 
 
-In recent years, machine learning (ML) has become ubiquitous and drives much of human decision making in many areas of life. 
-Also in HEP, more and more traditional analysis techniques are being replaced by modern ML tools and this trend is expected to continue. 
-The main advantage of ML tools is that they can analyse high-dimensional data simultaneously which in many cases makes them superior to traditional analysis strategies that often rely on boolean selections on single observables. 
-A complete overview of ML applications in HEP can be found in the literature, for example in \ccite{MLinHEPReview,Guest_2018,MLforNewPhysics}.
-% The various ML applications in HEP are detailed in the literature \cite{MLinHEPReview,Guest_2018,MLforNewPhysics}.
-Some examples where ML tools already find adoption in the ATLAS collaboration include hit reconstruction tasks and track finding~\cite{PERF-2012-05}, object identification such as flavour-tagging \cite{ATL-PHYS-PUB-2017-013}, or classification of entire events as performed by various physics analyses of the ATLAS collaboration.
-An example of the latter is described in \cref{chap:hww} of this thesis, where the technique of \emph{supervised learning} is used together with \emph{neural networks} to develop a binary classifier that distinguishes between events with Higgs bosons and other types of events. 
-Neural networks, especially \emph{deep neural networks} (DNNs), are the most widely used machine learning models today and ubiquitous in many technology-related fields due to their great flexibility and ability to approximate arbitrary, non-linear functions.\footnote{The advent of deep neural networks in the beginning of the 21$^{\text{th}}$ century was facilitated by the growing amount of both computing resources and data, as well as software advancements.} 
 
-This chapter discusses the ML techniques and concepts that are relevant for this thesis.
+% Classifying the Standard Model events is a challenging task, as it
+% consists of many complicated physics processes. Multi-class machine learning algorithms are well-suited for
+% this classification problem. Once an event is classified as likely to be from a known physics process, it can be
+% filtered out, and remaining events can be further analyzed for hints of new physics.
+
+The success of many Higgs boson measurements depends on the ability to distinguish $pp$ collision events with Higgs boson processes from other types of events. Given a set of experimentally measured observables, this task can be framed as a classification problem for which modern machine learning (ML) algorithms are particularly well-suited.\footnote{In recent years, ML has become ubiquitous and drives much of human decision-making in many areas of life. This development was facilitated by the growing amount of both computing resources and data, as well as software advancements in the beginning of the 21$^{\text{th}}$ century.}
+The main advantage of ML tools is that they can analyze high-dimensional data simultaneously, which in many cases makes them superior to traditional analysis strategies that often rely on boolean selections on single observables. 
+For this reason, more and more traditional HEP analysis techniques are being replaced by modern ML tools, and this trend is expected to continue.\footnote{A complete overview of ML applications in HEP can be found in the literature, for example in \ccite{MLinHEPReview,Guest_2018,MLforNewPhysics}.}
+% In recent years, machine learning (ML) has become ubiquitous and drives much of human decision making in many areas of life. 
+% The advent of deep neural networks in the beginning of the 21$^{\text{th}}$ century was facilitated by the growing amount of both computing resources and data, as well as software advancements.
+% The various ML applications in HEP are detailed in the literature \cite{MLinHEPReview,Guest_2018,MLforNewPhysics}.
+% Some examples where ML tools already find adoption in the ATLAS collaboration include hit reconstruction tasks and track finding~\cite{PERF-2012-05}, object identification such as flavor-tagging \cite{ATL-PHYS-PUB-2017-013}, or classification of entire events as performed by various physics analyses of the ATLAS collaboration.
+This chapter introduces the ML technique of \emph{supervised learning} using \emph{neural networks}\footnote{Neural networks are the most widely used machine learning models to date, due to their great flexibility and ability to approximate arbitrary, non-linear functions.} to develop a binary classifier.
+This technique is used in the analysis of \HWW decays that is presented in \cref{chap:hww}, where a \emph{deep neural network} (DNN)\footnote{A deep neural network is conceptually equivalent to a neural network, but is commonly used to denote models with many parameters.} is trained to separate VBF, \HWW events from other types of events.
+
+\Cref{sec:core-concepts} introduces the core concepts and relevant terminology used in ML.
+\Cref{sec:intro-neural-nets} describes the structure of neural networks before \cref{sec:nn-training} explains the learning procedure to which the networks are subjected. \Cref{sec:hyperpar-opt} provides details on how a neural network model is optimized and selected in practice.
+
+% This chapter first discusses the core concepts of ML, before introducing neural networks and the details of the learning procedure are described.
+
+%\footnote{The advent of deep neural networks in the beginning of the 21$^{\text{th}}$ century was facilitated by the growing amount of both computing resources and data, as well as software advancements.} 
+
 % This chapter provides an overview of the ML technique of \emph{supervised learning} with \emph{neural networks}, that is relevant for the work presented in this thesis. 
-First, the core concepts of ML are discussed. Then, the specifics of neural networks and the details of the learning procedure are described.
 
 % \Cref{chap:hww} of this thesis describes, how an ML model is optimized to perform binary classification between signal-like and background-like $pp$ collision events. 
 
@@ -67,13 +79,15 @@ First, the core concepts of ML are discussed. Then, the specifics of neural netw
 % filtered out, and remaining events can be further analyzed for hints of new physics.
 
 
-\section{Core Concepts and Terminology in Machine Learning}
+\section{Core Concepts of Machine Learning}
+\label{sec:core-concepts}
 The basic task of a machine learning algorithm is to find a function $f: X \rightarrow Y$, that maps some higher-dimensional data $X$ onto some target label $Y$, while optimizing a metric of choosing.
 This metric is known as \emph{loss function} (also \emph{cost function}), labelled as $L(y, f(x))$.
 The function that optimizes the loss function is found in a process referred to as \emph{training}, in which a learning algorithm is applied to a set of sample data, known as \emph{training data}.
-In the case of supervised learning, the training data must be labelled which in HEP is taken care of by MC simulated events. 
+The training is usually performed in several cycles, called \emph{epochs}, through the entire training data. 
+In the case of supervised learning, the training data must be labelled which in HEP is easily achieved by using MC simulated samples. 
 The space of functions to choose from in the training is constrained by a \emph{model} with adjustable parameters that are optimized during the training.
-While in the past, many HEP applications were based on \emph{boosted decision trees} (BDTs), the most widely adopted models today are based on the previously mentioned (deep) neural networks.
+While in the past, many HEP applications were based on \emph{boosted decision trees} (BDTs), the most widely adopted models today are based on (deep) neural networks.
 % Neural networks, especially deep neural networks (DNNs), are the most widely used machine learning models today and ubiquitous in HEP and many other technology-related fields due to their great flexibility and ability to approximate more complex, non-linear functions. 
 %Details on DNNs are given below, as they are used in the work presented in this thesis.
 % % From [1] see above:
@@ -82,9 +96,9 @@ While in the past, many HEP applications were based on \emph{boosted decision tr
 % - In a process known as \emph{training}, a learning algorithm is applied to find the function that optimizes the loss function.
 % - The space of functions to choose from is constrained by a model that can come in various forms such as BDTs, support vector machines, or neural networks (see the following chapter).
 
-A major goal in machine learning is \emph{generalization}, that is the ability of a trained model to perform well on previously unseen data.
+A major goal in machine learning is \emph{generalization}, that is, the ability of a trained model to perform well on previously unseen data.
 The opposite is the case if the model parameters are chosen based on signatures unique to the training data. This is known as \emph{overtraining} (or \emph{overfitting}). To prevent a model to be overfitted, various so-called \emph{regularization} techniques can be used during the training.
-Regularization methods are typically tuned during the training procedure in which other parameters are also optimized, which is explained further below.
+Regularization methods are typically tuned during the training procedure that is explained further below.
 %based on how well a trained model generalizes, which can be tested with data not used in the training.
 
 
@@ -102,7 +116,7 @@ The transformation that the $l^{\text{th}}$ layer performs can then be expressed
     \label{eq:recursive-neuron-activation}
     \pmb{z}^{(l)} =  h^{(l)} \left( W^{(l)} \pmb{z}^{(l-1)}  + \pmb{w}^{(l)}_{0} \right),
 \end{equation}
-which implies that the activation function of the input layer can be considered as the identity function, $h^{(0)}(\pmb{x}) \equiv \pmb{x}$, and the output of the neural network corresponds to $ \pmb{z}^{(L)} \equiv \pmb{y}$.
+which implies that the activation function of the input layer can be considered as the identity function, $h^{(0)}(\pmb{x}) \equiv \pmb{x}$, and the output of the neural network is $ \pmb{z}^{(L)} \equiv \pmb{y}$.
 
 The full function that a simple network with only one hidden layer and a single output neuron encodes, can therefore be written as,
 \begin{equation}
@@ -186,7 +200,7 @@ Both functions are shown in \cref{fig:sigmoid-relu}.
 % \Minote{}{The above can potentially go into the HWW chapter, as it is specific! Would need to define target values}
 
 The training process is an iterative numerical procedure, during which the free parameters of the network, $\pmb{w}$, are updated so that the loss function, $L(\pmb{w})$, is minimized. 
-First, the initial weights, $\pmb{w}^{(0)}$, are chosen randomly. Then, the weights are updated according to gradient-based optimization algorithms that update a set of given weights based on the gradient of the loss function with respect to these weights, 
+First, the initial weights, $\pmb{w}^{(0)}$, are chosen randomly. Then, the weights are updated according to gradient-based optimization algorithms that update the weights based on the gradient of the loss function with respect to these weights, 
 \begin{equation}
     \label{eq:gradient-descent}
     \pmb{w}^{(\tau+1)} = \pmb{w}^\tau - \eta \grad_{\pmb{w}^{(\tau)}} L(\pmb{w}^{(\tau)}),
@@ -233,6 +247,7 @@ It should be noted, that the backpropagation algorithm relies on the activation 
 
 
 \section{Hyperparameter optimization} 
+\label{sec:hyperpar-opt}
 In practice, when training a neural network, significant effort needs to be put into finding a suitable set of network parameters and training parameters (collectively known as \emph{hyperparameters}) so that the chosen \emph{performance metric} is optimized and the network converges to a minimum both rapidly and reliably. 
 Several useful training techniques and learning algorithms exist, that make finding a suitable training configuration easier.
 
@@ -250,18 +265,24 @@ For HEP applications, other metrics are more meaningful. In the case of a physic
 For a physics measurement, the uncertainty on the final measurement quantity may be used to assess the performance of a neural network model.
 % \footnote{Ideally in HEP, the full statistical analysis that is performed to produce the final measurement results should be considered as a final performance metric of a model. This, however, is typically extremely computing intensive and often there are simple alternatives that approximate the final results very well.}
 
-It would be natural to directly apply the aforementioned performance metrics as a loss function and optimise them when training the neural network.
+It would be natural to directly apply the aforementioned performance metrics as a loss function and optimise based on them when training the neural network.
 However, this is not possible for most metrics because the loss function must be differentiable with respect to the parameters of the network in order to perform backpropagation. The discovery significance, for example, is a discrete function of the number of signal and background events and not differentiable in its simple form.\footnote{New studies explore the possibility to redefine the discovery significance to make it differentiable and directly use it in the training~\cite{ELWOODZ0INML}.}
 % They are instead used as a performance metric to select the best performing model and have no impact on the training itself.
 
 To validate the methodology, it is meaningful to show that the loss function optimised during the training is correlated with the performance metric. 
-\Cref{fig:loss-vs-sign} shows the anti-correlating behavior between the cross entropy loss, as defined in \cref{eq:cross-entropy-loss}, and the discovery significance as a function of the training iterations.
-\todo{ADD plot!}
+\Cref{fig:loss-vs-sign} shows the anti-correlating behavior between the cross-entropy loss, as defined in \cref{eq:cross-entropy-loss}, and the discovery significance, as defined in \cref{eq:discovery-significance}.
 
-%For binary classification, the cross entropy loss is most commonly chosen. 
+\begin{figure}[t]
+    \newImageResizeCustom{0.6}{figures/data-analysis/loss_v_significance_thesis.pdf}
+    \caption{Cross-entropy loss and discovery significance as a function of training epochs, averaged over three separate trainings. The shaded band corresponds to the standard deviation of the three trainings. The discovery significance is calculated based on a histogram with 20 bins of the DNN output distribution by taking the square root of the sum of the significances calculated in each of the bins according to \cref{eq:discovery-significance}.}
+    \label{fig:loss-vs-sign}
+\end{figure}
+
+
+%For binary classification, the cross-entropy loss is most commonly chosen. 
 % The metric used during the training must be differentiable with respect to the parameters of the model in order to perform backpropagation. 
 % The training itself is based on yet another metric that must be differentiable with respect to the parameters of the model in order to perform backpropagation. 
-% The parameters of the model are learned by minimizing the cross entropy loss. 
+% The parameters of the model are learned by minimizing the cross-entropy loss. 
 % The loss function must be fully differentiable with respect to the parameters of the model
 % Add differentiable loss function here?
 
