@@ -33,7 +33,8 @@ To reduce the background contribution from top processes, events are vetoed in a
 \label{subsec:vbf-category}
 The distinct VBF topology is exploited by rejecting events that contain either an additional jet with \ptGT{30}\,GeV between the two leading jets in pseudorapity (known as \emph{central jet veto} (CJV)) or a lepton at larger pseudorapidities than both of the jets (known as \emph{outside lepton veto} (OLV)).
 In addition, a selection is made on the invariant mass of the jets $\mjj > 120\,\GeV$, which mainly serves to separate other physics analyses targeting the $V(\to qq)H$ production mode.
-The VBF signal process is then distinguished from the background processes by using a deep neural network model (DNN) that is trained to classify signal and background events. Details of the DNN analysis are described in \cref{sec:dnn}.
+The VBF signal process is then distinguished from the background processes by using a deep neural network model (DNN) that is trained to classify VBF signal and other non-VBF-signal events.
+The DNN is used as a final discriminant in the statistical analysis. Details about the development of the VBF DNN analysis are provided in \cref{sec:dnn}.
 
 \todo{Make plot for CJV and OLV}
 

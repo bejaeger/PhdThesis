@@ -1,34 +1,46 @@
-%-----------------------------------------------------------------------
-%-----------------------------------------------------------------------
-\chapter{Mismodelling of data at the jet constituent level}
-\label{app:constituents-mismodelling}
-
-The reason is the challenge to model pile-up correctly, as it is impacted by non-perturbative effects.
-
-The MC samples therefore rely on theoretical models which parameters are \emph{tuned} to correctly describe the data in as many variables as possible.
-
-The effect is constant with pile-up and independent of the energy of the jet. The jet calibration can thereforegreatly reduce the effects of this mismodelling.
-
-\TDinote{Checkout notes for pile-up task force meetings}
-
-%-----------------------------------------------------------------------
-%-----------------------------------------------------------------------
-\chapter{Noise Term Measurement for \Rscan Jets}
-\label{app:noise-term-rscan}
+\chapter{Development of the VBF DNN}
 
 
-\section{Cluster Weighting}
-An alternative approach to correct for energy losses is the so-called \emph{local hadronic cell weighting} (LCW), which applies energy corrections already at cluster level.
-This approach is used for different jet definitions, one of which is described in \cref{app:noise-term-rscan}
-Different variables can be defined to characterize a topo-cluster based on its shape and other properties. These observables, known as \emph{cluster moments}, are used to extract information about the hadronic signal content in a given cluster which in turn is used to correct the energy to the \emph{LCW scale}. More information can be found in \ccite{PERF-2014-07}.
-
-\section{Definition and Calibration of \Rscan jets}
-
-\section{Changes to Noise Term Measurement}
-
-- Additional uncertainty from mu=0 fit range
-
-- Additional uncertainty based on the difference between different parametrisations
+\section{Software suite for the development of the VBF DNN}
+\label{app:software-suite}
+The software used for the development of the DNN is based on industry-standard state-of-the-art ML libraries. 
+The entire workflow is based on Docker images that provide the necessary packages that are all built with a Python frontend. The simulated MC samples provided centrally within the ATLAS collaboration are first transformed in order to remove the ATLAS software dependencies and make them easily useable with open-source ML libraries. The data is then stored in hdf5 format, and handled with the numpy and pandas packages. The training is performed using Keras and TensorFlow. The scikit-learn library is included in the training, and the matplotlib package is used for data visualization. The final DNN model is stored in JSON format and deployed in the \HWW\ analysis using the C++ based LightWeight Tagger Neural Network (lwtnn) package [148].
+\todo{REFERENCES!}
+\todo{Metion FreeForestML}
+    
 
 
-\section{Results}
+% %-----------------------------------------------------------------------
+% %-----------------------------------------------------------------------
+% \chapter{Mismodelling of data at the jet constituent level}
+% \label{app:constituents-mismodelling}
+
+% The reason is the challenge to model pile-up correctly, as it is impacted by non-perturbative effects.
+
+% The MC samples therefore rely on theoretical models which parameters are \emph{tuned} to correctly describe the data in as many variables as possible.
+
+% The effect is constant with pile-up and independent of the energy of the jet. The jet calibration can thereforegreatly reduce the effects of this mismodelling.
+
+% \TDinote{Checkout notes for pile-up task force meetings}
+
+% %-----------------------------------------------------------------------
+% %-----------------------------------------------------------------------
+% \chapter{Noise Term Measurement for \Rscan Jets}
+% \label{app:noise-term-rscan}
+
+
+% \section{Cluster Weighting}
+% An alternative approach to correct for energy losses is the so-called \emph{local hadronic cell weighting} (LCW), which applies energy corrections already at cluster level.
+% This approach is used for different jet definitions, one of which is described in \cref{app:noise-term-rscan}
+% Different variables can be defined to characterize a topo-cluster based on its shape and other properties. These observables, known as \emph{cluster moments}, are used to extract information about the hadronic signal content in a given cluster which in turn is used to correct the energy to the \emph{LCW scale}. More information can be found in \ccite{PERF-2014-07}.
+
+% \section{Definition and Calibration of \Rscan jets}
+
+% \section{Changes to Noise Term Measurement}
+
+% - Additional uncertainty from mu=0 fit range
+
+% - Additional uncertainty based on the difference between different parametrisations
+
+
+% \section{Results}
