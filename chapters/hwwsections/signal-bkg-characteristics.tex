@@ -4,7 +4,7 @@ Signal is ggF, VBF Higgs production
 Background is everything else
 
 \subsection{The Signal Processes}
-
+\label{subsec:signal-bkg-characterisation}
 The Higgs couples to a pair of oppositely charged $W$ bosons via the process of EWSB that was discussed in \cref{sec:sm}. Due to the high mass of the \Wboson boson ($m_W = 80.354 \pm 0.007\,\GeV$ \cite{PDG2020}), only one of them is created on shell, the respective other boson is produced off shell indicated by a star in ``\HWW''.
 
 The $W$ bosons are short-lived $\left( \tau \approx \mathcal{O}\left(10^{-25}\,\text{s}\right)\,\text{\cite{PDG2020}}  \right)$ so that only their decay products can be measured. The possible decay modes including their branching fractions are shown in \cref{fig:w-branching-ratios}. The analysis presented in this thesis targets \Wboson boson decays into \emph{light leptons} (simply referred to as leptons in the following), that is electrons and muons including their associated neutrinos.
@@ -15,10 +15,10 @@ As discussed in more detail in \cref{sec:object-selection}, the presented analys
 %It can be assumed that the Higgs boson is produced at rest, so that the two \Wboson bosons are emitted in opposite directions in the transverse plane. 
 %For this reason, and because of the property of the electroweak interaction to couple only to left-handed neutrinos as well as angular momentum conservation, the \HWWdet process exhibits a distinct kinematic feature that can be exploited in the event selection.
 %It arises as a direct consequence of angular momentum conservation and the property of the electroweak interactions to only couple to left-handed neutrinos. 
-Because of both the \Wboson bosons coupling only to left-handed neutrinos and the spin-0 nature of the Higgs boson, the \HWWdet process exhibits a distinct kinematic feature that can be exploited in the event selection.
+Since both the \Wboson couples only to left-handed neutrinos and the Higgs boson has a spin of zero, the \HWWdet process exhibits a distinct kinematic feature that can be exploited in the event selection.
 The spin projections of the \Wboson bosons must sum to zero, because angular momentum must be conserved.
 Similarly, the leptons from the \Wboson decays must have spin projections that are aligned, which ultimately leads to
-an enhanced fraction of \HWWdet events in which the two leptons are emitted in the same direction at small angle \DPhill.
+an enhanced fraction of \HWWdet events in which the two leptons are emitted in the same direction at small angle \dphill.
 \Cref{fig:spin-correlations} illustrates this by showing the different spin configurations possible, including the resulting final state kinematics.\footnote{This provides a slightly simplified picture that disregards interference effects between different \Wboson boson polarisation states. When they are considered, however, similar conclusions can be drawn~\cite{Maina_2021}.}
 As a consequence, several observables that are correlated to the angular separation between the leptons can be exploited to discriminate between \HWW decays and other background events. For example, the mass of the dilepton system,
 \begin{equation}
@@ -28,10 +28,10 @@ is more likely to take smaller values, and the magnitude of the vectorial sum of
 \begin{equation}
     \Ptll = |\pmb{p}_\text{T}^{\ell_1} + \pmb{p}_\text{T}^{\ell_2}|,
 \end{equation}
-is expected to be shifted towards larger values due to the angular correlations. 
+is expected to take larger values due to the angular correlations.
 
 The presence of the neutrinos in the final state has two important consequences:
-First, they lead to events with significant missing transverse energy. This is amplified by the angular correlations described above, as the neutrinos are more likely to be emitted in the same direction. 
+First, they lead to events with significant missing transverse energy. This is amplified by the angular correlations described above, as the neutrinos are more likely to be emitted in the same direction. This feature can be especially well exploited by the \METSig observable.
 Second, not enough information is available about the longitudinal momentum of the Higgs boson in order to reconstruct its full mass. The mass of the Higgs boson can therefore only be reconstructed in the transverse plane, which is calculated as
 \begin{equation}
   \Mt = \sqrt{ \left( E_{\ell\ell}+\MET \right)^2 - \left| \Ptll + \pmb{E}_{\text{T}}^{\text{miss}} \right|^2 },
@@ -39,8 +39,10 @@ Second, not enough information is available about the longitudinal momentum of t
 where $E_{\ell\ell} = \sqrt{ |\Ptll|^2 + \Mll^2}$ is the energy of the lepton system.
 
 The signature of the final state depends on the production mode of the Higgs boson.
-In the VBF production mode, two energetic jets are expected in the final state that are predominantly emitted in the forward direction and have a large invariant mass. Due to the mediating weak bosons not exchanging color, the hadronic activity between the jets is expected to be small. 
-This prominent feature clearly distinguishes VBF produced \HWW events from events produced via the ggF production mode, where no additional jets are expected at leading order. Additional jets may, however, still arise (for both production modes) due to ISR and FSR. The mentioned characteristics are depicted in \cref{fig:ggF-VBF-Hww-feyn} and are what drive the event categorisation discussed in \cref{sec:event-categorisation}. 
+In the VBF production mode, two energetic jets are expected in the final state that are predominantly emitted in the forward direction and have a large invariant mass \mjj. 
+The difference between the two jet rapidities, \dyjj, is expected to be large and because the mediating weak bosons do not exchange gluons, the hadronic activity between the jets is expected to be small. 
+The latter can be quantified by the co-called lepton centrality, $C_\ell$, that compares the $\eta$ positions of the leptons with the corresponding values for the jets with $C_\ell = |2\eta_\ell - \sum \eta_j| / \Delta \eta_{jj}$. It is expected that VBF, \HWW events tend to towards smaller $C_\ell$ values than other processes.
+These prominent features clearly distinguishd VBF, \HWW events from events produced via the ggF production mode, where no additional jets are expected at leading order. Additional jets may, however, still arise (for both production modes) due to ISR and FSR. The mentioned characteristics are depicted in \cref{fig:ggF-VBF-Hww-feyn} and are what drive the event categorization discussed in \cref{sec:event-categorization}. 
 
 In this analysis, the contributions from other Higgs production modes such as $VH$ or $ttH$ are marginal because of both their small cross sections as well as the fact that they have additional particles in the final state based on which their contributions can be suppressed.
 % events can be efficiently rejected.

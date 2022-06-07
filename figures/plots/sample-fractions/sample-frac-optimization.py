@@ -121,7 +121,7 @@ if ewscanplot:
     plt.legend(frameon=True, fancybox=True, loc='upper right', numpoints=1)
 
     fontsize = 14
-    ax2.set_ylabel('EW $WW$ fraction in highest DNN bin', fontsize=14)
+    ax2.set_ylabel('EW $WW$ fraction of total Bkg.', fontsize=14)
     plt.ylim((0.14, 0.35))
     plt.xlim((0.04, 0.21))
     
