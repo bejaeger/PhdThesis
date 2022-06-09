@@ -2,12 +2,143 @@
 
 
 \section{Software suite for the development of the VBF DNN}
-\label{app:software-suite}
+\label{app:dnn:software-suite}
 The software used for the development of the DNN is based on industry-standard state-of-the-art ML libraries. 
 The entire workflow is based on Docker images that provide the necessary packages that are all built with a Python frontend. The simulated MC samples provided centrally within the ATLAS collaboration are first transformed in order to remove the ATLAS software dependencies and make them easily useable with open-source ML libraries. The data is then stored in hdf5 format, and handled with the numpy and pandas packages. The training is performed using Keras and TensorFlow. The scikit-learn library is included in the training, and the matplotlib package is used for data visualization. The final DNN model is stored in JSON format and deployed in the \HWW\ analysis using the C++ based LightWeight Tagger Neural Network (lwtnn) package [148].
 \todo{REFERENCES!}
-\todo{Metion FreeForestML}
-    
+\todo{Mention FreeForestML}
+
+
+\section{Optimization studies for the development of the VBF DNN}
+\label{app:dnn:opt-studies}
+
+Different optimization studies for the VBF DNN were performed during the course of the author's PhD thesis.
+The following studies were performed with an earlier version of the DNN training setup, including an earlier version of the training data. For this reason, the absolute values of $Z0$(40 bins) are not necessarily comparable with other results presented in this thesis. However, they are perfectly suitable for drawing conclusions when being compared against each other.
+
+Many sets of observables were studied for use as DNN input variables.
+As baseline, the set of variables that was used in the BDT-based analysis of the previous iteration of the \HWW\ measurement \cite{HIGG-2016-07} is chosen, comprising in total 8 variables.
+The most important comparisons of the performances of models using an increasing number of variables are shown in \cref{tab:input-var-opt}.
+Comparing the baseline to the results labelled ``S1'' shows significant improvements. This is an indication that the DNN exploits the correlations between the single $m_{\ell_\alpha j_\beta}$ (with $\alpha, \beta = 1, 2$) and other observables. 
+Although the discrimination power of \pTjone and \pTjtwo in linear dimension is limited, they also introduce a significant performance improvement when being included (``S2''). The same is true for the \pTjthree observable (``S3''), which adds information about whether a third jet is present in the event. 
+The final variable that was added and showed benefits is \METSig (``S4''). This observable has only recently been developed for use in the ATLAS collaboration \cite{ATLAS-CONF-2018-038} and is a strong discriminant between events with real undetected high-\pT particles and events where the \MET is the result of resolution effects. 
+Overall the significance metric $Z0$(40 bins) improves by a maximum of almost 50\% when comparing the baseline with the best performing set.
+These results motivate the use of the 15 input variables that correspond to the set labelled ``S4'' in \cref{tab:input-var-opt}.
+In addition to the comparisons shown, several other observables were studied but did not lead to further improvements. 
+These tests included (i) using the $C_\ell$ observable separately instead of the sum for both leptons, (ii) using \MET instead of \METSig, and (iii) using the \pT of both leptons on top of the other 15 variables.
+Furthermore, the performance of DNN models trained with all 15 variables except one was studied. It was seen, that all of the chosen 15 variables provide discrimination power, although dropping highly correlated observables such as \mjj and \dyjj did not show strong performance losses.
+
+The physics-motivated optimization of the input variables was followed by the rather technical optimization of the neural network architecture. 
+The performances of different setups are shown in \cref{tab:architecture-opt}. All results are very similar to each other. Among the best performing architectures, the one with the least layers is chosen, which corresponds to the architecture labelled ``A4''. The results were produced with the set of variables labelled ``S3'' in \cref{tab:input-var-opt}
+
+\begin{table}[h]
+    \centering
+    \small
+    \begin{tabular}{ l l | r}
+        \toprule
+        Identifier & Input Variables                                                                                         & $Z0$(40 bins) \\
+        \midrule
+        Baseline   & \mjj, \dyjj, \lepetacent, \dphill, \mll, \mT, \pttot, $\sum_{\alpha,\beta=1,2} m_{\ell_\alpha j_\beta}$ & 7.7           \\
+        S1         & Baseline w/ separate \mlonejone, \mlonejtwo, \mltwojone, \mltwojtwo,                                    & 8.57          \\
+        S2         & S1 + \pTjone, \pTjtwo                                                                                   & 9.55          \\
+        S3         & S2 + \pTjthree                                                                                          & 10.92         \\
+        S4  & S3 + \METSig                                                                                            & 11.5          \\
+        \bottomrule
+    \end{tabular}
+    \caption{Comparison of the significance metric $Z0$(40 bins) for DNN models trained with different input variables.}
+    \label{tab:input-var-opt}
+\end{table}
+
+\begin{table}[h]
+    \centering
+    \small
+    \begin{tabular}{ l l | r}
+        \toprule
+        Identifier & Hidden layers                      & $Z0$(40 bins) \\
+        \midrule
+        A1         & {32, 16, 8}                        & 10.4          \\
+        A2         & {64, 32, 24, 16, 8}                & 10.6          \\
+        A3         & {128, 64, 32, 24, 16, 8}           & 10.7          \\
+        A4      & {256, 128, 64, 32, 24, 16, 8}      & 10.8          \\
+        A5         & {128, 128, 64, 64}                 & 10.5          \\
+        A6         & {512, 256, 128, 64, 32, 24, 16, 8} & 10.8          \\
+        \bottomrule
+    \end{tabular}
+    \caption{Comparison of the significance metric $Z0$(40 bins) for DNN models using different architectures.}
+    \label{tab:architecture-opt}
+\end{table}
+
+
+\section{Optimization of the EW $WW$ training fraction}
+\label{app:sec:ewww-sample-fraction-optimization}
+In a previous iteration of the VBF, \HWW\ analysis it was found that theoretical uncertainties related to particular processes dominate the final measurement uncertainties. In particular EW $WW$ processes that mimic the VBF signal signature contributed significantly in the highest DNN bin, which lead to large uncertainties.
+This prompted a change in the training procedure that places more emphasis on suppressing the EW $WW$ background by increasing the training fraction of the EW $WW$ sample in the training.
+In addition, the performance metric $Z0$(var. bins + syst. unc.) (see \cref{subsec:performance-metrics}) was introduced to take into account theoretical uncertainties on the different processes when comparing different DNN trainings.
+
+The results of this final optimization of the VBF DNN are shown by means of the expected number of events in the highest DNN bin in \cref{fig:bkg-fractions}. The contributions for each process without and with an increased training fraction for the EW $WW$ processes are displayed.
+The goal of this optimization is to achieve approximately equal number of expected events in the highest DNN bin for the dominant background processes with large uncertainties (which are ggF, EW $WW$, $WW$, and \ttbar, see \cref{tab:DNNtrainingstats}).
+This is expected to prove beneficial when combining the uncertainties in the statistical analysis, compared to a scenario where one of the backgrounds dominates.
+%Due to this change, the final measurement uncertainties of the VBF, \HWW\ production cross-section were reduced by roughly 5\%. 
+The details of this study that lead to the final choice of the EW $WW$ training fraction are visualized in \cref{fig:ew-fraction-scan}.
+It can be seen that the EW $WW$ fraction of the total background in the highest DNN bin decreases as the training fraction used for EW $WW$ processes in the training is increased.
+The training with an EW $WW$ training fraction of 0.05 roughly corresponds to the values shown in \cref{fig:bkg-fraction-a}.
+In the range of [0.06-0.12], the significance metrics that do not take into account theory uncertainties show a slight downward trend. The $Z0$(var. bins + syst. unc.) metric, on the other hand, shows a very subtle upward trend, indicating a benefit of suppressing the EW $WW$ content. While this metric does not cover all aspects that determine the final measurement uncertainties, it helps to select the model that performs best in the final statistical analysis and therefore provides an improved measure over the more simple metrics that do not account for theory uncertainties.
+
+\begin{table}[h]
+    \centering
+    \small
+    \begin{tabular}{ c  | c}
+        \toprule
+        Background sample   & $\sigma^\text{rel}_\text{approx}$ \\
+        \midrule
+        $H_{\mathrm{VBF}}$  & 0.3                               \\
+        $H_{\mathrm{ggF}}$  & 0.5                               \\
+        $t\bar{t}$          & 0.3                               \\
+        $Wt$                & 0.5                               \\
+        $WW$ (Strong)       & 0.3                               \\
+        $WW$ (EW)           & 0.5                               \\
+        $Z/\gamma*$         & 0.25                              \\
+        $V\gamma$           & 1                                 \\
+        Other $VV$          & 0.12                              \\
+        \bottomrule
+    \end{tabular}
+    \caption{Relative systematic uncertainty $\sigma^\text{rel}_\text{approx}$ assumed on the different processes for constructing a metric.}
+    \label{tab:rough-uncertainties}
+\end{table}
+
+% Significance Z0:
+% hww_syst_unc = {"Vgamma": 1, "otherVV":0.12, "Zjets": 0.25, "WW":0.3, "EWWW": 0.5, "singletop":0.5, "ttbar":0.3, "ggF":0.5, "VBF":0.3}
+
+\begin{figure}[t]
+    \subfloat[No optimized training fractions] {
+        \includegraphics[width=0.49\textwidth,trim=35 0 0 0]{figures/plots/bkg-fraction-highest-bin/pie-chart-fractions-old.pdf}
+        \label{fig:bkg-fractions-a}
+    }
+    \subfloat[Optimized EW $WW$ training fractions] {
+        \includegraphics[width=0.49\textwidth,trim=35 0 0 0]{figures/plots/bkg-fraction-highest-bin/pie-chart-fractions-new.pdf}
+        \label{fig:bkg-fractions-b}
+    }
+    \caption{Fraction of background in highest DNN output bin based on the validation set. }
+    \label{fig:bkg-fractions}
+\end{figure}
+
+% Plots made with SFUsMLKit on cedar with:
+% ./plot.py -c configs/HWW/winningSubmission.cfg --trainingFolderName dropout-02-5-fold-aggressive-lr-schedule-2-fine-scan-ewww-scan-etafix/210805_9_0.12_8226149877761426764
+\begin{figure}[t]
+    % \subfloat[] {
+    %     \newImageResizeCustom{0.47}{figures/plots/sample-fractions/sig_vs_lrate.pdf}
+    % }
+    % \subfloat[] {
+    \newImageResizeCustom{0.5}{figures/plots/sample-fractions/sig_vs_ew_fraction_lr9.pdf}
+    % }
+    \caption{}
+    \label{fig:ew-fraction-scan}
+\end{figure}
+
+
+
+
+\section{Distributions of the input variables of the VBF DNN}
+\label{app:dnn:input-vars}
 
 
 % %-----------------------------------------------------------------------

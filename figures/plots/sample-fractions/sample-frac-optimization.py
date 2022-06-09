@@ -58,7 +58,7 @@ y1 = Z040bin_lr9
 y2 = Z0_lr9
 y3 = Z0unc_lr9
 y4 = ew_contr
-xtitle = 'EW $WW$ training weight fraction'
+xtitle = 'EW $WW$ training fraction'
 filename = "sig_vs_ew_fraction_lr9.pdf"
 
 # ew scan
@@ -75,9 +75,9 @@ fig, ax = plt.subplots()
 sig_color='#F17105' if ewscanplot is True else "black"
 frac_color="#0b80c3"
 if ewscanplot:
-    plt.plot(x,y1, '^', color=sig_color, markersize=markersize, label="Z0 w/ 40 bins")
-    plt.plot(x, y2, 'o', color=sig_color, markersize=markersize, label="Z0 w/ var. bins")
-    plt.plot(x, y3, 'v', color=sig_color, markersize=markersize, label="Z0+unc. w/ var. bins")
+    plt.plot(x,y1, '^', color=sig_color, markersize=markersize, label="$Z0$(40 bins)")
+    plt.plot(x, y2, 'o', color=sig_color, markersize=markersize, label="$Z0$(var. bins)")
+    plt.plot(x, y3, 'v', color=sig_color, markersize=markersize, label="$Z0$(var. bins + syst. unc.)")
 else:
     plt.plot(x, y2, 'o', color=sig_color, markersize=markersize)
 
@@ -121,7 +121,7 @@ if ewscanplot:
     plt.legend(frameon=True, fancybox=True, loc='upper right', numpoints=1)
 
     fontsize = 14
-    ax2.set_ylabel('EW $WW$ fraction of total Bkg.', fontsize=14)
+    ax2.set_ylabel('Rel. EW $WW$ contribution to total bkg. in highest DNN bin', fontsize=12)
     plt.ylim((0.14, 0.35))
     plt.xlim((0.04, 0.21))
     

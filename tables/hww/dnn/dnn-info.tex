@@ -1,18 +1,20 @@
 
-
 \begin{tabular}{l l}
     \toprule
-    Parameter & Value \\
+    Parameter/Characteristic & Value \\
     \midrule
-    Hidden layers & 256, 128, 64, 32, 24, 16, 8 \\
-    Activation & reLU \\ 
+    Input layers & 15 \\ 
+    \multirow{2}{*}{Input variables}  & \mjj, \dyjj, \lepetacent, \mlonejone, \mlonejtwo, \mltwojone, \mltwojtwo, \\
+    & \pTjone, \pTjtwo, \pTjthree, \dphill, \mll, \mT, \pttot, \METSig\\ 
+    Hidden layers & {256, 128, 64, 32, 24, 16, 8} \\
+    Activation & ReLU \\ 
+    Output layers & 1 \\
     Output activation & sigmoid \\ 
     Loss function & cross-entropy \\ 
     Learning rate & 9 \\
     Batchsize & 512 \\ 
-    optimizer & AdaGrad \\
-    Input features & 15 (see \cref{sec:input-features}) \\
-    Dropout &  20\% for every second layer \\ 
+    Optimizer & AdaGrad \\
+    Dropout &  20\% \\ 
     Epochs & 40 \\
     Training weights & optimized \\ 
     Training sets/folds & 5 folds (train/val/test) \\

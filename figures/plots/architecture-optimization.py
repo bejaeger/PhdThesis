@@ -9,6 +9,7 @@ arch4 = [10.4, 10.55]
 arch5 = [10.72, 10.8]
 
 y = np.array([np.mean(a) for a in [arch1, arch2, arch3, arch4, arch5]])
+print(y)
 x = np.arange(1, 6, 1)
 
 

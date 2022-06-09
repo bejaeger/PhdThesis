@@ -236,7 +236,7 @@ It is instructive to explain the algorithm using the example of a simple NN with
 As can be seen, the chain rule is applied once (twice) for calculating the gradient $\frac{\partial L}{\partial w_2}$ $\left( \frac{\partial L}{\partial w_1}\right)$. 
 This illustrates the key feature of backpropagation, which is that gradients calculated in a previous step can be reused, making the algorithm computationally efficient.
 This simple case can be easily extended to more complex scenarios with more layers and nodes.
-It should be noted, that the backpropagation algorithm relies on the activation functions and loss functions being continuously differentiable, so that the NN output is fully differentiable with respect to each weight.
+It is important to note that the backpropagation algorithm relies on the activation functions and loss functions being continuously differentiable, so that the NN output is fully differentiable with respect to each weight. This limits the space of functions to choose from.
 % A common approach is to update the weights after a set of training samples, known as \emph{batches}, were passed through the network\footnote{The gradient descent algorithm that uses batches of data is sometimes referred to as \emph{mini-batch gradient descent}. Other algorithms are frequently used, such as the \emph{stochastic gradient descent} algorithm, that updates the weights after each training sample, and \emph{gradient descent} algorithm, which evaluates the gradients of the loss of the entire training data.}. 
 % , by first passing the data through the network and computing the loss, and then 
 % After each batch of data, the loss is computed and the weights are adjusted according to \cref{eq:gradient-descent}. 
@@ -248,7 +248,8 @@ It should be noted, that the backpropagation algorithm relies on the activation 
 
 \section{Hyperparameter optimization} 
 \label{sec:hyperpar-opt}
-In practice, when training a neural network, significant effort needs to be put into finding a suitable set of network parameters and training parameters (collectively known as \emph{hyperparameters}) so that the chosen \emph{performance metric} is optimized and the network converges to a minimum both rapidly and reliably. 
+In practice, when developing a neural network, significant effort needs to be put into finding a suitable set of network parameters and training parameters (collectively known as \emph{hyperparameters}) so that the chosen \emph{performance metric} is optimized and the network converges to a minimum both rapidly and reliably. 
+While some parameters are crucial for a successful training and suboptimal settings can be detected quite easily, such as the case for the learning rate, other parameters are more difficult to optimize and their optimization typically requires an iterative workflow in which different values are tested. 
 Several useful training techniques and learning algorithms exist, that make finding a suitable training configuration easier.
 
 \paragraph{Performance metrics}
@@ -269,7 +270,7 @@ It would be natural to directly apply the aforementioned performance metrics as 
 However, this is not possible for most metrics because the loss function must be differentiable with respect to the parameters of the network in order to perform backpropagation. The discovery significance, for example, is a discrete function of the number of signal and background events and not differentiable in its simple form.\footnote{New studies explore the possibility to redefine the discovery significance to make it differentiable and directly use it in the training~\cite{ELWOODZ0INML}.}
 % They are instead used as a performance metric to select the best performing model and have no impact on the training itself.
 
-To validate the methodology, it is meaningful to show that the loss function optimized during the training is correlated with the performance metric. 
+To validate the methodology, it is therefore meaningful to show that the loss function optimized during the training is correlated with the performance metric. 
 \Cref{fig:loss-vs-sign} shows the anti-correlating behavior between the cross-entropy loss, as defined in \cref{eq:cross-entropy-loss}, and the discovery significance, as defined in \cref{eq:discovery-significance}.
 
 \begin{figure}[t]
@@ -278,6 +279,7 @@ To validate the methodology, it is meaningful to show that the loss function opt
     \label{fig:loss-vs-sign}
 \end{figure}
 
+\TDinote{}{Maybe put the performance metric section in a separate section}
 
 %For binary classification, the cross-entropy loss is most commonly chosen. 
 % The metric used during the training must be differentiable with respect to the parameters of the model in order to perform backpropagation. 
@@ -315,12 +317,13 @@ Another key factor is the size of the training data itself. The more training sa
 
 
 \paragraph{Dataset split and cross-validation}\mbox{}\\
+\label{subsec:par:kfold-crossval}
 The available dataset for training is generally split into multiple subsets to allow testing the generalizability of the network as well as to avoid model selection bias.
 The following three subsets are typically defined, each fulfilling a particular task:
 \begin{itemize}
     \item Training set: the subset used to fit the model parameters.
     \item Validation set: the subset used to tune the set of hyperparameters. As well, it is evaluated alongside the training set during the training to ``monitor'' the progress with an unbiased evaluation without affecting the training itself. This is useful, for example, to compare the loss function at each iteration with the loss of the training set. 
-    \item Test set: the subset used to test the final performance evaluation and final test of generalization. 
+    \item Test set: the subset used for final tests of generalization and to deploy the model. 
 \end{itemize}
 
 A naive approach is to split the dataset once, train the model with the training set, tune the hyperparameters by evaluating the performance on the validation set, and test how well the model performs on the fully independent test set. 
