@@ -3,10 +3,10 @@
     \toprule
     Parameter/Characteristic & Value \\
     \midrule
-    Input layers & 15 \\ 
     \multirow{2}{*}{Input variables}  & \mjj, \dyjj, \lepetacent, \mlonejone, \mlonejtwo, \mltwojone, \mltwojtwo, \\
     & \pTjone, \pTjtwo, \pTjthree, \dphill, \mll, \mT, \pttot, \METSig\\ 
-    Hidden layers & {256, 128, 64, 32, 24, 16, 8} \\
+    Nodes input layer & 15 \\ 
+    Nodes hidden layers & {256, 128, 64, 32, 24, 16, 8} \\
     Activation & ReLU \\ 
     Output layers & 1 \\
     Output activation & sigmoid \\ 
@@ -17,6 +17,6 @@
     Dropout &  20\% \\ 
     Epochs & 40 \\
     Training weights & optimized \\ 
-    Training sets/folds & 5 folds (train/val/test) \\
+    Cross validation & 5-fold with training, validation, and test set \\
     \bottomrule
 \end{tabular}

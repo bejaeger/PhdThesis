@@ -1,0 +1,44 @@
+\renewcommand{\arraystretch}{1.4}
+  \begin{tabular}{c|| c| c| c| c}
+ \dbline
+%  Category          & $\ZeroJet30$ & $\OneJet30$ & $\TwoJet30$, VBF \\
+  Category          & $\NjetThirty=0$ ggF & $\NjetThirty=1$ ggF & $\NjetThirty\ge2$ ggF & $\NjetThirty\ge2$ VBF \\
+
+  \hline\hline
+  \multirow{2}{*}{ Preselection}     &
+  \multicolumn{4}{c}{
+  \begin{tabular}{c}
+  Two isolated, different-flavor leptons ($\ell\,{=}\,e, \mu$) with opposite charge\\
+  $\pTlead\,{>}\,22~\GeV$ , $\pTsublead\,{>}\,15~\GeV$ \\
+  $\mll\,{>}\,10~\GeV$ \\
+  \end{tabular}
+  }\\
+  \cline{2-5}
+  & \multicolumn{3}{c|}{$\pTmiss\,{>}\,20~\GeV$}  & \\
+ \hline\hline
+%  Background rejection  & $\Nbjetbetween=0$                    & \multicolumn{2}{c}{$\Nbjetsub=0$}       \\
+  \multirow{3}{*}{Background rejection}  & \multicolumn{4}{c}{$\Nbjetsub=0$}       \\
+  \cline{2-5}
+                        & $\dphillMET > \pi/2$  &  \multicolumn{3}{c}{$\mtt\,{<}\,m_Z - 25~\GeV$} \\\cline{3-5}
+ 	                & $\pTll\,{>}\,30~\GeV$                 &  $\maxmtlep\,{>}\,50~\GeV$  & \multicolumn{2}{c}{ }    \\
+  \hline\hline
+  \multirow{6}{*}{\!\!\!\!\!
+    \begin{tabular}{c}
+   $\hwwenmn$  \\  topology
+\end{tabular}
+}                          & \multicolumn{3}{c|}{$\mll\,{<}\,55~\GeV$}    &  \\
+                           & \multicolumn{3}{c|}{$\dphill\,{<}\,1.8$}    & \\\cline{2-4}
+                           & \multicolumn{2}{c|}{ } & fail central jet veto  & \\
+                           & \multicolumn{2}{c|}{ } & or & central jet veto \\
+                           & \multicolumn{2}{c|}{ } & fail outside lepton veto & outside lepton veto\\\cline{4-4}
+                           & \multicolumn{2}{c|}{ } & $| \mjj - 85 | > 15\ \GeV$ & $\mjj > 120\ \GeV$ \\
+                           & \multicolumn{2}{c|}{ } & or & \\
+                           & \multicolumn{2}{c|}{ } & $\dyjj > 1.2$ & \\
+%                   & \multicolumn{2}{c}{$85~\GeV\,{<}\,\mT\,{<}\,125~\GeV$} \\
+ \hline\hline
+Discriminating fit variable   & \multicolumn{3}{c|}{$\mt$}    & DNN   \\
+% DNN input variables     &  \multicolumn{3}{c|}{ }       & $\dyjj$, $\mjj$, $\lepetacent$, $\mlonejone$, $\mlonejtwo$, $\mltwojone$, $\mltwojtwo$\\
+%                         &  \multicolumn{3}{c|}{ }       & $\pTjone$, $\pTjtwo$, $\pTjthree$, $\dphill$, $\mll$, $\mt$ \\
+%                         &  \multicolumn{3}{c|}{ }       & $\pttot$, $\METSig$ \\
+  \dbline
+  \end{tabular}
