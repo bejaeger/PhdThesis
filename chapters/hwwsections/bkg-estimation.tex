@@ -1,18 +1,18 @@
-\todo{Provide table with backgrounds and characteristics...see S Gadatsch thesis Table 5.1 page 126???}
-
-One of the crucial tasks of a physics analysis is to estimate the different background contributions in the SR as accurately as possible.
-To this end, three different methods are used in the \HWW analysis:
-The top-quark, \Zjets, and continuum $qq \to WW$ backgrounds are estimated or validated using subsidiary measurements in so-called \emph{control regions} (CRs), processes with misidentified leptons are estimated using a data-driven method known as the \emph{fake factor method}, and all other background contributions are estimated solely based on simulated samples normalized to the theoretical cross sections for the specific processes.
+%\todo{Provide table with backgrounds and characteristics...see S Gadatsch thesis Table 5.1 page 126???}
+%One of the crucial tasks of a physics analysis is to estimate the different background contributions in the SR as accurately as possible.
+To estimate the contribution of the various backgrounds in the SR as accurately as possible, three different methods are used in the \HWW\ analysis:
+The top-quark, \Zjets, and continuum $qq \to WW$ backgrounds are estimated using subsidiary measurements in so-called \emph{control regions} (CRs), processes with misidentified leptons are estimated using a data-driven method known as the \emph{fake factor method}, and all other background contributions are estimated solely based on simulated samples normalized to the theoretical cross sections for the specific processes.
 The following provides an overview of the different estimation strategies. 
 
 \subsection{Backgrounds estimated with control regions}
+\TDinote{}{This intro needs a bit of polishing}
 Regions that are pure enough in a specific process and orthogonal to the signal categories can be used to measure the normalization of the process in the statistical analysis by simultaneously fitting them with the SRs. 
 They are also used to validate the agreement between data and MC simulation in various variables prior to the fit.
 The latter is done after deriving pre-fit normalization factors (NFs) for each process that has a corresponding CR.\footnote{Given $N$ CRs and $M > N$ processes, $N$ NFs are derived by solving the set of linear equations that equate the sum of expected number of background events (times the NF, where applicable) and the number of data events. The statistical uncertainties on the NFs are estimated using of toys, that is, repeating the outlined procedure with several randomly varied inputs within the uncertainties. The standard deviation of the resulting distribution is used as an uncertainty on the NFs.}
-This guarantees a fair comparison between data and MC simulation since potential discrepancies are corrected for based on the data. 
+This guarantees a fair comparison between data and MC simulation since potential discrepancies are corrected based on the data. 
 
 All CR selections are summarized in \cref{tab:CRsSelection}. 
-The CRs are defined separately for each analysis category, and in general the selections applied are similar to the SR selections, but have at least one criterion that ensures orthogonality between the CRs and SRs.
+The CRs are defined separately for each analysis category, and in general the selections are similar to the SR selections, with at least one criterion that ensures orthogonality between the CRs and SRs.
 %The pre-fit NFs for the CRs related to the \TwoJet VBF category are shown in \cref{tab:pre-fit}. 
 
     
@@ -22,7 +22,7 @@ The CRs are defined separately for each analysis category, and in general the se
       Every control region selection starts from the selection labeled ``Preselection'' in Table~\ref{tab:HWWselection}, and $\Nbjetbetween$ represents the number of $b$-jets with $20 < \pT < 30~\GeV$.}
   \label{tab:CRsSelection}
   \centering
-  \scalebox{0.77}{
+  \scalebox{0.79}{
   \input{tables/hww/Bkgselection.tex}
   }
   \end{table}
@@ -39,9 +39,8 @@ The VBF, top-quark CR is defined by requiring the presence of exactly one $b$-je
 For the ggF-enriched \TwoJet\ region, an alternative strategy is used that does not rely on $b$-jet requirements, while still retaining a high purity of top-quark events. The CR is defined by requiring both $\mll > 80\,$GeV and $\mTtwo < 165\,$GeV, where the latter selection ensures orthogonality to the $WW$ CR. This definition reduces the uncertainties from flavor tagging selections and is therefore preferable to a CR defined using $b$-jet criteria.
 Distributions of several variables in the VBF, top-quark CR are shown in \cref{fig:topcr:dnn-inputs}. They show an excellent agreement between the data and MC simulation. Similar comparisons are performed for the other top-quark CRs.
 
-\newcommand{\crmodellingcaption}[1]{Distributions of (a) \mjj, (b) \dyjj, (c) \mlonejone, (d), \mll, (e) \lepetacent, and (f) \METSig in the VBF, #1. The \Ztautau and top-quark processes are normalized using pre-fit normalization factors extracted from their correspdonding CRs (NF$_{\Ztautau} = 1.00 \pm 0.04$, NF$_{\text{top}} = 1.00 \pm 0.01$). The last bin of the distributions include the overflow. The yellow band corresponds to the square root of the sum in quadrature of the MC statistical uncertainties and the normalization component of the dominant experimental systematic uncertainties (JER, JES, Flavor-tagging, and \MET uncertainties). The various uncertainty components are discussed in more detail in \cref{sec:systematics}.}
-\newcommand{\vrmodellingcaption}[1]{Distributions of (a) \mjj, (b) \dyjj, (c) \mlonejone, (d), \mll, (e) \lepetacent, and (f) \METSig in the VBF, #1. The \Ztautau, top-quark, and $qq \to WW$ processes are normalized using pre-fit normalization factors extracted from their correspdonding CRs (NF$_{\Ztautau} = 1.01 \pm 0.04$, NF$_{\text{top}} = 1.00 \pm 0.01$, NF$_{WW} = 0.84 \pm 0.02$). The last bin of the distributions include the overflow. The yellow band corresponds to the square root of the sum in quadrature of the MC statistical uncertainties and the normalization component of the dominant experimental systematic uncertainties (JER, JES, Flavor-tagging, and \MET uncertainties). The various uncertainty components are discussed in more detail in \cref{sec:systematics}.}
-
+\newcommand{\crmodellingcaption}[1]{Distributions of (a) \mjj, (b) \dyjj, (c) \mlonejone, (d), \mll, (e) \lepetacent, and (f) \METSig in the VBF, #1. The \Ztautau and top-quark processes are normalized using pre-fit normalization factors extracted from their corresponding CRs (NF$_{\Ztautau} = 1.00 \pm 0.04$, NF$_{\text{top}} = 1.00 \pm 0.01$). The last bin of the distributions include the overflow. The yellow band corresponds to the square root of the sum in quadrature of the MC statistical uncertainties and the normalization component of the dominant experimental systematic uncertainties (JER, JES, Flavor-tagging, and \MET uncertainties). The various uncertainty components are discussed in more detail in \cref{sec:systematics}.}
+\newcommand{\vrmodellingcaption}[1]{Distributions of (a) \mjj, (b) \dyjj, (c) \mlonejone, (d), \mll, (e) \lepetacent, and (f) \METSig in the VBF, #1. The \Ztautau, top-quark, and $qq \to WW$ processes are normalized using pre-fit normalization factors extracted from their corresponding CRs (NF$_{\Ztautau} = 1.01 \pm 0.04$, NF$_{\text{top}} = 1.00 \pm 0.01$, NF$_{WW} = 0.84 \pm 0.02$). The last bin of the distributions include the overflow. The yellow band corresponds to the square root of the sum in quadrature of the MC statistical uncertainties and the normalization component of the dominant experimental systematic uncertainties (JER, JES, Flavor-tagging, and \MET uncertainties). The various uncertainty components are discussed in more detail in \cref{sec:systematics}.}
 \newcommand{\topcrplotdir}{figures/220605-Thesis/topcr/plots}
  \sixPlots{\crmodellingcaption{top-quark CR}}{fig:topcr:dnn-inputs}{\topcrplotdir/run2-emme-CutVBF_TopControl_2jet-Mjj-log.pdf}{\topcrplotdir/run2-emme-CutVBF_TopControl_2jet-DYjj-lin.pdf}{\topcrplotdir/run2-emme-CutVBF_TopControl_2jet-DPhill-lin.pdf}{\topcrplotdir/run2-emme-CutVBF_TopControl_2jet-Mll-lin.pdf}{\topcrplotdir/../lepcent/plots/run2-emme-CutVBF_TopControl_2jet-contOLV-lin.pdf}{\topcrplotdir/run2-emme-CutVBF_TopControl_2jet-METSig_broad-lin.pdf}
  %{figures/hww/presel/topcr/run2-emme-CutVBF_TopControl_2jet-PtTot-lin.pdf}{figures/hww/presel/topcr/run2-emme-CutVBF_TopControl_2jet-contOLV-lin.pdf}{run2-emme-CutVBF_TopControl_2jet-DNNoutputG_Fit_finelowDNN2-log.pdf}
@@ -76,7 +75,7 @@ For the ggF-enriched \TwoJet category, a CR is nonetheless found by requiring $\
 \begin{equation}
     \mTtwo^2 = \underset{{p\mkern-9.5mu/}_1+{p\mkern-9.5mu/}_2={p\mkern-9.5mu/}_\text{T}}{\textrm{min}} \left[\textrm{max}\{\mt^2(p_\text{T}^a,{p\mkern-9.5mu/}_1),\mt^2(p_\text{T}^b,{p\mkern-9.5mu/}_2)\}\right],
 \end{equation}
-where the minimization goes over all possible two-momenta, ${p\mkern-9.5mu/}_{1,2}$, such that their sum gives the observed missing transverse momentum ${p\mkern-9.5mu/}_\text{T}$, and where each of $p_\text{T}^a$ and $p_\text{T}^b$ is the combined transverse momentum of a charged lepton and a jet~\cite{PLACEHOLDER:PAPER:CITATION}.
+where the minimization goes over all possible two-momenta, ${p\mkern-9.5mu/}_{1,2}$, such that their sum gives the observed missing transverse momentum ${p\mkern-9.5mu/}_\text{T}$, and where each of $p_\text{T}^a$ and $p_\text{T}^b$ is the combined transverse momentum of a charged lepton and a jet~\cite{HWWPaper}.
 For \ttbar events, the \mTtwo variable has an upper bound around the mass of the top quark, making it possible to reduce the \ttbar contribution by requiring \mTtwo to be sufficiently large. 
 For the VBF-enriched \TwoJet category, no $WW$ CR pure enough in $WW$ processes can be defined.
 The $qq \to WW$ background is therefore estimated from simulated samples normalized to their theoretical cross section in the statistical analysis.
@@ -87,10 +86,8 @@ The modelling of various observables in the VBF, $WW$ VR is shown in \cref{fig:w
  \sixPlots{\vrmodellingcaption{$WW$ VR}}{fig:wwvr:dnn-inputs}{\wwvrplotdir/../mjj/plots/run2-emme-CutVBF_WWControl_2jet-Mjj-log.pdf}{\wwvrplotdir/run2-emme-CutVBF_WWControl_2jet-DYjj-lin.pdf}{\wwvrplotdir/run2-emme-CutVBF_WWControl_2jet-DPhill-lin.pdf}{\wwvrplotdir/run2-emme-CutVBF_WWControl_2jet-Mll-lin.pdf}{\wwvrplotdir/../lepcent/plots/run2-emme-CutVBF_WWControl_2jet-contOLV-lin.pdf}{\wwvrplotdir/run2-emme-CutVBF_WWControl_2jet-METSig_broad-lin.pdf}
 
 \subsubsection{STXS Control Regions}
-\todo{STXS control regions}
-
-
-
+\label{subsubsec:stxs-crs}
+\TDinote{}{TODO: Describe STXS control regions}
 
 % % NFs table
 % \begin{table}[!h]
@@ -116,12 +113,9 @@ The modelling of various observables in the VBF, $WW$ VR is shown in \cref{fig:w
 
 \subsection{Backgrounds estimated with simulated samples}
 Several processes are estimated using simulated samples normalized to their theoretical cross sections. These involve Higgs boson processes not considered as signal in this analysis, which are $ttH$ and $VH$ produced Higgs bosons as well as processes with $H\to\tau\tau$ decays, and the background contributions from $gg \to WW$, EW $WW$, Other $VV$, and triboson processes. Additionally, in the VBF-enriched \TwoJet category, the $qq \to WW$ background is estimated using simulated samples and validated in a validation region as described above.
-
  %{figures/hww/presel/topcr/run2-emme-CutVBF_WWControl_2jet-PtTot-lin.pdf}{figures/hww/presel/topcr/run2-emme-CutVBF_WWControl_2jet-contOLV-lin.pdf}{run2-emme-CutVBF_WWControl_2jet-DNNoutputG_Fit_finelowDNN2-log.pdf}
-
 % not sure if I want to add the following
 % The underlying assumption is that the misidentification efficiency only depends on properties of the jet misidentified as a lepton, not on the remainder of the event, which is reasonable given the that the jet and lepton reconstruction only takes information from specific detector regions.
-
 
 \subsection{Backgrounds with misidentified leptons}
 \label{subsec:misid-bkg}
@@ -129,50 +123,41 @@ The $W$+jets and multijet processes enter the signal region if one ($W$+jets) or
 Their contributions are estimated using a data-driven technique known as \emph{fake factor method} where a control data sample is defined from which the expected number of events in the analysis regions are extrapolated by applying an extrapolation factor known as \emph{fake factor}.
 The control sample is defined with alternative object selection criteria that are orthogonal to the nominal selections and designed to be enriched in candidate events with misidentified leptons.
 The fake factor is derived in a separate analysis and can be regarded as the probability of a lepton being misidentified, given the control sample selections.
-For each analysis region, the same event selections are applied to the control sample as in the nominal analysis.
-
-\todo{maybe last sentence is mentioned twice?}
+For each signal category, the same event selections are applied to the control sample as in the nominal analysis.
 
 \subsubsection{Control sample definition}
 The control sample is distinguished from the nominal selection by using an alternative lepton selection. 
 One of the two prompt lepton candidates is required to fail the full identification criteria defined in \cref{chap:object-selection} but satisfies a looser set of criteria, referred to as \emph{anti-identified} lepton.
-\Cref{tab:leptonID} summarizes the lepton selections for fully identified and anti-identified leptons. 
-
+%\Cref{tab:leptonID} summarizes the lepton selections for fully identified and anti-identified leptons. 
 %Paper
 %They are estimated using a data-driven technique8 where 464 control samples are established in which all nominal selections are applied with the exception that one of 465 the two lepton candidates fails to meet the full identification criteria defined in Section 4, but satisfies a 466 looser set of identification criteria (referred to as an anti-identified lepton).
-
-\begin{table}
-    \scalebox{0.77}{
-        \begin{tabular}{c|c||c|c}
-            \toprule
-            % \dbline
-            \multicolumn{2}{c||}{Electron}                                       & \multicolumn{2}{c}{Muon}                                                                                                      \\
-            identified                                                           & anti-identified                                  & identified                          & anti-identified                      \\
-            \midrule
-            % \sgline
-            \multicolumn{2}{c||}{$\pt  > 15 \mathrm{GeV}$}                     & \multicolumn{2}{c}{$\pt   > 15 \mathrm{GeV}$ }                                                                              \\
-            \multicolumn{2}{c||}{$|\eta|  <2.47$,excluding  $1.37<|\eta|< 1.52$} & \multicolumn{2}{c}{$|\eta|  <2.5$}                                                                                            \\
-            \multicolumn{2}{c||}{$|z_{0}\sin\theta|<0.5$ mm }                    & \multicolumn{2}{c}{$|z_{0}\sin\theta|<0.5$ mm }                                                                               \\
-            \multicolumn{2}{c||}{$|d_{0}|/\sigma(d_{0})<5$ }                     & $|d_{0}|/\sigma(d_{0}) <  3$                     & $|d_{0}|/\sigma(d_{0}) <  15$                                              \\
-            Pass LHTight if $\pt < 25 \;\mathrm{GeV}$                            & \multirow{3}{*}{Pass LHLoose}                    & \multirow{3}{*}{Pass Quality Tight} & \multirow{3}{*}{Pass Quality Medium} \\
-            Pass LHMedium if $\pt > 25 \;\mathrm{GeV}$                           &                                                  &                                     &                                      \\
-            Pass FCTight isolation                                               &                                                  & Pass FCTight isolation              &                                      \\
-            \multicolumn{2}{c||}{ {\scshape Author} $= 1$}                       &                                                  &                                                                            \\
-                                                                                 & Veto against identified electron                 &                                     & Veto against identified muon         \\
-            % \dbline
-            \bottomrule
-        \end{tabular}
-    }
-    \caption{Selection criteria for fully identified and anti-identified leptons.}
-    \label{tab:leptonID}
-\end{table}
-
-\todo{Check how this compares to the object selection chapter!}
-
-
+% \begin{table}
+%     \scalebox{0.77}{
+%         \begin{tabular}{c|c||c|c}
+%             \toprule
+%             % \dbline
+%             \multicolumn{2}{c||}{Electron}                                       & \multicolumn{2}{c}{Muon}                                                                                                      \\
+%             identified                                                           & anti-identified                                  & identified                          & anti-identified                      \\
+%             \midrule
+%             % \sgline
+%             \multicolumn{2}{c||}{$\pt  > 15 \mathrm{GeV}$}                     & \multicolumn{2}{c}{$\pt   > 15 \mathrm{GeV}$ }                                                                              \\
+%             \multicolumn{2}{c||}{$|\eta|  <2.47$,excluding  $1.37<|\eta|< 1.52$} & \multicolumn{2}{c}{$|\eta|  <2.5$}                                                                                            \\
+%             \multicolumn{2}{c||}{$|z_{0}\sin\theta|<0.5$ mm }                    & \multicolumn{2}{c}{$|z_{0}\sin\theta|<0.5$ mm }                                                                               \\
+%             \multicolumn{2}{c||}{$|d_{0}|/\sigma(d_{0})<5$ }                     & $|d_{0}|/\sigma(d_{0}) <  3$                     & $|d_{0}|/\sigma(d_{0}) <  15$                                              \\
+%             Pass LHTight if $\pt < 25 \;\mathrm{GeV}$                            & \multirow{3}{*}{Pass LHLoose}                    & \multirow{3}{*}{Pass Quality Tight} & \multirow{3}{*}{Pass Quality Medium} \\
+%             Pass LHMedium if $\pt > 25 \;\mathrm{GeV}$                           &                                                  &                                     &                                      \\
+%             Pass FCTight isolation                                               &                                                  & Pass FCTight isolation              &                                      \\
+%             \multicolumn{2}{c||}{ {\scshape Author} $= 1$}                       &                                                  &                                                                            \\
+%                                                                                  & Veto against identified electron                 &                                     & Veto against identified muon         \\
+%             % \dbline
+%             \bottomrule
+%         \end{tabular}
+%     }
+%     \caption{Selection criteria for fully identified and anti-identified leptons.}
+%     \label{tab:leptonID}
+% \end{table}
 
 \subsubsection{Extrapolation to analysis regions}
-\todo{Maybe this can be put in the main subsection}
 The contributions of backgrounds with misidentified leptons (Mis-Id background) are estimated by subtracting the  expected number of events in the control sample with the expected contribution from processes with two true, prompt leptons, and then multiplying it with the corresponding fake factors.
 The full expression can be written as,
 \begin{equation}
@@ -180,7 +165,7 @@ The full expression can be written as,
     N_{\text{id,id}}^{\text{Mis-Id}} = FF \left( N_{\text{id,\sout{id}}}^{\text{data}} - N_{\text{id,\sout{id}}}^{\text{2 true prompt}} \right) - FF_1FF_2 \left( N_{\text{\sout{id},\sout{id}}}^{\text{data}} - N_{\text{\sout{id},\sout{id}}}^{\text{2 true prompt}} \right),
 \end{equation}
 where $N_{\text{id,\sout{id}}}^{\text{data}}$ and $N_{\text{\sout{id},\sout{id}}}^{\text{data}}$ are, respectively, the number of expected events with one or two anti-identified leptons measured in the control data sample, and $N_{\text{id,\sout{id}}}^{\text{2 true prompt}}$ and $N_{\text{\sout{id},\sout{id}}}^{\text{2 true prompt}}$ are, respectively, the number of expected events with two true, prompt leptons measured in simulated event samples. 
-The fake factors $FF$ and $FF_{1/2}$ are applied according to which leptons are anti-idenfied, that is, whether it is the electron, the muon, or both. 
+The fake factors $FF$ and $FF_{1/2}$ are applied according to which leptons are anti-identified, that is, whether it is the electron, the muon, or both. 
 They are dependent on the \pT of the anti-identified lepton and, in the case of a misidentified muon, $\abseta$, so that $FF \to FF(\pT, \abseta)$.
 The second term on the right-hand side of \cref{eq:fake-estimation} provides a correction for events where both of the leptons are misidentified, a contribution that is double-counted in the first term. A rigorous mathematical derivation of \cref{eq:fake-estimation} goes beyond the scope of this thesis and the interested reader is referred to \ccite{HIGG-2013-13,HIGG-2016-07}.
 

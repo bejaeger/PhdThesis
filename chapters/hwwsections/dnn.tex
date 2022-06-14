@@ -3,8 +3,8 @@
 A DNN-based binary classifier that distinguishes VBF signal from non-VBF signal events is used as a final discriminant in the VBF-enriched \TwoJet category.
 %In the VBF-enriched \TwoJet category, a DNN-based binary classifier is used as a final discriminant.
 This section describes how the DNN observable, also referred to as \emph{VBF DNN} in the following, is developed.\footnote{For this purpose, the author developed a software framework that makes use of industry-standard open-source ML libraries and manages the full ML cycle efficiently.
-The entire software suite used is summarized in \cref{app:dnn:software-suite}.
-It should also be noted that the training procedure has been modified several times during the course of the author's PhD, due to both improvements in the self-developed software and historical developments of the \HWW\ analysis (for example changes in MC simulated samples). If not mentioned otherwise, the results and procedures presented correspond to the final VBF DNN.}
+    The entire software suite used is summarized in \cref{app:dnn:software-suite}.
+    It should also be noted that the training procedure has been modified several times during the course of the author's PhD, due to both improvements in the self-developed software and historical developments of the \HWW\ analysis (for example changes in MC simulated samples). If not mentioned otherwise, the results and procedures presented correspond to the final VBF DNN.}
 The relevant supervised learning techniques are introduced in \cref{chap:ml}.
 
 %The DNN is developed using simulated $pp$ collision events and is subsequently also applied to the data. 
@@ -20,7 +20,7 @@ The simulated samples that are listed in \cref{subsec:simulated-event-samples} a
 
 \paragraph{Stage 2}
 The second stage is the main part of the DNN development and involves the training, validation, and optimization of the DNN.
-This iterative workflow leads to the final choice of hyperparameters presented in \cref{subsec:hyper-parameters}.
+This iterative workflow leads to the choice of input variables used in the DNN as well as choice of hyperparameters. This is presented in \cref{subsec:performance-metrics,subsec:hyper-parameters,subsec:input-variables-opt}.
 
 \paragraph{Stage 3}
 The third step is to deploy the neural network in the \HWW\ analysis, which includes the evaluation of data events with the DNN observable. Final measurement results based on the full statistical analysis that take into account all uncertainties can then be produced. This demonstrates the final performance of the trained DNN model, and reveals the weak-spots of the analysis and the developed model.
@@ -30,6 +30,7 @@ This also provides insights into how well the metric used to select a DNN model 
 
 \paragraph{Final model selection}
 The final DNN model is selected when no further improvements can be made by repeating step two and three. It should be noted that the tasks involved in step three are time-consuming and computing-expensive, which limits the number of cycles that can realistically be carried out.
+The validation of the final VBF DNN model can be found in \cref{subsec:fina-model-validation}. 
 
 % that improvements of the self-developed software, together with historical developments of the entire \HWW\ analysis, lead to several modifications of the training setup over time. 
 
@@ -50,30 +51,7 @@ All MC simulated events that pass the preselection (see \cref{subsec:preselectio
 %This increases the size of the training data 
 %This has proven advantageous compared to a training using, for example, only events in the VBF-enriched \TwoJet category. 
 The size of the available training samples are shown in \cref{tab:DNNtrainingstats} along with other specifications that are discussed below.
-The training events are labelled with \emph{target} labels $t_n$ to distinguish VBF signal events ($t_n = 1$) from all other types of processes ($t_n = 0$). 
-The ggF signal is treated like all other backgrounds, so it is implicitly referred to when ``backgrounds'' are mentioned in this section.
-Events with misidentified leptons are not considered in the training because of the complex data-driven procedure that is used to estimate their contribution.
-Prior to the training, the training data are shuffled, and the input variables standardized to have a mean of 0 and a standard deviation of 1. 
-Each training event gets assigned a \emph{training weight}, $w_\text{train}$, that is used in the calculation of the loss function. It is determined by the product of two other weights,
-\begin{equation}
-    w_\text{train} = w_\text{phys} \times w_\text{proc}.
-\end{equation}
-% process_weight = total_phys_weight * fraction / total_sample_phys_weight
-% fraction = sum(training weight sample) / total sum training weight
-The \emph{physical weight}, $w_\text{phys}$, normalizes the events according to their theoretical cross-section predictions, and the \emph{process weight}, $w_\text{proc}$, is defined per process in order to control the importance given to a specific process in the training.
-%The latter weight allows controlling the importance given to a specific event sample in the training. 
-The latter weight is determined by specifying a desired \emph{training fraction}, $S_\text{frac}$, which can be considered as the fractional contribution to the loss function of a particular process $p$,
-\begin{equation}
-    S_\text{frac} = w_\text{proc} \frac{\sum_{p} w_\text{phys}}{ \sum w_\text{phys}},
-\end{equation}
-where the sum in the numerator goes over all events of process $p$, and the sum in the denominator over the entire training data. The training fraction provides a meaningful way to encode the importance of different processes and to remove sample imbalances in the training data. They have been optimized as explained below.
-% The chosen values for the final VBF DNN are shown in \cref{tab:DNNtrainingstats}.
-% They have been optimized as discussed in \cref{}.
-% Taking into account both the physical weights and the process weights, the \emph{training training fraction} is defined as the fractional contribution of a given sample to the loss function calculation.
-%Prior to the training, the training data are shuffled and categorized into different folds according to the number of folds $k$ specified. 
-%The network is then trained according to the specified number of folds $k$. 
-
-\begin{table}[h]
+\begin{table}[ht]
     \centering
     \small
     \begin{tabular}{ c  | r c c c}
@@ -95,14 +73,36 @@ where the sum in the numerator goes over all events of process $p$, and the sum 
         $Wt$               & 60000      & 0     & 0.07            \\
         $WW$ (Strong)      & 1900000    & 0     & 0.2             \\
         $WW$ (EW)          & 220000     & 0     & 0.12            \\
-        $Z/\gamma*$        & 1000000     & 0     & 0.2             \\
-        $V\gamma$          & 13000       & 0     & 0.01            \\
+        $Z/\gamma*$        & 1000000    & 0     & 0.2             \\
+        $V\gamma$          & 13000      & 0     & 0.01            \\
         Other $VV$         & 680000     & 0     & 0.02            \\
         \bottomrule
     \end{tabular}
     \caption{Specification of the training data used for the development of the VBF DNN. The raw events correspond to the number of generated events, disregarding any weight. More information on the training fraction $S_\text{frac}$ is given in the text.}
     \label{tab:DNNtrainingstats}
 \end{table}
+The training events are labelled with \emph{target} labels $t_n$ to distinguish VBF signal events ($t_n = 1$) from all other types of processes ($t_n = 0$).
+The ggF signal is treated like all other backgrounds, so it is implicitly referred to when ``backgrounds'' are mentioned in this section.
+Events with misidentified leptons are not considered in the training because of the complex data-driven procedure that is used to estimate their contribution.
+Prior to the training, the training data are shuffled, and the input variables standardized to have a mean of 0 and a standard deviation of 1.
+Each training event gets assigned a \emph{training weight}, $w_\text{train}$, that is used in the calculation of the loss function. It is determined by the product of two other weights,
+\begin{equation}
+    w_\text{train} = w_\text{phys} \times w_\text{proc}.
+\end{equation}
+% process_weight = total_phys_weight * fraction / total_sample_phys_weight
+% fraction = sum(training weight sample) / total sum training weight
+The \emph{physical weight}, $w_\text{phys}$, normalizes the events according to their theoretical cross-section predictions, and the \emph{process weight}, $w_\text{proc}$, is defined per process in order to control the importance given to a specific process in the training.
+%The latter weight allows controlling the importance given to a specific event sample in the training. 
+The latter weight is determined by specifying a desired \emph{training fraction}, $S_\text{frac}$, which can be considered as the fractional contribution to the loss function of a particular process $p$,
+\begin{equation}
+    S_\text{frac} = w_\text{proc} \frac{\sum_{p} w_\text{phys}}{ \sum w_\text{phys}},
+\end{equation}
+where the sum in the numerator goes over all events of process $p$, and the sum in the denominator over the entire training data. The training fraction provides a meaningful way to encode the importance of different processes and to remove sample imbalances in the training data. They have been optimized as explained below.
+% The chosen values for the final VBF DNN are shown in \cref{tab:DNNtrainingstats}.
+% They have been optimized as discussed in \cref{}.
+% Taking into account both the physical weights and the process weights, the \emph{training training fraction} is defined as the fractional contribution of a given sample to the loss function calculation.
+%Prior to the training, the training data are shuffled and categorized into different folds according to the number of folds $k$ specified. 
+%The network is then trained according to the specified number of folds $k$. 
 
 \subsection{Training procedure and DNN discriminant}
 \label{subsec:performance-metrics}
@@ -111,8 +111,20 @@ where the sum in the numerator goes over all events of process $p$, and the sum 
 The VBF DNN is trained using the $k$-fold cross validation method with $k=5$ and the training data split as explained in \cref{subsec:par:kfold-crossval}.
 The validation set is used to compare the performance of different trainings, for example, to optimize the set of hyperparameters.
 The distribution of the DNN output for the validation set is shown in \cref{fig:dnn-val-set-a}.
+\begin{figure}[ht]
+    \subfloat[] {
+        \newImageResizeCustom{0.47}{figures/hww/dnn/CutVBF_SR_reTrained_default_40bins.pdf}
+        \label{fig:dnn-val-set-a}
+    }
+    \subfloat[] {
+        \newImageResizeCustom{0.47}{figures/hww/dnn/CutVBF_SR_reTrained_default_optBinning_zoom.pdf}
+        \label{fig:dnn-val-set-b}
+    }
+    \caption{DNN output distribution for the validation set of the training data for (a) the full range of DNN output values and an equidistant binning and (b) the range [0.6-1.0] with high VBF signal purity and a binning chosen to mitigate the effects of statistical fluctuations. Details on the binning as well as the significance metric are provided in the text.}
+    \label{fig:dnn-val-set}
+\end{figure}
 As can be seen, the VBF signal purity improves as the DNN output value increases.
-Significance-based metrics that determine the excess of VBF signal events over background events are used to compare different trainings and choose optimal hyperparameters.
+Significance-based performance metrics that determine the excess of VBF signal events over background events are used to compare different trainings and choose optimal hyperparameters.
 The significance metric is evaluated according to
 \begin{equation}
     \label{eq:significance-performance-metric}
@@ -120,11 +132,10 @@ The significance metric is evaluated according to
 \end{equation}
 where the sum goes over all bins of the histogram, and $Z$ is defined as in \cref{eq:simple-sign}.
 The value of this metric is largely driven by the bins with the largest signal purity, in particular the highest bin.
-To mitigate the effect of statistical fluctuations, as well as to allow for fair comparisons between DNN models that have different shapes, the histogram of the DNN output is rebinned. The binning is chosen as in the statistical analysis which is explained in \cref{section}. \Cref{fig:dnn-val-set-b} shows the rebinned DNN output distribution for the range where the VBF signal is most dominant. The $Z0$ values corresponding to the distributions shown with equidistant (modified) binning are 9.9 (9.6). 
-
+To mitigate the effect of statistical fluctuations, as well as to allow for fair comparisons between DNN models that have different shapes, the histogram of the DNN output is rebinned. The binning is chosen as in the statistical analysis which is explained in \cref{subsec:fina-model-validation}. \Cref{fig:dnn-val-set-b} shows the rebinned DNN output distribution in the region where the VBF signal is most dominant. 
+%The $Z0$ values corresponding to the distributions shown with equidistant (modified) binning are 9.9 (9.6).
 %\todo{Point to binning algorithm}
 % It corresponds to the square root of the sum of the squared significances calculated in each of the histogram bins according to \cref{eq:simple-sign}.
-
 % PERFORMANCE METRICS
 % Three different performance metrics based on \cref{eq:significance-performance-metric} are therefore considered:
 % \begin{enumerate}
@@ -142,18 +153,6 @@ The VBF DNN distribution as used in the statistical analysis can be found in \cr
 \captionsetup[subfloat]{captionskip=7pt} % space between subfloat caption and image
 % Plots made with SFUsMLKit on cedar with:
 % ./plot.py -c configs/HWW/winningSubmission.cfg --trainingFolderName dropout-02-5-fold-aggressive-lr-schedule-2-fine-scan-ewww-scan-etafix/210805_9_0.12_8226149877761426764
-\begin{figure}[ht]
-    \subfloat[] {
-        \newImageResizeCustom{0.47}{figures/hww/dnn/CutVBF_SR_reTrained_default_40bins.pdf}
-        \label{fig:dnn-val-set-a}
-    }
-    \subfloat[] {
-        \newImageResizeCustom{0.47}{figures/hww/dnn/CutVBF_SR_reTrained_default_optBinning_zoom.pdf}
-        \label{fig:dnn-val-set-b}
-    }
-    \caption{DNN output distribution for the validation set of the training data for (a) the full range of DNN output values and an equidistant binning and (b) the range [0.6-1.0] with high VBF signal purity and a binning chosen to mitigate the effects of statistical fluctuations. Details are provided in the text.}
-    \label{fig:dnn-val-set}
-\end{figure}
 
 
 \begin{figure}[t]
@@ -178,6 +177,16 @@ The performance of different architectures with different number of layers and n
 The model chosen has 7 hidden layers with decreasing number of nodes, specifically {256, 128, 64, 32, 24, 16, 8}.
 %, which amounts to a total number of weights of $\mathcal{O}$(10k). 
 
+\begin{table}[t]
+    \begin{center}
+        \input{tables/hww/dnn/dnn-info.tex}
+    \end{center}
+    \caption{Hyperparameters and training methods used for the development of the final VBF DNN.
+    }
+    \label{tab:DNN-info}
+    % Nominal values, statistical uncertainties and EWSUBTR uncertainties produced on tag kon_improveZjetsFFStats_v2
+\end{table}
+
 During the training, dropout is used as regularization by randomly disabling 20\% of weights in each weight update cycle.
 The batchsize is chosen to be 512, which is a tradeoff between granularity and training time.
 The cross-entropy loss is used as loss function and takes into account the training weights.
@@ -188,16 +197,6 @@ For the training of the VBF DNN the learning rate is set to 9.
 The performance of different optimizers was also studied and showed very comparable results. The AdaGrad optimizer is chosen for the training of the VBF DNN.
 
 The training fractions used in the training are indicated in \cref{tab:DNNtrainingstats}. They were chosen to approximate the relative theoretical cross-section normalization between the samples at preselection, with some exceptions: The VBF signal training fraction is increased to 5\% because it is the main target of the training. Increasing this fraction further did not show any improvements. Furthermore, the training fractions of the ggF and EW $WW$ samples are increased compared to their cross-section normalization. This is done to take into account their large relative contributions in the VBF-like phase space despite their low overall normalization. The study conducted to choose the EW $WW$ weight is presented in \cref{app:sec:ewww-sample-fraction-optimization}.
-
-\begin{table}[th]
-    \begin{center}
-        \input{tables/hww/dnn/dnn-info.tex}
-    \end{center}
-    \caption{Hyperparameters and training methods used for the development of the final VBF DNN.
-    }
-    \label{tab:DNN-info}
-    % Nominal values, statistical uncertainties and EWSUBTR uncertainties produced on tag kon_improveZjetsFFStats_v2
-\end{table}
 
 \begin{figure}[t]
     \subfloat[] {
@@ -225,25 +224,17 @@ The \pT of the three leading jets (\pTjone, \pTjtwo,\pTjthree, where \pTjthree i
 Because of the two high-energy jets expected in the VBF production, the VBF signal causes slightly larger \pTjone and \pTjtwo values than the background processes (\cref{fig:dnn-inputs-post-fit-8,fig:dnn-inputs-post-fit-9}).
 The \pTjthree observable takes on average smaller values for the VBF signal (\cref{fig:dnn-inputs-post-fit-10}) because of the small hadronic activity in the rapidity gap spanned by the jets. The \pTjthree variable is particularly meaningful because it is the only observable that provides information about whether a third jet is present.
 
-\paragraph{\HWW decay}
-The distinct features of the \HWW decay (see \cref{subsec:signal-bkg-characterisation}) are exploited with the \dphill, \mll, and \mT observable.
-The separation between the VBF signal and the backgrounds is clearly visible (see \cref{fig:dnn-inputs-post-fit2-1,fig:dnn-inputs-post-fit2-2,fig:dnn-inputs-post-fit2-3}).
-
-\paragraph{Top-background suppression}
-Two additional observables are used that take into account information about the entire event:
-The total transverse momentum, \pttot, defined as the magnitude of the vectorial sum of the \pT of all selected objects\footnote{Specifically, $\pttot = | \vpTlone + \vpTltwo + \vmet + \sum_{i \in \text{jets}} \vpTjetsi |$}, helps discriminating events with significant soft-gluon radiation for example in \ttbar events; and the \METSig provides discrimination between events with real undetected high-\pT particles, such as neutrinos, and events where the \MET is the result of resolution effects. Both observables take on average smaller values for the VBF signal than the sum of backgrounds (see \cref{fig:dnn-inputs-post-fit2-4,fig:dnn-inputs-post-fit2-5}). 
-
 \captionsetup[subfloat]{captionskip=5pt} % space between subfloat caption and image
 \begin{figure}[ht]
     \centering
     \subfloat[$\mjj$]{
         \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-Mjj-lin.pdf} \hfill
         \label{fig:dnn-inputs-post-fit-1}
-    } 
+    }
     \subfloat[$\dyjj$]{
         \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-DYjj-lin.pdf} \hfill
         \label{fig:dnn-inputs-post-fit-2}
-    } 
+    }
     \subfloat[$\lepetacent$]{
         \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-contOLV-lin.pdf} \hfill
         \label{fig:dnn-inputs-post-fit-3}
@@ -251,11 +242,11 @@ The total transverse momentum, \pttot, defined as the magnitude of the vectorial
     \subfloat[$\mlonejtwo$]{
         \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-Ml0j0-lin.pdf} \hfill
         \label{fig:dnn-inputs-post-fit-4}
-    } 
+    }
     \subfloat[$\mltwojone$]{
         \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-Ml1j0-lin.pdf} \hfill
         \label{fig:dnn-inputs-post-fit-5}
-    } 
+    }
     \subfloat[$\mlonejtwo$]{
         \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-Ml0j1-lin.pdf} \hfill
         \label{fig:dnn-inputs-post-fit-6}
@@ -263,11 +254,11 @@ The total transverse momentum, \pttot, defined as the magnitude of the vectorial
     \subfloat[$\mltwojtwo$]{
         \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-Ml1j1-lin.pdf} \hfill
         \label{fig:dnn-inputs-post-fit-7}
-    } 
+    }
     \subfloat[$\pTjone$]{
         \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-leadJetPt-lin.pdf} \hfill
         \label{fig:dnn-inputs-post-fit-8}
-    } 
+    }
     \subfloat[$\pTjtwo$]{
         \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-subleadJetPt-lin.pdf} \hfill
         \label{fig:dnn-inputs-post-fit-9}
@@ -275,12 +266,18 @@ The total transverse momentum, \pttot, defined as the magnitude of the vectorial
     \subfloat[$\pTjthree$]{
         \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-thirdJetPt-lin.pdf} \hfill
         \label{fig:dnn-inputs-post-fit-10}
-    } 
-    {\caption{Distributions of $\dphill$, $\mll$, $\lepetacent$, \pTjone, \pTjtwo, \pTjthree in the VBF signal region.
-        Each row corresponds to one variable with different selections made on the DNN output.
-        \label{fig:dnn-inputs-post-fit1} }}
+    }
+    {\caption{Distributions of 10 of the 15 DNN input variables targeting the VBF topology. The distributions are shown in the VBF SR for simulated samples only. The solid orange line shows the expected VBF signal scaled by a factor of 50. The last bin of the distributions include the overflow.
+            \label{fig:dnn-inputs-post-fit1} }}
 \end{figure}
 
+\paragraph{\HWW decay}
+The distinct features of the \HWW decay (see \cref{subsec:signal-bkg-characterisation}) are exploited with the \dphill, \mll, and \mT variables.
+The separation between the VBF signal and the backgrounds is clearly visible (see \cref{fig:dnn-inputs-post-fit2-1,fig:dnn-inputs-post-fit2-2,fig:dnn-inputs-post-fit2-3}).
+
+\paragraph{Top-background suppression}
+Two additional observables are used that take into account information about the entire event:
+The total transverse momentum, \pttot, defined as the magnitude of the vectorial sum of the \pT of all selected objects\footnote{Specifically, $\pttot = | \vpTlone + \vpTltwo + \vmet + \sum_{i \in \text{jets}} \vpTjetsi |$}, helps discriminating events with significant soft-gluon radiation for example in \ttbar events; and the \METSig provides discrimination between events with real undetected high-\pT particles, such as neutrinos, and events where the \MET is the result of resolution effects. Both observables take on average smaller values for the VBF signal than the sum of backgrounds (see \cref{fig:dnn-inputs-post-fit2-4,fig:dnn-inputs-post-fit2-5}).
 
 % \begin{figure}[h]
 %     \centering
@@ -288,18 +285,16 @@ The total transverse momentum, \pttot, defined as the magnitude of the vectorial
 %             Each row shows one variable with different cuts on the DNN output distribution being applied in different columns.
 %             \label{fig:dnn-inputs-vbf-top2} }}
 % \end{figure}
-
-
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \subfloat[$\dphill$]{
         \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-DPhill-lin.pdf} \hfill
         \label{fig:dnn-inputs-post-fit2-1}
-    } 
+    }
     \subfloat[$\mll$]{
         \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-Mll-lin.pdf}
         \label{fig:dnn-inputs-post-fit2-2}
-    } 
+    }
     \subfloat[$\mT$]{
         \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-MT-lin.pdf} \hfill
         \label{fig:dnn-inputs-post-fit2-3}
@@ -307,28 +302,27 @@ The total transverse momentum, \pttot, defined as the magnitude of the vectorial
     \subfloat[$\pttot$]{
         \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-PtTot-lin.pdf} \hfill
         \label{fig:dnn-inputs-post-fit2-4}
-    } 
+    }
     \subfloat[$\METSig$]{
         \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-METSig_broad-lin.pdf} \hfill
         \label{fig:dnn-inputs-post-fit2-5}
-    } 
-    {\caption{Distributions of $\dphill$, $\mll$, $\mT$ in the VBF signal region.
-        Each row corresponds to one variable with different selections made on the DNN output.
-        \label{fig:dnn-inputs-post-fit2} }}
+    }
+    {\caption{
+            Distributions of 5 of the 15 DNN input variables targeting the \HWW decay and top-quark suppression. The distributions are shown in the VBF SR for simulated samples only. The solid orange line shows the expected VBF signal scaled by a factor of 50. The last bin of the distributions include the overflow.
+            \label{fig:dnn-inputs-post-fit2} }}
 \end{figure}
-
 \captionsetup[subfloat]{captionskip=7pt} % space between subfloat caption and image
 
 \paragraph{}
-The material above illustrates the VBF signal discrimination in linear dimension. The major advantage of using a neural network-based approach compared to a traditional cut-based analysis is the ability to take into account multidimensional correlations between the input variables. \Cref{fig:dnn-features-correlations} indicates the correlations between the 15 input variables for the VBF signal and the non-VBF signal processes. It can be seen that the strengths of the correlations differs for several pairs of observables, in particular for the $m_{\ell_\alpha j_\beta}$ (with $\alpha, \beta = 1, 2$) and the \pTjthree observables. 
+The material above illustrates the VBF signal discrimination in linear dimension. The major advantage of using a neural network-based approach compared to a traditional cut-based analysis is the ability to take into account multidimensional correlations between the input variables. \Cref{fig:dnn-features-correlations} indicates the correlations between the 15 input variables for the VBF signal and the non-VBF signal processes. It can be seen that the strengths of the correlations differs for several pairs of observables, in particular for the $m_{\ell_\alpha j_\beta}$ (with $\alpha, \beta = 1, 2$) and the \pTjthree observables.
 
 Because the neural network is trained with simulated samples but deployed on data, it is important to validate that all input variables used are correctly modelled by the simulated samples.
-Data to simulation comparison plots for representative variables are shown in \cref{sec:bkg-estimation}, specifically \cref{fig:topcr:dnn-inputs} for the top-quark CR, \cref{fig:zttcr:dnn-inputs} for the \Ztautau CR, and in \cref{fig:wwvr:dnn-inputs} for the $WW$ VR. All distributions show excellent consistency between the data and MC simulation. 
+Data to simulation comparison plots for representative variables are shown in \cref{sec:bkg-estimation}, specifically \cref{fig:topcr:dnn-inputs} for the top-quark CR, \cref{fig:zttcr:dnn-inputs} for the \Ztautau CR, and in \cref{fig:wwvr:dnn-inputs} for the $WW$ VR. All distributions show excellent consistency between the data and MC simulation.
 
 The modelling of the two-dimensional correlations between the input variables is also validated.
-To this end, \cref{fig:dnn-features-profiles} analyzes the two-dimensional correlations between all combinations of input variables. The compatibility between data and simulation is tested with a $\chi^2$ test. 
+To this end, \cref{fig:dnn-features-profiles} analyzes the two-dimensional correlations between all combinations of input variables. The compatibility between data and simulation is tested with a $\chi^2$ test.
 The corresponding $p$-values determine the color of the in total 210 figures.
-The slight overrepresentation of $p$-values in the ranges $0.005 < p < 0.05$ (22/210) and $p < 0.005$ (14/2010) with respect to the expectation is deemed acceptable, considering that no systematic uncertainties are included in this comparison. 
+The slight overrepresentation of $p$-values in the ranges $0.005 < p < 0.05$ (22/210) and $p < 0.005$ (14/2010) with respect to the expectation is deemed acceptable, considering that no systematic uncertainties are included in this comparison.
 %The distributions confirm that the simulated samples model the correlations in the data reasonably well.  \todo{Validate region and adapt plot}
 
 \begin{figure}[t]
@@ -355,56 +349,56 @@ The slight overrepresentation of $p$-values in the ranges $0.005 < p < 0.05$ (22
 
 
 
-\subsection{Final model validation}
+\subsection{Final DNN model validation}
 \label{subsec:fina-model-validation}
-Once the input variables are chosen and the hyperparameters are optimized, the DNN model can be deployed in the analysis. The test set is used for this purpose. 
+Once the input variables are chosen and the hyperparameters are optimized, the DNN model can be deployed in the analysis. The test set is used for this purpose.
+The binning of the DNN output is chosen based on a set of criteria.
+The amount of VBF signal (background) events is required to be at least 20 (10) and the maximum allowed relative statistical uncertainty on the background expectation is 20\%.
+These criteria ensure that there is sufficient statistical power in each bin in order to increase the robustness to statistical fluctuations and allow meaningful derivation of systematic uncertainties. At the same time, the binning is fine enough to exploit the shape of the VBF signal at high DNN output values.
+The bins are found iteratively by moving the lower bound of a candidate bin to smaller values in steps of 0.01, starting with an upper bound at DNN output $= 1$. Once all criteria are met, a bin boundary is set and the lower bound is used as a new upper boundary for the next bin. In addition to the three criteria, no bin boundary is set if the VBF significance within a candidate bin is less than one third of the maximum significance of the bins already defined. This avoids a fine binning at low values of the DNN output where the signal sensitivity is limited.
+The final DNN discriminant for MC simulation only is shown in \cref{fig:dnn:blinded-fit-binning} with bin boundaries [0-0.25, 0.25-0.52, 0.52-0.68, 0.68-0.77, 0.77-0.83, 0.83-0.87, 0.87-1.00].
 
-- BINNING ALGORITHM EXPLANATION!?
-
-Before the data is analyzed in the signal sensitive range of the DNN, the modelling of the DNN output is validated in the CRs and VRs. This can be seen in \cref{fig:dnn:dnn-val-in-crs-a,fig:dnn:dnn-val-in-crs-b,fig:dnn:dnn-val-in-crs-c}. No evidence of significant discrepancy between the data and the MC simulation is found. In addition, the background-enriched region of the DNN output (DNN output $< 0.25$) can be validated in the VBF SR. \Cref{fig:dnn:dnn-val-in-crs-d} shows this region of the DNN output, binned finely to visualize potential differences. 
-Despite the small offset in the overall normalization, which is covered by the uncertainties, there is no significant sign of shape differences between the data and MC simulations. 
-A final cross-check can be performed by studying the modelling of the input variables in the VBF SR with a selection made on the DNN output $< 0.25$ to avoid revealing the signal sensitive region. Representative distributions are shown in \cref{fig:srdnn25:dnn-inputs}.
-Given the fact that only the normalization component and only a subset of systematic uncertainties are considered, they show acceptable consistency between data and MC simulation. 
-These validation studies confirm the robustness of the DNN output, so that it can be used as final discriminant in the statistical analysis. 
-
-- REFERENCE to distributions in DNN bins!
-
-
-\begin{figure}[ht]
+\begin{figure}[th]
     \centering
- \newImageResizeCustom{0.6}{figures/220605-Thesis/sr/dnn-noDat/plots/run2-emme-CutVBF_SR-DNNoutputG_Fit-log.pdf}
-    {\caption{Pre-fit distributions of DNN output in SR with fit binning.
-            \label{fig:dnn:dnn-val-in-crs} }}
+    \newImageResizeCustom{0.6}{figures/220605-Thesis/sr/dnn-noDat/plots/run2-emme-CutVBF_SR-DNNoutputG_Fit-log.pdf}
+    {\caption{Distribution of the DNN output in the VBF SR with the final binning used in the statistical analysis.
+            \label{fig:dnn:blinded-fit-binning} }}
 \end{figure}
 
+Before the data is analyzed in the signal sensitive range of the DNN, the modelling of the DNN output is validated in the CRs and VRs. This can be seen in \cref{fig:dnn:dnn-val-in-crs-a,fig:dnn:dnn-val-in-crs-b,fig:dnn:dnn-val-in-crs-c}. 
+\begin{figure}[ht]
+    \centering
+    \subfloat[]{
+        \includegraphics[width=0.47\textwidth]{figures/220605-Thesis/topcr/dnn/plots/run2-emme-CutVBF_TopControl_2jet-DNNoutputG_Fit_finelowDNN2-log}
+        \label{fig:dnn:dnn-val-in-crs-a}
+    }
+    \subfloat[]{
+        \includegraphics[width=0.47\textwidth]{figures/220605-Thesis/zttcr/dnn/plots/run2-emme-CutVBF_ZtautauControl_2jet-DNNoutputG_Fit_finelowDNN2-log}\hfill
+        \label{fig:dnn:dnn-val-in-crs-b}
+    }  \\
+    \subfloat[]{
+        \includegraphics[width=0.47\textwidth]{figures/220605-Thesis/wwvr/dnn/plots/run2-emme-CutVBF_WWControl_2jet-DNNoutputG_Fit_finelowDNN2-log}
+        \label{fig:dnn:dnn-val-in-crs-c}
+    }
+    \subfloat[]{
+        \includegraphics[width=0.47\textwidth]{figures/220605-Thesis/sr/dnn/plots/run2-emme-CutVBF_SR-DNNoutputG_blindRegion-log.pdf}
+        \label{fig:dnn:dnn-val-in-crs-d}
+    }
+    {\caption{Distributions of the DNN output in (a) the top-quark CR, (b) the \Ztautau CR, (c) the $WW$ VR, and (d) the VBF SR with a requirement DNN output $<0.25$. The \Ztautau and top-quark processes are normalized using pre-fit normalization factors extracted from their corresponding CRs (NF$_{\Ztautau} = 1.00 \pm 0.04$, NF$_{\text{top}} = 1.00 \pm 0.01$). The yellow band corresponds to the square root of the sum in quadrature of the MC statistical uncertainties and the normalization component of the dominant experimental systematic uncertainties (JER, JES, Flavor-tagging, and \MET uncertainties). The various uncertainty components are discussed in more detail in \cref{sec:systematics}.
+            \label{fig:dnn:dnn-val-in-crs} }}
+\end{figure}
+No evidence of significant discrepancy between the data and the MC simulation is found. In addition, the background-enriched region of the DNN output (DNN output $< 0.25$) can be validated in the VBF SR. \Cref{fig:dnn:dnn-val-in-crs-d} shows this region of the DNN output, binned finely to visualize potential differences.
+Despite the small offset in the overall normalization, which is covered by the uncertainties, there is no significant sign of shape differences between the data and MC simulations.
+A final cross-check is performed by studying the modelling of the input variables in the VBF SR with a selection made on the DNN output $< 0.25$ to avoid revealing the signal sensitive region. Representative distributions are shown in \cref{fig:srdnn25:dnn-inputs}.
+Given the fact that only the normalization component and only a subset of systematic uncertainties are considered, they show acceptable consistency between data and MC simulation.
+These validation studies establish the DNN output as a meaningful observable, so that it can be used as final discriminant in the statistical analysis.
+More studies of the DNN observable and its input variables, in particular for the regions used in the STXS analysis, can be found in \cref{app:dnn:input-vars}.
 
-    \begin{figure}[ht]
-        \centering        
-        \subfloat[]{
-            \includegraphics[width=0.47\textwidth]{figures/220605-Thesis/topcr/dnn/plots/run2-emme-CutVBF_TopControl_2jet-DNNoutputG_Fit_finelowDNN2-log} 
-            \label{fig:dnn:dnn-val-in-crs-a}
-        }
-        \subfloat[]{
-            \includegraphics[width=0.47\textwidth]{figures/220605-Thesis/zttcr/dnn/plots/run2-emme-CutVBF_ZtautauControl_2jet-DNNoutputG_Fit_finelowDNN2-log}\hfill
-            \label{fig:dnn:dnn-val-in-crs-b}
-        }  \\
-        \subfloat[]{
-            \includegraphics[width=0.47\textwidth]{figures/220605-Thesis/wwvr/dnn/plots/run2-emme-CutVBF_WWControl_2jet-DNNoutputG_Fit_finelowDNN2-log} 
-            \label{fig:dnn:dnn-val-in-crs-c}
-        } 
-        \subfloat[]{
-            \includegraphics[width=0.47\textwidth]{figures/220605-Thesis/sr/dnn/plots/run2-emme-CutVBF_SR-DNNoutputG_blindRegion-log.pdf} 
-        }
-        {\caption{Distributions of the DNN output in (a) the top-quark CR, (b) the \Ztautau CR, (c) the $WW$ VR, and (e) the VBF SR with a requirement DNN output $<0.25$. The \Ztautau and top-quark processes are normalized using pre-fit normalization factors extracted from their corresponding CRs (NF$_{\Ztautau} = 1.00 \pm 0.04$, NF$_{\text{top}} = 1.00 \pm 0.01$). The yellow band corresponds to the square root of the sum in quadrature of the MC statistical uncertainties and the normalization component of the dominant experimental systematic uncertainties (JER, JES, Flavor-tagging, and \MET uncertainties). The various uncertainty components are discussed in more detail in \cref{sec:systematics}.
-                \label{fig:dnn:dnn-val-in-crs} }}
-    \end{figure}
 
+\newcommand{\srdnnlowplotdir}{figures/220605-Thesis/sr/dnn25-scaledvbf-nfs3x3/plots}
+\sixPlots{Distributions of (a) \mjj, (b) \dyjj, (c) \mlonejone, (d), \mll, (e) \lepetacent, and (f) \METSig in the VBF SR selecting only the region below DNN output $= 0.25$. The solid orange line shows the expected VBF signal scaled by a factor of 200. The \Ztautau and top-quark processes are normalized using pre-fit normalization factors extracted from their corresponding CRs (NF$_{\Ztautau} = 1.01 \pm 0.04$, NF$_{\text{top}} = 1.00 \pm 0.01$). The last bin of the distributions include the overflow. The yellow band corresponds to the square root of the sum in quadrature of the MC statistical uncertainties and the normalization component of the dominant experimental systematic uncertainties (JER, JES, Flavor-tagging, and \MET uncertainties). The various uncertainty components are discussed in more detail in \cref{sec:systematics}.
+}{fig:srdnn25:dnn-inputs}{\srdnnlowplotdir/run2-emme-CutVBFSR_25DNN-Mjj-log.pdf}{\srdnnlowplotdir/run2-emme-CutVBFSR_25DNN-DYjj-lin.pdf}{\srdnnlowplotdir/run2-emme-CutVBFSR_25DNN-DPhill-lin.pdf}{\srdnnlowplotdir/run2-emme-CutVBFSR_25DNN-Mll-lin.pdf}{\srdnnlowplotdir/../../dnn25-scaledvbf-lepcent-nfs3x3/plots/run2-emme-CutVBFSR_25DNN-contOLV-lin.pdf}{\srdnnlowplotdir/run2-emme-CutVBFSR_25DNN-METSig_broad-lin.pdf}
 
-    \newcommand{\srdnnlowplotdir}{figures/220605-Thesis/sr/dnn25-scaledvbf-nfs3x3/plots}
-    
-    \sixPlots{Distributions of (a) \mjj, (b) \dyjj, (c) \mlonejone, (d), \mll, (e) \lepetacent, and (f) \METSig in the VBF SR selecting only the region below DNN output $= 0.25$. The solid orange line shows the expected VBF signal scaled by a factor of 200. The \Ztautau and top-quark processes are normalized using pre-fit normalization factors extracted from their corresponding CRs (NF$_{\Ztautau} = 1.01 \pm 0.04$, NF$_{\text{top}} = 1.00 \pm 0.01$). The last bin of the distributions include the overflow. The yellow band corresponds to the square root of the sum in quadrature of the MC statistical uncertainties and the normalization component of the dominant experimental systematic uncertainties (JER, JES, Flavor-tagging, and \MET uncertainties). The various uncertainty components are discussed in more detail in \cref{sec:systematics}.
-    }{fig:srdnn25:dnn-inputs}{\srdnnlowplotdir/run2-emme-CutVBFSR_25DNN-Mjj-log.pdf}{\srdnnlowplotdir/run2-emme-CutVBFSR_25DNN-DYjj-lin.pdf}{\srdnnlowplotdir/run2-emme-CutVBFSR_25DNN-DPhill-lin.pdf}{\srdnnlowplotdir/run2-emme-CutVBFSR_25DNN-Mll-lin.pdf}{\srdnnlowplotdir/../../dnn25-scaledvbf-lepcent-nfs3x3/plots/run2-emme-CutVBFSR_25DNN-contOLV-lin.pdf}{\srdnnlowplotdir/run2-emme-CutVBFSR_25DNN-METSig_broad-lin.pdf}
-   
 
 
 
@@ -415,3 +409,4 @@ These validation studies confirm the robustness of the DNN output, so that it ca
 % From konstis thesis:
 % Binning optimization:
 % TheDNNoutput variable serves as final classifier for theVBFprocess. It is shown inFigure7.6 after all SR cuts are applied. Even in comparison to the most discriminant inputvariables, this distribution shows a much better separation of theVBFsignal process frombackground. How the events are distributed along theDNNoutput variable depends on theloss function and might not be optimal for the further analysis. A fine binning makes gooduse of theDNNclassification, but might suffer from systematic uncertainties and statisticalfluctuations of data and MC simulation. A coarser binning is more robust in the statisticalanalysis, but might not separate signal from background well enough. A binning algorithmuses the signal and background prediction as inputs to set bin boundaries on theDNNoutput and find a decent compromise.125
+

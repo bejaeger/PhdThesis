@@ -1,15 +1,88 @@
-- Likelihood
-- Binning
-- Correlations between uncertainties?
+% From Hannah Arnold Thesis
+% - using the HistFactory tool [326] and the RooStats/ RooFit framework [327, 328].
 
-- Table of all regions entering the analysis? -> Checkout google doc! OR put in Stats model section
+The VBF and ggF signals are measured using a binned likelihood fit of the MC template to data in the SRs and CRs. The uncertainties are incorporated as NPs in the likelihood. The procedure is explained in detail in \cref{chap:statistics}. 
+This section first provides details on the statistical model, including the treatment of uncertainties, and discusses how the likelihood fit is validated.
 
-Mention for fit that:
-% For the background categories that can be measured well in a region pure in events of that category, the NFs are typically freely floating in the statistical analysis. For the other background categories the values are fixed to $\nu_\beta = 1$. 
-%Typically, these are the \emph{parameters of interest} (POIs) in the statistical analysis.
+\subsection{Background templates}
+All background processes discussed in \cref{sec:bkg-estimation} are included in the likelihood. 
+The normalization of processes for which CRs are defined is controlled by freely floating NFs in the fit. All other processes are normalized to their respective theoretical cross sections\footnote{Their NFs are fixed to 1.}.
+
+\subsection{Cross-section fit inputs}
+The signal cross sections are parametrized as signal strengths in the likelihood depending on the target of the fit, for example,
+\begin{equation}
+    \label{eq:incl-ggF-VBF-signal-strengths}
+    \mu_{\text{ggF/VBF}} = \frac{ [ \sigma_{\text{ggF/VBF}}  \times \BR(H \to WW^*) ]_\text{meas} } { [ \sigma_{\text{ggF/VBF}} \times \BR(H \to WW^*) ]_\text{SM}},
+\end{equation}
+and extracted from a simultaneous fit to the data in multiple regions.
+For the measurement of the inclusive ggF and VBF production cross sections a fit is performed to all nominal SRs and CRs in the \ZeroJet, \OneJet, and \TwoJet categories, as defined in \cref{sec:event-categorization,sec:bkg-estimation}. 
+The ggF and VBF cross sections are the two unconstrained PoIs, parametrized as shown in \cref{eq:incl-ggF-VBF-signal-strengths}.
+The same regions are used for the measurement of the combined ggF and VBF cross section, using a single PoI to scale the ggF and VBF yields. 
+For the measurement of 11 STXS cross sections, all STXS SRs and CRs are used as defined in \cref{subsec:STXS-categorization,subsubsec:stxs-crs}.
+
+The final fit discriminant in the ggF regions is the \mT distribution. The same binning is used in all regions: [0-90, 90-100, 100-110, 110-120, 120-130, 130-$\infty$]. 
+The VBF region uses the DNN distribution as final discriminant with a binning as described in \cref{subsec:fina-model-validation}.
+
+\TDinote{}{Make graphic of all regions included in fits}
+% From Paper
+%The cross sections for the ggF and VBF production modes are determined in a simultaneous fit to all 574 nominal SRs and CRs in the 푁jet = 0, 푁jet = 1, and 푁jet ≥ 2 categories. The ggF and VBF cross sections are 575 the two unconstrained POIs in this fit. 
+%A second fit is performed using these same regions, but measuring a 576 single POI for the combined ggF and VBF yield.
+%In both fits, the other Higgs production modes are fixed 577 to their expected yields. 
+%A third fit is made to all the STXS regions, where the 11 cross sections measured 578 are POIs. No nuisance parameters are significantly pulled or constrained in any of the fits.
+
+\subsection{Treatment of uncertainties}
+The sources of systematic uncertainties are discussed in \cref{sec:stats-analysis}. 
+Different uncertainties are treated differently in the fit, and before the fit is performed, several uncertainties are preprocessed depending on their type and size. 
+
+\paragraph{Uncertainty correlation}
+Most systematic uncertainties are fully correlated between the SRs and CRs in all analysis categories. Only the theoretical uncertainties affecting the backgrounds are uncorrelated between the four different categories. The same is true for the NFs. This is a conservative approach and ensures that potential mismodellings observed in one of the categories do not impact another category. 
+
+\paragraph{Transfer of uncertainties}
+% From INT note
+In some regions the available statistical power is not sufficient to correctly estimate some of the uncertainties. 
+In these cases, the uncertainty can be evaluated in a more inclusive region with more events and then applied to the individual regions. This is useful especially for the regions used in the STXS measurement. The specific inclusive region is chosen and only used if the uncertainty derived in the inclusive region is statistically compatible with the uncertainties in the individual regions. 
+
+\paragraph{Pruning and symmetrizing of uncertainties}
+Only a few of the systematic uncertainties derived have a significant variation with respect to the nominal MC template. To increase the numerical stability of the fit and reduce the time it takes for the fit to converge, uncertainties are pruned from the likelihood if they do not satisfy certain threshold criteria.
+For a given NP, the normalization and shape components are pruned independently of each other.
+The following cases result in an uncertainty for a given sample being pruned from a region:
+\begin{itemize}
+    \item A normalization uncertainty is smaller than 0.5\%.
+    \item A four-vector normalization uncertainty is smaller than 20\% of the statistical uncertainty. 
+    \item A shape uncertainty has no significant slope ($p$-value $< 0.05$).
+\end{itemize}
+The nominal or alternative samples that have only small yields often lead to large, unphysical variations, due to statistical fluctuations. 
+Therefore, a normalization uncertainty is also pruned if it is larger than 80\%. 
+This criterion is carefully monitored to ensure that not meaningful uncertainty is pruned.
+In addition, some experimental four-momentum uncertainties and uncertainties on STXS signal samples are pruned manually if they are not affected by the above criteria but are clearly dominated by statistical fluctuations and thus deemed unphysical.
+Furthermore, the shape component of uncertainties of minor backgrounds ($V\gamma$, \Zgamma) are pruned, mainly because meaningful shape uncertainties cannot be estimated with the available MC samples. 
+
+Statistical fluctuations can also cause the up and down variations to be asymmetric around the nominal value. 
+For normalization uncertainties whose up and down variations differ by a factor of two or have the same sign, the larger variation is fixed and also used as ``opposite'' variation by mirroring it with respect to nominal.
+Similarly, for shape uncertainties that have at least one bin where the up and down variations have the same sign, the full shape uncertainty is symmetrized by fixing the larger variation and mirroring it with respect to nominal for use as the ``opposite'' variation in each bin.n
+
+\paragraph{Smoothing of shape uncertainties}
+For the DNN discriminant in the VBF category, a smoothing procedure is applied to background shape uncertainties that are subject to large fluctuations. 
+The smoothing procedure is based on a bin merging strategy together with the 353QH running median algorithm~\cite{Friedman353QH}. 
+A representative uncertainty that is smoothed prior to the fit is shown in \cref{fig:dnn:smoothing}.
+\begin{figure}[th]
+    \centering
+    \newImageResizeCustom{0.6}{figures/hww/fit/smooth-ckkw.png}
+    {\caption{DNN output distribution for the nominal $qq \to WW$ sample, an alternative sample, and a smoothed histogram. The alternative sample is used to estimate the uncertainty due to the choice of matching between the matrix element calculations and the parton shower in $qq \to WW$ events. More information on the smoothing procedure can be found in text.
+    \label{fig:dnn:smoothing} }}
+\end{figure}
+\TDinote{}{Update plot!}
+
+\subsection{Validation of likelihood fit}
+\TDinote{}{To be incorporated!}
+\TDinote{}{Include pull and breakdown plot for VBF}
+\paragraph{Pulls}
+\paragraph{Constraints}
+\paragraph{Breakdown of uncertainties}
 
 
 % Combination:
-
 % From nature:
 % The statistical analysis of the data relies on a likelihood formalism, where the likelihood functions describing each of the input measurements are multiplied to obtain a combined likelihood. The observed yield in each category of reconstructed events follows a Poisson distribution whose parameter is the sum of the predicted signal and background contributions. The predicted signal yield is split into the different production and decay processes, so it can be parameterized as a function of dedicated parameters of interest depending on the tested model.
+
+

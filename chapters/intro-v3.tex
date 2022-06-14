@@ -1,0 +1,88 @@
+
+The urge to constantly learn about the world around us is deeply rooted in humanity.
+As children we explore our neighborhood, as adults we learn about different professions and cultures, and as we grow older we learn about the lives of the younger generation. 
+\emph{Elementary particle physics} has taken on the challenge of learning about the fundamental laws of nature. 
+For this quest, the Standard Model of particle physics (SM) provides the best theory to date describing the behavior of all fundamental particles. 
+The SM has been extremely successful in predicting and describing correctly various experimental measurements. 
+The culmination of this success story was the discovery of a new particle in 2012 by the ATLAS and CMS collaborations, as by now the experimental evidence is overwhelming that the observed particle is the Higgs boson predicted by the SM almost 50 years earlier. 
+Despite this success, however, there are several unanswered questions, and much remains to be understood. 
+Several observable phenomona cannot be explained by the SM, such as the asymmetry between matter and antimatter in the universe, and theoretical puzzles prevail, such as the unification of the SM and Einstein's theory of gravity, which is still pending.
+Other open questions are directly related to the Higgs boson and need further study: Is the Higgs boson a fundamental particle? Are there more particles similar to the Higgs boson? Why is the mass of the Higgs boson so small? 
+There are several theories beyond the SM that attempt to address these shortcomings. 
+Many of them posit the existence of new fundamental particles as well as implications for the phenomenology of the Higgs boson.
+%deviations of the Higgs boson interactions predicted by the SM. 
+Since no direct discovery of new physics has been made in recent years, a precise knowledge of the interactions of the Higgs boson with other particles becomes crucial. 
+A precise understanding of the nature of the Higgs boson allow theories to be studied with high precision and allow small deviations from the Standard Model predictions to be measured, potentially hinting to new undiscovered phenomena.
+
+The properties of the Higgs boson can be studied in high energy particle collider experiments. 
+The Large Hadron Collider (LHC) is the current most powerful particle accelerator, colliding protons at center-of-mass energies of up to $\sqrt{s} = 13\,$TeV.\footnote{Even higher energies are planned for the next operating cycle of the LHC, which will begin at the turn of 2022 and 2023.}
+The interactions of the fundamental particles that occur in the proton-proton ($pp$) collision events can be measured by large detector facilities built around the interaction point. 
+The ATLAS experiment is one such detector, designed as a multipurpose detector but particularly well-suited to measuring the kind of detector signals that Higgs bosons generate after being produced in $pp$ collisions.
+
+The Higgs boson decays almost instantaneously after being produced. Only its decay products can therefore be measured in the detector. Since the Higgs boson couples to all massive particles, there are many Higgs boson production and decay modes, leading to a rich phenomenology of Higgs boson physics. 
+This thesis presents a measurement of Higgs boson production cross sections in its decay to a pair of $W$ bosons. 
+The \HWW\ decay is the second most likely decay of the Higgs boson, and if leptons are present in the final state, originating from the $W$ boson decays, provides an excellent handle over other types of $pp$ collision events considered as backgrounds.
+The analysis of \HWWdet decays therefore allows for some of the most precise measurements of Higgs boson production at the LHC.
+The gluon fusion (ggF) production and the vector boson fusion (VBF) production are considered in the analysis presented. 
+In addition to inclusive ggF and VBF production cross-section measurements, the Higgs boson production is measured differentially in various kinematic bins. 
+The measurement is performed in a way so as to combine it with other Higgs boson measurements, such as measurements of $H \to ZZ$ and $H \to \gamma\gamma$ decays, which all contributed to the initial discovery of the Higgs boson in 2012. 
+Combination measurements like these ultimately provide the most precise measurements of Higgs boson processes.
+\TDnote{Furthermore, they can also be used in further interpretations such as Effective Field Theories, which provide a fully general approach to search for new physics phenomena.}{Umformulieren}
+
+The \HWWdet analysis presented in this thesis is conducted with $pp$ collision data recorded during the second period of data taking at the LHC between 2015 and 2018, known as \RunTwo, corresponding to center-of-mass energies of $\sqrt{s} = 13\,$TeV and an integrated luminosity of 139\ifb.
+
+The success of most physics analyses, including the \HWWdet analysis, is determined by two main factors: 
+(i) the ability to distinguish collision events with interesting Higgs boson events and other types of events, and (ii) the ability to precisely estimate the expected number of events given the selection criteria with the lowest possible uncertainty.
+In this thesis, studies are presented that work towards both of those goals.
+
+A contribution to the second task is presented with a calibration measurements of the jet energy resolution. \todo{Elaborate!}
+
+The first task is accomplished in the analysis of \HWWdet events produced via VBF.
+The VBF signal is notoriously difficult to separate from other types of events. 
+A supervised learning algorithm is therefore used to develop a deep neural network that learns to recognize patterns of the VBF signal based on 15 kinematic and topological event observables. 
+This machine learning based approach allows discriminating the VBF signal efficiently and therefore helps to measure Higgs boson processes more precisely. 
+%These patterns are too complex and multidimensional for simple analysis strategies to be efficient, so machines are taught to learn them for us.
+%separate Higgs events from backgrounds events. 
+In other words, this approach allows humans to learn more about nature by teaching machines how to learn. 
+
+
+% 1. Epic Intro
+% - The drive to learn seems deeply rooted into humanity. 
+% - Learning sits at the core of humanity. 
+%  Learning the fundamental laws of nature is the challenge elementary particle physics has set itself up for. 
+% The quest for learning how nature behaves is driven by curiosity only. 
+
+% 2. Particle physics / SM
+% The current best theory to describe the behavior of the fundamental building blocks of matter, called elementary particles, is known as the Standard Model. 
+% It has been hugely successful in describing various experimental measurements correctly. 
+% The Higgs boson discovery in 2012 can be regarded as the culmination of success the success story. 
+% It updated the status of particle physics as a whole and largely influences future research directions. 
+% There open problems and much remains to be understood!
+
+% 3. Higgs takes special place
+% The Higgs boson sits at the core of the theory, being connected to 10 out of the 19 free parameters that need to be determined by experimental data.  
+% This makes it very important to understand all aspects of Higgs boson physics precisely. In particular, the probability of the Higgs boson to be produced, measured in terms of cross sections, or the interactions with other particles.
+% A comprehensive study of the Higgs boson and all its interactions with other particles is therefore essential. 
+
+% 4. Experiments (LHC,  ATLAS)
+% Large particle colliders allow testing SM predictions and looking for new phenomena. 
+% ATLAS detector
+
+% 5. Analysis 
+% This thesis presents a measurement of Higgs production cross sections in its decay to a pair of $W$ bosons. 
+% The HWW decay is the second most likely one and provides an excellent opportunity to study the kinematics of specifically the gluon fusion as well as the vector boson fusion production mode of the Higgs boson.
+
+% The success of most physics analyses is determined by two main factors: 
+% (i) 
+% - the ability to cleverly select collision events so the amount of signal events that are to be measured is large compared to the other ``background'' events.  
+% - The ability to distinguish interesting Higgs boson signal events from other types of events.
+% (ii) the ability to precisely estimate the expected contributions given the selection criteria (query), with as little uncertainty as possible.
+
+% 6. JER and Higgs cross sections
+% For the latter, this thesis presents a measurement of the noise term of the jet energy resolution, allowing to select and disentangle events at a finer resolution. 
+% For the former, this thesis presents the development of a deep neural network that discriminates Higgs boson events produced via vector boson fusion. A supervised learning algorithm is used for a neural net to learn to recognize patterns from labelled example data and separate Higgs events from backgrounds events. These patterns are too complex and multidimensional for a human to find, so machines are taught to learn them for us. 
+% This allows measuring the amount of VBF, HWW events produced at unprecedented precision. 
+
+% 7. deviations, STXS, further interpretations. 
+% The precision measurements of HWW decays can be used for further combinations and interpretations. 
+

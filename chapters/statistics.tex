@@ -95,11 +95,11 @@ In practice, the best-fit values, labelled as $\{\hat{\pmb{\mu}}, \hat{\pmb{\the
     \label{eq:best-fit-values}
     \{\hat{\pmb{\mu}}, \hat{\pmb{\theta}} \} = \text{arg} \min_{\{\pmb{\mu}, \pmb{\theta}\}} \left( - \ln (\Likelihood) \right),
 \end{equation}
-as it is numerically more stable.
+as it is numerically more stable. This is done using numerical methods implemented in the MINUIT package~\cite{James:1975dr}.
+
 %using numeric procedures. 
 The fitted $\hat{\pmb{\mu}}$ can then be directly translated into physics quantities such as cross sections by comparing to the values that were assumed in the original MC template.
 
-\todo{Mention MINUIT and program that runs minimization}
 % For the background categories that can be measured well in a region pure in events of that category, the NFs are typically freely floating in the statistical analysis. For the other background categories the values are fixed to $\nu_\beta = 1$. 
 
 %Typically, these are the \emph{parameters of interest} (POIs) in the statistical analysis.

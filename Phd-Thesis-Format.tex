@@ -50,7 +50,6 @@
 \usepackage{fancyhdr}
 \usepackage[export]{adjustbox}
 \usepackage{fncychap}
-\addtokomafont{disposition}{\rmfamily} 
 \usepackage{feynmp}
 \usepackage{graphicx}
 \usepackage{grffile} % for dots in filename
@@ -58,7 +57,7 @@
 \usepackage{xspace}
 %\usepackage{arydshln} %ermöglicht gestrichelte linien in tabellen mit \hdashline
 %\usepackage[margin=10pt,font=small,labelfont=bf,font=it]{caption,subfig}
-\usepackage[font=small,format=plain,labelfont=bf,textfont=it]{caption}
+\usepackage[font=small,format=plain,labelfont={bf,small},textfont=it]{caption}
 \usepackage{floatrow}
 \floatsetup[table]{capposition=top}
 \usepackage{subfig}
@@ -74,8 +73,9 @@
 \usepackage{mathtools}
 \usepackage{txfonts}
 \usepackage[figuresright]{rotating}
-
-
+\usepackage{pgfplots}
+\usepackage{makecell}
+\addtokomafont{disposition}{\rmfamily} 
 
 %\usepackage{tabularx}
 %\usepackage{cite} clash with ATLAS

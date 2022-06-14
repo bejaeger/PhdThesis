@@ -140,11 +140,12 @@ In the range of [0.06-0.12], the significance metrics that do not take into acco
 \section{Distributions of the input variables in bins of the VBF DNN}
 \label{app:dnn:input-vars}
 
+\Cref{fig:dnn-inputs-vbf-top1,fig:dnn-inputs-vbf-top2,fig:dnn-inputs-vbf-top3,fig:dnn-inputs-hwwdecay,fig:dnn-inputs-top-sup} show distributions of the DNN input variables with different selections on the DNN output. This shows the effect of the DNN on the variables. 
 
-
+\Cref{fig:dnn-output-vbf-stxs} shows the distribution of the DNN output in the top-quark and \Ztautau CRs used in the VBF, STXS analysis. 
 
 \captionsetup[subfloat]{captionskip=5pt} % space between subfloat caption and image
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \subfloat[$\mjj$]{
         \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-Mjj-lin.pdf} \hfill
@@ -214,7 +215,7 @@ In the range of [0.06-0.12], the significance metrics that do not take into acco
     } 
     {\caption{Distributions of $\pTjone$, $\pTjtwo$, and $\pTjthree$ in the VBF signal region.
             Each row shows one variable with different cuts on the DNN output distribution being applied in different columns.
-            \label{fig:dnn-inputs-vbf-top2} }}
+            \label{fig:dnn-inputs-vbf-top3}}}
 \end{figure}
 
 
@@ -259,6 +260,10 @@ In the range of [0.06-0.12], the significance metrics that do not take into acco
             \label{fig:dnn-inputs-top-sup} }}
 \end{figure}
 
+
+\sixPlots{Distribution of the DNN output in the (a)-(c) top-quark CRs and (d)-(f) \Ztautau CRs used in the VBF, STXS analysis.}{fig:dnn-output-vbf-stxs}{figures/220605-Thesis/topcr/stxs/plots/run2-emme-CutVBF_TopControl_2jet_MJJ_GT700_PTH_0_200-DNNoutputG_FitBin1-log.pdf}{figures/220605-Thesis/topcr/stxs/plots/run2-emme-CutVBF_TopControl_2jet_MJJ_GT350_PTH_GT200-DNNoutputG_FitBin1-log.pdf}{figures/220605-Thesis/topcr/stxs/plots/run2-emme-CutVBF_TopControl_2jet_MJJ_350_700_PTH_0_200-DNNoutputG_FitBin1-log.pdf}{figures/220605-Thesis/zttcr/stxs/plots/run2-emme-CutVBF_ZtautauControl_2jet_MJJ_GT700_PTH_0_200-DNNoutputG_FitBin1-log.pdf}{figures/220605-Thesis/zttcr/stxs/plots/run2-emme-CutVBF_ZtautauControl_2jet_MJJ_GT350_PTH_GT200-DNNoutputG_FitBin1-log.pdf}{figures/220605-Thesis/zttcr/stxs/plots/run2-emme-CutVBF_ZtautauControl_2jet_MJJ_350_700_PTH_0_200-DNNoutputG_FitBin1-log.pdf}
+
+\todo{Add STXS region labels}
 \captionsetup[subfloat]{captionskip=7pt} % space between subfloat caption and image
 
 % %-----------------------------------------------------------------------

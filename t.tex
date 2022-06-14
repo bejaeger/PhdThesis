@@ -20,10 +20,11 @@
 %-------------------------------------------------------------------------------
 \input{macros/commands}
 \input{macros/shortcuts}
+\input{macros/captions}
 
-\author{Still missing: Introduction, Conclusion, Higgs analysis chapter}
+\author{Still missing: Introduction, Conclusion; With gaps: Higgs analysis chapter}
 \date{\today}
-\title{Precision Measurements of $H \to WW^*$ Cross Sections using Machine Learning and Jet Energy Calibrations with the ATLAS Experiment - Draft v0.6 - Benjamin Jäger}
+\title{Precision Measurements of $H \to WW^*$ Cross Sections using Machine Learning and Jet Energy Calibrations with the ATLAS Experiment - Draft v0.7 - Benjamin Jäger}
 
 % \setmathfont{Latin Modern Math}[version=lm]
 
@@ -49,29 +50,29 @@
 \newcommand{\chapterdir}{chapters}
 %\include{\chapterdir/abstract}
 
-% % -------------------------------------------------------------------------------
-% \include{\chapterdir/introduction}
-
-% % % % -------------------------------------------------------------------------------
-% \include{\chapterdir/theory}
+% -------------------------------------------------------------------------------
+\include{\chapterdir/introduction}
 
 % % % -------------------------------------------------------------------------------
-% \include{\chapterdir/higgs}
+\include{\chapterdir/theory}
+
+% % -------------------------------------------------------------------------------
+\include{\chapterdir/higgs}
+
+% % %-------------------------------------------------------------------------------
+\include{\chapterdir/experiment}
+
+% % %-------------------------------------------------------------------------------
+\include{\chapterdir/objects}
+
+% % % % ---------------------------------------
+\include{\chapterdir/calibration}
 
 % % % %-------------------------------------------------------------------------------
-% \include{\chapterdir/experiment}
+\include{\chapterdir/statistics}
 
 % % % %-------------------------------------------------------------------------------
-% \include{\chapterdir/objects}
-
-% % % % % ---------------------------------------
-% \include{\chapterdir/calibration}
-
-% % % % %-------------------------------------------------------------------------------
-% \include{\chapterdir/statistics}
-
-% % % % %-------------------------------------------------------------------------------
-% \include{\chapterdir/ml}
+\include{\chapterdir/ml}
 
 % % % %-------------------------------------------------------------------------------
 \include{\chapterdir/hww}
@@ -79,7 +80,7 @@
 % \label{chap:hww}
 
 % % % %-------------------------------------------------------------------------------
-% \include{\chapterdir/summary}
+\include{\chapterdir/summary}
 
 %-------------------------------------------------------------------------------
 \section*{Acknowledgements}

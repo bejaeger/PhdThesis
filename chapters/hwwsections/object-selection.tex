@@ -1,9 +1,49 @@
-- The physics objects relevant to reconstruct \HWWdet candidate events and to suppress background contributions are: muons, electrons, jets -- including $b$-jet identification --, missing transverse energy.
-- Details on the reconstruction and identification of these objects are given in \cref{chap:objects}.
-- Further quality criteria are imposed on the objects to facilitate a high selection efficiency of signal event candidates while minimizing the contamination of background events.
-- All the selection criteria are applied to both data and simulated events and summarized in \cref{tab:objectselectionleptons}.
+The final state of \HWWdet events contains muons, electrons, jets, and missing transverse energy. 
+This section provides details on the reconstruction and identification of these physics objects. 
+In addition, quality criteria are imposed on the objects to guarantee a high selection efficiency of signal event candidates while minimizing the contamination of background events. All the selection criteria are applied to both data and simulated events and summarized in \cref{tab:objectselectionleptons}.
+This section draws extensively from \ccite{HWWPaper}.
 
-Highly based on \ccite{PLACEHODLER:FOR:PAPER}.
+\begin{table}
+    \centering
+    \begin{tabular}{l@{\hskip 0.5in} l}
+        \toprule
+        Electrons                &                                                              \\
+        \midrule
+        Transverse momentum      & 22 GeV / 15 GeV                                              \\
+        Detector acceptance      & $|\eta| < 2.47$, excluding $1.37 < |\eta| < 1.52$            \\
+        Impact parameter         & $|z_0\sin\theta| < 0.5$,\quad $|d_0|/\sigma_{d_0} < 5$       \\
+
+        Identification           & $\left\{\begin{tabular}{@{\ }l@{} l}
+                ``Tight'',  & \hspace{0.5em} for $\pT < 25\,\GeV$ \\
+                ``Medium'', & \hspace{0.5em} for $\pT > 25\,\GeV$
+            \end{tabular}\right.$                    \\
+        Isolation                & UPDATE                                                       \\
+        \midrule
+        Muons                    &                                                              \\
+        \midrule
+        Reconstruction algorithm & Global fit including ID tracks and MS tracks                 \\
+        Transverse momentum      & 22 GeV / 15 GeV                                              \\
+        Detector acceptance      & $|\eta| < 2.5$                                               \\
+        Impact parameter         & $|z_0\sin\theta| < 0.5$, \quad $|d_0|/\sigma_{d_0} < 3$      \\
+        Identification           & ``Tight''                                                    \\
+        Isolation                & UPDATe                                                       \\
+        \midrule
+        Jets                     &                                                              \\
+        \midrule
+        Reconstruction algorithm & anti-$k_T$ ($R = 0.4$) using particle flow objects           \\
+        Transverse momentum      & $\left\{\begin{tabular}{@{\ }l@{} l}
+                $\pT > 30\,\GeV$, & \hspace{0.5em} for jet counting \\
+                $\pT > 20\,\GeV$, & \hspace{0.5em} else
+            \end{tabular}\right.$                    \\
+        Detector acceptance      & \absetaST{4.5}                                               \\
+        Pile-up rejection        & $\text{JVT} > 0.59$ (for $\pT < 60\,\GeV$ and $|\eta| <2.4$) \\
+        $b$-tagging algorithm        & DL1r with 85\% efficient working point                       \\
+        $b$-tagging acceptance       & \ptjetGT{20}\,GeV and \absetaST{2.5}                         \\
+        \bottomrule
+    \end{tabular}
+    \caption{List of object selection criteria, acceptances, and algorithms used in the \HWWdet\ analysis.}
+    \label{tab:objectselectionleptons}
+\end{table}
 
 \subsection{Scale factors and pile-up weights}
 In order to guarantee fair comparisons between simulated events and data, all known differences between the samples need to be accounted for.
@@ -22,7 +62,7 @@ The SFs are either applied to the full event (\emph{efficiency SF}) or only to t
 
 \subsubsection{Pile-up reweighting}
 The exact data taking conditions are typically not known at the time the simulated events are generated.
-Therefore, it is important to correct for potential differences in the underlying pile-up conditions that is assumed in the simulated events and found in data.
+Therefore, it is important to correct for potential differences in the underlying pile-up conditions that is assumed in the simulated events to the one found in data.
 % In order to compare Monte Carlo simulated events with actual data, the amount of pile-up underlying the hard scatter needs to be account for.
 To this end, a method known as \emph{pile-up reweighting} is performed that assigns a dedicated \emph{pile-up weight} to each event so that the distribution of the number of pile-up interactions in the simulated event sample is, on average, the same as that found in data. Due to different running conditions, the reweighting procedure is performed separately for the data recorded in the years 2015 and 2016, 2017, and 2018.
 
@@ -62,7 +102,7 @@ They are fully calibrated corresponding to the descriptions given in \cref{sec:j
 Jets that are used for jet counting, that is, to categorize the events in different analysis regions, are required to have \ptGT{30}GeV.
 In order to identify $b$-jets, the DL1r neural network discriminant is employed (see \cref{subsec:flavor-tagging}), using a working point that has an average of 85\% $b$-jet tagging efficiency for jets with \ptGT{20}GeV and \absetaST{2.5}~\cite{FTAG-2018-01}.
 Furthermore, the Jet Vertex Tagger is used to reject jets stemming from pile-up interactions by requiring a minimum value of JVT $> 0.59$ for jets with \ptBT{20}{60}GeV and \absetaST{2.4}.
-\TDinote{}{Checkout JVT extension to 120 GeV???}
+%\TDinote{}{Checkout JVT extension to 120 GeV???}
 
 
 \subsection{Missing transverse energy}
@@ -77,7 +117,7 @@ it provides additional discrimination power between signal and background events
 \label{subsec:overlap-removal}
 
 The event reconstruction can lead to ambiguous definitions of the reconstructed objects.\footnote{This is mostly due to the fact that the same sets of lower-level reconstructed objects such as tracks or calorimeter clusters are used in multiple reconstruction algorithms for example for electrons, photons, or jets.}
-To resolve these ambiguities and avoid double consideration of detector signals, a dedicated \emph{overlap removal} procedure is performed for each event, which works as follows~\cite{PLACEHOLDER:PAPER}:
+To resolve these ambiguities and avoid double consideration of detector signals, a dedicated \emph{overlap removal} procedure is performed for each event, which works as follows~\cite{HWWPaper}:
 \begin{itemize}
     \item If two electrons share an ID track, the electron with lower \ET is removed.
           %\item An electron is removed that shares an ID track with a muon.
@@ -99,44 +139,3 @@ To resolve these ambiguities and avoid double consideration of detector signals,
 
 
 
-\begin{table}
-    \centering
-    \begin{tabular}{l@{\hskip 0.5in} l}
-        \toprule
-        Electrons                &                                                              \\
-        \midrule
-        Transverse momentum      & UPDATE                                                       \\
-        Detector acceptance      & $|\eta| < 2.47$, excluding $1.37 < |\eta| < 1.52$            \\
-        Impact parameter         & $|z_0\sin\theta| < 0.5$,\quad $|d_0|/\sigma_{d_0} < 5$       \\
-
-        Identification           & $\left\{\begin{tabular}{@{\ }l@{} l}
-                ``Tight'',  & \hspace{0.5em} for $\pT < 25\,\GeV$ \\
-                ``Medium'', & \hspace{0.5em} for $\pT > 25\,\GeV$
-            \end{tabular}\right.$                    \\
-        Isolation                & UPDATE                                                       \\
-        \midrule
-        Muons                    &                                                              \\
-        \midrule
-        Reconstruction algorithm & Global fit including ID tracks and MS tracks                 \\
-        Transverse momentum      & UPDATE                                                       \\
-        Detector acceptance      & $|\eta| < 2.5$                                               \\
-        Impact parameter         & $|z_0\sin\theta| < 0.5$, \quad $|d_0|/\sigma_{d_0} < 3$      \\
-        Identification           & ``Tight''                                                    \\
-        Isolation                & UPDATe                                                       \\
-        \midrule
-        Jets                     &                                                              \\
-        \midrule
-        Reconstruction algorithm & anti-$k_T$ ($R = 0.4$) using particle flow objects           \\
-        Transverse momentum      & $\left\{\begin{tabular}{@{\ }l@{} l}
-                $\pT > 30\,\GeV$, & \hspace{0.5em} for jet counting \\
-                $\pT > 20\,\GeV$, & \hspace{0.5em} else
-            \end{tabular}\right.$                    \\
-        Detector acceptance      & \absetaST{4.5}                                               \\
-        Pile-up rejection        & $\text{JVT} > 0.59$ (for $\pT < 60\,\GeV$ and $|\eta| <2.4$) \\
-        $b$-tagging algorithm        & DL1r with 85\% efficient working point                       \\
-        $b$-tagging acceptance       & \ptjetGT{20}\,GeV and \absetaST{2.5}                         \\
-        \bottomrule
-    \end{tabular}
-    \caption{List of object selection criteria, acceptances, and algorithms used in the \HWWdet\ analysis.}
-    \label{tab:objectselectionleptons}
-\end{table}
