@@ -64,11 +64,18 @@ Similarly, for shape uncertainties that have at least one bin where the up and d
 \paragraph{Smoothing of shape uncertainties}
 For the DNN discriminant in the VBF category, a smoothing procedure is applied to background shape uncertainties that are subject to large fluctuations. 
 The smoothing procedure is based on a bin merging strategy together with the 353QH running median algorithm~\cite{Friedman353QH}. 
-A representative uncertainty that is smoothed prior to the fit is shown in \cref{fig:dnn:smoothing}.
+An example of an uncertainty processed in such a way is shown in \cref{fig:dnn:smoothing}.
 \begin{figure}[th]
     \centering
-    \newImageResizeCustom{0.6}{figures/hww/fit/smooth-ckkw.png}
-    {\caption{DNN output distribution for the nominal $qq \to WW$ sample, an alternative sample, and a smoothed histogram. The alternative sample is used to estimate the uncertainty due to the choice of matching between the matrix element calculations and the parton shower in $qq \to WW$ events. More information on the smoothing procedure can be found in text.
+    % \subfloat[]
+    %     {
+        \newImageResizeCustom{0.6}{figures/plots/ttbar-matching-smoothed.pdf}
+        % }
+        % \subfloat[]
+        % {
+        %     \newImageResizeCustom{0.48}{figures/plots/CKKW-smooth.pdf}
+        % }
+    {\caption{DNN output distribution for the nominal \ttbar sample (\Powheg+\PYTHIAV), an alternative sample (\aMCATNLO+\PYTHIAV) including the symmetrized distribution with respect to the nominal, and smoothed distributions based on the difference between the nominal and alternative sample. The alternative sample is used to estimate the uncertainty due to the choice of matching procedure between matrix element calculations and the parton shower. The smoothed distribution is used in the statistical analysis. More information on the smoothing procedure can be found in the text.
     \label{fig:dnn:smoothing} }}
 \end{figure}
 \TDinote{}{Update plot!}
