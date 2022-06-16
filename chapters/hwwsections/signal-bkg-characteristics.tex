@@ -21,14 +21,13 @@ The features of the \HWWdet decay and the production mechanisms are discussed be
 \subsubsection{The \HWWdet decay}
 The Higgs boson couples to a pair of oppositely charged $W$ bosons.
 Because of the high mass of the $W$ boson ($m_W = 80.354 \pm 0.007\,\GeV$ \cite{PDG2020}), one of the vector bosons is produced on shell, the other is virtual.
-Because the $W$ bosons are short-lived ($\tau \approx \mathcal{O}(10^{-25}\,\text{s})\,\text{\cite{PDG2020}}$), only their decay products can be measured. The decay modes including their branching ratios are shown in \cref{fig:w-branching-ratios}. This analysis targets \Wboson boson decays into \emph{light leptons} (simply referred to as leptons in the following), that is, electrons and muons and their associated neutrinos.
-As discussed in more detail in \cref{sec:object-selection}, the presented analysis targets \HWW decays that exhibit one electron and one muon in the final state. 
-% Belongs more to object selection!
-%- Only muon+electron or electron+muon events considered, otherwise background from Drell-Yan overwhelming
+Because the $W$ bosons are short-lived ($\tau \approx \mathcal{O}(10^{-25}\,\text{s})\,\text{\cite{PDG2020}}$), only their decay products can be measured. 
+The decay modes of the Higgs boson including the final states possible for the subsequent decay of the two $W$ bosons are shown in \cref{fig:h-branching-ratios}. 
+This analysis selects final states of the \HWW decay with one electron and one muon which make up approximately 0.5\% of the total Higgs decays. 
 \begin{figure}
-    \newImageResizeCustom{0.5}{figures/hww/introduction/wdecays/wdecays.pdf}
-    \caption[Different decay modes of the $W$ boson with indication of their branching ratios.]{Different decay modes of the $W$ boson with indication of their branching ratios. Values are taken from Ref.~\cite{PDG2020}.}
-    \label{fig:w-branching-ratios}
+    \newImageResizeCustom{0.65}{figures/theory/h-decay-pie/h-decay-pie.pdf}
+    \caption{Different decay modes of the Higgs boson corresponding to their branching fractions. The branching fraction of the \HWW decay is 21.5\%, the fraction of $e\nu\mu\nu$ final states with respect to the \HWW contribution is approximately 2.3\%. Values are taken from \ccite{PDG2020}.}
+    \label{fig:h-branching-ratios}
 \end{figure}
 %It can be assumed that the Higgs boson is produced at rest, so that the two \Wboson bosons are emitted in opposite directions in the transverse plane. 
 %For this reason, and because of the property of the electroweak interaction to couple only to left-handed neutrinos as well as angular momentum conservation, the \HWWdet process exhibits a distinct kinematic feature that can be exploited in the event selection.
@@ -50,13 +49,13 @@ is expected to take larger values due to the angular correlations.
 
 The presence of the neutrinos in the final state has two important consequences:
 First, they lead to events with significant missing transverse energy. This is amplified by the angular correlations described above, as the neutrinos are more likely to be emitted in the same direction. This feature can be especially well exploited by the \METSig observable.
-Second, not enough information is available about the longitudinal momentum of the Higgs boson in order to reconstruct its full mass. The mass of the Higgs boson can therefore only be reconstructed in the transverse plane, which is calculated as
+Second, not enough information is available about the longitudinal momentum of the Higgs boson in order to reconstruct its full mass. The mass of the Higgs boson can therefore be reconstructed only in the transverse plane, which is calculated as
 \begin{equation}
   \Mt = \sqrt{ \left( E_{\ell\ell}+\MET \right)^2 - \left| \Ptll + \pmb{E}_{\text{T}}^{\text{miss}} \right|^2 },
 \end{equation}
 where $E_{\ell\ell} = \sqrt{ \left|\Ptll\right|^2 + \Mll^2}$ is the energy of the lepton system.
 \begin{figure}
-    \newImageResizeCustom{0.7}{figures/hww/introduction/HWW_angular_correlation.png}
+    \newImageResizeCustom{0.65}{figures/hww/introduction/HWW_angular_correlation.png}
     \caption[Angular correlations in the \HWWdet\ decay.]{Illustration of the angular correlations in the \HWWdet\ decay. The narrow arrows indicate the flight direction of the particles, the double arrows visualize their spin. The spin projections of the $W$ bosons sum to zero and they decay into leptons with aligned spin projections. This results in an enhanced fraction of events with leptons that have a small opening angle as well as two neutrinos being emitted in opposite directions. Taken from Ref.~\cite{HIGG-2013-13}.}
     \label{fig:spin-correlations}
 \end{figure}
@@ -69,11 +68,11 @@ The latter can be quantified by the \emph{lepton centrality} variable, $C_\ell$,
 These prominent features clearly distinguishes VBF, \HWW events from events produced via the ggF production mode, where no additional jets are expected at leading order. Additional jets may, however, still arise (for both production modes) due to ISR and FSR. 
 
 \subsubsection{Other Higgs channels}
-In this analysis, the contributions to \HWW events from other Higgs production modes, such as $VH$ or $ttH$, are marginal because of both their small cross sections and the fact that they have additional particles in the final state based on which their contributions can be suppressed.
+In this analysis, the contributions of \HWW events from other Higgs production modes, such as $VH$ or $ttH$, are marginal because of both their small cross sections and the fact that they have additional particles in the final state based on which their contributions can be suppressed.
 % events can be efficiently rejected.
 Events where the Higgs boson decays into a pair of $\tau$ leptons have similar final states as the \HWWdet\ decays when the $\tau$ leptons decay leptonically. 
-Because of the low branching ratios of both the $H \to \tau\tau$ decays and $\tau$ decays into muons or electrons ($\approx$ 17-18 \% \cite{PDG2020}), contributions from $H \to \tau\tau$ processes are also small in this analysis. 
-The analysis presented is therefore sensitive only to the ggF and VBF production modes of the \HWWdet\ decay. Contributions from above-mentioned other Higgs channels are treated like backgrounds and normalized to their corresponding SM predictions.
+Because of the low branching fractions of both the $H \to \tau\tau$ decays and $\tau$ decays into muons or electrons ($\approx$ 17-18 \% \cite{PDG2020}), contributions from $H \to \tau\tau$ processes are also small in this analysis. 
+The analysis presented is therefore sensitive only to the ggF and VBF production modes of the \HWWdet\ decay. \TDinote{Contributions from above-mentioned other Higgs channels are treated like backgrounds and normalized to their corresponding SM predictions.}{Probably mention only later!}
 
 \subsection{The Background Processes}
 Example Feynman diagrams for the most important backgrounds are shown in \cref{fig:hww:feyn-bkgs}.

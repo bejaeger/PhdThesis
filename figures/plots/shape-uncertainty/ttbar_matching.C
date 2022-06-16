@@ -1,7 +1,7 @@
-void ttbar()
+void ttbar_matching()
 {
 //=========Macro generated from canvas: histogram/histogram
-//=========  (Wed Jun 15 08:21:16 2022) by ROOT version 6.18/04
+//=========  (Wed Jun 15 06:34:19 2022) by ROOT version 6.18/04
    TCanvas *histogram = new TCanvas("histogram", "histogram",0,0,800,600);
    gStyle->SetOptStat(0);
    gStyle->SetOptTitle(0);
@@ -20,7 +20,7 @@ void ttbar()
    TPad *main = new TPad("main", "main",0,0,1,1);
    main->Draw();
    main->cd();
-   main->Range(-0.2025316,-5.902306,1.063291,5.023407);
+   main->Range(-0.2025316,-6.016213,1.063291,5.029402);
    main->SetFillColor(0);
    main->SetFillStyle(4000);
    main->SetBorderMode(0);
@@ -36,15 +36,15 @@ void ttbar()
    main->SetFrameBorderMode(0);
    
    TH1F *Graph_master = new TH1F("Graph_master","Main Coordinate System",7,0,1);
-   Graph_master->SetMinimum(1.278899);
-   Graph_master->SetMaximum(30000);
+   Graph_master->SetMinimum(1);
+   Graph_master->SetMaximum(500000);
    Graph_master->SetStats(0);
    Graph_master->SetLineColor(4);
    Graph_master->SetLineStyle(7);
    Graph_master->SetLineWidth(2);
    Graph_master->SetMarkerColor(4);
    Graph_master->SetMarkerStyle(21);
-   Graph_master->GetXaxis()->SetTitle("Remapped DNN output G");
+   Graph_master->GetXaxis()->SetTitle("DNN output");
    Graph_master->GetXaxis()->SetLabelFont(42);
    Graph_master->GetXaxis()->SetLabelOffset(0);
    Graph_master->GetXaxis()->SetLabelSize(0);
@@ -55,11 +55,17 @@ void ttbar()
    Graph_master->GetYaxis()->SetLabelOffset(0.00625);
    Graph_master->GetYaxis()->SetTitleOffset(1.75);
    Graph_master->GetYaxis()->SetTitleFont(42);
+   Graph_master->GetYaxis()->SetLabelSize(0.04);
+   Graph_master->GetYaxis()->SetTitleSize(0.04);
    Graph_master->GetZaxis()->SetLabelFont(42);
    Graph_master->GetZaxis()->SetLabelSize(0.035);
    Graph_master->GetZaxis()->SetTitleSize(0.035);
    Graph_master->GetZaxis()->SetTitleOffset(1);
    Graph_master->GetZaxis()->SetTitleFont(42);
+   Graph_master->GetXaxis()->SetLabelSize(0);
+   Graph_master->GetYaxis()->SetNdivisions(506);
+   Graph_master->GetXaxis()->SetNdivisions(7,false);
+
    Graph_master->Draw("hist");
    
    THStack *stack = new THStack();
@@ -67,8 +73,8 @@ void ttbar()
    stack->SetTitle("Background Stack");
    
    TH1F *stack_stack_1 = new TH1F("stack_stack_1","Background Stack",7,0,1);
-   stack_stack_1->SetMinimum(0.7157926);
-   stack_stack_1->SetMaximum(11172.76);
+   stack_stack_1->SetMinimum(0.5186529);
+   stack_stack_1->SetMaximum(3008.72);
    stack_stack_1->SetDirectory(0);
    stack_stack_1->SetStats(0);
 
@@ -113,7 +119,7 @@ void ttbar()
    hist_Nominal_stack_1->SetFillColor(1);
    hist_Nominal_stack_1->SetFillStyle(0);
    hist_Nominal_stack_1->SetLineWidth(2);
-   hist_Nominal_stack_1->GetXaxis()->SetTitle("Remapped DNN output G");
+   hist_Nominal_stack_1->GetXaxis()->SetTitle("DNN output");
    hist_Nominal_stack_1->GetXaxis()->SetLabelFont(42);
    hist_Nominal_stack_1->GetXaxis()->SetLabelSize(0.035);
    hist_Nominal_stack_1->GetXaxis()->SetTitleSize(0.035);
@@ -153,7 +159,8 @@ void ttbar()
    hist_Up__1->SetLineWidth(2);
    hist_Up__1->SetMarkerColor(4);
    hist_Up__1->SetMarkerStyle(21);
-   hist_Up__1->GetXaxis()->SetTitle("Remapped DNN output G");
+   hist_Up__1->SetMarkerSize(0);
+   hist_Up__1->GetXaxis()->SetTitle("Smoothed Remapped DNN output G");
    hist_Up__1->GetXaxis()->SetLabelFont(42);
    hist_Up__1->GetXaxis()->SetLabelSize(0.035);
    hist_Up__1->GetXaxis()->SetTitleSize(0.035);
@@ -168,7 +175,8 @@ void ttbar()
    hist_Up__1->GetZaxis()->SetTitleSize(0.035);
    hist_Up__1->GetZaxis()->SetTitleOffset(1);
    hist_Up__1->GetZaxis()->SetTitleFont(42);
-   hist_Up__1->Draw("ep same");
+   hist_Up__1->SetMarkerSize(0);
+   hist_Up__1->Draw("p same");
    
    TH1F *hist_Down__2 = new TH1F("hist_Down__2","Processed Down",7,0,1);
    hist_Down__2->SetBinContent(1,6550.428);
@@ -188,11 +196,13 @@ void ttbar()
    hist_Down__2->SetEntries(210);
    hist_Down__2->SetStats(0);
    hist_Down__2->SetLineColor(64);
+   hist_Down__2->SetMarkerSize(0);
    hist_Down__2->SetLineStyle(7);
    hist_Down__2->SetLineWidth(2);
    hist_Down__2->SetMarkerColor(64);
    hist_Down__2->SetMarkerStyle(21);
-   hist_Down__2->GetXaxis()->SetTitle("Remapped DNN output G");
+   hist_Down__2->SetMarkerSize(0);
+   hist_Down__2->GetXaxis()->SetTitle("Smoothed Remapped DNN output G");
    hist_Down__2->GetXaxis()->SetLabelFont(42);
    hist_Down__2->GetXaxis()->SetLabelSize(0.035);
    hist_Down__2->GetXaxis()->SetTitleSize(0.035);
@@ -207,7 +217,7 @@ void ttbar()
    hist_Down__2->GetZaxis()->SetTitleSize(0.035);
    hist_Down__2->GetZaxis()->SetTitleOffset(1);
    hist_Down__2->GetZaxis()->SetTitleFont(42);
-   hist_Down__2->Draw("ep same");
+   hist_Down__2->Draw("p same");
    
    TH1F *hist_HWWVBFSimpleUp__3 = new TH1F("hist_HWWVBFSimpleUp__3","Raw Up",7,0,1);
    hist_HWWVBFSimpleUp__3->SetBinContent(1,6524.553);
@@ -231,7 +241,8 @@ void ttbar()
    hist_HWWVBFSimpleUp__3->SetLineWidth(2);
    hist_HWWVBFSimpleUp__3->SetMarkerColor(2);
    hist_HWWVBFSimpleUp__3->SetMarkerStyle(20);
-   hist_HWWVBFSimpleUp__3->GetXaxis()->SetTitle("Remapped DNN output G");
+   hist_HWWVBFSimpleUp__3->SetMarkerSize(1.2);
+   hist_HWWVBFSimpleUp__3->GetXaxis()->SetTitle("Remapped DNN output G T13");
    hist_HWWVBFSimpleUp__3->GetXaxis()->SetLabelFont(42);
    hist_HWWVBFSimpleUp__3->GetXaxis()->SetLabelSize(0.035);
    hist_HWWVBFSimpleUp__3->GetXaxis()->SetTitleSize(0.035);
@@ -265,12 +276,13 @@ void ttbar()
    hist_HWWVBFSimpleDown__4->SetBinError(7,0.7430684);
    hist_HWWVBFSimpleDown__4->SetEntries(202);
    hist_HWWVBFSimpleDown__4->SetStats(0);
+   hist_HWWVBFSimpleDown__4->SetMarkerSize(1.2);
    hist_HWWVBFSimpleDown__4->SetFillColor(95);
    hist_HWWVBFSimpleDown__4->SetLineColor(95);
    hist_HWWVBFSimpleDown__4->SetLineWidth(2);
    hist_HWWVBFSimpleDown__4->SetMarkerColor(95);
    hist_HWWVBFSimpleDown__4->SetMarkerStyle(20);
-   hist_HWWVBFSimpleDown__4->GetXaxis()->SetTitle("Remapped DNN output G");
+   hist_HWWVBFSimpleDown__4->GetXaxis()->SetTitle("Remapped DNN output G T13");
    hist_HWWVBFSimpleDown__4->GetXaxis()->SetLabelFont(42);
    hist_HWWVBFSimpleDown__4->GetXaxis()->SetLabelSize(0.035);
    hist_HWWVBFSimpleDown__4->GetXaxis()->SetTitleSize(0.035);
@@ -286,8 +298,10 @@ void ttbar()
    hist_HWWVBFSimpleDown__4->GetZaxis()->SetTitleOffset(1);
    hist_HWWVBFSimpleDown__4->GetZaxis()->SetTitleFont(42);
    hist_HWWVBFSimpleDown__4->Draw("ep same");
-   
-   TLegend *leg = new TLegend(0.59,0.7325,0.9,0.92,NULL,"brNDC");
+   hist_Up__1->Draw("p same");
+   hist_Down__2->Draw("p same");
+
+   TLegend *leg = new TLegend(0.48,0.7325,0.9,0.92,NULL,"brNDC");
    leg->SetBorderSize(0);
    leg->SetTextSize(0.034);
    leg->SetLineColor(1);
@@ -295,39 +309,8 @@ void ttbar()
    leg->SetLineWidth(1);
    leg->SetFillColor(0);
    leg->SetFillStyle(0);
-   TLegendEntry *entry=leg->AddEntry("hist_Up"," Processed Up","lep");
-   entry->SetLineColor(4);
-   entry->SetLineStyle(7);
-   entry->SetLineWidth(2);
-   entry->SetMarkerColor(4);
-   entry->SetMarkerStyle(21);
-   entry->SetMarkerSize(1);
-   entry->SetTextFont(42);
-   entry=leg->AddEntry("hist_Down"," Processed Down","lep");
-   entry->SetLineColor(64);
-   entry->SetLineStyle(7);
-   entry->SetLineWidth(2);
-   entry->SetMarkerColor(64);
-   entry->SetMarkerStyle(21);
-   entry->SetMarkerSize(1);
-   entry->SetTextFont(42);
-   entry=leg->AddEntry("hist_HWWVBFSimpleUp"," Raw Up","lep");
-   entry->SetLineColor(2);
-   entry->SetLineStyle(1);
-   entry->SetLineWidth(2);
-   entry->SetMarkerColor(2);
-   entry->SetMarkerStyle(20);
-   entry->SetMarkerSize(1);
-   entry->SetTextFont(42);
-   entry=leg->AddEntry("hist_HWWVBFSimpleDown"," Raw Down","lep");
-   entry->SetLineColor(95);
-   entry->SetLineStyle(1);
-   entry->SetLineWidth(2);
-   entry->SetMarkerColor(95);
-   entry->SetMarkerStyle(20);
-   entry->SetMarkerSize(1);
-   entry->SetTextFont(42);
-   entry=leg->AddEntry("hist_Nominal_stack_1"," Nominal","f");
+
+   TLegendEntry *entry=leg->AddEntry("hist_Nominal_stack_1"," Powheg+Pythia8 (nominal)","f");
    entry->SetFillColor(1);
    entry->SetLineColor(1);
    entry->SetLineStyle(1);
@@ -336,17 +319,57 @@ void ttbar()
    entry->SetMarkerStyle(21);
    entry->SetMarkerSize(1);
    entry->SetTextFont(42);
+   entry=leg->AddEntry("hist_HWWVBFSimpleUp"," aMC@NLO+Pythia8","lep");
+   entry->SetLineColor(2);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(2);
+   entry->SetMarkerColor(2);
+   entry->SetMarkerStyle(20);
+   entry->SetMarkerSize(1);
+   entry->SetTextFont(42);
+   entry=leg->AddEntry("hist_HWWVBFSimpleDown"," aMC@NLO+Pythia8 symmetrized","lep");
+   entry->SetLineColor(95);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(2);
+   entry->SetMarkerColor(95);
+   entry->SetMarkerStyle(20);
+   entry->SetMarkerSize(1);
+   entry->SetTextFont(42);
+   entry=leg->AddEntry("hist_Up"," Smoothed variation up","lp");
+   entry->SetLineColor(4);
+   entry->SetLineStyle(7);
+   entry->SetLineWidth(2);
+   entry->SetMarkerColor(4);
+   entry->SetMarkerStyle(0);
+   entry->SetMarkerSize(0);
+   entry->SetTextFont(42);
+   entry=leg->AddEntry("hist_Down"," Smoothed variation down","lp");
+   entry->SetLineColor(64);
+   entry->SetLineStyle(7);
+   entry->SetLineWidth(2);
+   entry->SetMarkerColor(64);
+   entry->SetMarkerStyle(0);
+   entry->SetMarkerSize(0);
+   entry->SetTextFont(42);
    leg->Draw();
-   TLatex *   tex = new TLatex(0.95,0.96,"theo_ttbar_matching_MECOff_grecOff/SR/ttbar");
-tex->SetNDC();
-   tex->SetTextAlign(31);
+
+   TLatex *   tex = new TLatex(0.19,0.89,"VBF-enriched #it{N}_{jet} #geq 2 SR");
+   tex->SetNDC();
+   //tex->SetTextAlign(31);
    tex->SetTextFont(42);
-   tex->SetTextSize(0.024);
+   tex->SetTextSize(0.035);
+   tex->SetLineWidth(2);
+   tex->Draw();
+   tex = new TLatex(0.19,0.85,"#it{t#bar{t}}");
+   tex->SetNDC();
+   //tex->SetTextAlign(31);
+   tex->SetTextFont(42);
+   tex->SetTextSize(0.035);
    tex->SetLineWidth(2);
    tex->Draw();
    
    TH1F *Graph_master_copy = new TH1F("Graph_master_copy","Main Coordinate System",7,0,1);
-   Graph_master_copy->SetMinimum(1.278899);
+   Graph_master_copy->SetMinimum(1.145184);
    Graph_master_copy->SetMaximum(30000);
    Graph_master_copy->SetDirectory(0);
    Graph_master_copy->SetStats(0);
@@ -355,7 +378,7 @@ tex->SetNDC();
    Graph_master_copy->SetLineWidth(2);
    Graph_master_copy->SetMarkerColor(4);
    Graph_master_copy->SetMarkerStyle(21);
-   Graph_master_copy->GetXaxis()->SetTitle("Remapped DNN output G");
+   Graph_master_copy->GetXaxis()->SetTitle("DNN output");
    Graph_master_copy->GetXaxis()->SetLabelFont(42);
    Graph_master_copy->GetXaxis()->SetLabelOffset(0);
    Graph_master_copy->GetXaxis()->SetLabelSize(0);
@@ -371,6 +394,10 @@ tex->SetNDC();
    Graph_master_copy->GetZaxis()->SetTitleSize(0.035);
    Graph_master_copy->GetZaxis()->SetTitleOffset(1);
    Graph_master_copy->GetZaxis()->SetTitleFont(42);
+   Graph_master_copy->GetXaxis()->SetLabelSize(0);
+   Graph_master_copy->GetYaxis()->SetNdivisions(506);
+   Graph_master_copy->GetXaxis()->SetNdivisions(7,false);
+
    Graph_master_copy->Draw("sameaxis");
    main->Modified();
    histogram->cd();
@@ -417,11 +444,11 @@ tex->SetNDC();
 
    ci = TColor::GetColor("#0000ff");
    ratioDenominatorErrors_totalStack__5->SetLineColor(ci);
-   ratioDenominatorErrors_totalStack__5->SetLineStyle(7);
+   ratioDenominatorErrors_totalStack__5->SetLineStyle(1);
    ratioDenominatorErrors_totalStack__5->SetLineWidth(2);
    ratioDenominatorErrors_totalStack__5->SetMarkerColor(4);
    ratioDenominatorErrors_totalStack__5->SetMarkerStyle(0);
-   ratioDenominatorErrors_totalStack__5->GetXaxis()->SetTitle("Remapped DNN output G");
+   ratioDenominatorErrors_totalStack__5->GetXaxis()->SetTitle("DNN output");
    ratioDenominatorErrors_totalStack__5->GetXaxis()->SetLabelFont(42);
    ratioDenominatorErrors_totalStack__5->GetXaxis()->SetLabelOffset(0.00625);
    ratioDenominatorErrors_totalStack__5->GetXaxis()->SetLabelSize(0.07272727);
@@ -441,10 +468,20 @@ tex->SetNDC();
    ratioDenominatorErrors_totalStack__5->GetZaxis()->SetTitleSize(0.035);
    ratioDenominatorErrors_totalStack__5->GetZaxis()->SetTitleOffset(1);
    ratioDenominatorErrors_totalStack__5->GetZaxis()->SetTitleFont(42);
+   ratioDenominatorErrors_totalStack__5->GetYaxis()->SetNdivisions(506);
+   ratioDenominatorErrors_totalStack__5->GetXaxis()->SetNdivisions(6,false);
+   ratioDenominatorErrors_totalStack__5->GetXaxis()->SetBinLabel(1, "[0,0.25]"); 
+   ratioDenominatorErrors_totalStack__5->GetXaxis()->SetBinLabel(2, "[0.25,0.52]"); 
+   ratioDenominatorErrors_totalStack__5->GetXaxis()->SetBinLabel(3, "[0.52,0.68]"); 
+   ratioDenominatorErrors_totalStack__5->GetXaxis()->SetBinLabel(4, "[0.68,0.77]"); 
+   ratioDenominatorErrors_totalStack__5->GetXaxis()->SetBinLabel(5, "[0.77,0.83]"); 
+   ratioDenominatorErrors_totalStack__5->GetXaxis()->SetBinLabel(6, "[0.83,0.87]"); 
+   ratioDenominatorErrors_totalStack__5->GetXaxis()->SetBinLabel(7, "[0.87,1.00]"); 
+
    ratioDenominatorErrors_totalStack__5->Draw("E2");
    TLine *line = new TLine(0,1,1,1);
-   line->SetLineStyle(7);
-   line->SetLineWidth(2);
+   line->SetLineStyle(1);
+   line->SetLineWidth(1);
    line->Draw();
    
    TH1F *ratio_hist_Up_totalStack__6 = new TH1F("ratio_hist_Up_totalStack__6","Processed Up",7,0,1);
@@ -466,10 +503,10 @@ tex->SetNDC();
    ratio_hist_Up_totalStack__6->SetStats(0);
    ratio_hist_Up_totalStack__6->SetLineColor(4);
    ratio_hist_Up_totalStack__6->SetLineStyle(7);
-   ratio_hist_Up_totalStack__6->SetLineWidth(2);
+   ratio_hist_Up_totalStack__6->SetLineWidth(3);
    ratio_hist_Up_totalStack__6->SetMarkerColor(4);
    ratio_hist_Up_totalStack__6->SetMarkerStyle(21);
-   ratio_hist_Up_totalStack__6->GetXaxis()->SetTitle("Remapped DNN output G");
+   ratio_hist_Up_totalStack__6->GetXaxis()->SetTitle("Smoothed Remapped DNN output G");
    ratio_hist_Up_totalStack__6->GetXaxis()->SetLabelFont(42);
    ratio_hist_Up_totalStack__6->GetXaxis()->SetLabelSize(0.035);
    ratio_hist_Up_totalStack__6->GetXaxis()->SetTitleSize(0.035);
@@ -505,10 +542,10 @@ tex->SetNDC();
    ratio_hist_Down_totalStack__7->SetStats(0);
    ratio_hist_Down_totalStack__7->SetLineColor(64);
    ratio_hist_Down_totalStack__7->SetLineStyle(7);
-   ratio_hist_Down_totalStack__7->SetLineWidth(2);
+   ratio_hist_Down_totalStack__7->SetLineWidth(3);
    ratio_hist_Down_totalStack__7->SetMarkerColor(64);
    ratio_hist_Down_totalStack__7->SetMarkerStyle(21);
-   ratio_hist_Down_totalStack__7->GetXaxis()->SetTitle("Remapped DNN output G");
+   ratio_hist_Down_totalStack__7->GetXaxis()->SetTitle("Smoothed Remapped DNN output G");
    ratio_hist_Down_totalStack__7->GetXaxis()->SetLabelFont(42);
    ratio_hist_Down_totalStack__7->GetXaxis()->SetLabelSize(0.035);
    ratio_hist_Down_totalStack__7->GetXaxis()->SetTitleSize(0.035);
@@ -547,7 +584,7 @@ tex->SetNDC();
    ratio_hist_HWWVBFSimpleUp_totalStack__8->SetLineWidth(2);
    ratio_hist_HWWVBFSimpleUp_totalStack__8->SetMarkerColor(2);
    ratio_hist_HWWVBFSimpleUp_totalStack__8->SetMarkerStyle(20);
-   ratio_hist_HWWVBFSimpleUp_totalStack__8->GetXaxis()->SetTitle("Remapped DNN output G");
+   ratio_hist_HWWVBFSimpleUp_totalStack__8->GetXaxis()->SetTitle("Remapped DNN output G T13");
    ratio_hist_HWWVBFSimpleUp_totalStack__8->GetXaxis()->SetLabelFont(42);
    ratio_hist_HWWVBFSimpleUp_totalStack__8->GetXaxis()->SetLabelSize(0.035);
    ratio_hist_HWWVBFSimpleUp_totalStack__8->GetXaxis()->SetTitleSize(0.035);
@@ -587,7 +624,7 @@ tex->SetNDC();
    ratio_hist_HWWVBFSimpleUp_totalStack__9->SetMarkerColor(2);
    ratio_hist_HWWVBFSimpleUp_totalStack__9->SetMarkerStyle(20);
    ratio_hist_HWWVBFSimpleUp_totalStack__9->SetMarkerSize(0);
-   ratio_hist_HWWVBFSimpleUp_totalStack__9->GetXaxis()->SetTitle("Remapped DNN output G");
+   ratio_hist_HWWVBFSimpleUp_totalStack__9->GetXaxis()->SetTitle("Remapped DNN output G T13");
    ratio_hist_HWWVBFSimpleUp_totalStack__9->GetXaxis()->SetLabelFont(42);
    ratio_hist_HWWVBFSimpleUp_totalStack__9->GetXaxis()->SetLabelSize(0.035);
    ratio_hist_HWWVBFSimpleUp_totalStack__9->GetXaxis()->SetTitleSize(0.035);
@@ -626,7 +663,7 @@ tex->SetNDC();
    ratio_hist_HWWVBFSimpleDown_totalStack__10->SetLineWidth(2);
    ratio_hist_HWWVBFSimpleDown_totalStack__10->SetMarkerColor(95);
    ratio_hist_HWWVBFSimpleDown_totalStack__10->SetMarkerStyle(20);
-   ratio_hist_HWWVBFSimpleDown_totalStack__10->GetXaxis()->SetTitle("Remapped DNN output G");
+   ratio_hist_HWWVBFSimpleDown_totalStack__10->GetXaxis()->SetTitle("Remapped DNN output G T13");
    ratio_hist_HWWVBFSimpleDown_totalStack__10->GetXaxis()->SetLabelFont(42);
    ratio_hist_HWWVBFSimpleDown_totalStack__10->GetXaxis()->SetLabelSize(0.035);
    ratio_hist_HWWVBFSimpleDown_totalStack__10->GetXaxis()->SetTitleSize(0.035);
@@ -666,7 +703,7 @@ tex->SetNDC();
    ratio_hist_HWWVBFSimpleDown_totalStack__11->SetMarkerColor(95);
    ratio_hist_HWWVBFSimpleDown_totalStack__11->SetMarkerStyle(20);
    ratio_hist_HWWVBFSimpleDown_totalStack__11->SetMarkerSize(0);
-   ratio_hist_HWWVBFSimpleDown_totalStack__11->GetXaxis()->SetTitle("Remapped DNN output G");
+   ratio_hist_HWWVBFSimpleDown_totalStack__11->GetXaxis()->SetTitle("Remapped DNN output G T13");
    ratio_hist_HWWVBFSimpleDown_totalStack__11->GetXaxis()->SetLabelFont(42);
    ratio_hist_HWWVBFSimpleDown_totalStack__11->GetXaxis()->SetLabelSize(0.035);
    ratio_hist_HWWVBFSimpleDown_totalStack__11->GetXaxis()->SetTitleSize(0.035);
@@ -682,9 +719,14 @@ tex->SetNDC();
    ratio_hist_HWWVBFSimpleDown_totalStack__11->GetZaxis()->SetTitleOffset(1);
    ratio_hist_HWWVBFSimpleDown_totalStack__11->GetZaxis()->SetTitleFont(42);
    ratio_hist_HWWVBFSimpleDown_totalStack__11->Draw("SAME P E0");
+
+   ratio_hist_Up_totalStack__6->Draw("histSAME");
+   ratio_hist_Down_totalStack__7->Draw("histSAME");
+
    sub->Modified();
    histogram->cd();
    histogram->Modified();
    histogram->cd();
    histogram->SetSelected(histogram);
+   histogram->SaveAs("ttbar-matching-smoothed.pdf");
 }
