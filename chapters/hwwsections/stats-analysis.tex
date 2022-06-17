@@ -6,15 +6,15 @@ This section first provides details on the statistical model, including the trea
 
 \subsection{Background templates}
 All background processes discussed in \cref{sec:bkg-estimation} are included in the likelihood. 
-The normalization of processes for which CRs are defined is controlled by freely floating NFs in the fit. All other processes are normalized to their respective theoretical cross sections\footnote{Their NFs are fixed to 1.}.
+The normalization of processes for which CRs are defined is controlled by freely floating NFs in the fit. All other processes are normalized to their respective theoretical cross sections.
 
 \subsection{Cross-section fit inputs}
-The signal cross sections are parametrized as signal strengths in the likelihood depending on the target of the fit, for example,
-\begin{equation}
-    \label{eq:incl-ggF-VBF-signal-strengths}
-    \mu_{\text{ggF/VBF}} = \frac{ [ \sigma_{\text{ggF/VBF}}  \times \BR(H \to WW^*) ]_\text{meas} } { [ \sigma_{\text{ggF/VBF}} \times \BR(H \to WW^*) ]_\text{SM}},
-\end{equation}
-and extracted from a simultaneous fit to the data in multiple regions.
+The signal cross sections are parametrized as signal strengths in the likelihood and extracted from a simultaneous fit to the data in multiple regions.
+%depending on the target of the fit, for example,
+% \begin{equation}
+%     \label{eq:incl-ggF-VBF-signal-strengths}
+%     \mu_{\text{ggF/VBF}} = \frac{ [ \sigma_{\text{ggF/VBF}}  \times \BR(H \to WW^*) ]_\text{meas} } { [ \sigma_{\text{ggF/VBF}} \times \BR(H \to WW^*) ]_\text{SM}},
+% \end{equation}
 For the measurement of the inclusive ggF and VBF production cross sections a fit is performed to all nominal SRs and CRs in the \ZeroJet, \OneJet, and \TwoJet categories, as defined in \cref{sec:event-categorization,sec:bkg-estimation}. 
 The ggF and VBF cross sections are the two unconstrained PoIs, parametrized as shown in \cref{eq:incl-ggF-VBF-signal-strengths}.
 The same regions are used for the measurement of the combined ggF and VBF cross section, using a single PoI to scale the ggF and VBF yields. 
@@ -59,10 +59,10 @@ Furthermore, the shape component of uncertainties of minor backgrounds ($V\gamma
 
 Statistical fluctuations can also cause the up and down variations to be asymmetric around the nominal value. 
 For normalization uncertainties whose up and down variations differ by a factor of two or have the same sign, the larger variation is fixed and also used as ``opposite'' variation by mirroring it with respect to nominal.
-Similarly, for shape uncertainties that have at least one bin where the up and down variations have the same sign, the full shape uncertainty is symmetrized by fixing the larger variation and mirroring it with respect to nominal for use as the ``opposite'' variation in each bin.n
+Similarly, for shape uncertainties that have at least one bin where the up and down variations have the same sign, the full shape uncertainty is symmetrized by fixing the larger variation and mirroring it with respect to nominal for use as the ``opposite'' variation in each bin.
 
 \paragraph{Smoothing of shape uncertainties}
-For the DNN discriminant in the VBF category, a smoothing procedure is applied to background shape uncertainties that are subject to large fluctuations. 
+For the DNN discriminant in the VBF category, a smoothing procedure is applied to background shape uncertainties whose estimates are subject to large fluctuations. 
 The smoothing procedure is based on a bin merging strategy together with the 353QH running median algorithm~\cite{Friedman353QH}. 
 An example of an uncertainty processed in such a way is shown in \cref{fig:dnn:smoothing}.
 \begin{figure}[th]
@@ -75,17 +75,42 @@ An example of an uncertainty processed in such a way is shown in \cref{fig:dnn:s
         % {
         %     \newImageResizeCustom{0.48}{figures/plots/CKKW-smooth.pdf}
         % }
-    {\caption{DNN output distribution for the nominal \ttbar sample (\Powheg+\PYTHIAV), an alternative sample (\aMCATNLO+\PYTHIAV) including the symmetrized distribution with respect to the nominal, and smoothed distributions based on the difference between the nominal and alternative sample. The alternative sample is used to estimate the uncertainty due to the choice of matching procedure between matrix element calculations and the parton shower. The smoothed distribution is used in the statistical analysis. More information on the smoothing procedure can be found in the text.
+    {\caption{DNN output distribution for the nominal \ttbar sample (\Powheg+\PYTHIAV), an alternative sample (\aMCATNLO+\PYTHIAV) including the symmetrized distribution with respect to the nominal, and smoothed distributions based on the difference between the nominal and alternative sample. The alternative sample is used to estimate the uncertainty due to the choice of matching procedure between matrix element calculations and the parton shower. The smoothed distribution is used in the statistical analysis as varied template. More information on the smoothing procedure can be found in the text.
     \label{fig:dnn:smoothing} }}
 \end{figure}
 \TDinote{}{Update plot!}
 
 \subsection{Validation of likelihood fit}
+The statistical model is validated by monitoring the values of the NPs obtained from the fit (post-fit values). 
+This is done for each signal category first, before running the combined analysis. A representative list of NPs obtained a fit to only the VBF-enriched \TwoJet SR and its associated VBF CRs is shown in \cref{fig:fit:breakdown}. 
+
+
+\Cref{fig:fit:breakdown} lists the post-fit values of the individual NPs, including their impact on the signal strength $\mu_{\rm VBF}$.
 \TDinote{}{To be incorporated!}
 \TDinote{}{Include pull and breakdown plot for VBF}
 \paragraph{Pulls}
 \paragraph{Constraints}
 \paragraph{Breakdown of uncertainties}
+
+% A listing of the results for the individual parameters obtained in the fit is shown in Fig. 4.25. The total uncertainty has been broken down to the impacts of each individual nuisance parameter (and for certain groups of nuisance parameters). Shown are the breakdowns for the fit to the observed data, as well as for a control fit to an Asimov data set generated with the assumption of μ = 1. The postfit values and uncertainties of the individual nuisance parameters are shown as well, where the constrained nuisance parameters have been normalized to their respective constraints.
+
+
+\begin{figure}[th]
+    \centering
+        \newImageResizeCustom{0.6}{figures/plots/breakdown/ranking_asimov_observed_thesis_muVBF.pdf}
+    {\caption{Impact of individual NPs on the VBF signal strength $\mu$ for the nominal VBF analysis, shown for the fit to observed data (green) and the Asimov dataset (orange). The leading 20 NPs are shown in decreasing order of their impact on $\mu$ (top x-axis).
+    The impact of a given NP is derived by comparing the uncertainty on $\mu$ resulting from a fully unconditional fit and a fit with the respective NP fixed to its nominal value. The comparison is based on the square root of the difference in quadrature of the two post-fit uncertainties on $\mu$. 
+    The dots indicate the pull (bottom x-axis), that is, the post-fit values of the NPs, $\hat{\theta}$, relative to their nominal values, $\theta_0$. 
+    The associated error bars show the post-fit uncertainties of the NPs relative to their nominal uncertainties. 
+    The pull is zero by definition for the fit to the Asimov dataset.
+% (b): Breakdown
+% of the contribution of groups of NPs to the uncertainty on the V H
+% PoI. The sum in quadrature of the individual contributions differs
+% from the total uncertainty due to correlations between the NPs. Both
+% Figures are obtained from a (1+1)-PoI fit. Published in Ref. [5].
+    \label{fig:fit:breakdown} }}
+\end{figure}
+
 
 
 % Combination:

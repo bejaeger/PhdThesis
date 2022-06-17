@@ -1,0 +1,34 @@
+The \HWW events that can be best separated from backgrounds at the LHC are the ones where the two $W$ bosons decay leptonically.
+This analysis therefore analyzes events with two leptons in the final state. 
+The most relevant background contributions come from $WW$ production, events with top quarks, $W$ production in association with jets ($W$+jets) where a jet is misidentified as a lepton, other diboson processes, and Drell-Yan processes. In particular Drell-Yan events are produced at large cross sections at the LHC. To reduce their contamination only final states with different-flavor leptons are selected, that is, with exactly one reconstructed muon and electron.
+Given the features of the signal and background processes, that are discussed in detail below, the analysis is divided into four signal categories separated by jet multiplicity and production mode.
+Three categories target the ggF production mode by separating events into a \ZeroJet, \OneJet, and \TwoJet category, and one category targets the VBF production mode, also requiring \TwoJet. 
+This categorization is illustrated in \cref{fig:signal-categorization}. 
+\begin{figure}
+    \newImageResizeCustom{0.7}{figures/hww/introduction/analysis-categorization.png}
+    \caption{Schematic view of the signal categories defined in the \HWW analysis.}
+    \label{fig:signal-categorization}
+\end{figure}
+Each of the categories is first optimized and validated separately before being statistically combined. 
+The categories targeting the ggF signal use event selections to increase the purity of signal events. 
+The VBF signal is discriminated using a DNN that distinguishes VBF signal from non-VBF events. 
+The development of the DNN is described in \cref{sec:dnn}. 
+To extract the signals and measure their cross sections times \HWW branching fraction, a likelihood fit is performed simultaneously in all categories. 
+The signal yields are parametrized as signal strengths in the likelihood, 
+\begin{equation}
+    \label{eq:incl-ggF-VBF-signal-strengths}
+    \mu_{\text{signal}} = \frac{ [ \sigma_{\text{signal}}  \times \BR(H \to WW^*) ]_\text{meas} } { [ \sigma_{\text{signal}} \times \BR(H \to WW^*) ]_\text{SM}}, 
+\end{equation}
+with the signal definition depending on the type of measurement that is performed.
+The analysis presented performs three types of measurements:
+\begin{itemize}
+    \item Measurement of the inclusive VBF and ggF production cross sections by extracting two signal strengths $\mu_{\text{VBF}}$ and $\mu_{\text{ggF}}$.
+    \item Measurement of the combined VBF and ggF production cross section, treating the VBF and ggF signal with a common signal strength $\mu_{\text{VBF+ggF}}$. 
+    \item Measurement of differential cross sections separated in kinematic regions following the STXS framework. In total 11 signal strengths are measured targeting the ggF and VBF production mode. 
+\end{itemize}
+In addition, the excess of the VBF signal over the background expectation is reported in terms of its discovery significance, yielding, for the first time based on a single Higgs decay mode, the observation of the VBF production mode.
+The results presented here supersede similar measurements performed with the same dataset but based on a previous version of the analysis~\cite{ATLAS-CONF-2021-014}.
+The main differences between the analyses are changes in the simulated samples used, improved treatment of systematic uncertainties, and an improved DNN discriminant in the VBF category. 
+
+% \section{Previous Results and Objectives of Measurement}
+% \label{sec:prev-results}
