@@ -6,18 +6,21 @@ The theoretical uncertainties for both the signal and background processes arise
 All uncertainties are taken into account by constructing respective varied MC templates of the statistical model and using them to define the corresponding nuisance parameters, as described in \cref{chap:statistics}.
 
 \subsection{Experimental uncertainties}
-Experimental uncertainties are typically derived in separate calibration measurements, each of which provides a set of sometimes many sources of uncertainty to be considered in physical analyses.
+Experimental uncertainties are typically derived in separate calibration measurements, each of which provides a set of sometimes many sources of uncertainty to be considered in physics analyses.
 For example, the uncertainties related to the jet energy resolution arise from different sources such as pile-up conditions, method non-closures, etc., which is explained in detail in \cref{chap:calibration}.
 % More details on the uncertainties related to jets, in particular the jet energy resolution, are provided in \cref{chap:calibration}. 
-In the statistical analysis, the experimental uncertainties are constraint in the likelihood by Gaussians with widths corresponding to the derived nominal uncertainties.
+In the statistical analysis, the experimental uncertainties are constraint in the likelihood by Gaussian functions with widths corresponding to the nominal uncertainties derived.
 The experimental uncertainties can be further divided into uncertainties affecting the entire event, referred to as \emph{scale-factor} (SF) uncertainties, and uncertainties specific to individual physics objects, referred to as \emph{four-vector} (P4) uncertainties.
 While the former is applied to the events as a flat scale factor and thus cannot change the shape of the final discriminant, the latter can cause events to migrate between different histogram bins and thus induce a shape difference between the nominal and the varied template.
-A complete list of experimental uncertainties considered is provided in \cref{tab:exp-uncertainties}, including references to the relevant calibration measurements. 
+A complete list of experimental uncertainties considered is provided in \cref{tab:exp-uncertainties}, including references to the relevant calibration measurements where applicable.
+The uncertainty on the luminosity is obtained using the LUCID-2 detector~\cite{ATLAS-CONF-2019-021} and only applied to processes not estimated with CRs. 
+The uncertainty on the pile-up reweighting procedure is estimated by varying the scale factor used for the reweighting. 
+Uncertainties on the physics objects included in the \MET calculation, that is, electrons, muons, and jets, are propagated to the \MET object. In addition, specific \MET uncertainties are included to account for uncertainties of the \MET soft term.
 
 % From MASTER thesis:
 % Experimental uncertainties are usually derived externally by dedicated calibration measurements, based on actual data measurements. The constraint terms for the introduced nuisance parameters are represented by Gaussians with a width of the provided nominal uncertainty. Since the subsidiary measurements are generally based on many events, this assumption is supported by the central limit theorem.
-Additionally, the uncertainties associated to the background with misidentified leptons are considered as experimental uncertainties. They enter via the uncertainties derived for the fake factors, as explained in \cref{subsec:misid-bkg}, and thus only impact the normalisation of the statistical templates. They are discussed in \cref{subsec:misid-bkg}.
-\TDinote{}{Maybe provide more info to exp uncertainties}
+In addition, the uncertainties associated to the background with misidentified leptons are considered as experimental uncertainties. They enter via the uncertainties derived for the fake factors, as explained in \cref{subsec:misid-bkg}, and thus only impact the normalisation of the statistical templates. They are discussed in \cref{subsec:misid-bkg}.
+\TDinote{}{Maybe provide more info about size of uncertainties in table of exp uncertainties}
 \TDinote{}{At least do one thing and refer to JER uncertainties!}
 % NOT SURE IF I SHOULD DO THE FOLLOWING! START WITHOUT, maybe reconsider
 % - Discuss some of the largest SHAPE uncertainties in VBF? 
@@ -53,7 +56,7 @@ The uncertainties can affect both the overall normalisation of the signal and ba
 
 \subsubsection{Signal uncertainties}
 Uncertainties affecting the signal processes can be separated into two types: uncertainties that only affect the predicted SM cross section and thus only impact the overall normalisation of the process, and uncertainties arising from the acceptance effects due to the limited detector coverage or analysis selections. The latter can also impact the shape of the final discriminants. 
-In the case of cross-section measurements, the first type of uncertainties are factored out and not included in the statistical model. For signal strength measurement both uncertainty components are included. 
+In the case of cross-section measurements, the first type of uncertainties are factored out and not included in the statistical model. For the measurement of signal strengths, both uncertainty components are included. 
 
 For both the ggF and VBF signal process, the uncertainties are estimated that arise from the choice of PDF, including the uncertainties on $\alpha_s$, the choice of parton shower model, and matrix element matching.
 The PDF uncertainty is estimated by taken the standard deviation of in total 30 independent Hessian-reduced error sets corresponding to the PDFLHC15 set \cite{Butterworth:2015oua}. 
@@ -61,8 +64,8 @@ The parton shower and matrix element matching uncertainty is derived from the sa
 Cross-section uncertainties arising from both missing higher-order contributions in the cross-section calculations and migration effects on the ggF cross sections in different \Njets categories are estimated according to the descriptions provided in \ccite{deFlorian:2016spz,Stewart:2011cf,Stewart:2013faa,Liu:2013hba,Boughezal:2013oha,Gangal:2013nxa}.
 This includes uncertainties from the choice of factorization and renormalization scales, the choice of resummation scales, and the ggF migrations between the \ZeroJet and \OneJet regions or between the $N_{\text{jet}} \ge 1$  and \TwoJet categories.
 For the ggF migration uncertainties in the \TwoJet categories the so-called Steward Tackmann procedure is used, where the inclusive cross sections in categories $N_{\text{jet}} \ge N$ and $N_{\text{jet}} \ge N+1$ are assumed to be independent and therefore the uncertainty on the exclusive cross section in the $N_{\text{jet}} = N$ can be estimated by the sum in quadrature of the uncertainties of the inclusive cross sections.
+A final uncertainty of 2.2\% is applied to the signal cross sections assumed, to account for the uncertainty on the \HWW branching fraction. 
 %OR THIS: where uncertainties in exclusive jet bins are estimated based on scale variations in inclusive bins.
-
 
 
 \paragraph{STXS signal uncertainties}
@@ -116,10 +119,10 @@ The uncertainties due to the QCD scale choices, the choice of PDF, and $\alpha_s
 % The PDF and $alpha_s$ uncertainties are evaluated from the standard deviation of 100 NNPDF3.0NLO replicas. 
 % The PDF replicas and alphahigh,low s are included as alternative weights in the nominal \Sherpa samples.
 The uncertainty due to the choice of parton shower model is covered by two separate comparisons based on generator-level samples.
-The first accounts for the uncertainty due to the resummation scale choice in the nominal sample that determines the matching of the NLO matrix elements with the parton shower. 
+The first accounts for the uncertainty due to the resummation scale choice (denoted \emph{QSF} uncertainty) in the nominal sample that determines the matching of the NLO matrix elements with the parton shower. 
 To assess the uncertainty, the resummation scale is varied by a factor of two up and down.
-The second comparison varies how the momentum recoil is evaluated in the parton shower provided by the \Sherpa generator. The strategy used in the nominal MC simulation is described in \cite{Hoeche:2009rj}, the alternative approach is detailed in \cite{Schumann:2007mg}. 
-The nominal \Sherpa sample uses a cut at $Q=20\,$GeV to separate the phase spaces covered by the matrix element calculations and the parton shower. This scale is arbitrary and the associated uncertainty due to that choice is estimated by varying it up and down such that $Q = 15\,\GeV$ and $Q = 30\,\GeV$. The uncertainty is estimated based on generator-level sample comparisons.
+In the second comparison, the momentum recoil is evaluated differently in the parton shower provided by the \Sherpa generator (\emph{CSSKIN} uncertainty). The strategy used in the nominal MC simulation is described in \cite{Hoeche:2009rj}, the alternative approach is detailed in \cite{Schumann:2007mg}. 
+The nominal \Sherpa sample uses a cut at $Q=20\,$GeV to separate the phase spaces covered by the matrix element calculations and the parton shower. This scale is arbitrary and the associated uncertainty due to that choice is estimated by varying it up and down such that $Q = 15\,\GeV$ and $Q = 30\,\GeV$ (\emph{CKKW} uncertainty). The uncertainty is estimated based on generator-level sample comparisons.
 % \todo{Not sure if this is maybe too much detail?}
 % \todo{What's the difference between resummation and matching/merging uncertainty?}
 % \todo{Introduce abbreviations, QSF, CSSKIN, CKKW?}

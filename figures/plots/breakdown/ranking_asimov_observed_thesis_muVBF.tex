@@ -75,26 +75,26 @@
 \draw[Overlay.Pulls.PULLS.observed](-1,3) -- (1,3);\node[dot,colOverlay.Pulls.PULLS.observed] at (0,3) {};
 \node[anchor=west] at(1.1,3){Observed Pull: $(\hat{\theta}_{\mathrm{asm}} - \theta_0) / \Delta \theta_0$};
 \end{scope}\pgfdeclarelayer{background}\pgfsetlayers{background,main}
-\node[scale=1,anchor=west,rotate=0] at (1.5,-1) {theo\_VBF\_shower};
-\node[scale=1,anchor=west,rotate=0] at (1.5,-2) {theo\_VBF\_matching};
-\node[scale=1,anchor=west,rotate=0] at (1.5,-3) {theo\_ttbar\_matching\_vbf};
-\node[scale=1,anchor=west,rotate=0] at (1.5,-4) {theo\_ggf\_shower};
-\node[scale=1,anchor=west,rotate=0] at (1.5,-5) {ATLAS\_MET\_SoftTrk\_ResoPara};
-\node[scale=1,anchor=west,rotate=0] at (1.5,-6) {ATLAS\_MET\_SoftTrk\_ResoPerp};
-\node[scale=1,anchor=west,rotate=0] at (1.5,-7) {theo\_ww\_QSF\_vbf};
-\node[scale=1,anchor=west,rotate=0] at (1.5,-8) {theo\_HWW\_branchFrac};
-\node[scale=1,anchor=west,rotate=0] at (1.5,-9) {theo\_ww\_CKKW\_vbf};
-\node[scale=1,anchor=west,rotate=0] at (1.5,-10) {theo\_ttbar\_fsr\_vbf};
-\node[scale=1,anchor=west,rotate=0] at (1.5,-11) {ATLAS\_LUMI};
-\node[scale=1,anchor=west,rotate=0] at (1.5,-12) {theo\_ww\_scale\_vbf};
-\node[scale=1,anchor=west,rotate=0] at (1.5,-13) {theo\_ww\_CSSKIN\_vbf};
-\node[scale=1,anchor=west,rotate=0] at (1.5,-14) {ATLAS\_JES\_Flavor\_Comp};
-\node[scale=1,anchor=west,rotate=0] at (1.5,-15) {theo\_ttbar\_shower\_vbf};
-\node[scale=1,anchor=west,rotate=0] at (1.5,-16) {ATLAS\_JER\_EffectiveNP\_1};
-\node[scale=1,anchor=west,rotate=0] at (1.5,-17) {theo\_VBF\_pdf4lhc};
-\node[scale=1,anchor=west,rotate=0] at (1.5,-18) {ATLAS\_MET\_SoftTrk\_Scale};
-\node[scale=1,anchor=west,rotate=0] at (1.5,-19) {ATLAS\_JES\_EtaInter\_Model};
-\node[scale=1,anchor=west,rotate=0] at (1.5,-20) {ATLAS\_PRW\_DATASF};
+\node[scale=1,anchor=west,rotate=0] at (1.5,-1) {VBF shower};
+\node[scale=1,anchor=west,rotate=0] at (1.5,-2) {VBF matching};
+\node[scale=1,anchor=west,rotate=0] at (1.5,-3) {ttbar matching};
+\node[scale=1,anchor=west,rotate=0] at (1.5,-4) {ggF shower};
+\node[scale=1,anchor=west,rotate=0] at (1.5,-5) {ATLAS $E_{\rm T}^{\mathrm{miss}}$ soft term res., paralell};
+\node[scale=1,anchor=west,rotate=0] at (1.5,-6) {ATLAS $E_{\rm T}^{\mathrm{miss}}$ soft term res., perpendicular};
+\node[scale=1,anchor=west,rotate=0] at (1.5,-7) {$WW$ QSF};
+\node[scale=1,anchor=west,rotate=0] at (1.5,-8) {$H \to WW$ branching fraction};
+\node[scale=1,anchor=west,rotate=0] at (1.5,-9) {$WW$ CKKW};
+\node[scale=1,anchor=west,rotate=0] at (1.5,-10) {$t\bar{t}$ FSR};
+\node[scale=1,anchor=west,rotate=0] at (1.5,-11) {ATLAS luminosity};
+\node[scale=1,anchor=west,rotate=0] at (1.5,-12) {$WW$ QCD scale};
+\node[scale=1,anchor=west,rotate=0] at (1.5,-13) {$WW$ CSSKIN};
+\node[scale=1,anchor=west,rotate=0] at (1.5,-14) {ATLAS JES flavor composition};
+\node[scale=1,anchor=west,rotate=0] at (1.5,-15) {$t\bar{t}$ shower};
+\node[scale=1,anchor=west,rotate=0] at (1.5,-16) {ATLAS JER effective NP1};
+\node[scale=1,anchor=west,rotate=0] at (1.5,-17) {VBF PDF};
+\node[scale=1,anchor=west,rotate=0] at (1.5,-18) {ATLAS $E_{\rm T}^{\mathrm{miss}}$ soft term energy scale};
+\node[scale=1,anchor=west,rotate=0] at (1.5,-19) {ATLAS JES $\eta$ intercalibration};
+\node[scale=1,anchor=west,rotate=0] at (1.5,-20) {ATLAS pile-up reweighting};
 \begin{scope}[name=ranking,colEffectAxes,xscale=6.66667]
   \draw[Overlay.Ranking.BREAKDOWNS.observedTwoNeg](-0.091074,-1.5) rectangle (0,-0.5);
   \draw[Overlay.Ranking.BREAKDOWNS.observedTwoPos](0,-1.5) rectangle (0.132236,-0.5);
@@ -182,7 +182,10 @@
   \draw (-0.075,-0.2) -- (-0.075,0) node [axlbl,above=3pt]{-0.075};
   \draw (-0.15,-0.2) -- (-0.15,0) node [axlbl,above=3pt]{-0.15};
   \draw (-0.15,0) -- (0.15,0);
-  \node[axlbl,above left=5pt,scale=1.1] at (-0.105,0.7) {$\Delta\mu$};
+  %\node[axlbl,above left=5pt,scale=1.1] at (-0.0830,0.5) {$\Delta\sigma_{\mathrm{VBF}} / \sigma_{\mathrm{VBF}}^{\mathrm{SM}}$};
+    \node[axlbl,above left=5pt,scale=1.1] at (-0.0830,0.5) {$\Delta \mu_{\mathrm{VBF}}$};
+   \node[color=black,above left=5pt,scale=1.1] at (0.05,2.15) {$\sqrt{\it{s}} = 13\,$TeV, 139\,fb$^{-1}$};
+      \node[color=black,above left=5pt,scale=1.1] at (0.036,1.45) {$H \to WW* \to e\nu\mu\nu$};
 \end{scope}
 \begin{scope}[name=pulls]
   \draw[Overlay.Pulls.PULLS.observedTwo] (-0.990492,-1.1) -- (0.987782,-1.1);  \node[dot,colOverlay.Pulls.PULLS.observedTwo] at (-0.000504648,-1.1) {};
@@ -234,7 +237,7 @@
 \draw[colPullAxes] (0.5,-20.3) -- (0.5,-20.5) node [axlbl,below=3pt]{0.5};
 \draw[colPullAxes] (0.75,-20.3) -- (0.75,-20.5) node [axlbl,below=3pt]{0.75};
 \draw[colPullAxes] (1,-20.3) -- (1,-20.5) node [axlbl,below=3pt]{1};
-\node[axlbl,colPullAxes,anchor=north east,xshift=-1em,yshift=-1em,scale=1.1] at (-0.63,-20.8) {Pull};
+\node[axlbl,colPullAxes,anchor=north east,xshift=-1em,yshift=-1em,scale=1.1] at (-0.63,-20.7) {Pull};
 \draw[colPullAxes] (-1,-20.5) -- (1,-20.5);
 \draw[dashed,black] (0,-20.5) -- (0,0);
 \draw[dashed,colPullAxes]   (-1,-20.5) -- (-1,0);
