@@ -2,13 +2,19 @@
 % - using the HistFactory tool [326] and the RooStats/ RooFit framework [327, 328].
 
 The VBF and ggF signals are measured using a binned likelihood fit of the MC template to data in the SRs and CRs. The uncertainties are incorporated as NPs in the likelihood. The procedure is explained in detail in \cref{chap:statistics}. 
-This section first provides details on the statistical model, including the treatment of uncertainties, and discusses how the likelihood fit is validated.
+This section first provides details on the statistical model, including the treatment of uncertainties, and discusses the expected performance and validation of the likelihood fit.
+
+% From nature diff for mu and xsec fit:
+% Theory uncertainties on the signal acceptance, i.e.
+% 163 fractions of signal events in a detectable kinematic range, are taken into account in the measurements of
+% 164 production and decay processes, while uncertainties on signal cross sections and branching fractions are
+% 165 additionally taken into account for all other measurements
 
 \subsection{Background templates}
 All background processes discussed in \cref{sec:bkg-estimation} are included in the likelihood. 
 The normalization of processes for which CRs are defined is controlled by freely floating NFs in the fit. All other processes are normalized to their respective theoretical cross sections.
 
-\subsection{Cross-section fit inputs}
+\subsection{Fit inputs}
 %The signal cross sections are parametrized as signal strengths in the likelihood and extracted from a simultaneous fit to the data in multiple regions.
 %depending on the target of the fit, for example,
 % \begin{equation}
@@ -18,10 +24,9 @@ The normalization of processes for which CRs are defined is controlled by freely
 For the measurement of the inclusive ggF and VBF production cross sections a fit is performed to all nominal SRs and CRs in the \ZeroJet, \OneJet, and \TwoJet categories, as defined in \cref{sec:event-categorization,sec:bkg-estimation}. 
 The ggF and VBF cross sections are parametrized as shown in \cref{eq:incl-ggF-VBF-signal-strengths} and treated as the two unconstrained PoIs $\mu_{\text{VBF}}$ and $\mu_{\text{ggF}}$. 
 The same regions are used for the measurement of the combined ggF and VBF cross section, using a single PoI, $\mu_{\text{VBF+ggF}}$, to scale the ggF and VBF yields. 
-For the measurement of 11 STXS cross sections, all STXS SRs and CRs are used as defined in \cref{subsec:STXS-categorization,subsubsec:stxs-crs}. In total the fit is performed in 44 regions, 17 SRs and 27 CRs. 
+For the measurement of 11 STXS cross sections, all STXS SRs and CRs are used as defined in \cref{subsec:STXS-categorization,subsubsec:stxs-crs}. The total number of regions amounts to 44 regions, 17 SRs and 27 CRs. 
 The final fit discriminant in the ggF SRs is the \mT distribution. The same binning is used in all regions: [0-90, 90-100, 100-110, 110-120, 120-130, 130-$\infty$]. 
-The VBF SRs use the DNN observable as final discriminant with 7 bins as shown in \cref{subsec:fina-model-validation} for the inclusive cross-section measurements and the following 4 bins for in the STXS measurement: [0-0.5, 0.5, 0.74, 0.74-0.87, 0.87, 1.0]. 
-\TDinote{}{Maybe this could be put into the results section. I think that would make sense.}
+The VBF SRs use the DNN observable as final discriminant with 7 bins as shown in \cref{subsec:fina-model-validation} for the inclusive cross-section measurements and the following 4 bins for in the STXS measurement: [0-0.5, 0.5, 0.74, 0.74-0.87, 0.87, 1.0].
 % From Paper
 %The cross sections for the ggF and VBF production modes are determined in a simultaneous fit to all 574 nominal SRs and CRs in the 푁jet = 0, 푁jet = 1, and 푁jet ≥ 2 categories. The ggF and VBF cross sections are 575 the two unconstrained POIs in this fit. 
 %A second fit is performed using these same regions, but measuring a 576 single POI for the combined ggF and VBF yield.
@@ -30,10 +35,8 @@ The VBF SRs use the DNN observable as final discriminant with 7 bins as shown in
 
 \subsection{Treatment of uncertainties}
 The sources of systematic uncertainties are discussed in \cref{sec:stats-analysis}. 
+Most uncertainties are fully correlated between the SRs and CRs in all analysis categories. Only the theoretical uncertainties affecting the backgrounds are uncorrelated between the four different categories. The same is true for the NFs. This is a conservative approach and ensures that potential mismodellings observed in one of the categories do not impact another category. 
 Different uncertainties are treated differently in the fit, and before the fit is performed, several uncertainties are preprocessed depending on their type and size. 
-
-\paragraph{Uncertainty correlation}
-Most systematic uncertainties are fully correlated between the SRs and CRs in all analysis categories. Only the theoretical uncertainties affecting the backgrounds are uncorrelated between the four different categories. The same is true for the NFs. This is a conservative approach and ensures that potential mismodellings observed in one of the categories do not impact another category. 
 
 \paragraph{Transfer of uncertainties}
 % From INT note
@@ -77,15 +80,17 @@ An example of an uncertainty processed in such a way is shown in \cref{fig:dnn:s
     \label{fig:dnn:smoothing} }}
 \end{figure}
 
-\subsection{Validation of likelihood fit}
-\TDinote{}{Maybe mention that fit to observed is performed and pulls are looked at BEFORE results}
-The statistical model is validated by monitoring the values of the NPs obtained from the fit (post-fit values) to an Asimov dataset generated under the SM assumption. 
-This is done for each signal category first, before performing the fit to actual data as well as the combined fit including all regions. A representative list of NPs resulting from a fit to only the VBF-enriched \TwoJet SR and its associated VBF CRs is shown in \cref{fig:fit:breakdown}. 
+\subsection{Expected performance and validation of likelihood fit}
+The analysis strategy is optimized on MC simulated samples and signal-like data events are not analyzed until the statistical model has been validated.
+An \emph{Asimov} dataset can be used to evaluate the expected performance of the likelihood fit. It is generated under the SM assumption, that is, assuming the expected values for the backgrounds and signals. 
+This implies that the values of all fit parameters obtained from a fit (\emph{post-fit} values) to an Asimov dataset correspond to their expected values. 
+The Asimov dataset is used to extract the expected uncertainties on the cross-section measurements and to assess the impact of different sources of uncertainties on the final results. 
+\Cref{fig:fit:breakdown} shows a representative list of NPs and their influence on the VBF cross section, \sigmaVBF. 
 \begin{figure}[th]
     \centering
-        \newImageResizeCustom{0.6}{figures/plots/breakdown/ranking_asimov_observed_thesis_muVBF.pdf}
-    {\caption{Impact of individual NPs on the VBF signal strength $\mu$ for the nominal VBF analysis, shown for the fit to observed data (green) and the Asimov dataset (orange). The leading 20 NPs are shown in decreasing order of their impact on $\mu$ (top x-axis).
-    The impact of a given NP is computed by taking the square root of the difference in quadrature of the uncertainties on $\mu_{\mathrm{VBF}}$ resulting from a fit performed with all parameters floating and a fit where the respective NP is fixed to its nominal value. 
+        \newImageResizeCustom{0.6}{figures/plots/breakdown/breakdown_muVBF.pdf}
+    {\caption{Contribution of individual NPs to the total uncertainty of the cross section $\sigma_{\mathrm{VBF}}$ relative to the measured value, shown for the fit to observed data (green hashed area) and the Asimov dataset (orange solid area) in the measurement of the inclusive \muVBF and \muGGF cross sections. The leading 20 NPs are shown in decreasing order of their impact (top x-axis).
+    The uncertainty due to a single NP is computed by taking the square root of the difference in quadrature of the uncertainties on $\sigma_{\mathrm{VBF}}$ resulting from a fit performed with all parameters free-floating and a fit where the respective NP is fixed to its nominal value. 
     %The impact of a given NP is derived by comparing the uncertainty on $\mu$ resulting from a fully unconditional fit and a fit with the respective NP fixed to its nominal value. The comparison is based on the square root of the difference in quadrature of the two post-fit uncertainties on $\mu$. 
     The dots indicate the pull (bottom x-axis), that is, the post-fit values of the NPs, $\hat{\theta}$, relative to their nominal values, $\theta_0$. 
     The associated error bars show the post-fit uncertainties of the NPs relative to their nominal uncertainties. 
@@ -97,20 +102,24 @@ This is done for each signal category first, before performing the fit to actual
 % Figures are obtained from a (1+1)-PoI fit. Published in Ref. [5].
     \label{fig:fit:breakdown} }}
 \end{figure}
-The uncertainties listed with ``ATLAS'' prepended correspond to experimental uncertainties, all other uncertainties are related to theory. 
-The NPs are ordered in terms of their contribution to the total uncertainty (\emph{breakdown}) on the signal strength $\mu_{\mathrm{VBF}}$. 
+The uncertainties that include ``ATLAS'' in their names correspond to experimental uncertainties, all other uncertainties are related to theory. 
+% The NPs are ordered in terms of their contribution to the total uncertainty (\emph{breakdown}) on the cross section \sigmaVBF. 
 %The impact is calculated by taking the square root of the difference in quadrature of the uncertainty on $\mu_{\mathrm{VBF}}$ resulting from a fit performed with all parameters floating and a fit where the NP under investigation is fixed to its nominal value. 
-It becomes apparent that theoretical uncertainties dominate the measurement of the VBF signal strength, in particular due to signal modelling uncertainties from the choice of parton shower model and matching procedure between the matrix element and parton shower. 
+It becomes apparent that theoretical uncertainties dominate, in particular the signal modelling uncertainties from the choice of parton shower model and matching procedure between the matrix element and parton shower. 
 The largest background uncertainty is from the choice of \ttbar matching procedure and the leading experimental uncertainties come from the effect of the \MET soft term on the resolution of the \MET observable.  
 %, resulting from large shape differences in the DNN discriminant when the \MET soft term is varied. 
 All said uncertainties are mainly caused by shape differences in the DNN discriminant when the respective source of uncertainty is varied.
-The post-fit uncertainties of the NPs relative to their nominal ones are also shown. The \emph{constraints}, that is, the extent to which the post-fit uncertainty is smaller than the nominal uncertainty, are reasonably small, supporting the statement that the uncertainties included are appropriate. 
+The post-fit uncertainties of the NPs relative to their nominal ones are also shown. The \emph{constraints}, that is, the extent to which the post-fit uncertainty is smaller than the nominal uncertainty, are reasonably small.
+This validates that the uncertainties are represented adequately in the statistical model. 
+The expected total uncertainty on the cross-section measurement corresponds to $\Delta \sigmaVBF = \pm  $. The expected discovery significance of the VBF signal is $6.2\,\sigma$. 
+
 \Cref{fig:fit:breakdown} also includes the NPs obtained from a fit to the actual data. 
-The \emph{pulls} of the NPs are relatively small, that is, the difference of the post-fit central values and their corresponding nominal, $(\hat{\theta} - \theta_0 ) / \Delta \theta_0$.
-Because of these findings, together with the fact that the constraints as well as the breakdown of uncertainties are similar for the results obtained from a fit to Asimov data and actual data, the statistical model is deemed appropriate for the measurement performed. 
+The \emph{pulls} of the NPs, defined as the difference of the post-fit central values and their corresponding nominal, $(\hat{\theta} - \theta_0 ) / \Delta \theta_0$, are relatively small. 
+Furthermore, the constraints and the breakdown of uncertainties are comparable for the results obtained from a fit to Asimov data and actual data. 
+Because of these findings, the statistical model is deemed appropriate for the measurement performed. 
+Similar validation studies have been conducted for the ggF cross-section measurement as well as the STXS measurement and lead to the same conclusion. 
+
 % A listing of the results for the individual parameters obtained in the fit is shown in Fig. 4.25. The total uncertainty has been broken down to the impacts of each individual nuisance parameter (and for certain groups of nuisance parameters). Shown are the breakdowns for the fit to the observed data, as well as for a control fit to an Asimov data set generated with the assumption of μ = 1. The postfit values and uncertainties of the individual nuisance parameters are shown as well, where the constrained nuisance parameters have been normalized to their respective constraints.
-
-
 
 % Combination:
 % From nature:
