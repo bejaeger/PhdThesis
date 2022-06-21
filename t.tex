@@ -21,6 +21,7 @@
 \input{macros/commands}
 \input{macros/shortcuts}
 \input{macros/captions}
+\newcommand{\paperfiguredir}{figures/paper-figures}
 
 \author{Still missing: Introduction, Conclusion; With gaps: Higgs analysis chapter}
 \date{\today}
@@ -51,28 +52,28 @@
 %\include{\chapterdir/abstract}
 
 % -------------------------------------------------------------------------------
-%\include{\chapterdir/introduction}
+\include{\chapterdir/introduction}
+
+% % % % -------------------------------------------------------------------------------
+% \include{\chapterdir/theory}
 
 % % % -------------------------------------------------------------------------------
-\include{\chapterdir/theory}
-
-% % -------------------------------------------------------------------------------
-\include{\chapterdir/higgs}
-
-% % %-------------------------------------------------------------------------------
-\include{\chapterdir/experiment}
-
-% % %-------------------------------------------------------------------------------
-\include{\chapterdir/objects}
-
-% % % % ---------------------------------------
-\include{\chapterdir/calibration}
+% \include{\chapterdir/higgs}
 
 % % % %-------------------------------------------------------------------------------
-\include{\chapterdir/statistics}
+% \include{\chapterdir/experiment}
 
 % % % %-------------------------------------------------------------------------------
-\include{\chapterdir/ml}
+% \include{\chapterdir/objects}
+
+% % % % % ---------------------------------------
+% \include{\chapterdir/calibration}
+
+% % % % %-------------------------------------------------------------------------------
+% \include{\chapterdir/statistics}
+
+% % % % %-------------------------------------------------------------------------------
+% \include{\chapterdir/ml}
 
 % % % %-------------------------------------------------------------------------------
 \include{\chapterdir/hww}
@@ -80,7 +81,7 @@
 % \label{chap:hww}
 
 % % % %-------------------------------------------------------------------------------
-%\include{\chapterdir/summary}
+\include{\chapterdir/conclusion}
 
 %-------------------------------------------------------------------------------
 \section*{Acknowledgements}
