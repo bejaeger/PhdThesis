@@ -9,26 +9,23 @@ The following provides an overview of the different estimation strategies.
 \TDinote{}{This intro needs a bit of polishing}
 Regions that are pure enough in a specific process and orthogonal to the signal categories can be used to measure the normalization of the process in the statistical analysis by simultaneously fitting them with the SRs. 
 They are also used to validate the agreement between data and MC simulation in various variables prior to the fit.
-The latter is done after deriving pre-fit normalization factors (NFs) for each process that has a corresponding CR.\footnote{Given $N$ CRs and $M > N$ processes, $N$ NFs are derived by solving the set of linear equations that equate the sum of expected number of background events (times the NF, where applicable) and the number of data events. The statistical uncertainties on the NFs are estimated using of toys, that is, repeating the outlined procedure with several randomly varied inputs within the uncertainties. The standard deviation of the resulting distribution is used as an uncertainty on the NFs.}
-This guarantees a fair comparison between data and MC simulation since potential discrepancies are corrected based on the data. 
+% The latter is done after deriving pre-fit normalization factors (NFs) for each process that has a corresponding CR.\footnote{Given $N$ CRs and $M > N$ processes, $N$ NFs are derived by solving the set of linear equations that equate the sum of expected number of background events (times the NF, where applicable) and the number of data events. The statistical uncertainties on the NFs are estimated using of toys, that is, repeating the outlined procedure with several randomly varied inputs within the uncertainties. The standard deviation of the resulting distribution is used as an uncertainty on the NFs.}
+% This guarantees a fair comparison between data and MC simulation since potential discrepancies are corrected based on the data. 
 
 All CR selections are summarized in \cref{tab:CRsSelection}. 
-The CRs are defined separately for each analysis category, and in general the selections are similar to the SR selections, with at least one criterion that ensures orthogonality between the CRs and SRs.
+The CRs are defined separately for each analysis category and have at least one criterion that ensures orthogonality between the CRs and SRs.
+In addition, selections similar to the SR selections are applied, to ensure that the events in the SRs and CRs have similar kinematics and topologies. 
 %The pre-fit NFs for the CRs related to the \TwoJet VBF category are shown in \cref{tab:pre-fit}. 
-
-    
 \begin{table}[!ht]
     \caption{
       Event selection criteria used to define the control regions in the \hwwenmn\ analysis.
       Every control region selection starts from the selection labeled ``Preselection'' in Table~\ref{tab:HWWselection}, and $\Nbjetbetween$ represents the number of $b$-jets with $20 < \pT < 30~\GeV$.}
   \label{tab:CRsSelection}
   \centering
-  \scalebox{0.79}{
+  \resizebox{\textwidth}{!}{
   \input{tables/hww/Bkgselection.tex}
   }
   \end{table}
-  
-
 \subsubsection{Top backgrounds}
 The $t\bar{t}$ and $Wt$ processes are normalized jointly using the same NF, extracted from dedicated top-quark CRs.
 The relative contribution of $t\bar{t}$ and $Wt$ processes are comparable between the CRs and SRs and its uncertainties are accounted for by treating the relevant sources of uncertainties separately.
@@ -46,7 +43,6 @@ Distributions of several variables in the VBF, top-quark CR are shown in \cref{f
  \sixPlots{\crmodellingcaption{top-quark CR}}{fig:topcr:dnn-inputs}{\topcrplotdir/run2-emme-CutVBF_TopControl_2jet-Mjj-log.pdf}{\topcrplotdir/run2-emme-CutVBF_TopControl_2jet-DYjj-lin.pdf}{\topcrplotdir/run2-emme-CutVBF_TopControl_2jet-DPhill-lin.pdf}{\topcrplotdir/run2-emme-CutVBF_TopControl_2jet-Mll-lin.pdf}{\topcrplotdir/../lepcent/plots/run2-emme-CutVBF_TopControl_2jet-contOLV-lin.pdf}{\topcrplotdir/run2-emme-CutVBF_TopControl_2jet-METSig_broad-lin.pdf}
  %{figures/hww/presel/topcr/run2-emme-CutVBF_TopControl_2jet-PtTot-lin.pdf}{figures/hww/presel/topcr/run2-emme-CutVBF_TopControl_2jet-contOLV-lin.pdf}{run2-emme-CutVBF_TopControl_2jet-DNNoutputG_Fit_finelowDNN2-log.pdf}
 
-
 \subsubsection{\Ztautau background}
 Similar as for top-quark processes, the \Ztautau\ background is normalized using dedicated CRs.
 The corresponding CR in the \ZeroJet category requires a large opening angle of the leptons of $\DPhill > 2.8$.
@@ -60,9 +56,7 @@ In the VBF-enriched \TwoJet category, the $\mll$ requirement is relaxed to $\mll
 
 Distributions of several variables in the VBF, \Ztautau CR are shown in \cref{fig:topcr:dnn-inputs}. Similar to the VBF, top-quark CR, an excellent agreement between the data and MC simulation is observed. Similar comparisons are performed for the other \Ztautau CRs. 
 
-
 \newcommand{\zttcrplotdir}{figures/220605-Thesis/zttcr/plots}
-
 \sixPlots{\crmodellingcaption{\Ztautau CR}}{fig:zttcr:dnn-inputs}{\zttcrplotdir/../mjj/plots/run2-emme-CutVBF_ZtautauControl_2jet-Mjj-log.pdf}{\zttcrplotdir/run2-emme-CutVBF_ZtautauControl_2jet-DYjj-lin.pdf}{\zttcrplotdir/run2-emme-CutVBF_ZtautauControl_2jet-Ml0j0-lin.pdf}{\zttcrplotdir/run2-emme-CutVBF_ZtautauControl_2jet-Mll-lin.pdf}{\zttcrplotdir/../lepcent/plots/run2-emme-CutVBF_ZtautauControl_2jet-contOLV-lin.pdf}{\zttcrplotdir/run2-emme-CutVBF_ZtautauControl_2jet-METSig_broad-lin.pdf}
 
 \subsubsection{Continuum $WW$ backgrounds}
@@ -98,7 +92,7 @@ The modelling of various observables in the VBF, $WW$ VR is shown in \cref{fig:w
       }
   \label{tab:STXSCRsSelection}
   \centering
-  \scalebox{0.75}{
+  \resizebox{\textwidth}{!}{
   \input{tables/hww/STXSBkgselection.tex}
   }
   \end{table}
@@ -127,6 +121,9 @@ The modelling of various observables in the VBF, $WW$ VR is shown in \cref{fig:w
 
 \subsection{Backgrounds estimated with simulated samples}
 Several processes are estimated using simulated samples normalized to their theoretical cross sections. These involve Higgs boson processes not considered as signal in this analysis, which are $ttH$ and $VH$ produced Higgs bosons as well as processes with $H\to\tau\tau$ decays, and the background contributions from $gg \to WW$, EW $WW$, Other $VV$, and triboson processes. Additionally, in the VBF-enriched \TwoJet category, the $qq \to WW$ background is estimated using simulated samples and validated in a validation region as described above.
+
+\TDinote{Contributions from above-mentioned other Higgs channels are treated like backgrounds and normalized to their corresponding SM predictions.}{Probably mention only later!}
+
  %{figures/hww/presel/topcr/run2-emme-CutVBF_WWControl_2jet-PtTot-lin.pdf}{figures/hww/presel/topcr/run2-emme-CutVBF_WWControl_2jet-contOLV-lin.pdf}{run2-emme-CutVBF_WWControl_2jet-DNNoutputG_Fit_finelowDNN2-log.pdf}
 % not sure if I want to add the following
 % The underlying assumption is that the misidentification efficiency only depends on properties of the jet misidentified as a lepton, not on the remainder of the event, which is reasonable given the that the jet and lepton reconstruction only takes information from specific detector regions.

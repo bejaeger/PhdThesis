@@ -1,20 +1,32 @@
-The \HWW events that can be best separated from backgrounds at the LHC are the ones where the two $W$ bosons decay leptonically.
-This analysis therefore analyzes events with two leptons in the final state. 
-The most relevant background contributions come from $WW$ production, events with top quarks, $W$ production in association with jets ($W$+jets) where a jet is misidentified as a lepton, other diboson processes, and Drell-Yan processes. In particular Drell-Yan events are produced at large cross sections at the LHC. To reduce their contamination only final states with different-flavor leptons are selected, that is, with exactly one reconstructed muon and electron.
-Given the features of the signal and background processes, that are discussed in detail below, the analysis is divided into four signal categories separated by jet multiplicity and production mode.
-Three categories target the ggF production mode by separating events into a \ZeroJet, \OneJet, and \TwoJet category, and one category targets the VBF production mode, also requiring \TwoJet. 
+The \HWW events that can be best separated from backgrounds at the LHC are the ones where one $W$ boson decays into an electron and the other $W$ boson into a muon.
+This analysis therefore selects events with two different-flavor leptons in the final state targeting the \HWWdet decay.
+By requiring the leptons to be of different flavor the otherwise overwhelming background from Drell-Yan processes can be reduced. 
+The most relevant background contributions come events with top quarks, non-resonant $WW$ production, $W$ production in association with jets where a jet is misidentified as a lepton, other diboson processes, and mentioned Drell-Yan (\Zgamma) processes.
+% \begin{itemize}
+%     \item Top-quarks, both pair production ($t\bar{t}$) and single-top production with a $W$ boson ($Wt$);
+%     \item Non-resonant $WW$ production;
+%     \item Single $W$ production in association with a jet where a jet is misidentified as a lepton (Mis-Id);
+%     \item Other diboson and triboson processes (Other $VV$($V$)) including $VZ$, $V\gamma$ (with $V=W,Z$), and $W\gamma^*$;
+%     \item Drell-Yan ($Z/\gamma^*$) mostly from $Z$ decays to two $\tau$ leptons;
+% \end{itemize}
+Given the features of the signal and background processes, that are discussed in detail below, the analysis is divided into four \emph{signal categories} separated by jet multiplicity and production mode.
+Three categories target the ggF production mode, separately treating events with \ZeroJet, \OneJet, and \TwoJet in the final state. One category targets the VBF production mode, also requiring \TwoJet. 
 This categorization is illustrated in \cref{fig:signal-categorization}. 
 \begin{figure}
     \newImageResizeCustom{0.7}{figures/hww/introduction/analysis-categorization.png}
     \caption{Schematic view of the signal categories defined in the \HWW analysis.}
     \label{fig:signal-categorization}
 \end{figure}
-Each of the categories is first optimized and validated separately before being combined in the statistical analysis.
-The categories targeting the ggF signal use event selections to increase the purity of signal events. 
-The VBF signal is discriminated using a DNN that distinguishes VBF signal from non-VBF events. 
-The development of the DNN is described in \cref{sec:dnn}. 
+Additional event selection criteria are applied in each of the categories to define the regions in which the measurements are performed.
+The categories targeting the ggF signal use simple event selections to increase the purity of signal events and use the \mT observable as final discriminant. 
+The VBF \TwoJet category is made orthogonal to the ggF \TwoJet region and uses a DNN that distinguishes VBF signal from non-VBF events as final discriminant.
+To extract the signal yields and measure their cross sections, a binned likelihood fit is performed simultaneously in all measurement regions. 
+The STXS measurement uses more measurement regions than the inclusive cross-section measurement to specifically target the signals divided into different kinematic bins. 
+
 The descriptions and results presented in this chapter supersede similar measurements performed with the same dataset but based on a previous version of the analysis~\cite{ATLAS-CONF-2021-014}.
 The main differences between the analyses are changes in the simulated samples used, improved treatment of systematic uncertainties, and an improved DNN discriminant in the VBF category. 
+It should be noted that during the optimization of the analysis, all categories have been first optimized and validated separately before being combined in the statistical analysis.
+
 
 \TDinote{}{Maybe put the following in the stats-analysis section}
 To extract the signals and measure their cross sections times \HWW branching fraction, a likelihood fit is performed simultaneously in all categories. 

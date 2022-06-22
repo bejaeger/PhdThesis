@@ -1,16 +1,16 @@
 %\input{tables/hww/samples}
 
 This section first provides an overview of the data samples that are used in this analysis and then discusses the simulation infrastructure used for the simulated event samples.
-Since the simulation infrastructure is described in great detail in the original publication \cite{HWWPaper}, a significant portion is cited directly. 
+Since the simulation infrastructure is described in great detail in the original publication \cite{HWWPaper}, a significant portion is quoted directly. 
 
 \subsection{Data samples}
 \label{subsec:data-samples}
-The proton-proton collision data analysed in this thesis were recorded by the ATLAS experiment during \RunTwo of the LHC between 2015 and 2018, and correspond to an integrated luminosity of 139\ifb\ at a center-of-mass energy $\sqrt{s} = 13\,\TeV$. 
+The $pp$ collision data analyzed were recorded by the ATLAS experiment during \RunTwo of the LHC between 2015 and 2018, and correspond to an integrated luminosity of 139\,\ifb\ at a center-of-mass energy $\sqrt{s} = 13\,\TeV$. 
 The events were recorded when all relevant detector components were fully operational, and are considered as being of ``good'' data quality (see \cref{sec:run-2-data-taking}).
 
-Given the targeted final state featuring one electron and one muon, a combination of unprescaled single-lepton triggers and one $e$--$\mu$ dilepton trigger~\cite{TRIG-2018-05,TRIG-2018-01} are used to select the data samples. 
-The transverse momentum ($\pt$) threshold for single-electron(muon) triggers is 24(20)\,\GeV for the first year of data taking, while it is increased to 26~\GeV for both lepton flavors during the remainder of \RunTwo.\cite{HWWPaper}
-The $e$--$\mu$ trigger requires a minimum $\pt$ threshold of 17\,\GeV for electrons and 14\,\GeV for muons.\cite{HWWPaper}
+Given the targeted final state featuring one electron and one muon, a combination of unprescaled single-lepton triggers and a $e$--$\mu$ dilepton trigger~\cite{TRIG-2018-05,TRIG-2018-01} is used to select the data samples. 
+The \pT threshold for single-electron (muon) triggers is 24 (20)\,\GeV for the first year of data taking, while it is increased to 26~\GeV for both lepton flavors during the remainder of \RunTwo.~\cite{HWWPaper}
+The $e$--$\mu$ trigger requires a minimum $\pt$ threshold of 17\,GeV for electrons and 14\,GeV for muons.~\cite{HWWPaper}
 
 
 \subsection{Simulated event samples}
@@ -20,11 +20,11 @@ The $e$--$\mu$ trigger requires a minimum $\pt$ threshold of 17\,\GeV for electr
 % https://gitlab.cern.ch/atlas-physics-office/HIGG/ANA-HIGG-2018-47/ANA-HIGG-2018-47-PAPER/-/blob/master/sections/DataAndSimSamples.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
-This analysis heavily relies on simulated $pp$ collision events to validate and optimize the analysis strategy and, more importantly, to extract the final signal strength and cross-section measurement after a fit to the data (as discussed in \cref{sec:stats-analysis}). 
+This analysis heavily relies on MC simulated $pp$ collision events to validate and optimize the analysis strategy and, more importantly, to extract the final signal strength and cross-section measurement after a fit to the data (as discussed in \cref{sec:stats-analysis}). 
 
-Most signal and background processes are simulated using a combination of MC generators calculating the hard scatter, such as \Powheg, and programs that model the parton showering, hadronisation, and underlying event, such as \PythiaEight.
+Most signal and background processes are simulated using a combination of MC generators that calculate the hard scatter and programs that model the parton showering, hadronization, and underlying event.
 For all MC samples, the events were processed through the ATLAS detector simulation~\cite{SOFT-2010-01} based on
-\textsc{Geant4}~\cite{Agostinelli:2002hh}.\cite{PLACEHOLDER:FOR:PAPER} 
+\textsc{Geant4}~\cite{Agostinelli:2002hh}.~\cite{HWWPaper} 
 The effect of pile-up is modelled by overlaying over the original event minimum-bias events generated with \PYTHIAV{8.186}~\cite{Sjostrand:2007gs} using the \nnpdftwo set of PDFs and the A3 tune~\cite{ATL-PHYS-PUB-2016-017}.
 
 
@@ -47,13 +47,12 @@ The simulation achieves NNLO accuracy for arbitrary inclusive $gg\to H$ observab
 %The PDF4LHC15 parton distribution function (PDF) set and the AZNLO tune of \PYTHIAV{8} are used. 
 The gluon fusion prediction from the MC samples is normalized to the N$^3$LO cross section in QCD plus electroweak corrections at next-to-leading order (NLO)~\cite{deFlorian:2016spz, Anastasiou:2016cez, Anastasiou:2015vya, Dulat:2018rbf, Harlander:2009mq, Harlander:2009bw, Harlander:2009my, Pak:2009dg, Actis:2008ug, Actis:2008ts, Bonetti:2018ukf}.
 
-VBF events are generated with \POWHEG~\cite{Nason:2004rx, Frixione:2007vw, Alioli:2010xd, Nason:2009ai}, interfaced with \PYTHIAV{8.230}~\cite{Sjostrand:2014zea}~with the dipole recoil option enabled to model the parton shower, hadronisation and underlying event.
+VBF events are generated with \POWHEG~\cite{Nason:2004rx, Frixione:2007vw, Alioli:2010xd, Nason:2009ai}, interfaced with \PYTHIAV{8.230}~\cite{Sjostrand:2014zea}~with the dipole recoil option enabled to model the parton shower, hadronization and underlying event.
 The \POWHEG\ prediction is accurate to NLO in QCD corrections and tuned to match calculations with effects due to finite heavy-quark masses and soft-gluon resummations up to next-to-next-to-leading-logarithm (NNLL).
 %The PDF4LHC15~\cite{PDF4LHC15} parton distribution function (PDF) set and the AZNLO tune~\cite{Aad:2014xaa} of \PYTHIAV{8} are used. 
 The MC prediction is normalized to an approximate-NNLO QCD cross section with NLO electroweak corrections~\cite{PhysRevLett.99.161803, Ciccolini:2007ec, PhysRevLett.105.011801}.
 
-The uncertainties due to the parton shower and hadronisation model for the ggF and VBF Higgs boson signal samples are
-evaluated using the events in the nominal sample generated with \POWHEG\ but interfaced to an alternative showering program
+The uncertainties due to the parton shower and hadronization model for the ggF and VBF Higgs boson signal samples are evaluated using the events in the nominal sample generated with \POWHEG\ but interfaced to an alternative showering program
 \HERWIGV{7}~\cite{Bahr:2008pv,Bellm:2015jjp} instead of \PYTHIAV{8}. To estimate the uncertainty related to the matching between the matrix element and the parton shower for ggF and VBF production, MC events produced with the \MGFiveNLO~\cite{Alwall:2014hca} generator and interfaced to \HERWIGV{7} are used. They are accurate to NLO in QCD corrections and utilize the \texttt{NNPDF30\_nlo\_as\_0118}~\cite{Ball:2014uwa} parton distribution function (PDF) set.
 In both cases, the H7UE set of tuned parameters~\cite{Bellm:2015jjp} and the \texttt{MMHT2014LO} PDF set~\cite{Harland-Lang:2014zoa} are used for the underlying event.
 
@@ -104,18 +103,18 @@ The virtual QCD corrections are provided by the \openloops\ library~\cite{Cascio
 The \nnpdfnnlo set of PDFs is used, along with the dedicated set of tuned parton-shower parameters developed by the \SHERPA authors.
 
 
-\subsubsection{Electroweak samples}
+\subsubsection{Electroweak $WW$ samples}
 Electroweak $WW$ production in association with two jets ($WWjj$) is
 generated using \MGFiveNLO~\cite{Alwall:2014hca} with LO matrix elements using the \texttt{NNPDF2.3LO} PDF set.
 For the nominal sample, \MGFiveNLO\ is interfaced with \PYTHIAV{8.244} using the
-A14 tune to model the parton shower, hadronisation, and underlying event. An
+A14 tune to model the parton shower, hadronization, and underlying event. An
 alternative sample is utilized to evaluate the shower model uncertainty, for
 which \MGFiveNLO\ is instead interfaced with \HERWIGV{7}.
 
 Electroweak production of $\ell\ell jj$ final states are generated with \SHERPAV{2.2.1}, but using leading
 order (LO) matrix elements with up to two additional parton emissions.
 
-\subsubsection{\Zjets samples}
+\subsubsection{\Zgamma samples}
 
 The quark- or gluon-initiated production of \Zjets is simulated with the \SHERPAV{2.2.1}~\cite{Bothmann:2019yzt} generator using NLO matrix elements for up to two partons, and LO matrix elements for up to four partons calculated with the Comix and \openloops libraries.
 They are matched with the \SHERPA parton shower~\cite{Schumann:2007mg} using the MEPS@NLO prescription.
@@ -127,14 +126,14 @@ uncertainty. The accuracy of the matrix elements is at LO for up to four
 final-state partons. The \texttt{NNPDF2.3LO} PDF set~\cite{Ball:2012cx} is
 used. Events are interfaced to \PYTHIAV{8.186}~\cite{Sjostrand:2007gs} with the
 A14 tune~\cite{ATL-PHYS-PUB-2014-021} to model the parton shower,
-hadronisation, and underlying event.
+hadronization, and underlying event.
 %The overlap between matrix element and parton shower emissions was removed using the CKKW-L merging procedure~\cite{Lonnblad:2001iq,Lonnblad:2011xx}. The A14 tune~\cite{ATL-PHYS-PUB-2014-021} of \PYTHIA[8] was used with the \NNPDF[2.3lo] PDF set~\cite{Ball:2012cx}. The decays of bottom and charm hadrons were performed by \EVTGEN[1.2.0]~\cite{Lange:2001uf}. The $V$+jets samples were normalized to a next-to-next-to-leading-order (NNLO) prediction~\cite{Anastasiou:2003ds}.
 
 \subsubsection{Top-quark samples}
 
 The production of \ttbar\ events is modelled using the \powhegbox~v2 generator at NLO with the \nnpdfnlo PDF set and the \hdamp\ parameter\footnote{The \hdamp\ parameter is a resummation damping factor and one of the parameters that controls the matching of \Powheg\ matrix elements to the parton shower and thus effectively regulates the high-\pt\ radiation against which the \ttbar\ system recoils.} set to $1.5\times$\mtop~\cite{ATL-PHYS-PUB-2016-020}.
 In order to correct for a known mismodelling of the leading lepton \pt due to missing higher-order corrections, an NNLO reweighting is applied to the sample~\cite{NNLOReweighting}.
-The events are interfaced to \PYTHIAV{8.230} to model the parton shower, hadronisation, and underlying event, with parameters set according to the A14 tune and using the \nnpdftwo set of PDFs~\cite{Ball:2012cx}.
+The events are interfaced to \PYTHIAV{8.230} to model the parton shower, hadronization, and underlying event, with parameters set according to the A14 tune and using the \nnpdftwo set of PDFs~\cite{Ball:2012cx}.
 % \input{top_isrfsr_powpy_short} describes the estimation of systematic uncertainties for ttbar and single top, to be used later? JONAS 
 
 The associated production of top quarks with $W$ bosons (mainly $Wt$) is modelled using the \powhegbox~v2 generator at NLO in QCD using the five-flavor scheme and the \nnpdfnlo set of PDFs.
@@ -143,7 +142,7 @@ The events are interfaced to \PYTHIAV{8.230} using the A14 tune and the \nnpdftw
 The decays of bottom and charm hadrons are performed by \evtgen~v1.6.0.
 For all samples generated with \powhegbox~v2, the decays of bottom and charm hadrons are performed by \evtgen~v1.6.0.
 
-\subsubsection{Single boson and multijet processes}
+\subsubsection{\Wjets and multijet processes}
 
 The \Wjets and multijet backgrounds are estimated from data. Generated samples of \Wjets and $Z$+jets events are used to validate the estimate and to determine the flavor composition uncertainties. These MC samples are generated using \POWHEG interfaced with \PYTHIAV{8.186}, with \SHERPAV{2.2.1}~\cite{Bothmann:2019yzt}, and with \MGFiveNLO~\cite{Alwall:2014hca,Frederix:2012ps} interfaced with \PYTHIAV{8.186}.
 

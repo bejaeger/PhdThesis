@@ -29,11 +29,11 @@ The theoretical predictions for the observables are quantified using simulated $
 \subsection{Overview of proton-proton collision event}
 \label{subsec:pp-collision-overview}
 %A schematic overview of a \emph{hard} $pp$ scattering process is illustrated in \cref{fig:ppcol}.
-As illustrated in \cref{fig:ppcol}, a hard $pp$ scattering process is characterised by a parton-parton interaction with large momentum transfer, known as \emph{hard scatter}, and further low energy processes.
+As illustrated in \cref{fig:ppcol}, a hard $pp$ scattering process is characterized by a parton-parton interaction with large momentum transfer, known as \emph{hard scatter}, and further low energy processes.
 The partons participating in the hard scatter carry a momentum fraction of the proton described by \emph{parton distribution functions} (PDFs).
 The hard scatter is accompanied by the so-called \emph{underlying event} consisting of low energy interactions between the proton remnants that are not involved in the hard scatter.
 The initial and final-state particles can radiate in the form of \emph{inital} (ISR) or \emph{final-state radiation} (FSR), and undergo a process known as \emph{parton showering}, in which a single parton splits into two.
-The final-state partons then undergo a process called \emph{hadronisation} (also \emph{fragmentation}), due to the confining nature of QCD. They end up forming a spray of color-neutral hadrons, which are known as particle \emph{jets}.
+The final-state partons then undergo a process called \emph{hadronization} (also \emph{fragmentation}), due to the confining nature of QCD. They end up forming a spray of color-neutral hadrons, which are known as particle \emph{jets}.
 
 \begin{figure}[h]
   \newImageResizeCustom{0.8}{figures/anatomy/schematic_ppcollision.png}
@@ -206,7 +206,7 @@ Simulated $pp$ collision events are therefore generated with the \emph{Monte Car
 %given the current knowledge of particle physics.
 %  are therefore used 
 % They are an integral part at hadron colliders 
-A simulated event must take into account all aspects of a $pp$ collision, including the matrix element, the non-perturbative regime -- in particular the modelling of the hadronisation and showering process -- and radiation. In addition, the detector response and geometry needs to be simulated, as well as other nuisances at hadron colliders, such as the underlying event or multiple $pp$ collisions that simultaneously produce detector signals.
+A simulated event must take into account all aspects of a $pp$ collision, including the matrix element, the non-perturbative regime -- in particular the modelling of the hadronization and showering process -- and radiation. In addition, the detector response and geometry needs to be simulated, as well as other nuisances at hadron colliders, such as the underlying event or multiple $pp$ collisions that simultaneously produce detector signals.
 The following provides details on the different aspects the simulation needs to cover.
 
 % - MC tools are typically utilized for many of these steps.
@@ -214,7 +214,7 @@ The following provides details on the different aspects the simulation needs to 
 % - An overview is given in the following
 
 % Dandoy
-% A good MC simulation will cover all aspects of particle evolution detailed in Section 2.1, including matrix element calculation, hadronisation and showering of final states, and simulation of detector geometry and response.
+% A good MC simulation will cover all aspects of particle evolution detailed in Section 2.1, including matrix element calculation, hadronization and showering of final states, and simulation of detector geometry and response.
 \paragraph{Matrix element}
 Matrix element calculations are performed with MC generators that randomly sample from the SM expectations to generate hard scatter events. 
 There are different MC generators that come with varying precision in perturbation theory. 
@@ -222,12 +222,12 @@ There are different MC generators that come with varying precision in perturbati
 \paragraph{Parton showering}
 \emph{Parton showering} occurs because there is a finite quantum probability for a single parton to split into two. The \emph{QCD splitting functions} \cite{Altarelli:1977zs} provide the theoretical foundation for dedicated parton-shower models which accurately describe this behavior.
 %There is also the possibility of hard gluon being emitted in the initial or final state, which spoils the measurement of the total transverse momentum of the event.
-\paragraph{Hadronisation}
-The partons hadronise when their energy decreases and the strong coupling becomes large. There are several phenomenological approaches for modelling this non-perturbative process, one of which is the \emph{Lund-String-Model}. 
+\paragraph{hadronization}
+The partons hadronize when their energy decreases and the strong coupling becomes large. There are several phenomenological approaches for modelling this non-perturbative process, one of which is the \emph{Lund-String-Model}. 
 It is based on the fact that the force between two strongly interacting particles is constant, implying that the potential increases linearly with increasing distance.
 At a certain distance between the partons the potential energy is sufficient to create a quark-antiquark pair out of the vacuum. This procedure is repeated until neutral-colored hadrons are formed.
 \paragraph{Decays}
-The particles produced in the scattering process or in the process of hadronisation are often unstable and further decay. Many of these decays, for example decaying $b$-hadrons, provide useful information about the event. %Dedicated algorithms exist to find the particles which initiate the decay chains.
+The particles produced in the scattering process or in the process of hadronization are often unstable and further decay. Many of these decays, for example decaying $b$-hadrons, provide useful information about the event. %Dedicated algorithms exist to find the particles which initiate the decay chains.
 \paragraph{Underlying event}
 The hard scatter is accompanied by many soft processes from the remaining partons in the colliding protons. These interactions produce signals in the detector that overlay the hard scattering process and need to be accounted for in the simulation.
 \paragraph{Pile-up}

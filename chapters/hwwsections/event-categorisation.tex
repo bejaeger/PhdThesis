@@ -5,50 +5,45 @@
 
 % - Define ``vocabulary'' for regions, bins, categories, processes, ...
 
-A common event preselection is applied before the events are divided into the separate \emph{signal regions} (SRs) targeting different signal categories.
-In each SR, further selections are made on event observables to reject as many background events as possible while retaining the majority of the signal events.
-All selection criteria are summarized in \cref{tab:HWWselection}. 
+A common event preselection is applied before the events are divided into the separate signal categories and further selections are applied to reject as many background events as possible while retaining the majority of the signal events.
+%\emph{signal regions} (SRs) targeting different signal categories.
+% In each SR, further selections are made on event observables 
+All selection criteria that define the nominal \emph{signal regions} (SR) are summarized in \cref{tab:HWWselection}. 
 
 \begin{table}[!ht]
     \centering
     \caption{
-    Event selection criteria used to define the SRs in the \hwwenmn\ analysis. The definitions of the variables can be found in the text.
+    Event selection criteria used to define the nominal SRs in the \hww\ analysis. The definitions of the variables can be found in the text.
     % For the $\TwoJet$ VBF signal region, the input variables used for the DNN training are also reported.
     \label{tab:HWWselection}
     }
-    \scalebox{0.76}{
+    \resizebox{\textwidth}{!}{
     \input{tables/hww/SRselection.tex}
     }
 \end{table}
 
-\subsection{Preselection}
+\subsection{Preselection and common selections}
 \label{subsec:preselection}
-As discussed in the previous sections, this analysis selects events with exactly two leptons with different flavor and opposite charge and requires trigger matching criteria.
-The transverse momenta of the leptons must satisfy \ptGT{22}\,GeV and \ptGT{15}\,GeV for the higher-\pT (\emph{leading}) and lower-\pT (\emph{subleading}) lepton, respectively.
-To minimise the contamination from both low mass meson resonances as well as di-tau backgrounds from low-mass Dell-Yan production, the invariant mass of the dilepton system is required to be $\mll > 10\,\GeV$.
-The distribution of the number of jets in the event at the preselection level is shown in \cref{fig:njet-dist}.
-The background composition varies significantly across jet bins, which motivates splitting the data sample into separate \Njet categories and further applying specific selection criteria.
-In total four mutually exclusive regions are defined.
-One region targets the VBF production mode and must satisfy \TwoJet.
-Three categories are defined targeting the ggF production mode: \ZeroJet, \OneJet, and \TwoJet.
-To exploit the presence of neutrinos in the signal, a minimum threshold criterion of $\pTmiss > 20\,\GeV$ is required for the ggF categories.
-To reduce the background contribution from top processes, events are vetoed in all analysis categories if they contain a $b$-jet with \ptGT{20}\,GeV.
+The transverse momenta of the two leptons must satisfy \ptGT{22}\,GeV and \ptGT{15}\,GeV for the higher-\pT (\emph{leading}) and lower-\pT (\emph{subleading}) lepton, respectively.
+To minimise the contamination from both low-mass meson resonances as well as di-tau backgrounds from low-mass Dell-Yan production, the invariant mass of the dilepton system is required to be $\mll > 10\,\GeV$.
+The distribution of the number of jets in the event at this preselection stage is shown in \cref{fig:njet-dist}.
+\begin{figure}
+  \newImageResizeCustom{0.5}{figures/hww/presel/nJets.pdf}
+  \caption{Jet multiplicity distribution for jets with \ptGT{30}\,GeV and \absetaST{4.5}, after applying the preselection criteria. The various background components are discussed in more detail in the text. A similar figure is published in \ccite{HWWPaper}.}
+  \label{fig:njet-dist}
+\end{figure}
+The signal and background composition varies significantly across jet bins, which motivates the split into separate \Njet signal categories.
+% In total four mutually exclusive regions are defined.
+% One region targets the VBF production mode and must satisfy \TwoJet.
+% Three categories are defined targeting the ggF production mode: \ZeroJet, \OneJet, and \TwoJet.
+To exploit the presence of neutrinos in the signal, a minimum threshold criterion of $\pTmiss > 20\,\GeV$ is applied to all the ggF categories.
+The background from top-quark processes is reduced in all analysis categories by vetoing events that contain a reconstructed $b$-jet with \ptGT{20}\,GeV.
+To separate the signal categories from the majority of \Zgamma events, a selection of $\mtt\,{<}\,m_Z - 25~\GeV$ is applied in the ggF \OneJet, \TwoJet, and VBF \TwoJet categories.
 
 % \Cref{subsec:vbf-category,subsec:ggf-zero-jet-category,subsec:ggf-one-jet-category,subsec:ggf-two-jet-category} provide details on the remaining selections used to define the four analysis SRs that are used to measure the ggF and VBF production cross section. A summary of all selections is given in \cref{tab:event-selection}.\todo{Add table}
-
 % The four analysis regions are further split into several kinematic bins according to the Stage-1.2 STXS categorization scheme, which is described in \cref{subsec:STXS-categorization}.
-
 % cross sections in kinematic fiducial regions defined in the Simplified Template 40 Cross Section (STXS) framework
 % that take into account the different event topologies as well as the different background composition.
-
-\subsection{VBF-enriched \TwoJet category}
-\label{subsec:vbf-category}
-The distinct VBF topology is exploited by rejecting events that contain either an additional jet with \ptGT{30}\,GeV between the two leading jets in pseudorapity (known as \emph{central jet veto} (CJV)) or a lepton at larger pseudorapidities than both of the jets (known as \emph{outside lepton veto} (OLV)).
-In addition, a selection is made on the invariant mass of the jets $\mjj > 120\,\GeV$, which mainly serves to separate other physics analyses targeting the $V(\to qq)H$ Higgs production mode.
-The VBF signal process is then distinguished from the background processes by using a deep neural network model (DNN) that is trained to classify VBF signal and other non-VBF signal events.
-The output of the DNN is used as a final discriminant because it reflects the compatibility of an event having VBF signal-like kinematics. Details about the development of the VBF DNN analysis are provided in \cref{sec:dnn}.
-
-\todo{Make plot for CJV and OLV}
 
 \subsection{ggF \ZeroJet category}
 \label{subsec:ggf-zero-jet-category}
@@ -71,20 +66,25 @@ The max($m_{\text{T}}^\ell$) observable is expected to be smaller for DY and mul
 Another selection is made on the invariant mass of the hypothetical $\tau\tau$ system, $m_{\tau\tau}$.
 The $m_{\tau\tau}$ observable is constructed based on the so-called collinear approximation~\cite{Plehn:1999xi} that uses the direction and magnitude of the measured missing transverse momentum and projects it along the directions defined by the two reconstructed charged leptons~\cite{HWWPaper}.
 A requirement of $m_{\tau\tau} < m_Z - 25\,\GeV$\footnote{The mass of the $Z$ boson, $m_Z$, is set to the value found in current experimental measurements, 91.1876\,GeV~\cite{PDG2020}.} is applied, which further reduces the contamination of DY processes that tend to have values close to $m_{\tau\tau} = m_Z$.
-The same \mll\ and \DPhill\ selections as in the \ZeroJet category are applied in the \OneJet category. As well, the same split into four subregions that is performed in the \ZeroJet category is done in the \OneJet category.
+The same \mll\ and \DPhill\ selections as in the \ZeroJet category are applied in the \OneJet category.
+As well, the same split into four subregions that is performed in the \ZeroJet category is done in the \OneJet category to define the final measurement regions. 
+
+\subsection{VBF-enriched \TwoJet category}
+\label{subsec:vbf-category}
+The VBF signal discrimination in the VBF \TwoJet category is achieved with a DNN as explained in \cref{sec:dnn}.
+Event selection criteria are nonetheless applied to ensure orthogonality with the ggF \TwoJet category and guarantee an adequate background estimation (see \cref{sec:bkg-estimation}).
+Two criteria exploit the distinct VBF topology by rejecting events that either contain an additional jet with \ptGT{30}\,GeV between the two leading jets in pseudorapity (known as \emph{central jet veto} (CJV)) or a lepton at larger pseudorapidities than both of the jets (known as \emph{outside lepton veto} (OLV)).
+In addition, a selection is made on the invariant mass of the jets $\mjj > 120\,\GeV$, which mainly serves to separate other physics analyses targeting the $V(\to qq)H$ Higgs production mode.
+%The background contamination in this region is large. 
+% The VBF signal process is then distinguished from the background processes by using a deep neural network model (DNN) that is trained to classify VBF signal and other non-VBF signal events.
+% The output of the DNN is used as a final discriminant because it reflects the compatibility of an event having VBF signal-like kinematics. Details about the development of the VBF DNN analysis are provided in \cref{sec:dnn}.
+\TDinote{}{Make plot for CJV and OLV}
 
 \subsection{ggF-enriched \TwoJet category}
 \label{subsec:ggf-two-jet-category}
 The \TwoJet category targeting the ggF process is made mutually exclusive to the VBF-enriched \TwoJet category by requiring events to fail either the CJV or OLV. 
 In addition, events from $V(\to qq) H$ production are highly suppressed by a requirement $|\mjj  - 85| \le 15\,\GeV$ and $\Delta y_{jj} \le 1.2$. 
-The same \mll\ and \DPhill\ selections as in the \ZeroJet category are also applied in the ggF-enriched \TwoJet category, and two subregions are defined by a boundary at $\mll = 30\,\GeV$.
-
-\begin{figure}
-    \newImageResizeCustom{0.5}{figures/hww/presel/fig_01.pdf}
-    \caption{Jet multiplicity distribution for jets with \ptGT{30}\,GeV and \absetaST{4.5}, after applying the preselection criteria including pre-fit normalization. The various background components are discussed in more detail in the text. Previously published in \ccite{ATLAS-CONF-2021-014}.}
-    \label{fig:njet-dist}
-\end{figure}
-
+The same \mll\ and \DPhill\ selections as in the \ZeroJet category are also applied in the ggF-enriched \TwoJet category, and two subregions are defined with a boundary at $\mll = 30\,\GeV$ for the statistical analysis. 
 
 \subsection{STXS categorization}
 \label{subsec:STXS-categorization}
