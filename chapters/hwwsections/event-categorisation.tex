@@ -36,9 +36,9 @@ The signal and background composition varies significantly across jet bins, whic
 % In total four mutually exclusive regions are defined.
 % One region targets the VBF production mode and must satisfy \TwoJet.
 % Three categories are defined targeting the ggF production mode: \ZeroJet, \OneJet, and \TwoJet.
-To exploit the presence of neutrinos in the signal, a minimum threshold criterion of $\pTmiss > 20\,\GeV$ is applied to all the ggF categories.
+To exploit the presence of neutrinos in the signal, a minimum threshold criterion of $\pTmiss > 20\,\GeV$\footnote{For a definition of the \pTmiss variable see \cref{chap:objects}.} is applied to all the ggF categories.
 The background from top-quark processes is reduced in all analysis categories by vetoing events that contain a reconstructed $b$-jet with \ptGT{20}\,GeV.
-To separate the signal categories from the majority of \Zgamma events, a selection of $\mtt\,{<}\,m_Z - 25~\GeV$ is applied in the ggF \OneJet, \TwoJet, and VBF \TwoJet categories.
+Furthermore, a selection of $\mtt\,{<}\,m_Z - 25~\GeV$ is applied in the ggF \OneJet, \TwoJet, and VBF \TwoJet categories, to separate the signal categories from the majority of \Zgamma events.
 
 % \Cref{subsec:vbf-category,subsec:ggf-zero-jet-category,subsec:ggf-one-jet-category,subsec:ggf-two-jet-category} provide details on the remaining selections used to define the four analysis SRs that are used to measure the ggF and VBF production cross section. A summary of all selections is given in \cref{tab:event-selection}.\todo{Add table}
 % The four analysis regions are further split into several kinematic bins according to the Stage-1.2 STXS categorization scheme, which is described in \cref{subsec:STXS-categorization}.
@@ -47,10 +47,10 @@ To separate the signal categories from the majority of \Zgamma events, a selecti
 
 \subsection{ggF \ZeroJet category}
 \label{subsec:ggf-zero-jet-category}
-The distinct signal topology arising from the angular momentum correlations explained in \cref{sec:signal-bkg-characteristics} can be best exploited in events with no additional jet.
+The distinct signal topology arising from the angular momentum correlations explained in \cref{sec:signal-bkg-characteristics} can be exploited well in events with no additional jet.
 The opening angle between the missing transverse energy and the dilepton system is required to be $\DPhillMET \,{>}\, 1.57 \approx \frac{\pi}{2}$ and the transverse momentum of the dilepton system is required to have $\Ptll \,{>}\, 30\,\GeV$.
-This drastically reduces the amount of background events from DY processes, while retaining a large fraction of signal events.
-In addition, the continuum $WW$ production process can be separated from the signal with a requirement of $\mll < 55$\,\GeV\ and the remaining DY background can be further reduced by requiring $\DPhill < 1.8$.
+This drastically reduces the amount of background events from $Z/\gamma^*$ processes, while retaining a large fraction of signal events.
+In addition, the continuum $WW$ production process can be separated from the signal with a requirement of $\mll < 55$\,\GeV\ and the remaining $Z/\gamma^*$ background can be further reduced by requiring $\DPhill < 1.8$.
 In the statistical analysis, the \ZeroJet SR is further split into four mutually exclusive subregions defined by requiring $\mll \le 30$\,GeV and $\mll > 30$\,GeV, as well as $\pTsublead \le 20$\,GeV and $\pTsublead > 20$\,GeV, where \pTsublead is the \pT of the subleading lepton.
 % This $b$-jet veto (or short $b$-veto) in the \ZeroJet\ analysis exploits the energy range below the nominal jet \pT\ threshold of $30\,\GeV$ and reaches down to $\pT = 20\,\GeV$.
 % \todo{Reference to the possibility to use track jets?}
@@ -58,14 +58,14 @@ In the statistical analysis, the \ZeroJet SR is further split into four mutually
 \subsection{ggF \OneJet category}
 \label{subsec:ggf-one-jet-category}
 The additional jet in the \OneJet category provides improved rejection against \Ztautau\ processes.
-Further reduction of the DY as well as multijet events is achieved with the maximum lepton transverse mass, max($m_{\text{T}}^\ell$), defined as the maximum value of 
+Further reduction of the \Zgamma background as well as multijet events is achieved with the maximum lepton transverse mass, max($m_{\text{T}}^\ell$), defined as the maximum value of 
 \begin{equation}
     m_{\text{T}}^{\ell_i} = \sqrt{ 2 p_\text{T}^{\ell_i} \MET \cdot \left( 1 - \text{cos} \Delta \phi \left( \ell_i, \MET \right) \right) }.
 \end{equation}
-The max($m_{\text{T}}^\ell$) observable is expected to be smaller for DY and multijet production than for the signal process which motivates a requirement of max($m_{\text{T}}^\ell$)$ > 50\,$GeV.
+The max($m_{\text{T}}^\ell$) observable is expected to be smaller for \Zgamma and multijet production than for the signal process which motivates a requirement of max($m_{\text{T}}^\ell$)$ > 50\,$GeV.
 Another selection is made on the invariant mass of the hypothetical $\tau\tau$ system, $m_{\tau\tau}$.
 The $m_{\tau\tau}$ observable is constructed based on the so-called collinear approximation~\cite{Plehn:1999xi} that uses the direction and magnitude of the measured missing transverse momentum and projects it along the directions defined by the two reconstructed charged leptons~\cite{HWWPaper}.
-A requirement of $m_{\tau\tau} < m_Z - 25\,\GeV$\footnote{The mass of the $Z$ boson, $m_Z$, is set to the value found in current experimental measurements, 91.1876\,GeV~\cite{PDG2020}.} is applied, which further reduces the contamination of DY processes that tend to have values close to $m_{\tau\tau} = m_Z$.
+A requirement of $m_{\tau\tau} < m_Z - 25\,\GeV$\footnote{The mass of the $Z$ boson, $m_Z$, is set to the value found in current experimental measurements, 91.1876\,GeV~\cite{PDG2020}.} is applied, which further reduces the contamination of \Zgamma processes that tend to have values close to $m_{\tau\tau} = m_Z$.
 The same \mll\ and \DPhill\ selections as in the \ZeroJet category are applied in the \OneJet category.
 As well, the same split into four subregions that is performed in the \ZeroJet category is done in the \OneJet category to define the final measurement regions. 
 
@@ -91,22 +91,20 @@ The same \mll\ and \DPhill\ selections as in the \ZeroJet category are also appl
 % From Paper
 %Cross section measurements are also conducted in the Stage-1.2 STXS category scheme, which refines 72 over the 1.1 scheme [14] the granularity of bins for ggF events with a Higgs boson produced with a large 73 transverse momentum. Selected events are categorized with requirements on the transverse momentum 74 of the reconstructed Higgs boson candidate (푝퐻 T ) and on the potential additional hadronic jets. The 75 ggF STXS template process (referred to subsequently as 푔푔퐻) is defined based on the Born 푔푔 → 퐻 76 process plus higher-order QCD and EW corrections. This includes real EW radiation, in particular the 77 푔푔 → 푍(→ 푞  ̄ 푞)퐻 process. The VBF STXS template process (referred to subsequently as EW 푞푞퐻) 78 is defined to include the 푉 (→ 푞  ̄ 푞)퐻 topology in addition to the usual VBF topology. After merging 79 certain STXS bins to ensure sensitivity for all the measured POIs, a total of 11 fiducial cross sections 80 corresponding to different STXS-bound kinematic regions are measured: 6 for 푔푔퐻 production and 5 for 81 EW 푞푞퐻 production.
 
+The signal definitions in the STXS measurement is slightly altered with respect to the inclusive cross-section measurements.  
+The ggF STXS template process (referred to subsequently as $ggH$) is defined based on the Born $gg \to H$ process plus higher-order QCD and EW corrections. This includes real EW radiation, in particular the $gg \to Z(\to q\bar{q})H$ process. The VBF STXS template process (referred to subsequently as EW $qqH$) is defined to include the $V(\to qq)H$ topology in addition to the usual VBF topology.~\cite{HWWPaper}
 
-
-
-
-
-
-\TDinote{}{Add explanation of terminology in qq->EW qqH, ...}
-\TDinote{}{For now, the below is all COPIED FROM PAPER FOR NOW.}
+The Stage-1.2 STXS framework builds the basis for the event categorization of the STXS measurement. 
+Some of the original Stage-1.2 STXS bins are merged to ensure a reasonable sensitivity for all cross-sections measured, and the reconstructed measurement regions (or SRs) are aligned to the merged STXS bins to guarantee optimal measurements. 
+The merged STXS bins, referred to as Reduced Stage-1.2, and the reconstructed measurement regions are shown in \cref{fig:STXS_Diagram}. 
+The original Stage-1.2 STXS definitions are provided in \cref{app:stxs-measurements-aux}. 
+The signal processes are split into different \Njets categories, $\pTH$ bins, as well as \mjj bins. 
+After the merging, a total of 11 fiducial cross sections are measured: 6 for $ggH$ production and 5 for EW $qqH$ production.
 % -> ggF is written as ggH
 % -> VBF is denoted as EW qqH that is more inclusive than VBF as it also includes V(->qq)H.
 % - STXS categorization plot
 % - Expected event yields in each stxs region (or maybe later!?)
 %%%%% From PAPER
-In order to optimize the measurements in bins aligned with those of the Stage-1.2 STXS framework, several STXS kinematic fiducial regions are merged and the separation of the selected events into SRs differs slightly from the description above.
-The STXS bin merging strategy, referred to as Reduced Stage-1.2, and the reconstructed SRs are illustrated in Figure~\ref{fig:STXS_Diagram}.
-
 \begin{figure}[t]
     \newImageResizeCustom{1}{figures/paper-figures/HWW_STXS_Diagram.pdf}
     \caption{Two sets (Production Mode Stage and Reduced Stage 1.2) of exclusive phase-space regions (production bins) defined at parton level for the measurement of the Higgs boson production cross sections (left and middle-left shaded panels), and the corresponding reconstructed signal regions (right panel).
@@ -115,33 +113,20 @@ The STXS bin merging strategy, referred to as Reduced Stage-1.2, and the reconst
     \label{fig:STXS_Diagram}
     }
 \end{figure}
-% \begin{figure}[!h]
-%   \centering
-%     \includegraphics[width=0.99\textwidth]{figures/hww/}
-%   \caption{
-%     Two sets (Production Mode Stage and Reduced Stage 1.2) of exclusive phase-space regions (production bins) defined at parton level for the measurement of the Higgs boson production cross sections (left and middle-left shaded panels), and the corresponding reconstructed signal regions (right panel).
-%     The description of the production bins as well as the corresponding reconstructed signal regions is given in Section~\ref{sec:STXS-Categorization}.
-%     The colors of each reconstructed signal region box indicate the STXS bin which provides the largest relative contribution.
-%     \label{fig:STXS_Diagram}
-%   }
-% \end{figure}
-For the exclusive \ZeroJet $ggH$ category, only a single STXS cross section is measured, with the same SR splitting as defined in Section~\ref{sec:ZeroJetCategory} and applying a $\pTH < 200~\GeV$ selection.
-For the exclusive \OneJet $ggH$ category, all three Stage-1.2 measurements are retained, with the SR split along the same \pTH bin boundaries.
-For the exclusive \TwoJet $ggH$ category with $\pTH < 200~\GeV$, only a single STXS cross section is measured, with the same SR splitting as defined in Section~\ref{sec:ggF-TwoJetCategory} but also including a $\pTH < 200~\GeV$ selection.
-For the \Njets inclusive $ggH$ category with $\pTH \ge200~\GeV$, only a single STXS cross section is measured, using both the \OneJet SR with an added $\pTH \ge200~\GeV$ selection and the same ggF-enriched \TwoJet SR with splitting as defined in Section~\ref{sec:ggF-TwoJetCategory} but also including a $\pTH \ge200~\GeV$ selection. No events with \ZeroJet at the event-generation level are reconstructed in the region with $\pTH \ge200~\GeV$.
-For the exclusive \TwoJet EW $qqH$ categories targeting VBF production, the bins separated by \pTHjj value\footnote{\pTHjj is defined at the reconstruction level as the transverse momentum of the system composed of the two leptons + \met + two leading jets in the event.} are merged and so are the bins separated by \mjj for $\pTH \ge200~\GeV$, resulting in a total of five measured cross sections.
-The same SR described in Section~\ref{sec:VBF-TwoJetCategory} is used, but split into five subregions with the same boundaries that define the measured EW $qqH$ STXS cross sections. In addition, the same DNN and training is used for the final fit's discriminating variable.
-The exclusive \TwoJet EW $qqH$ category with $\mjj < 350~\GeV$ that targets $V(\rightarrow q\bar{q})H$ production, and also the $V(\to \textrm{leptons})H$ and $t\bar{t}H$ categories to which this analysis is not sensitive, are fixed to their expected yields in the fit.
-Figure~\ref{fig:STXS_Composition} shows the relative contributions of the different merged STXS bins in all reconstructed SRs.
-In each case, the target categories provide the largest contribution in the corresponding SRs which aim to select them.
-
-% at the reconstruction level -> using reconstructed objects?
-
+Specifically, a single STXS cross section with \ZeroJet is measured, targeted by a SR defined as the ggF \ZeroJet SR (see \cref{subsec:ggf-zero-jet-category}) but also adding a $\pTH < 200~\GeV$ selection.
+Three STXS cross sections are measured for the \OneJet $ggH$ category, targeted by the SRs of the ggF \OneJet category (\cref{subsec:ggf-one-jet-category}) divided in different \pTH bins.
+One cross section is measured for the \TwoJet $ggH$ category, targeted by the ggF \TwoJet SR defined in \cref{subsec:ggf-zero-jet-category} with an added $\pTH < 200~\GeV$ selection.
+One $ggH$ STXS cross section is measured inclusive of \Njets, which is targeted by the ggF \TwoJet and \OneJet SRs each time with an added $\pTH \geq 200~\GeV$ selection.
+Five STXS cross sections are measured for the \TwoJet EW $qqH$ category. One for $\pTH \ge200~\GeV$, targeted by the VBF \TwoJet SR (\cref{subsec:vbf-category}) with an added $\pTH \geq 200~\GeV$ selection, and four bins with $\pTH < 200~\GeV$ separated by \mjj, targeted by the VBF \TwoJet SR split in the same way in different \mjj bins. 
+In the EW $qqH$ categories, the same DNN is used as final discriminant as in the nominal SRs. Studies found no improvements when using different DNNs trained separately for different STXS regions.
+All signal categories to which the analysis is not sensitive are fixed to their SM predictions. 
+The contribution of the different merged STXS bins in all reconstructed SRs is shown in \cref{fig:STXS_Composition}. 
+It can be seen that the largest contribution in each SR comes from the STXS bin that is targeted. 
 \begin{figure}[!h]
   \centering
-    \includegraphics[width=0.90\textwidth]{\paperfiguredir/11-POI/STXS_CompositionMap}
+    \includegraphics[width=1\textwidth]{\paperfiguredir/11-POI/STXS_CompositionMap}
   \caption{
-    Relative SM signal composition in terms of the measured STXS bin for each reconstructed signal region.
+    Relative SM signal composition in terms of the measured STXS bin for each reconstructed signal region. Taken from \cref{HWWPaper}. 
     \label{fig:STXS_Composition}
   }
 \end{figure}

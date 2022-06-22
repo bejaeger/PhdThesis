@@ -1,9 +1,16 @@
 %\todo{Provide table with backgrounds and characteristics...see S Gadatsch thesis Table 5.1 page 126???}
 %One of the crucial tasks of a physics analysis is to estimate the different background contributions in the SR as accurately as possible.
-To estimate the contribution of the various backgrounds in the SR as accurately as possible, three different methods are used in the \HWW\ analysis:
-The top-quark, \Zjets, and continuum $qq \to WW$ backgrounds are estimated using subsidiary measurements in so-called \emph{control regions} (CRs), processes with misidentified leptons are estimated using a data-driven method known as the \emph{fake factor method}, and all other background contributions are estimated solely based on simulated samples normalized to the theoretical cross sections for the specific processes.
+To estimate the contribution of the various backgrounds in the SRs as accurately as possible, three different methods are used in the \HWW\ analysis:
+The top-quark, \Zgamma, and continuum $qq \to WW$ backgrounds are estimated using subsidiary measurements in so-called \emph{control regions} (CRs), processes with misidentified leptons are estimated using a data-driven method known as the \emph{fake factor method}, and all other background contributions are estimated solely based on simulated samples normalized to the theoretical cross sections for the specific processes.
 The following provides an overview of the different estimation strategies. 
-\TDinote{}{I might wanna add background composition plots! And maybe a cutflow?}
+An overview of the background contamination in each of the nominal SRs is shown in \cref{fig:bkg-fractions}. 
+% \begin{figure}[t]
+%     \newImageResizeCustom{1}{figures/plots/bkg-fractions}
+%     \caption{Background fractions in nominal SRs after a fit to the data. 
+%     \label{fig:bkg-fractions}
+%     }
+% \end{figure}
+\TDinote{}{Add bkg fractions and maybe a cutflow?}
 
 \subsection{Backgrounds estimated with control regions}
 \TDinote{}{This intro needs a bit of polishing}
@@ -80,15 +87,16 @@ The modelling of various observables in the VBF, $WW$ VR is shown in \cref{fig:w
 \newcommand{\wwvrplotdir}{figures/220605-Thesis/wwvr/plots}
  \sixPlots{\vrmodellingcaption{$WW$ VR}}{fig:wwvr:dnn-inputs}{\wwvrplotdir/../mjj/plots/run2-emme-CutVBF_WWControl_2jet-Mjj-log.pdf}{\wwvrplotdir/run2-emme-CutVBF_WWControl_2jet-DYjj-lin.pdf}{\wwvrplotdir/run2-emme-CutVBF_WWControl_2jet-DPhill-lin.pdf}{\wwvrplotdir/run2-emme-CutVBF_WWControl_2jet-Mll-lin.pdf}{\wwvrplotdir/../lepcent/plots/run2-emme-CutVBF_WWControl_2jet-contOLV-lin.pdf}{\wwvrplotdir/run2-emme-CutVBF_WWControl_2jet-METSig_broad-lin.pdf}
 
-\subsubsection{STXS Control Regions}
+\subsubsection{Control regions for the STXS measurement}
 \label{subsubsec:stxs-crs}
-\TDinote{}{TODO: Describe STXS control regions}
-
+For the STXS measurement, the CRs defined above are further split into separate CRs that are aligned with the STXS SRs. Due to the limited statistical precision, the same split as in the SRs cannot be performed for the CRs. Thus, a compromise is made between statistical precision and granularity, leading to a total number of 21 CRs in the ggF categories and 6 CRs in the VBF categories.  
+The full list of CRs is summarized in \cref{tab:STXSCRsSelection}. 
+Each selection specified is applied to each type of CR listed in the first column, that is, to three CRs for the ggF categories (the $WW$, top-quark, and \Ztautau CR) and to two CRs each for the VBF categories (top-quark and \Ztautau CR). 
 \begin{table}[ht]
     \caption{
-      Event selection criteria used to define the control regions used in the fit to the STXS regions shown in \cref{fig:STXS_Diagram}.
+      Event selection criteria used to define the control regions used in the STXS measurement.
       The selections start from the nominal CR selections summarized in \cref{tab:CRsSelection}.
-      In each category the selections are applied to all nominal CRs. 
+      %In each category the selections are applied to all nominal CRs, that is . 
       }
   \label{tab:STXSCRsSelection}
   \centering

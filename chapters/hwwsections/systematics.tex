@@ -3,7 +3,7 @@ They can be grouped into \emph{experimental uncertainties} and \emph{theoretical
 The experimental uncertainties are related to the detector performance and associated to the identification, reconstruction, and trigger efficiencies, as well as the limited knowledge of the scale and resolution of energy and momentum measurements.
 The theoretical uncertainties for both the signal and background processes arise from the assumptions made in the MC simulations as well as theoretical cross-section calculations. 
 % In a multi-category analysis, the sign and magnitude of these experimental uncertainties are calculated separately in each category.
-All uncertainties are taken into account by constructing respective varied MC templates of the statistical model and using them to define the corresponding nuisance parameters, as described in \cref{chap:statistics}.
+All uncertainties are taken into account by constructing respective varied MC templates for the statistical model and using them to define the corresponding nuisance parameters, as described in \cref{chap:statistics}.
 
 \subsection{Experimental uncertainties}
 Experimental uncertainties are typically derived in separate calibration measurements, each of which provides a set of sometimes many sources of uncertainty to be considered in physics analyses.
@@ -16,12 +16,11 @@ A complete list of experimental uncertainties considered is provided in \cref{ta
 The uncertainty on the luminosity is obtained using the LUCID-2 detector~\cite{ATLAS-CONF-2019-021} and only applied to processes not estimated with CRs. 
 The uncertainty on the pile-up reweighting procedure is estimated by varying the scale factor used for the reweighting. 
 Uncertainties on the physics objects included in the \MET calculation, that is, electrons, muons, and jets, are propagated to the \MET object. In addition, specific \MET uncertainties are included to account for uncertainties of the \MET soft term.
+The uncertainties on the jet energy resolution correspond to the ones discussed in \cref{chap:calibration}. 
 
 % From MASTER thesis:
 % Experimental uncertainties are usually derived externally by dedicated calibration measurements, based on actual data measurements. The constraint terms for the introduced nuisance parameters are represented by Gaussians with a width of the provided nominal uncertainty. Since the subsidiary measurements are generally based on many events, this assumption is supported by the central limit theorem.
-In addition, the uncertainties associated to the background with misidentified leptons are considered as experimental uncertainties. They enter via the uncertainties derived for the fake factors, as explained in \cref{subsec:misid-bkg}, and thus only impact the normalisation of the statistical templates. They are discussed in \cref{subsec:misid-bkg}.
-\TDinote{}{Maybe provide more info about size of uncertainties in table of exp uncertainties}
-\TDinote{}{At least do one thing and refer to JER uncertainties!}
+The uncertainties associated to the background with misidentified leptons are also grouped into the experimental uncertainties. They enter via the uncertainties derived for the fake factors, as explained in \cref{subsec:misid-bkg}, and thus only impact the normalisation of the statistical templates. They are discussed in \cref{subsec:misid-bkg}.
 % NOT SURE IF I SHOULD DO THE FOLLOWING! START WITHOUT, maybe reconsider
 % - Discuss some of the largest SHAPE uncertainties in VBF? 
 %     -> I studied it quite a bit so could definitely add some content. 
@@ -47,7 +46,7 @@ In addition, the uncertainties associated to the background with misidentified l
 
 
 \subsection{Theoretical uncertainties}
-The nominal MC simulations for both the signal and background processes rely on a set of assumptions that must be made because of the imprecise knowledge of various effects. Assumptions include the choice of renormalisation and factorisation scale, the choice of PDFs, the value of experimentally measured parameters like $\alpha_s$, or assumptions about non-perturbative effects such as the parton showering, hadronisation, and underlying event model. 
+The nominal MC simulations for both the signal and background processes rely on a set of assumptions that must be made because of the imprecise knowledge of various effects. Assumptions include the choice of renormalisation and factorisation scale, the choice of PDFs, the value of experimentally measured parameters like $\alpha_s$, or assumptions about non-perturbative effects such as the parton showering, hadronization, and underlying event model. 
 The uncertainties arising from such assumptions are determined either by directly varying parameters within the nominal MC simulation and comparing the predictions, or by comparing the nominal predictions with alternative simulations. 
 The uncertainties can affect both the overall normalisation of the signal and background processes and the shape of the final discriminant.  
 % Imprecise knowledge of the parton showering process and underlying event, missing higher order calculations, and uncertainties in the strong coupling constant $\alpha_s$ as well as the PDFs. In some cases, further process-specific uncertainties are taken into account.
@@ -56,7 +55,8 @@ The uncertainties can affect both the overall normalisation of the signal and ba
 
 \subsubsection{Signal uncertainties}
 Uncertainties affecting the signal processes can be separated into two types: uncertainties that only affect the predicted SM cross section and thus only impact the overall normalisation of the process, and uncertainties arising from the acceptance effects due to the limited detector coverage or analysis selections. The latter can also impact the shape of the final discriminants. 
-In the case of cross-section measurements, the first type of uncertainties are factored out and not included in the statistical model. For the measurement of signal strengths, both uncertainty components are included. 
+In the case of cross-section measurements, only acceptance uncertainties must be included in the statistical model. 
+For the measurement of signal strengths, both uncertainty components are included. 
 
 For both the ggF and VBF signal process, the uncertainties are estimated that arise from the choice of PDF, including the uncertainties on $\alpha_s$, the choice of parton shower model, and matrix element matching.
 The PDF uncertainty is estimated by taken the standard deviation of in total 30 independent Hessian-reduced error sets corresponding to the PDFLHC15 set \cite{Butterworth:2015oua}. 
@@ -64,29 +64,28 @@ The parton shower and matrix element matching uncertainty is derived from the sa
 Cross-section uncertainties arising from both missing higher-order contributions in the cross-section calculations and migration effects on the ggF cross sections in different \Njets categories are estimated according to the descriptions provided in \ccite{deFlorian:2016spz,Stewart:2011cf,Stewart:2013faa,Liu:2013hba,Boughezal:2013oha,Gangal:2013nxa}.
 This includes uncertainties from the choice of factorization and renormalization scales, the choice of resummation scales, and the ggF migrations between the \ZeroJet and \OneJet regions or between the $N_{\text{jet}} \ge 1$  and \TwoJet categories.
 For the ggF migration uncertainties in the \TwoJet categories the so-called Steward Tackmann procedure is used, where the inclusive cross sections in categories $N_{\text{jet}} \ge N$ and $N_{\text{jet}} \ge N+1$ are assumed to be independent and therefore the uncertainty on the exclusive cross section in the $N_{\text{jet}} = N$ can be estimated by the sum in quadrature of the uncertainties of the inclusive cross sections.
-A final uncertainty of 2.2\% is applied to the signal cross sections assumed, to account for the uncertainty on the \HWW branching fraction. 
+Furthermore, an uncertainty of 2.2\% is applied to the signal cross sections assumed, to account for the uncertainty on the \HWW branching fraction. 
 %OR THIS: where uncertainties in exclusive jet bins are estimated based on scale variations in inclusive bins.
-
 
 \paragraph{STXS signal uncertainties}
 % Same uncertainties but for each truth bin:
 % ONLY cross-section uncertainties, from INT NOTE: As such, the samples or weight variations used to evaluate the signal uncertainties 2509 must be normalized to the same cross-section at truth-level in each STXS bin, prior to examining their 2510 effects on the yield in signal region. 
-\TDinote{}{To be included}
-
+The sources of uncertainties on the signals split into different STXS bins are the same as for the inclusive ggF and VBF signal processes. 
+To ensure that only acceptance uncertainties are considered, the samples used to evaluate the uncertainties are normalized in each STXS bin to the same theoretical cross-sections, prior to comparing their effects on the yields and shapes in the STXS SRs. 
+Dedicated QCD scale uncertainties are used for the STXS signal samples that specifically cover uncertainties due migrations between different STXS bins. 
 
 % From paper
 %For signal processes, the approach described in Refs. [11, 124] is used for estimating the variations due 528 to the impact of higher-order contributions not included in the calculations and migration effects on the 529 푁jet ggF cross sections. In particular, the uncertainty from the choice of factorization and renormalization 530 scales, the choice of resummation scales, and the ggF migrations between the 0-jet and 1-jet phase-space 531 bins or between the 1-jet and ≥ 2-jet bins are considered [11, 125–128].
 %from renormalization and factorization scale choices (known as \emph{QCD scale} uncertainties),
 
 % Dickinson
-% Uncertainties on the predicted Standard Model cross section of process p are not included on the measurement of cross section  p. However, these uncertainties are included on measurements of the signal strength μp, since this result parameterizes the cross section in terms of the SM prediction. In addition, if a process q 6= p is not measured simultaneously, but is fixed to the SM expectation, then theory uncertainties on the inclusive SM  q are included on the measurement of both  p and μp.Migrationuncertaintiesareincludedonmeasurements of both  p and μp.
+% Uncertainties on the predicted Standard Model cross section of process p are not included on the measurement of cross section  p. However, these uncertainties are included on measurements of the signal strength μp, since this result parameterizes the cross section in terms of the SM prediction. In addition, if a process q 6= p is not measured simultaneously, but is fixed to the SM expectation, then theory uncertainties on the inclusive SM  q are included on the measurement of both  p and μp.
+% Migrationuncertaintiesareincludedonmeasurements of both  p and μp.
 \subsubsection{Background uncertainties}
 %The following provides an overview of the estimation of the theoretical uncertainties underlying the background predictions. 
 % \paragraph{Common uncertainty estimates between background processes}
 %The method used to estimate some background uncertainties are common for different processes. 
-
 The uncertainties related to the various background estimates are derived in a similar way as the uncertainties for the signals.  
-
 \paragraph{Common methods} The same methods are used for different processes to derive some of the background uncertainties. 
 %Some background uncertainties are estimated with the same methods for different processes. 
 %They are referenced in the paragraphs below, that provide specifics on the uncertainties of different processes, and include:
