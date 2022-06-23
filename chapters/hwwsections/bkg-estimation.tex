@@ -1,7 +1,7 @@
 %\todo{Provide table with backgrounds and characteristics...see S Gadatsch thesis Table 5.1 page 126???}
 %One of the crucial tasks of a physics analysis is to estimate the different background contributions in the SR as accurately as possible.
 To estimate the contribution of the various backgrounds in the SRs as accurately as possible, three different methods are used in the \HWW\ analysis:
-The top-quark, \Zgamma, and continuum $qq \to WW$ backgrounds are estimated using subsidiary measurements in so-called \emph{control regions} (CRs), processes with misidentified leptons are estimated using a data-driven method known as the \emph{fake factor method}, and all other background contributions are estimated solely based on simulated samples normalized to the theoretical cross sections for the specific processes.
+The top-quark, \Zgamma, and non-resonant $qq \to WW$ backgrounds are estimated using subsidiary measurements in so-called \emph{control regions} (CRs), processes with misidentified leptons are estimated using a data-driven method known as the \emph{fake factor method}, and all other background contributions are estimated solely based on simulated samples normalized to the theoretical cross sections for the specific processes.
 The following provides an overview of the different estimation strategies. 
 An overview of the background contamination in each of the nominal SRs is shown in \cref{fig:bkg-fractions}. 
 % \begin{figure}[t]
@@ -66,7 +66,7 @@ Distributions of several variables in the VBF, \Ztautau CR are shown in \cref{fi
 \newcommand{\zttcrplotdir}{figures/220605-Thesis/zttcr/plots}
 \sixPlots{\crmodellingcaption{\Ztautau CR}}{fig:zttcr:dnn-inputs}{\zttcrplotdir/../mjj/plots/run2-emme-CutVBF_ZtautauControl_2jet-Mjj-log.pdf}{\zttcrplotdir/run2-emme-CutVBF_ZtautauControl_2jet-DYjj-lin.pdf}{\zttcrplotdir/run2-emme-CutVBF_ZtautauControl_2jet-Ml0j0-lin.pdf}{\zttcrplotdir/run2-emme-CutVBF_ZtautauControl_2jet-Mll-lin.pdf}{\zttcrplotdir/../lepcent/plots/run2-emme-CutVBF_ZtautauControl_2jet-contOLV-lin.pdf}{\zttcrplotdir/run2-emme-CutVBF_ZtautauControl_2jet-METSig_broad-lin.pdf}
 
-\subsubsection{Continuum $WW$ backgrounds}
+\subsubsection{Non-resonant $WW$ backgrounds}
 In the ggF categories, the $qq \to WW$ background is controlled with CRs by modifying the selections on the \mll\ observable and applying additional selections to purify the regions.
 
 In the \ZeroJet $WW$ CR, a requirement of $55 < \mll < 110$\,GeV is applied, where the lower boundary ensures orthogonality between the $WW$ CR and the \ZeroJet\ SR, and the upper boundary reduces the contamination from top-quark processes.
@@ -138,7 +138,7 @@ Several processes are estimated using simulated samples normalized to their theo
 
 \subsection{Backgrounds with misidentified leptons}
 \label{subsec:misid-bkg}
-The $W$+jets and multijet processes enter the signal region if one ($W$+jets) or two (multijet) leptons are misidentified.
+The $W$+jets and multijet processes enter the SRs if one ($W$+jets) or two (multijet) leptons are misidentified.
 Their contributions are estimated using a data-driven technique known as \emph{fake factor method} where a control data sample is defined from which the expected number of events in the analysis regions are extrapolated by applying an extrapolation factor known as \emph{fake factor}.
 The control sample is defined with alternative object selection criteria that are orthogonal to the nominal selections and designed to be enriched in candidate events with misidentified leptons.
 The fake factor is derived in a separate analysis and can be regarded as the probability of a lepton being misidentified, given the control sample selections.

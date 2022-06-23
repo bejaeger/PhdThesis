@@ -12,21 +12,52 @@ This section first provides details on the statistical model, including the trea
 
 \subsection{Background templates}
 All background processes discussed in \cref{sec:bkg-estimation} are included in the likelihood. 
-The normalization of processes for which CRs are defined is controlled by freely floating NFs in the fit. All other processes are normalized to their respective theoretical cross sections.
+The normalization of processes for which CRs are defined is controlled by freely floating NFs in the fit. All other processes are normalized to their respective theoretical cross sections including their uncertainties, except the background from misidentified leptons that is estimated in a data-driven method.
+In summary, the MC fit template is constructed using the following contributions:
+\begin{itemize}
+    \item VBF signals ($H_{\mathrm{VBF}}$), inclusive or split in STXS bins, scaled with signal strengths.
+    \item ggF signals ($H_{\mathrm{ggF}}$), inclusive or split in STXS bins, scaled with signal strengths.
+    \item Other Higgs processes (Other $H$).
+    \item \ttbar and $Wt$, separately treating uncertainties but using the same NF.
+    \item $qq \to WW$ and $gg \to WW$ (together $WW$ (Strong)), separately treating uncertainties and using NFs for the $qq \to WW$ process in the ggF categories.
+    \item Electroweak production of $WW$ ($WW$ (EW)).
+    \item \Zgamma, controlled by an NF.
+    \item Misidentified leptons background (Mis-Id).
+    \item $V\gamma$, other diboson processes ($W\gamma^*$, $WZ$, $ZZ$), and triboson, separately treating uncertainties (collectively denoted \OtherVVV).
+\end{itemize}
+Some of the contributions are summed in the results for illustrative purposes, for example, the $WW$ processes in the ggF categories. 
 
-\subsection{Fit inputs}
+\subsection{Fit types and inputs}
+The signal yields are parametrized as signal strengths in the likelihood, 
+\begin{equation}
+    \label{eq:incl-ggF-VBF-signal-strengths}
+    \mu_{\text{signal}} = \frac{ [ \sigma_{\text{signal}}  \times \BR(H \to WW^*) ]_\text{meas} } { [ \sigma_{\text{signal}} \times \BR(H \to WW^*) ]_\text{SM}}, 
+\end{equation}
+with the signal definition depending on the type of measurement that is performed.
+The results presented are based on three types of fits:
+\begin{itemize}
+    \item 2-PoI fit: Measurement of the inclusive VBF and ggF production cross sections by extracting two signal strengths $\mu_{\text{VBF}}$ and $\mu_{\text{ggF}}$ as the \emph{parameter of interests} (PoIs).
+    \item 1-PoI fit: Measurement of the combined VBF and ggF production cross section, treating the VBF and ggF signal with a common signal strength $\mu_{\text{VBF+ggF}}$.
+    \item 11-PoI fit: Measurement of signal cross sections separated in kinematic regions following the STXS framework. In total 11 signal strengths are measured targeting $ggH$ and EW $qqH$ production.
+\end{itemize}
+For all cross-section measurements, only signal acceptance uncertainties are considered in the statistical model. 
+In addition, the excess of the VBF signal over the background expectation is reported using the test statistic as shown in \cref{sec:hypothesis-testing}. Two 2-PoI fits are performed for this purpose that also include signal cross-section uncertainties in the signal templates. 
+
+The fit inputs used for the 2-PoI fit and 1-PoI fit are the same, and correspond to the SRs and CRs for the \ZeroJet, \OneJet, and \TwoJet categories as defined in \cref{sec:event-categorization,sec:bkg-estimation}. A total number of 22 regions are fit, 11 SRs and 11 CRs.
+For the 11-PoI fit, all STXS SRs and CRs are used as defined in \cref{subsec:STXS-categorization,subsubsec:stxs-crs}, which amounts to a total number of 44 regions, 17 SRs and 27 CRs. 
+The final fit discriminant in the ggF SRs is the \mT distribution. The same 6 bins are used in all regions: [0-90, 90-100, 100-110, 110-120, 120-130, 130-$\infty$]. 
+All VBF SRs use the DNN observable as final discriminant with 7 bins in the nominal VBF SR and 4 bins in the STXS SRs, as described in \cref{subsec:fina-model-validation}.
+
 %The signal cross sections are parametrized as signal strengths in the likelihood and extracted from a simultaneous fit to the data in multiple regions.
 %depending on the target of the fit, for example,
 % \begin{equation}
 %     \label{eq:incl-ggF-VBF-signal-strengths}
 %     \mu_{\text{ggF/VBF}} = \frac{ [ \sigma_{\text{ggF/VBF}}  \times \BR(H \to WW^*) ]_\text{meas} } { [ \sigma_{\text{ggF/VBF}} \times \BR(H \to WW^*) ]_\text{SM}},
 % \end{equation}
-For the measurement of the inclusive ggF and VBF production cross sections a fit is performed to all nominal SRs and CRs in the \ZeroJet, \OneJet, and \TwoJet categories, as defined in \cref{sec:event-categorization,sec:bkg-estimation}. 
-The ggF and VBF cross sections are parametrized as shown in \cref{eq:incl-ggF-VBF-signal-strengths} and treated as the two unconstrained PoIs $\mu_{\text{VBF}}$ and $\mu_{\text{ggF}}$. 
-The same regions are used for the measurement of the combined ggF and VBF cross section, using a single PoI, $\mu_{\text{VBF+ggF}}$, to scale the ggF and VBF yields. 
-For the measurement of 11 STXS cross sections, all STXS SRs and CRs are used as defined in \cref{subsec:STXS-categorization,subsubsec:stxs-crs}. The total number of regions amounts to 44 regions, 17 SRs and 27 CRs. 
-The final fit discriminant in the ggF SRs is the \mT distribution. The same binning is used in all regions: [0-90, 90-100, 100-110, 110-120, 120-130, 130-$\infty$]. 
-The VBF SRs use the DNN observable as final discriminant with 7 bins as shown in \cref{subsec:fina-model-validation} for the inclusive cross-section measurements and the following 4 bins for in the STXS measurement: [0-0.5, 0.5, 0.74, 0.74-0.87, 0.87, 1.0].
+% For the measurement of the inclusive ggF and VBF production cross sections a fit is performed to all nominal SRs and CRs in the \ZeroJet, \OneJet, and \TwoJet categories, as defined in \cref{sec:event-categorization,sec:bkg-estimation}. 
+% The ggF and VBF cross sections are parametrized as shown in \cref{eq:incl-ggF-VBF-signal-strengths} and treated as the two unconstrained PoIs $\mu_{\text{VBF}}$ and $\mu_{\text{ggF}}$. 
+% The same regions are used for the measurement of the combined ggF and VBF cross section, using a single PoI, $\mu_{\text{VBF+ggF}}$, to scale the ggF and VBF yields. 
+% For the measurement of 11 STXS cross sections, all STXS SRs and CRs are used as defined in \cref{subsec:STXS-categorization,subsubsec:stxs-crs}. The total number of regions amounts to 44 regions, 17 SRs and 27 CRs. 
 % From Paper
 %The cross sections for the ggF and VBF production modes are determined in a simultaneous fit to all 574 nominal SRs and CRs in the 푁jet = 0, 푁jet = 1, and 푁jet ≥ 2 categories. The ggF and VBF cross sections are 575 the two unconstrained POIs in this fit. 
 %A second fit is performed using these same regions, but measuring a 576 single POI for the combined ggF and VBF yield.
@@ -35,17 +66,17 @@ The VBF SRs use the DNN observable as final discriminant with 7 bins as shown in
 
 \subsection{Treatment of uncertainties}
 The sources of systematic uncertainties are discussed in \cref{sec:stats-analysis}. 
-Most uncertainties are fully correlated between the SRs and CRs in all analysis categories. Only the theoretical uncertainties affecting the backgrounds are uncorrelated between the four different categories. The same is true for the NFs. This is a conservative approach and ensures that potential mismodellings observed in one of the categories do not impact another category. 
+Most uncertainties are fully correlated between the SRs and CRs in all analysis categories. Only the theoretical uncertainties affecting the backgrounds are uncorrelated between the four different categories. The same is true for the NFs. This is a conservative approach and ensures that potential mismodellings observed in one of the categories do not impact other categories. 
 Different uncertainties are treated differently in the fit, and before the fit is performed, several uncertainties are preprocessed depending on their type and size. 
 
 \paragraph{Transfer of uncertainties}
 % From INT note
-In some regions the available statistical power is not sufficient to correctly estimate some of the uncertainties. 
-In these cases, the uncertainty can be evaluated in a more inclusive region with more events and then applied to the individual regions. This is useful especially for the regions used in the STXS measurement. The specific inclusive region is chosen and only used if the uncertainty derived in the inclusive region is statistically compatible with the uncertainties in the individual regions. 
+In some regions the available statistical power is not sufficient to correctly estimate the uncertainties. 
+In these cases, the uncertainty is evaluated in a more inclusive selection and then applied to the individual smaller regions. This is useful especially for the regions used in the STXS measurement. The specific inclusive region is chosen and only used if the uncertainty derived in the inclusive region is statistically compatible with the uncertainties in the individual regions. 
 
 \paragraph{Pruning and symmetrizing of uncertainties}
-Only a few of the systematic uncertainties derived have a significant variation with respect to the nominal MC template. To increase the numerical stability of the fit and reduce the time it takes for the fit to converge, uncertainties are pruned from the likelihood if they do not satisfy certain threshold criteria.
-For a given NP, the normalization and shape components are pruned independently of each other.
+Only a few of the systematic uncertainties derived have a significant variation with respect to the nominal MC template. To increase the numerical stability of the fit and reduce the time it takes for the fit to converge, uncertainties are pruned from the likelihood if they do not satisfy certain threshold conditions.
+For each NP, the normalization and shape components are pruned independently of each other.
 The following cases result in an uncertainty for a given sample being pruned from a region:
 \begin{itemize}
     \item A normalization uncertainty is smaller than 0.5\%.
@@ -54,7 +85,7 @@ The following cases result in an uncertainty for a given sample being pruned fro
 \end{itemize}
 The nominal or alternative samples that have only small yields often lead to large, unphysical variations, due to statistical fluctuations. 
 Therefore, a normalization uncertainty is also pruned if it is larger than 80\%. 
-This criterion is carefully monitored to ensure that not meaningful uncertainty is pruned.
+This criterion is carefully monitored to ensure that no meaningful uncertainty is pruned.
 In addition, some experimental four-momentum uncertainties and uncertainties on STXS signal samples are pruned manually if they are not affected by the above criteria but are clearly dominated by statistical fluctuations and thus deemed unphysical.
 Furthermore, the shape component of uncertainties of minor backgrounds ($V\gamma$, \Zgamma) are pruned, mainly because meaningful shape uncertainties cannot be estimated with the available MC samples. 
 
@@ -63,7 +94,7 @@ For normalization uncertainties whose up and down variations differ by a factor 
 Similarly, for shape uncertainties that have at least one bin where the up and down variations have the same sign, the full shape uncertainty is symmetrized by fixing the larger variation and mirroring it with respect to nominal for use as the ``opposite'' variation in each bin.
 
 \paragraph{Smoothing of shape uncertainties}
-For the DNN discriminant in the VBF category, a smoothing procedure is applied to background shape uncertainties whose estimates are subject to large fluctuations. 
+For the DNN discriminant, a smoothing procedure is applied to background shape uncertainties whose estimates are subject to large statistical fluctuations. 
 The smoothing procedure is based on a bin merging strategy together with the 353QH running median algorithm~\cite{Friedman353QH}. 
 An example of an uncertainty processed in such a way is shown in \cref{fig:dnn:smoothing}.
 \begin{figure}[th]
@@ -81,8 +112,9 @@ An example of an uncertainty processed in such a way is shown in \cref{fig:dnn:s
 \end{figure}
 
 \subsection{Expected performance and validation of likelihood fit}
-The analysis strategy is optimized on MC simulated samples and signal-like data events are not analyzed until the statistical model has been validated.
-An \emph{Asimov} dataset can be used to evaluate the expected performance of the likelihood fit. It is generated under the SM assumption, that is, assuming the expected values for the backgrounds and signals. 
+\label{subsec:expected-performannce}
+The analysis strategy is optimized on MC simulated samples and signal-like data events are not analyzed until the statistical model is validated.
+An \emph{Asimov} dataset can be used to evaluate the expected performance of the likelihood fit. It is generated under the SM assumption, that is, assuming the expected values for the backgrounds and signals ($\mu=1$). 
 This implies that the values of all fit parameters obtained from a fit (\emph{post-fit} values) to an Asimov dataset correspond to their expected values. 
 The Asimov dataset is used to extract the expected uncertainties on the cross-section measurements and to assess the impact of different sources of uncertainties on the final results. 
 \Cref{fig:fit:breakdown} shows a representative list of NPs and their influence on the VBF cross section, \sigmaVBF. 
@@ -111,13 +143,15 @@ The largest background uncertainty is from the choice of \ttbar matching procedu
 All said uncertainties are mainly caused by shape differences in the DNN discriminant when the respective source of uncertainty is varied.
 The post-fit uncertainties of the NPs relative to their nominal ones are also shown. The \emph{constraints}, that is, the extent to which the post-fit uncertainty is smaller than the nominal uncertainty, are reasonably small.
 This validates that the uncertainties are represented adequately in the statistical model. 
-The expected total uncertainty on the cross-section measurement corresponds to $\Delta \sigmaVBF = \pm  $. The expected discovery significance of the VBF signal is $6.2\,\sigma$. 
+The expected total uncertainty on the cross-section measurement corresponds to $\Delta \sigmaVBF = \pm  $. 
+The expected signal strength is extracted to be $\mu = 1^{+0.24}_{-0.21}$.
+The expected discovery significance of the VBF signal is $6.2\,\sigma$. 
 
 \Cref{fig:fit:breakdown} also includes the NPs obtained from a fit to the actual data. 
 The \emph{pulls} of the NPs, defined as the difference of the post-fit central values and their corresponding nominal, $(\hat{\theta} - \theta_0 ) / \Delta \theta_0$, are relatively small. 
 Furthermore, the constraints and the breakdown of uncertainties are comparable for the results obtained from a fit to Asimov data and actual data. 
 Because of these findings, the statistical model is deemed appropriate for the measurement performed. 
-Similar validation studies have been conducted for the ggF cross-section measurement as well as the STXS measurement and lead to the same conclusion. 
+Similar validation studies have been conducted for the ggF cross-section measurement as well as the STXS measurement and lead to the same conclusions. 
 
 % A listing of the results for the individual parameters obtained in the fit is shown in Fig. 4.25. The total uncertainty has been broken down to the impacts of each individual nuisance parameter (and for certain groups of nuisance parameters). Shown are the breakdowns for the fit to the observed data, as well as for a control fit to an Asimov data set generated with the assumption of μ = 1. The postfit values and uncertainties of the individual nuisance parameters are shown as well, where the constrained nuisance parameters have been normalized to their respective constraints.
 

@@ -20,29 +20,13 @@ This categorization is illustrated in \cref{fig:signal-categorization}.
 Additional event selection criteria are applied in each of the categories to define the regions in which the measurements are performed.
 The categories targeting the ggF signal use simple event selections to increase the purity of signal events and use the \mT observable as final discriminant. 
 The VBF \TwoJet category is made orthogonal to the ggF \TwoJet region and uses a DNN that distinguishes VBF signal from non-VBF events as final discriminant.
-To extract the signal yields and measure their cross sections, MC simulated event templates are fit to the data in a binned likelihood fit performed simultaneously in all measurement regions.
-The STXS measurement uses more measurement regions than the inclusive cross-section measurement to specifically target the signals divided into different kinematic bins. 
+To extract the signal yields and measure their cross sections, MC simulated event templates are fit to the data in a binned likelihood fit performed simultaneously in all measurement regions (also denoted \emph{signal regions}, SRs).
+The STXS measurement uses more SRs than the inclusive cross-section measurement to specifically target the signals divided into different kinematic bins. 
 
 The descriptions and results presented in this chapter supersede similar measurements performed with the same dataset but based on a previous version of the analysis~\cite{ATLAS-CONF-2021-014}.
 The main differences between the analyses are changes in the simulated samples used, improved treatment of systematic uncertainties, and an improved DNN discriminant in the VBF category. 
 It should be noted that during the optimization of the analysis, all categories have been first optimized and validated separately before being combined in the statistical analysis.
 
-
-\TDinote{}{Maybe put the following in the stats-analysis section}
-To extract the signals and measure their cross sections times \HWW branching fraction, a likelihood fit is performed simultaneously in all categories. 
-The signal yields are parametrized as signal strengths in the likelihood, 
-\begin{equation}
-    \label{eq:incl-ggF-VBF-signal-strengths}
-    \mu_{\text{signal}} = \frac{ [ \sigma_{\text{signal}}  \times \BR(H \to WW^*) ]_\text{meas} } { [ \sigma_{\text{signal}} \times \BR(H \to WW^*) ]_\text{SM}}, 
-\end{equation}
-with the signal definition depending on the type of measurement that is performed.
-The analysis presented performs three types of measurements:
-\begin{itemize}
-    \item Measurement of the inclusive VBF and ggF production cross sections by extracting two signal strengths $\mu_{\text{VBF}}$ and $\mu_{\text{ggF}}$ in a \emph{2-PoI fit}.
-    \item Measurement of the combined VBF and ggF production cross section, treating the VBF and ggF signal with a common signal strength $\mu_{\text{VBF+ggF}}$ in a \emph{1-PoI fit}.
-    \item Measurement of differential cross sections separated in kinematic regions following the STXS framework (termed \emph{STXS measurement}). In total 11 signal strengths are measured targeting the ggF and VBF production mode in an \emph{11-PoI fit}. 
-\end{itemize}
-In addition, the excess of the VBF signal over the background expectation is reported in terms of its discovery significance, yielding, for the first time based on a single Higgs decay mode, the observation of the VBF production mode.
 
 % \section{Previous Results and Objectives of Measurement}
 % \label{sec:prev-results}
