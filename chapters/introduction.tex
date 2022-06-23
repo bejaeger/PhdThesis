@@ -105,7 +105,7 @@ This thesis presents research that has been conducted with the ATLAS collaborati
 The different chapters as well as the level of detail reflect the author's contributions to the research.
 The following provides an outline of the thesis including a summary of the author's contributions.
 
-\Cref{chap:theory} summarizes the theoretical framework of the Standard Model and introduces the concepts required to describe and measure proton-proton collision events. 
+\Cref{chap:theory} summarizes the theoretical framework of the Standard Model and introduces the concepts required to describe and measure $pp$ collision events. 
 % \Cref{chap:higgs} introduces all relevant aspects of Higgs boson physics. First, the importance of Higgs boson measurements is highlighted, followed by a description of the phenomenology of Higgs boson processes and the current experimental status.
 
 \Cref{chap:higgs} provides motivation for performing Higgs boson measurements and summarizes the phenomenology and recent measurements of Higgs boson processes. This allows placing the research presented in this thesis in a broader context. 
@@ -115,21 +115,21 @@ The following provides an outline of the thesis including a summary of the autho
 \Cref{chap:objects} discusses the various algorithms that are used in the ATLAS collaboration to reconstruct and identify physics objects. 
 
 \Cref{chap:calibration} discusses how the energy of jets is calibrated with the ATLAS experiment, focusing on the measurement of the noise term of the jet energy resolution. 
-The author carried out all aspects of the noise term measurement and improved the measurement uncertainties by introducing several new methodologies and strategies. As a result of the author's research, this measurement has been successfully performed for the first time for particle-flow jets (published in \ccite{JETM-2018-05}). The calibrations and uncertainties are used in various analyses, and the author implemented the calibration procedure in one of the common analysis software frameworks.
+The author carried out all aspects of the noise term measurement and improved the measurement uncertainties by introducing several new methodologies and strategies. As a result of the author's research, this measurement has been successfully performed for the first time for particle-flow jets (published in \ccite{JETM-2018-05}). The calibrations and uncertainties are used in various physics analyses performed by the ATLAS collaboration, and the author implemented the calibration procedure in one of the common analysis software frameworks.
 %and \emph{R-scan} jets (jets with a radius of $R=0.2$ and $R=0.6$, publication currently in ATLAS internal review), as a result of the author's studies and research.
 
-\Cref{chap:statistics} introduces the relevant statistical concepts used in the analysis of Higgs boson events.
+\Cref{chap:statistics} introduces the statistical concepts that are relevant for performing Higgs boson measurements.
 
-\Cref{chap:ml} presents the machine learning techniques used to develop a discriminant that separates Higgs boson events from non-Higgs events.
+\Cref{chap:ml} presents the machine learning techniques used to develop a deep neural network used as discriminant to measure the VBF, \HWW signal.
 
-\Cref{chap:hww} is the main part of this thesis and presents the measurement of VBF and ggF Higgs boson production in the \HWW\ decay channel that is published in \ccite{CouplingsPaper}. The author contributed significantly to many aspects of the analysis, focusing on the measurement of the VBF production mode. 
+\Cref{chap:hww} is the main part of this thesis and presents the measurement of VBF and ggF Higgs boson production cross sections in the \HWW\ decay channel. The analysis presented is published in \ccite{HWWPaper}. The author contributed significantly to many aspects of the analysis, with most of the work related to the measurement of the VBF production mode.
 Most notably, the author trained, validated, and incorporated a deep neural network (DNN) to distinguish VBF, \HWW events from other events, which lead to a substantial reduction in measurement uncertainties.
 The DNN was used for both the inclusive cross-section measurement and the measurement within the STXS framework.
 % This included the development of new strategies to use the DNN output as final discriminant in the statistical analysis. 
 % The author also studied different analysis strategies for the cross-section measurements within the STXS framework.
 The author developed and extensively studied the statistical model used for both measurements, and introduced several improvements to the treatment of systematic uncertainties.
 Furthermore, the author contributed significantly to the development and improvement of the analysis framework as well as the statistical framework. As a result, several aspects of the overall analysis workflow have been vastly improved, which has proved extremely useful to many analyzers inside and outside the \HWW analysis group.
-Besides these main contributions, the author frequently contributed to review meetings, performed several smaller optimization and validation studies, is co-author of the internal supporting documentation, and provided final results for the analyses that are published in \ccite{ATLAS-CONF-2021-014,ATLAS-CONF-2020-045,CouplingsPaper}.
+Besides these main contributions, the author frequently contributed to review meetings, performed several smaller optimization and validation studies, is co-author of the internal supporting documentation, and provided final results for the analyses that are published in \ccite{HWWPaper,ATLAS-CONF-2021-014}.
 \todo{Also mention SFUsMLKit development and histogram smoothing}
 
 \Cref{chap:conclusion} concludes this thesis by providing a summary and an outlook.
