@@ -21,17 +21,20 @@
 %-------------------------------------------------------------------------------
 % Specify where ATLAS LaTeX style files can be found.
 \RequirePackage{latex/atlaslatexpath}
+
 % Comment out the above line if the files are in a central location, e.g. $HOME/texmf.
 %-------------------------------------------------------------------------------
 %\documentclass[PAPER, atlasdraft=true, texlive=2018, UKenglish]{atlasdoc}
 %\documentclass[twoside,a4paper,11pt,smallheadings,BCOR5mm,UKenglish]{scrbook}
 \documentclass[twoside,a4paper,11pt,smallheadings,BCOR5mm,american]{scrbook}
 
+%\documentclass[PAPER, coverpage, atlasdraft=true, texlive=2016, american]{atlasdoc}
+
 \usepackage[english]{babel}  %deutsche Überschriften etc.
 %\usepackage{lmodern} 
-\usepackage[utf8]{inputenc}
 
-\usepackage[full]{atlaspackage}
+\usepackage[utf8]{inputenc}
+\usepackage[default]{atlaspackage}
 
 %-------------------------------------------------------------------------------
 % Personal Content from Master Thesis Template
@@ -261,6 +264,11 @@
   {\usebibmacro{cite:dump}%
    \usebibmacro{postnote}%
    \bibclosebracket}
+
+
+\RequirePackage{lmodern}
+%\RequirePackage{newtxtext}
+% \RequirePackage{newtxmath}
 
 %-------------------------------------------------------------------------------
 %-------------------------------------------------------------------------------
