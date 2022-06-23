@@ -28,6 +28,8 @@ colors = {
     "s_ggF_step": "#E31E1C"  # sns.color_palette("Paired")[5], # ggF red
 }
 
+# EW WW in VBF region is 2.3467216
+
 new = {
     "s_vbf_step": 31.93741936348283,
     "s_ggF_step": 2.777131487173932,

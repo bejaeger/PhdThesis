@@ -6,9 +6,7 @@ This section describes how the DNN observable, also referred to as \emph{VBF DNN
     The entire software suite used is summarized in \cref{app:dnn:software-suite}.
     It should also be noted that the training procedure has been modified several times during the course of the author's PhD, due to both improvements in the self-developed software and historical developments of the \HWW\ analysis (for example changes in MC simulated samples). If not mentioned otherwise, the results and procedures presented correspond to the final VBF DNN.}
 The relevant supervised learning techniques are introduced in \cref{chap:ml}.
-
 %The DNN is developed using simulated $pp$ collision events and is subsequently also applied to the data. 
-
 
 \subsection{Methodology}
 %Developing a neural network model for a physics analysis is a multi-stage and cyclic procedure.
@@ -315,28 +313,9 @@ The total transverse momentum, \pttot, defined as the magnitude of the vectorial
 
 \paragraph{}
 The material above illustrates the VBF signal discrimination in linear dimension. The major advantage of using a neural network-based approach compared to a traditional cut-based analysis is the ability to take into account multidimensional correlations between the input variables. \Cref{fig:dnn-features-correlations} indicates the correlations between the 15 input variables for the VBF signal and the non-VBF signal processes. It can be seen that the strengths of the correlations differs for several pairs of observables, in particular for the $m_{\ell_\alpha j_\beta}$ (with $\alpha, \beta = 1, 2$) and the \pTjthree observables.
-
-Because the neural network is trained with simulated samples but deployed on data, it is important to validate that all input variables used are correctly modelled by the simulated samples.
-Data to simulation comparison plots for representative variables are shown in \cref{sec:bkg-estimation}, specifically \cref{fig:topcr:dnn-inputs} for the top-quark CR, \cref{fig:zttcr:dnn-inputs} for the \Ztautau CR, and in \cref{fig:wwvr:dnn-inputs} for the $WW$ VR. All distributions show excellent consistency between the data and MC simulation.
-
-The modelling of the two-dimensional correlations between the input variables is also validated.
-To this end, \cref{fig:dnn-features-profiles} analyzes the two-dimensional correlations between all combinations of input variables. The compatibility between data and simulation is tested with a $\chi^2$ test.
-The corresponding $p$-values determine the color of the in total 210 figures.
-The slight overrepresentation of $p$-values in the ranges $0.005 < p < 0.05$ (22/210) and $p < 0.005$ (14/2010) with respect to the expectation is deemed acceptable, considering that no systematic uncertainties are included in this comparison.
-%The distributions confirm that the simulated samples model the correlations in the data reasonably well.  \todo{Validate region and adapt plot}
-
-\begin{figure}[t]
-    \includegraphics[width=\textwidth,trim=45 0 45 0]{figures/hww/dnn/correlations_PROF_SR.pdf}
-    \caption{Visualization of the two-dimensional correlations between all combinations of DNN input variables, based on profiles of each of the distributions in the VBF-enriched \TwoJet SR. For all combinations of input variables $X_i$ and $X_j$, the distributions of both $\langle X_i \rangle$ vs $X_j$ and $\langle X_i \rangle$ vs $X_j$ are shown. The uncertainties are statistical only. The color for each plot encodes the $\chi^2$ probability, $p$, evaluated for each comparison: green represents $p > 0.05$, yellow represents $0.005 < p < 0.05$, and red represents $p < 0.005$.}
-    \label{fig:dnn-features-profiles}
-\end{figure}
-
-
 % Include DNN figures (many plots!)
 %\dnnfigurespostfit
-
-
-\begin{figure}[t]
+\begin{figure}[ht]
     \subfloat[] {
         \newImageResizeCustom{0.48}{figures/hww/dnn/correlation-matrix-sig.pdf}
     }
@@ -347,6 +326,20 @@ The slight overrepresentation of $p$-values in the ranges $0.005 < p < 0.05$ (22
     \label{fig:dnn-features-correlations}
 \end{figure}
 
+Because the neural network is trained with simulated samples but deployed on data, it is important to validate that all input variables used are correctly modelled by the simulated samples.
+Data to simulation comparison plots for representative variables are shown in \cref{sec:bkg-estimation}, specifically \cref{fig:topcr:dnn-inputs} for the top-quark CR, \cref{fig:zttcr:dnn-inputs} for the \Ztautau CR, and in \cref{fig:wwvr:dnn-inputs} for the $WW$ VR. All distributions show excellent consistency between the data and MC simulation.
+
+The modelling of the two-dimensional correlations between the input variables is also validated.
+To this end, \cref{fig:dnn-features-profiles} analyzes the two-dimensional correlations between all combinations of input variables. The compatibility between data and simulation is tested with a $\chi^2$ test.
+The corresponding $p$-values determine the color of the in total 210 figures.
+The slight overrepresentation of $p$-values in the ranges $0.005 < p < 0.05$ (22/210) and $p < 0.005$ (14/2010) with respect to the expectation is deemed acceptable, considering that no systematic uncertainties are included in this comparison.
+%The distributions confirm that the simulated samples model the correlations in the data reasonably well.  \todo{Validate region and adapt plot}
+\begin{figure}[ht]
+    \includegraphics[width=\textwidth,trim=45 0 45 0]{figures/hww/dnn/correlations_PROF_SR.pdf}
+    \caption{Visualization of the two-dimensional correlations between all combinations of DNN input variables, based on profiles of each of the distributions in the VBF-enriched \TwoJet SR. For all combinations of input variables $X_i$ and $X_j$, the distributions of both $\langle X_i \rangle$ vs $X_j$ and $\langle X_i \rangle$ vs $X_j$ are shown. The uncertainties are statistical only. The color for each plot encodes the $\chi^2$ probability, $p$, evaluated for each comparison: green represents $p > 0.05$, yellow represents $0.005 < p < 0.05$, and red represents $p < 0.005$.}
+    \label{fig:dnn-features-profiles}
+\end{figure}
+
 \subsection{Construction and validation of final DNN discriminant}
 \label{subsec:fina-model-validation}
 Once the input variables are chosen and the hyperparameters are optimized, the DNN model can be deployed in the analysis. The test set is used for this purpose.
@@ -354,16 +347,15 @@ The binning of the DNN output is chosen based on a set of criteria.
 The amount of VBF signal (background) events is required to be at least 20 (10) and the maximum allowed relative statistical uncertainty on the background expectation is 20\%.
 These criteria ensure that there is sufficient statistical power in each bin in order to increase the robustness to statistical fluctuations and allow meaningful derivations of systematic uncertainties. At the same time, the binning is fine enough to exploit the shape of the VBF signal at high DNN output values.
 The bins are found iteratively by moving the lower bound of a candidate bin to smaller values in steps of 0.01, starting with an upper bound at DNN output $= 1$. Once all criteria are met, a bin boundary is set and the lower bound is used as the new upper boundary for the next bin search. Even if the three criteria are fulfilled, no bin boundary is set if the VBF significance within a candidate bin is less than one third of the maximum significance of the bins already defined. This avoids a fine binning at low values of the DNN output where the signal sensitivity is limited.
-The final DNN discriminant for MC simulation only is shown in \cref{fig:dnn:blinded-fit-binning} with bin boundaries: [0-0.25, 0.25-0.52, 0.52-0.68, 0.68-0.77, 0.77-0.83, 0.83-0.87, 0.87-1.00].
-For the STXS measurement, the statistical precision in the SRs is smaller. The binning criteria are therefore relaxed and only require at least 10 (5) signal (background) events. The requirement of the relative statistical uncertainty stays the same. In addition, the binning is harmonized between all 5 VBF STXS SRs, yielding bin boundaries: [0-0.5, 0.5, 0.74, 0.74-0.87, 0.87, 1.0]. The distributions are shown in \cref{app:dnn-distributions-stxs}.
+The final DNN discriminant used in the statistical analysis is shown in \cref{sec:hww-results}, \cref{fig:VBF_DNN} with bin boundaries: [0-0.25, 0.25-0.52, 0.52-0.68, 0.68-0.77, 0.77-0.83, 0.83-0.87, 0.87-1.00].
+For the STXS measurement, the statistical precision in the SRs is smaller. The binning criteria are therefore relaxed and only require at least 10 (5) signal (background) events. The requirement of the relative statistical uncertainty stays the same. In addition, the binning is harmonized between all 5 VBF STXS SRs, yielding bin boundaries: [0-0.5, 0.5, 0.74, 0.74-0.87, 0.87, 1.0]. The distributions are shown in \cref{sec:hww-results}, \cref{fig:aux:VBF-STXS-SRs}.
 
-\begin{figure}[th]
-    \centering
-    \newImageResizeCustom{0.6}{figures/220605-Thesis/sr/dnn-noDat/plots/run2-emme-CutVBF_SR-DNNoutputG_Fit-log.pdf}
-    {\caption{Distribution of the DNN output in the VBF SR with the final binning used in the statistical analysis.
-            \label{fig:dnn:blinded-fit-binning} }}
-\end{figure}
-
+% \begin{figure}[th]
+%     \centering
+%     \newImageResizeCustom{0.6}{figures/220605-Thesis/sr/dnn-noDat/plots/run2-emme-CutVBF_SR-DNNoutputG_Fit-log.pdf}
+%     {\caption{Distribution of the DNN output in the VBF SR with the final binning used in the statistical analysis.
+%             \label{fig:dnn:blinded-fit-binning} }}
+% \end{figure}
 Before the data is analyzed in the signal sensitive range of the DNN, the modelling of the DNN output is validated in the CRs and VRs. This can be seen in \cref{fig:dnn:dnn-val-in-crs-a,fig:dnn:dnn-val-in-crs-b,fig:dnn:dnn-val-in-crs-c}. 
 \begin{figure}[ht]
     \centering
@@ -393,19 +385,7 @@ Given the fact that only the normalization component and only a subset of system
 These validation studies establish the DNN output as a meaningful observable, so that it can be used as final discriminant in the statistical analysis.
 More studies of the DNN observable and its input variables, in particular for the regions used in the STXS analysis, can be found in \cref{app:dnn:input-vars}.
 
-
 \newcommand{\srdnnlowplotdir}{figures/220605-Thesis/sr/dnn25-scaledvbf-nfs3x3/plots}
 \sixPlots{Distributions of (a) \mjj, (b) \dyjj, (c) \mlonejone, (d), \mll, (e) \lepetacent, and (f) \METSig in the VBF SR selecting only the region below DNN output $= 0.25$. The solid orange line shows the expected VBF signal scaled by a factor of 200. The \Ztautau and top-quark processes are normalized using pre-fit normalization factors extracted from their corresponding CRs (NF$_{\Ztautau} = 1.01 \pm 0.04$, NF$_{\text{top}} = 1.00 \pm 0.01$). The last bin of the distributions include the overflow. The yellow band corresponds to the square root of the sum in quadrature of the MC statistical uncertainties and the normalization component of the dominant experimental systematic uncertainties (JER, JES, Flavor-tagging, and \MET uncertainties). The various uncertainty components are discussed in more detail in \cref{sec:systematics}.
 }{fig:srdnn25:dnn-inputs}{\srdnnlowplotdir/run2-emme-CutVBFSR_25DNN-Mjj-log.pdf}{\srdnnlowplotdir/run2-emme-CutVBFSR_25DNN-DYjj-lin.pdf}{\srdnnlowplotdir/run2-emme-CutVBFSR_25DNN-DPhill-lin.pdf}{\srdnnlowplotdir/run2-emme-CutVBFSR_25DNN-Mll-lin.pdf}{\srdnnlowplotdir/../../dnn25-scaledvbf-lepcent-nfs3x3/plots/run2-emme-CutVBFSR_25DNN-contOLV-lin.pdf}{\srdnnlowplotdir/run2-emme-CutVBFSR_25DNN-METSig_broad-lin.pdf}
-
-
-
-
-
-
-
-
-% From konstis thesis:
-% Binning optimization:
-% TheDNNoutput variable serves as final classifier for theVBFprocess. It is shown inFigure7.6 after all SR cuts are applied. Even in comparison to the most discriminant inputvariables, this distribution shows a much better separation of theVBFsignal process frombackground. How the events are distributed along theDNNoutput variable depends on theloss function and might not be optimal for the further analysis. A fine binning makes gooduse of theDNNclassification, but might suffer from systematic uncertainties and statisticalfluctuations of data and MC simulation. A coarser binning is more robust in the statisticalanalysis, but might not separate signal from background well enough. A binning algorithmuses the signal and background prediction as inputs to set bin boundaries on theDNNoutput and find a decent compromise.125
 

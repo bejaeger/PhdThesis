@@ -278,6 +278,48 @@ In the range of [0.06-0.12], the significance metrics that do not take into acco
 \todo{Add STXS region labels}
 \captionsetup[subfloat]{captionskip=7pt} % space between subfloat caption and image
 
+\FloatBarrier
+\section{Event Selections in the ggF \ZeroJet and \OneJet Category}
+
+\begin{figure}[!h]
+    \centering
+    \subfloat[]{
+      \includegraphics[width=0.49\textwidth]{\paperfiguredir/ggF/ZeroJet/CutGGF_Ptll_0jet-Mll}
+    }
+    \subfloat[]{
+      \includegraphics[width=0.49\textwidth]{\paperfiguredir/ggF/ZeroJet/CutGGF_bVeto_0jet-DPhill}
+    } \\
+    \subfloat[]{
+      \includegraphics[width=0.49\textwidth]{\paperfiguredir/ggF/OneJet/CutGGF_ZttVeto_1jet-Mll}
+    }
+    \subfloat[]{
+      \includegraphics[width=0.49\textwidth]{\paperfiguredir/ggF/OneJet/CutGGF_TopoMll_1jet-DPhill}
+    }
+  \caption{
+  Distributions of (a) \mll and (b) \dphill in the \ZeroJet category as well as (c) \mll and (d) \dphill in the \OneJet category, after the preselection and background rejection steps, and also after the selection on \mll for the \dphill plots. The dashed lines indicate where the selection on the observable is made. The distributions are normalized to
+  their nominal yields, before the final fit to all SRs and CRs (pre-fit normalizations). The hatched band shows the normalization component of the total pre-fit uncertainty, assuming SM Higgs boson production. The bottom panels show the normalized distributions for the signal and backgrounds, from which it can be inferred which background processes are primarily removed by the indicated selections.
+  Figure and caption taken from \cref{HWWPaper}. 
+  \label{fig:ggf:Plots:selections}
+  }
+  \end{figure}
+  
+
+\FloatBarrier
+\section{STXS Measurement}
+\label{app:stxs-measurement}
+\begin{table}[htp]
+    \caption{
+    Best-fit values and uncertainties for the production cross section times $\hww$ branching fraction $({\sigma_i \cdot \mathcal{B}_{H \to WW^{\ast}}})$ in each STXS bin.
+    }
+    \begin{center}
+      \small
+      \renewcommand{\arraystretch}{1.5}
+      \scalebox{0.90}{
+        \input{tables/hww/results/stxs-measurement.tex}
+      }
+    \end{center}
+    \label{tab:STXS-XSecs}
+  \end{table}
 
 \FloatBarrier
 \section{STXS Stage-1.2 Framework}
