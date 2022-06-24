@@ -4,7 +4,7 @@
 % https://www.nature.com/articles/s41567-020-01054-6.pdf
 In the search for the fundamental laws of nature, the Higgs boson is a unique tool. 
 It sits at the core of the Standard Model (SM), which is known to be incomplete, or merely an approximation of a more fundamental theory. 
-The precise measurement of all Higgs boson processes is therefore of paramount interest, since it allows for testing a broad range of SM predictions to set strong constraints on physics beyond the SM or find hints of new phenomena.
+The precise measurement of all Higgs boson processes is therefore of paramount interest, since it allows for testing a broad range of SM predictions. This enables setting strong constraints on physics beyond the SM and allows finding potential hints of new phenomena.
 %provides a promising path to find possible deviations from the SM. 
 % This provides a promising path to the discovery of new phenomena. 
 % To test the SM and find possible deviations of its predictions, a precise understanding of all Higgs boson processes is therefore crucial. 
@@ -13,17 +13,23 @@ The precise measurement of all Higgs boson processes is therefore of paramount i
 %Ten years after the discovery of the Higgs boson, no experimental signs of deviations of the SM have formed. 
 %The physics program at the LHC provides a dataset unprecedented in size and well-suited for the study of Higgs boson processes. 
 
-This thesis presented measurements of the gluon fusion (ggF) and vector-boson fusion (VBF) production cross sections of the Higgs boson in its decays to a pair of $W$ bosons, using the full \RunTwo dataset of the LHC collected by the ATLAS experiment. 
-The results presented contribute to a more precise knowledge of the couplings of the Higgs boson to other fundamental particles and more firmly establish the Higgs boson in the SM. All results are found to be compatible with the SM predictions. 
-
+This thesis presented measurements of the gluon fusion (ggF) and vector-boson fusion (VBF) production cross sections of the Higgs boson in its decays to a pair of $W$ bosons, using the full \RunTwo dataset of the LHC collected by the ATLAS experiment at $\sqrt{s} = 13\,$TeV. 
 The measurement of the VBF production mode benefited significantly from the author's work on the development of a deep neural network that discriminates the VBF, \HWW signal from the non-VBF backgrounds. 
-The sensitivity of the VBF signal measurement was improved by about 20-30\% compared to the measurements with the previous analysis strategy, which allowed observing the VBF production mode of the Higgs boson for the first time in the \HWW channel with a significance of $5.8\,\sigma$ above the background expectation, where $6.2\,\sigma$ were expected.
-Compared to the previous \RunTwo results, the relative uncertainty on the inclusive ggF and VBF production cross-section measurements was reduced by almost 40\% and 60\%, respectively, yielding $\sigma_{\mathrm{ggF}} \cdot \mathcal{B}_{H \to WW^{\ast}} = 12.0 \pm 1.4~\mathrm{pb}$ and $\sigma_{\mathrm{VBF}} \cdot \mathcal{B}_{H \to WW^{\ast}} = 0.75\;^{+0.19}_{-0.16}~\mathrm{pb}$, which is consistent with the SM predictions.
-In addition, cross-section measurements of the ggF and VBF production mode split into 11 kinematic regions have been performed for the first time with \HWW decays, using the framework of Simplified Template Cross Sections. 
-The results of the \HWW analysis will be the baseline for future analyses and used as inputs for future combinations and reinterpretations such as in Effective Field Theories, all of which are expected to contribute significantly to constraining theories beyond the SM. 
+This allowed observing the VBF production mode of the Higgs boson for the first time in the \HWW channel with a significance of $5.8\,\sigma$ above the background expectation, where $6.2\,\sigma$ were expected.
+Compared to the previous \RunTwo results, the relative uncertainty on the inclusive ggF and VBF production cross-section measurements was reduced by almost 40\% and 60\%, respectively, yielding 
+\begin{eqnarray*}
+    \sigma_{\mathrm{ggF}} \cdot \mathcal{B}_{H \to WW^{\ast}} &=& 12.0 \pm 1.4~\mathrm{pb}, \,\text{and} \\
+    \sigma_{\mathrm{VBF}} \cdot \mathcal{B}_{H \to WW^{\ast}} &=& 0.75\;^{+0.19}_{-0.16}~\mathrm{pb}.
+\end{eqnarray*}
+In addition, cross-section measurements of the ggF and VBF production mode split into 11 kinematic regions have been performed for the first time with \HWW decays, using the framework of Simplified Template Cross Sections. This probes Higgs boson production in exclusive kinematic regions that have not been measured before with \HWW decays.
+The results more firmly establish the Higgs boson in the SM and are all found to be compatible with the SM predictions.
 
-Furthermore, the analysis presented was crucial input to combined Higgs boson measurements that combine analyses of multiple Higgs boson processes. In particular, the \HWW analysis is the most important input to the measurement of the coupling of the Higgs boson to vector-bosons, determined to be $\kappa_V = 1.035 \pm 0.031$.
+The measurements have already been used as inputs to combined Higgs boson measurements~\cite{NaturePaper}, where they contributed, for example, to a more precise knowledge of the couplings of the Higgs boson to other fundamental particles. 
+They will continue to be the baseline for future analyses and reinterpretations such as in Effective Field Theories, which are expected to contribute significantly to constraining theories beyond the SM and may open doors to new phenomena.
 
+% \TDinote{}{Will be one of the goals in the future to combine measurements to get the most out of the data}
+% Furthermore, the analysis presented was crucial input to combined Higgs boson measurements that combine analyses of multiple Higgs boson processes. In particular, the \HWW analysis is the most important input to the measurement of the coupling of the Higgs boson to vector-bosons, determined to be $\kappa_V = 1.035 \pm 0.031$.
+% \TDinote{}{Probs remove mentioning kappa V measurement}
 % The data analysis of the full \RunTwo dataset has not been fully completed. 
 % More results are imminent, aiming at an even more comprehensive experimental map of Higgs boson processes and other phenomena. 
 % \TDinote{}{Move above sentence lower to close this mini-section. Then go into last paragraph that is already quite nice}
@@ -36,7 +42,6 @@ Even more potential to measure these key properties is expected from the High-Lu
 The Higgs program will continue to be of great importance and aims at an ever more precise experimental map of the couplings of the Higgs boson to other fundamental particles. 
 %This is one of the most promising paths to finding new phenomena beyond the SM that could shed light on the open mysteries. 
 %some paper
-
 %\TDinote{}{Maybe be more specific mention couplings to particles that are not measured}
 %to test the Standard Model pattern of couplings to elementary particles
 % nature paper abstract
@@ -52,7 +57,8 @@ The Higgs program will continue to be of great importance and aims at an ever mo
 At the time of writing, in between \RunTwo and \RunThr of the LHC, it would be a miss not to mention that many physicists had hoped for more discoveries at the LHC than have been reported so far. 
 Yet, no experimental signs of deviations of the SM have formed.
 In a way, however, this is the very nature of fundamental physics, which is driven by curiosity and can never be too certain of what lies ahead, making it one of the most exciting research fields. 
-With a wealth of physics data yet to be collected at the LHC and new research facilities in planning, substantial progress is expected in the years to come. If scientists continue to push beyond the boundaries of technology and collaboration, as has been so successfully demonstrated by the LHC program, it seems only a matter of time before a new discovery is made that sheds light on the open mysteries and brings humanity another step closer to a complete description of nature. 
+With a wealth of physics data yet to be collected at the LHC and new research facilities in planning, substantial progress is expected in the years to come. 
+If scientists continue to push beyond the boundaries of technology and collaboration, as has been so successfully demonstrated by the LHC program, there is little doubt that a new discovery will be made that sheds light on the open mysteries of the universe and brings humanity another step closer to a complete description of nature. 
 
 %could potentially disrupt our entire understanding of the universe and 
 % Guided by the data from full \RunTwo of the LHC, it is important to set out new research directions.
