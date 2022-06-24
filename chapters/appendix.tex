@@ -274,9 +274,33 @@ In the range of [0.06-0.12], the significance metrics that do not take into acco
 \FloatBarrier
 \section{DNN distributions in STXS SRs}
 \Cref{fig:dnn-output-vbf-stxs} shows the distribution of the DNN output in the top-quark and \Ztautau CRs used in the VBF, STXS analysis. 
-\sixPlots{Distribution of the DNN output in the (a)-(c) top-quark CRs and (d)-(f) \Ztautau CRs used in the VBF, STXS analysis.}{fig:dnn-output-vbf-stxs}{figures/220605-Thesis/topcr/stxs/plots/run2-emme-CutVBF_TopControl_2jet_MJJ_GT700_PTH_0_200-DNNoutputG_FitBin1-log.pdf}{figures/220605-Thesis/topcr/stxs/plots/run2-emme-CutVBF_TopControl_2jet_MJJ_GT350_PTH_GT200-DNNoutputG_FitBin1-log.pdf}{figures/220605-Thesis/topcr/stxs/plots/run2-emme-CutVBF_TopControl_2jet_MJJ_350_700_PTH_0_200-DNNoutputG_FitBin1-log.pdf}{figures/220605-Thesis/zttcr/stxs/plots/run2-emme-CutVBF_ZtautauControl_2jet_MJJ_GT700_PTH_0_200-DNNoutputG_FitBin1-log.pdf}{figures/220605-Thesis/zttcr/stxs/plots/run2-emme-CutVBF_ZtautauControl_2jet_MJJ_GT350_PTH_GT200-DNNoutputG_FitBin1-log.pdf}{figures/220605-Thesis/zttcr/stxs/plots/run2-emme-CutVBF_ZtautauControl_2jet_MJJ_350_700_PTH_0_200-DNNoutputG_FitBin1-log.pdf}
-\todo{Add STXS region labels}
+
+\captionsetup[subfloat]{captionskip=5pt} % space between subfloat caption and image
+\begin{figure}[t]
+    \centering
+    \subfloat[{\tiny $350 \leq \mjj < 700~\GeV, \pTH < 200~\GeV$}]{
+        \includegraphics[width=0.32\textwidth]{figures/220605-Thesis/topcr/stxs/plots/run2-emme-CutVBF_TopControl_2jet_MJJ_350_700_PTH_0_200-DNNoutputG_FitBin1-log.pdf} \hfill
+    }
+    \subfloat[{\tiny $\mjj \geq 700~\GeV, \pTH < 200~\GeV$}]{
+        \includegraphics[width=0.32\textwidth]{figures/220605-Thesis/topcr/stxs/plots/run2-emme-CutVBF_TopControl_2jet_MJJ_GT700_PTH_0_200-DNNoutputG_FitBin1-log.pdf} \hfill
+    }
+    \subfloat[{\tiny $\mjj \geq 350~\GeV, \pTH \geq 200~\GeV$}]{
+        \includegraphics[width=0.32\textwidth]{figures/220605-Thesis/topcr/stxs/plots/run2-emme-CutVBF_TopControl_2jet_MJJ_GT350_PTH_GT200-DNNoutputG_FitBin1-log.pdf} \hfill
+    }  \\
+    \subfloat[{\tiny $350 \leq \mjj < 700~\GeV, \pTH < 200~\GeV$}]{
+        \includegraphics[width=0.32\textwidth]{figures/220605-Thesis/zttcr/stxs/plots/run2-emme-CutVBF_ZtautauControl_2jet_MJJ_350_700_PTH_0_200-DNNoutputG_FitBin1-log.pdf} \hfill
+    }
+    \subfloat[{\tiny $\mjj \geq 700~\GeV, \pTH < 200~\GeV$}]{
+        \includegraphics[width=0.32\textwidth]{figures/220605-Thesis/zttcr/stxs/plots/run2-emme-CutVBF_ZtautauControl_2jet_MJJ_GT700_PTH_0_200-DNNoutputG_FitBin1-log.pdf} \hfill
+    }
+    \subfloat[{\tiny $\mjj \geq 350~\GeV, \pTH \geq 200~\GeV$}]{
+        \includegraphics[width=0.32\textwidth]{figures/220605-Thesis/zttcr/stxs/plots/run2-emme-CutVBF_ZtautauControl_2jet_MJJ_GT350_PTH_GT200-DNNoutputG_FitBin1-log.pdf} \hfill
+    }
+    {\caption{Distribution of the DNN output in the (a)-(c) top-quark CRs and (d)-(f) \Ztautau CRs used in the VBF, STXS analysis.
+            \label{fig:dnn-output-vbf-stx} }}
+\end{figure}
 \captionsetup[subfloat]{captionskip=7pt} % space between subfloat caption and image
+
 
 \FloatBarrier
 \section{Event Selections in the ggF \ZeroJet and \OneJet Category}
