@@ -203,10 +203,10 @@ The training process is an iterative numerical procedure, during which the free 
 First, the initial weights, $\pmb{w}^{(0)}$, are chosen randomly. Then, the weights are updated according to gradient-based optimization algorithms that update the weights based on the gradient of the loss function with respect to these weights, 
 \begin{equation}
     \label{eq:gradient-descent}
-    \pmb{w}^{(\tau+1)} = \pmb{w}^\tau - \eta \grad_{\pmb{w}^{(\tau)}} L(\pmb{w}^{(\tau)}),
+    \pmb{w}^{(\tau+1)} = \pmb{w}^\tau - \eta \nabla_{\pmb{w}^{(\tau)}} L(\pmb{w}^{(\tau)}),
 \end{equation}
 where $\pmb{w}^{(\tau)}$ denotes the weights at iteration $\tau$.
-The size of the update is controlled by the parameter $\eta$, known as the \emph{learning rate}, which is multiplied with the gradient of the loss function, $\grad_{\pmb{w}^{(\tau)}} L(\pmb{w}^{(\tau)})$.
+The size of the update is controlled by the parameter $\eta$, known as the \emph{learning rate}, which is multiplied with the gradient of the loss function, $\nabla_{\pmb{w}^{(\tau)}} L(\pmb{w}^{(\tau)})$.
 The loss function quantifies the difference between the true values (also \emph{target values}) of the labelled sample data, $t_n$, and the values predicted by the current NN model, $y_n \equiv y(\pmb{x}_n, \pmb{w})$. 
 % A typical choice is the sum-of-squares loss function,
 % \begin{equation}
@@ -297,10 +297,10 @@ Other more sophisticated approaches use so-called \emph{optimizers} during the t
 % @see: https://ruder.io/optimizing-gradient-descent/
 
 \paragraph{Optimizers}\mbox{}\\
-There are many variations of optimizers that can improve the convergence of the gradient descent algorithm. An overview of different methods is given for example in \ccite{ruder2017overview}. The \emph{AdaGrad}~\cite{adagrad-duchi} algorithm is one such example and used in the work presented in this thesis. It adapts the learning rate individually for each parameter by introducing a matrix, $\pmb{G}_{\tau} = \sum_{t=0}^{\tau} \left( \grad_{\pmb{w}^{(t)}} L(\pmb{w}^{(t)}) \right)^2$, that holds the sum of squares of the past gradients for each parameter. 
+There are many variations of optimizers that can improve the convergence of the gradient descent algorithm. An overview of different methods is given for example in \ccite{ruder2017overview}. The \emph{AdaGrad}~\cite{adagrad-duchi} algorithm is one such example and used in the work presented in this thesis. It adapts the learning rate individually for each parameter by introducing a matrix, $\pmb{G}_{\tau} = \sum_{t=0}^{\tau} \left( \nabla_{\pmb{w}^{(t)}} L(\pmb{w}^{(t)}) \right)^2$, that holds the sum of squares of the past gradients for each parameter. 
 The weight updates are then given as,
 \begin{equation}
-    \pmb{w}^{(\tau+1)} = \pmb{w}^\tau - \frac{\eta}{\sqrt{\pmb{G}_\tau + \epsilon}}  \grad_{\pmb{w}^{(\tau)}} L(\pmb{w}^{(\tau)}), 
+    \pmb{w}^{(\tau+1)} = \pmb{w}^\tau - \frac{\eta}{\sqrt{\pmb{G}_\tau + \epsilon}}  \nabla_{\pmb{w}^{(\tau)}} L(\pmb{w}^{(\tau)}), 
 \end{equation}
 where $\epsilon$ is a small, non-zero floating point used to avoid numerical instability.
 Introducing this parameter-specific learning rate largely reduces the dependence on the choice of the initial learning rate, as rare features in the training data are automatically being given more importance than frequently occurring ones, which helps to make the training converge faster and more reliably.

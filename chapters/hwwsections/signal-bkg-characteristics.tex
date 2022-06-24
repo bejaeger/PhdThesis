@@ -69,7 +69,9 @@ They clearly distinguish VBF events from events produced via the ggF production 
 Additional jets may, however, still arise (for both production modes) due to ISR and FSR. 
 
 \begin{figure}
-    \newImageResizeCustom{1}{figures/hww/introduction/JiveXML_VBF_6_359541_2089686122-YX-RZ-LegoPlot-EventInfo-2021-03-18-02-54-14_edit.png}
+    \ifthenelse{\boolean{draft}}
+    {\newImageResizeCustom{1}{SCORPIO}}
+    {\newImageResizeCustom{1}{figures/hww/introduction/JiveXML_VBF_6_359541_2089686122-YX-RZ-LegoPlot-EventInfo-2021-03-18-02-54-14_edit.png}}
     \caption{Event display of a candidate event for a Higgs boson produced via the VBF production mode and a subsequent \HWWdet decay. The DNN output value of the event is 0.93 where the signal-to-background ratio is estimated to be about 6. 
     The red and green cones represent reconstructed jets; the yellow and blue filled lines represent reconstructed electrons and muons, respectively; and the white arrow indicates the direction of the missing transverse energy. 
     Taken from Ref.~\cite{HWWPaper}.}
