@@ -59,8 +59,8 @@ Furthermore, the current ggF and VBF \TwoJet SRs use very similar kinematic and 
 
 For the above-mentioned reason, the author of this thesis studied using a modified analysis strategy for the \TwoJet categories, aiming at both a better separation of ggF signal events from the backgrounds and an improved separation between the ggF- and VBF-sensitive regions. 
 Both goals can be achieved by using a multiclass classifier that distinguishes between ggF signal events, VBF signal events, and background events. 
-To this end, a DNN is trained with three output nodes that separately target the ggF signal (\emph{ggF DNN output}), VBF signal (\emph{VBF DNN output}), and the backgrounds. 
-A two-dimensional discriminant can then be defined based on the ggF DNN output and VBF DNN output.
+To this end, a DNN is trained with three output nodes that separately target the ggF signal (\emph{DNN ggF output}), VBF signal (\emph{DNN ggF output}), and the backgrounds. 
+A two-dimensional discriminant can then be defined based on the DNN ggF output and DNN VBF output.
 This discriminant is shown in \cref{fig:2d-discriminant} for the expected ggF yields, VBF yields, and background yields, and shows a good separation of the signals while discriminating the backgrounds. 
 The discriminant is shown in a newly defined common \TwoJet SR that is tested for use in the measurement of both the ggF and VBF signal. 
 The details of the selections are provided in \cref{app:multi-class-2jet-strategy}. 
@@ -70,3 +70,18 @@ The improvements for the ggF measurement are mostly due to the change of the dis
 The small improvements in the VBF measurement are due to a slightly finer binning in the VBF-sensitive region. 
 While these studies should be considered preliminary and need further scrutiny, this redefinition of the \TwoJet categories seems a promising way forward for future analyses of \HWW decays.
 
+\captionsetup[subfloat]{captionskip=5pt} % space between subfloat caption and image
+\begin{figure}[ht]
+    \centering
+    \subfloat[]{
+        \includegraphics[width=0.48\textwidth]{figures/hww/2d-discriminant/ggF_signal_Heatmap_VBF_vs_ggF.pdf} \hfill
+    } 
+    \subfloat[]{
+        \includegraphics[width=0.48\textwidth]{figures/hww/2d-discriminant/VBF_signal_Heatmap_VBF_vs_ggF.pdf} \hfill
+    } \\
+    \subfloat[]{
+        \includegraphics[width=0.48\textwidth]{figures/hww/2d-discriminant/non-Higgs_events_Heatmap_VBF_vs_ggF.pdf} \hfill
+    }
+    {\caption{Two-dimensional distribution of the DNN ggF output vs the DNN VBF output for the (a) ggF signal, (b) VBF signal, and (c) total background from non-Higgs boson events, shown in a common \TwoJet category for the ggF \TwoJet and VBF analysis. 
+    \label{fig:2d-discriminant} }}
+\end{figure}

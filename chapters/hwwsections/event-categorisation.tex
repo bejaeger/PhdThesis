@@ -9,6 +9,7 @@ A common event preselection is applied before the events are divided into the se
 %\emph{signal regions} (SRs) targeting different signal categories.
 % In each SR, further selections are made on event observables 
 All selection criteria that define the nominal SRs are summarized in \cref{tab:HWWselection}. 
+A table with the changes in the event yields when these selections are applied is provided in \cref{app:cutflows} for the VBF and ggF \TwoJet categories. 
 
 \begin{table}[!ht]
     \centering
@@ -69,13 +70,24 @@ As well, the same split into four subregions that is performed in the \ZeroJet c
 \subsection{VBF-enriched \TwoJet category}
 \label{subsec:vbf-category}
 The VBF signal discrimination in the VBF \TwoJet category is achieved with a DNN as explained in \cref{sec:dnn}.
-Event selection criteria are nonetheless applied to ensure orthogonality with the ggF \TwoJet category and guarantee an adequate background estimation (see \cref{sec:bkg-estimation}).
-Two criteria exploit the distinct VBF topology by rejecting events that either contain an additional jet with \ptGT{30}\,GeV between the two leading jets in pseudorapity (known as \emph{central jet veto} (CJV)) or a lepton at larger pseudorapidities than both of the jets (known as \emph{outside lepton veto} (OLV)).
+Event selection criteria targeting the distinct VBF topology are nonetheless applied to allow for a meaningful background estimation (see \cref{sec:bkg-estimation}) and to ensure orthogonality with the ggF \TwoJet category. 
+Events are rejected from the VBF category if they either contain an additional jet with \ptGT{30}\,GeV between the two leading jets in pseudorapity (known as \emph{central jet veto} (CJV)) or contain a lepton at larger pseudorapidities than both of the jets (known as \emph{outside lepton veto} (OLV)).
+These requirements are illustrated in \cref{fig:cjv-olv-illustration}. 
 In addition, a selection is made on the invariant mass of the jets $\mjj > 120\,\GeV$, which mainly serves to separate other physics analyses targeting the $V(\to qq)H$ Higgs production mode.
 %The background contamination in this region is large. 
 % The VBF signal process is then distinguished from the background processes by using a deep neural network model (DNN) that is trained to classify VBF signal and other non-VBF signal events.
 % The output of the DNN is used as a final discriminant because it reflects the compatibility of an event having VBF signal-like kinematics. Details about the development of the VBF DNN analysis are provided in \cref{sec:dnn}.
-\TDinote{}{Make plot for CJV and OLV}
+\begin{figure}[t]
+  \subfloat[]{
+    \newImageResizeCustom{0.7}{figures/hww/cjv2.pdf}
+  } \\
+  \subfloat[]{
+    \newImageResizeCustom{0.72}{figures/hww/olv2.pdf}
+  }
+  \caption{Illustration of (a) the central-jet veto and (b) the outside-lepton veto used to select the VBF phase space and separate it from the ggF \TwoJet category. If an event contains a central jet with $\pT > 30$\,GeV as illustrated in (a) or if one of the leptons is at larger pseudorapidities than both of the jets as shown in (b), it is vetoed from the VBF \TwoJet category and assigned to the ggF \TwoJet category. The range of values of the lepton centrality observable, $C_\ell$, in the different regions is also indicated. 
+  \label{fig:cjv-olv-illustration}
+  }
+\end{figure}
 
 \subsection{ggF-enriched \TwoJet category}
 \label{subsec:ggf-two-jet-category}
@@ -110,12 +122,12 @@ After the merging, a total of 11 fiducial cross sections are measured: 6 for $gg
     \label{fig:STXS_Diagram}
     }
 \end{figure}
-Specifically, a single STXS cross section with \ZeroJet is measured, targeted by a SR defined as the ggF \ZeroJet SR (see \cref{subsec:ggf-zero-jet-category}) but also adding a $\pTH < 200~\GeV$ selection.
+Specifically, a single STXS cross section with \ZeroJet is measured, targeted by a SR defined as the nominal ggF \ZeroJet SR (see \cref{subsec:ggf-zero-jet-category}) but also adding a $\pTH < 200~\GeV$ selection.
 Three STXS cross sections are measured for the \OneJet $ggH$ category, targeted by the SRs of the ggF \OneJet category (\cref{subsec:ggf-one-jet-category}) divided in different \pTH bins.
 One cross section is measured for the \TwoJet $ggH$ category, targeted by the ggF \TwoJet SR defined in \cref{subsec:ggf-zero-jet-category} with an added $\pTH < 200~\GeV$ selection.
-One $ggH$ STXS cross section is measured inclusive of \Njets, which is targeted by the ggF \TwoJet and \OneJet SRs each time with an added $\pTH \geq 200~\GeV$ selection.
+One $ggH$ STXS cross section is measured inclusive of \Njets, which is targeted by the ggF \TwoJet and \OneJet SRs each with an added $\pTH \geq 200~\GeV$ selection.
 Five STXS cross sections are measured for the \TwoJet EW $qqH$ category. One for $\pTH \ge200~\GeV$, targeted by the VBF \TwoJet SR (\cref{subsec:vbf-category}) with an added $\pTH \geq 200~\GeV$ selection, and four bins with $\pTH < 200~\GeV$ separated by \mjj, targeted by the VBF \TwoJet SR split in the same way in different \mjj bins. 
-In the EW $qqH$ categories, the same DNN is used as final discriminant as in the nominal SRs. Studies found no improvements when using different DNNs trained separately for different STXS regions.
+In the EW $qqH$ categories, the same DNN is used as final discriminant as in the nominal VBF SRs. Studies found no improvements when using different DNNs trained separately for different STXS regions.
 All signal categories to which the analysis is not sensitive are fixed to their SM predictions. 
 The contribution of the different merged STXS bins in all reconstructed SRs is shown in \cref{fig:STXS_Composition}. 
 It can be seen that the largest contribution in each SR comes from the STXS bin that is targeted. 

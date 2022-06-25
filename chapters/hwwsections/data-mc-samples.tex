@@ -38,7 +38,7 @@ Each simulated event gets assigned a generator weight (\emph{MC weight}), which 
 The statistical uncertainties, $\sigma_\mathrm{stat}$, on the MC predictions are given by the sum of the event weights squared, i.e $\sigma_\mathrm{stat} = \sqrt{\sum_i w_i^2}$, where $N$ is the total number of generated events (sometimes referred to as \emph{raw events}). Typically, the number of simulated raw events is significantly larger than the number of events expected in data, in order to ensure high statistical precision.
 The normalization of most processes is determined by the luminosity of the data sample and the corresponding theoretical cross-section predictions.
 The following provides details on the MC generators and the accuracies of the available cross-section calculations for each process. 
-Since the simulation infrastructure is described in great detail in the original publication \cite{HWWPaper}, the remainder of this section is quoted directly.
+Since the simulation infrastructure is described in great detail in the original publication \cite{HWWPaper}, the remainder of this section is quoted from \ccite{HWWPaper} directly.
 \FloatBarrier
 \begin{table}[t]
   \centering
@@ -46,7 +46,7 @@ Since the simulation infrastructure is described in great detail in the original
     Overview of simulation tools used to generate signal and background processes, as well as to model the UEPS. The PDF sets are also summarized.
     Alternative event generators or quantities varied to estimate systematic uncertainties are shown in parentheses. The table and caption is published in \cite{HWWPaper}.}
   \label{tab:mcsamples}
-  \resizebox{\textwidth}{!}{
+  \scalebox{0.66}{
     \begin{tabular}{l l l l l}
       \hline\hline
       %%% Info mostly from https://gitlab.cern.ch/atlas-physics/pmg/documents/references/-/tree/master
