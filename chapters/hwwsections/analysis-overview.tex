@@ -1,7 +1,7 @@
-The \HWW events that can be best separated from backgrounds at the LHC are the ones where one $W$ boson decays into an electron and the other $W$ boson into a muon.
+The \HWW events that can be best separated from backgrounds at the LHC are the ones where one of the $W$ bosons decays into an electron and the respective other into a muon.
 This analysis therefore selects events with two different-flavor leptons in the final state targeting the \HWWdet decay.
 By requiring the leptons to be of different flavor the otherwise overwhelming background from Drell-Yan processes can be reduced. 
-The most relevant background contributions come events with top quarks ($\ttbar/Wt$), non-resonant $WW$ production ($WW$), $W$ production in association with jets where a jet is misidentified as a lepton (Mis-Id), other diboson processes (Other $VV$($V$)), mentioned Drell-Yan (\Zgamma) processes. 
+The most relevant background contributions come from events with top quarks ($\ttbar/Wt$), non-resonant $WW$ production ($WW$), $W$ production in association with jets where a jet is misidentified as a lepton (Mis-Id), other diboson processes (Other $VV$($V$)), and mentioned Drell-Yan (\Zgamma) processes. 
 % \begin{itemize}
 %     \item Top-quarks, both pair production ($t\bar{t}$) and single-top production with a $W$ boson ($Wt$);
 %     \item Non-resonant $WW$ production;
@@ -11,12 +11,17 @@ The most relevant background contributions come events with top quarks ($\ttbar/
 % \end{itemize}
 Given the features of the signal and background processes, that are discussed in detail below, the analysis is divided into four \emph{signal categories} separated by jet multiplicity and production mode.
 Three categories target the ggF production mode, separately treating events with \ZeroJet, \OneJet, and \TwoJet in the final state. One category targets the VBF production mode, also requiring \TwoJet. 
-This categorization is illustrated in \cref{fig:signal-categorization} and the expected background composition in each of the signal categories are shown in \cref{fig:bkg-composition}.
+This categorization is illustrated in \cref{fig:signal-categorization}.
 \begin{figure}
     \newImageResizeCustom{0.7}{figures/hww/introduction/analysis-categorization.png}
     \caption{Schematic view of the signal categories defined in the \HWW analysis.}
     \label{fig:signal-categorization}
 \end{figure}
+
+Additional event selection criteria are applied in each of the categories to define the regions in which the measurements are performed (called \emph{signal regions}, SRs).
+The categories targeting the ggF signal use simple event selections to increase the purity of signal events and use the \mT observable as final discriminant. 
+The VBF \TwoJet category is made orthogonal to the ggF \TwoJet region and uses a DNN that distinguishes VBF signal from non-VBF events as final discriminant.
+The expected background composition in each of the SRs are shown in \cref{fig:bkg-composition}.
 \begin{figure}
     \subfloat[ggF \ZeroJet category]{
         \newImageResizeCustom{0.45}{figures/plots/bkg-fractions/pie-chart-fractions-ggF0jet.pdf} \hfill
@@ -33,16 +38,11 @@ This categorization is illustrated in \cref{fig:signal-categorization} and the e
     \caption{Estimated background composition in the four analysis categories prior to the statistical analysis. For the VBF \TwoJet category, a selection of DNN output $>0.25$ is applied to reflect the VBF signal sensitive region.}
     \label{fig:bkg-composition}
 \end{figure}
-
-
-
-Additional event selection criteria are applied in each of the categories to define the regions in which the measurements are performed.
-The categories targeting the ggF signal use simple event selections to increase the purity of signal events and use the \mT observable as final discriminant. 
-The VBF \TwoJet category is made orthogonal to the ggF \TwoJet region and uses a DNN that distinguishes VBF signal from non-VBF events as final discriminant.
-To extract the signal yields and measure their cross sections, MC simulated event templates are fit to the data in a binned likelihood fit performed simultaneously in all measurement regions (also denoted \emph{signal regions}, SRs).
+To extract the signal yields and measure their cross sections, MC simulated event templates are fit to the data in a binned 
+likelihood fit performed simultaneously in all measurement regions.
 The STXS measurement uses more SRs than the inclusive cross-section measurement to specifically target the signals divided into different kinematic bins. 
 
-The descriptions and results presented in this chapter supersede similar measurements performed with the same dataset but based on a previous version of the analysis~\cite{ATLAS-CONF-2021-014}.
+The descriptions and results presented in this chapter and published in~\cref{HWWPaper} supersede similar measurements performed with the same dataset but based on a previous version of the analysis~\cite{ATLAS-CONF-2021-014}.
 The main differences between the analyses are changes in the simulated samples used, improved treatment of systematic uncertainties, and an improved DNN discriminant in the VBF category. 
 It should be noted that during the optimization of the analysis, all categories have been first optimized and validated separately before being combined in the statistical analysis.
 

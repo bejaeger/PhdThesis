@@ -2,6 +2,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 from copy import deepcopy
 
+# Props change to this:
+# https://matplotlib.org/stable/gallery/lines_bars_and_markers/horizontal_barchart_distribution.html
+
 glabels = {
     "otherVV": "Other $VV$($V$)",
     "Misid": "Mis-Id",
