@@ -1,0 +1,49 @@
+%!TEX TS-program = lualatex
+
+\documentclass{standalone}
+
+\usepackage[compat=1.1.0]{tikz-feynman}
+\usetikzlibrary{positioning}
+
+\begin{document}
+%
+\providecommand{\defaultDist}{1.5cm}%
+\providecommand{\lepDist}{1.0cm}%
+\providecommand{\lepAngle}{35}%
+\providecommand{\topAngle}{0}%
+\providecommand{\wwAngle}{35}%
+%
+\begin{tikzpicture}
+  \begin{feynman}
+
+    \begin{scope}[node distance=\defaultDist]
+      \vertex (t1) at (0, 0);
+      \vertex (t2) at ([shift=(0:\defaultDist)]t1);
+      \vertex (t3) at ([shift=(90:\defaultDist)]t2);
+      \vertex (t4) at ([shift=(180:\defaultDist)]t3);
+      \vertex (g1) at ([xshift=(-\defaultDist)]t1){\(g\)};
+      \vertex (g2) at ([xshift=(-\defaultDist)]t4){\(g\)};
+      \vertex (w1) at ([shift=(-\wwAngle:\defaultDist)]t2);
+      \vertex (w2) at ([shift=(\wwAngle:\defaultDist)]t3);
+    \end{scope}
+    \begin{scope}
+      \vertex[anchor=west] (l1) at ([shift=({\lepAngle:\lepDist})]w1) {\(\ell^{+}\)};
+      \vertex[anchor=west] (v1) at ([shift=({-\lepAngle:\lepDist})]w1) {\(\nu\)};
+      \vertex[anchor=west] (l2) at ([shift=({\lepAngle:\lepDist})]w2) {\(\ell^{-}\)};
+      \vertex[anchor=west] (v2) at ([shift=({-\lepAngle:\lepDist})]w2) {\(\bar{\nu}\)};
+    \end{scope}
+    \path (t2) -- node[shift=({20:-0.4cm})] {$W^{+}$} (w1);
+    \path (t3) -- node[shift=({-20:-0.4cm})] {$W^{-}$} (w2);
+    \diagram*{
+      (g1) -- [gluon] (t1),
+      (g2) -- [gluon] (t4),
+      (t1) -- [fermion] (t2) -- [fermion] (t3) -- [fermion] (t4) -- [fermion] (t1),
+      (w1) -- [boson] (t2),
+      (w2) -- [boson] (t3),
+      (l1) -- [fermion] (w1) -- [fermion] (v1),
+      (v2) -- [fermion] (w2) -- [fermion] (l2),
+    };
+  \end{feynman}
+\end{tikzpicture}
+
+\end{document}

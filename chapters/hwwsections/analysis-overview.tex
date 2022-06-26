@@ -1,7 +1,7 @@
 The \HWW events that can be best separated from backgrounds at the LHC are the ones where one of the $W$ bosons decays into an electron and the respective other into a muon.
 This analysis therefore selects events with two different-flavor leptons in the final state targeting the \HWWdet decay.
 By requiring the leptons to be of different flavor the otherwise overwhelming background from Drell-Yan processes can be reduced. 
-The most relevant background contributions come from events with top quarks ($\ttbar/Wt$), non-resonant $WW$ production ($WW$), $W$ production in association with jets where a jet is misidentified as a lepton (Mis-Id), other diboson processes (Other $VV$($V$)), and mentioned Drell-Yan (\Zgamma) processes. 
+The most relevant background contributions come from events with top quarks ($\ttbar/Wt$), non-resonant $WW$ production ($WW$), $W$ production in association with jets where a jet is misidentified as a lepton (Mis-Id), other diboson processes (Other $VV$($V$)), mentioned Drell-Yan (\Zgamma) processes, and electroweak production of a pair of $W$ bosons ($WW$ (EW)). 
 % \begin{itemize}
 %     \item Top-quarks, both pair production ($t\bar{t}$) and single-top production with a $W$ boson ($Wt$);
 %     \item Non-resonant $WW$ production;
@@ -13,7 +13,7 @@ Given the features of the signal and background processes, that are discussed in
 Three categories target the ggF production mode, separately treating events with \ZeroJet, \OneJet, and \TwoJet in the final state. One category targets the VBF production mode, also requiring \TwoJet. 
 This categorization is illustrated in \cref{fig:signal-categorization}.
 \begin{figure}
-    \newImageResizeCustom{0.7}{figures/hww/introduction/analysis-categorization.png}
+    \newImageResizeCustom{0.8}{figures/hww/introduction/analysis-categorization.png}
     \caption{Schematic view of the signal categories defined in the \HWW analysis.}
     \label{fig:signal-categorization}
 \end{figure}
@@ -21,21 +21,10 @@ This categorization is illustrated in \cref{fig:signal-categorization}.
 Additional event selection criteria are applied in each of the categories to define the regions in which the measurements are performed (called \emph{signal regions}, SRs).
 The categories targeting the ggF signal use simple event selections to increase the purity of signal events and use the \mT observable as final discriminant. 
 The VBF \TwoJet category is made orthogonal to the ggF \TwoJet region and uses a DNN that distinguishes VBF signal from non-VBF events as final discriminant.
-The expected background composition in each of the SRs are shown in \cref{fig:bkg-composition}.
+The expected background compositions in each of the SRs are shown in \cref{fig:bkg-composition}.
 \begin{figure}
-    \subfloat[ggF \ZeroJet category]{
-        \newImageResizeCustom{0.45}{figures/plots/bkg-fractions/pie-chart-fractions-ggF0jet.pdf} \hfill
-    } 
-    \subfloat[ggF \OneJet category]{
-        \newImageResizeCustom{0.45}{figures/plots/bkg-fractions/pie-chart-fractions-ggF1jet.pdf} \hfill
-    } \\
-    \subfloat[ggF \TwoJet category]{
-        \newImageResizeCustom{0.45}{figures/plots/bkg-fractions/pie-chart-fractions-ggF2jet.pdf} \hfill
-    } 
-    \subfloat[VBF \TwoJet category]{
-        \newImageResizeCustom{0.45}{figures/plots/bkg-fractions/pie-chart-fractions-vbf.pdf} \hfill
-    } 
-    \caption{Estimated background composition in the four analysis categories prior to the statistical analysis. For the VBF \TwoJet category, a selection of DNN output $>0.25$ is applied to reflect the VBF signal sensitive region.}
+    \newImageResizeCustom{0.85}{figures/plots/bkg-fractions/bar-chart-fractions.pdf} \hfill
+    \caption{Estimated background composition in the four signal categories prior to the statistical analysis. In the VBF \TwoJet SR, an additional selection of DNN output $>0.87$ is applied to reflect the VBF signal sensitive region. The ggF SRs (VBF SR) do not indicate the ggF (VBF) signal events.}
     \label{fig:bkg-composition}
 \end{figure}
 To extract the signal yields and measure their cross sections, MC simulated event templates are fit to the data in a binned 

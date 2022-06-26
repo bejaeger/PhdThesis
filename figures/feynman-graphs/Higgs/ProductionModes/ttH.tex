@@ -1,0 +1,40 @@
+%!TEX TS-program = lualatex
+
+\documentclass{standalone}
+
+\usepackage[compat=1.1.0]{tikz-feynman}
+\usetikzlibrary{positioning}
+
+\begin{document}
+\providecommand{\defaultDist}{1.5cm}%
+\providecommand{\topAngle}{30}%
+%
+\begin{tikzpicture}
+  \begin{feynman}
+
+    \begin{scope}[node distance=\defaultDist]
+
+      \vertex (t3) at (0, 0);
+
+      \vertex (t2) at ([shift=(180+\topAngle:\defaultDist)]t3);
+      \vertex (t1) at ([shift=(   -\topAngle:\defaultDist)]t2) {\(\bar{t}\)};
+      \vertex (t4) at ([shift=(180-\topAngle:\defaultDist)]t3);
+      \vertex (t5) at ([shift=(   +\topAngle:\defaultDist)]t4) {\(t\)};
+
+      \vertex (g1) at ([xshift=-\defaultDist]t4) {\(g\)};
+      \vertex (g2) at ([xshift=-\defaultDist]t2) {\(g\)};
+
+      \vertex (h1) at ([xshift=\defaultDist]t3) {\(H\)};
+
+    \end{scope}
+
+    \diagram*{
+      (t1) -- [fermion] (t2) -- [fermion] (t3) -- [fermion] (t4) -- [fermion] (t5),
+      (g1) -- [gluon] (t4),
+      (g2) -- [gluon] (t2),
+      (t3) -- [scalar] (h1),
+    };
+  \end{feynman}
+\end{tikzpicture}
+%
+\end{document}

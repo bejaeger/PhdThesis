@@ -13,7 +13,7 @@
 % $11.4^{2.2}_{-2.1}$ pb and $0.50^{0.29}_{-0.28}$
 % 12.0 ± 1.4 pb and 0.75 +0.19 −0.16 pb,
 
-The full \RunTwo dataset of the LHC recorded by the ATLAS experiment corresponds to 139\,\ifb\ and allows for precise measurements of ggF and VBF Higgs boson production cross-sections at $\sqrt{s} = 13\,$TeV.
+The full \RunTwo dataset of the LHC recorded by the ATLAS experiment allows for precise measurements of ggF and VBF Higgs boson production cross-sections.
 All measurements presented are consistent with the SM predictions. 
 % The measurement of in total 11 Higgs boson production cross sections split in different kinematic regions have been performed by the ATLAS collaboration for the first time using \HWW decays. 
 The measurement of in total 11 STXS cross sections have been performed by the ATLAS collaboration for the first time using \HWW decays. 
@@ -44,23 +44,24 @@ Treating the $HW$ and $HZ$ coupling independently, the $HW$ coupling is measured
 All results of the combined measurements are found to be consistent with the SM expectations, thereby setting strong constraints on couplings to new particles beyond the SM.  
 % The predicted signal yield is split into the different production and decay processes, so it can be parameterized as a function of dedicated parameters of interest depending on the tested model.
 
-\subsection{Future improvements}
+\subsection{Possible future improvements}
 Due to the increased size of the available dataset, uncertainties from theoretical sources have become the bottleneck for many of the \HWW measurements presented.
-In particular, the VBF measurement is largely dominated by signal theory uncertainties, mainly due to the parton shower modelling.
-A better understanding of parton shower effects and more accurate theoretical calculations are therefore crucial to improve the measurements in future iterations.~\cite{Jger2020} 
+In particular, the inclusive VBF measurement is largely dominated by signal theory uncertainties, mainly due to the parton shower modelling.
+A better understanding of parton shower effects and more accurate theoretical calculations are therefore crucial to improve the measurement in the future.~\cite{Jger2020} 
 
-A larger dataset collected in future Runs of the LHC is still expected to improve the measurements, in particular the STXS measurements targeting EW $qqH$ production, the majority of which are still largely limited by statistical uncertainties. 
+A larger dataset collected in future Runs of the LHC is still expected to be beneficial, in particular for the STXS measurements targeting EW $qqH$ production, the majority of which are still largely limited by statistical uncertainties. 
 More data will also help to both improve the estimation of theory uncertainties and to better control the extraction of the normalization of backgrounds from CRs. 
 
 Changes to the analysis strategy may also improve the measurements. 
 Currently, the ggF SRs are defined with simple analysis selections. Instead, using a DNN-based approach to separate the ggF signal from the backgrounds could prove beneficial. 
 A larger signal-to-background ratio in the ggF-sensitive regions will also reduce the impact of systematic uncertainties. 
-Furthermore, the current ggF and VBF \TwoJet SRs use very similar kinematic and topological selections but are made orthogonal by requirement on the CJV and OLV (see \cref{sec:event-categorization}). The latter selection is found inefficient in particular for the ggF \TwoJet category, where about 30\% of ggF signal events are removed from the ggF SR due to this requirement. 
+Furthermore, the current ggF and VBF \TwoJet SRs use very similar kinematic and topological selections but are made orthogonal by requirement on the CJV and OLV (see \cref{sec:event-categorization}). The latter selection is found inefficient in particular for the ggF \TwoJet category, where about 30\% of ggF signal events are removed from the ggF SR due to this requirement. Improving the separation between the ggF \TwoJet and the VBF \TwoJet categories could prove particularly beneficial for the ggF \TwoJet cross-section measurements. 
 
-For the above-mentioned reason, the author of this thesis studied using a modified analysis strategy for the \TwoJet categories, aiming at both a better separation of ggF signal events from the backgrounds and an improved separation between the ggF- and VBF-sensitive regions. 
+\subsection{Prospects for a common \TwoJet category using multiclass classification}
+For the above-mentioned reason, the author of this thesis studied using a modified analysis strategy for the \TwoJet categories, aiming at both a better separation of the ggF signal from the backgrounds and an improved separation between the ggF- and VBF-sensitive regions. 
 Both goals can be achieved by using a multiclass classifier that distinguishes between ggF signal events, VBF signal events, and background events. 
 To this end, a DNN is trained with three output nodes that separately target the ggF signal (\emph{DNN ggF output}), VBF signal (\emph{DNN ggF output}), and the backgrounds. 
-A two-dimensional discriminant can then be defined based on the DNN ggF output and DNN VBF output.
+A two-dimensional discriminant can be defined based on the DNN ggF output and DNN VBF output.
 This discriminant is shown in \cref{fig:2d-discriminant} for the expected ggF yields, VBF yields, and background yields, and shows a good separation of the signals while discriminating the backgrounds. 
 The discriminant is shown in a newly defined common \TwoJet SR that is tested for use in the measurement of both the ggF and VBF signal. 
 The details of the selections are provided in \cref{app:multi-class-2jet-strategy}. 

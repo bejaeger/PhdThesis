@@ -1,0 +1,64 @@
+
+%!TEX TS-program = lualatex
+\documentclass{standalone}
+
+\usepackage[compat=1.1.0]{tikz-feynman}
+\usetikzlibrary{positioning}
+
+\begin{document}
+\providecommand{\defaultDist}{1.5cm}%
+\providecommand{\qqAngle}{45}%
+\providecommand{\ttAngle}{45}%
+\providecommand{\vWAngle}{25}%
+\providecommand{\lepDist}{1.0cm}%
+\providecommand{\lepAngle}{35}%
+
+%
+\begin{tikzpicture}
+  \begin{feynman}
+
+    \begin{scope}[node distance=\defaultDist]
+
+      \vertex (v12) at (0, 0);
+      \vertex (v11) at ([xshift=-\defaultDist]v12);
+
+      \vertex (q1) at ([shift=(180-\qqAngle:\defaultDist)]v11) {\(q\)};
+      \vertex (q2) at ([shift=(180+\qqAngle:\defaultDist)]v11) {\(\bar{q}\)};
+
+      \vertex (t1) at ([shift=( \ttAngle:\defaultDist)]v12);
+      \vertex (t2) at ([shift=(-\ttAngle:\defaultDist)]v12);
+
+      \vertex (w1) at ([shift=( \vWAngle:\defaultDist)]t1);
+      \vertex (w2) at ([shift=( -\vWAngle:\defaultDist)]t2);
+
+    \end{scope}
+    \begin{scope}
+      \vertex[anchor=west] (v3) at ([shift=({-\vWAngle:\defaultDist})]t1) {\(\bar{\nu}_{\tau}\)};
+      \vertex[anchor=west] (v4) at ([shift=({\vWAngle:\defaultDist})]t2) {\(\nu_{\tau}\)};
+    \end{scope}
+
+    \begin{scope}
+      \vertex[anchor=west] (l1) at ([shift=({\lepAngle:\lepDist})]w1) {\(\ell^{+}\)};
+      \vertex[anchor=west] (v1) at ([shift=({-\lepAngle:\lepDist})]w1) {\(\nu\)};
+      \vertex[anchor=west] (l2) at ([shift=({\lepAngle:\lepDist})]w2) {\(\ell^{-}\)};
+      \vertex[anchor=west] (v2) at ([shift=({-\lepAngle:\lepDist})]w2) {\(\bar{\nu}\)};
+    \end{scope}
+
+    \path (v12) -- node[shift=({ 110:0.4cm})] {\(\tau^{+}\)} (t1);
+    \path (v12) -- node[shift=({-110:0.4cm})] {\(\tau^{-}\)} (t2);
+    \path (v11) -- node[shift=({-100:0.4cm})] {\(Z/\gamma^{\ast}\)} (v12);
+    \path (t1) -- node[shift=({ 110:0.4cm})] {$W^{+}$} (w1);
+    \path (t2) -- node[shift=({-110:0.4cm})] {$W^{-}$} (w2);
+    \diagram*{
+      (q1) -- [fermion] (v11) -- [fermion] (q2);
+      (v11) -- [boson] (v12),
+      (t2) -- [fermion] (v12) -- [fermion] (t1);
+      (w1) -- [boson] (t1) -- [fermion] (v3),
+      (v4) -- [fermion] (t2) -- [boson] (w2),
+      (l1) -- [fermion] (w1) -- [fermion] (v1),
+      (v2) -- [fermion] (w2) -- [fermion] (l2),
+    };
+  \end{feynman}
+\end{tikzpicture}
+%
+\end{document}

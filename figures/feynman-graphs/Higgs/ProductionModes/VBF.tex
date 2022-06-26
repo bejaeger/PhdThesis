@@ -1,0 +1,40 @@
+%!TEX TS-program = lualatex
+
+\documentclass{standalone}
+
+\usepackage[compat=1.1.0]{tikz-feynman}
+\usetikzlibrary{positioning}
+
+\begin{document}
+\providecommand{\defaultDist}{1.5cm}%
+\providecommand{\vvAngle}{45}%
+\providecommand{\qqAngle}{20}%
+%
+\begin{tikzpicture}
+  \begin{feynman}
+
+    \begin{scope}[node distance=\defaultDist]
+
+      \vertex (vX2)  at (0, 0);
+      \vertex (v11) at ([shift=(180-\vvAngle:\defaultDist)]vX2);
+      \vertex (v21) at ([shift=(180+\vvAngle:\defaultDist)]vX2);
+
+      \vertex (q11) at ([xshift=-\defaultDist]v11)           {\(q\)};
+      \vertex (q12) at ([shift=( \qqAngle:\defaultDist)]v11) {\(q'\)};
+      \vertex (q21) at ([xshift=-\defaultDist]v21)           {\(q\)};
+      \vertex (q22) at ([shift=(-\qqAngle:\defaultDist)]v21) {\(q'\)};
+
+      \vertex (h1) at ([shift=(  0:\defaultDist)]vX2) {\(H\)};
+
+    \end{scope}
+
+    \diagram*{
+      (q11) -- [fermion] (v11) -- [fermion] (q12);
+      (q21) -- [fermion] (v21) -- [fermion] (q22);
+      (v11) -- [boson, edge label=\(V\)]   (vX2) -- [boson, edge label=\(V\)]   (v21);
+      (vX2) -- [scalar] (h1),
+    };
+  \end{feynman}
+\end{tikzpicture}
+%
+\end{document}

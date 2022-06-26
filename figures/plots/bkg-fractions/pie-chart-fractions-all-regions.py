@@ -82,7 +82,6 @@ values = {"ggF0jet": {
 
 # , "Total": 45.0865771941845}
 
-
 def plot_pie_chart(values, key):
     global gcolors
     global glabels

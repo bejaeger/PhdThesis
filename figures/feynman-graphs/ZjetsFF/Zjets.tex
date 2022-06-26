@@ -1,0 +1,29 @@
+%!TEX TS-program = lualatex
+
+\documentclass{standalone}
+
+\usepackage[compat=1.1.0]{tikz-feynman}
+% \usetikzlibrary{positioning}
+
+\begin{document}
+\providecommand{\defaultDist}{1.5cm}%
+\providecommand{\tChannelDist}{2cm}%
+%
+\begin{tikzpicture}
+  \begin{feynman}
+    \begin{scope}
+      \vertex (q1) at (0, 0){\(q\)};
+      \vertex (q2) at ([xshift=\defaultDist]q1);
+      \vertex (q3) at ([yshift=-\tChannelDist]q2);
+      \vertex (q4) at ([xshift=\defaultDist]q3){\(q\)};
+      \vertex (g1) at ([xshift=-\defaultDist]q3){\(g\)};
+      \vertex (Z1) at ([xshift=\defaultDist]q2){\(Z\)};
+    \end{scope}
+    \diagram*{
+      (q1) -- [fermion] (q2) -- [fermion] (q3) -- [fermion] (q4);
+      (g1) -- [gluon] (q3);
+      (q2) -- [boson] (Z1);
+    };
+  \end{feynman}
+\end{tikzpicture}
+\end{document}

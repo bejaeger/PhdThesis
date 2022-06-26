@@ -1,0 +1,47 @@
+%!TEX TS-program = lualatex
+
+\documentclass{standalone}
+
+\usepackage[compat=1.1.0]{tikz-feynman}
+
+\begin{document}
+
+\providecommand{\defaultDist}{1.5cm}%
+\providecommand{\tChannelDist}{1.9cm}%
+\providecommand{\lepDist}{1.0cm}%
+\providecommand{\lepAngle}{35}%
+%
+\begin{tikzpicture}
+  \begin{feynman}
+    \begin{scope}
+      \vertex (q1) at (0, 0){\(q\)};
+      \vertex (q2) at ([xshift=\defaultDist]q1);
+      \vertex (w1) at ([xshift=\defaultDist]q2);
+      \vertex (q3) at ([yshift=-\tChannelDist]q2);
+      \vertex (q4) at ([xshift=-\defaultDist]q3){\(\bar{q'}\)};
+      \vertex (w2) at ([xshift=\defaultDist]q3);
+    \end{scope}
+
+    \begin{scope}
+      \vertex[anchor=west] (l1) at ([shift=({\lepAngle:\lepDist})]w1) {\(\ell^{+}\)};
+      \vertex[anchor=west] (v1) at ([shift=({-\lepAngle:\lepDist})]w1) {\(\nu\)};
+      \vertex[anchor=west] (l2) at ([shift=({\lepAngle:\lepDist})]w2) {\(\ell^{-}\)};
+      \vertex[anchor=west] (v2) at ([shift=({-\lepAngle:\lepDist})]w2) {\(\bar{\nu}\)};
+    \end{scope}
+    \path (q2) -- node[shift=({ 110:0.4cm})] {$W^{+}$} (w1);
+    \path (q3) -- node[shift=({-110:0.4cm})] {$W^{-}$} (w2);
+    \diagram*{
+      (q1) -- [fermion] (q2) -- [fermion] (q3) -- [fermion] (q4);
+      (w1) -- [boson] (q2);
+      (w2) -- [boson] (q3);
+      (l1) -- [fermion] (w1) -- [fermion] (v1),
+      (v2) -- [fermion] (w2) -- [fermion] (l2),
+    };
+  \end{feynman}
+\end{tikzpicture}
+
+
+
+
+%
+\end{document}

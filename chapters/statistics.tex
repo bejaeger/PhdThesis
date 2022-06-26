@@ -3,8 +3,8 @@
 Collider experiments such as the ATLAS detector at the LHC, simply put, are counting experiments. 
 Sophisticated statistical methods are used to extract physics parameters such as cross sections from the counting experiments while accounting for all underlying uncertainties. 
 % to express the counting measurements in terms of physics parameters such as cross sections and to allow for a full consideration of the underlying uncertainties. 
-This chapter briefly outlines the statistical concepts used in the measurement of \HWW\ decays presented \cref{chap:hww}.
-The number of Higgs boson events measured in data is compared to the expectation value taken from MC simulated samples. The expectation value is a complex quantity and depends on many parameters, which is discussed in \cref{sec:exp-value}.
+This chapter briefly outlines the statistical concepts used in the measurement of \HWW\ decays presented in \cref{chap:hww}.
+The number of events measured in data is compared to the expectation value taken from MC simulated samples. The expectation value is a complex quantity and depends on many parameters. This is discussed in \cref{sec:exp-value}.
 \Cref{sec:likelihood} then describes how the MC simulations are used to construct a statistical template that is fit to the actual data using a maximum likelihood estimation. This allows the extraction of the physics parameters from the fitted MC template.
 The procedure to test different signal hypotheses with frequentist methods, for example to claim the discovery of a new signal, is outlined in \cref{sec:hypothesis-testing}.
 This chapter is based to a large extent on \ccite{Cowan:2010js}.
@@ -55,7 +55,7 @@ The first term, \Lmeas, measures the probability of measuring $n_i$ data events 
 \begin{equation}
     \Lmeas = \prod_{i \in \text{bins}} \text{Pois}(n_i | E[n_i] ),
 \end{equation}
-where the product goes over all regions (also \emph{bins}) included in the measurement. The bins typically include a binned distribution of an observable in a signal-sensitive phase space region that discriminates well between signal and background, and phase space regions that are pure in specific background categories and selected according to kinematic and topological requirements. The latter bins serve as subsidiary measurements that allow determining the normalization of certain background categories from the data.
+where the product goes over all regions and histogram bins (together simply called bins) included in the measurement. The bins typically include a binned distribution of an observable in a signal-sensitive phase space region that discriminates well between signal and background, and phase space regions that are pure in specific background categories and selected according to kinematic and topological requirements. The latter bins serve as subsidiary measurements that allow determining the normalization of certain background categories from the data.
 
 The second term, \Lsyst, encodes the effect of the systematic uncertainties in the likelihood. Most commonly standard Gaussian functions are used,
 \begin{equation}
@@ -96,9 +96,8 @@ In practice, the best-fit values, labelled as $\{\hat{\pmb{\mu}}, \hat{\pmb{\the
     \{\hat{\pmb{\mu}}, \hat{\pmb{\theta}} \} = \text{arg} \min_{\{\pmb{\mu}, \pmb{\theta}\}} \left( - \ln (\Likelihood) \right),
 \end{equation}
 as it is numerically more stable. This is done using numerical methods implemented in the MINUIT package~\cite{James:1975dr}.
-
 %using numeric procedures. 
-The fitted $\hat{\pmb{\mu}}$ can then be directly translated into physics quantities such as cross sections by comparing to the values that were assumed in the original MC template.
+The fitted $\hat{\pmb{\mu}}$ can then be directly translated into physics quantities such as cross sections by comparing them to the values that were assumed in the original MC template.
 
 % For the background categories that can be measured well in a region pure in events of that category, the NFs are typically freely floating in the statistical analysis. For the other background categories the values are fixed to $\nu_\beta = 1$. 
 
@@ -119,7 +118,21 @@ where $\lambda(\mu)$ is the \emph{likelihood ratio} defined as
 \end{equation}
 Here, the values $\hat{\hat{\pmb{\theta}}}$ correspond to the NP values that minimize the negative logarithm of the likelihood for a given value of the signal strength $\mu$, and $\hat{\pmb{\theta}}$ are defined as shown in \cref{eq:best-fit-values}. 
 
-To establish the discovery of a signal, the null hypothesis is defined as the background-only hypothesis $\mu = 0$, and the test statistic $q_0$ used in these cases is constructed as 
+The agreement between data and the hypothesized value of $\mu$ is quantified with the $p$-value, which indicates the probability of finding data that is equally or less compatible than the observed data, assuming that the null hypothesis is correct.
+The $p$-value can be computed as
+\begin{equation}
+    \label{eq:p-value-discovery}
+    p_{\mu_h} = \int_{t_{\mu_h}, \text{obs}}^{\infty} f \left( t_{\mu_h} | \mu = \mu_h \right) dt_{\mu_h},
+\end{equation}
+where $f \left( t_{\mu_h} | \mu=\mu_h \right)$ is the probability density function of the test statistic assuming the hypothesized value $\mu=\mu_h$.
+The probability density function is generally not known but can be sampled from MC simulations. 
+% \begin{equation}
+%     \label{eq:p-value-discovery}
+%     p_0 = \int_{q_0, \text{obs}}^{\infty} f \left( q_0 | \mu = 0 \right) dq_0,
+% \end{equation}
+% $f \left( q_0 | \mu = 0 \right)$
+
+To establish the discovery of a signal, the null hypothesis is defined as the background-only hypothesis with $\mu = 0$, and the test statistic $q_0$ can be used, constructed as
 \begin{equation}
     q_0 =
      \begin{cases}
@@ -129,15 +142,12 @@ To establish the discovery of a signal, the null hypothesis is defined as the ba
      \label{eq:q0}
   \end{equation}
 where $q_0$ is set to zero for negative values of $\mu$, as they are unphysical.
-The agreement between data and the hypothesized value of $\mu$ is quantified with the $p$-value, which indicates the probability of finding data that is less compatible than the observed data, assuming that the null hypothesis is correct.
-The $p$-value can be computed as
+The $p$-value then becomes
 \begin{equation}
     \label{eq:p-value-discovery}
     p_0 = \int_{q_0, \text{obs}}^{\infty} f \left( q_0 | \mu = 0 \right) dq_0,
 \end{equation}
-where $f \left( q_0 | \mu = 0 \right)$ is the probability density function of the test statistic assuming the null hypothesis.
-The probability density function is generally not known but can be sampled from MC simulations. 
-In the large sample limit, it follows a $\chi^2$ distribution and the $p$-value can be written as
+with $f \left( q_0 | \mu = 0 \right)$ generally unknown. In the large sample limit, $f$ follows a $\chi^2$ distribution and the $p$-value can be written as
 \begin{equation}
     \label{eq:p-value-approx}
     p_0 = 1 - \Phi( \sqrt{q_0}),
@@ -150,13 +160,13 @@ In high energy physics, the $p$-value is often converted to Gaussian standard de
 \end{equation}
 where $\Phi^{-1}$ is the inverse of the Gaussian cumulative distribution function. 
 
-It is useful to find a simple approximation for this discovery significance. 
-This can be achieved by considering a simple counting experiment with one measurement region and disregarding all uncertainties. In this case, the likelihood function can be written as
+It is useful to find a simple approximation for the metric in \cref{eq:Z0}, which is referred to as \emph{discovery significance}. 
+This can be constructed by considering a simple counting experiment with one measurement region and disregarding all uncertainties. In this case, the likelihood function can be written as
 \begin{equation}
   \Likelihood(\mu) = \frac{(\mu s +b)^n}{n!} e^{-(\mu s+b)},
 \end{equation}
 where the expected number of signal and total background events, $s$ and $b$, respectively, are assumed to be known without uncertainty.
-By using \cref{eq:Z0} a simple approximation for the discovery significance $Z$ can be found,
+By using \cref{eq:Z0}, a simple approximation for the discovery significance $Z$ can be found,
 % Assuming the nominal signal hypothesis with $\mu = 1$ one can replace the value $n$ by its Asimov value $s+b$ and can approximate the median significance, by using the definition of $q_0$ from \cref{eq:q0}, to obtain
 %By asimov data set the value $n$ can be replaces by $s+b$
 %% \begin{equation}
@@ -178,10 +188,6 @@ A more sophisticated approximation that also accounts for uncertainties on the e
 \end{equation}
 where $\sigma$ is the uncertainty on the expected number of background events, $b$, and $n$ corresponds to the sum of the expected number of signal and background events, $n = s+b$.
 More information on how this formula is derived can be found in \ccite{ATL-PHYS-PUB-2020-025}.
-
-\TDinote{}{Mention how to calculate p-value for measurement vs SM? If timeline is tough I can try to sneakily don't mention that}
-
-\TDinote{}{Mention how breakdown is derived in profile likelihood fit -> Can be done in HWW section!}
 
 
 % From master thesis

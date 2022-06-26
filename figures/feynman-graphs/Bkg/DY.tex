@@ -1,0 +1,15 @@
+%!TEX TS-program = lualatex
+
+\documentclass{standalone}
+
+\usepackage[compat=1.1.0]{tikz-feynman}
+
+\begin{document}
+
+    \feynmandiagram[horizontal=v1 to v2] {
+      q1 [particle=\(q\)] -- [fermion] v1 -- [fermion] q2 [particle=\(\bar{q}\)],
+      v1 -- [boson, edge label = \(Z/\gamma^{*}\)] v2,
+      l1 [particle=\(\ell^{+}\)]-- [fermion] v2 -- [fermion] l2 [particle=\(\ell^{-}\)],
+    };
+%
+\end{document}

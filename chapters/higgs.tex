@@ -122,84 +122,21 @@ The decay to a pair of bottom quarks ($H\rightarrow b\bar{b}$) is the leading pr
 \end{figure}
 \captionsetup[subfloat]{captionskip=5pt} % space between subfloat caption and image
 
-\captionsetup[subfloat]{captionskip=25pt} % space between subfloat caption and image
-\unitlength=1mm
+\captionsetup[subfloat]{captionskip=10pt} % space between subfloat caption and image
 \begin{figure}
-  \centering
-\subfloat[Gluon fusion]{  
-\begin{fmffile}{\feyndir/HiggsProduction_GluonFusion}
-\begin{fmfgraph*}(60,22) 
-\fmfleft{i1,i2}
-\fmfright{o1,o2,o3}
-\fmf{phantom}{i1,v1,o1} 
-\fmffreeze 
-\fmf{phantom}{i2,v2,o3}
-\fmffreeze
-\fmf{gluon, label=$g$, label.dist=+12.0}{i1,v1} 
-\fmf{gluon, label=$g$, label.dist=+12.0}{i2,v2}
-\fmf{fermion, label=$t$, label.dist=-12.0}{v1,v2,v3,v1}
-\fmf{dashes, label=$H$,plain}{v3,o2}
-\end{fmfgraph*}
-\end{fmffile}
+\subfloat[Vector-boson fusion (VBF)] {
+    \newImageResizeCustom{0.4}{figures/feynman-graphs/Higgs/ProductionModes/VBF.pdf}
 }
-\quad
-\subfloat[Vector-boson fusion]{
-\begin{fmffile}{\feyndir/HiggsProduction_VBF}
-\begin{fmfgraph*}(60,25) 
-\fmfleft{i1,i2}
-\fmfright{o1,o2,o3}
-\fmf{phantom}{i1,v1,o1}
-\fmffreeze
-\fmf{phantom}{i2,v2,o3}
-\fmffreeze
-\fmfstraight
-\fmf{phantom}{v1,v3,v2}
-\fmffreeze
-\fmf{fermion, label=$q$}{i1,v1}
-\fmf{fermion, label=$q$}{i2,v2}
-\fmf{fermion, label=$q^\prime$}{v1,o1}
-\fmf{fermion, label=$q^\prime$}{v2,o3}
-\fmf{boson, label=$W/Z$}{v1,v3,v2}
-\fmffreeze 
-\fmf{dashes, label=$H$,plain}{v3,o2}
-\end{fmfgraph*}
-\end{fmffile}
+\subfloat[Gluon fusion (ggF)] {
+    \newImageResizeCustom{0.4}{figures/feynman-graphs/Higgs/ProductionModes/ggF.pdf}
+} \\
+\subfloat[Higgs-strahlung (VH)] {
+  \newImageResizeCustom{0.4}{figures/feynman-graphs/Higgs/ProductionModes/VH.pdf}
 }
-\\
-\vskip1em
-\subfloat[Higgs-strahlung]{
-\begin{fmffile}{\feyndir/HiggsProduction_HiggsStrahlung} 
-\begin{fmfgraph*}(60,25) 
-\fmfleft{i1,i2}
-\fmfright{o1,o2}
-\fmf{fermion, label=$q$}{i1,v1}
-\fmf{fermion, label=$q'$}{v1,i2}
-\fmf{boson, label=$W/Z$}{v1,v2,o1}
-\fmf{dashes, label=$H$}{v2,o2}
-\end{fmfgraph*}
-\end{fmffile}
+\subfloat[$t\bar{t}H$] {
+  \newImageResizeCustom{0.4}{figures/feynman-graphs/Higgs/ProductionModes/ttH.pdf}
 }
-\quad
-\subfloat[$t\bar{t}H$]{
-\begin{fmffile}{\feyndir/HiggsProduction_ttbar}
-\begin{fmfgraph*}(60,25) 
-\fmfleft{i1,i2}
-\fmfright{o1,o2,o3}
-\fmf{phantom}{i1,v1,o1}
-\fmffreeze
-\fmf{phantom}{i2,v2,o3}
-\fmffreeze
-\fmfstraight
-\fmf{phantom}{v1,v3,v2}
-\fmffreeze
-\fmf{gluon, label=$g$, label.dist=+12.0}{i1,v1}
-\fmf{gluon, label=$g$, label.dist=+12.0}{i2,v2}
-\fmf{fermion, label=$t$}{o3,v2,v3,v1,o1}
-\fmf{dashes, label=$H$,plain}{v3,o2}
-\end{fmfgraph*}
-\end{fmffile}
-}
-\caption{Representative Feynman diagrams for the four main production modes of the Higgs boson at the LHC.}
+\caption{Representative Feynman diagrams of the four main production modes of the Higgs boson at the LHC.}
 \label{fig:higgsprodfeyn}
 \end{figure}
 \captionsetup[subfloat]{captionskip=5pt} % space between subfloat caption and image
