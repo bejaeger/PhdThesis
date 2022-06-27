@@ -1,8 +1,8 @@
 The final states of the VBF and ggF signal processes contain muons, electrons, jets, and missing transverse energy. 
-This section provides details on the reconstruction and identification of these physics objects.
-Several criteria, defined in \cref{chap:objects}, are imposed on the objects to guarantee a high selection efficiency of signal events while minimizing the contamination of background events. 
+This section provides details on the reconstruction and identification of these physics objects and also discusses how known differences between the simulated event samples and data are corrected.
+Several criteria, defined in \cref{chap:objects}, are imposed on the physics objects to guarantee a high selection efficiency of signal events while minimizing the contamination of background events. 
 All the selection criteria are applied to both data and simulated events. They are summarized in \cref{tab:objectselectionleptons}.
-This section also discusses how known differences between the simulated event samples and data are corrected and extensively draws from \ccite{HWWPaper}.
+The following draws extensively from \ccite{HWWPaper}.
 
 \begin{table}
     \centering
@@ -42,7 +42,7 @@ This section also discusses how known differences between the simulated event sa
         $b$-tagging acceptance       & \ptjetGT{20}\,GeV and \absetaST{2.5}                         \\
         \bottomrule
     \end{tabular}
-    \caption{List of object selection criteria, acceptances, and algorithms used in the \HWW\ analysis.}
+    \caption{List of physics object selection criteria, acceptances, and algorithms used in the \HWW\ analysis.}
     \label{tab:objectselectionleptons}
 \end{table}
 
@@ -50,44 +50,46 @@ This section also discusses how known differences between the simulated event sa
 The primary vertices (PV) are reconstructed using tracks from the ID with \ptGT{500}\MeV. Each event is required to have at least one reconstructed PV with at least two associated tracks. The hard scatter is chosen to be the PV with the largest sum of squared track transverse momenta.
 
 \subsection{Lepton selection}
-In order to maximise the purity of events with prompt leptons and reject background contributions from particle misidentifications, several identification, isolation, impact parameter, and other criteria are imposed on the leptons.
+In order to maximise the purity of events with prompt leptons and reject background contributions from particle misidentifications, several criteria are imposed on the leptons.
 
 Lepton candidates must be compatible with originating from the hard scatter vertex, ensured by requiring the impact parameters to be $|z_0\sin\theta|<0.5$ and $|d_0| / \sigma_{d_0} < 5 (3)$ for electrons (muons).
 The leptons that triggered the recording of the event (\emph{online} leptons) are matched to the fully reconstructed leptons (\emph{offline} leptons) to reduce the contamination of events with misidentifications.
 To this end, at least one offline lepton must be matched to an online object.
-If the event was recorded only based on the dilepton trigger, both offline leptons much be matched to the online ones.
+If the event was recorded only based on the dilepton trigger, both offline leptons must be matched to the online ones.
 In addition, the matched offline leptons must have a \pT that is at least 1\,GeV above the respective trigger threshold.
 Leptons are required to be isolated, which is ensured using maximum thresholds on both the \emph{track} isolation variable \pTvarcone (with $R_{\text{max}} = 0.2$ ($R_{\text{max}} = 0.3$) for electrons (muons)) and the \emph{calorimeter} isolation variables \ETconetwenty.
-The isolation working points used are about 86\% efficient for electrons with $\pT = 30\,$GeV~\cite{EGAM-2018-01} and on average about 89\% efficient for muons with $20 < \pT < 100\,$GeV~\cite{MUON-2018-03}.
+The isolation working points used are on average about 86\% efficient for electrons with $\pT = 30\,$GeV~\cite{EGAM-2018-01} and about 89\% efficient for muons with $20 < \pT < 100\,$GeV~\cite{MUON-2018-03}.
 
 Electron candidates are considered in a range $|\eta| \,{<}\, 2.47$, excluding $1.37\,{<}\,|\eta|\,{<}\,1.52$, which corresponds to the transition region between the barrel and the end-caps of the electromagnetic calorimeter.
-The choice of electron identification criteria is dependent on the \pT\ of the lepton: electrons with $\pT \,{<}\,25\,\GeV$ ($\pT\,{>}\,25\,\GeV$) must satisfy the ``Tight'' likelihood working point (``Medium'' likelihood working point\footnote{A looser selection is applied for electrons with larger \pT because the background contamination from misidentifications become less important.}) that has an efficiency of about 70\% (85\%) for these electrons (muons).~\cite{EGAM-2018-01}
+The choice of electron identification criteria is dependent on the \pT\ of the lepton: electrons with $\pT \,{<}\,25\,\GeV$ ($\pT\,{>}\,25\,\GeV$) must satisfy the ``Tight'' likelihood working point (``Medium'' likelihood working point that has an efficiency of about 70\% (85\%) for these electrons.~\cite{EGAM-2018-01}
+A looser selection is applied for electrons with higher \pT because the background contamination from misidentifications is smaller for events with high-\pT electrons.
+
 % NOT SURE ABOUT THAT!?
 % Furthermore, only those electrons are selected that are exclusively reconstructed as electrons and not as both electrons and photons.
-
-Muon candidates are reconstructed using information from the ID as well as the muon system and are required to satisfy \absetaST{2.5}.
+Muon candidates are reconstructed using information from the ID as well as the muon system and are restricted to the range \absetaST{2.5}.
 The identification is based on a cut-based approach~\cite{MUON-2018-03}, using the ``Tight'' working point that has an efficiency of about 95\% to select real muons.
 % so as to maximise the sample purity.
 
 \subsection{Jet selection}
 Jets used in this analysis are reconstructed with the \antikt algorithm with a radius parameter $R = 0.4$ and using particle flow objects as inputs.
 They are fully calibrated corresponding to the descriptions given in \cref{sec:jes-calibration} and must satisfy \absetaST{4.5} and \ptGT{20}GeV.
-Jets that are used for jet counting, that is, to categorize the events in different analysis regions, are required to have \ptGT{30}GeV.
-In order to identify $b$-jets, the DL1r neural network discriminant is employed (see \cref{subsec:flavor-tagging}), using a working point that has an average of 85\% $b$-jet tagging efficiency for jets with \ptGT{20}GeV and \absetaST{2.5}~\cite{FTAG-2018-01}.
+Jets that are used for jet counting, i.e., to categorize the events in different analysis regions, are required to have \ptGT{30}GeV.
+To identify $b$-jets, the DL1r neural network discriminant is employed (see \cref{subsec:flavor-tagging}), using a working point that has an average of 85\% $b$-jet tagging efficiency for jets with \ptGT{20}GeV and \absetaST{2.5}~\cite{FTAG-2018-01}.
 Furthermore, the Jet Vertex Tagger is used to reject jets stemming from pile-up interactions by requiring a minimum value of JVT $> 0.59$ for jets with \ptBT{20}{60}GeV and \absetaST{2.4}.
 %\TDinote{}{Checkout JVT extension to 120 GeV???}
 
 \subsection{Missing transverse energy}
-The amount of energy invisible to the detector is quantified with three different observables in this analysis that are all discussed in \cref{sec:met}.
-The missing transverse energy, \ETmiss, is used to construct all other observables dependent on \ETmiss such as the transverse momentum \mT.
+The amount of energy invisible to the detector is quantified with three different observables in this analysis.
+% that are all discussed in \cref{sec:met}.
+The missing transverse energy, \ETmiss, is used to construct all observables dependent on \ETmiss such as the transverse momentum \mT.
 The missing transverse momentum, \pTmiss, is used in the selection of events because it has a better discrimination power especially against the \Zgamma background.
-Finally, the \METSig observable is used in the DNN employed in the VBF measurement.
+Finally, the \METSig observable is used in the DNN deployed in the VBF category.
 
 \subsection{Overlap removal}
 \label{subsec:overlap-removal}
 
 The event reconstruction can lead to ambiguous definitions of the reconstructed objects.\footnote{This is mostly due to the fact that the same sets of lower-level reconstructed objects such as tracks or calorimeter clusters are used in multiple reconstruction algorithms for example for electrons, photons, or jets.}
-To resolve these ambiguities and avoid double consideration of detector signals, a dedicated \emph{overlap removal} procedure is performed for each event, which works as follows~\cite{HWWPaper}:
+To resolve these ambiguities and avoid double consideration of detector signals, a dedicated \emph{overlap removal} procedure is performed for each event~\cite{HWWPaper}:
 \begin{itemize}
     \item If two electrons share an ID track, the electron with lower \ET is removed.
           %\item An electron is removed that shares an ID track with a muon.
@@ -101,15 +103,16 @@ To resolve these ambiguities and avoid double consideration of detector signals,
 \subsection{Scale factors and pile-up weights}
 The simulated events are processed through a complex detector simulation in order to be directly comparable to data events. 
 This procedure cannot be performed with arbitrary accuracy, so differences between data and simulation are expected.
-To account for the differences introduced by, for example, reconstruction and identification algorithms, data-to-simulation \emph{scale factors} (SFs) are applied at the level of the fully reconstructed event. The SFs are derived in dedicated analyses and generally given as
+To account for the differences introduced by, for example, above-mentioned reconstruction and identification algorithms, data-to-simulation \emph{scale factors} (SFs) are applied at the level of the fully reconstructed event. The SFs are derived in dedicated analyses and generally given as
 \begin{equation}
-    SF = \frac{\epsilon_\text{data}}{\epsilon_{\text{MC}}},
+    \text{SF} = \frac{\epsilon_\text{data}}{\epsilon_{\text{MC}}},
 \end{equation}
 where $\epsilon_\text{data}$ and $\epsilon_\text{MC}$ are efficiencies measured in data and simulation, respectively.
-The SFs are either applied to the full event (\emph{efficiency SF}) or only to the four-momentum of individual objects (\emph{four-momentum SF}). Only four-momentum SFs can alter the shape of distributions. %, which has important consequences for the statistical analysis.
+The SFs are either applied to the full event (\emph{efficiency SF}) or only to the four-momentum of individual objects (\emph{four-momentum SF}). 
+%Only four-momentum SFs can alter the shape of distributions. %, which has important consequences for the statistical analysis.
 Uncertainties on these corrections are propagated to the final statistical analysis.
 
-Another sample correction is applied to correct for differences in the underlying pile-up conditions assumed in the simulated events and that found in data.\footnote{This is needed since the exact data taking were not known when the simulated samples were produced.}
+Another sample correction is applied to correct for differences in the underlying pile-up conditions assumed in the simulated events and that found in data.\footnote{This is needed since the exact data taking conditions were not known when the simulated samples were produced.}
 % In order to compare Monte Carlo simulated events with actual data, the amount of pile-up underlying the hard scatter needs to be account for.
 To this end, a method known as \emph{pile-up reweighting} is performed that assigns a dedicated \emph{pile-up weight} to each event so that the global distribution of the number of pile-up interactions in the simulated event samples matches, on average, that found in data. 
 %Due to different running conditions, the reweighting procedure is performed separately for the data recorded in the years 2015 and 2016, 2017, and 2018.

@@ -5,7 +5,7 @@
 
 % - Define ``vocabulary'' for regions, bins, categories, processes, ...
 
-A common event preselection is applied before the events are divided into the separate signal categories and further selections are applied to reject as many background events as possible while retaining the majority of the signal events.
+A common event preselection is applied before the events are divided into the separate signal categories and further selections are applied in each category to reject as many background events as possible while retaining the majority of the signal events.
 %\emph{signal regions} (SRs) targeting different signal categories.
 % In each SR, further selections are made on event observables 
 All selection criteria that define the nominal SRs are summarized in \cref{tab:HWWselection}. 
@@ -26,7 +26,7 @@ A table with the changes in the event yields when these selections are applied i
 \subsection{Preselection and common selections}
 \label{subsec:preselection}
 The transverse momenta of the two leptons must satisfy \ptGT{22}\,GeV and \ptGT{15}\,GeV for the higher-\pT (\emph{leading}) and lower-\pT (\emph{subleading}) lepton, respectively.
-To minimise the contamination from both low-mass meson resonances as well as di-tau backgrounds from low-mass Dell-Yan production, the invariant mass of the dilepton system is required to be $\mll > 10\,\GeV$.
+To minimize the contamination from both low-mass meson resonances and low-mass \Ztautau processes, the invariant mass of the dilepton system is required to be $\mll > 10\,\GeV$.
 The distribution of the number of jets in the event at this preselection stage is shown in \cref{fig:njet-dist}.
 \begin{figure}
   \newImageResizeCustom{0.6}{figures/hww/presel/nJets.pdf}
@@ -73,7 +73,7 @@ The VBF signal discrimination in the VBF \TwoJet category is achieved with a DNN
 Event selection criteria targeting the distinct VBF topology are nonetheless applied to allow for a meaningful background estimation (see \cref{sec:bkg-estimation}) and to ensure orthogonality with the ggF \TwoJet category. 
 Events are rejected from the VBF category if they either contain an additional jet with \ptGT{30}\,GeV between the two leading jets in pseudorapity (known as \emph{central jet veto} (CJV)) or contain a lepton at larger pseudorapidities than both of the jets (known as \emph{outside lepton veto} (OLV)).
 These requirements are illustrated in \cref{fig:cjv-olv-illustration}. 
-In addition, a selection is made on the invariant mass of the jets $\mjj > 120\,\GeV$, which mainly serves to separate other physics analyses targeting the $V(\to qq)H$ Higgs production mode.
+In addition, a selection is made on the invariant mass of the jets $\mjj > 120\,\GeV$, which mainly serves to separate other physics analyses targeting the $V(\to qq)H$ Higgs boson production mode.
 %The background contamination in this region is large. 
 % The VBF signal process is then distinguished from the background processes by using a deep neural network model (DNN) that is trained to classify VBF signal and other non-VBF signal events.
 % The output of the DNN is used as a final discriminant because it reflects the compatibility of an event having VBF signal-like kinematics. Details about the development of the VBF DNN analysis are provided in \cref{sec:dnn}.

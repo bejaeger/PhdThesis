@@ -1,10 +1,10 @@
 %The different production and decay modes of the Higgs boson were discussed in \cref{subsec:higgschannels}.
-This section first discusses the characteristics of the signal processes and then details the background processes that mimic these signal signatures.
+This section first discusses the characteristics of the signal processes and then details the background processes that mimic the signal signatures.
 
 \subsection{The Signal Processes}
 \label{subsec:signal-bkg-characterisation}
 The Feynman diagrams of the ggF and VBF signal processes are shown in \cref{fig:feyn:sig-wwprod}.
-The features of the \HWWdet decay and the production mechanisms provide the basis for the event categorization discussed in \cref{sec:event-categorization}. 
+The features of both the \HWWdet decay and the production mechanisms provide the basis for the event categorization discussed in \cref{sec:event-categorization}. 
 
 \begin{figure}[t]
     \subfloat[VBF signal] {
@@ -20,53 +20,58 @@ The features of the \HWWdet decay and the production mechanisms provide the basi
 
 \subsubsection{The \HWWdet decay}
 The Higgs boson couples to a pair of oppositely charged $W$ bosons.
-Because of the high mass of the $W$ boson ($m_W = 80.354 \pm 0.007\,\GeV$ \cite{PDG2020}), one of the vector bosons is produced on shell, the other is virtual.
+Because of the high mass of the $W$ boson ($m_W = 80.354 \pm 0.007\,\GeV$ \cite{PDG2020}), one of the vector bosons is produced on shell, the respective other is virtual.
 Because the $W$ bosons are short-lived ($\tau \approx \mathcal{O}(10^{-25}\,\text{s})\,\text{\cite{PDG2020}}$), only their decay products can be measured. 
 The decay modes of the Higgs boson including the final states possible for the subsequent decay of the two $W$ bosons are shown in \cref{fig:h-branching-ratios}. 
-The \HWWdet decays make up about 0.5\% of the total Higgs decays.
 \begin{figure}
     \newImageResizeCustom{0.65}{figures/theory/h-decay-pie/h-decay-pie.pdf}
-    \caption{Different decay modes of the Higgs boson corresponding to their branching fractions. The branching fraction of the \HWW decay is 21.5\%, the fraction of $e\nu\mu\nu$ final states with respect to the \HWW contribution is approximately 2.3\%. Values are taken from \ccite{PDG2020}.}
+    \caption{The different decay modes of the Higgs boson corresponding to their branching fractions predicted by the SM. The branching fraction of the \HWW decay is 21.5\%, the fraction of $e\nu\mu\nu$ final states with respect to the \HWW contribution is approximately 2.3\%. Values are taken from \ccite{PDG2020}.}
     \label{fig:h-branching-ratios}
 \end{figure}
 %It can be assumed that the Higgs boson is produced at rest, so that the two \Wboson bosons are emitted in opposite directions in the transverse plane. 
 %For this reason, and because of the property of the electroweak interaction to couple only to left-handed neutrinos as well as angular momentum conservation, the \HWWdet process exhibits a distinct kinematic feature that can be exploited in the event selection.
 %It arises as a direct consequence of angular momentum conservation and the property of the electroweak interactions to only couple to left-handed neutrinos. 
-This decay mode has a distinct kinematic feature that can be exploited in the event selection.
+
+The \HWWdet decays make up only about 0.5\% of the total Higgs decays, but has a distinct kinematic feature that can be exploited to select these decays efficiently.
 The spin projections of the \Wboson bosons must sum to zero, because the Higgs boson has a spin of zero and angular momentum must be conserved.
-Similarly, the leptons from the \Wboson decays must have spin projections that are aligned. Because the \Wboson couples only to left-handed neutrinos, this ultimately leads to an enhanced fraction of \HWWdet events in which the two leptons are emitted in the same direction at small angle \dphill.
+Similarly, the leptons from the \Wboson decays must have spin projections that are aligned. Because the \Wboson boson couples only to left-handed neutrinos, this ultimately leads to an enhanced fraction of \HWWdet events in which the two leptons are emitted in the same direction, i.e. at small angle \dphill.
 \Cref{fig:spin-correlations} illustrates this by showing the different spin configurations possible, including the resulting final state kinematics.\footnote{This provides a slightly simplified picture that disregards interference effects between different \Wboson boson polarisation states. When they are considered, however, similar conclusions can be drawn~\cite{Maina_2021}.}
-As a consequence, several observables that are correlated to the angular separation between the leptons can be exploited to discriminate between \HWWdet decays and other background events. For example, the mass of the dilepton system,
+As a consequence, several observables that are sensitive to the angular separation between the leptons and neutrinos can be exploited to distinguish between \HWWdet decays and background events. 
+For example, the magnitude of the vectorial sum of the \pT of both leptons,
 \begin{equation}
-    \Mll = \sqrt{\left| \Ptll \right|^2+ \left( E_{\ell\ell} \right)^2},
+    \vpTll = |\pmb{p}_\text{T}^{\ell_1} + \pmb{p}_\text{T}^{\ell_2}|,
 \end{equation}
-is more likely to take smaller values, and the magnitude of the vectorial sum of the \pT of both leptons,
+is expected to take larger values and the invariant mass of the dilepton system,
 \begin{equation}
-    \Ptll = |\pmb{p}_\text{T}^{\ell_1} + \pmb{p}_\text{T}^{\ell_2}|,
+    \Mll = \sqrt{\left( E_{\mathrm{T}}^{\ell\ell} \right)^2 - \left| \vpTll \right|^2},
 \end{equation}
-is expected to take larger values due to the angular correlations.
+where $E_{\mathrm{T}}^{\ell\ell}$ is the transverse energy of the lepton system, is more likely to take smaller values due to the angular correlations. 
 
 The presence of the neutrinos in the final state has two important consequences:
 First, they lead to events with significant missing transverse energy. This is amplified by the angular correlations described above, as the neutrinos are more likely to be emitted in the same direction. This feature can be especially well exploited by the \METSig observable.
 Second, not enough information is available about the longitudinal momentum of the Higgs boson in order to reconstruct its full mass. The mass of the Higgs boson can therefore be reconstructed only in the transverse plane, which is calculated as
 \begin{equation}
-  \Mt = \sqrt{ \left( E_{\ell\ell}+\MET \right)^2 - \left| \Ptll + \pmb{E}_{\text{T}}^{\text{miss}} \right|^2 },
+  \Mt = \sqrt{ \left( E_{\mathrm{T}}^{\ell\ell}+\MET \right)^2 - \left| \vpTll + \pmb{E}_{\text{T}}^{\text{miss}} \right|^2 }.
 \end{equation}
-where $E_{\ell\ell} = \sqrt{ \left|\Ptll\right|^2 + \Mll^2}$ is the energy of the lepton system.
+
 \begin{figure}
     \newImageResizeCustom{0.65}{figures/hww/introduction/HWW_angular_correlation.png}
-    \caption[Angular correlations in the \HWWdet\ decay.]{Illustration of the angular correlations in the \HWWdet\ decay. The narrow arrows indicate the flight direction of the particles and the double arrows visualize their spin. The spin projections of the $W$ bosons must sum to zero, and they decay into leptons with spin projections aligned. This results in an enhanced fraction of events that exhibit leptons with a small opening angle and two neutrinos emitted in opposite directions. Taken from Ref.~\cite{HIGG-2013-13}.}
+    \caption[Angular correlations in the \HWWdet\ decay.]{Illustration of the angular correlations in the \HWWdet\ decay. The narrow arrows indicate the flight direction of the particles and the double arrows visualize their spin. The spin projections of the $W$ bosons must sum to zero, and they decay into leptons with spin projections aligned. This results in an enhanced fraction of events that exhibit leptons with a small opening angle and two neutrinos emitted in the respective opposite directions. Taken from Ref.~\cite{HIGG-2013-13}.}
     \label{fig:spin-correlations}
 \end{figure}
 
 \subsubsection{The VBF and ggF production modes}
 The signature of the final state also depends on the production mode of the Higgs boson.
-In the VBF production mode, two energetic jets (\emph{tagging jets}) are expected in the final state that are predominantly emitted in the forward direction and have a large invariant mass \mjj. 
+In the VBF production mode, two energetic jets (\emph{tagging jets}) are expected in the final state that are predominantly emitted in the forward direction and thus have a large invariant mass \mjj. 
 The difference between the two jet rapidities, \dyjj, is expected to be large and because the mediating weak bosons from the \HWW decay do not exchange gluons, the hadronic activity between the jets is expected to be small. 
-The latter can be quantified by the \emph{lepton centrality} variable, $C_\ell$, that compares the $\eta$ positions of the leptons with the corresponding values for the jets with $C_\ell = |2\eta_\ell - \sum \eta_j| / \Delta \eta_{jj}$. 
-The variable is constructed such that it is $C_\ell < 1$ if the leptons lie within the rapidity gap spanned by the two tagging jets, and $C_\ell > 1$ otherwise. An illustration is provided in \cref{sec:event-categorization}, \cref{fig:cjv-olv-illustration}. 
+The leptons are more likely to be emitted at smaller pseudorapidities than the tagging jets. This can be quantified by the \emph{lepton centrality} variable, $C_\ell$, that compares the $\eta$ positions of the leptons, $\eta_\ell$, with the corresponding values for the tagging jets like
+\begin{equation}
+    C_\ell = |2\eta_\ell - \sum \eta_j| / \Delta \eta_{jj},
+\end{equation}
+where $\Delta \eta_{jj}$ is the difference in $\eta$ of the jets. 
+The variable is constructed such that it is $C_\ell < 1$ if the leptons lie within the rapidity gap spanned by the two jets, and $C_\ell > 1$ otherwise. An illustration is provided in \cref{sec:event-categorization}, \cref{fig:cjv-olv-illustration}. 
 It is expected that VBF, \HWW events cause smaller $C_\ell$ values than other processes.
-These prominent features can be seen in the event display of a VBF, \HWW candidate event shown in \cref{fig:vbf-event-display}. 
+These prominent features can also be seen in the event display of a VBF, \HWW candidate event shown in \cref{fig:vbf-event-display}. 
 They clearly distinguish VBF events from events produced via the ggF production mode, where no additional jets are expected at leading order. 
 Additional jets may, however, still arise (for both production modes) due to ISR and FSR. 
 
@@ -82,87 +87,93 @@ Additional jets may, however, still arise (for both production modes) due to ISR
 
 \subsection{The Background Processes}
 Example Feynman diagrams for the most important backgrounds are shown in \cref{fig:hww:feyn-bkgs}.
-Their impact in the different signal categories varies, depending on the final state particles, their kinematics, and their production cross-section. 
+Their impact in the different signal categories varies, depending on the final state particles, their kinematics, and their production cross section. 
 \begin{figure}[ht]
-    \subfloat[quark-induced $WW$] {
-        \newImageResizeCustom{0.3}{figures/hww/feynman/WW.png}
-    } \hspace{5em}
-    \subfloat[EW $WW$] {
-        \newImageResizeCustom{0.3}{figures/hww/feynman/EWWW.png}
-    } \\
     \subfloat[\ttbar] {
         \newImageResizeCustom{0.3}{figures/hww/feynman/ttbar.png}
+        \label{fig:hww:feyn-bkgs-ttbar}
     } \hspace{5em}
     \subfloat[$Wt$] {
         \newImageResizeCustom{0.3}{figures/hww/feynman/Wt.png}
+        \label{fig:hww:feyn-bkgs-wt}
+    } \\
+    \subfloat[quark-induced $WW$] {
+        \newImageResizeCustom{0.3}{figures/hww/feynman/WW.png}
+        \label{fig:hww:feyn-bkgs-qqWW}
+    } \hspace{5em}
+    \subfloat[EW $WW$] {
+        \newImageResizeCustom{0.3}{figures/hww/feynman/EWWW.png}
+        \label{fig:hww:feyn-bkgs-EWWW}
     } \\
     \subfloat[\Ztt] {
         \newImageResizeCustom{0.3}{figures/hww/feynman/Ztt.png}
+        \label{fig:hww:feyn-bkgs-Ztautau}
     } \hspace{5em}
     \subfloat[$W$+jets] {
         \newImageResizeCustom{0.3}{figures/hww/feynman/Wjetslvlv.png}
+        \label{fig:hww:feyn-bkgs-wjets}
     }
-    \caption{Representative leading order Feynman diagrams for all major backgrounds in the \HWW analysis.} 
+    \caption{Representative leading order Feynman diagrams for the major backgrounds in the \HWW analysis.} 
     \label{fig:hww:feyn-bkgs}
 \end{figure}
 
 \subsubsection{Top-quark backgrounds}
 Collision events involving top quarks are abundant at $pp$ colliders because of their large production cross section, making them a major background in this analysis.
-Processes with top quarks, collectively denoted as top-quark background, can be separated into $t\bar{t}$ processes, involving two top quarks, or processes with only a single top quark. 
+Processes with top quarks, collectively denoted as top-quark background, can be separated into $t\bar{t}$ processes (shown in \cref{fig:hww:feyn-bkgs-ttbar}), involving two top quarks, or processes with only a single top quark (\cref{fig:hww:feyn-bkgs-wt}). 
 The single-top process relevant to this analysis is characterized by a $W$ boson radiated off a single top quark (labelled as $Wt$). 
-The top quark decays into a $b$-quark and a $W$ boson in more than 99\% of cases~\cite{PDG2020}, producing two $W$ bosons in the final that mimic the signal signature. 
+The top quark decays into a $b$-quark and a $W$ boson in more than 99\% of cases~\cite{PDG2020}, producing two $W$ bosons in the final that can mimic the signal signature. 
 %This gives rise to two $W$ bosons in the final state, mimicking the signal processes. 
-The $b$-jets that are present in top-quark events can be used to reject this background efficiently.
+The $b$-jets present in top-quark events can be used to reject this background efficiently.
 % Since the $b$-jet identification is not perfect and the production cross section of top processes is large, top processes represents a major background. 
 
 \subsubsection{Non-resonant $WW$ background}
-The non-resonant $WW$ background is dominated by quark-initiated $WW$ processes ($qq \to WW$) with only a small contribution from gluon-initiated processes ($gg \to WW$; collectively labelled $WW$ (Strong)).
-The production of two $W$ bosons gives rise to final states that mimic the ggF signal process, rendering this background irreducible. 
-It also contaminates the VBF \TwoJet category when additional jets are present due to radiation. 
+The non-resonant $WW$ background is dominated by quark-initiated $WW$ processes ($qq \to WW$; shown in \cref{fig:hww:feyn-bkgs-qqWW}) with only a small contribution from gluon-initiated processes ($gg \to WW$; collectively labelled $WW$ (Strong)).
+These processes are particularly difficult to distinguish from the ggF signal process.
+They also contaminate the VBF \TwoJet category when additional jets are present due to radiation. 
 A suppression of the $WW$ background can be achieved by exploiting the distinct lepton kinematics expected for the signal. For example, the $\mll$ observable tends to have a broader distribution for non-resonant $WW$ processes compared to the signal. 
-Another difference is that both $W$ bosons are produced on-shell in contrast to the signal process. 
-This leads to the fact that the \pT of the lower-\pT lepton is on average larger than for the signal processes. 
+Furthermore, since both $W$ bosons are produced on-shell the \pT of the lower-\pT lepton is on average larger for non-resonant $WW$ processes than for the signal processes. 
 
 \subsubsection{Electroweak $WW$ background}
-The contribution from $WW$ bosons produced via electroweak interactions (EW $qq \to qqWW$; labelled $WW$ (EW)) is generally small, due to a small production cross section. However, the EW $WW$ production has a very similar signature as the VBF signal process, resulting in a significant impact in the VBF category, especially at large \mjj where other backgrounds are small. 
-It therefore constitutes a major background for the measurement of the VBF signal. 
+The contribution from $WW$ bosons produced via electroweak interactions (EW $qq \to qqWW$; labelled $WW$ (EW); shown in \cref{fig:hww:feyn-bkgs-EWWW}) is generally small, due to small production cross sections. However, the EW $WW$ production has a very similar signature as the VBF signal process, resulting in a significant impact in the VBF category, especially at large \mjj where other backgrounds are small. 
+It therefore constitutes a major background in the measurement of the VBF signal. 
 %at large $m_{jj}$ the contribution can be significant relative to other background processes that fall much more steeply with increasing $m_{jj}$. 
 
 \subsubsection{\Ztautau\ background}
-$Z$ bosons are produced with large cross sections at the LHC. The processes relevant for the this analysis are Drell-Yan (DY) processes and $Z$ production in association with jets (together labelled \Zgamma).
+$Z$ bosons are produced with large cross sections at the LHC. The processes relevant for this analysis are Drell-Yan (DY) processes and $Z$ production in association with jets (together labelled \Zgamma).
 The $Z$ boson decays with equal probabilities ($\approx$ 3.4\%~\cite{PDG2020}) into a pair of electrons, muons, or taus. 
 This analysis specifically selects events with two leptons of different flavor, to minimize the otherwise large contamination from $\Zgamma \to ee$ and $\Zgamma \to \mu\mu$ processes. 
-Only in rare cases does the event signature of these decays resemble the signal, for example, if one of the two leptons of the same flavor cannot be identified and a jet is misidentified as a lepton.
-The \Ztautau\ process, in contrast, constitutes a substantial background as the $\tau$~leptons further decay into electrons or muons and their associated neutrinos, giving rise to final states similar to the ones of the signal processes. 
-To separate the \Ztautau background from the SRs, the invariant mass of the hypothetical $\tau\tau$ system, $m_{\tau\tau}$ is reconstructed.
+% Only in rare cases does the event signature of these decays resemble the signal, for example, if one of the two leptons of the same flavor cannot be identified and a jet is misidentified as a lepton.
+The \Ztautau\ process, in contrast, constitutes a substantial background as the $\tau$~leptons further decay into electrons or muons and associated neutrinos, giving rise to final states similar to the ones of the signal processes (see \cref{fig:hww:feyn-bkgs-Ztautau}). 
+To separate the \Ztautau background from the SRs, the invariant mass of the hypothetical $\tau\tau$ system, $m_{\tau\tau}$, is reconstructed.
 The $m_{\tau\tau}$ observable is constructed based on the collinear approximation~\cite{Plehn:1999xi} that uses the direction and magnitude of the measured missing transverse momentum and projects it along the directions defined by the two reconstructed charged leptons~\cite{HWWPaper}.
 \Zgamma processes, other than the signal processes, have \mtt values close to the mass of the $Z$ boson.
+
 If the $Z$ bosons are produced at rest, which is a good approximation for events with \ZeroJet, the neutrinos from the $\tau$~decays are more likely to be emitted in opposite directions, and for the same reason, the leptons are expected to have a large opening angle. This is contrary to the signal signature and can be used to additionally suppress the \Ztautau\ background.
-On the other hand, if the $Z$ boson is produced with a significant transverse momentum, for example in cases where the $Z$ boson recoils against a jet, the \MET may be sizeable and the opening angle of the leptons is not necessarily large. 
+On the other hand, if the $Z$ boson is produced with a significant transverse momentum, for example in cases where the $Z$ boson recoils against a jet, the \MET observable may be sizeable and the opening angle of the leptons is not necessarily large. 
 Suppressing the \Ztautau\ background thus becomes more difficult in the \OneJet and \TwoJet categories. 
 
 \subsubsection{$W$+jets and multijet background}
-Processes with $W$ bosons in association with a jet (\Wjets) as well as multijet processes do not contain the same final state particles as the signal processes. However, they can contaminate the analysis regions if one or more of the reconstructed physics objects is misidentified as an isolated prompt lepton (labelled Mis-Id). 
+Processes with $W$ bosons in association with a jet (\Wjets; shown in \cref{fig:hww:feyn-bkgs-wjets}) as well as multijet processes do not contain the same final state particles as the signal processes. However, they can contaminate the analysis regions if one or more of the reconstructed physics objects is misidentified as an isolated prompt lepton (labelled as Mis-Id). 
 Although such misidentifications are very rare, the $W$+jets and multijet production are sizeable backgrounds in this analysis due to their large production cross sections.
 %The $W$+jets process, shown in \cref{FIGURE}, is especially important because it requires only one physics object to be misidentified for it to mimic the final state of the signal process.
 %\todo{Write the above a bit more clearly. If the jet from the W+jets process is misidentified as a lepton that's it!}
-Misidentifications come from two main sources: jets and non-prompt leptons from heavy hadron decays within jets.
-The rate at which these misidentifications occur is difficult to estimate purely based on simulated event samples. For this reason, a dedicated data-driven method known as \emph{fake factor method} is used to estimate the background with misidentified leptons. Details are given in \cref{subsec:misid-bkg}.
-
+The misidentifications come from two main sources: jets misidentified as leptons and non-prompt leptons from heavy hadron decays within jets. 
+%The contributions due to these misidentifications are estimated from data, as discussed in \cref{subsec:misid-bkg}.
+%  For this reason, a dedicated data-driven method known as \emph{fake factor method} is used to estimate the background with misidentified leptons. Details are given in 
 % The detector signature of such events can be extremely similar to the signal process, making it difficult to reduce this background via selections on event observables.
 
 \subsubsection{Other diboson and multi-boson backgrounds}
-Aside from $WW$ production, other diboson processes (together denoted \emph{Other} $VV$) can contaminate the analysis regions. 
+Aside from $WW$ production, other diboson processes (together denoted Other $VV$) can contaminate the analysis regions. 
 The $WZ$, $ZZ$, and $W\gamma^*$ processes can mimic the signal, if leptons or jets are lost in the reconstruction procedure. 
-$W\gamma$ and $Z\gamma$ processes (together $V\gamma$) can mimic the signature of the signal processes, for example, if the photon converts to an electron-positron pair which is falsely reconstructed as a single isolated electron. 
+$W\gamma$ and $Z\gamma$ processes (together $V\gamma$) can mimic the signature of the signal processes, for example, if the photon converts to an electron-positron pair that is falsely reconstructed as a single isolated electron. 
 Since the reconstruction and identification efficiencies are reasonably high, the Other $VV$ background is small in this analysis.
-The same is true for processes involving three bosons (called \emph{triboson} processes), which contribute only marginally to the analysis regions because of their additional final state particles as well as their overall small production cross section. Their contribution is counted together with the other diboson processes, collectively called Other $VV$($V$). 
+The same is true for processes involving three bosons (called \emph{triboson} processes), which contribute only marginally to the analysis regions because of their additional final state particles as well as their overall small production cross section. Their contribution is accounted for together with the other diboson processes, collectively called Other $VV$($V$). 
 
 \subsubsection{Other Higgs boson processes}
-The contributions of \HWW events from other Higgs production modes, such as $VH$ or $ttH$, are marginal because of both their small cross sections and the fact that for the majority of events they have additional particles in the final state based on which their contributions are suppressed in this analysis.
+The contributions of \HWW events from other Higgs boson production modes, such as $VH$ or $ttH$, are marginal because of both their small cross sections and the fact that for the majority of events there are additional particles in the final state based on which their contributions are suppressed in this analysis.
 % events can be efficiently rejected.
 Events where the Higgs boson decays into a pair of $\tau$ leptons have similar final states as the \HWWdet\ decays when the $\tau$ leptons decay leptonically. 
 Because of the low branching fractions of both the $H \to \tau\tau$ decays and $\tau$ decays into muons or electrons ($\approx$ 17-18 \% \cite{PDG2020}), as well as the different lepton kinematics in contract to the signal processes, contributions from $H \to \tau\tau$ processes are also small in this analysis. 
-The analysis presented is therefore sensitive only to the ggF and VBF production modes of the \HWWdet\ decay. 
+The analysis presented is therefore sensitive only to the ggF and VBF production modes and the \HWWdet\ decay. 
 Despite being small, the contributions from above-mentioned other Higgs boson processes are included in the analysis and treated like backgrounds.
 

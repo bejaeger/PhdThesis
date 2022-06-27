@@ -4,7 +4,7 @@
 %\newcommand{\quotebox}[1]{{\space\huge``}{#1}{\huge''}~\cite{HWWPaper}}
 
 \newcommand{\quotebox}[1]{
-\begin{mdframed}[backgroundcolor=blue!6!gray!6,rightline=false,leftline=false,topline=false,bottomline=false]
+\begin{mdframed}[backgroundcolor=blue!8!gray!8,rightline=false,leftline=false,topline=false,bottomline=false]
 {\LARGE``}{#1}{{\LARGE''}}~\cite{HWWPaper}
 \end{mdframed}
 }
@@ -17,7 +17,7 @@ The $pp$ collision data analyzed were recorded by the ATLAS experiment during \R
 The events were recorded when all relevant detector components were fully operational, and are considered as being of ``good'' data quality (see \cref{sec:run-2-data-taking}).
 
 Given the targeted final state featuring one electron and one muon, a combination of unprescaled single-lepton triggers and a $e$--$\mu$ dilepton trigger~\cite{TRIG-2018-05,TRIG-2018-01} is used to select the data samples.
-The minimum \pT threshold for single-lepton triggers is 24\,GeV for electrons and 20\,GeV for muons for data from the first year of data taking, and 26~\GeV for both lepton flavors for the remainder of \RunTwo.
+The minimum \pT threshold for single-lepton triggers is 24\,GeV for electrons and 20\,GeV for muons for data from the first year of data taking, and 26~GeV for both lepton flavors for the remainder of \RunTwo.
 The $e$--$\mu$ dilepton trigger uses a \pT threshold of 17\,GeV for electrons and 14\,GeV for muons.
 
 \subsection{Simulated event samples}
@@ -27,11 +27,11 @@ The $e$--$\mu$ dilepton trigger uses a \pT threshold of 17\,GeV for electrons an
 % https://gitlab.cern.ch/atlas-physics-office/HIGG/ANA-HIGG-2018-47/ANA-HIGG-2018-47-PAPER/-/blob/master/sections/DataAndSimSamples.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
-This analysis heavily relies on MC simulated $pp$ collision events to validate and optimize the analysis strategy and, more importantly, to extract the final signal strength and cross-section measurement after a fit to the data (as discussed in \cref{sec:stats-analysis}).
+This analysis heavily relies on MC simulated $pp$ collision events to validate and optimize the analysis strategy and to extract the final signal contributions after a fit to the data (as discussed in \cref{sec:stats-analysis}).
 
-The signal and background processes are simulated using a combination of MC generators that calculate the hard scatter, and programs that model the parton shower (UEPS), hadronization, and underlying event.
+The signal and background processes are simulated using a combination of MC generators that calculate the hard scatter, and programs that model the parton shower, hadronization, and underlying event (together denoted UEPS).
 \Cref{tab:mcsamples} summarizes the simulation infrastructure for each process, also listing alternative setups used to estimate systematic uncertainties.
-For all MC samples, the events were processed through the ATLAS detector simulation~\cite{SOFT-2010-01} based on \textsc{Geant4}~\cite{Agostinelli:2002hh}.~\cite{HWWPaper}
+All MC simulated events are processed with the ATLAS detector simulation infrastructure~\cite{SOFT-2010-01} that is based on \textsc{Geant4}~\cite{Agostinelli:2002hh}.
 The effect of pile-up is modelled by overlaying over the original event minimum-bias events generated with \PYTHIAV{8.186}~\cite{Sjostrand:2007gs} using the \nnpdftwo set of PDFs and the A3 tune~\cite{ATL-PHYS-PUB-2016-017}.
 
 Each simulated event gets assigned a generator weight (\emph{MC weight}), which allows populating different phase space regions efficiently.
@@ -40,54 +40,54 @@ The normalization of most processes is determined by the luminosity of the data 
 The following provides details on the MC generators and the accuracies of the available cross-section calculations for each process. 
 Since the simulation infrastructure is described in great detail in the original publication \cite{HWWPaper}, the remainder of this section is quoted from \ccite{HWWPaper} directly.
 \FloatBarrier
-\begin{table}[t]
+\begin{table}[h]
   \centering
   \caption{
     Overview of simulation tools used to generate signal and background processes, as well as to model the UEPS. The PDF sets are also summarized.
-    Alternative event generators or quantities varied to estimate systematic uncertainties are shown in parentheses. The table and caption is published in \cite{HWWPaper}.}
-  \label{tab:mcsamples}
-  \scalebox{0.66}{
-    \begin{tabular}{l l l l l}
-      \hline\hline
-      %%% Info mostly from https://gitlab.cern.ch/atlas-physics/pmg/documents/references/-/tree/master
-      Process                & Matrix element                                                                                      & PDF set                                               & UEPS model                                                                                                                                                                                                                   & Prediction order                                                                                                            \\
-                             & (alternative)                                                                                       &                                                       & (alternative model)                                                                                                                                                                                                          & for total cross section                                                                                                     \\
-      \hline
-      ggF $H$                & \POWHEGBOXV{v2}~\cite{Hamilton:2013fea,Hamilton:2015nsa,Alioli:2010xd,Nason:2004rx,Frixione:2007vw}
-                             & \multirow{2}{*}{\texttt{PDF4LHC15 NNLO}~\cite{Butterworth:2015oua}}                                 & \multirow{2}{*}{\PYTHIAV{8}~\cite{Sjostrand:2014zea}} & \multirow{2}{*}{N$^{3}$LO QCD + NLO EW~\cite{deFlorian:2016spz,Anastasiou:2016cez,Anastasiou:2015vya,Dulat:2018rbf,Harlander:2009mq,Harlander:2009bw,Harlander:2009my,Pak:2009dg,Actis:2008ug,Actis:2008ts,Bonetti:2018ukf}}                                                                                                                               \\
-                             & NNLOPS~\cite{Nason:2009ai,Hamilton:2013fea,Campbell:2012am}                                         &                                                       &                                                                                                                                                                                                                              &                                                                                                                             \\
-                             & (\MGFiveNLO)~\cite{Alwall:2014hca,Frederix:2012ps}                                                  &                                                       & (\HerwigV{7})~\cite{Bellm:2015jjp}                                                                                                                                                                                           &                                                                                                                             \\
-      VBF $H$                & \POWHEGBOXV{v2}~\cite{Nason:2009ai,Alioli:2010xd,Nason:2004rx,Frixione:2007vw}
-                             & \texttt{PDF4LHC15 NLO}                                                                              & \PYTHIAV{8}                                           & NNLO QCD + NLO EW~\cite{Ciccolini:2007jr,Ciccolini:2007ec,Bolzoni:2010xr}                                                                                                                                                                                                                                                                                  \\
-                             & (\MGFiveNLO)                                                                                        &                                                       & (\HerwigV{7})                                                                                                                                                                                                                &                                                                                                                             \\
-      $VH$ excl. $gg\to ZH$  & \POWHEGBOXV{v2}                                                                                     & \texttt{PDF4LHC15 NLO}                                & \PYTHIAV{8}                                                                                                                                                                                                                  & NNLO QCD + NLO EW~\cite{Ciccolini:2003jy,Brein:2003wg,Brein:2011vx,Denner:2014cla,Brein:2012ne}                             \\
-      \ttH                   & \POWHEGBOXV{v2}                                                                                     & \texttt{NNPDF3.0NLO}                                  & \PYTHIAV{8}                                                                                                                                                                                                                  & NLO~\cite{deFlorian:2016spz}                                                                                                \\
-      $gg\to ZH$             & \POWHEGBOXV{v2}                                                                                     & \texttt{PDF4LHC15 NLO}                                & \PYTHIAV{8}                                                                                                                                                                                                                  & NNLO QCD + NLO EW~\cite{Altenkamp:2012sx,Harlander:2014wda}                                                                 \\
+    Alternative event generators or quantities varied to estimate systematic uncertainties are shown in parentheses. Table and caption taken from \cref{HWWPaper}.}
+    \label{tab:mcsamples}
+    \resizebox{\textwidth}{!}{
+  \begin{tabular}{l l l l l}
+  \hline\hline
+  %%% Info mostly from https://gitlab.cern.ch/atlas-physics/pmg/documents/references/-/tree/master
+  Process              & Matrix element                                              & PDF set                 & UEPS model                                           & Prediction order\\
+                       & (alternative)                                               &                         & (alternative model)                                  &  for total cross section\\
+  \hline
+  ggF $H$              & \POWHEGBOX[v2]~\cite{Hamilton:2013fea,Hamilton:2015nsa,Alioli:2010xd,Nason:2004rx,Frixione:2007vw}
+  & \multirow{2}{*}{\PDFforLHC[15nnlo]~\cite{Butterworth:2015oua}} &\multirow{2}{*}{\PYTHIA[8]~\cite{Sjostrand:2014zea}} & \multirow{2}{*}{N$^{3}$LO QCD + NLO EW~\cite{deFlorian:2016spz,Anastasiou:2016cez,Anastasiou:2015vya,Dulat:2018rbf,Harlander:2009mq,Harlander:2009bw,Harlander:2009my,Pak:2009dg,Actis:2008ug,Actis:2008ts,Bonetti:2018ukf}} \\
+                       & NNLOPS~\cite{Nason:2009ai,Hamilton:2013fea,Campbell:2012am} &                         &    & \\
+                       & (\MGFiveNLO)~\cite{Alwall:2014hca,Frederix:2012ps}          &                         & (\HERWIG[7])~\cite{Bellm:2015jjp} & \\
+  VBF $H$              & \POWHEGBOX[v2]~\cite{Nason:2009ai,Alioli:2010xd,Nason:2004rx,Frixione:2007vw}
+                       & \PDFforLHC[15nlo]  & \PYTHIA[8]        & NNLO QCD + NLO EW~\cite{Ciccolini:2007jr,Ciccolini:2007ec,Bolzoni:2010xr} \\
+                       & (\MGFiveNLO)                                                &                         & (\HERWIG[7])                                        & \\
+  $VH$ excl.\ $gg\to ZH$ & \POWHEGBOX[v2]                                            & \PDFforLHC[15nlo]  & \PYTHIA[8]  & NNLO QCD + NLO EW~\cite{Ciccolini:2003jy,Brein:2003wg,Brein:2011vx,Denner:2014cla,Brein:2012ne} \\
+  \ttH                 & \POWHEGBOX[v2]                                             & \NNPDF[3.0nlo]    & \PYTHIA[8]               & NLO~\cite{deFlorian:2016spz} \\
+  $gg\to ZH$           & \POWHEGBOX[v2]                                             & \PDFforLHC[15nlo]  & \PYTHIA[8]               & NNLO QCD + NLO EW~\cite{Altenkamp:2012sx,Harlander:2014wda} \\
 
-      $qq \to WW$            & \SHERPAV{2.2.2}~\cite{Bothmann:2019yzt}                                                             & \texttt{NNPDF3.0NNLO}~\cite{Ball:2014uwa}             & \SHERPAV{2.2.2}~\cite{Gleisberg:2008fv,Schumann:2007mg,Hoeche:2011fd,Hoeche:2012yf,Catani:2001cc,Hoeche:2009rj}                                                                                                              & NLO~\cite{Buccioni:2019sur,Cascioli:2011va,Denner:2016kdg}                                                                  \\
-                             & ($Q_\text{cut}$)                                                                                    &                                                       & (\SHERPAV{2.2.2}~\cite{Schumann:2007mg,Hoeche:2009xc}; $\mu_\text{q}$)                                                                                                                                                                                                                                                                                     \\
-      %% not used              & (\POWHEGBOXV{v2},                                           &                         & \multirow{2}{*}{(\Herwigpp~\cite{Bellm:2015jjp})}  \\
-      %% not used              & \MGFiveNLO)                                                 &                         &  \\
-      % used                 & (CKKW)                                                      &                         & (QSF/CSSKIN)  \\
-      $qq \to WWqq$          & \MGFiveNLO~\cite{Alwall:2014hca}                                                                    & \texttt{NNPDF3.0NLO}                                  & \PYTHIAV{8}                                                                                                                                                                                                                  & LO                                                                                                                          \\
-                             &                                                                                                     &                                                       & (\HerwigV{7})                                                                                                                                                                                                                &                                                                                                                             \\
-      $gg \to WW/ZZ$         & \SHERPAV{2.2.2}                                                                                     & \texttt{NNPDF3.0NNLO}                                 & \SHERPAV{2.2.2}                                                                                                                                                                                                              & LO~\cite{Caola:2015rqy}                                                                                                     \\
-      %$WZ/V\gamma^{\ast}/ZZ \to \ell\ell\ell\ell/\ell\ell\ell\nu$ & \SHERPAV{2.2.2}        & \texttt{NNPDF3.0NNLO}   & \SHERPAV{2.2.2}                                      & NLO~\cite{Cascioli:2013gfa} \\
-      %Other $WZ/V\gamma^{\ast}/ZZ$ & \POWHEGBOXV{v2}                                       & CT10                    & \PYTHIAV{8}                                          & NLO~\cite{Cascioli:2013gfa} \\
-      $WZ/V\gamma^{\ast}/ZZ$ & \SHERPAV{2.2.2}                                                                                     & \texttt{NNPDF3.0NNLO}                                 & \SHERPAV{2.2.2}                                                                                                                                                                                                              & NLO~\cite{Cascioli:2013gfa}                                                                                                 \\
-      %% not used            & (CKKW)                                                      &                         & (CSS variation~\cite{Schumann:2007mg})\\
-      $V\gamma$              & \SHERPAV{2.2.8}~\cite{Bothmann:2019yzt}                                                             & \texttt{NNPDF3.0NNLO}                                 & \SHERPAV{2.2.8}                                                                                                                                                                                                              & NLO~\cite{Cascioli:2013gfa}                                                                                                 \\
-      $VVV$                  & \SHERPAV{2.2.2}                                                                                     & \texttt{NNPDF3.0NNLO}                                 & \SHERPAV{2.2.2}                                                                                                                                                                                                              & NLO                                                                                                                         \\
-      %% not used            & (\MGFiveNLO)                                                &                         & (CSS variation~\cite{Schumann:2007mg,Hoeche:2009xc}) & \\
-      $t\bar{t}$             & \POWHEGBOXV{v2}                                                                                     & \texttt{NNPDF3.0NLO}                                  & \PYTHIAV{8}                                                                                                                                                                                                                  & NNLO+NNLL~\cite{Beneke:2011mq,Cacciari:2011hy,Baernreuther:2012ws,Czakon:2012zr,Czakon:2012pz,Czakon:2013goa,Czakon:2011xx} \\  %~\cite{Frixione:2007nw}-~\cite{ATL-PHYS-PUB-2014-021}] \\
-                             & (\MGFiveNLO)                                                                                        &                                                       & (\HerwigV{7})                                                                                                                                                                                                                &                                                                                                                             \\
-      $Wt$                   & \POWHEGBOXV{v2}                                                                                     & \texttt{NNPDF3.0NLO}                                  & \PYTHIAV{8}                                                                                                                                                                                                                  & NNLO~\cite{Kidonakis:2010ux,Kidonakis:2013zqa}                                                                              \\
-                             & (\MGFiveNLO)                                                                                        &                                                       & (\HerwigV{7})                                                                                                                                                                                                                &                                                                                                                             \\
-      $Z/\gamma^{\ast}$      & \SHERPAV{2.2.1}                                                                                     & \texttt{NNPDF3.0NNLO}                                 & \SHERPAV{2.2.1}                                                                                                                                                                                                              & NNLO~\cite{Anastasiou:2003ds}                                                                                               \\
-                             & (\MGFiveNLO)                                                                                        &                                                                                                                                                                                                                                                                                                                                                                                                                    \\
-      \hline\hline
-    \end{tabular}
-  }
+  $qq \to WW$          & \SHERPA[2.2.2]~\cite{Bothmann:2019yzt}                     & \NNPDF[3.0nnlo]~\cite{Ball:2014uwa} & \SHERPA[2.2.2]~\cite{Gleisberg:2008fv,Schumann:2007mg,Hoeche:2011fd,Hoeche:2012yf,Catani:2001cc,Hoeche:2009rj} & NLO~\cite{Buccioni:2019sur,Cascioli:2011va,Denner:2016kdg} \\
+                       & ($Q_\text{cut}$)                                            &                         & (\SHERPA[2.2.2]~\cite{Schumann:2007mg,Hoeche:2009xc}; $\mu_\text{q}$)  \\
+%% not used              & (\POWHEGBOXV{v2},                                           &                         & \multirow{2}{*}{(\Herwigpp~\cite{Bellm:2015jjp})}  \\
+%% not used              & \MGFiveNLO)                                                 &                         &  \\
+% used                 & (CKKW)                                                      &                         & (QSF/CSSKIN)  \\
+  $qq \to WWqq$        & \MGFiveNLO~\cite{Alwall:2014hca}                             & \NNPDF[3.0nlo]    & \PYTHIA[8]                                      & LO \\
+                       &                                                             &                         & (\HERWIG[7])                                        & \\
+$gg \to WW/ZZ$         & \SHERPA[2.2.2]                                             & \NNPDF[3.0nnlo]   & \SHERPA[2.2.2]                                      & LO~\cite{Caola:2015rqy}  \\
+%$WZ/V\gamma^{\ast}/ZZ \to \ell\ell\ell\ell/\ell\ell\ell\nu$ & \SHERPAV{2.2.2}        & \texttt{NNPDF3.0NNLO}   & \SHERPAV{2.2.2}                                      & NLO~\cite{Cascioli:2013gfa} \\
+%Other $WZ/V\gamma^{\ast}/ZZ$ & \POWHEGBOXV{v2}                                       & CT10                    & \PYTHIA[8]                                          & NLO~\cite{Cascioli:2013gfa} \\
+$WZ/V\gamma^{\ast}/ZZ$ & \SHERPA[2.2.2]                                             & \NNPDF[3.0nnlo]   & \SHERPA[2.2.2]                                      & NLO~\cite{Cascioli:2013gfa} \\
+%% not used            & (CKKW)                                                      &                         & (CSS variation~\cite{Schumann:2007mg})\\
+  $V\gamma$            & \SHERPA[2.2.8]~\cite{Bothmann:2019yzt}                     & \NNPDF[3.0nnlo]   &\SHERPA[2.2.8]                                       & NLO~\cite{Cascioli:2013gfa} \\
+$VVV$                  & \SHERPA[2.2.2]                                             & \NNPDF[3.0nnlo]   &\SHERPA[2.2.2]                                       & NLO  \\
+%% not used            & (\MGFiveNLO)                                                &                         & (CSS variation~\cite{Schumann:2007mg,Hoeche:2009xc}) & \\
+  $t\bar{t}$           & \POWHEGBOX[v2]                                             & \NNPDF[3.0nlo]    & \PYTHIA[8]                                          & NNLO+NNLL~\cite{Beneke:2011mq,Cacciari:2011hy,Baernreuther:2012ws,Czakon:2012zr,Czakon:2012pz,Czakon:2013goa,Czakon:2011xx} \\  %~\cite{Frixione:2007nw}-~\cite{ATL-PHYS-PUB-2014-021}] \\
+                       & (\MGFiveNLO)                                                &                         & (\HERWIG[7])                                        & \\
+ $Wt$                  &\POWHEGBOX[v2]                                              & \NNPDF[3.0nlo]    & \PYTHIA[8]                         & NNLO~\cite{Kidonakis:2010ux,Kidonakis:2013zqa} \\
+                       & (\MGFiveNLO)                                                &                         & (\HERWIG[7])                                          & \\
+  $Z/\gamma^{\ast}$    & \SHERPA[2.2.1]                                             & \NNPDF[3.0nnlo]   & \SHERPA[2.2.1]                                      & NNLO~\cite{Anastasiou:2003ds} \\
+                       & (\MGFiveNLO)                                                & \\
+\hline\hline
+  \end{tabular}
+}
 \end{table}
 
 \subsubsection{Higgs boson samples}
@@ -99,7 +99,7 @@ The simulation achieves NNLO accuracy for arbitrary inclusive $gg\to H$ observab
 %The PDF4LHC15 parton distribution function (PDF) set and the AZNLO tune of \PYTHIAV{8} are used. 
 The gluon fusion prediction from the MC samples is normalized to the N$^3$LO cross section in QCD plus electroweak corrections at next-to-leading order (NLO)~\cite{deFlorian:2016spz, Anastasiou:2016cez, Anastasiou:2015vya, Dulat:2018rbf, Harlander:2009mq, Harlander:2009bw, Harlander:2009my, Pak:2009dg, Actis:2008ug, Actis:2008ts, Bonetti:2018ukf}.
 
-VBF events are generated with \POWHEG~\cite{Nason:2004rx, Frixione:2007vw, Alioli:2010xd, Nason:2009ai}, interfaced with \PYTHIAV{8.230}~\cite{Sjostrand:2014zea}~with the dipole recoil option enabled to model the parton shower, hadronization and underlying event.
+VBF events are generated with \POWHEG~\cite{Nason:2004rx, Frixione:2007vw, Alioli:2010xd, Nason:2009ai}, interfaced with \PYTHIAV{8.230}~\cite{Sjostrand:2014zea} with the dipole recoil option enabled to model the parton shower, hadronization and underlying event.
 The \POWHEG\ prediction is accurate to NLO in QCD corrections and tuned to match calculations with effects due to finite heavy-quark masses and soft-gluon resummations up to next-to-next-to-leading-logarithm (NNLL).
 %The PDF4LHC15~\cite{PDF4LHC15} parton distribution function (PDF) set and the AZNLO tune~\cite{Aad:2014xaa} of \PYTHIAV{8} are used. 
 The MC prediction is normalized to an approximate-NNLO QCD cross section with NLO electroweak corrections~\cite{PhysRevLett.99.161803, Ciccolini:2007ec, PhysRevLett.105.011801}.
