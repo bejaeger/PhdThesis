@@ -30,16 +30,16 @@ To minimize the contamination from both low-mass meson resonances and low-mass \
 The distribution of the number of jets in the event at this preselection stage is shown in \cref{fig:njet-dist}.
 \begin{figure}
   \newImageResizeCustom{0.6}{figures/hww/presel/nJets.pdf}
-  \caption{Jet multiplicity distribution for jets with \ptGT{30}\,GeV and \absetaST{4.5}, after applying the preselection criteria. The various background components are discussed in more detail in the text. A similar figure is published in \ccite{HWWPaper}.}
+  \caption{Jet multiplicity distribution for jets with \ptGT{30}\,GeV and \absetaST{4.5}, after applying the preselection criteria. The solid red line (orange line) shows the expected ggF signal (VBF signal) scaled by a factor of 1000 (100). The various background components are discussed in more detail in the text. A similar figure is published in \ccite{HWWPaper}.}
   \label{fig:njet-dist}
 \end{figure}
 The signal and background composition varies significantly across jet bins, which motivates the split into separate \Njet signal categories.
 % In total four mutually exclusive regions are defined.
 % One region targets the VBF production mode and must satisfy \TwoJet.
 % Three categories are defined targeting the ggF production mode: \ZeroJet, \OneJet, and \TwoJet.
-To exploit the presence of neutrinos in the signal, a minimum threshold criterion of $\pTmiss > 20\,\GeV$\footnote{For a definition of the \pTmiss variable see \cref{chap:objects}.} is applied to all the ggF categories.
+To exploit the presence of neutrinos in the signal, a minimum threshold criterion of $\pTmiss > 20\,\GeV$ is applied to all the ggF categories.
 The background from top-quark processes is reduced in all analysis categories by vetoing events that contain a reconstructed $b$-jet with \ptGT{20}\,GeV.
-Furthermore, a selection of $\mtt\,{<}\,m_Z - 25~\GeV$\footnote{The mass of the $Z$ boson, $m_Z$, is set to the value found in current experimental measurements, 91.1876\,GeV~\cite{PDG2020}.} is applied in the ggF \OneJet, \TwoJet, and VBF \TwoJet categories, to separate the signal categories from the majority of \Zgamma events.
+Furthermore, a selection of $\mtt\,{<}\,m_Z - 25~\GeV$\footnote{The mass of the $Z$ boson, $m_Z$, is set to the central value found in current experimental measurements, 91.1876\,GeV~\cite{PDG2020}.} is applied in the ggF \OneJet, \TwoJet, and VBF \TwoJet categories, to separate the signal categories from the majority of \Zgamma events.
 
 % \Cref{subsec:vbf-category,subsec:ggf-zero-jet-category,subsec:ggf-one-jet-category,subsec:ggf-two-jet-category} provide details on the remaining selections used to define the four analysis SRs that are used to measure the ggF and VBF production cross section. A summary of all selections is given in \cref{tab:event-selection}.\todo{Add table}
 % The four analysis regions are further split into several kinematic bins according to the Stage-1.2 STXS categorization scheme, which is described in \cref{subsec:STXS-categorization}.
@@ -51,21 +51,18 @@ Furthermore, a selection of $\mtt\,{<}\,m_Z - 25~\GeV$\footnote{The mass of the 
 The distinct signal topology arising from the angular momentum correlations explained in \cref{sec:signal-bkg-characteristics} can be exploited well in events with no additional jet.
 The opening angle between the missing transverse energy and the dilepton system is required to be $\DPhillMET \,{>}\, 1.57 \approx \frac{\pi}{2}$ and the transverse momentum of the dilepton system is required to have $\Ptll \,{>}\, 30\,\GeV$.
 This drastically reduces the amount of background events from $Z/\gamma^*$ processes, while retaining a large fraction of signal events.
-In addition, the non-resonant $WW$ production process can be separated from the signal with a requirement of $\mll < 55$\,\GeV\ and the remaining $Z/\gamma^*$ background can be further reduced by requiring $\DPhill < 1.8$.
-In the statistical analysis, the \ZeroJet SR is further split into four mutually exclusive subregions defined by requiring $\mll \le 30$\,GeV and $\mll > 30$\,GeV, as well as $\pTsublead \le 20$\,GeV and $\pTsublead > 20$\,GeV, where \pTsublead is the \pT of the subleading lepton.
+In addition, the non-resonant $WW$ production process can be separated from the signal with a requirement of $\mll < 55$\,\GeV\ and the remaining $Z/\gamma^*$ background can be further reduced by requiring $\DPhill < 1.8$. These selections are visualized in \cref{app:event-selection-ggf}.
+%\cref{fig:ggf:Plots:selections-a,fig:ggf:Plots:selections-b}. 
+In the statistical analysis, the \ZeroJet SR is further split into four mutually exclusive subregions defined by requiring $\mll \le 30$\,GeV and $\mll > 30$\,GeV, as well as $\pTsublead \le 20$\,GeV and $\pTsublead > 20$\,GeV.
 % This $b$-jet veto (or short $b$-veto) in the \ZeroJet\ analysis exploits the energy range below the nominal jet \pT\ threshold of $30\,\GeV$ and reaches down to $\pT = 20\,\GeV$.
 % \todo{Reference to the possibility to use track jets?}
 
 \subsection{ggF \OneJet category}
 \label{subsec:ggf-one-jet-category}
 The additional jet in the \OneJet category provides improved rejection against \Ztautau\ processes.
-Further reduction of the \Zgamma background as well as multijet events is achieved with the maximum lepton transverse mass, max($m_{\text{T}}^\ell$), defined as the maximum value of 
-\begin{equation}
-    m_{\text{T}}^{\ell_i} = \sqrt{ 2 p_\text{T}^{\ell_i} \MET \cdot \left( 1 - \text{cos} \Delta \phi \left( \ell_i, \MET \right) \right) }.
-\end{equation}
-The max($m_{\text{T}}^\ell$) observable is expected to be smaller for \Zgamma and multijet production than for the signal process which motivates a requirement of max($m_{\text{T}}^\ell$)$ > 50\,$GeV.
+Further reduction of the \Zgamma background as well as multijet events is achieved with a requirement on the maximum lepton transverse mass of max($m_{\text{T}}^\ell$)$ > 50\,$GeV.
 The same \mll\ and \DPhill\ selections as in the \ZeroJet category are applied in the \OneJet category.
-As well, the same split into four subregions that is performed in the \ZeroJet category is done in the \OneJet category to define the final measurement regions. 
+As well, the same split into four subregions that is performed in the \ZeroJet category is done in the \OneJet category to define the final measurement regions for the statistical analysis. 
 
 \subsection{VBF-enriched \TwoJet category}
 \label{subsec:vbf-category}
@@ -93,7 +90,7 @@ In addition, a selection is made on the invariant mass of the jets $\mjj > 120\,
 \label{subsec:ggf-two-jet-category}
 The \TwoJet category targeting the ggF process is made mutually exclusive to the VBF-enriched \TwoJet category by requiring events to fail either the CJV or OLV. 
 In addition, events from $V(\to qq) H$ production are highly suppressed by a requirement $|\mjj  - 85| \le 15\,\GeV$ and $\Delta y_{jj} \le 1.2$. 
-The same \mll\ and \DPhill\ selections as in the \ZeroJet category are also applied in the ggF-enriched \TwoJet category, and two subregions are defined with a boundary at $\mll = 30\,\GeV$ for the statistical analysis. 
+The same \mll\ and \DPhill\ selections as in the \ZeroJet category are also applied in the ggF \TwoJet category, and two subregions are defined with a boundary at $\mll = 30\,\GeV$ for the statistical analysis. 
 
 \subsection{STXS categorization}
 \label{subsec:STXS-categorization}
@@ -117,18 +114,18 @@ After the merging, a total of 11 fiducial cross sections are measured: 6 for $gg
 \begin{figure}[t]
     \newImageResizeCustom{1}{figures/paper-figures/HWW_STXS_Diagram.pdf}
     \caption{Two sets (Production Mode Stage and Reduced Stage 1.2) of exclusive phase-space regions (production bins) defined at parton level for the measurement of the Higgs boson production cross sections (left and middle-left shaded panels), and the corresponding reconstructed signal regions (right panel).
-    The description of the production bins as well as the corresponding reconstructed signal regions is given in Section~\ref{sec:STXS-Categorization}.
+    The description of the production bins as well as the corresponding reconstructed signal regions is given in Section~\ref{subsec:STXS-categorization}.
     The colors of each reconstructed signal region box indicate the STXS bin which provides the largest relative contribution. Figure and caption taken from \ccite{HWWPaper}.
     \label{fig:STXS_Diagram}
     }
 \end{figure}
 Specifically, a single STXS cross section with \ZeroJet is measured, targeted by a SR defined as the nominal ggF \ZeroJet SR (see \cref{subsec:ggf-zero-jet-category}) but also adding a $\pTH < 200~\GeV$ selection.
-Three STXS cross sections are measured for the \OneJet $ggH$ category, targeted by the SRs of the ggF \OneJet category (\cref{subsec:ggf-one-jet-category}) divided in different \pTH bins.
-One cross section is measured for the \TwoJet $ggH$ category, targeted by the ggF \TwoJet SR defined in \cref{subsec:ggf-zero-jet-category} with an added $\pTH < 200~\GeV$ selection.
-One $ggH$ STXS cross section is measured inclusive of \Njets, which is targeted by the ggF \TwoJet and \OneJet SRs each with an added $\pTH \geq 200~\GeV$ selection.
-Five STXS cross sections are measured for the \TwoJet EW $qqH$ category. One for $\pTH \ge200~\GeV$, targeted by the VBF \TwoJet SR (\cref{subsec:vbf-category}) with an added $\pTH \geq 200~\GeV$ selection, and four bins with $\pTH < 200~\GeV$ separated by \mjj, targeted by the VBF \TwoJet SR split in the same way in different \mjj bins. 
+Three $ggH$ cross sections are measured in the \OneJet bin, targeted by the nominal SRs of the ggF \OneJet category (\cref{subsec:ggf-one-jet-category}) divided in different \pTH bins.
+One $ggH$ cross section is measured in the \TwoJet bin, targeted by the nominal ggF \TwoJet SR defined in \cref{subsec:ggf-zero-jet-category} with an added $\pTH < 200~\GeV$ selection.
+One $ggH$ cross section is measured inclusive of \Njets, which is targeted by the ggF \TwoJet and \OneJet SRs each with an added $\pTH \geq 200~\GeV$ selection.
+Five EW $qqH$ cross sections are measured in the \TwoJet bin. One for $\pTH \ge200~\GeV$, targeted by the VBF \TwoJet SR (\cref{subsec:vbf-category}) with an added $\pTH \geq 200~\GeV$ selection, and four bins with $\pTH < 200~\GeV$ separated by \mjj, targeted by the VBF \TwoJet SR split in the same way in different \mjj bins. 
 In the EW $qqH$ categories, the same DNN is used as final discriminant as in the nominal VBF SRs. Studies found no improvements when using different DNNs trained separately for different STXS regions.
-All signal categories to which the analysis is not sensitive are fixed to their SM predictions. 
+All other STXS signal categories to which the analysis is not sensitive are fixed to their SM predictions. 
 The contribution of the different merged STXS bins in all reconstructed SRs is shown in \cref{fig:STXS_Composition}. 
 It can be seen that the largest contribution in each SR comes from the STXS bin that is targeted. 
 \begin{figure}[!h]

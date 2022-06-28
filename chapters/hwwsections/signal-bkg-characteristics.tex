@@ -148,9 +148,20 @@ To separate the \Ztautau background from the SRs, the invariant mass of the hypo
 The $m_{\tau\tau}$ observable is constructed based on the collinear approximation~\cite{Plehn:1999xi} that uses the direction and magnitude of the measured missing transverse momentum and projects it along the directions defined by the two reconstructed charged leptons~\cite{HWWPaper}.
 \Zgamma processes, other than the signal processes, have \mtt values close to the mass of the $Z$ boson.
 
-If the $Z$ bosons are produced at rest, which is a good approximation for events with \ZeroJet, the neutrinos from the $\tau$~decays are more likely to be emitted in opposite directions, and for the same reason, the leptons are expected to have a large opening angle. This is contrary to the signal signature and can be used to additionally suppress the \Ztautau\ background.
-On the other hand, if the $Z$ boson is produced with a significant transverse momentum, for example in cases where the $Z$ boson recoils against a jet, the \MET observable may be sizeable and the opening angle of the leptons is not necessarily large. 
-Suppressing the \Ztautau\ background thus becomes more difficult in the \OneJet and \TwoJet categories. 
+Further reduction of the \Ztautau\ background can be achieved in particular if the $Z$ bosons are produced at rest, which is a good approximation for events with \ZeroJet. The neutrinos from the $\tau$~decays are more likely to be emitted in opposite directions in these types of events, and for the same reason, the leptons are expected to have a large opening angle, contrary to the signal signature.
+If the $Z$ boson is produced with a significant transverse momentum, for example in cases where the $Z$ boson recoils against a jet, the \MET observable may be sizeable and the opening angle of the leptons is not necessarily large. 
+Suppression of the \Ztautau\ background can then be achieved with a requirement on the maximum lepton transverse mass, max($m_{\text{T}}^\ell$), defined as the maximum value of 
+\begin{equation}
+    m_{\text{T}}^{\ell_i} = \sqrt{ 2 p_\text{T}^{\ell_i} \MET \cdot \left( 1 - \text{cos} \Delta \phi \left( \ell_i, \MET \right) \right) }, 
+\end{equation}
+which is expected to be smaller for \Ztautau events in association with jets than for the signal process.
+%Suppressing the \Ztautau\ background thus becomes more difficult in the \OneJet and \TwoJet categories. 
+% Further reduction of the \Zgamma background as well as multijet events is achieved with the maximum lepton transverse mass, max($m_{\text{T}}^\ell$), defined as the maximum value of 
+% \begin{equation}
+%     m_{\text{T}}^{\ell_i} = \sqrt{ 2 p_\text{T}^{\ell_i} \MET \cdot \left( 1 - \text{cos} \Delta \phi \left( \ell_i, \MET \right) \right) }.
+% \end{equation}
+% The max($m_{\text{T}}^\ell$) observable is expected to be smaller for \Zgamma and multijet production than for the signal process which motivates a requirement of max($m_{\text{T}}^\ell$)$ > 50\,$GeV.
+
 
 \subsubsection{$W$+jets and multijet background}
 Processes with $W$ bosons in association with a jet (\Wjets; shown in \cref{fig:hww:feyn-bkgs-wjets}) as well as multijet processes do not contain the same final state particles as the signal processes. However, they can contaminate the analysis regions if one or more of the reconstructed physics objects is misidentified as an isolated prompt lepton (labelled as Mis-Id). 
