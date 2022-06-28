@@ -531,8 +531,46 @@ The systematic uncertainties associated to the CF are derived by using an altern
 \end{figure}
 
 
-\chapter{Improvements of the \TwoJet Categories using Multiclass Classification}
+\chapter{Study to Improve the \TwoJet Categories using Multiclass Classification}
 \label{app:multi-class-2jet-strategy}
+- Study to improve ggF 2-jet separation from backgrounds and improve ggF vs VBF separation
+- Keep analysis simple
+- Multiclass classification
+% The binary classifier used in the VBF \TwoJet category (VBF DNN) can be exchanged with a DNN performing multiclass classification that can also be used in the ggF \TwoJet category. 
+
+A DNN is trained with 3 output nodes: one targeting the VBF signal, one the ggF signal, and the last one all background processes.
+The same hyperparameters and input variables are used as in the VBF DNN, with some exceptions. The loss function becomes the \emph{categorical crossentropy} and the activation function of the output layer becomes a softmax, both of which constitute the general form of the respective loss and activation used in the binary classification task simply extended to multiple classes. 
+
+To harmonize the \TwoJet SRs the selection criteria of the nominal ggF \TwoJet and VBF \TwoJet SRs shown in \cref{tab:HWWselection} are slightly adapted. 
+The suggested common \TwoJet SR is defined without a \pTmiss requirement, the \mll and \dphill\ criteria are relaxed to $\mll < 70\,$GeV and $\dphill < 2.2$ and all CJV and OLV requirements are dropped. All other requirements are kept. 
+
+The bins used in the statistical analysis are then defined by defining regions of the two-dimensional discriminant spanned by the DNN ggF output and DNN VBF output. 
+First, the ggF- and VBF-sensitive regions are separated by a linear separation line defined as DNN ggF output $= 1/18 * $ DNN VBF output $ - 6/180$.
+A histogram in the VBF-sensitive region (DNN ggF output $< 1/18 * $ DNN VBF output $ - 6/180$) is then defined based on the projection of the two-dimensional discriminant onto the DNN VBF output axis, and the same binning algorithm is used as in the nominal VBF SR. 
+The ggF-sensitive region (DNN ggF output $> 1/18 * $ DNN VBF output $ - 6/180$) is further split into three bins dependent on the DNN VBF output, specifically $0 < \text{DNN VBF output} < 0.1$, $0.1 < \text{DNN VBF output} < 0.2$, and $\text{DNN VBF output} > 0.2$. 
+In all three regions histograms are defined by projecting the DNN output values onto the DNN ggF output and again using the same binning algorithm. This results in four final discriminants used in the statistical analysis.
+
+A similar categorization is performed for the CRs. 
+The separation based on the two-dimensional discriminant in four regions is also applied to the CRs. A top-quark and \Ztautau CR is used in all four regions and a $qq \to WW$ CR is used in the ggF-sensitive region defined with $0 < \text{DNN VBF output} < 0.1$. No $qq \to WW$ CR can be defined for the other regions due to limited statistical power. 
+The CRs are defined with the same selections as in the nominal analysis with a few exceptions. 
+The $qq \to WW$ CR is defined as the ggF \TwoJet CR but without criteria on the CJV and OLV.
+The common top-quark CR is defined with a $b$-tag and uses additional criteria on $\mll < 70\,$GeV and $\dphill < 2.2$ as in the common \TwoJet SR, and removes all CJV and OLV selections. The common \Ztautau\ CR is defined as the VBF, \Ztautau CR but without the CJV and OLV applied. 
+In each of the CRs, the criteria to separate the analysis from the analysis of the $VH$ production mode is used, i.e. $|\mjj-85| > 15~\GeV || \dyjj > 1.2$.
+
+The signal strengths of the VBF and ggF signal extracted from a fit to the Asimov dataset and only the \TwoJet regions yields 
+\begin{eqnarray*}
+    \muVBF &=& 1.0^{+0.25}_{-0.21}, \\
+    \muGGF &=& 1.0^{+0.47}_{-0.41},
+\end{eqnarray*}
+which is to be compared to the corresponding results when using the current ggF \TwoJet SRs and VBF \TwoJet SRs and their corresponding CRs:
+\begin{eqnarray*}
+    \muVBF &=& 1.0^{+0.26}_{-0.23}, \\
+    \muGGF &=& 1.0^{+0.57}_{-0.54}.
+\end{eqnarray*}
+This corresponds to a reduction of uncertainties of about 7\% and 25\% for the VBF and ggF measurement, respectively. This is substantial, considering that systematic uncertainties are dominating both of the measurements. 
+Future analyses may therefore benefit from adopting this or a similar analysis strategy. 
+
+\TDinote{}{Maybe provide a plot with explanation of regions! MAAAYbe!}
 
 % %-----------------------------------------------------------------------
 % %-----------------------------------------------------------------------
