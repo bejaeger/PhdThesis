@@ -62,7 +62,7 @@ The second term, \Lsyst, encodes the effect of the systematic uncertainties in t
     \Lsyst = \prod_{\theta \in \{ \pmb{\theta}_s,\pmb{\theta}_b \}} \text{Gauss}(0 | \theta, 1),
 \end{equation}
 where the NPs are normalized and scaled, such that they have a mean of zero and a unit standard deviation.
-The effect of most NPs is modelled by varied templates -- that is varied values of $\text{E}[n_i]$ -- corresponding to the $\pm 1$ variation of the respective NP. This is done by either propagating the effect of a previously measured uncertainty through the analysis -- as is typically the case for uncertainties related to the experiment -- or -- for the majority of uncertainties related to theory -- by comparing different theoretical models with each other and defining one standard deviation ad-hoc from the space of available theoretical models.
+The effect of most NPs is modelled by varied templates -- i.e. varied values of $\text{E}[n_i]$ -- corresponding to the $\pm 1$ variation of the respective NP. This is done by either propagating the effect of a previously measured uncertainty through the analysis -- as is typically the case for uncertainties related to the experiment -- or -- for the majority of uncertainties related to theory -- by comparing different theoretical models with each other and defining one standard deviation ad-hoc from the space of available theoretical models.
 There are different statistical techniques to provide a continuous description of the effect of each NP.
 %A continuous description of the effect of each NP is required.
 In the work presented in this thesis, piece-wise interpolation is used. \TDinote{}{Double-check piece-wise interpolation and add reference}.
@@ -174,13 +174,13 @@ By using \cref{eq:Z0}, a simple approximation for the discovery significance $Z$
 %% \end{equation}
 \begin{equation}
     \label{eq:discovery-significance}
-  Z(s, b) = \sqrt{2 \left( \left(s + b\right) \text{ln}\left(1 + \frac{s}{b}\right) - s\right)},
+  Z0(s, b) = \sqrt{2 \left( \left(s + b\right) \text{ln}\left(1 + \frac{s}{b}\right) - s\right)},
 \end{equation}
 which is valid for large enough $b$.
 A more sophisticated approximation that also accounts for uncertainties on the expected number of background events is given by
 \begin{equation}
     \label{eq:simple-sign}
-    Z(s, b, \sigma) = 
+    Z0(s, b, \sigma) = 
     \begin{cases}
     + \sqrt{ 2 \left( n \ln \left[ \frac{n \left( b + \sigma^2 \right)}{b^2 + n \sigma^2} \right] - \frac{b^2}{\sigma^2} \ln \left[ 1 + \frac{\sigma^2 \left(n - b \right) }{b \left( b + \sigma ^2 \right) } \right] \right)   } & \text{if } n \geq b, \\
     - \sqrt{ 2 \left( n \ln \left[ \frac{n \left( b + \sigma^2 \right)}{b^2 + n \sigma^2} \right] - \frac{b^2}{\sigma^2} \ln \left[ 1 + \frac{\sigma^2 \left(n - b \right) }{b \left( b + \sigma ^2 \right) } \right] \right)   } & \text{if } n < b, \\

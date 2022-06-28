@@ -23,7 +23,7 @@ In summary, the MC fit template is constructed using the following contributions
     \item Electroweak production of $WW$ ($WW$ (EW)).
     \item \Zgamma, controlled by an NF.
     \item Misidentified leptons background (Mis-Id).
-    \item $V\gamma$, other diboson processes ($W\gamma^*$, $WZ$, $ZZ$), and triboson, separately treating uncertainties (collectively denoted \OtherVVV).
+    \item $V\gamma$, other diboson processes ($W\gamma^*$, $WZ$, $ZZ$), and triboson processes, separately treating uncertainties (collectively denoted \OtherVVV).
 \end{itemize}
 Some of the contributions are summed in the results for illustrative purposes, for example, the $WW$ processes in the ggF categories. 
 
@@ -33,7 +33,7 @@ The signal yields are parametrized as signal strengths in the likelihood,
     \label{eq:incl-ggF-VBF-signal-strengths}
     \mu_{\text{signal}} = \frac{ [ \sigma_{\text{signal}}  \times \BR(H \to WW^*) ]_\text{meas} } { [ \sigma_{\text{signal}} \times \BR(H \to WW^*) ]_\text{SM}}, 
 \end{equation}
-with the signal definition depending on the type of measurement that is performed.
+with the signal definition depending on the type of measurement performed.
 The results presented are based on three types of fits:
 \begin{itemize}
     \item 2-PoI fit: Measurement of the inclusive VBF and ggF production cross sections by extracting two signal strengths $\mu_{\text{VBF}}$ and $\mu_{\text{ggF}}$ as the \emph{parameter of interests} (PoIs).
@@ -45,9 +45,12 @@ In addition, the excess of the VBF signal over the background expectation is rep
 
 The fit inputs used for the 2-PoI fit and 1-PoI fit are the same, and correspond to the SRs and CRs for the \ZeroJet, \OneJet, and \TwoJet categories as defined in \cref{sec:event-categorization,sec:bkg-estimation}. A total number of 22 regions are fit, 11 SRs and 11 CRs.
 For the 11-PoI fit, all STXS SRs and CRs are used as defined in \cref{subsec:STXS-categorization,subsubsec:stxs-crs}, which amounts to a total number of 44 regions, 17 SRs and 27 CRs. 
-The final fit discriminant in the ggF SRs is the \mT distribution. The same 6 bins are used in all regions: [0-90, 90-100, 100-110, 110-120, 120-130, 130-$\infty$]. 
-All VBF SRs use the DNN observable as final discriminant with 7 bins in the nominal VBF SR and 4 bins in the STXS SRs, as described in \cref{subsec:fina-model-validation}.
 
+The final fit discriminant in the ggF SRs is the \mT distribution. The same 6 bins are used in all regions: [0-90, 90-100, 100-110, 110-120, 120-130, 130-$\infty$]. 
+All VBF SRs use the DNN observable as final discriminant with 7 bins in the nominal VBF SR and 4 bins in the STXS SRs.
+The bin boundaries are found based on the procedure explained in \cref{subsec:performance-metrics} and in the nominal VBF SR are: [0-0.25, 0.25-0.52, 0.52-0.68, 0.68-0.77, 0.77-0.83, 0.83-0.87, 0.87-1.00].
+For the STXS measurement, the statistical precision in the SRs is smaller. The binning criteria are therefore relaxed and only require at least 10 (5) signal (background) events. The requirement of the relative statistical uncertainty stays the same and must be smaller than 20\%. In addition, the binning is harmonized between all 5 VBF STXS SRs, yielding bin boundaries: [0-0.5, 0.5, 0.74, 0.74-0.87, 0.87, 1.0]. 
+The CRs are encoded as one bin each in the likelihood. 
 %The signal cross sections are parametrized as signal strengths in the likelihood and extracted from a simultaneous fit to the data in multiple regions.
 %depending on the target of the fit, for example,
 % \begin{equation}
@@ -114,7 +117,7 @@ An example of an uncertainty processed in such a way is shown in \cref{fig:dnn:s
 \subsection{Expected performance and validation of likelihood fit}
 \label{subsec:expected-performannce}
 The analysis strategy is optimized on MC simulated samples and signal-like data events are not analyzed until the statistical model is validated.
-An \emph{Asimov} dataset can be used to evaluate the expected performance of the likelihood fit. It is generated under the SM assumption, that is, assuming the expected values for the backgrounds and signals ($\mu=1$). 
+An \emph{Asimov} dataset can be used to evaluate the expected performance of the likelihood fit. It is generated under the SM assumption, i.e., assuming the expected values for the backgrounds and signals ($\mu=1$). 
 This implies that the values of all fit parameters obtained from a fit (\emph{post-fit} values) to an Asimov dataset correspond to their expected values. 
 The Asimov dataset is used to extract the expected uncertainties on the cross-section measurements and to assess the impact of different sources of uncertainties on the final results. 
 \Cref{fig:fit:breakdown} shows a representative list of NPs and their influence on the VBF cross section, \sigmaVBF. 
@@ -141,7 +144,7 @@ It becomes apparent that theoretical uncertainties dominate, in particular the s
 The largest background uncertainty is from the choice of \ttbar matching procedure and the leading experimental uncertainties come from the effect of the \MET soft term on the resolution of the \MET observable.  
 %, resulting from large shape differences in the DNN discriminant when the \MET soft term is varied. 
 All said uncertainties are mainly caused by shape differences in the DNN discriminant when the respective source of uncertainty is varied.
-The post-fit uncertainties of the NPs relative to their nominal ones are also shown. The \emph{constraints}, that is, the extent to which the post-fit uncertainty is smaller than the nominal uncertainty, are reasonably small.
+The post-fit uncertainties of the NPs relative to their nominal ones are also shown. The \emph{constraints}, i.e., the extent to which the post-fit uncertainty is smaller than the nominal uncertainty, are reasonably small.
 This validates that the uncertainties are represented adequately in the statistical model. 
 The expected total uncertainty on the cross-section measurement corresponds to $\Delta \sigmaVBF = \pm  $. 
 The expected signal strength is extracted to be $\mu = 1^{+0.24}_{-0.21}$.

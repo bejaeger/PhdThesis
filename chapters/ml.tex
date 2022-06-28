@@ -43,7 +43,7 @@ For this reason, more and more traditional HEP analysis techniques are being rep
 % The various ML applications in HEP are detailed in the literature \cite{MLinHEPReview,Guest_2018,MLforNewPhysics}.
 % Some examples where ML tools already find adoption in the ATLAS collaboration include hit reconstruction tasks and track finding~\cite{PERF-2012-05}, object identification such as flavor-tagging \cite{ATL-PHYS-PUB-2017-013}, or classification of entire events as performed by various physics analyses of the ATLAS collaboration.
 This chapter introduces the concepts necessary to develop a binary classifier by using \emph{supervised learning} techniques with \emph{neural networks}\footnote{Neural networks are the most widely used machine learning models to date, due to their great flexibility and ability to approximate arbitrary, non-linear functions.}.
-This technique is used in the analysis of \HWW decays that is presented in \cref{chap:hww}, where a \emph{deep neural network} (DNN)\footnote{A deep neural network is conceptually equivalent to a neural network, but is commonly used to denote models with many parameters.} is trained to separate VBF, \HWW events from other types of events.
+This technique is used in the analysis of \HWW decays presented in \cref{chap:hww}, where a \emph{deep neural network} (DNN)\footnote{A deep neural network is conceptually equivalent to a neural network, but is commonly used to denote models with many parameters.} is trained to separate VBF, \HWW events from other types of events.
 
 \Cref{sec:core-concepts} introduces the core concepts and relevant terminology used in ML.
 \Cref{sec:intro-neural-nets} describes the structure of neural networks, before \cref{sec:nn-training} explains the learning procedure to which the networks are subjected. \Cref{sec:hyperpar-opt} provides details on how a neural network model is optimized and selected in practice.
@@ -96,7 +96,7 @@ While in the past, many HEP applications were based on \emph{boosted decision tr
 % - In a process known as \emph{training}, a learning algorithm is applied to find the function that optimizes the loss function.
 % - The space of functions to choose from is constrained by a model that can come in various forms such as BDTs, support vector machines, or neural networks (see the following chapter).
 
-A major goal in machine learning is \emph{generalization}, that is, the ability of a trained model to perform well on previously unseen data.
+A major goal in machine learning is \emph{generalization}, i.e., the ability of a trained model to perform well on previously unseen data.
 The opposite is the case if the model parameters are chosen based on signatures unique to the training data. This is known as \emph{overtraining} (or \emph{overfitting}). To prevent a model to be overfitted, various so-called \emph{regularization} techniques can be used during the training.
 Regularization methods are typically tuned during the training procedure that is explained further below.
 %based on how well a trained model generalizes, which can be tested with data not used in the training.
@@ -335,7 +335,7 @@ While cross validation comes with a significant increase in computing time, it a
 % - cross validation to avoid any bias from using the prediction of an event that was also learned using the same event.
 % - k-fold cross validation to prevent any bias but still exploit significant portion of available dataset for training \cref{fig:k-fold-method}.
 Another major advantage of cross validation is particularly important for HEP physics analyses. 
-Here, the dataset that is used for the training is usually required for further statistical interpretations. In such cases, it is best practice to use the test set for further analysis as it removes any potential bias that may occur when data samples are evaluated with a model that was trained with the same data sample.
+Here, the dataset used for the training is usually required for further statistical interpretations. In such cases, it is best practice to use the test set for further analysis as it removes any potential bias that may occur when data samples are evaluated with a model that was trained with the same data sample.
 When cross validation is used each data sample falls in one of the test sets, such that the entire dataset can be used for further analysis while avoiding potential biases.
 % best practice to avoid using the model output of a data sample if the model was trained with the same data sample. The
 
