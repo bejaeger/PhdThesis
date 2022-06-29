@@ -1,18 +1,24 @@
-This section presents the results published in \ccite{HWWPaper}.
+This section presents the results of the \HWW\ analysis obtained from fits to data. 
 
-\subsection{Inclusive cross-section measurement}
+\subsection{Inclusive cross-section measurements}
 The ggF and VBF production cross sections times branching fraction are simultaneously measured to be
 % Observed XSec
-\begin{eqnarray*}
+%{\mediumsize
+\begin{gather}
+\scalebox{0.96}{$
+\begin{align*}
   %the 12.0 is a 19.98
-  \sigma_{\mathrm{ggF}} \cdot \mathcal{B}_{H \to WW^{\ast}} &=& 12.0 \pm 1.4~\mathrm{pb} \\
-  &=& 12.0 \pm 0.6\;(\mathrm{stat.}) ^{+0.9}_{-0.8}\;(\mathrm{exp.~syst.})\;^{+0.6}_{-0.5}\;(\mathrm{sig.~theo.})\; \pm 0.8~(\mathrm{bkg.~theo.})~\mathrm{pb} \\
-  \sigma_{\mathrm{VBF}} \cdot \mathcal{B}_{H \to WW^{\ast}} &=& 0.75\;^{+0.19}_{-0.16}~\mathrm{pb} \\
-  &=& 0.75 \pm 0.11\;(\mathrm{stat.})\;^{+0.07}_{-0.06}\;(\mathrm{exp.~syst.})\;^{+0.12}_{-0.08}\;(\mathrm{sig.~theo.})\;^{+0.07}_{-0.06}\;(\mathrm{bkg.~theo.})~\mathrm{pb},
-\end{eqnarray*}
+  \sigma_{\mathrm{ggF}} \cdot \mathcal{B}_{H \to WW^{\ast}} &= 12.0 \pm 1.4~\mathrm{pb} \\
+  &= 12.0 \pm 0.6\;(\mathrm{stat.}) ^{+0.9}_{-0.8}\;(\mathrm{exp.~syst.})\;^{+0.6}_{-0.5}\;(\mathrm{sig.~theo.})\; \pm 0.8~(\mathrm{bkg.~theo.})~\mathrm{pb} \\
+  \sigma_{\mathrm{VBF}} \cdot \mathcal{B}_{H \to WW^{\ast}} &= 0.75\;^{+0.19}_{-0.16}~\mathrm{pb} \\
+  &= 0.75 \pm 0.11\;(\mathrm{stat.})\;^{+0.07}_{-0.06}\;(\mathrm{exp.~syst.})\;^{+0.12}_{-0.08}\;(\mathrm{sig.~theo.})\;^{+0.07}_{-0.06}\;(\mathrm{bkg.~theo.})~\mathrm{pb},
+\end{align*}
+$}
+\end{gather}
+%}
 which is consistent with the SM prediction of $10.4\pm 0.5$~pb and $0.81\pm 0.02$~pb for ggF and VBF~\cite{deFlorian:2016spz}, respectively.
-\Cref{fig:LL2D} shows the two-dimensional likelihood contour obtained from performing the 2-PoI fit with different fixed values of \muGGF and \muVBF. The SM expectation lies well within the 68\% and 95\% confidence level contours.
-\begin{figure}[htb]
+\Cref{fig:LL2D} shows the two-dimensional likelihood contour obtained from performing the 2-PoI fit with different fixed values of \muGGF and \muVBF.
+\begin{figure}[ht]
   \centering
   \includegraphics[width=0.75\textwidth]{\paperfiguredir/2-POI/ggF_VBF_likelihood_contour_XSec}
   \caption{
@@ -21,130 +27,16 @@ which is consistent with the SM prediction of $10.4\pm 0.5$~pb and $0.81\pm 0.02
     \label{fig:LL2D}
   }
 \end{figure}
-The observed number of events in each nominal signal category as well as the post-fit MC yields as obtained from the 2-PoI fit are shown in \cref{tab:ggF_VBF_yields}.
-The fitted NFs are shown in \cref{tab:CRs_NF}.
-The relative uncertainty on a given NF used to normalize a certain process is larger than the relative uncertainty on the corresponding yield in \cref{tab:ggF_VBF_yields} because of large anti-correlations between systematic uncertainties in the CRs and SRs. 
-\begin{table}[htb]
-  \centering
-  \caption{
-    Post-fit MC and data yields in the ggF and VBF SRs. Yields in the bin with the highest VBF DNN output are also presented.
-    The quoted uncertainties correspond to the statistical uncertainties, together with the experimental and theory modeling systematic uncertainties.
-    The sum of all the contributions may differ from the total value due to rounding.
-    Moreover, the uncertainty in the total yield differs from the sum in quadrature of the single-process uncertainties due to the effect of anticorrelations between the sources of their systematic uncertainties, which are larger than their MC statistical uncertainties.
-    \label{tab:ggF_VBF_yields}
-  }
-  \scalebox{0.95}{
-    \begin{tabular}{lS[table-format=5,table-number-alignment=right]@{$\,\pm\,$}
-      S[table-format=3,table-number-alignment=left]
-      S[table-format=5,table-number-alignment=right]@{$\,\pm\,$}
-      S[table-format=3,table-number-alignment=left]
-      S[table-format=5,table-number-alignment=right]@{$\,\pm\,$}
-      S[table-format=3,table-number-alignment=left]
-      S[table-format=5,table-number-alignment=right]@{$\,\pm\,$}
-      S[table-format=3,table-number-alignment=left]
-      S[table-format=2.2,table-number-alignment=right]@{$\,\pm\,$}
-      S[table-format=1.2,table-number-alignment=left]}
-      \dbline
-      Process            & \multicolumn{2}{c}{\ZeroJet ggF} & \multicolumn{2}{c}{\OneJet ggF} & \multicolumn{2}{c}{\TwoJet ggF}                            & \multicolumn{4}{c}{\TwoJet VBF}  \tabularnewline
-                         & \multicolumn{2}{c}{}             & \multicolumn{2}{c}{}            & \multicolumn{2}{c}{}                                       & \multicolumn{2}{c}{}                             & \multicolumn{2}{c}{DNN:}\tabularnewline
-                         & \multicolumn{2}{c}{}             & \multicolumn{2}{c}{}            & \multicolumn{2}{c}{}                                       & \multicolumn{2}{c}{Inclusive}                    & \multicolumn{2}{c}{$[0.87,1.0]$}\tabularnewline
-      \sgline
-      $H_{\mathrm{ggF}}$ & 2100                             & 220                             & 1100                                                       & 130                                              & 440                                             & 90  & 209   & 40  & 2.6  & 0.9   \tabularnewline
-      $H_{\mathrm{VBF}}$ & 23                               & 9                               & 103                                                        & 30                                               & 46                                              & 12  & 180   & 40  & 28.8 & 5.5   \tabularnewline
-      \sgline
-      Other Higgs        & 40                               & 20                              & 55                                                         & 28                                               & 55                                              & 27  & 29    & 15  & 0.04 & 0.02   \tabularnewline
-      $WW$               & 9700                             & 350                             & 3500                                                       & 410                                              & 1500                                            & 470 & 2100  & 340 & 4.6  & 1.2  \tabularnewline
-      $t\bar{t}/Wt$      & 2200                             & 210                             & 5300                                                       & 340                                              & 6100                                            & 500 & 7600  & 370 & 2.6  & 0.8   \tabularnewline
-      $Z/\gamma^{*}$     & 140                              & 50                              & 280                                                        & 40                                               & 930                                             & 70  & 1300  & 300 & 0.6  & 0.1   \tabularnewline
-      Other $VV$         & 1400                             & 130                             & 840                                                        & 100                                              & 470                                             & 90  & 380   & 80  & 0.6  & 0.1   \tabularnewline
-      Mis-Id             & 1200                             & 130                             & 720                                                        & 90                                               & 470                                             & 50  & 330   & 40  & 1.7  & 0.2   \tabularnewline
-      \sgline
-      Total              & 16770                            & 130                             & 11940                                                      & 110                                              & 10030                                           & 100 & 12200 & 180 & 42.0 & 5.1  \tabularnewline
-      Observed           & \multicolumn{2}{c}{\num{16726}}  & \multicolumn{2}{c}{\num{11917}} & \multicolumn{2}{c}{\ \ \num[group-minimum-digits=4]{9982}} & \multicolumn{2}{c}{\num{12189}}                  & \multicolumn{2}{c}{\num{38}}  \tabularnewline
-      \dbline
-    \end{tabular}
-  }
-\end{table}
-\begin{table}[!h]
-  \centering
-  \renewcommand{\arraystretch}{1.6}
-  \caption{
-    Post-fit normalization factors which scale the corresponding estimated yields in the relevant signal region; the dash indicates where a MC-based normalization is used.
-    The quoted uncertainties include both the statistical and systematic contributions.
-  }
-  \label{tab:CRs_NF}
-  \scalebox{1.0}{
-    \begin{tabular}{c c c c}
-      \hline\hline
-      Category     & $WW$                   & $t\bar{t}/Wt$           & $Z/\gamma^{\ast}$       \\
-      \hline\hline
-      \ZeroJet ggF & $1.02^{+0.07}_{-0.07}$ & $0.93^ {+0.22}_{-0.17}$ & $0.96^ {+0.07}_{-0.06}$ \\
-      \OneJet ggF  & $0.85^{+0.16}_{-0.15}$ & $1.05^ {+0.19}_{-0.16}$ & $0.98^ {+0.10}_{-0.09}$ \\
-      \TwoJet ggF  & $0.81^{+0.34}_{-0.33}$ & $0.96^ {+0.23}_{-0.18}$ & $0.98^ {+0.18}_{-0.17}$ \\
-      \TwoJet VBF  & --                     & $0.92^ {+0.33}_{-0.21}$ & $0.93^ {+0.23}_{-0.19}$ \\
-      \noalign{\vskip 1mm}
-      \hline\hline
-    \end{tabular}
-  }
-\end{table}
-
-Post-fit distributions are presented that show the expected yields when all parameters are set to their corresponding post-fit values. They also take properly into account all systematic uncertainties. \Cref{fig:VBF_DNN} shows the post-fit DNN output distribution in the VBF SR.
-The VBF signal can be well separated from the backgrounds up to a signal-to-background ratio of more than 2 in the highest DNN bin. 
-The VBF signal is observed with a discovery significance of $5.8\,\sigma$, where $6.2\,\sigma$ were expected.
-\begin{figure}[htb]
-  \centering
-  % \includegraphics[width=0.55\textwidth]{\paperfiguredir/PostFitDistribution_VBF_unblind-v_0_line_1_DMB_OB.pdf} % ggF on bottom / black line  total error in sub plot
-  % \includegraphics[width=0.55\textwidth]{\paperfiguredir/PostFitDistribution_VBF_unblind-v_0_line_0_DMB_OB.pdf} % ggF on bottom / no black line  total error in sub plot
-  % \includegraphics[width=0.55\textwidth]{\paperfiguredir/PostFitDistribution_VBF_unblind-v_1_line_1_DMB_OB.pdf} % ggF next to VBF / black line  total error in sub plot
-  % \includegraphics[width=0.55\textwidth]{\paperfiguredir/VBF/SR/PostFitDistribution_VBF_unblind-v_1_line_0_DMB_OB_prelim} % ggF next to VBF / no black line  total error in sub plot
-  \includegraphics[width=0.65\textwidth]{\paperfiguredir/VBF/SR/PostFit_VBF_DNN_ratios_SR_HWWRun2VBF_HWWVBF.pdf}
-  \caption{
-    Post-fit distribution of the DNN output in the VBF signal region.
-    The hatched band shows the total uncertainty, assuming SM Higgs boson production.
-    The middle panel shows the ratio of the data to the sum of the fitted signal and background.
-    The bottom panel displays the signal-to-background ratio, where the hatched band indicates the combined statistical and systematic uncertainty for the fitted signal and background.
-  }
-  \label{fig:VBF_DNN}
-  \end{figure}
-% The observed (expected) VBF signal reaches a significance of $5.8\sigma$ ($6.2\sigma$) above the background expectation.
-The post-fit \mT distributions in the different ggF SRs as well as the combined region are shown in \cref{fig:ggF_MT}.
-The ggF events with two jets in the final state are measured with a discovery significance of $2.2\sigma$, where $1.6\sigma$ were expected. In this fit, the VBF contribution is fixed to the SM prediction.
-For all distributions shown, the observed yields agree in both shapes and rates with the SM expectations represented by the MC simulated samples. 
-Similarly, post-fit distributions of other observables were studied and are found in excellent agreement with their expectations. Representative results are shown in \cref{app:post-fit-distributions}. 
-
-\begin{figure}[htb]
-  \centering
-  \subfloat[]{
-    % \includegraphics[width=0.32\textwidth]{\paperfiguredir/ggF/ZeroJet/PostFit_CutGGF_TopoDPhill_0jet_MT}
-    \includegraphics[width=0.355\textwidth]{\paperfiguredir/ggF/ZeroJet/moneyplot-0j}
-  }
-  \subfloat[]{
-    % \includegraphics[width=0.32\textwidth]{\paperfiguredir/ggF/OneJet/PostFit_CutGGF_TopoDPhill_1jet_MT}
-    \includegraphics[width=0.355\textwidth]{\paperfiguredir/ggF/OneJet/moneyplot-1j}
-  } \\
-  \subfloat[]{
-    % \includegraphics[width=0.32\textwidth]{\paperfiguredir/ggF/TwoJet/PostFit_CutGGF2J_SR_Mll1CutGGF2J_SR_Mll2_MT}
-    \includegraphics[width=0.355\textwidth]{\paperfiguredir/ggF/TwoJet/moneyplot-2j}
-  }
-  \subfloat[]{
-    % \includegraphics[width=0.32\textwidth]{\paperfiguredir/ggF/Combined/PostFit_MT_FullggFSR}
-    \includegraphics[width=0.355\textwidth]{\paperfiguredir/ggF/Combined/moneyplot-combined}
-  }
-  \caption{
-    Post-fit $\mT$ distributions with the signal and the background modeled contributions
-    in the (a) $\ZeroJet$, (b) $\OneJet$, (c) ggF-enriched \TwoJet, and (d) combined ggF signal regions. Underflow and overflow events are not included.
-    The hatched band shows the total uncertainty, assuming SM Higgs boson production.
-    The middle panel shows the ratio of the data to the sum of the fitted signal and background.
-    The bottom panel displays the difference between the data and the estimated background compared to the simulated signal distribution, where the hatched band indicates the combined statistical and systematic uncertainty for the fitted signal and background.
-    \label{fig:ggF_MT}
-  }
-\end{figure}
+The SM expectation lies well within the 68\% and 95\% confidence level contours.
 
 The 1-PoI fit results in a measurement of the combined ggF and VBF production cross section times branching fraction of
-\begin{eqnarray*}
-  \sigma_{\mathrm{ggF+VBF}} \cdot \mathcal{B}_{H \to WW^{\ast}} &=& 12.3 \pm 1.3~\mathrm{pb} \\
-  &=& 12.3 \pm 0.6\;(\mathrm{stat.})\;^{+0.8}_{-0.7}\;(\mathrm{exp.\ syst.})\;\pm 0.6\;(\mathrm{sig.\ theo.})\;\pm 0.7\;(\mathrm{bkg.\ theo.})~\mathrm{pb},
-\end{eqnarray*}
+\begin{gather}
+  \scalebox{0.94}{$  
+\begin{align*}
+  \sigma_{\mathrm{ggF+VBF}} \cdot \mathcal{B}_{H \to WW^{\ast}} &= 12.3 \pm 1.3~\mathrm{pb} \\
+  &= 12.3 \pm 0.6\;(\mathrm{stat.})\;^{+0.8}_{-0.7}\;(\mathrm{exp.\ syst.})\;\pm 0.6\;(\mathrm{sig.\ theo.})\;\pm 0.7\;(\mathrm{bkg.\ theo.})~\mathrm{pb},
+\end{align*}$}
+\end{gather}
 where $11.3\pm 0.5$~pb are expected from the SM predictions.
 \Cref{fig:couplings-POIs} summarizes the results of the inclusive cross-section measurements by presenting the ratio of the measured cross sections divided by the corresponding value predicted by the SM.
 \begin{figure}[htb]
@@ -157,13 +49,14 @@ where $11.3\pm 0.5$~pb are expected from the SM predictions.
       \label{fig:couplings-POIs}
     }
 \end{figure}
+
 The uncertainties broken down into several components for the inclusive cross section measurements are shown in \cref{tab:UncertaintyBreakdown_2-POI}. 
 The systematic uncertainties dominate the measurements. 
 For the ggF measurement, the theoretical uncertainties are of similar size as the experimental uncertainties.
 The VBF measurement is dominated by theory uncertainties, in particular VBF signal modelling uncertainties.
 The latter is mainly caused by uncertainties related to the modelling of potential jets in addition to the two leading jets, manifesting itself in a large uncertainty due to the choice of parton shower model (see also \cref{subsec:expected-performannce}). The largest contributions from the backgrounds are from uncertainties due to the modelling of top-quark processes, $WW$ production, and the ggF process that can be considered a background in the VBF measurement. 
 
-\begin{table}[htb]
+\begin{table}[ht]
   \centering
   \caption{
     Breakdown of the main contributions to the total uncertainty in $\sigma_{\mathrm{ggF+VBF}} \cdot \mathcal{B}_{\hww}$, $\sigma_{\mathrm{ggF}} \cdot \mathcal{B}_{\hww}$, and $\sigma_{\mathrm{VBF}} \cdot \mathcal{B}_{\hww}$, relative to the measured value.
@@ -178,20 +71,15 @@ The latter is mainly caused by uncertainties related to the modelling of potenti
 
 \subsection{STXS measurement}
 %The results obtained for the cross sections times branching fractions in 11 STXS bins are summarized in \cref{fig:11-POI_measurement}. 
-The results obtained for the cross sections times branching fractions in 11 STXS bins are summarized in \cref{fig:11-POI_measurement}. 
+The results obtained for the 11 STXS cross sections times branching fractions are summarized in \cref{fig:11-POI_measurement}. 
 They are in agreement with the SM predictions, with a $p$-value of 53\%.
-The specific values and a breakdown of uncertainties is left to \cref{app:stxs-measurement}. 
+The specific values and a breakdown of uncertainties are left to \cref{app:stxs-measurement}. 
 The majority of $ggH$ measurements (4/6) are dominated by systematic uncertainties, with the background and experimental uncertainties making on average the largest contribution. 
-The measurements of EW $qqH$ production are mostly dominated by statistical uncertainties (4/5). 
-The breakdown of uncertainties is also visualized in \cref{app:stxs-measurements-aux}. 
-
-\Cref{fig:aux:VBF-STXS-SRs} shows the post-fit DNN output distributions in all VBF STXS SRs that target EW $qqH$ production. 
-Especially for the high \mjj bins, the VBF signal is very prominent above the backgrounds. 
+The measurements of EW~$qqH$ production are mostly dominated by statistical uncertainties (4/5). 
 
 % The cross sections measured for the five STXS bins targeting EW~$qqH$ production are on average lower than the VBF cross section measured in the two-POI fit. Events with high $\mjj$ or high $\pTH$ carry a larger statistical weight than events at low $\mjj$ in the two-POI fit, and in these STXS bins the measured value is close to one.
 \Cref{fig:STXS-correlation} shows the correlations between the cross sections measured. 
 Due to migrations of signal events from a particular STXS bin to multiple reconstructed SRs, the correlations are sizeable but small. The maximum value is around 30\% between the high \pTH SRs in the \TwoJet category, where the separation at reconstruction-level between STXS bins is particularly difficult. This can also be seen in \cref{sec:event-categorization}, \cref{fig:STXS_Composition}. 
-
 \begin{figure}[htb]
   \centering
   \includegraphics[width=0.9\textwidth]{\paperfiguredir/11-POI/plot-STXS-pois-GreenTan-vert.pdf}
@@ -203,27 +91,86 @@ Due to migrations of signal events from a particular STXS bin to multiple recons
   }
 \end{figure}
 
+% STXS correlation matrix
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[htb]
+  \centering
+  \scalebox{0.8}{
+    \input{\paperfiguredir/CorrelationMatrix.tex}
+    %\includegraphics[width=1.2\textwidth]{\paperfiguredir/CorrelationMatrix} % Only to be used for the figure extraction script
+  }
+  \caption{
+    Correlations between the cross-section measurements in the 11 STXS bins for the \hwwenmn analysis.
+    \label{fig:STXS-correlation}
+  }
+\end{figure}
+
+\subsection{Post-fit distributions and signal excess}
+Post-fit distributions are presented that show the expected yields when all parameters are set to their corresponding post-fit values. They also take properly into account all systematic uncertainties. \Cref{fig:VBF_DNN} shows the post-fit DNN output distribution in the VBF SR as obtained from the 2-PoI fit.
+The VBF signal can be well separated from the backgrounds up to a signal-to-background ratio of more than 2 in the highest DNN bin. 
+The VBF signal is observed with a discovery significance of $5.8\,\sigma$, where $6.2\,\sigma$ were expected.
+% The observed (expected) VBF signal reaches a significance of $5.8\sigma$ ($6.2\sigma$) above the background expectation.
+The post-fit \mT distributions in the different ggF SRs as well as the combined region are shown in \cref{fig:ggF_MT}.
+The ggF events with two jets in the final state are measured with a discovery significance of $2.2\sigma$, where $1.6\sigma$ were expected. In this fit, the VBF contribution is fixed to the SM prediction.
+
+Representative post-fit distributions for the STXS measurements are shown in \cref{fig:aux:VBF-STXS-SRs}, corresponding to VBF STXS SRs targeting EW~$qqH$ production. 
+Especially for the high \mjj bins, the VBF signal is very prominent above the backgrounds. 
+
+For all distributions shown, the observed yields agree in both shapes and rates with the SM expectations.
+Similarly, post-fit distributions of other observables were studied and are found in excellent agreement with their expectations. Representative results are shown in \cref{app:post-fit-distributions}. 
+
+\begin{figure}[htb]
+  \centering
+  \includegraphics[width=0.65\textwidth]{\paperfiguredir/VBF/SR/PostFit_VBF_DNN_ratios_SR_HWWRun2VBF_HWWVBF.pdf}
+  \caption{
+    Post-fit distribution of the DNN output in the VBF signal region.
+    The hatched band shows the total uncertainty, assuming SM Higgs boson production.
+    The middle panel shows the ratio of the data to the sum of the fitted signal and background.
+    The bottom panel displays the signal-to-background ratio, where the hatched band indicates the combined statistical and systematic uncertainty for the fitted signal and background.
+  }
+  \label{fig:VBF_DNN}
+\end{figure}
+
+\begin{figure}[htb]
+  \centering
+  \subfloat[]{
+    \includegraphics[width=0.355\textwidth]{\paperfiguredir/ggF/ZeroJet/moneyplot-0j}
+  }
+  \subfloat[]{
+    \includegraphics[width=0.355\textwidth]{\paperfiguredir/ggF/OneJet/moneyplot-1j}
+  } \\
+  \subfloat[]{
+    \includegraphics[width=0.355\textwidth]{\paperfiguredir/ggF/TwoJet/moneyplot-2j}
+  }
+  \subfloat[]{
+    \includegraphics[width=0.355\textwidth]{\paperfiguredir/ggF/Combined/moneyplot-combined}
+  }
+  \caption{
+    Post-fit $\mT$ distributions with the signal and the background modeled contributions
+    in the (a) $\ZeroJet$, (b) $\OneJet$, (c) ggF-enriched \TwoJet, and (d) combined ggF signal regions. Underflow and overflow events are not included.
+    The hatched band shows the total uncertainty, assuming SM Higgs boson production.
+    The middle panel shows the ratio of the data to the sum of the fitted signal and background.
+    The bottom panel displays the difference between the data and the estimated background compared to the simulated signal distribution, where the hatched band indicates the combined statistical and systematic uncertainty for the fitted signal and background.
+    \label{fig:ggF_MT}
+  }
+\end{figure}
+
 % DNN distribution in 5 VBF STXS SRs
 \begin{figure}[!h]
   \centering
   \subfloat[]{
-    %\includegraphics[width=0.32\textwidth]{\paperfiguredir/VBFSTXS/PostFit_VBF_DNN_ratios_SR_VBF2J_MJJ_350_700_PTH_0_200_HWWVBF}
     \includegraphics[width=0.32\textwidth]{\paperfiguredir/VBFSTXS/PostFit_VBF_DNN_SR_VBF2J_MJJ_350_700_PTH_0_200_HWWVBF}
   }
   \subfloat[]{
-    % \includegraphics[width=0.32\textwidth]{\paperfiguredir/VBFSTXS/PostFit_VBF_DNN_ratios_SR_VBF2J_MJJ_700_1000_PTH_0_200_HWWVBF}
     \includegraphics[width=0.32\textwidth]{\paperfiguredir/VBFSTXS/PostFit_VBF_DNN_SR_VBF2J_MJJ_700_1000_PTH_0_200_HWWVBF}
   }
   \subfloat[]{
-    % \includegraphics[width=0.32\textwidth]{\paperfiguredir/VBFSTXS/PostFit_VBF_DNN_ratios_SR_VBF2J_MJJ_1000_1500_PTH_0_200_HWWVBF}
     \includegraphics[width=0.32\textwidth]{\paperfiguredir/VBFSTXS/PostFit_VBF_DNN_SR_VBF2J_MJJ_1000_1500_PTH_0_200_HWWVBF}
   } \\
   \subfloat[]{
-    % \includegraphics[width=0.32\textwidth]{\paperfiguredir/VBFSTXS/PostFit_VBF_DNN_ratios_SR_VBF2J_MJJ_GT1500_PTH_0_200_HWWVBF}
     \includegraphics[width=0.32\textwidth]{\paperfiguredir/VBFSTXS/PostFit_VBF_DNN_SR_VBF2J_MJJ_GT1500_PTH_0_200_HWWVBF}
   }
   \subfloat[]{
-    % \includegraphics[width=0.32\textwidth]{\paperfiguredir/VBFSTXS/PostFit_VBF_DNN_ratios_SR_VBF2J_PTH_GT200_HWWVBF}
     \includegraphics[width=0.32\textwidth]{\paperfiguredir/VBFSTXS/PostFit_VBF_DNN_SR_VBF2J_PTH_GT200_HWWVBF}
   }
   \caption{
@@ -234,22 +181,6 @@ Due to migrations of signal events from a particular STXS bin to multiple recons
     \label{fig:aux:VBF-STXS-SRs}
   }
 \end{figure}
-
-
-% STXS correlation matrix
-%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htb]
-  \centering
-  \scalebox{0.9}{
-    \input{\paperfiguredir/CorrelationMatrix.tex}
-    %\includegraphics[width=1.2\textwidth]{\paperfiguredir/CorrelationMatrix} % Only to be used for the figure extraction script
-  }
-  \caption{
-    Correlations between the cross-section measurements in the 11 STXS bins for the \hwwenmn analysis.
-    \label{fig:STXS-correlation}
-  }
-\end{figure}
-
 
 % Table with yields in each STXS SR (likely to go in auxiliary material)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%####################################

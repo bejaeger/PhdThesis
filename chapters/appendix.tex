@@ -494,6 +494,78 @@ The systematic uncertainties associated to the CF are derived by using an altern
     % Nominal values, statistical uncertainties and EWSUBTR uncertainties produced on tag kon_improveZjetsFFStats_v2
 \end{table}
 
+\FloatBarrier
+\section{More results}
+
+The observed number of events in each nominal signal category as well as the post-fit MC yields as obtained from the 2-PoI fit are shown in \cref{tab:ggF_VBF_yields}.
+The fitted NFs are shown in \cref{tab:CRs_NF}.
+The relative uncertainty on a given NF used to normalize a certain process is larger than the relative uncertainty on the corresponding yield in \cref{tab:ggF_VBF_yields} because of large anti-correlations between systematic uncertainties in the CRs and SRs. 
+
+\begin{table}[ht]
+  \centering
+  \caption{
+    Post-fit MC and data yields in the ggF and VBF SRs. Yields in the bin with the highest VBF DNN output are also presented.
+    The quoted uncertainties correspond to the statistical uncertainties, together with the experimental and theory modeling systematic uncertainties.
+    The sum of all the contributions may differ from the total value due to rounding.
+    Moreover, the uncertainty in the total yield differs from the sum in quadrature of the single-process uncertainties due to the effect of anticorrelations between the sources of their systematic uncertainties, which are larger than their MC statistical uncertainties.
+    \label{tab:ggF_VBF_yields}
+  }
+  \scalebox{0.95}{
+    \begin{tabular}{lS[table-format=5,table-number-alignment=right]@{$\,\pm\,$}
+      S[table-format=3,table-number-alignment=left]
+      S[table-format=5,table-number-alignment=right]@{$\,\pm\,$}
+      S[table-format=3,table-number-alignment=left]
+      S[table-format=5,table-number-alignment=right]@{$\,\pm\,$}
+      S[table-format=3,table-number-alignment=left]
+      S[table-format=5,table-number-alignment=right]@{$\,\pm\,$}
+      S[table-format=3,table-number-alignment=left]
+      S[table-format=2.2,table-number-alignment=right]@{$\,\pm\,$}
+      S[table-format=1.2,table-number-alignment=left]}
+      \dbline
+      Process            & \multicolumn{2}{c}{\ZeroJet ggF} & \multicolumn{2}{c}{\OneJet ggF} & \multicolumn{2}{c}{\TwoJet ggF}                            & \multicolumn{4}{c}{\TwoJet VBF}  \tabularnewline
+                         & \multicolumn{2}{c}{}             & \multicolumn{2}{c}{}            & \multicolumn{2}{c}{}                                       & \multicolumn{2}{c}{}                             & \multicolumn{2}{c}{DNN:}\tabularnewline
+                         & \multicolumn{2}{c}{}             & \multicolumn{2}{c}{}            & \multicolumn{2}{c}{}                                       & \multicolumn{2}{c}{Inclusive}                    & \multicolumn{2}{c}{$[0.87,1.0]$}\tabularnewline
+      \sgline
+      $H_{\mathrm{ggF}}$ & 2100                             & 220                             & 1100                                                       & 130                                              & 440                                             & 90  & 209   & 40  & 2.6  & 0.9   \tabularnewline
+      $H_{\mathrm{VBF}}$ & 23                               & 9                               & 103                                                        & 30                                               & 46                                              & 12  & 180   & 40  & 28.8 & 5.5   \tabularnewline
+      \sgline
+      Other Higgs        & 40                               & 20                              & 55                                                         & 28                                               & 55                                              & 27  & 29    & 15  & 0.04 & 0.02   \tabularnewline
+      $WW$               & 9700                             & 350                             & 3500                                                       & 410                                              & 1500                                            & 470 & 2100  & 340 & 4.6  & 1.2  \tabularnewline
+      $t\bar{t}/Wt$      & 2200                             & 210                             & 5300                                                       & 340                                              & 6100                                            & 500 & 7600  & 370 & 2.6  & 0.8   \tabularnewline
+      $Z/\gamma^{*}$     & 140                              & 50                              & 280                                                        & 40                                               & 930                                             & 70  & 1300  & 300 & 0.6  & 0.1   \tabularnewline
+      Other $VV$         & 1400                             & 130                             & 840                                                        & 100                                              & 470                                             & 90  & 380   & 80  & 0.6  & 0.1   \tabularnewline
+      Mis-Id             & 1200                             & 130                             & 720                                                        & 90                                               & 470                                             & 50  & 330   & 40  & 1.7  & 0.2   \tabularnewline
+      \sgline
+      Total              & 16770                            & 130                             & 11940                                                      & 110                                              & 10030                                           & 100 & 12200 & 180 & 42.0 & 5.1  \tabularnewline
+      Observed           & \multicolumn{2}{c}{\num{16726}}  & \multicolumn{2}{c}{\num{11917}} & \multicolumn{2}{c}{\ \ \num[group-minimum-digits=4]{9982}} & \multicolumn{2}{c}{\num{12189}}                  & \multicolumn{2}{c}{\num{38}}  \tabularnewline
+      \dbline
+    \end{tabular}
+  }
+\end{table}
+
+\begin{table}[!h]
+  \centering
+  \renewcommand{\arraystretch}{1.6}
+  \caption{
+    Post-fit normalization factors which scale the corresponding estimated yields in the relevant signal region; the dash indicates where a MC-based normalization is used.
+    The quoted uncertainties include both the statistical and systematic contributions.
+  }
+  \label{tab:CRs_NF}
+  \scalebox{1.0}{
+    \begin{tabular}{c c c c}
+      \hline\hline
+      Category     & $WW$                   & $t\bar{t}/Wt$           & $Z/\gamma^{\ast}$       \\
+      \hline\hline
+      \ZeroJet ggF & $1.02^{+0.07}_{-0.07}$ & $0.93^ {+0.22}_{-0.17}$ & $0.96^ {+0.07}_{-0.06}$ \\
+      \OneJet ggF  & $0.85^{+0.16}_{-0.15}$ & $1.05^ {+0.19}_{-0.16}$ & $0.98^ {+0.10}_{-0.09}$ \\
+      \TwoJet ggF  & $0.81^{+0.34}_{-0.33}$ & $0.96^ {+0.23}_{-0.18}$ & $0.98^ {+0.18}_{-0.17}$ \\
+      \TwoJet VBF  & --                     & $0.92^ {+0.33}_{-0.21}$ & $0.93^ {+0.23}_{-0.19}$ \\
+      \noalign{\vskip 1mm}
+      \hline\hline
+    \end{tabular}
+  }
+\end{table}
+
 
 \FloatBarrier
 \section{STXS Measurement}
@@ -512,6 +584,8 @@ The systematic uncertainties associated to the CF are derived by using an altern
     \label{tab:STXS-XSecs}
   \end{table}
 
+\TDinote{Include uncertainty breakdown plot!}
+
 \FloatBarrier
 \section{STXS Stage-1.2 Framework}
 \label{app:stxs-measurements-aux}
@@ -526,51 +600,76 @@ The systematic uncertainties associated to the CF are derived by using an altern
     \subfloat[]{
         \newImageResizeCustom{0.9}{figures/hww/stxs/VBFSTXS-measured.pdf}
     } \\
-    {\caption{Definition of fiducial kinematic regions in the Stage-1.2 STXS framework for (a) $ggH$ and (b) EW $qqH$ production. The colored boxes indicate the merged regions measured in the \HWW analysis.
+    {\caption{Definition of fiducial kinematic regions in the Stage-1.2 STXS framework for (a) $ggH$ and (b) EW~$qqH$ production. The colored boxes indicate the merged regions measured in the \HWW analysis.
             \label{fig:stxs:stage-12-definition} }}
 \end{figure}
 
 
 \chapter{Study to Improve the \TwoJet Categories using Multiclass Classification}
 \label{app:multi-class-2jet-strategy}
-- Study to improve ggF 2-jet separation from backgrounds and improve ggF vs VBF separation
-- Keep analysis simple
-- Multiclass classification
-% The binary classifier used in the VBF \TwoJet category (VBF DNN) can be exchanged with a DNN performing multiclass classification that can also be used in the ggF \TwoJet category. 
+The author of this thesis performed a preliminary study to improve the measurements in the ggF \TwoJet and VBF \TwoJet category of the \HWW analysis. 
+The study aims at improving both the distinction of ggF \TwoJet events from the backgrounds and the separation between ggF \TwoJet events and VBF \TwoJet events, while also keeping the analysis simple.
+The proposed solution is to use multiclass classification in a new \TwoJet SR defined commonly instead of having separate ggF \TwoJet and VBF \TwoJet categories. 
 
-A DNN is trained with 3 output nodes: one targeting the VBF signal, one the ggF signal, and the last one all background processes.
-The same hyperparameters and input variables are used as in the VBF DNN, with some exceptions. The loss function becomes the \emph{categorical crossentropy} and the activation function of the output layer becomes a softmax, both of which constitute the general form of the respective loss and activation used in the binary classification task simply extended to multiple classes. 
+For this purpose, a DNN is trained with 3 output nodes: one output node determines how likely an event is a VBF signal, one targets the ggF signal instead, and one the backgrounds.
+The expected number of events in a two-dimensional histogram spanned by the DNN VBF output and DNN ggF output node, referred to as DNN$_\mathrm{out}^\mathrm{VBF}$ and DNN$_\mathrm{out}^\mathrm{ggF}$, respectively, are shown in \cref{sec:hww:summary}, \cref{app:fig:2d-discriminant}. 
+
+For the training, the same hyperparameters and input variables are used as in the VBF DNN, with some exceptions. The loss function becomes a \emph{categorical crossentropy} and the activation function of the output layer becomes a \emph{softmax} function.
+%, both of which constitute the general form of the respective loss and activation used in the binary classification task but extended to multiple classes. 
+The softmax ensures that the sum of the three output nodes cannot be larger than one, such that the output nodes can be considered as indicating probabilities for an event being of a particular type. 
 
 To harmonize the \TwoJet SRs the selection criteria of the nominal ggF \TwoJet and VBF \TwoJet SRs shown in \cref{tab:HWWselection} are slightly adapted. 
-The suggested common \TwoJet SR is defined without a \pTmiss requirement, the \mll and \dphill\ criteria are relaxed to $\mll < 70\,$GeV and $\dphill < 2.2$ and all CJV and OLV requirements are dropped. All other requirements are kept. 
+The proposed common \TwoJet SR is defined without a \pTmiss requirement, the \mll\ and \dphill\ criteria are relaxed to $\mll < 70\,$GeV and $\dphill < 2.2$, and all CJV and OLV requirements are dropped. All other requirements are kept. 
 
-The bins used in the statistical analysis are then defined by defining regions of the two-dimensional discriminant spanned by the DNN ggF output and DNN VBF output. 
-First, the ggF- and VBF-sensitive regions are separated by a linear separation line defined as DNN ggF output $= 1/18 * $ DNN VBF output $ - 6/180$.
-A histogram in the VBF-sensitive region (DNN ggF output $< 1/18 * $ DNN VBF output $ - 6/180$) is then defined based on the projection of the two-dimensional discriminant onto the DNN VBF output axis, and the same binning algorithm is used as in the nominal VBF SR. 
-The ggF-sensitive region (DNN ggF output $> 1/18 * $ DNN VBF output $ - 6/180$) is further split into three bins dependent on the DNN VBF output, specifically $0 < \text{DNN VBF output} < 0.1$, $0.1 < \text{DNN VBF output} < 0.2$, and $\text{DNN VBF output} > 0.2$. 
-In all three regions histograms are defined by projecting the DNN output values onto the DNN ggF output and again using the same binning algorithm. This results in four final discriminants used in the statistical analysis.
+The bins used in the statistical analysis are defined based on regions in the two-dimensional discriminant spanned by DNN$_\mathrm{out}^\mathrm{ggF}$ and DNN$_\mathrm{out}^\mathrm{VBF}$. A schematic of this partitioning is shown in \cref{app:hwwejet-schematic-partitioning}.
+First, the ggF- and VBF-sensitive regions are separated by a linear separation line defined as DNN$_\mathrm{out}^\mathrm{ggF}= 1/18 \times \text{DNN}_\mathrm{out}^\mathrm{VBF} - 6/180$.
+A histogram in the VBF-sensitive region (DNN$_\mathrm{out}^\mathrm{ggF} < 1/18 * \text{DNN}_\mathrm{out}^\mathrm{VBF} - 6/180$) is then defined based on the projection of the two-dimensional discriminant onto the DNN$_\mathrm{out}^\mathrm{VBF}$ axis, and the same binning algorithm is used as in the nominal VBF SR to define the final discriminant for the statistial analysis. This discriminant looks very similar to the one used in the current VBF \TwoJet SR that is based on a DNN trained for binary classification.  
+The ggF-sensitive region (DNN$_\mathrm{out}^\mathrm{ggF}> 1/18 * \text{DNN}_\mathrm{out}^\mathrm{VBF} - 6/180$) is further split into three bins dependent on the DNN$_\mathrm{out}^\mathrm{VBF}$, specifically $0 < \text{DNN}_\mathrm{out}^\mathrm{VBF} < 0.1$, $0.1 < \text{DNN}_\mathrm{out}^\mathrm{VBF} < 0.2$, and $\text{DNN}_\mathrm{out}^\mathrm{VBF} > 0.2$. 
+In all three regions histograms are defined by projecting the DNN output values onto the DNN$_\mathrm{out}^\mathrm{ggF}$ axis and again using the same binning algorithm.
+This results in four final discriminants used in the statistical analysis. 
 
 A similar categorization is performed for the CRs. 
-The separation based on the two-dimensional discriminant in four regions is also applied to the CRs. A top-quark and \Ztautau CR is used in all four regions and a $qq \to WW$ CR is used in the ggF-sensitive region defined with $0 < \text{DNN VBF output} < 0.1$. No $qq \to WW$ CR can be defined for the other regions due to limited statistical power. 
-The CRs are defined with the same selections as in the nominal analysis with a few exceptions. 
+First, the separation in four regions based on the two-dimensional discriminant as mentioned above is also applied to the CRs. A top-quark and \Ztautau CR is used in all four regions and a $qq \to WW$ CR is used in the ggF-sensitive region with $0 < \text{DNN}_\mathrm{out}^\mathrm{VBF} < 0.1$. No $qq \to WW$ CR can be defined for the other regions due to limited statistical power. 
+The CRs are defined with the same selections as in the nominal analysis (see \cref{tab:CRsSelection}) with a few exceptions. 
 The $qq \to WW$ CR is defined as the ggF \TwoJet CR but without criteria on the CJV and OLV.
 The common top-quark CR is defined with a $b$-tag and uses additional criteria on $\mll < 70\,$GeV and $\dphill < 2.2$ as in the common \TwoJet SR, and removes all CJV and OLV selections. The common \Ztautau\ CR is defined as the VBF, \Ztautau CR but without the CJV and OLV applied. 
-In each of the CRs, the criteria to separate the analysis from the analysis of the $VH$ production mode is used, i.e. $|\mjj-85| > 15~\GeV || \dyjj > 1.2$.
+In each of the CRs, the criteria to separate the analysis from the analysis of the $VH$ production mode is used, i.e. $|\mjj-85| > 15~\GeV \text{ OR } \dyjj > 1.2$.
 
-The signal strengths of the VBF and ggF signal extracted from a fit to the Asimov dataset and only the \TwoJet regions yields 
+The signal strengths of the VBF and ggF signal extracted from a fit to the Asimov dataset and only the above-mentioned \TwoJet regions yields 
 \begin{eqnarray*}
     \muVBF &=& 1.0^{+0.25}_{-0.21}, \\
-    \muGGF &=& 1.0^{+0.47}_{-0.41},
+    \muGGF &=& 1.0^{+0.47}_{-0.41}.
 \end{eqnarray*}
-which is to be compared to the corresponding results when using the current ggF \TwoJet SRs and VBF \TwoJet SRs and their corresponding CRs:
+This is to be compared to the corresponding results when using the current ggF \TwoJet SRs and VBF \TwoJet SRs and their corresponding CRs,
 \begin{eqnarray*}
     \muVBF &=& 1.0^{+0.26}_{-0.23}, \\
     \muGGF &=& 1.0^{+0.57}_{-0.54}.
 \end{eqnarray*}
-This corresponds to a reduction of uncertainties of about 7\% and 25\% for the VBF and ggF measurement, respectively. This is substantial, considering that systematic uncertainties are dominating both of the measurements. 
-Future analyses may therefore benefit from adopting this or a similar analysis strategy. 
+A reduction of uncertainties of about 7\% and 25\% for the VBF and ggF measurement, respectively, can be observed. 
+The improvements for the ggF measurement are mostly due to the change of the discriminant to a DNN, but also benefit from the more efficient separation between the ggF- and VBF-sensitive regions. 
+The small improvement of the VBF measurement is in part due to a slightly finer binning used in the fits for the VBF-sensitive region, but also a consequence of the more precise measurement of \muGGF. 
+Future analyses are expected to benefit from adopting this or a similar analysis strategy. 
 
-\TDinote{}{Maybe provide a plot with explanation of regions! MAAAYbe!}
+\begin{figure}[ht]
+    \centering
+    \subfloat[]{
+        \includegraphics[width=0.48\textwidth]{figures/hww/2d-discriminant/ggF_signal_Heatmap_VBF_vs_ggF.pdf} \hfill
+    } 
+    \subfloat[]{
+        \includegraphics[width=0.48\textwidth]{figures/hww/2d-discriminant/VBF_signal_Heatmap_VBF_vs_ggF.pdf} \hfill
+    } \\
+    \subfloat[]{
+        \includegraphics[width=0.48\textwidth]{figures/hww/2d-discriminant/non-Higgs_events_Heatmap_VBF_vs_ggF.pdf} \hfill
+    }
+    \caption{Two-dimensional distribution spanned by the two output nodes ``DNN VBF output'' and ``DNN ggF output'' of a multiclass DNN for the (a) ggF signal, (b) VBF signal, and (c) total background from non-Higgs boson events, shown in a common \TwoJet category for the ggF \TwoJet and VBF analysis.}
+    \label{app:fig:2d-discriminant} 
+\end{figure}
+
+\begin{figure}[t]
+        \newImageResizeCustom{0.7}{figures/hww/2d-discriminant/schematic-region-separation.pdf}
+    \caption{Schematic of partitioning in two-dimensional discriminant spanned by the two output nodes ``DNN VBF output'' and ``DNN ggF output'' of a multiclass DNN, representing the VBF-likeness and the ggF-likeness of an event.}
+    \label{app:hwwejet-schematic-partitioning}
+\end{figure}
 
 % %-----------------------------------------------------------------------
 % %-----------------------------------------------------------------------

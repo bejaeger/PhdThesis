@@ -21,11 +21,10 @@ In summary, the MC fit template is constructed using the following contributions
     \item \ttbar and $Wt$, separately treating uncertainties but using the same NF.
     \item $qq \to WW$ and $gg \to WW$ (together $WW$ (Strong)), separately treating uncertainties and using NFs for the $qq \to WW$ process in the ggF categories.
     \item Electroweak production of $WW$ ($WW$ (EW)).
-    \item \Zgamma, controlled by an NF.
+    \item \Zgamma using NFs.
     \item Misidentified leptons background (Mis-Id).
     \item $V\gamma$, other diboson processes ($W\gamma^*$, $WZ$, $ZZ$), and triboson processes, separately treating uncertainties (collectively denoted \OtherVVV).
 \end{itemize}
-Some of the contributions are summed in the results for illustrative purposes, for example, the $WW$ processes in the ggF categories. 
 
 \subsection{Fit types and inputs}
 The signal yields are parametrized as signal strengths in the likelihood, 
@@ -38,12 +37,13 @@ The results presented are based on three types of fits:
 \begin{itemize}
     \item 2-PoI fit: Measurement of the inclusive VBF and ggF production cross sections by extracting two signal strengths $\mu_{\text{VBF}}$ and $\mu_{\text{ggF}}$ as the \emph{parameter of interests} (PoIs).
     \item 1-PoI fit: Measurement of the combined VBF and ggF production cross section, treating the VBF and ggF signal with a common signal strength $\mu_{\text{VBF+ggF}}$.
-    \item 11-PoI fit: Measurement of signal cross sections separated in kinematic regions following the STXS framework. In total 11 signal strengths are measured targeting $ggH$ and EW $qqH$ production.
+    \item 11-PoI fit: Measurement of signal cross sections separated in kinematic regions following the STXS framework. In total 11 signal strengths are measured targeting $ggH$ and EW~$qqH$ production.
 \end{itemize}
 For all cross-section measurements, only signal acceptance uncertainties are considered in the statistical model. 
-In addition, the excess of the VBF signal over the background expectation is reported using the test statistic as shown in \cref{sec:hypothesis-testing}. Two 2-PoI fits are performed for this purpose that also include signal cross-section uncertainties in the signal templates. 
+To quantify the excess of the VBF signal over the background expectation two 2-PoI fits are performed that also include signal cross-section uncertainties in the signal templates. 
+The test statistic shown in \cref{sec:hypothesis-testing} is used for this purpose.
 
-The fit inputs used for the 2-PoI fit and 1-PoI fit are the same, and correspond to the SRs and CRs for the \ZeroJet, \OneJet, and \TwoJet categories as defined in \cref{sec:event-categorization,sec:bkg-estimation}. A total number of 22 regions are fit, 11 SRs and 11 CRs.
+The same fit inputs are used for the 2-PoI fit and 1-PoI. They correspond to the nominal SRs and CRs for the \ZeroJet, \OneJet, and \TwoJet categories as defined in \cref{sec:event-categorization,sec:bkg-estimation} and amount to a total number of 22 regions, 11 SRs and 11 CRs.
 For the 11-PoI fit, all STXS SRs and CRs are used as defined in \cref{subsec:STXS-categorization,subsubsec:stxs-crs}, which amounts to a total number of 44 regions, 17 SRs and 27 CRs. 
 
 The final fit discriminant in the ggF SRs is the \mT distribution. The same 6 bins are used in all regions: [0-90, 90-100, 100-110, 110-120, 120-130, 130-$\infty$]. 
@@ -93,8 +93,8 @@ In addition, some experimental four-momentum uncertainties and uncertainties on 
 Furthermore, the shape component of uncertainties of minor backgrounds ($V\gamma$, \Zgamma) are pruned, mainly because meaningful shape uncertainties cannot be estimated with the available MC samples. 
 
 Statistical fluctuations can also cause the up and down variations to be asymmetric around the nominal value. 
-For normalization uncertainties whose up and down variations differ by a factor of two or have the same sign, the larger variation is fixed and also used as ``opposite'' variation by mirroring it with respect to nominal.
-Similarly, for shape uncertainties that have at least one bin where the up and down variations have the same sign, the full shape uncertainty is symmetrized by fixing the larger variation and mirroring it with respect to nominal for use as the ``opposite'' variation in each bin.
+For normalization uncertainties whose up and down variations differ by a factor of two or have the same sign, the larger variation is fixed and also used as ``opposite'' variation by symmetrizing it with respect to nominal.
+Similarly, for shape uncertainties that have at least one bin where the up and down variations have the same sign, the full shape uncertainty is symmetrized by fixing the larger variation and symmetrizing it with respect to nominal.
 
 \paragraph{Smoothing of shape uncertainties}
 For the DNN discriminant, a smoothing procedure is applied to background shape uncertainties whose estimates are subject to large statistical fluctuations. 
@@ -110,15 +110,15 @@ An example of an uncertainty processed in such a way is shown in \cref{fig:dnn:s
         % {
         %     \newImageResizeCustom{0.48}{figures/plots/CKKW-smooth.pdf}
         % }
-    {\caption{DNN output distribution for the nominal \ttbar sample (\Powheg+\PYTHIA[8]), an alternative sample (\aMCATNLO+\PYTHIA[8]) including the symmetrized distribution with respect to the nominal, and smoothed distributions based on the difference between the nominal and alternative sample. The alternative sample is used to estimate the uncertainty due to the choice of matching procedure between matrix element calculations and the parton shower. The smoothed distribution is used in the statistical analysis as varied template. More information on the smoothing procedure can be found in the text.
+    {\caption{DNN output distribution for the nominal \ttbar sample (\Powheg+\PYTHIA[8]), an alternative sample (\aMCATNLO+\PYTHIA[8]) including the symmetrized distribution with respect to the nominal, and smoothed distributions based on the difference between the nominal and alternative sample. The alternative sample is used to estimate the uncertainty due to the choice of matching procedure between matrix element calculations and the parton shower. The smoothed distribution is used in the statistical analysis to define the nuisance parameter. More information on the smoothing procedure can be found in the text.
     \label{fig:dnn:smoothing} }}
 \end{figure}
 
 \subsection{Expected performance and validation of likelihood fit}
 \label{subsec:expected-performannce}
-The analysis strategy is optimized on MC simulated samples and signal-like data events are not analyzed until the statistical model is validated.
+The analysis strategy is optimized on MC simulated samples and signal-like data events are only analyzed after the statistical model is validated.
 An \emph{Asimov} dataset can be used to evaluate the expected performance of the likelihood fit. It is generated under the SM assumption, i.e., assuming the expected values for the backgrounds and signals ($\mu=1$). 
-This implies that the values of all fit parameters obtained from a fit (\emph{post-fit} values) to an Asimov dataset correspond to their expected values. 
+This implies that the values of all fit parameters obtained from a fit (\emph{post-fit} values) to the Asimov dataset correspond to their expected values. 
 The Asimov dataset is used to extract the expected uncertainties on the cross-section measurements and to assess the impact of different sources of uncertainties on the final results. 
 \Cref{fig:fit:breakdown} shows a representative list of NPs and their influence on the VBF cross section, \sigmaVBF. 
 \begin{figure}[th]
@@ -140,18 +140,18 @@ The Asimov dataset is used to extract the expected uncertainties on the cross-se
 The uncertainties that include ``ATLAS'' in their names correspond to experimental uncertainties, all other uncertainties are related to theory. 
 % The NPs are ordered in terms of their contribution to the total uncertainty (\emph{breakdown}) on the cross section \sigmaVBF. 
 %The impact is calculated by taking the square root of the difference in quadrature of the uncertainty on $\mu_{\mathrm{VBF}}$ resulting from a fit performed with all parameters floating and a fit where the NP under investigation is fixed to its nominal value. 
-It becomes apparent that theoretical uncertainties dominate, in particular the signal modelling uncertainties from the choice of parton shower model and matching procedure between the matrix element and parton shower. 
+It becomes apparent that theoretical uncertainties dominate, in particular the signal modelling uncertainties from the choice of both parton shower model and matching procedure between the matrix element and parton shower. 
 The largest background uncertainty is from the choice of \ttbar matching procedure and the leading experimental uncertainties come from the effect of the \MET soft term on the resolution of the \MET observable.  
 %, resulting from large shape differences in the DNN discriminant when the \MET soft term is varied. 
 All said uncertainties are mainly caused by shape differences in the DNN discriminant when the respective source of uncertainty is varied.
 The post-fit uncertainties of the NPs relative to their nominal ones are also shown. The \emph{constraints}, i.e., the extent to which the post-fit uncertainty is smaller than the nominal uncertainty, are reasonably small.
-This validates that the uncertainties are represented adequately in the statistical model. 
-The expected total uncertainty on the cross-section measurement corresponds to $\Delta \sigmaVBF = \pm  $. 
-The expected signal strength is extracted to be $\mu = 1^{+0.24}_{-0.21}$.
+This shows that the uncertainties are represented adequately in the statistical model. 
+%The expected total uncertainty on the cross-section measurement corresponds to $\Delta \sigmaVBF = \pm  $. 
+The expected signal strength is extracted to be $\muVBF = 1^{+0.24}_{-0.21}$.
 The expected discovery significance of the VBF signal is $6.2\,\sigma$. 
 
 \Cref{fig:fit:breakdown} also includes the NPs obtained from a fit to the actual data. 
-The \emph{pulls} of the NPs, defined as the difference of the post-fit central values and their corresponding nominal, $(\hat{\theta} - \theta_0 ) / \Delta \theta_0$, are relatively small. 
+The \emph{pulls} of the NPs, defined as the difference of the post-fit central values and their corresponding nominal ones, $(\hat{\theta} - \theta_0 ) / \Delta \theta_0$, are relatively small. 
 Furthermore, the constraints and the breakdown of uncertainties are comparable for the results obtained from a fit to Asimov data and actual data. 
 Because of these findings, the statistical model is deemed appropriate for the measurement performed. 
 Similar validation studies have been conducted for the ggF cross-section measurement as well as the STXS measurement and lead to the same conclusions. 
