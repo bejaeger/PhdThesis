@@ -1,146 +1,17 @@
 \chapter{Development of the VBF DNN}
 \label{app:chap:DNN}
-
-\section{Software suite for the development of the VBF DNN}
-\label{app:dnn:software-suite}
-The software used for the development of the DNN is based on industry-standard state-of-the-art ML libraries. 
-The entire workflow is based on Docker images that provide the necessary packages that are all built with a Python frontend. The simulated MC samples provided centrally within the ATLAS collaboration are first transformed in order to remove the ATLAS software dependencies and make them easily useable with open-source ML libraries. The data is then stored in hdf5 format, and handled with the numpy and pandas packages. The training is performed using Keras and TensorFlow. The scikit-learn library is included in the training, and the matplotlib package is used for data visualization. The final DNN model is stored in JSON format and deployed in the \HWW\ analysis using the C++ based LightWeight Tagger Neural Network (lwtnn) package [148].
-\todo{REFERENCES!}
-\todo{Mention FreeForestML}
-
-
-\section{Optimization studies for the development of the VBF DNN}
-\label{app:dnn:opt-studies}
-
-Different optimization studies for the VBF DNN were performed during the course of the author's PhD thesis.
-The following studies were performed with an earlier version of the DNN training setup, including an earlier version of the training data. For this reason, the absolute values of $Z0$(40 bins) are not necessarily comparable with other results presented in this thesis. However, they are perfectly suitable for drawing conclusions when being compared against each other.
-
-Many sets of observables were studied for use as DNN input variables.
-As baseline, the set of variables that was used in the BDT-based analysis of the previous iteration of the \HWW\ measurement \cite{HIGG-2016-07} is chosen, comprising in total 8 variables.
-The most important comparisons of the performances of models using an increasing number of variables are shown in \cref{tab:input-var-opt}.
-Comparing the baseline to the results labelled ``S1'' shows significant improvements. This is an indication that the DNN exploits the correlations between the single $m_{\ell_\alpha j_\beta}$ (with $\alpha, \beta = 1, 2$) and other observables. 
-Although the discrimination power of \pTjone and \pTjtwo in linear dimension is limited, they also introduce a significant performance improvement when being included (``S2''). The same is true for the \pTjthree observable (``S3''), which adds information about whether a third jet is present in the event. 
-The final variable that was added and showed benefits is \METSig (``S4''). This observable has only recently been developed for use in the ATLAS collaboration \cite{ATLAS-CONF-2018-038} and is a strong discriminant between events with real undetected high-\pT particles and events where the \MET is the result of resolution effects. 
-Overall the significance metric $Z0$(40 bins) improves by a maximum of almost 50\% when comparing the baseline with the best performing set.
-These results motivate the use of the 15 input variables that correspond to the set labelled ``S4'' in \cref{tab:input-var-opt}.
-In addition to the comparisons shown, several other observables were studied but did not lead to further improvements. 
-These tests included (i) using the $C_\ell$ observable separately instead of the sum for both leptons, (ii) using \MET instead of \METSig, and (iii) using the \pT of both leptons on top of the other 15 variables.
-Furthermore, the performance of DNN models trained with all 15 variables except one was studied. It was seen, that all of the chosen 15 variables provide discrimination power, although dropping highly correlated observables such as \mjj and \dyjj did not show strong performance losses.
-
-The physics-motivated optimization of the input variables was followed by the rather technical optimization of the neural network architecture. 
-The performances of different setups are shown in \cref{tab:architecture-opt}. All results are very similar to each other. Among the best performing architectures, the one with the least layers is chosen, which corresponds to the architecture labelled ``A4''. The results were produced with the set of variables labelled ``S3'' in \cref{tab:input-var-opt}
-
-\begin{table}[h]
-    \centering
-    \small
-    \begin{tabular}{ l l | r}
-        \toprule
-        Identifier & Input Variables                                                                                         & $Z0$(40 bins) \\
-        \midrule
-        Baseline   & \mjj, \dyjj, \lepetacent, \dphill, \mll, \mT, \pttot, $\sum_{\alpha,\beta=1,2} m_{\ell_\alpha j_\beta}$ & 7.7           \\
-        S1         & Baseline w/ separate \mlonejone, \mlonejtwo, \mltwojone, \mltwojtwo,                                    & 8.57          \\
-        S2         & S1 + \pTjone, \pTjtwo                                                                                   & 9.55          \\
-        S3         & S2 + \pTjthree                                                                                          & 10.92         \\
-        S4  & S3 + \METSig                                                                                            & 11.5          \\
-        \bottomrule
-    \end{tabular}
-    \caption{Comparison of the significance metric $Z0$(40 bins) for DNN models trained with different input variables.}
-    \label{tab:input-var-opt}
-\end{table}
-
-\begin{table}[h]
-    \centering
-    \small
-    \begin{tabular}{ l l | r}
-        \toprule
-        Identifier & Hidden layers                      & $Z0$(40 bins) \\
-        \midrule
-        A1         & {32, 16, 8}                        & 10.4          \\
-        A2         & {64, 32, 24, 16, 8}                & 10.6          \\
-        A3         & {128, 64, 32, 24, 16, 8}           & 10.7          \\
-        A4      & {256, 128, 64, 32, 24, 16, 8}      & 10.8          \\
-        A5         & {128, 128, 64, 64}                 & 10.5          \\
-        A6         & {512, 256, 128, 64, 32, 24, 16, 8} & 10.8          \\
-        \bottomrule
-    \end{tabular}
-    \caption{Comparison of the significance metric $Z0$(40 bins) for DNN models using different architectures.}
-    \label{tab:architecture-opt}
-\end{table}
-
-
-\section{Optimization of the EW $WW$ training fraction}
-\label{app:sec:ewww-sample-fraction-optimization}
-In a previous iteration of the VBF, \HWW\ analysis it was found that theoretical uncertainties related to particular processes dominate the final measurement uncertainties. In particular EW $WW$ processes that mimic the VBF signal signature contributed significantly in the highest DNN bin, which lead to large uncertainties.
-This prompted a change in the training procedure that places more emphasis on suppressing the EW $WW$ background by increasing the training fraction of the EW $WW$ sample in the training.
-In addition, the performance metric $Z0$(var. bins + syst. unc.) (see \cref{subsec:performance-metrics}) was introduced to take into account theoretical uncertainties on the different processes when comparing different DNN trainings.
-
-The results of this final optimization of the VBF DNN are shown by means of the expected number of events in the highest DNN bin in \cref{fig:bkg-fractions}. The contributions for each process without and with an increased training fraction for the EW $WW$ processes are displayed.
-The goal of this optimization is to achieve approximately equal number of expected events in the highest DNN bin for the dominant background processes with large uncertainties (which are ggF, EW $WW$, $WW$, and \ttbar, see \cref{tab:DNNtrainingstats}).
-This is expected to prove beneficial when combining the uncertainties in the statistical analysis, compared to a scenario where one of the backgrounds dominates.
-%Due to this change, the final measurement uncertainties of the VBF, \HWW\ production cross-section were reduced by roughly 5\%. 
-The details of this study that lead to the final choice of the EW $WW$ training fraction are visualized in \cref{fig:ew-fraction-scan}.
-It can be seen that the EW $WW$ fraction of the total background in the highest DNN bin decreases as the training fraction used for EW $WW$ processes in the training is increased.
-The training with an EW $WW$ training fraction of 0.05 roughly corresponds to the values shown in \cref{fig:bkg-fraction-a}.
-In the range of [0.06-0.12], the significance metrics that do not take into account theory uncertainties show a slight downward trend. The $Z0$(var. bins + syst. unc.) metric, on the other hand, shows a very subtle upward trend, indicating a benefit of suppressing the EW $WW$ content. While this metric does not cover all aspects that determine the final measurement uncertainties, it helps to select the model that performs best in the final statistical analysis and therefore provides an improved measure over the more simple metrics that do not account for theory uncertainties.
-
-\begin{table}[h]
-    \centering
-    \small
-    \begin{tabular}{ c  | c}
-        \toprule
-        Background sample   & $\sigma^\text{rel}_\text{approx}$ \\
-        \midrule
-        $H_{\mathrm{VBF}}$  & 0.3                               \\
-        $H_{\mathrm{ggF}}$  & 0.5                               \\
-        $t\bar{t}$          & 0.3                               \\
-        $Wt$                & 0.5                               \\
-        $WW$ (Strong)       & 0.3                               \\
-        $WW$ (EW)           & 0.5                               \\
-        $Z/\gamma*$         & 0.25                              \\
-        $V\gamma$           & 1                                 \\
-        Other $VV$          & 0.12                              \\
-        \bottomrule
-    \end{tabular}
-    \caption{Relative systematic uncertainty $\sigma^\text{rel}_\text{approx}$ assumed on the different processes for constructing a metric.}
-    \label{tab:rough-uncertainties}
-\end{table}
-
-% Significance Z0:
-% hww_syst_unc = {"Vgamma": 1, "otherVV":0.12, "Zjets": 0.25, "WW":0.3, "EWWW": 0.5, "singletop":0.5, "ttbar":0.3, "ggF":0.5, "VBF":0.3}
-
-\begin{figure}[t]
-    \subfloat[No optimized training fractions] {
-        \includegraphics[width=0.49\textwidth,trim=35 0 0 0]{figures/plots/bkg-fraction-highest-bin/pie-chart-fractions-old.pdf}
-        \label{fig:bkg-fractions-a}
-    }
-    \subfloat[Optimized EW $WW$ training fractions] {
-        \includegraphics[width=0.49\textwidth,trim=35 0 0 0]{figures/plots/bkg-fraction-highest-bin/pie-chart-fractions-new.pdf}
-        \label{fig:bkg-fractions-b}
-    }
-    \caption{Fraction of background in highest DNN output bin based on the validation set. }
-    \label{fig:bkg-fractions}
-\end{figure}
-
-% Plots made with SFUsMLKit on cedar with:
-% ./plot.py -c configs/HWW/winningSubmission.cfg --trainingFolderName dropout-02-5-fold-aggressive-lr-schedule-2-fine-scan-ewww-scan-etafix/210805_9_0.12_8226149877761426764
-\begin{figure}[t]
-    % \subfloat[] {
-    %     \newImageResizeCustom{0.47}{figures/plots/sample-fractions/sig_vs_lrate.pdf}
-    % }
-    % \subfloat[] {
-    \newImageResizeCustom{0.5}{figures/plots/sample-fractions/sig_vs_ew_fraction_lr9.pdf}
-    % }
-    \caption{}
-    \label{fig:ew-fraction-scan}
-\end{figure}
-
+\input{appendix/dnnstudies}
 
 
 \FloatBarrier
-\section{Distributions of the input variables in bins of the VBF DNN}
+\chapter{Auxiliary material for \HWW analysis}
+This section provides different supporting material for the \HWW analysis.
+
+\section{Distributions of the VBF DNN input variables with selections on the DNN}
 \label{app:dnn:input-vars}
 
-\Cref{fig:dnn-inputs-vbf-top1,fig:dnn-inputs-vbf-top2,fig:dnn-inputs-vbf-top3,fig:dnn-inputs-hwwdecay,fig:dnn-inputs-top-sup} show distributions of the DNN input variables with different selections on the DNN output. This shows the effect of the DNN on the variables. 
+To show the effect of the DNN on the DNN input variables, \cref{fig:dnn-inputs-vbf-top1,fig:dnn-inputs-vbf-top2,fig:dnn-inputs-vbf-top3,fig:dnn-inputs-hwwdecay,fig:dnn-inputs-top-sup} show distributions of the DNN input variables with different selections on the DNN output.
+This nicely shows the kinematics and topologies the DNN selects to define regions pure in the VBF signal.
 
 \captionsetup[subfloat]{captionskip=5pt} % space between subfloat caption and image
 \begin{figure}[ht]
@@ -160,8 +31,8 @@ In the range of [0.06-0.12], the significance metrics that do not take into acco
         \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN25-contOLV-lin.pdf} \hfill
         \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN87-contOLV-lin.pdf}
     } \\
-    {\caption{Distributions of $\dphill$, $\mll$, $\lepetacent$ in the VBF signal region.
-        Each row corresponds to one variable with different selections made on the DNN output.
+    {\caption{Distributions of $\mjj$, $\dyjj$, $\lepetacent$ in the VBF \TwoJet signal region.
+        Each row corresponds to one variable with different selections made on the DNN output as indicated in the figure. The solid orange line shows the expected VBF signal scaled by a factor of (left) 50, (center) 5, and (right) without any scaling.
         \label{fig:dnn-inputs-vbf-top1} }}
 \end{figure}
 
@@ -187,9 +58,9 @@ In the range of [0.06-0.12], the significance metrics that do not take into acco
         \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-Ml1j1-lin.pdf} \hfill
         \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN25-Ml1j1-lin.pdf} \hfill
         \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN87-Ml1j1-lin.pdf}
-    } 
-    {\caption{Distributions of $\mlonejone$, $\mltwojone$, $\mlonejtwo$, and $\mltwojtwo$ in the VBF signal region.
-            Each row shows one variable with different cuts on the DNN output distribution being applied in different columns.
+    }
+    {\caption{Distributions of $\mlonejone$, $\mltwojone$, $\mlonejtwo$, and $\mltwojtwo$ in the VBF \TwoJet signal region.
+            Each row corresponds to one variable with different selections made on the DNN output as indicated in the figure. The solid orange line shows the expected VBF signal scaled by a factor of (left) 50, (center) 5, and (right) without any scaling.
             \label{fig:dnn-inputs-vbf-top2} }}
 \end{figure}
 
@@ -210,9 +81,9 @@ In the range of [0.06-0.12], the significance metrics that do not take into acco
         \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-thirdJetPt-lin.pdf} \hfill
         \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN25-thirdJetPt-lin.pdf} \hfill
         \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN87-thirdJetPt-lin.pdf}
-    } 
-    {\caption{Distributions of $\pTjone$, $\pTjtwo$, and $\pTjthree$ in the VBF signal region.
-            Each row shows one variable with different cuts on the DNN output distribution being applied in different columns.
+    }
+    {\caption{Distributions of $\pTjone$, $\pTjtwo$, and $\pTjthree$ in the VBF \TwoJet signal region.
+            Each row corresponds to one variable with different selections made on the DNN output as indicated in the figure. The solid orange line shows the expected VBF signal scaled by a factor of (left) 50, (center) 5, and (right) without any scaling.
             \label{fig:dnn-inputs-vbf-top3}}}
 \end{figure}
 
@@ -233,10 +104,10 @@ In the range of [0.06-0.12], the significance metrics that do not take into acco
         \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-MT-lin.pdf} \hfill
         \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN25-MT-lin.pdf} \hfill
         \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN87-MT-lin.pdf}
-    } 
-    {\caption{Distributions of $\dphill$, $\mll$, $\mT$ in the VBF signal region.
-        Each row corresponds to one variable with different selections made on the DNN output.
-        \label{fig:dnn-inputs-hwwdecay} }}
+    }
+    {\caption{Distributions of $\dphill$, $\mll$, $\mT$ in the VBF \TwoJet signal region.
+            Each row corresponds to one variable with different selections made on the DNN output as indicated in the figure. The solid orange line shows the expected VBF signal scaled by a factor of (left) 50, (center) 5, and (right) without any scaling.
+            \label{fig:dnn-inputs-hwwdecay} }}
 \end{figure}
 
 
@@ -253,54 +124,50 @@ In the range of [0.06-0.12], the significance metrics that do not take into acco
         \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN25-METSig_broad-lin.pdf} \hfill
         \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN87-METSig_broad-lin.pdf}
     } \\
-    {\caption{Distributions of $\pttot$ and $\METSig$ in the VBF signal region.
-            Each row shows one variable with different cuts on the DNN output distribution being applied in different columns.
-            \label{fig:dnn-inputs-top-sup} }}
+    {\caption{Distributions of $\pttot$ and $\METSig$ in the VBF \TwoJet signal region.
+        Each row corresponds to one variable with different selections made on the DNN output as indicated in the figure. The solid orange line shows the expected VBF signal scaled by a factor of (left) 50, (center) 5, and (right) without any scaling.
+        \label{fig:dnn-inputs-top-sup} }}
 \end{figure}
 
-
-
-
-\FloatBarrier
-\chapter{Auxiliary material for \HWW analysis}
 
 \FloatBarrier
 \section{Cutflows}
 \label{app:cutflows}
 
+\Cref{app:tab:cutflows} shows the expected number of events at different selection stages to define the VBF \TwoJet SRs and CRs and the ggF \TwoJet SRs and CRS.
+
 \begin{landscape}
-    \thispagestyle{empty} 
+    \thispagestyle{empty}
     \begin{table}
         \subfloat[]{
-        \resizebox{\textwidth}{!}{
-        \input{figures/hww/cutflows/run2-emme-VBF-cutflow-processes-paper-VBF-cutflow-cuts-default.tex}
-        }
-        % \caption{VBF Cutflow.}
-        % \label{tab:VBF-cutflow}
+            \resizebox{\textwidth}{!}{
+                \input{figures/hww/cutflows/run2-emme-VBF-cutflow-processes-paper-VBF-cutflow-cuts-default.tex}
+            }
         } \\
         \vspace{20pt}
         \subfloat[]{
-        \resizebox{\textwidth}{!}{
-        \input{figures/hww/cutflows/run2-emme-VBF-cutflow-processes-paper-ggF-cutflow-cuts-2jet.tex}
+            \resizebox{\textwidth}{!}{
+                \input{figures/hww/cutflows/run2-emme-VBF-cutflow-processes-paper-ggF-cutflow-cuts-2jet.tex}
+            }
         }
-        }
-        \caption{(a) VBF (b) ggF 2-jet cutflow.}
+        \caption{Expected number of events at different selection stages to define the (a) VBF \TwoJet SRs and CRs and (b) the ggF \TwoJet SRs and CRs. For (a) the selections from the row labelled ``Preselection'' to the row labelled ``OLV'' are applied subsequently; for (b) the selections from the row labelled ``Preselection'' to the row labelled ``fail OLV $||$ fail CJV'' are applied subsequently. All respective other rows include all selections that define the indicated regions as described in \cref{sec:event-selection}.}
         \label{app:tab:cutflows}
-    \end{table}   
+    \end{table}
 \end{landscape}
 
-\FloatBarrier
-\section{Post-fit Distributions of the DNN input variables}
-\label{app:post-fit-distributions}
-\TDinote{}{MAYBE!?}
+% \FloatBarrier
+% \section{Post-fit Distributions of the DNN input variables}
+% \label{app:post-fit-distributions}
+% \TDinote{}{MAYBE!?}
+% Not for now!
 
-
 \FloatBarrier
-\section{DNN distributions in STXS SRs}
-\Cref{fig:dnn-output-vbf-stxs} shows the distribution of the DNN output in the top-quark and \Ztautau CRs used in the VBF, STXS analysis. 
+\section{DNN output distributions in the VBF STXS CRs}
+\Cref{fig:dnn-output-vbf-stxs} shows the distributions of the DNN output in the top-quark and \Ztautau CRs used in the VBF, STXS analysis prior to the statistical analyiss.
+The distributions confirm that the data are modelled well by the MC simulation.
 
 \captionsetup[subfloat]{captionskip=5pt} % space between subfloat caption and image
-\begin{figure}[t]
+\begin{figure}[h!]
     \centering
     \subfloat[{\tiny $350 \leq \mjj < 700~\GeV, \pTH < 200~\GeV$}]{
         \includegraphics[width=0.32\textwidth]{figures/220605-Thesis/topcr/stxs/plots/run2-emme-CutVBF_TopControl_2jet_MJJ_350_700_PTH_0_200-DNNoutputG_FitBin1-log.pdf} \hfill
@@ -320,45 +187,48 @@ In the range of [0.06-0.12], the significance metrics that do not take into acco
     \subfloat[{\tiny $\mjj \geq 350~\GeV, \pTH \geq 200~\GeV$}]{
         \includegraphics[width=0.32\textwidth]{figures/220605-Thesis/zttcr/stxs/plots/run2-emme-CutVBF_ZtautauControl_2jet_MJJ_GT350_PTH_GT200-DNNoutputG_FitBin1-log.pdf} \hfill
     }
-    {\caption{Distribution of the DNN output in the (a)-(c) top-quark CRs and (d)-(f) \Ztautau CRs used in the VBF, STXS analysis.
+    {\caption{
+            Distribution of the DNN output in (a)-(c) the top-quark CRs and (d)-(f) the \Ztautau CRs used in the VBF, STXS analysis. The yellow band corresponds to the square root of the sum in quadrature of the MC statistical uncertainties and the normalization component of the dominant experimental systematic uncertainties (JER, JES, Flavor-tagging, and \MET uncertainties). The various uncertainty components are discussed in more detail in \cref{sec:systematics}.
             \label{fig:dnn-output-vbf-stx} }}
 \end{figure}
 \captionsetup[subfloat]{captionskip=7pt} % space between subfloat caption and image
 
 
 \FloatBarrier
-\section{Event Selections in the ggF \ZeroJet and \OneJet Category}
+\section{Distributions in the ggF \ZeroJet and \OneJet Category}
 \label{app:event-selection-ggf}
+
+The distributions shown in \cref{fig:ggf:Plots:selections} illustrate the event selections made to define the ggF \ZeroJet and \OneJet category. This motivates the selections and reveals the background processes that are primarily suppressed by each requirement. 
 
 \begin{figure}[!h]
     \centering
     \subfloat[]{
-      \includegraphics[width=0.49\textwidth]{\paperfiguredir/ggF/ZeroJet/CutGGF_Ptll_0jet-Mll}
-      \label{fig:ggf:Plots:selections-a}
+        \includegraphics[width=0.49\textwidth]{\paperfiguredir/ggF/ZeroJet/CutGGF_Ptll_0jet-Mll}
+        \label{fig:ggf:Plots:selections-a}
     }
     \subfloat[]{
-      \includegraphics[width=0.49\textwidth]{\paperfiguredir/ggF/ZeroJet/CutGGF_bVeto_0jet-DPhill}
-      \label{fig:ggf:Plots:selections-b}
+        \includegraphics[width=0.49\textwidth]{\paperfiguredir/ggF/ZeroJet/CutGGF_bVeto_0jet-DPhill}
+        \label{fig:ggf:Plots:selections-b}
     } \\
     \subfloat[]{
-      \includegraphics[width=0.49\textwidth]{\paperfiguredir/ggF/OneJet/CutGGF_ZttVeto_1jet-Mll}
-      \label{fig:ggf:Plots:selections-c}
+        \includegraphics[width=0.49\textwidth]{\paperfiguredir/ggF/OneJet/CutGGF_ZttVeto_1jet-Mll}
+        \label{fig:ggf:Plots:selections-c}
     }
     \subfloat[]{
-      \includegraphics[width=0.49\textwidth]{\paperfiguredir/ggF/OneJet/CutGGF_TopoMll_1jet-DPhill}
-      \label{fig:ggf:Plots:selections-d}
+        \includegraphics[width=0.49\textwidth]{\paperfiguredir/ggF/OneJet/CutGGF_TopoMll_1jet-DPhill}
+        \label{fig:ggf:Plots:selections-d}
     }
-  \caption{
-  Distributions of (a) \mll\ and (b) \dphill\ in the \ZeroJet category as well as (c) \mll\ and (d) \dphill\ in the \OneJet category, after the preselection and background rejection steps, and also after the selection on \mll\ for the \dphill plots. The dashed lines indicate where the selection on the observable is made. The distributions are normalized to
-  their nominal yields, before the final fit to all SRs and CRs (pre-fit normalizations). The hatched band shows the normalization component of the total pre-fit uncertainty, assuming SM Higgs boson production. The bottom panels show the normalized distributions for the signal and backgrounds, from which it can be inferred which background processes are primarily removed by the indicated selections.
-  Figure and caption taken from \cref{HWWPaper}. 
-  \label{fig:ggf:Plots:selections}
-  }
-  \end{figure}
-  
+    \caption{
+        Distributions of (a) \mll\ and (b) \dphill\ in the \ZeroJet category as well as (c) \mll\ and (d) \dphill\ in the \OneJet category, after the preselection and background rejection steps, and also after the selection on \mll\ for the \dphill plots. The dashed lines indicate where the selection on the observable is made. The hatched band shows the normalization component of the total pre-fit uncertainty, assuming SM Higgs boson production. The bottom panels show the normalized distributions for the signal and backgrounds, from which it can be inferred which background processes are primarily removed by the indicated selections.
+        Figure and caption taken from \cref{HWWPaper}.
+        \label{fig:ggf:Plots:selections}
+    }
+\end{figure}
+
 \FloatBarrier
 \section{Post-fit distributions in CRs}
 \label{app:post-fit-cr-dists}
+
 \TDinote{Add MT and DNN output plots post fit in CRs}
 
 
@@ -465,177 +335,177 @@ Although the number of events in that category accounts for only $\mathcal{O}(1\
     Theoretical uncertainties in the normalization of these processes are derived and propagated, leading to systematic uncertainties in the fake factor.
     In order to reduce the impact of theoretical uncertainties associated to the $WZ$ process, the normalization of the $WZ$ contribution is extracted from a control region. The CR is defined by inverting the $m_T^W$ selection to $m_T^W > 50\,$GeV and requiring the Mis-Id candidate to pass the full identification criteria. This region is very pure in $WZ$ events so that a precise normalization factor of $0.99 \pm 0.01$ can be extracted and applied in the \Zjets selection. The impact of the uncertainties affecting similarly the normalization in the \Zjets selection and the $WZ$ CR selection can thus be reduced.
 
-% Uncertainties associated to the $WZ$ process and their impact on the fake factors are estimated with simulated samples and propagated to the final analysis results.
-% Together they are referred to as the $EW$ subtraction uncertainty.
+    % Uncertainties associated to the $WZ$ process and their impact on the fake factors are estimated with simulated samples and propagated to the final analysis results.
+    % Together they are referred to as the $EW$ subtraction uncertainty.
 
-\subsubsection{Correction factor and flavor composition uncertainty}
-The nominal fake factors are derived in \Zjets candidate events, because of the ability to define a region very pure in \Zjets events with little contamination from other processes. However, the dominant contribution to the Mis-Id background in this analysis comes from \Wjets processes.
-Because the flavor of the quarks that give rise to the jets in \Zjets processes differs on average from that in \Wjets processes, and the quark flavor is expected to affect the misidentification rate, a \emph{correction factor} (CF) is applied to the nominal fake factors.
-The CF is given as the ratio of fake factors derived in simulated \Wjets events and \Zjets events,
-\begin{equation}
-    CF = \frac{FF^{\Wjets}}{FF^{\Zjets}},
-\end{equation}
-and applied as a multiplicative factor to the fake factor,
-\begin{equation}
-    FF^{\Wjets} = FF^{\Zjets} \times CF.
-\end{equation}
-The same selections are applied to the simulated samples as in the three-lepton \Zjets selection and the CF is derived separately for misidentified electrons and muons.
-The systematic uncertainties associated to the CF are derived by using an alternative MC generator and summed in quadrature with the statistical uncertainty in the simulated \Wjets and \Zjets sample.
-
-
-\begin{table}[ht]
-    \begin{center}
-        \input{tables/hww/fakes/FF-summary.tex}
-    \end{center}
-    \caption{Summary of the fake factors from the $Z$+jets estimate with uncertainties. All uncertainties are quoted in percent on the nominal value. More information on the different uncertainty components is given in the text.
-        % \textit{Value} denotes the nominal fake factor value. \textit{Statistical} denotes the statistical uncertainties on the fake factors including the extrapolation uncertainty for the highest muon \pT bin. \textit{EW Subtraction} denotes the uncertainty due to the electroweak backgrounds that enter the $Z$+jets fake factor estimate. \textit{Sample Composition} denotes the uncertainty that accounts for differences in fake factors between $Z$+jets and $W$+jets processes, and includes both statistical and systematic uncertainty on the correction factors. The column \textit{Total} sums all individual contributions in quadrature to give an overview of the total uncertainty of the fake factor. In the fit, however, the EW subtraction and sample composition uncertainties are treated as correlated between different bins, while the statistical uncertainty is uncorrelated.
-    }
-    \label{tab:ZjetsFF-uncertainties}
-    % Nominal values, statistical uncertainties and EWSUBTR uncertainties produced on tag kon_improveZjetsFFStats_v2
-\end{table}
-
-\FloatBarrier
-\section{More results}
-
-The observed number of events in each nominal signal category as well as the post-fit MC yields as obtained from the 2-PoI fit are shown in \cref{tab:ggF_VBF_yields}.
-The fitted NFs are shown in \cref{tab:CRs_NF}.
-The relative uncertainty on a given NF used to normalize a certain process is larger than the relative uncertainty on the corresponding yield in \cref{tab:ggF_VBF_yields} because of large anti-correlations between systematic uncertainties in the CRs and SRs. 
-
-\begin{table}[ht]
-  \centering
-  \caption{
-    Post-fit MC and data yields in the ggF and VBF SRs. Yields in the bin with the highest VBF DNN output are also presented.
-    The quoted uncertainties correspond to the statistical uncertainties, together with the experimental and theory modeling systematic uncertainties.
-    The sum of all the contributions may differ from the total value due to rounding.
-    Moreover, the uncertainty in the total yield differs from the sum in quadrature of the single-process uncertainties due to the effect of anticorrelations between the sources of their systematic uncertainties, which are larger than their MC statistical uncertainties.
-    \label{tab:ggF_VBF_yields}
-  }
-  \scalebox{0.95}{
-    \begin{tabular}{lS[table-format=5,table-number-alignment=right]@{$\,\pm\,$}
-      S[table-format=3,table-number-alignment=left]
-      S[table-format=5,table-number-alignment=right]@{$\,\pm\,$}
-      S[table-format=3,table-number-alignment=left]
-      S[table-format=5,table-number-alignment=right]@{$\,\pm\,$}
-      S[table-format=3,table-number-alignment=left]
-      S[table-format=5,table-number-alignment=right]@{$\,\pm\,$}
-      S[table-format=3,table-number-alignment=left]
-      S[table-format=2.2,table-number-alignment=right]@{$\,\pm\,$}
-      S[table-format=1.2,table-number-alignment=left]}
-      \dbline
-      Process            & \multicolumn{2}{c}{\ZeroJet ggF} & \multicolumn{2}{c}{\OneJet ggF} & \multicolumn{2}{c}{\TwoJet ggF}                            & \multicolumn{4}{c}{\TwoJet VBF}  \tabularnewline
-                         & \multicolumn{2}{c}{}             & \multicolumn{2}{c}{}            & \multicolumn{2}{c}{}                                       & \multicolumn{2}{c}{}                             & \multicolumn{2}{c}{DNN:}\tabularnewline
-                         & \multicolumn{2}{c}{}             & \multicolumn{2}{c}{}            & \multicolumn{2}{c}{}                                       & \multicolumn{2}{c}{Inclusive}                    & \multicolumn{2}{c}{$[0.87,1.0]$}\tabularnewline
-      \sgline
-      $H_{\mathrm{ggF}}$ & 2100                             & 220                             & 1100                                                       & 130                                              & 440                                             & 90  & 209   & 40  & 2.6  & 0.9   \tabularnewline
-      $H_{\mathrm{VBF}}$ & 23                               & 9                               & 103                                                        & 30                                               & 46                                              & 12  & 180   & 40  & 28.8 & 5.5   \tabularnewline
-      \sgline
-      Other Higgs        & 40                               & 20                              & 55                                                         & 28                                               & 55                                              & 27  & 29    & 15  & 0.04 & 0.02   \tabularnewline
-      $WW$               & 9700                             & 350                             & 3500                                                       & 410                                              & 1500                                            & 470 & 2100  & 340 & 4.6  & 1.2  \tabularnewline
-      $t\bar{t}/Wt$      & 2200                             & 210                             & 5300                                                       & 340                                              & 6100                                            & 500 & 7600  & 370 & 2.6  & 0.8   \tabularnewline
-      $Z/\gamma^{*}$     & 140                              & 50                              & 280                                                        & 40                                               & 930                                             & 70  & 1300  & 300 & 0.6  & 0.1   \tabularnewline
-      Other $VV$         & 1400                             & 130                             & 840                                                        & 100                                              & 470                                             & 90  & 380   & 80  & 0.6  & 0.1   \tabularnewline
-      Mis-Id             & 1200                             & 130                             & 720                                                        & 90                                               & 470                                             & 50  & 330   & 40  & 1.7  & 0.2   \tabularnewline
-      \sgline
-      Total              & 16770                            & 130                             & 11940                                                      & 110                                              & 10030                                           & 100 & 12200 & 180 & 42.0 & 5.1  \tabularnewline
-      Observed           & \multicolumn{2}{c}{\num{16726}}  & \multicolumn{2}{c}{\num{11917}} & \multicolumn{2}{c}{\ \ \num[group-minimum-digits=4]{9982}} & \multicolumn{2}{c}{\num{12189}}                  & \multicolumn{2}{c}{\num{38}}  \tabularnewline
-      \dbline
-    \end{tabular}
-  }
-\end{table}
-
-\begin{table}[!h]
-  \centering
-  \renewcommand{\arraystretch}{1.6}
-  \caption{
-    Post-fit normalization factors which scale the corresponding estimated yields in the relevant signal region; the dash indicates where a MC-based normalization is used.
-    The quoted uncertainties include both the statistical and systematic contributions.
-  }
-  \label{tab:CRs_NF}
-  \scalebox{1.0}{
-    \begin{tabular}{c c c c}
-      \hline\hline
-      Category     & $WW$                   & $t\bar{t}/Wt$           & $Z/\gamma^{\ast}$       \\
-      \hline\hline
-      \ZeroJet ggF & $1.02^{+0.07}_{-0.07}$ & $0.93^ {+0.22}_{-0.17}$ & $0.96^ {+0.07}_{-0.06}$ \\
-      \OneJet ggF  & $0.85^{+0.16}_{-0.15}$ & $1.05^ {+0.19}_{-0.16}$ & $0.98^ {+0.10}_{-0.09}$ \\
-      \TwoJet ggF  & $0.81^{+0.34}_{-0.33}$ & $0.96^ {+0.23}_{-0.18}$ & $0.98^ {+0.18}_{-0.17}$ \\
-      \TwoJet VBF  & --                     & $0.92^ {+0.33}_{-0.21}$ & $0.93^ {+0.23}_{-0.19}$ \\
-      \noalign{\vskip 1mm}
-      \hline\hline
-    \end{tabular}
-  }
-\end{table}
+    \subsubsection{Correction factor and flavor composition uncertainty}
+    The nominal fake factors are derived in \Zjets candidate events, because of the ability to define a region very pure in \Zjets events with little contamination from other processes. However, the dominant contribution to the Mis-Id background in this analysis comes from \Wjets processes.
+    Because the flavor of the quarks that give rise to the jets in \Zjets processes differs on average from that in \Wjets processes, and the quark flavor is expected to affect the misidentification rate, a \emph{correction factor} (CF) is applied to the nominal fake factors.
+    The CF is given as the ratio of fake factors derived in simulated \Wjets events and \Zjets events,
+    \begin{equation}
+        CF = \frac{FF^{\Wjets}}{FF^{\Zjets}},
+    \end{equation}
+    and applied as a multiplicative factor to the fake factor,
+    \begin{equation}
+        FF^{\Wjets} = FF^{\Zjets} \times CF.
+    \end{equation}
+    The same selections are applied to the simulated samples as in the three-lepton \Zjets selection and the CF is derived separately for misidentified electrons and muons.
+    The systematic uncertainties associated to the CF are derived by using an alternative MC generator and summed in quadrature with the statistical uncertainty in the simulated \Wjets and \Zjets sample.
 
 
-\FloatBarrier
-\section{STXS Measurement}
-\label{app:stxs-measurement}
-\begin{table}[htp]
-    \caption{
-    Best-fit values and uncertainties for the production cross section times $\hww$ branching fraction $({\sigma_i \cdot \mathcal{B}_{H \to WW^{\ast}}})$ in each STXS bin.
-    }
-    \begin{center}
-      \small
-      \renewcommand{\arraystretch}{1.5}
-      \scalebox{0.90}{
-        \input{tables/hww/results/stxs-measurement.tex}
-      }
-    \end{center}
-    \label{tab:STXS-XSecs}
-  \end{table}
+    \begin{table}[ht]
+        \begin{center}
+            \input{tables/hww/fakes/FF-summary.tex}
+        \end{center}
+        \caption{Summary of the fake factors from the $Z$+jets estimate with uncertainties. All uncertainties are quoted in percent on the nominal value. More information on the different uncertainty components is given in the text.
+            % \textit{Value} denotes the nominal fake factor value. \textit{Statistical} denotes the statistical uncertainties on the fake factors including the extrapolation uncertainty for the highest muon \pT bin. \textit{EW Subtraction} denotes the uncertainty due to the electroweak backgrounds that enter the $Z$+jets fake factor estimate. \textit{Sample Composition} denotes the uncertainty that accounts for differences in fake factors between $Z$+jets and $W$+jets processes, and includes both statistical and systematic uncertainty on the correction factors. The column \textit{Total} sums all individual contributions in quadrature to give an overview of the total uncertainty of the fake factor. In the fit, however, the EW subtraction and sample composition uncertainties are treated as correlated between different bins, while the statistical uncertainty is uncorrelated.
+        }
+        \label{tab:ZjetsFF-uncertainties}
+        % Nominal values, statistical uncertainties and EWSUBTR uncertainties produced on tag kon_improveZjetsFFStats_v2
+    \end{table}
 
-\TDinote{Include uncertainty breakdown plot!}
+    \FloatBarrier
+    \section{More results}
 
-\FloatBarrier
-\section{STXS Stage-1.2 Framework}
-\label{app:stxs-measurements-aux}
+    The observed number of events in each nominal signal category as well as the post-fit MC yields as obtained from the 2-PoI fit are shown in \cref{tab:ggF_VBF_yields}.
+    The fitted NFs are shown in \cref{tab:CRs_NF}.
+    The relative uncertainty on a given NF used to normalize a certain process is larger than the relative uncertainty on the corresponding yield in \cref{tab:ggF_VBF_yields} because of large anti-correlations between systematic uncertainties in the CRs and SRs.
 
-\Cref{fig:stxs:stage-12-definition} shows the definitions of the fiducial kinematic regions in the Stage-1.2 STXS framework, including an indication of the merged regions measured in the \HWW analysis. 
+    \begin{table}[ht]
+        \centering
+        \caption{
+            Post-fit MC and data yields in the ggF and VBF SRs. Yields in the bin with the highest VBF DNN output are also presented.
+            The quoted uncertainties correspond to the statistical uncertainties, together with the experimental and theory modeling systematic uncertainties.
+            The sum of all the contributions may differ from the total value due to rounding.
+            Moreover, the uncertainty in the total yield differs from the sum in quadrature of the single-process uncertainties due to the effect of anticorrelations between the sources of their systematic uncertainties, which are larger than their MC statistical uncertainties.
+            \label{tab:ggF_VBF_yields}
+        }
+        \scalebox{0.95}{
+            \begin{tabular}{lS[table-format=5,table-number-alignment=right]@{$\,\pm\,$}
+                S[table-format=3,table-number-alignment=left]
+                S[table-format=5,table-number-alignment=right]@{$\,\pm\,$}
+                S[table-format=3,table-number-alignment=left]
+                S[table-format=5,table-number-alignment=right]@{$\,\pm\,$}
+                S[table-format=3,table-number-alignment=left]
+                S[table-format=5,table-number-alignment=right]@{$\,\pm\,$}
+                S[table-format=3,table-number-alignment=left]
+                S[table-format=2.2,table-number-alignment=right]@{$\,\pm\,$}
+                S[table-format=1.2,table-number-alignment=left]}
+                \dbline
+                Process            & \multicolumn{2}{c}{\ZeroJet ggF} & \multicolumn{2}{c}{\OneJet ggF} & \multicolumn{2}{c}{\TwoJet ggF}                            & \multicolumn{4}{c}{\TwoJet VBF}  \tabularnewline
+                                   & \multicolumn{2}{c}{}             & \multicolumn{2}{c}{}            & \multicolumn{2}{c}{}                                       & \multicolumn{2}{c}{}                             & \multicolumn{2}{c}{DNN:}\tabularnewline
+                                   & \multicolumn{2}{c}{}             & \multicolumn{2}{c}{}            & \multicolumn{2}{c}{}                                       & \multicolumn{2}{c}{Inclusive}                    & \multicolumn{2}{c}{$[0.87,1.0]$}\tabularnewline
+                \sgline
+                $H_{\mathrm{ggF}}$ & 2100                             & 220                             & 1100                                                       & 130                                              & 440                                             & 90  & 209   & 40  & 2.6  & 0.9   \tabularnewline
+                $H_{\mathrm{VBF}}$ & 23                               & 9                               & 103                                                        & 30                                               & 46                                              & 12  & 180   & 40  & 28.8 & 5.5   \tabularnewline
+                \sgline
+                Other Higgs        & 40                               & 20                              & 55                                                         & 28                                               & 55                                              & 27  & 29    & 15  & 0.04 & 0.02   \tabularnewline
+                $WW$               & 9700                             & 350                             & 3500                                                       & 410                                              & 1500                                            & 470 & 2100  & 340 & 4.6  & 1.2  \tabularnewline
+                $t\bar{t}/Wt$      & 2200                             & 210                             & 5300                                                       & 340                                              & 6100                                            & 500 & 7600  & 370 & 2.6  & 0.8   \tabularnewline
+                $Z/\gamma^{*}$     & 140                              & 50                              & 280                                                        & 40                                               & 930                                             & 70  & 1300  & 300 & 0.6  & 0.1   \tabularnewline
+                Other $VV$         & 1400                             & 130                             & 840                                                        & 100                                              & 470                                             & 90  & 380   & 80  & 0.6  & 0.1   \tabularnewline
+                Mis-Id             & 1200                             & 130                             & 720                                                        & 90                                               & 470                                             & 50  & 330   & 40  & 1.7  & 0.2   \tabularnewline
+                \sgline
+                Total              & 16770                            & 130                             & 11940                                                      & 110                                              & 10030                                           & 100 & 12200 & 180 & 42.0 & 5.1  \tabularnewline
+                Observed           & \multicolumn{2}{c}{\num{16726}}  & \multicolumn{2}{c}{\num{11917}} & \multicolumn{2}{c}{\ \ \num[group-minimum-digits=4]{9982}} & \multicolumn{2}{c}{\num{12189}}                  & \multicolumn{2}{c}{\num{38}}  \tabularnewline
+                \dbline
+            \end{tabular}
+        }
+    \end{table}
 
-\begin{figure}[h]
-    \centering
-    \subfloat[]{
-        \newImageResizeCustom{0.9}{figures/hww/stxs/ggFSTXS-measured.pdf}
-    } \\
-    \subfloat[]{
-        \newImageResizeCustom{0.9}{figures/hww/stxs/VBFSTXS-measured.pdf}
-    } \\
-    {\caption{Definition of fiducial kinematic regions in the Stage-1.2 STXS framework for (a) $ggH$ and (b) EW~$qqH$ production. The colored boxes indicate the merged regions measured in the \HWW analysis.
+    \begin{table}[!h]
+        \centering
+        \renewcommand{\arraystretch}{1.6}
+        \caption{
+            Post-fit normalization factors which scale the corresponding estimated yields in the relevant signal region; the dash indicates where a MC-based normalization is used.
+            The quoted uncertainties include both the statistical and systematic contributions.
+        }
+        \label{tab:CRs_NF}
+        \scalebox{1.0}{
+            \begin{tabular}{c c c c}
+                \hline\hline
+                Category     & $WW$                   & $t\bar{t}/Wt$           & $Z/\gamma^{\ast}$       \\
+                \hline\hline
+                \ZeroJet ggF & $1.02^{+0.07}_{-0.07}$ & $0.93^ {+0.22}_{-0.17}$ & $0.96^ {+0.07}_{-0.06}$ \\
+                \OneJet ggF  & $0.85^{+0.16}_{-0.15}$ & $1.05^ {+0.19}_{-0.16}$ & $0.98^ {+0.10}_{-0.09}$ \\
+                \TwoJet ggF  & $0.81^{+0.34}_{-0.33}$ & $0.96^ {+0.23}_{-0.18}$ & $0.98^ {+0.18}_{-0.17}$ \\
+                \TwoJet VBF  & --                     & $0.92^ {+0.33}_{-0.21}$ & $0.93^ {+0.23}_{-0.19}$ \\
+                \noalign{\vskip 1mm}
+                \hline\hline
+            \end{tabular}
+        }
+    \end{table}
+
+
+    \FloatBarrier
+    \section{STXS Measurement}
+    \label{app:stxs-measurement}
+    \begin{table}[htp]
+        \caption{
+        Best-fit values and uncertainties for the production cross section times $\hww$ branching fraction $({\sigma_i \cdot \mathcal{B}_{H \to WW^{\ast}}})$ in each STXS bin.
+        }
+        \begin{center}
+            \small
+            \renewcommand{\arraystretch}{1.5}
+            \scalebox{0.90}{
+                \input{tables/hww/results/stxs-measurement.tex}
+            }
+        \end{center}
+        \label{tab:STXS-XSecs}
+    \end{table}
+
+    \TDinote{Include uncertainty breakdown plot!}
+
+    \FloatBarrier
+    \section{STXS Stage-1.2 Framework}
+    \label{app:stxs-measurements-aux}
+
+    \Cref{fig:stxs:stage-12-definition} shows the definitions of the fiducial kinematic regions in the Stage-1.2 STXS framework, including an indication of the merged regions measured in the \HWW analysis.
+
+    \begin{figure}[h]
+        \centering
+        \subfloat[]{
+            \newImageResizeCustom{0.9}{figures/hww/stxs/ggFSTXS-measured.pdf}
+        } \\
+        \subfloat[]{
+            \newImageResizeCustom{0.9}{figures/hww/stxs/VBFSTXS-measured.pdf}
+        } \\
+        {\caption{Definition of fiducial kinematic regions in the Stage-1.2 STXS framework for (a) $ggH$ and (b) EW~$qqH$ production. The colored boxes indicate the merged regions measured in the \HWW analysis.
             \label{fig:stxs:stage-12-definition} }}
-\end{figure}
+    \end{figure}
 
 
-\chapter{Study to Improve the \TwoJet Categories using Multiclass Classification}
-\label{app:multi-class-2jet-strategy}
-The author of this thesis performed a preliminary study to improve the measurements in the ggF \TwoJet and VBF \TwoJet category of the \HWW analysis. 
-The study aims at improving both the distinction of ggF \TwoJet events from the backgrounds and the separation between ggF \TwoJet events and VBF \TwoJet events, while also keeping the analysis simple.
-The proposed solution is to use multiclass classification in a new \TwoJet SR defined commonly instead of having separate ggF \TwoJet and VBF \TwoJet categories. 
+    \chapter{Study to Improve the \TwoJet Categories using Multiclass Classification}
+    \label{app:multi-class-2jet-strategy}
+    The author of this thesis performed a preliminary study to improve the measurements in the ggF \TwoJet and VBF \TwoJet category of the \HWW analysis.
+    The study aims at improving both the distinction of ggF \TwoJet events from the backgrounds and the separation between ggF \TwoJet events and VBF \TwoJet events, while also keeping the analysis simple.
+    The proposed solution is to use multiclass classification in a new \TwoJet SR defined commonly instead of having separate ggF \TwoJet and VBF \TwoJet categories.
 
-For this purpose, a DNN is trained with 3 output nodes: one output node determines how likely an event is a VBF signal, one targets the ggF signal instead, and one the backgrounds.
-The expected number of events in a two-dimensional histogram spanned by the DNN VBF output and DNN ggF output node, referred to as DNN$_\mathrm{out}^\mathrm{VBF}$ and DNN$_\mathrm{out}^\mathrm{ggF}$, respectively, are shown in \cref{sec:hww:summary}, \cref{app:fig:2d-discriminant}. 
+    For this purpose, a DNN is trained with 3 output nodes: one output node determines how likely an event is a VBF signal, one targets the ggF signal instead, and one the backgrounds.
+    The expected number of events in a two-dimensional histogram spanned by the DNN VBF output and DNN ggF output node, referred to as DNN$_\mathrm{out}^\mathrm{VBF}$ and DNN$_\mathrm{out}^\mathrm{ggF}$, respectively, are shown in \cref{sec:hww:summary}, \cref{app:fig:2d-discriminant}.
 
-For the training, the same hyperparameters and input variables are used as in the VBF DNN, with some exceptions. The loss function becomes a \emph{categorical crossentropy} and the activation function of the output layer becomes a \emph{softmax} function.
-%, both of which constitute the general form of the respective loss and activation used in the binary classification task but extended to multiple classes. 
-The softmax ensures that the sum of the three output nodes cannot be larger than one, such that the output nodes can be considered as indicating probabilities for an event being of a particular type. 
+    For the training, the same hyperparameters and input variables are used as in the VBF DNN, with some exceptions. The loss function becomes a \emph{categorical crossentropy} and the activation function of the output layer becomes a \emph{softmax} function.
+    %, both of which constitute the general form of the respective loss and activation used in the binary classification task but extended to multiple classes. 
+    The softmax ensures that the sum of the three output nodes cannot be larger than one, such that the output nodes can be considered as indicating probabilities for an event being of a particular type.
 
-To harmonize the \TwoJet SRs the selection criteria of the nominal ggF \TwoJet and VBF \TwoJet SRs shown in \cref{tab:HWWselection} are slightly adapted. 
-The proposed common \TwoJet SR is defined without a \pTmiss requirement, the \mll\ and \dphill\ criteria are relaxed to $\mll < 70\,$GeV and $\dphill < 2.2$, and all CJV and OLV requirements are dropped. All other requirements are kept. 
+    To harmonize the \TwoJet SRs the selection criteria of the nominal ggF \TwoJet and VBF \TwoJet SRs shown in \cref{tab:HWWselection} are slightly adapted.
+    The proposed common \TwoJet SR is defined without a \pTmiss requirement, the \mll\ and \dphill\ criteria are relaxed to $\mll < 70\,$GeV and $\dphill < 2.2$, and all CJV and OLV requirements are dropped. All other requirements are kept.
 
-The bins used in the statistical analysis are defined based on regions in the two-dimensional discriminant spanned by DNN$_\mathrm{out}^\mathrm{ggF}$ and DNN$_\mathrm{out}^\mathrm{VBF}$. A schematic of this partitioning is shown in \cref{app:hwwejet-schematic-partitioning}.
-First, the ggF- and VBF-sensitive regions are separated by a linear separation line defined as DNN$_\mathrm{out}^\mathrm{ggF}= 1/18 \times \text{DNN}_\mathrm{out}^\mathrm{VBF} - 6/180$.
-A histogram in the VBF-sensitive region (DNN$_\mathrm{out}^\mathrm{ggF} < 1/18 * \text{DNN}_\mathrm{out}^\mathrm{VBF} - 6/180$) is then defined based on the projection of the two-dimensional discriminant onto the DNN$_\mathrm{out}^\mathrm{VBF}$ axis, and the same binning algorithm is used as in the nominal VBF SR to define the final discriminant for the statistial analysis. This discriminant looks very similar to the one used in the current VBF \TwoJet SR that is based on a DNN trained for binary classification.  
-The ggF-sensitive region (DNN$_\mathrm{out}^\mathrm{ggF}> 1/18 * \text{DNN}_\mathrm{out}^\mathrm{VBF} - 6/180$) is further split into three bins dependent on the DNN$_\mathrm{out}^\mathrm{VBF}$, specifically $0 < \text{DNN}_\mathrm{out}^\mathrm{VBF} < 0.1$, $0.1 < \text{DNN}_\mathrm{out}^\mathrm{VBF} < 0.2$, and $\text{DNN}_\mathrm{out}^\mathrm{VBF} > 0.2$. 
-In all three regions histograms are defined by projecting the DNN output values onto the DNN$_\mathrm{out}^\mathrm{ggF}$ axis and again using the same binning algorithm.
-This results in four final discriminants used in the statistical analysis. 
+    The bins used in the statistical analysis are defined based on regions in the two-dimensional discriminant spanned by DNN$_\mathrm{out}^\mathrm{ggF}$ and DNN$_\mathrm{out}^\mathrm{VBF}$. A schematic of this partitioning is shown in \cref{app:hwwejet-schematic-partitioning}.
+    First, the ggF- and VBF-sensitive regions are separated by a linear separation line defined as DNN$_\mathrm{out}^\mathrm{ggF}= 1/18 \times \text{DNN}_\mathrm{out}^\mathrm{VBF} - 6/180$.
+    A histogram in the VBF-sensitive region (DNN$_\mathrm{out}^\mathrm{ggF} < 1/18 * \text{DNN}_\mathrm{out}^\mathrm{VBF} - 6/180$) is then defined based on the projection of the two-dimensional discriminant onto the DNN$_\mathrm{out}^\mathrm{VBF}$ axis, and the same binning algorithm is used as in the nominal VBF SR to define the final discriminant for the statistial analysis. This discriminant looks very similar to the one used in the current VBF \TwoJet SR that is based on a DNN trained for binary classification.
+    The ggF-sensitive region (DNN$_\mathrm{out}^\mathrm{ggF}> 1/18 * \text{DNN}_\mathrm{out}^\mathrm{VBF} - 6/180$) is further split into three bins dependent on the DNN$_\mathrm{out}^\mathrm{VBF}$, specifically $0 < \text{DNN}_\mathrm{out}^\mathrm{VBF} < 0.1$, $0.1 < \text{DNN}_\mathrm{out}^\mathrm{VBF} < 0.2$, and $\text{DNN}_\mathrm{out}^\mathrm{VBF} > 0.2$.
+    In all three regions histograms are defined by projecting the DNN output values onto the DNN$_\mathrm{out}^\mathrm{ggF}$ axis and again using the same binning algorithm.
+    This results in four final discriminants used in the statistical analysis.
 
-A similar categorization is performed for the CRs. 
-First, the separation in four regions based on the two-dimensional discriminant as mentioned above is also applied to the CRs. A top-quark and \Ztautau CR is used in all four regions and a $qq \to WW$ CR is used in the ggF-sensitive region with $0 < \text{DNN}_\mathrm{out}^\mathrm{VBF} < 0.1$. No $qq \to WW$ CR can be defined for the other regions due to limited statistical power. 
-The CRs are defined with the same selections as in the nominal analysis (see \cref{tab:CRsSelection}) with a few exceptions. 
-The $qq \to WW$ CR is defined as the ggF \TwoJet CR but without criteria on the CJV and OLV.
-The common top-quark CR is defined with a $b$-tag and uses additional criteria on $\mll < 70\,$GeV and $\dphill < 2.2$ as in the common \TwoJet SR, and removes all CJV and OLV selections. The common \Ztautau\ CR is defined as the VBF, \Ztautau CR but without the CJV and OLV applied. 
-In each of the CRs, the criteria to separate the analysis from the analysis of the $VH$ production mode is used, i.e. $|\mjj-85| > 15~\GeV \text{ OR } \dyjj > 1.2$.
+    A similar categorization is performed for the CRs.
+    First, the separation in four regions based on the two-dimensional discriminant as mentioned above is also applied to the CRs. A top-quark and \Ztautau CR is used in all four regions and a $qq \to WW$ CR is used in the ggF-sensitive region with $0 < \text{DNN}_\mathrm{out}^\mathrm{VBF} < 0.1$. No $qq \to WW$ CR can be defined for the other regions due to limited statistical power.
+    The CRs are defined with the same selections as in the nominal analysis (see \cref{tab:CRsSelection}) with a few exceptions.
+    The $qq \to WW$ CR is defined as the ggF \TwoJet CR but without criteria on the CJV and OLV.
+    The common top-quark CR is defined with a $b$-tag and uses additional criteria on $\mll < 70\,$GeV and $\dphill < 2.2$ as in the common \TwoJet SR, and removes all CJV and OLV selections. The common \Ztautau\ CR is defined as the VBF, \Ztautau CR but without the CJV and OLV applied.
+    In each of the CRs, the criteria to separate the analysis from the analysis of the $VH$ production mode is used, i.e. $|\mjj-85| > 15~\GeV \text{ OR } \dyjj > 1.2$.
 
-The signal strengths of the VBF and ggF signal extracted from a fit to the Asimov dataset and only the above-mentioned \TwoJet regions yields 
+The signal strengths of the VBF and ggF signal extracted from a fit to the Asimov dataset and only the above-mentioned \TwoJet regions yields
 \begin{eqnarray*}
     \muVBF &=& 1.0^{+0.25}_{-0.21}, \\
     \muGGF &=& 1.0^{+0.47}_{-0.41}.
@@ -645,16 +515,16 @@ This is to be compared to the corresponding results when using the current ggF \
     \muVBF &=& 1.0^{+0.26}_{-0.23}, \\
     \muGGF &=& 1.0^{+0.57}_{-0.54}.
 \end{eqnarray*}
-A reduction of uncertainties of about 7\% and 25\% for the VBF and ggF measurement, respectively, can be observed. 
-The improvements for the ggF measurement are mostly due to the change of the discriminant to a DNN, but also benefit from the more efficient separation between the ggF- and VBF-sensitive regions. 
-The small improvement of the VBF measurement is in part due to a slightly finer binning used in the fits for the VBF-sensitive region, but also a consequence of the more precise measurement of \muGGF. 
-Future analyses are expected to benefit from adopting this or a similar analysis strategy. 
+A reduction of uncertainties of about 7\% and 25\% for the VBF and ggF measurement, respectively, can be observed.
+The improvements for the ggF measurement are mostly due to the change of the discriminant to a DNN, but also benefit from the more efficient separation between the ggF- and VBF-sensitive regions.
+The small improvement of the VBF measurement is in part due to a slightly finer binning used in the fits for the VBF-sensitive region, but also a consequence of the more precise measurement of \muGGF.
+Future analyses are expected to benefit from adopting this or a similar analysis strategy.
 
 \begin{figure}[ht]
     \centering
     \subfloat[]{
         \includegraphics[width=0.48\textwidth]{figures/hww/2d-discriminant/ggF_signal_Heatmap_VBF_vs_ggF.pdf} \hfill
-    } 
+    }
     \subfloat[]{
         \includegraphics[width=0.48\textwidth]{figures/hww/2d-discriminant/VBF_signal_Heatmap_VBF_vs_ggF.pdf} \hfill
     } \\
@@ -662,11 +532,11 @@ Future analyses are expected to benefit from adopting this or a similar analysis
         \includegraphics[width=0.48\textwidth]{figures/hww/2d-discriminant/non-Higgs_events_Heatmap_VBF_vs_ggF.pdf} \hfill
     }
     \caption{Two-dimensional distribution spanned by the two output nodes ``DNN VBF output'' and ``DNN ggF output'' of a multiclass DNN for the (a) ggF signal, (b) VBF signal, and (c) total background from non-Higgs boson events, shown in a common \TwoJet category for the ggF \TwoJet and VBF analysis.}
-    \label{app:fig:2d-discriminant} 
+    \label{app:fig:2d-discriminant}
 \end{figure}
 
 \begin{figure}[t]
-        \newImageResizeCustom{0.7}{figures/hww/2d-discriminant/schematic-region-separation.pdf}
+    \newImageResizeCustom{0.7}{figures/hww/2d-discriminant/schematic-region-separation.pdf}
     \caption{Schematic of partitioning in two-dimensional discriminant spanned by the two output nodes ``DNN VBF output'' and ``DNN ggF output'' of a multiclass DNN, representing the VBF-likeness and the ggF-likeness of an event.}
     \label{app:hwwejet-schematic-partitioning}
 \end{figure}

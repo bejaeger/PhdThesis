@@ -75,9 +75,9 @@ fig, ax = plt.subplots()
 sig_color='#F17105' if ewscanplot is True else "black"
 frac_color="#0b80c3"
 if ewscanplot:
-    plt.plot(x,y1, '^', color=sig_color, markersize=markersize, label="$Z0$(40 bins)")
-    plt.plot(x, y2, 'o', color=sig_color, markersize=markersize, label="$Z0$(var. bins)")
-    plt.plot(x, y3, 'v', color=sig_color, markersize=markersize, label="$Z0$(var. bins + syst. unc.)")
+    plt.plot(x,y1, '^', color=sig_color, markersize=markersize, label="$Z0_\mathrm{VBF}$ (40 bins)")
+    plt.plot(x, y2, 'o', color=sig_color, markersize=markersize, label="$Z0_\mathrm{VBF}$ (var. bins)")
+    plt.plot(x, y3, 'v', color=sig_color, markersize=markersize, label="$Z0_\mathrm{VBF}^\mathrm{unc}$ (var. bins)")
 else:
     plt.plot(x, y2, 'o', color=sig_color, markersize=markersize)
 

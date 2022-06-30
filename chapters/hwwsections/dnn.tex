@@ -12,7 +12,7 @@ The development of the VBF DNN involves several steps and, given the empirical n
 The procedures taken are roughly summarized by the following steps:
 
 \begin{enumerate}
-    \item In the first step, the training data is prepared, so they can be easily used with industry-standard ML software\footnote{The author developed a software framework that makes use of state-of-the-art open-source ML libraries and manages the full ML cycle efficiently.
+    \item In the first step, the training data are prepared, so they can be easily used with industry-standard ML software\footnote{The author developed a software framework that makes use of state-of-the-art open-source ML libraries and manages the full ML cycle efficiently.
     The entire software suite used is summarized in \cref{app:dnn:software-suite}.
     It should also be noted that the training procedure has been modified several times during the course of the author's PhD, due to both improvements in the self-developed software and historical developments of the \HWW\ analysis (for example changes in MC simulated samples). If not mentioned otherwise, the results and procedures presented correspond to the final VBF DNN deployed in the \HWW\ analysis.}. To this end, the simulated samples that are listed in \cref{subsec:simulated-event-samples} are transformed accordingly. Details on the training data and the data preparation are given in \cref{subsec:training-data}.
     \item The second step is the main part of the DNN development and involves the training, validation, and optimization of the DNN.
@@ -21,7 +21,7 @@ The procedures taken are roughly summarized by the following steps:
     \item In the third step the DNN model is deployed in the \HWW\ analysis. Final measurement results based on the full statistical analysis that take into account all uncertainties can then be produced. This demonstrates the final performance of the trained DNN model, and reveals the weak-spots of the analysis and the developed model. The latter information -- in particular information about what uncertainties dominate in the VBF, \HWW\ cross-section measurement -- can be used to adapt the training procedure in step 2 to further improve the DNN observable. A study taking into account this information in the DNN development is presented in \cref{app:sec:ewww-sample-fraction-optimization}.
           %This also provides insights into how well the metric used to select a DNN model in step 2 reflect the results from the statistical analysis in order to improve them. 
 \end{enumerate}
-%  to determine optimal training fractions. An example of such a study optimizing the EW $WW$ training fraction is discussed in \cref{app:sec:ewww-sample-fraction-optimization}.
+%  to determine optimal training fractions. An example of such a study optimizing the EW~$WW$ training fraction is discussed in \cref{app:sec:ewww-sample-fraction-optimization}.
 The final DNN model is selected when no further improvements can be made by repeating step 2 and 3. It should be noted that the tasks involved in step 3 are time-consuming and computing-intensive, which limits the number of cycles that can realistically be carried out. 
 The model selected also needs to be validated, which is discussed in \cref{subsec:fina-model-validation}.
 
@@ -103,7 +103,7 @@ where the sum in the numerator goes over all events of process $p$, and the sum 
 \label{subsec:performance-metrics}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Performance metric explanation
-The VBF DNN is trained using the $k$-fold cross validation method with $k=5$ and the training data is split as explained in \cref{subsec:par:kfold-crossval}.
+The VBF DNN is trained using the $k$-fold cross validation method with $k=5$ and the training data are split as explained in \cref{subsec:par:kfold-crossval}.
 \Cref{fig:monitoring} shows the loss and binary accuracy\footnote{The binary accuracy is defined by counting a VBF signal event (background event) as correctly classified if the DNN output value is larger (smaller) 0.5.
 } evaluated during the training for the training and validation set.
 \begin{figure}[ht]
@@ -209,10 +209,10 @@ For the training of the final VBF DNN the learning rate is set to 9. For all stu
 The performance of different optimizers was also studied and very comparable results were found between them.
 The AdaGrad optimizer is chosen for the training of the final VBF DNN.
 
-The training fractions, $S_\text{frac}$, used in the training are indicated in \cref{tab:DNNtrainingstats}. They were chosen to approximate the relative theoretical cross-section normalization between the samples at preselection, with some exceptions: The VBF signal training fraction is increased to 5\% because it is the main target of the training. Increasing this fraction further did not show any improvements. Furthermore, the training fractions of the ggF and EW $WW$ samples are increased compared to their cross-section normalization. 
-This choice is motivated because the ggF signal and EW $WW$ background have a low overall normalization but have large contributions in the VBF-like phase space at high DNN output values (see e.g. \cref{fig:dnn-val-set-b}). 
+The training fractions, $S_\text{frac}$, used in the training are indicated in \cref{tab:DNNtrainingstats}. They were chosen to approximate the relative theoretical cross-section normalization between the samples at preselection, with some exceptions: The VBF signal training fraction is increased to 5\% because it is the main target of the training. Increasing this fraction further did not show any improvements. Furthermore, the training fractions of the ggF and EW~$WW$ samples are increased compared to their cross-section normalization. 
+This choice is motivated because the ggF signal and EW~$WW$ background have a low overall normalization but have large contributions in the VBF-like phase space at high DNN output values (see e.g. \cref{fig:dnn-val-set-b}). 
 % This is done to take into account their large relative contributions in the VBF-like phase space despite their low overall normalization. 
-A study conducted to choose the EW $WW$ weight is presented in \cref{app:sec:ewww-sample-fraction-optimization}.
+A study conducted to choose the EW~$WW$ weight is presented in \cref{app:sec:ewww-sample-fraction-optimization}.
 
 \subsection{Choice of input variables}
 \label{subsec:input-variables-opt}
@@ -356,7 +356,7 @@ The slight overrepresentation of $p$-values in the ranges $0.005 < p < 0.05$ (22
 % \end{figure}
 
 Once the input variables are chosen and validated, and the hyperparameters are optimized, the DNN model can be deployed in the analysis. The test set is used for this purpose.
-However, before the data is analyzed in the signal sensitive range of the DNN, the modelling of the DNN output is validated in the CRs and VRs. This can be seen in \cref{fig:dnn:dnn-val-in-crs-a,fig:dnn:dnn-val-in-crs-b,fig:dnn:dnn-val-in-crs-c}.
+However, before the data are analyzed in the signal sensitive range of the DNN, the modelling of the DNN output is validated in the CRs and VRs. This can be seen in \cref{fig:dnn:dnn-val-in-crs-a,fig:dnn:dnn-val-in-crs-b,fig:dnn:dnn-val-in-crs-c}.
 \begin{figure}[ht]
     \centering
     \subfloat[]{
