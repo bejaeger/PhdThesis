@@ -21,12 +21,37 @@
 \input{macros/commands}
 \input{macros/shortcuts}
 \input{macros/captions}
+
 \newcommand{\paperfiguredir}{figures/paper-figures}
 \newboolean{draft}
 
-\author{Benjamin Jäger, Version 1.0}
 \date{\today}
-\title{Precision Measurements of $H \to WW^*$ Cross Sections using Machine Learning and Jet Energy Calibrations with the ATLAS Experiment}
+\title{Precision Measurements of $H \to WW^*$ Cross Sections using Machine Learning with the ATLAS Experiment}
+\thesistype{Thesis}
+\author{Benjamin Jäger}
+\previousdegrees{%
+	M.Sc., University of Freiburg, 2017\\
+	B.Sc., University of Freiburg, 2015}
+\degree{Doctor of Philosophy}
+\department{Department of Physics}
+\faculty{Faculty of Science}
+\copyrightyear{2022}
+\semester{Fall 2022}
+\date{August 30th, 2022}
+
+% \keywords{Higgs boson, vector-boson fusion, gluon fusion, \hww, cross section measurement, simplified template cross sections, data-driven background esimate, \ffm.}
+%TODO
+\committee{%
+	\chair{Malcom Kennett}{Associate Professor, Physics}
+	\member{Bernd Stelzer}{Supervisor\\Professor, Physics}
+	\member{Michel Vetterli}{Committee Member\\Professor, Physics}
+	\member{Dugan O'Neil}{Committee Member\\Professor, Physics}
+	\member{Matthias Danninger}{Examiner\\Assistant Professor, Physics}
+	\member{TBD}{External Examiner}
+}
+%\keywords{ATLAS experiment; Higgs boson; Higgs to WW decay; Machine learning; Jet energy resolution}
+
+
 
 % \setmathfont{Latin Modern Math}[version=lm]
 
@@ -37,13 +62,11 @@
 
 \setboolean{draft}{false}   
 
+\frontmatter
+\pagestyle{plain}
 \maketitle
 
-% Potential title:
-
-% Precision Measurements of Higgs Boson Production in Decays to two $W$ Bosons 
-
-
+\makecommittee
 
 \tableofcontents
 
@@ -54,35 +77,37 @@
 \newcommand{\chapterdir}{chapters}
 %\include{\chapterdir/abstract}
 
+\mainmatter
+\pagestyle{fancy}
 % % -------------------------------------------------------------------------------
-% \include{\chapterdir/introduction}
+\include{\chapterdir/introduction}
 
 % % % % % -------------------------------------------------------------------------------
-% \include{\chapterdir/theory}
+\include{\chapterdir/theory}
 
 % % % % % -------------------------------------------------------------------------------
-% \include{\chapterdir/higgs}
+\include{\chapterdir/higgs}
 
 % % % % % %-------------------------------------------------------------------------------
-% \include{\chapterdir/experiment}
+\include{\chapterdir/experiment}
 
 % % % % % %-------------------------------------------------------------------------------
-% \include{\chapterdir/objects}
+\include{\chapterdir/objects}
 
 % % % % % % % ---------------------------------------
-% \include{\chapterdir/calibration}
+\include{\chapterdir/calibration}
 
 % % % % % % %-------------------------------------------------------------------------------
-% \include{\chapterdir/statistics}
+\include{\chapterdir/statistics}
 
 % % % % % % %-------------------------------------------------------------------------------
-%\include{\chapterdir/ml}
+\include{\chapterdir/ml}
 
 % % % % %-------------------------------------------------------------------------------
-% \include{\chapterdir/hww}
+\include{\chapterdir/hww}
 
 % % % % %-------------------------------------------------------------------------------
-% \include{\chapterdir/conclusion}
+\include{\chapterdir/conclusion}
 
 %-------------------------------------------------------------------------------
 \section*{Acknowledgements}

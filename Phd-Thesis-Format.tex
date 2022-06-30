@@ -27,9 +27,9 @@
 %\documentclass[PAPER, atlasdraft=true, texlive=2018, UKenglish]{atlasdoc}
 %\documentclass[twoside,a4paper,11pt,smallheadings,BCOR5mm,UKenglish]{scrbook}
 \documentclass[twoside,a4paper,11pt,smallheadings,BCOR5mm,american]{scrbook}
+%\documentclass[twoside,a4paper,11pt,smallheadings,BCOR5mm,american]{sfuthesis}
 
 %\documentclass[PAPER, coverpage, atlasdraft=true, texlive=2016, american]{atlasdoc}
-
 \usepackage[english]{babel}  %deutsche Überschriften etc.
 %\usepackage{lmodern} 
 
@@ -195,7 +195,9 @@
 \usepackage[output=true]{atlastodo}
 
 % otherwise footnote have weird indentation
-\usepackage[hang,flushmargin]{footmisc} 
+%\usepackage[hang,flushmargin]{footmisc} 
+\usepackage{footmisc} 
+\renewcommand{\footnotemargin}{1.3em}
 
 % Files with references for use with biblatex.
 % Note that biber gives an error if it finds empty bib files.
@@ -269,6 +271,49 @@
 \RequirePackage{lmodern}
 %\RequirePackage{newtxtext}
 % \RequirePackage{newtxmath}
+
+%---------------------------------------------------------------------------
+% From SFU THESIS TEMPATE
+
+
+%   FOOTNOTES  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   Remove the dividing line between body text and footnotes, replacing it with
+%   extra space. This is not formally part of the Library requirements, but
+%   makes our footnotes consistent with the preferred style in the official
+%   Word thesis template. We then add a full line space between footnotes on
+%   the same page; this is also not an official requirement but was suggested
+%   as a reasonable default by the Library's Thesis Assistant and the
+%   footnote-heavy Chicago style.
+%
+
+\def\footnoterule{\relax}
+\setlength{\skip\footins}{\baselineskip}
+\setlength{\footnotesep}{\baselineskip}
+
+%\RequirePackage{tocloft}
+\RequirePackage[titletoc]{appendix}
+\renewcommand{\contentsname}{Table of Contents}
+\newcommand{\addtoToC}[1]{\addcontentsline{toc}{chapter}{#1}}
+
+\usepackage{sfuthesis}
+
+
+%   PAGINATION  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   Provides commands to set page numbers in roman numerals for preliminary
+%   pages (frontmatter) and arabic numbers for all other content (mainmatter).
+%   \pagestyle{plain} sets page numbers in the bottom center.
+%
+%\pagestyle{plain}
+
+\apptocmd{\frontmatter}{%
+    \pagenumbering{roman}
+}
+
+\apptocmd{\mainmatter}{%
+    \pagenumbering{arabic}
+}
 
 %-------------------------------------------------------------------------------
 %-------------------------------------------------------------------------------

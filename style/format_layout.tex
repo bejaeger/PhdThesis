@@ -109,7 +109,11 @@
 
 \pagestyle{fancy}
 
-\renewcommand{\chaptermark}[1]{\markboth{\thechapter\ #1}{}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% THIS IS WHERE I NEED TO MAKE THE FONT NORMAL!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter\  #1}{}}
 \renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}{}}
 \lhead[\fancyplain{}{\thepage}]
 {\fancyplain{}{\sc\rightmark}}
