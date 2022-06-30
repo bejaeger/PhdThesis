@@ -4,232 +4,8 @@
 
 
 \FloatBarrier
-\chapter{Auxiliary material for \HWW analysis}
-This section provides different supporting material for the \HWW analysis.
-
-\section{Distributions of the VBF DNN input variables with selections on the DNN}
-\label{app:dnn:input-vars}
-
-To show the effect of the DNN on the DNN input variables, \cref{fig:dnn-inputs-vbf-top1,fig:dnn-inputs-vbf-top2,fig:dnn-inputs-vbf-top3,fig:dnn-inputs-hwwdecay,fig:dnn-inputs-top-sup} show distributions of the DNN input variables with different selections on the DNN output.
-This nicely shows the kinematics and topologies the DNN selects to define regions pure in the VBF signal.
-
-\captionsetup[subfloat]{captionskip=5pt} % space between subfloat caption and image
-\begin{figure}[ht]
-    \centering
-    \subfloat[$\mjj$]{
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-Mjj-lin.pdf} \hfill
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN25-Mjj-lin.pdf} \hfill
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN87-Mjj-lin.pdf}
-    } \\
-    \subfloat[$\dyjj$]{
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-DYjj-lin.pdf} \hfill
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN25-DYjj-lin.pdf} \hfill
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN87-DYjj-lin.pdf}
-    } \\
-    \subfloat[$\lepetacent$]{
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-contOLV-lin.pdf} \hfill
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN25-contOLV-lin.pdf} \hfill
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN87-contOLV-lin.pdf}
-    } \\
-    {\caption{Distributions of $\mjj$, $\dyjj$, $\lepetacent$ in the VBF \TwoJet signal region.
-        Each row corresponds to one variable with different selections made on the DNN output as indicated in the figure. The solid orange line shows the expected VBF signal scaled by a factor of (left) 50, (center) 5, and (right) without any scaling.
-        \label{fig:dnn-inputs-vbf-top1} }}
-\end{figure}
-
-
-\begin{figure}[h]
-    \centering
-    \subfloat[$\mlonejtwo$]{
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-Ml0j0-lin.pdf} \hfill
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN25-Ml0j0-lin.pdf} \hfill
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN87-Ml0j0-lin.pdf}
-    } \\
-    \subfloat[$\mltwojone$]{
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-Ml1j0-lin.pdf} \hfill
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN25-Ml1j0-lin.pdf} \hfill
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN87-Ml1j0-lin.pdf}
-    } \\
-    \subfloat[$\mlonejtwo$]{
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-Ml0j1-lin.pdf} \hfill
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN25-Ml0j1-lin.pdf} \hfill
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN87-Ml0j1-lin.pdf}
-    } \\
-    \subfloat[$\mltwojtwo$]{
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-Ml1j1-lin.pdf} \hfill
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN25-Ml1j1-lin.pdf} \hfill
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN87-Ml1j1-lin.pdf}
-    }
-    {\caption{Distributions of $\mlonejone$, $\mltwojone$, $\mlonejtwo$, and $\mltwojtwo$ in the VBF \TwoJet signal region.
-            Each row corresponds to one variable with different selections made on the DNN output as indicated in the figure. The solid orange line shows the expected VBF signal scaled by a factor of (left) 50, (center) 5, and (right) without any scaling.
-            \label{fig:dnn-inputs-vbf-top2} }}
-\end{figure}
-
-
-\begin{figure}[h]
-    \centering
-    \subfloat[$\pTjone$]{
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-leadJetPt-lin.pdf} \hfill
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN25-leadJetPt-lin.pdf} \hfill
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN87-leadJetPt-lin.pdf}
-    } \\
-    \subfloat[$\pTjtwo$]{
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-subleadJetPt-lin.pdf} \hfill
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN25-subleadJetPt-lin.pdf} \hfill
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN87-subleadJetPt-lin.pdf}
-    } \\
-    \subfloat[$\pTjthree$]{
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-thirdJetPt-lin.pdf} \hfill
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN25-thirdJetPt-lin.pdf} \hfill
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN87-thirdJetPt-lin.pdf}
-    }
-    {\caption{Distributions of $\pTjone$, $\pTjtwo$, and $\pTjthree$ in the VBF \TwoJet signal region.
-            Each row corresponds to one variable with different selections made on the DNN output as indicated in the figure. The solid orange line shows the expected VBF signal scaled by a factor of (left) 50, (center) 5, and (right) without any scaling.
-            \label{fig:dnn-inputs-vbf-top3}}}
-\end{figure}
-
-
-\begin{figure}[h]
-    \centering
-    \subfloat[$\dphill$]{
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-DPhill-lin.pdf} \hfill
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN25-DPhill-lin.pdf} \hfill
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN87-DPhill-lin.pdf}
-    } \\
-    \subfloat[$\mll$]{
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-Mll-lin.pdf}
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN25-Mll-lin.pdf}
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN87-Mll-lin.pdf}
-    } \\
-    \subfloat[$\mT$]{
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-MT-lin.pdf} \hfill
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN25-MT-lin.pdf} \hfill
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN87-MT-lin.pdf}
-    }
-    {\caption{Distributions of $\dphill$, $\mll$, $\mT$ in the VBF \TwoJet signal region.
-            Each row corresponds to one variable with different selections made on the DNN output as indicated in the figure. The solid orange line shows the expected VBF signal scaled by a factor of (left) 50, (center) 5, and (right) without any scaling.
-            \label{fig:dnn-inputs-hwwdecay} }}
-\end{figure}
-
-
-
-\begin{figure}[h]
-    \centering
-    \subfloat[$\pttot$]{
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-PtTot-lin.pdf} \hfill
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN25-PtTot-lin.pdf} \hfill
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN87-PtTot-lin.pdf}
-    } \\
-    \subfloat[$\METSig$]{
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-METSig_broad-lin.pdf} \hfill
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN25-METSig_broad-lin.pdf} \hfill
-        \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN87-METSig_broad-lin.pdf}
-    } \\
-    {\caption{Distributions of $\pttot$ and $\METSig$ in the VBF \TwoJet signal region.
-        Each row corresponds to one variable with different selections made on the DNN output as indicated in the figure. The solid orange line shows the expected VBF signal scaled by a factor of (left) 50, (center) 5, and (right) without any scaling.
-        \label{fig:dnn-inputs-top-sup} }}
-\end{figure}
-
-
-\FloatBarrier
-\section{Cutflows}
-\label{app:cutflows}
-
-\Cref{app:tab:cutflows} shows the expected number of events at different selection stages to define the VBF \TwoJet SRs and CRs and the ggF \TwoJet SRs and CRS.
-
-\begin{landscape}
-    \thispagestyle{empty}
-    \begin{table}
-        \subfloat[]{
-            \resizebox{\textwidth}{!}{
-                \input{figures/hww/cutflows/run2-emme-VBF-cutflow-processes-paper-VBF-cutflow-cuts-default.tex}
-            }
-        } \\
-        \vspace{20pt}
-        \subfloat[]{
-            \resizebox{\textwidth}{!}{
-                \input{figures/hww/cutflows/run2-emme-VBF-cutflow-processes-paper-ggF-cutflow-cuts-2jet.tex}
-            }
-        }
-        \caption{Expected number of events at different selection stages to define the (a) VBF \TwoJet SRs and CRs and (b) the ggF \TwoJet SRs and CRs. For (a) the selections from the row labelled ``Preselection'' to the row labelled ``OLV'' are applied subsequently; for (b) the selections from the row labelled ``Preselection'' to the row labelled ``fail OLV $||$ fail CJV'' are applied subsequently. All respective other rows include all selections that define the indicated regions as described in \cref{sec:event-selection}.}
-        \label{app:tab:cutflows}
-    \end{table}
-\end{landscape}
-
-% \FloatBarrier
-% \section{Post-fit Distributions of the DNN input variables}
-% \label{app:post-fit-distributions}
-% \TDinote{}{MAYBE!?}
-% Not for now!
-
-\FloatBarrier
-\section{DNN output distributions in the VBF STXS CRs}
-\Cref{fig:dnn-output-vbf-stxs} shows the distributions of the DNN output in the top-quark and \Ztautau CRs used in the VBF, STXS analysis prior to the statistical analyiss.
-The distributions confirm that the data are modelled well by the MC simulation.
-
-\captionsetup[subfloat]{captionskip=5pt} % space between subfloat caption and image
-\begin{figure}[h!]
-    \centering
-    \subfloat[{\tiny $350 \leq \mjj < 700~\GeV, \pTH < 200~\GeV$}]{
-        \includegraphics[width=0.32\textwidth]{figures/220605-Thesis/topcr/stxs/plots/run2-emme-CutVBF_TopControl_2jet_MJJ_350_700_PTH_0_200-DNNoutputG_FitBin1-log.pdf} \hfill
-    }
-    \subfloat[{\tiny $\mjj \geq 700~\GeV, \pTH < 200~\GeV$}]{
-        \includegraphics[width=0.32\textwidth]{figures/220605-Thesis/topcr/stxs/plots/run2-emme-CutVBF_TopControl_2jet_MJJ_GT700_PTH_0_200-DNNoutputG_FitBin1-log.pdf} \hfill
-    }
-    \subfloat[{\tiny $\mjj \geq 350~\GeV, \pTH \geq 200~\GeV$}]{
-        \includegraphics[width=0.32\textwidth]{figures/220605-Thesis/topcr/stxs/plots/run2-emme-CutVBF_TopControl_2jet_MJJ_GT350_PTH_GT200-DNNoutputG_FitBin1-log.pdf} \hfill
-    }  \\
-    \subfloat[{\tiny $350 \leq \mjj < 700~\GeV, \pTH < 200~\GeV$}]{
-        \includegraphics[width=0.32\textwidth]{figures/220605-Thesis/zttcr/stxs/plots/run2-emme-CutVBF_ZtautauControl_2jet_MJJ_350_700_PTH_0_200-DNNoutputG_FitBin1-log.pdf} \hfill
-    }
-    \subfloat[{\tiny $\mjj \geq 700~\GeV, \pTH < 200~\GeV$}]{
-        \includegraphics[width=0.32\textwidth]{figures/220605-Thesis/zttcr/stxs/plots/run2-emme-CutVBF_ZtautauControl_2jet_MJJ_GT700_PTH_0_200-DNNoutputG_FitBin1-log.pdf} \hfill
-    }
-    \subfloat[{\tiny $\mjj \geq 350~\GeV, \pTH \geq 200~\GeV$}]{
-        \includegraphics[width=0.32\textwidth]{figures/220605-Thesis/zttcr/stxs/plots/run2-emme-CutVBF_ZtautauControl_2jet_MJJ_GT350_PTH_GT200-DNNoutputG_FitBin1-log.pdf} \hfill
-    }
-    {\caption{
-            Distribution of the DNN output in (a)-(c) the top-quark CRs and (d)-(f) the \Ztautau CRs used in the VBF, STXS analysis. The yellow band corresponds to the square root of the sum in quadrature of the MC statistical uncertainties and the normalization component of the dominant experimental systematic uncertainties (JER, JES, Flavor-tagging, and \MET uncertainties). The various uncertainty components are discussed in more detail in \cref{sec:systematics}.
-            \label{fig:dnn-output-vbf-stx} }}
-\end{figure}
-\captionsetup[subfloat]{captionskip=7pt} % space between subfloat caption and image
-
-
-\FloatBarrier
-\section{Distributions in the ggF \ZeroJet and \OneJet Category}
-\label{app:event-selection-ggf}
-
-The distributions shown in \cref{fig:ggf:Plots:selections} illustrate the event selections made to define the ggF \ZeroJet and \OneJet category. This motivates the selections and reveals the background processes that are primarily suppressed by each requirement. 
-
-\begin{figure}[!h]
-    \centering
-    \subfloat[]{
-        \includegraphics[width=0.49\textwidth]{\paperfiguredir/ggF/ZeroJet/CutGGF_Ptll_0jet-Mll}
-        \label{fig:ggf:Plots:selections-a}
-    }
-    \subfloat[]{
-        \includegraphics[width=0.49\textwidth]{\paperfiguredir/ggF/ZeroJet/CutGGF_bVeto_0jet-DPhill}
-        \label{fig:ggf:Plots:selections-b}
-    } \\
-    \subfloat[]{
-        \includegraphics[width=0.49\textwidth]{\paperfiguredir/ggF/OneJet/CutGGF_ZttVeto_1jet-Mll}
-        \label{fig:ggf:Plots:selections-c}
-    }
-    \subfloat[]{
-        \includegraphics[width=0.49\textwidth]{\paperfiguredir/ggF/OneJet/CutGGF_TopoMll_1jet-DPhill}
-        \label{fig:ggf:Plots:selections-d}
-    }
-    \caption{
-        Distributions of (a) \mll\ and (b) \dphill\ in the \ZeroJet category as well as (c) \mll\ and (d) \dphill\ in the \OneJet category, after the preselection and background rejection steps, and also after the selection on \mll\ for the \dphill plots. The dashed lines indicate where the selection on the observable is made. The hatched band shows the normalization component of the total pre-fit uncertainty, assuming SM Higgs boson production. The bottom panels show the normalized distributions for the signal and backgrounds, from which it can be inferred which background processes are primarily removed by the indicated selections.
-        Figure and caption taken from \cref{HWWPaper}.
-        \label{fig:ggf:Plots:selections}
-    }
-\end{figure}
-
-\FloatBarrier
-\section{Post-fit distributions in CRs}
-\label{app:post-fit-cr-dists}
-
-\TDinote{Add MT and DNN output plots post fit in CRs}
+\chapter{Auxiliary Material for \HWW Analysis}
+This section provides various material related to the \HWW analysis presented in \cref{chap:hww} of this thesis.
 
 
 \FloatBarrier
@@ -289,7 +65,6 @@ The fake factors are estimated using a data sample enriched in \Zjets events and
 All leptons must satisfy \ptGT{15}\,GeV.
 The two leptons of opposite charge and same flavor that qualify as $Z$ decay particles are chosen to be the ones that have an invariant mass close the $Z$ boson mass. If these two leptons are electrons (muons), a requirement of $80 < m_{ee} < 110\,$GeV ($70 < m_{\mu\mu} < 110\,$GeV) is applied.
 The two leptons are required to be fully identified except of the isolation requirement that is loosened to the ``Loose'' working point selections and the identification working point that is modified to ``Loose'' for electrons and ``Medium'' for muons.
-\todo{Find out about efficiencies? Otherwise statements of loose/medium/... are pretty useless.}
 Relaxing these criteria allows for a better statistical precision in the fake factor derivation.
 In addition, at least one of the two leptons must be associated to the online object that triggered the single-lepton trigger used in the analysis as described in \cref{sec:data-mc-samples}.
 If more than one pair of leptons satisfies these requirements, the pair with the invariant mass closest to the $Z$ boson mass is chosen.
@@ -364,8 +139,307 @@ Although the number of events in that category accounts for only $\mathcal{O}(1\
         % Nominal values, statistical uncertainties and EWSUBTR uncertainties produced on tag kon_improveZjetsFFStats_v2
     \end{table}
 
+    \clearpage
     \FloatBarrier
-    \section{More results}
+    \section{Distributions of the VBF DNN input variables with selections on the DNN}
+    \label{app:dnn:input-vars}
+
+    To show the effect of the DNN on the DNN input variables, \cref{fig:dnn-inputs-vbf-top1,fig:dnn-inputs-vbf-top2,fig:dnn-inputs-vbf-top3,fig:dnn-inputs-hwwdecay,fig:dnn-inputs-top-sup} show distributions of the DNN input variables with different selections on the DNN output.
+    This nicely shows the kinematics and topologies the DNN selects to define regions pure in the VBF signal.
+
+    \captionsetup[subfloat]{captionskip=5pt} % space between subfloat caption and image
+    \begin{figure}[ht]
+        \centering
+        \subfloat[$\mjj$]{
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-Mjj-lin.pdf} \hfill
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN25-Mjj-lin.pdf} \hfill
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN87-Mjj-lin.pdf}
+        } \\
+        \subfloat[$\dyjj$]{
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-DYjj-lin.pdf} \hfill
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN25-DYjj-lin.pdf} \hfill
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN87-DYjj-lin.pdf}
+        } \\
+        \subfloat[$\lepetacent$]{
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-contOLV-lin.pdf} \hfill
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN25-contOLV-lin.pdf} \hfill
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN87-contOLV-lin.pdf}
+        } \\
+        {\caption{Distributions of $\mjj$, $\dyjj$, $\lepetacent$ in the VBF \TwoJet signal region.
+            Each row corresponds to one variable with different selections made on the DNN output as indicated in the figure. The solid orange line shows the expected VBF signal scaled by a factor of (left) 50, (center) 5, and (right) without any scaling.
+            \label{fig:dnn-inputs-vbf-top1} }}
+    \end{figure}
+
+
+    \begin{figure}[h]
+        \centering
+        \subfloat[$\mlonejtwo$]{
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-Ml0j0-lin.pdf} \hfill
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN25-Ml0j0-lin.pdf} \hfill
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN87-Ml0j0-lin.pdf}
+        } \\
+        \subfloat[$\mltwojone$]{
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-Ml1j0-lin.pdf} \hfill
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN25-Ml1j0-lin.pdf} \hfill
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN87-Ml1j0-lin.pdf}
+        } \\
+        \subfloat[$\mlonejtwo$]{
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-Ml0j1-lin.pdf} \hfill
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN25-Ml0j1-lin.pdf} \hfill
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN87-Ml0j1-lin.pdf}
+        } \\
+        \subfloat[$\mltwojtwo$]{
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-Ml1j1-lin.pdf} \hfill
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN25-Ml1j1-lin.pdf} \hfill
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN87-Ml1j1-lin.pdf}
+        }
+        {\caption{Distributions of $\mlonejone$, $\mltwojone$, $\mlonejtwo$, and $\mltwojtwo$ in the VBF \TwoJet signal region.
+                Each row corresponds to one variable with different selections made on the DNN output as indicated in the figure. The solid orange line shows the expected VBF signal scaled by a factor of (left) 50, (center) 5, and (right) without any scaling.
+                \label{fig:dnn-inputs-vbf-top2} }}
+    \end{figure}
+
+
+    \begin{figure}[h]
+        \centering
+        \subfloat[$\pTjone$]{
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-leadJetPt-lin.pdf} \hfill
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN25-leadJetPt-lin.pdf} \hfill
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN87-leadJetPt-lin.pdf}
+        } \\
+        \subfloat[$\pTjtwo$]{
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-subleadJetPt-lin.pdf} \hfill
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN25-subleadJetPt-lin.pdf} \hfill
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN87-subleadJetPt-lin.pdf}
+        } \\
+        \subfloat[$\pTjthree$]{
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-thirdJetPt-lin.pdf} \hfill
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN25-thirdJetPt-lin.pdf} \hfill
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN87-thirdJetPt-lin.pdf}
+        }
+        {\caption{Distributions of $\pTjone$, $\pTjtwo$, and $\pTjthree$ in the VBF \TwoJet signal region.
+                Each row corresponds to one variable with different selections made on the DNN output as indicated in the figure. The solid orange line shows the expected VBF signal scaled by a factor of (left) 50, (center) 5, and (right) without any scaling.
+                \label{fig:dnn-inputs-vbf-top3}}}
+    \end{figure}
+
+
+    \begin{figure}[h]
+        \centering
+        \subfloat[$\dphill$]{
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-DPhill-lin.pdf} \hfill
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN25-DPhill-lin.pdf} \hfill
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN87-DPhill-lin.pdf}
+        } \\
+        \subfloat[$\mll$]{
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-Mll-lin.pdf}
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN25-Mll-lin.pdf}
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN87-Mll-lin.pdf}
+        } \\
+        \subfloat[$\mT$]{
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-MT-lin.pdf} \hfill
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN25-MT-lin.pdf} \hfill
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN87-MT-lin.pdf}
+        }
+        {\caption{Distributions of $\dphill$, $\mll$, $\mT$ in the VBF \TwoJet signal region.
+                Each row corresponds to one variable with different selections made on the DNN output as indicated in the figure. The solid orange line shows the expected VBF signal scaled by a factor of (left) 50, (center) 5, and (right) without any scaling.
+                \label{fig:dnn-inputs-hwwdecay} }}
+    \end{figure}
+
+
+
+    \begin{figure}[h]
+        \centering
+        \subfloat[$\pttot$]{
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-PtTot-lin.pdf} \hfill
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN25-PtTot-lin.pdf} \hfill
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN87-PtTot-lin.pdf}
+        } \\
+        \subfloat[$\METSig$]{
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-METSig_broad-lin.pdf} \hfill
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN25-METSig_broad-lin.pdf} \hfill
+            \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBFSR_DNN87-METSig_broad-lin.pdf}
+        } \\
+        {\caption{Distributions of $\pttot$ and $\METSig$ in the VBF \TwoJet signal region.
+            Each row corresponds to one variable with different selections made on the DNN output as indicated in the figure. The solid orange line shows the expected VBF signal scaled by a factor of (left) 50, (center) 5, and (right) without any scaling.
+            \label{fig:dnn-inputs-top-sup} }}
+    \end{figure}
+
+    \FloatBarrier
+    \section{DNN output distributions in the VBF STXS CRs}
+    \Cref{fig:dnn-output-vbf-stxs} shows the distributions of the DNN output in the top-quark and \Ztautau CRs used in the VBF, STXS analysis prior to the statistical analyiss.
+    The distributions confirm that the data are modelled well by the MC simulation.
+
+    \captionsetup[subfloat]{captionskip=5pt} % space between subfloat caption and image
+    \begin{figure}[h!]
+        \centering
+        \subfloat[{\tiny $350 \leq \mjj < 700~\GeV, \pTH < 200~\GeV$}]{
+            \includegraphics[width=0.32\textwidth]{figures/220605-Thesis/topcr/stxs/plots/run2-emme-CutVBF_TopControl_2jet_MJJ_350_700_PTH_0_200-DNNoutputG_FitBin1-log.pdf} \hfill
+        }
+        \subfloat[{\tiny $\mjj \geq 700~\GeV, \pTH < 200~\GeV$}]{
+            \includegraphics[width=0.32\textwidth]{figures/220605-Thesis/topcr/stxs/plots/run2-emme-CutVBF_TopControl_2jet_MJJ_GT700_PTH_0_200-DNNoutputG_FitBin1-log.pdf} \hfill
+        }
+        \subfloat[{\tiny $\mjj \geq 350~\GeV, \pTH \geq 200~\GeV$}]{
+            \includegraphics[width=0.32\textwidth]{figures/220605-Thesis/topcr/stxs/plots/run2-emme-CutVBF_TopControl_2jet_MJJ_GT350_PTH_GT200-DNNoutputG_FitBin1-log.pdf} \hfill
+        }  \\
+        \subfloat[{\tiny $350 \leq \mjj < 700~\GeV, \pTH < 200~\GeV$}]{
+            \includegraphics[width=0.32\textwidth]{figures/220605-Thesis/zttcr/stxs/plots/run2-emme-CutVBF_ZtautauControl_2jet_MJJ_350_700_PTH_0_200-DNNoutputG_FitBin1-log.pdf} \hfill
+        }
+        \subfloat[{\tiny $\mjj \geq 700~\GeV, \pTH < 200~\GeV$}]{
+            \includegraphics[width=0.32\textwidth]{figures/220605-Thesis/zttcr/stxs/plots/run2-emme-CutVBF_ZtautauControl_2jet_MJJ_GT700_PTH_0_200-DNNoutputG_FitBin1-log.pdf} \hfill
+        }
+        \subfloat[{\tiny $\mjj \geq 350~\GeV, \pTH \geq 200~\GeV$}]{
+            \includegraphics[width=0.32\textwidth]{figures/220605-Thesis/zttcr/stxs/plots/run2-emme-CutVBF_ZtautauControl_2jet_MJJ_GT350_PTH_GT200-DNNoutputG_FitBin1-log.pdf} \hfill
+        }
+        \caption{
+            Distributions of the DNN output in (a)-(c) the top-quark CRs and (d)-(f) the \Ztautau CRs used in the VBF STXS analysis with the selections indicated for each subfigure. The yellow band corresponds to the square root of the sum in quadrature of the MC statistical uncertainties and the normalization component of the dominant experimental systematic uncertainties (JER, JES, Flavor-tagging, and \MET uncertainties). The various uncertainty components are discussed in more detail in \cref{sec:systematics}.}
+        \label{fig:dnn-output-vbf-stxs}
+    \end{figure}
+
+    \FloatBarrier
+    \section{Expected number of events at different selection stages}
+    \label{app:cutflows}
+
+    \Cref{app:tab:cutflows} shows the expected number of events at different selection stages to define the VBF \TwoJet SRs and CRs and the ggF \TwoJet SRs and CRS.
+
+    \begin{landscape}
+        \thispagestyle{empty}
+        \begin{table}
+            \subfloat[]{
+                \resizebox{\textwidth}{!}{
+                    \input{figures/hww/cutflows/run2-emme-VBF-cutflow-processes-paper-VBF-cutflow-cuts-default.tex}
+                }
+            } \\
+            \vspace{20pt}
+            \subfloat[]{
+                \resizebox{\textwidth}{!}{
+                    \input{figures/hww/cutflows/run2-emme-VBF-cutflow-processes-paper-ggF-cutflow-cuts-2jet.tex}
+                }
+            }
+            \caption{Expected number of events at different selection stages to define the (a) VBF \TwoJet SRs and CRs and (b) the ggF \TwoJet SRs and CRs. For (a) the selections from the row labelled ``Preselection'' to the row labelled ``OLV'' are applied subsequently; for (b) the selections from the row labelled ``Preselection'' to the row labelled ``fail OLV $||$ fail CJV'' are applied subsequently. All respective other rows include all selections that define the indicated regions as described in \cref{sec:event-selection}.}
+            \label{app:tab:cutflows}
+        \end{table}
+    \end{landscape}
+
+    % \FloatBarrier
+    % \section{Post-fit Distributions of the DNN input variables}
+    % \label{app:post-fit-distributions}
+    % \TDinote{}{MAYBE!?}
+    % Not for now!
+
+
+    \clearpage
+    \FloatBarrier
+    \section{Distributions in the ggF \ZeroJet and \OneJet Category}
+    \label{app:event-selection-ggf}
+
+    The distributions shown in \cref{fig:ggf:Plots:selections} illustrate the event selections made to define the ggF \ZeroJet and \OneJet category. This motivates the selections and reveals the background processes that are primarily suppressed by each requirement.
+
+    \begin{figure}[!h]
+        \centering
+        \subfloat[]{
+            \includegraphics[width=0.47\textwidth]{\paperfiguredir/ggF/ZeroJet/CutGGF_Ptll_0jet-Mll}
+            \label{fig:ggf:Plots:selections-a}
+        }
+        \subfloat[]{
+            \includegraphics[width=0.47\textwidth]{\paperfiguredir/ggF/ZeroJet/CutGGF_bVeto_0jet-DPhill}
+            \label{fig:ggf:Plots:selections-b}
+        } \\
+        \subfloat[]{
+            \includegraphics[width=0.47\textwidth]{\paperfiguredir/ggF/OneJet/CutGGF_ZttVeto_1jet-Mll}
+            \label{fig:ggf:Plots:selections-c}
+        }
+        \subfloat[]{
+            \includegraphics[width=0.47\textwidth]{\paperfiguredir/ggF/OneJet/CutGGF_TopoMll_1jet-DPhill}
+            \label{fig:ggf:Plots:selections-d}
+        }
+        \caption{
+            Distributions of (a) \mll\ and (b) \dphill\ in the \ZeroJet category as well as (c) \mll\ and (d) \dphill\ in the \OneJet category, after the preselection and background rejection steps, and also after the selection on \mll\ for the \dphill plots. The dashed lines indicate where the selection on the observable is made. The hatched band shows the normalization component of the total pre-fit uncertainty, assuming SM Higgs boson production. The bottom panels show the normalized distributions for the signal and backgrounds, from which it can be inferred which background processes are primarily removed by the indicated selections.
+            Figure and caption taken from \ccite{HWWPaper}.
+            \label{fig:ggf:Plots:selections}
+        }
+    \end{figure}
+
+    \clearpage
+    \FloatBarrier
+    \section{Post-fit distributions in all CRs}
+    \label{app:post-fit-cr-dists}
+
+    \Cref{fig:Top_CRs,fig:Ztt_CRs,fig:WW_CRs} show the post-fit distributions of the CRs that enter the 2-PoI fit for the measurement of the inclusive VBF and ggF production cross section.
+    Excellent agreement between the data and the SM predictions are observed.
+    \begin{figure}[htp]
+        \centering
+        \subfloat[]{
+            \includegraphics[width=0.47\textwidth]{\paperfiguredir/CRs/ggF0jet_WWCR_MT}
+        }
+        \subfloat[]{
+            \includegraphics[width=0.47\textwidth]{\paperfiguredir/CRs/ggF1jet_WWCR_MT}
+        } \\
+        \subfloat[]{
+            \includegraphics[width=0.47\textwidth]{\paperfiguredir/CRs/ggF2jet_WWCR_MT}
+        }
+        % \subfloat[]{
+        %   \includegraphics[width=0.5\textwidth]{figures/VBF/CR/WW/DNNoutputG_Fit_finelowDNN2}
+        % }
+        \caption{
+            Post-fit $\mT$ distributions in the (a) \ZeroJet, (b) \OneJet, and (c) ggF-enriched \TwoJet $WW$ CRs with signal (normalized to post-fit measurement) and background modeled contributions.
+            The red arrow in the lower panel of (a) indicates that the central value of the data lies above the window. The last bin of each distribution is inclusive (includes the overflow).
+            The hatched band shows the total uncertainty, assuming SM Higgs boson production.
+            Some contributions are too small to be visible.
+            Figure and caption taken from \ccite{HWWPaper}.
+            \label{fig:WW_CRs}
+        }
+    \end{figure}
+    \begin{figure}[htp]
+        \centering
+        \subfloat[]{
+            \includegraphics[width=0.47\textwidth]{\paperfiguredir/CRs/ggF0jet_TopCR_MT}
+        }
+        \subfloat[]{
+            \includegraphics[width=0.47\textwidth]{\paperfiguredir/CRs/ggF1jet_TopCR_MT}
+        } \\
+        \subfloat[]{
+            \includegraphics[width=0.47\textwidth]{\paperfiguredir/CRs/ggF2jet_TopCR_MT}
+        }
+        \subfloat[]{
+            \includegraphics[width=0.47\textwidth]{\paperfiguredir/VBF/CR/Top/DNNoutputG_Fit_finelowDNN2}
+        }
+        \caption{
+            Post-fit \mT distributions in the (a) \ZeroJet, (b) \OneJet, and (c) ggF-enriched \TwoJet top quark CRs, as well as (d) the post-fit DNN output distribution in the VBF-enriched \TwoJet top quark CR, with signal (normalized to post-fit measurement) and background modeled contributions.
+            The first two bins of the DNN output distribution used in the final fit, $[0$--$0.25,0.25$--$0.52]$, are here split into four bins, $[0$--$0.1,0.1$--$0.25,0.25$--$0.4,0.4$--$0.52]$, to illustrate the shape of the steeply falling background.
+            The red arrows in the lower panel of (c) indicate that the central value of the data lies above the window. The last bin of each \mT distribution is inclusive (includes the overflow).
+            The hatched band shows the total uncertainty, assuming SM Higgs boson production.
+            Some contributions are too small to be visible.
+            Figure and caption taken from \ccite{HWWPaper}.
+            \label{fig:Top_CRs}
+        }
+    \end{figure}
+    \begin{figure}[htp]
+        \centering
+        \subfloat[]{
+            \includegraphics[width=0.47\textwidth]{\paperfiguredir/CRs/ggF0jet_ZttCR_MT}
+        }
+        \subfloat[]{
+            \includegraphics[width=0.47\textwidth]{\paperfiguredir/CRs/ggF1jet_ZttCR_MT}
+        } \\
+        \subfloat[]{
+            \includegraphics[width=0.47\textwidth]{\paperfiguredir/CRs/ggF2jet_ZttCR_MT}
+        }
+        \subfloat[]{
+            \includegraphics[width=0.47\textwidth]{\paperfiguredir/VBF/CR/Zjets/DNNoutputG_Fit_finelowDNN2}
+        }
+        \caption{
+            Post-fit \mT distributions in the (a) \ZeroJet, (b) \OneJet, and (c) ggF-enriched \TwoJet \Ztt CRs, as well as (d) the post-fit DNN output distribution in the VBF-enriched \TwoJet \Ztt CR, with signal (normalized to post-fit measurement) and background modeled contributions.
+            The first two bins of the DNN output distribution used in the final fit, $[0$--$0.25,0.25$--$0.52]$, are here split into four bins, $[0$--$0.1,0.1$--$0.25,0.25$--$0.4,0.4$--$0.52]$, to illustrate the shape of the steeply falling background.
+            The last bin of each \mT distribution is inclusive (includes the overflow).
+            The hatched band shows the total uncertainty, assuming SM Higgs boson production.
+            Some contributions are too small to be visible.
+            Figure and caption taken from \ccite{HWWPaper}.
+            \label{fig:Ztt_CRs}
+        }
+    \end{figure}
+
+    \clearpage
+    \FloatBarrier
+    \section{Observed number of events and normalization factors}
 
     The observed number of events in each nominal signal category as well as the post-fit MC yields as obtained from the 2-PoI fit are shown in \cref{tab:ggF_VBF_yields}.
     The fitted NFs are shown in \cref{tab:CRs_NF}.
@@ -378,9 +452,10 @@ Although the number of events in that category accounts for only $\mathcal{O}(1\
             The quoted uncertainties correspond to the statistical uncertainties, together with the experimental and theory modeling systematic uncertainties.
             The sum of all the contributions may differ from the total value due to rounding.
             Moreover, the uncertainty in the total yield differs from the sum in quadrature of the single-process uncertainties due to the effect of anticorrelations between the sources of their systematic uncertainties, which are larger than their MC statistical uncertainties.
+            Table and caption taken from \ccite{HWWPaper}.
             \label{tab:ggF_VBF_yields}
         }
-        \scalebox{0.95}{
+       \scalebox{0.95}{
             \begin{tabular}{lS[table-format=5,table-number-alignment=right]@{$\,\pm\,$}
                 S[table-format=3,table-number-alignment=left]
                 S[table-format=5,table-number-alignment=right]@{$\,\pm\,$}
@@ -419,6 +494,7 @@ Although the number of events in that category accounts for only $\mathcal{O}(1\
         \caption{
             Post-fit normalization factors which scale the corresponding estimated yields in the relevant signal region; the dash indicates where a MC-based normalization is used.
             The quoted uncertainties include both the statistical and systematic contributions.
+            Table and caption taken from \ccite{HWWPaper}.
         }
         \label{tab:CRs_NF}
         \scalebox{1.0}{
@@ -438,24 +514,36 @@ Although the number of events in that category accounts for only $\mathcal{O}(1\
 
 
     \FloatBarrier
-    \section{STXS Measurement}
+    \section{Detailed results of the STXS measurement}
     \label{app:stxs-measurement}
+
+    \Cref{tab:STXS-XSecs} presents the central values and uncertainties of each STXS cross section measured, and \cref{fig:stxs:uncertainty-breakdown} indicates the uncertainties broken down into their individual components.
+    \TDinote{}{Maybe the uncertainty plot is taken from PAPER?}
+
     \begin{table}[htp]
         \caption{
         Best-fit values and uncertainties for the production cross section times $\hww$ branching fraction $({\sigma_i \cdot \mathcal{B}_{H \to WW^{\ast}}})$ in each STXS bin.
+        Table and caption taken from \ccite{HWWPaper}.
         }
         \begin{center}
             \small
             \renewcommand{\arraystretch}{1.5}
-            \scalebox{0.90}{
+            \resizebox{\textwidth}{!}{
                 \input{tables/hww/results/stxs-measurement.tex}
             }
         \end{center}
         \label{tab:STXS-XSecs}
     \end{table}
 
-    \TDinote{Include uncertainty breakdown plot!}
+    \begin{figure}[h]
+        \centering
+        \newImageResizeCustom{0.9}{\paperfiguredir/11-POI/STXS-uncertainties_overSM.pdf}
+        \caption{Observed uncertainty broken down into the individual components for each STXS cross section measured relative to the SM prediction.
+        }
+        \label{fig:stxs:uncertainty-breakdown}
+    \end{figure}
 
+    \clearpage
     \FloatBarrier
     \section{STXS Stage-1.2 Framework}
     \label{app:stxs-measurements-aux}
@@ -465,13 +553,13 @@ Although the number of events in that category accounts for only $\mathcal{O}(1\
     \begin{figure}[h]
         \centering
         \subfloat[]{
-            \newImageResizeCustom{0.9}{figures/hww/stxs/ggFSTXS-measured.pdf}
+            \newImageResizeCustom{0.8}{figures/hww/stxs/ggFSTXS-measured.pdf}
         } \\
         \subfloat[]{
-            \newImageResizeCustom{0.9}{figures/hww/stxs/VBFSTXS-measured.pdf}
+            \newImageResizeCustom{0.8}{figures/hww/stxs/VBFSTXS-measured.pdf}
         } \\
-        {\caption{Definition of fiducial kinematic regions in the Stage-1.2 STXS framework for (a) $ggH$ and (b) EW~$qqH$ production. The colored boxes indicate the merged regions measured in the \HWW analysis.
-            \label{fig:stxs:stage-12-definition} }}
+        \caption{Definition of fiducial kinematic regions in the Stage-1.2 STXS framework for (a) $ggH$ and (b) EW~$qqH$ production. The colored boxes indicate the merged regions measured in the \HWW analysis.}
+        \label{fig:stxs:stage-12-definition}
     \end{figure}
 
 
@@ -482,7 +570,7 @@ Although the number of events in that category accounts for only $\mathcal{O}(1\
     The proposed solution is to use multiclass classification in a new \TwoJet SR defined commonly instead of having separate ggF \TwoJet and VBF \TwoJet categories.
 
     For this purpose, a DNN is trained with 3 output nodes: one output node determines how likely an event is a VBF signal, one targets the ggF signal instead, and one the backgrounds.
-    The expected number of events in a two-dimensional histogram spanned by the DNN VBF output and DNN ggF output node, referred to as DNN$_\mathrm{out}^\mathrm{VBF}$ and DNN$_\mathrm{out}^\mathrm{ggF}$, respectively, are shown in \cref{sec:hww:summary}, \cref{app:fig:2d-discriminant}.
+    The expected number of events in a two-dimensional histogram spanned by the DNN VBF output and DNN ggF output node, referred to as DNN$_\mathrm{out}^\mathrm{VBF}$ and DNN$_\mathrm{out}^\mathrm{ggF}$, respectively, are shown in \cref{app:fig:2d-discriminant}.
 
     For the training, the same hyperparameters and input variables are used as in the VBF DNN, with some exceptions. The loss function becomes a \emph{categorical crossentropy} and the activation function of the output layer becomes a \emph{softmax} function.
     %, both of which constitute the general form of the respective loss and activation used in the binary classification task but extended to multiple classes. 

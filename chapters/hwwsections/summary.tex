@@ -18,16 +18,16 @@ All measurements presented are consistent with the SM predictions.
 % The measurement of in total 11 Higgs boson production cross sections split in different kinematic regions have been performed by the ATLAS collaboration for the first time using \HWW decays. 
 The measurement of in total 11 STXS cross sections have been performed by the ATLAS collaboration for the first time using \HWW decays. 
 While the results of the inclusive cross-section measurements are largely dominated by systematic uncertainties, the measurement of 6 of the 11 STXS cross sections are still dominated by statistical uncertainties. 
-Furthermore, the VBF production mode is observed with a discovery significance of above $5\,\sigma$\footnote{A significance of at least $5\,\sigma$ above the background expectation is commonly considered an observation in particle physics.} for the first time using only \HWW decays.
+% Furthermore, the VBF production mode is observed with a discovery significance of above $5\,\sigma$\footnote{A significance of at least $5\,\sigma$ above the background expectation is commonly considered an observation in particle physics.} for the first time using only \HWW decays.
 
 % Previous \RunTwo results of the ATLAS collaboration reported corresponding cross sections of the ggF and VBF production mode of $11.4^{2.2}_{-2.1}$~pb and $0.50^{0.29}_{-0.28}$~pb~\cite{HIGG-2016-07}.
 \subsection{Comparison to previous results}
-Previous \RunTwo measurements of the ATLAS collaboration that used a dataset corresponding to 36\,\ifb\ reported cross sections of the ggF and VBF production mode of $11.4^{+2.2}_{-2.1}$~pb and $0.50^{+0.29}_{-0.28}$~pb\footnote{Broken down into statistical and systematic uncertainties the results are $\sigmaGGF = 11.4^{+1.2}_{-1.1}\,\text{(stat.)}^{+1.8}_{-1.7}\,\text{(syst.)}$~pb and $\sigmaVBF= 0.50^{+0.24}_{-0.22}\,\text{(stat.)}\pm 0.17\,\text{(syst.)}$~pb, respectively}, respectively~\cite{HIGG-2016-07}.
+The previous \RunTwo measurements of the ATLAS collaboration that used a dataset corresponding to 36\,\ifb\ reported cross sections of the ggF and VBF production mode of $11.4^{+2.2}_{-2.1}$~pb and $0.50^{+0.29}_{-0.28}$~pb\footnote{Broken down into statistical and systematic uncertainties the results are $\sigmaGGF = 11.4^{+1.2}_{-1.1}\,\text{(stat.)}^{+1.8}_{-1.7}\,\text{(syst.)}$~pb and $\sigmaVBF= 0.50^{+0.24}_{-0.22}\,\text{(stat.)}\pm 0.17\,\text{(syst.)}$~pb, respectively}, respectively~\cite{HIGG-2016-07}.
 The measurements presented here thus result in a 40\% and 60\% smaller total relative uncertainty on the ggF and VBF measurement, respectively. In part, this improvement is due to the increased size of the dataset by almost a factor of four.
 In addition, the ggF measurement benefits from the inclusion of the ggF \TwoJet category and the VBF measurement is drastically improved by the implementation of a DNN as final fit discriminant. 
 
 The latter is quantified by means of the expected discovery significance of the VBF signal, which was $2.6\,\sigma$ for the previous VBF analysis based on a boosted decision tree (BDT), and $6.2\,\sigma$ for the analysis presented. 
-To factor out the effects of any changes other than the change in the final discriminant, such as the increased size of the dataset, the discovery significance is evaluated for the BDT and the DNN with an otherwise identical analysis setup. Improvements of about 20-30\% are found when the DNN is used, depending on the binning choice of the fit discriminant. 
+To factor out the effects of any changes other than the change in the final discriminant, such as the increased size of the dataset, the discovery significance is evaluated for both the BDT and the DNN with an otherwise identical analysis setup. In this test, the expected discovery significance is improved by about 20-30\% when using the DNN, depending on the choice of binning of the fit discriminant. 
 % Direct comparisons between the performance of the BDT and the DNN with an otherwise identical analysis strategy showed an improvement of about 20-30\% in the discovery significance depending on the binning choice of the fit discriminant. 
 % The previous analysis, which used a boosted decision tree (BDT) for the VBF signal discrimination, reached an expected discovery significance of $2.6\,\sigma$ for the VBF signal, which is to be compared to $6.2\,\sigma$ achieved by the analysis presented. 
 %This improvement can be explained by multiple factors, such as the above-mentioned increase in dataset size
@@ -35,39 +35,41 @@ To factor out the effects of any changes other than the change in the final disc
 %These developments allowed observing the VBF production mode of the Higgs boson for the first time using only \HWW decays.
 
 Both the ggF and VBF measurements also benefit from improvements in the estimation of the background from misidentified leptons, substantially reducing their impact on the measurement with respect to the previous results. 
-Furthermore, improvements in ATLAS reconstruction software, identification algorithms, and improved object calibration measurements are of benefit. 
+Furthermore, improvements in the ATLAS reconstruction software, identification algorithms, and improved object calibration measurements are of benefit. 
 An example of the latter is the JER measurement presented in \cref{chap:calibration}. 
 
 \subsection{Impact of analysis in combined measurements}
-The analysis presented is also crucial input to combined Higgs boson measurements~\cite{NaturePaper}, which combine various analyses that study different combinations of Higgs boson production and decay processes. These results are summarized in \cref{chap:higgs}.
+The analysis presented is also crucial input to combined Higgs boson measurements~\cite{NaturePaper}, where several analyses are combined that study different combinations of Higgs boson production and decay processes. These results are summarized in \cref{chap:higgs}.
 % The ones with the largest contributions are analyses of $H \to ZZ$, $H \to \gamma\gamma$, and $H \to \tau\tau$ decays that consider Higgs boson production via all major production modes. 
 The combined measurements of both inclusive VBF and ggF cross sections as well as STXS cross sections benefit greatly from the inputs of the \HWW analysis.
 In particular, measurements of \HWW decays provide the most precise measurements of the coupling of the Higgs boson to vector bosons, especially due to the VBF measurement.
 %, since the $HVV$ vertex appears twice in the VBF, \HWW diagram (see \cref{sec:signal-bkg-characteristics}). 
-Using the $\kappa$-framework, the $HV$ coupling-strength modifier is measured to be $\kappa_{V} = 1.035 \pm 0.031$, assuming the same modifier for the $HW$ and $HZ$ coupling.
+Using the $\kappa$-framework, the coupling-strength modifier between the Higgs boson and vector bosons ($HV$, with $V = W, Z$) is measured to be $\kappa_{V} = 1.035 \pm 0.031$, assuming the same modifier for the $HW$ and $HZ$ coupling.
 Treating the $HW$ and $HZ$ coupling independently, the $HW$ coupling is measured with relative uncertainties of about 5-10\%, depending on the model assumed. 
 All results of the combined measurements are found to be consistent with the SM expectations, thereby setting strong constraints on couplings to new particles beyond the SM.  
 % The predicted signal yield is split into the different production and decay processes, so it can be parameterized as a function of dedicated parameters of interest depending on the tested model.
 
 \subsection{Possible future improvements}
-Due to the increased size of the available dataset, uncertainties from theoretical sources have become the bottleneck for many of the \HWW measurements presented.
+Due to the increased size of the available dataset, the statistical uncertainties are reduced with respect to the previous results.
+As a consequence, uncertainties from theoretical sources have become the bottleneck for many of the measurements presented.
 In particular, the inclusive VBF measurement is largely dominated by signal theory uncertainties, mainly due to the parton shower modelling.
-A better understanding of parton shower effects and more accurate theoretical calculations are therefore crucial to improve the measurement in the future.~\cite{Jger2020} 
+A better understanding of parton shower effects and more accurate theoretical calculations are therefore crucial to improve the measurements in the future~\cite{Jger2020}. 
 
-Also, a larger dataset collected in future Runs of the LHC is expected to be beneficial. This is especially true for the STXS measurements targeting EW~$qqH$ production, since they are still largely limited by statistical uncertainties. 
+A larger dataset collected in future Runs of the LHC is nonetheless expected to improve the measurements. This is especially the case for the STXS measurements targeting EW~$qqH$ production, since they are still largely limited by statistical uncertainties. 
 More data will also help to both improve the estimation of theory uncertainties and to better control the extraction of the normalization of backgrounds from CRs. 
 
 Another possibility to reduce systematic uncertainties is to construct signal discriminants that are insensitive to particular systematic variations. Machine learning techniques like adversarial neural networks have been proposed and tested~\cite{Englert2019,adversarialClavijoJoseM} for that purpose, and could be beneficial in particular for the VBF, \HWW analysis.
 
-Currently, the ggF SRs are defined with simple analysis selections. Instead, using a DNN-based approach to separate the ggF signal from the backgrounds is expected to be beneficial. 
+Currently, the ggF SRs are defined with simple analysis selections. Instead, using a DNN-based approach to separate the ggF signal from the backgrounds is expected to be useful. 
 A larger signal-to-background ratio in the ggF-sensitive regions will also reduce the impact of systematic uncertainties. 
 
-Furthermore, the current ggF and VBF \TwoJet SRs use very similar kinematic and topological selections but are made orthogonal by requirement on the CJV and OLV (see \cref{sec:event-categorization}). The latter selection is found inefficient in particular for the ggF \TwoJet category, where about 30\% of ggF signal events are removed from the ggF SR due to this requirement. Improving the separation between the ggF \TwoJet and the VBF \TwoJet categories could prove particularly beneficial for the ggF \TwoJet cross-section measurements. 
+Furthermore, the current ggF and VBF \TwoJet SRs use very similar kinematic and topological selections but are made orthogonal by requirement on the CJV and OLV (see \cref{sec:event-categorization}). The latter selection is inefficient, in particular in the ggF \TwoJet category, where about 30\% of ggF signal events are removed from the ggF SR due to this requirement. Improving the separation between the ggF \TwoJet and the VBF \TwoJet categories could therefore prove beneficial, especially for the ggF \TwoJet cross-section measurements. 
 
 \subsection{Prospects for a common \TwoJet category using multiclass classification}
 For the above-mentioned reasons, the author of this thesis studied using a modified analysis strategy for the \TwoJet categories, aiming at both a better separation of the ggF signal from the backgrounds and an improved separation between the ggF- and VBF-sensitive \TwoJet regions. 
-Both goals can be achieved by using a DNN with three output nodes trained as a multiclass classifier that distinguishes between ggF signal events, VBF signal events, and background events. 
-The studies are detailed in \cref{app:multi-class-2jet-strategy} and test the performance of a two-dimensional discriminant deployed in a newly defined common \TwoJet category.
+Both goals can be achieved by using a DNN with three output nodes trained as a multiclass classifier that distinguishes between ggF signal events, VBF signal events, and background events. The studies are detailed in \cref{app:multi-class-2jet-strategy} and only summarized here. 
+
+The performance is investigated of a two-dimensional discriminant deployed in a newly defined common \TwoJet category.
 The discriminant is based on the output values of the DNN that represent the VBF-likeness and the ggF-likeness of an event, and significantly improve both the background rejection in the ggF-sensitive region and the separation between the ggF and VBF signals.
 The performance is evaluated by comparing the results of the 2-PoI fit to the Asimov dataset, only using the \TwoJet categories as inputs. 
 The uncertainties on the ggF and VBF signal strengths are found to be smaller by about 25\% and 7\%, respectively, when the modified \TwoJet strategy is used. 
