@@ -3,8 +3,8 @@
 Collider experiments such as the ATLAS detector at the LHC, simply put, are counting experiments. 
 Sophisticated statistical methods are used to extract physics parameters such as cross sections from the counting experiments while accounting for all underlying uncertainties. 
 % to express the counting measurements in terms of physics parameters such as cross sections and to allow for a full consideration of the underlying uncertainties. 
-This chapter briefly outlines the statistical concepts used in the measurement of \HWW\ decays presented in \cref{chap:hww}.
-The number of events measured in data is compared to the expectation value taken from MC simulated samples. The expectation value is a complex quantity and depends on many parameters. This is discussed in \cref{sec:exp-value}.
+This chapter briefly outlines the statistical concepts used in the cross-section measurement of \HWW\ decays presented in \cref{chap:hww}.
+The \HWW analysis relies on comparisons between the number of events measured in data and their corresponding SM expectation obtained from MC simulated samples. The expectation value is a complex quantity and depends on many parameters. This is discussed in \cref{sec:exp-value}.
 \Cref{sec:likelihood} then describes how the MC simulations are used to construct a statistical template that is fit to the actual data using a maximum likelihood estimation. This allows the extraction of the physics parameters from the fitted MC template.
 The procedure to test different signal hypotheses with frequentist methods, for example to claim the discovery of a new signal, is outlined in \cref{sec:hypothesis-testing}.
 This chapter is based to a large extent on \ccite{Cowan:2010js}.
@@ -85,7 +85,7 @@ where $\beta_i$ corresponds to $1 / \sigma_{\text{rel}, i}$, with $\sigma_{\text
 
 %The best-fit values of the parameters $\pmb{\theta}$, $\mu$, $\nu$ in the likelihood, that is the values that make the observed data most likely under the assumed statistical model, 
 
-\section{Maximum likelihood estimation}
+\section{Maximum Likelihood Estimation}
 The values of the parameters $\{\pmb{\mu}, \pmb{\theta} \}$ that make the observed data most likely under the assumed statistical model, known as \emph{best-fit values}, are obtained by fitting them simultaneously using a maximum likelihood method.
 %The parameters of the likelihood, $\{\pmb{\mu}, \pmb{\theta} \}$, are fit simultaneously using a maximum likelihood method. 
 %This cannot be computed
@@ -105,7 +105,7 @@ The fitted $\hat{\pmb{\mu}}$ can then be directly translated into physics quanti
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Hypothesis testing
-\section{Hypothesis testing}
+\section{Hypothesis Testing}
 \label{sec:hypothesis-testing}
 To test the compatibility of the data with a hypothesized value of $\mu$ for a single signal category, the following test statistic is considered,
 \begin{equation}

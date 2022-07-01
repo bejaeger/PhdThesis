@@ -191,7 +191,7 @@ In MC simulated $pp$ collisions, another jet definition is often used by using t
 \label{subsec:pflow-algorithm}
 The PFlow algorithm is a multi-stage procedure to identify energy deposits in the calorimeter that are likely to be caused by charged particles. The energy of the topo-clusters that can be clearly associated to a track is not considered in the reconstruction of PFlow jets, but their energy is ``\emph{removed}'' (or ``\emph{subtracted}'') from the calorimeter and instead the \pT of the track is used. A flow chart of the different steps of the algorithm is shown in \cref{fig:pflow-algorithm} and the procedure is outlined below. More information can be found in \ccite{PERF-2015-09} and a description of the changes to the PFlow algorithm introduced for \RunTwo is described in \ccite{JETM-2018-05}.
 
-\subsubsection{Selection of tracks} Tracks considered for the energy subtraction must require stringent criteria: at least nine hits in the silicon detectors and no missing pixel hit when such a hit would be expected~\cite{PERF-2015-09}. They must have \absetaST{2.5} and $\pT < 0.5\,\GeV$ and must not be matched to an electron or muon candidate. A parametrised maximum \pTtrack requirement excludes some tracks with $\pTtrack < 100\,\GeV$ from the algorithm. The parametrisation aims at finding the tracks for which the ID measurements can be assumed inferior to the calorimeter measurements. No track above $\pTtrack = 100\,\GeV$ is considered.
+\subsubsection{Selection of tracks} Tracks considered for the energy subtraction must require stringent criteria: at least nine hits in the silicon detectors and no missing pixel hit when such a hit would be expected~\cite{PERF-2015-09}. They must have \absetaST{2.5} and $\pT < 0.5\,\GeV$ and must not be matched to an electron or muon candidate. A parametrized maximum \pTtrack requirement excludes some tracks with $\pTtrack < 100\,\GeV$ from the algorithm. The parametrisation aims at finding the tracks for which the ID measurements can be assumed inferior to the calorimeter measurements. No track above $\pTtrack = 100\,\GeV$ is considered.
 
 \subsubsection{Matching of tracks to topo-clusters} Topo-clusters with $\Ecluster / \ptrack > 0.1$, where \Ecluster is the energy of the topo-cluster and \ptrack the momentum of the track, are considered for the track-to-cluster matching. The matching is based on a distance metric that takes into account the size of the topo-clusters in $\eta$ and $\phi$. If the topo-cluster closest to the track position extrapolated to the second layer of the EM calorimeter falls below a certain distance threshold, it is matched to the track and the track is considered for the energy subtraction.
 
@@ -245,7 +245,7 @@ Applying basic selections on these variables yields a high efficiency exceeding 
 \end{figure}
 
 
-\subsection{flavor tagging}
+\subsection{Flavor tagging}
 \label{subsec:flavor-tagging}
 The process of classifying a jet as originating from a certain quark flavor is known as \emph{flavor tagging}, which is a crucial ingredient for many physics analyses. Especially important for the work presented in this thesis is the identification of jets that originate from $b$-quarks, called $b$-\emph{jets}.
 
@@ -283,11 +283,11 @@ Electrons stemming from the hard scatter are referred to as \emph{prompt} electr
 Similarly, prompt photons from the hard scatter are important to separate from jets or photons produced within jets.
 To this end, different quantities are defined and grouped into two sets of criteria: \emph{identification criteria}, that characterize the quality of the reconstructed detector signals produced by electrons and photons themselves, and \emph{isolation requirements}, that describe the activity near the reconstructed objects in order to reject non-prompt electrons and photons or signatures falsely identified as such. A brief overview is given below. More details can be found in \ccite{EGAM-2018-01}.
 
-\subsection{Electron and Photon Identification}
+\subsection{Electron and photon identification}
 A likelihood discriminant is defined to identify electrons~\cite{EGAM-2018-01}. It is based on several quantities characterizing the shower shape in the EM calorimeter, the track conditions, the amount of energy deposited in the hadronic calorimeters, and the track-cluster compatibility. Different so-called operating \emph{working points} for identification are defined and tuned to achieve a certain efficiency for electron reconstruction. The efficiency for each working point is approximately constant across different detector regions and energies of the electron.
 Similar identification criteria and working points are defined for photon identification. They are mostly based on shower shape variables.
 
-\subsection{Electron and Photon Isolation}
+\subsection{Electron and photon isolation}
 Quantities describing the activity near electrons and photons provide important information about the event signature. They are based on track information as well as calorimeter information.
 The track isolation variable, \pTcone, quantifies the activity around the electron track or assumed photon direction by summing all transverse momenta within a cone centered around the track axis or photon direction, respectively. The cone can be of fixed size, for example $R=0.2$, labelled as \pTconetwenty, or variable size, labelled as \pTvarcone. In the latter case the radius is given by $\Delta R = \text{min} \left( 10 / (\pT \text{[\GeV])}, \Delta R_{\text{max}}  \right)$, with $R_{\text{max}}$ typically set to $R_{\text{max}} = 0.2$.
 The calorimeter isolation, \ETconetwenty, sums the transverse energy of topo-clusters found within a cone of typically $R=0.2$ centered around the electron or photon superclusters.
@@ -307,7 +307,7 @@ Standalone MS tracks are reconstructed starting from straight-line track segment
 These segments are combined by considering additional information from the hard scatter vertex, the magnetic field, and information from the trigger detectors (RPCs and TGCs). The MS tracks are then matched to ID tracks and an iterative global track fitting procedure finds the final set of muon tracks, by also taking into account energy losses in the calorimeter as well as effects due to possible misalignments of the chambers, and resolving track ambiguities.
 % The muon momentum scale and resolution are calibrated using \Jpsimumu and \Zmumu events by exploiting the known mass of the $Z$ boson~\cite{PERF-2015-10}.
 
-\subsection{Muon Reconstruction and Isolation}
+\subsection{Muon reconstruction and isolation}
 To select high-quality muon candidates several identification criteria are defined.
 Requirements are primarily based on the number of hits in the ID and MS, the compatibility between the ID and MS tracks, and track fit properties~\cite{MUON-2018-03}.
 

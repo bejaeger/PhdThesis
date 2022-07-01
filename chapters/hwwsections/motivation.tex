@@ -1,0 +1,28 @@
+The \HWW\ analysis is part of the Higgs precision program that aims at establishing a precise experimental map of both Higgs boson production and decay processes and the couplings of the Higgs boson to other particles.
+The \HWW decay is the second most probable Higgs boson decay channel, with a branching fraction of 21.5\%~\cite{PDG2020}, and if final states with two leptons are selected, good suppression of background contributions can be achieved.
+This provides excellent opportunities for measurements of Higgs boson production cross sections.
+Furthermore, the coupling of the Higgs boson to $W$ bosons ($\kappa_W$) must be exactly as predicted, otherwise unitarity would be violated in the $W_LW_L \to W_LW_L$ scattering cross sections at high energies.
+This provides extra motivation to study \HWW\ decays, in particular the VBF production mode, since it is the most sensitive channel to measure $\kappa_W$ at the LHC.
+
+% as it is the most sensitive channel to measure the $HW$ couplings at the LHC.
+% The Higgs boson is mostly recognized as a result of the Higgs mechanism that provides masses to the $W$ and $Z$ bosons. 
+% It also solves another theoretical issue in the context of $WW$ scattering.
+% The cross section of the scattering of longitudinally polarized $W$ bosons ($W_LW_L \to W_LW_L$) diverges at high energies in the absence of the Higgs boson. In fact, the $WW$ scattering divergencies only cancel if the coupling of the Higgs boson to the $W$ bosons is exactly as predicted by the SM. Any observation of a different $HW$ coupling would therefore require new physics to be introduced to keep the longitudinal $W$ boson scattering cross section finite. 
+
+Prior measurements of the \HWW decay process were performed by the ATLAS collaboration.
+The \HWW decay was first observed with an excess of more than $5\,\sigma$\footnote{A significance of at least $5\,\sigma$ above the background expectation is commonly considered an observation in particle physics and used as a threshold to establish physical processes experimentally.} above the background expectation using data from \RunOne of the LHC~\cite{HIGG-2013-13}. An analysis of a partial \RunTwo dataset corresponding to 36.1\,\ifb\ reported the most recent ggF and VBF \HWW measurements~\cite{HIGG-2013-13}, resulting in observed cross sections of
+\begin{align}
+    \label{eq:xsec:prev-run2-results}
+    \sigma_{\mathrm{ggF}} \cdot \mathcal{B}_{H \to WW^{\ast}} & = 11.4^{+1.2}_{-1.1}\;(\mathrm{stat.}) ^{+1.2}_{-1.1}\;(\mathrm{theo~ syst.}) ^{+1.4}_{-1.3}\;(\mathrm{exp~ syst.})\;\mathrm{pb}  \\
+                                                              & = 11.4 ^{+2.2}_{-2.1}\;\mathrm{pb}, \\
+    \sigma_{\mathrm{VBF}} \cdot \mathcal{B}_{H \to WW^{\ast}} & = 0.50 ^{+0.24}_{-0.22}\;(\mathrm{stat.}) \pm 0.10\;(\mathrm{theo~ syst.}) ^{+0.12}_{-0.13}\;(\mathrm{exp~ syst.})\;\mathrm{pb} \\
+                                                              & = 0.50 ^{+0.29}_{-0.28}\;\mathrm{pb}.
+\end{align}
+The VBF and ggF signal were observed with discovery significances of $6.0\,\sigma$ and $1.8\,\sigma$, respectively, where $5.3\,\sigma$ and $2.6\,\sigma$ were expected assuming the SM.
+
+In the analysis presented here, several improvements compared to the above-mentioned results using a partial \RunTwo dataset are implemented. Most noteworthy, the discrimination of the VBF signal is performed using a deep neural network (DNN) instead of a boosted decision tree, ggF signal events with two or more jets in the final state are included in the measurement, and measurements of differential cross sections in kinematic regions defined by the STXS framework (\emph{STXS measurement}) are reported for the first time for this process.
+%\footnote{The corresponding measurements based on the full \RunTwo dataset have been reported by the CMS collaboration in \ccite{Sirunyan_2021}.}
+
+It should be noted that the measurements presented here supersede similar measurements performed with the same full \RunTwo dataset that were based on a previous version of the analysis, which is published in \ccite{ATLAS-CONF-2021-014}.
+The main differences between the analyses are changes in the simulated samples used, improved treatment of systematic uncertainties, and an improved DNN discriminant in the VBF category.
+An analysis targeting similar signal processes and based on the full \RunTwo dataset of the LHC was published by the CMS collaboration in \ccite{Sirunyan_2021}.

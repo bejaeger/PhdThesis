@@ -325,10 +325,10 @@
 %     \addtoToC{Dedication}
 %     }{\newpage}
 
-% \newenvironment{acknowledgements}{%
-%     \chapter*{Acknowledgements}
-%     \addtoToC{Acknowledgements}
-%     }{\newpage}
+\newenvironment{acknowledgements}{%
+    \chapter*{Acknowledgements}
+    \addtoToC{Acknowledgements}
+    }{\newpage}
 
 
 %   APPENDICES  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -338,10 +338,10 @@
 %   distributions.
 %
 
-% \BeforeBeginEnvironment{appendices}{
-%     \parskip=0.5\baselineskip \advance\parskip by 0pt plus 2pt
-%     \parindent=\z@
-% }
+\BeforeBeginEnvironment{appendices}{
+    \parskip=0.5\baselineskip \advance\parskip by 0pt plus 2pt
+    \parindent=\z@
+}
 
 
 %   HYPERREF SETUP  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -351,11 +351,11 @@
 %   display correctly.
 %
 
-% \AtBeginDocument{%
-%     \@ifpackageloaded{hyperref}{%
-%         \pretocmd{\addtoToC}{\phantomsection{}}{}{}
-%         \newcommand{\Appendixautorefname}{Appendix}
-%     }{}
-% }
+\AtBeginDocument{%
+    \@ifpackageloaded{hyperref}{%
+        \pretocmd{\addtoToC}{\phantomsection{}}{}{}
+        \newcommand{\Appendixautorefname}{Appendix}
+    }{}
+}
 
 % \endinput

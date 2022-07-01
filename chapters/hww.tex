@@ -1,30 +1,17 @@
-\chapter{The $H\rightarrow W^{\pm}W^{\mp^*}$ Analysis}
+\chapter{Precision Measurements of $H\rightarrow W^{\pm}W^{\mp^*}$ Cross sections}
 \label{chap:hww}
 % From Master
 % Many different analyses were contributing to the big achievement of the experimental discovery of the Higgs boson in the year 2012 [5, 6]. The analysis of H → W±W∓∗ → `−  ̄ ν`+ν decays was an essential part of this success and nowadays still plays a major role in the Higgs boson physics programme at the LHC. This channel is so attractive because the Higgs boson decay into a pair of W bosons1 is the second most probable decay channel of the Higgs boson, with a branching fraction of 21.5%. By selecting leptons in the final state, additionally a good rejection power against background contributions is achieved.
-
 Multiple physics analyses contributed to the great success of the experimental discovery of the Higgs boson in the year 2012. The analysis of \HWW decays was an essential part of this achievement. 
-The \HWW decay is the second most probable decay channel, with a branching fraction of 21.5\%~\cite{PDG2020}, and if final states with two leptons are selected, good suppression of background contributions can be achieved.
-This provides excellent opportunities for measurements of Higgs boson production cross sections.
-
-The Higgs boson is mostly recognized as a result of the Higgs mechanism that provides masses to the $W$ and $Z$ bosons. 
-It also solves another theoretical issue in the context of $WW$ scattering.
-The cross section of the scattering of longitudinally polarized $W$ bosons ($W_LW_L \to W_LW_L$) diverges at high energies in the absence of the Higgs boson. In fact, the $WW$ scattering divergencies only cancel if the coupling of the Higgs boson to the $W$ bosons is exactly as predicted by the SM. Any observation of a different $HW$ coupling would therefore require new physics to be introduced to keep the $WW$ scattering cross section finite. 
-This provides extra motivation to study \HWW\ decays, in particular in their VBF production mode, as it is the most sensitive channel to measure the $HW$ couplings at the LHC.
-
-This chapter presents cross-section measurements of \HWW decays, with the Higgs boson produced via the ggF and VBF production mode, using the 139\,\ifb $pp$ collision data at a center-of-mass energy $\sqrt{s} = 13\,$TeV collected by the ATLAS experiment during \RunTwo of the LHC. 
-Prior measurements of these processes were performed by the ATLAS collaboration.
-The \HWW process was first observed using data from \RunOne of the LHC~\cite{HIGG-2013-13}, and an analysis of a partial \RunTwo dataset corresponding to 36.1\,\ifb\ reported the most recent ggF and VBF \HWW measurements~\cite{HIGG-2013-13}.
-In the analysis presented here, several improvements compared to the previous \RunTwo results are implemented. Most noteworthy, the discrimination of the VBF signal is performed using a deep neural network (DNN) instead of a boosted decision tree, ggF signal events with two or more jets in the final state are included in the measurement, and measurements of cross sections in the kinematic regions defined by the STXS framework (\emph{STXS measurement}) are reported for the first time for this process.
-The analysis is published in \ccite{HWWPaper} and yields the most precise ggF and VBF Higgs cross-section measurements reported by the ATLAS collaboration to date.
+Ten years after this discovery, the Higgs boson can be studied at much higher precision using the data collected during \RunTwo of the LHC. 
+This chapter presents precision cross-section measurements of \HWW decays, with the Higgs boson produced via the ggF and VBF production mode, using the 139\,\ifb\ $pp$ collision data at a center-of-mass energy $\sqrt{s} = 13\,$TeV collected by the ATLAS experiment.
+The cross sections are measured inclusively as well as differentially in different kinematic regions, following the STXS framework.
+The analysis is published in \ccite{HWWPaper} and yields the most precise ggF and VBF Higgs boson cross-section measurements reported by the ATLAS collaboration to date.
 The results are also used as input to a combined Higgs boson measurement of the ATLAS collaboration where they make an essential contribution~\cite{NaturePaper}.
-%\footnote{The corresponding measurements based on the full \RunTwo dataset have been reported by the CMS collaboration in \ccite{Sirunyan_2021}.}
-It should be noted that the measurements presented supersede similar measurements performed with the same dataset but based on a previous version of the analysis published in \ccite{ATLAS-CONF-2021-014}.
-The main differences between the analyses are changes in the simulated samples used, improved treatment of systematic uncertainties, and an improved DNN discriminant in the VBF category. 
-An analysis targeting similar signal processes and based on the full \RunTwo dataset of the LHC was published by the CMS collaboration in \ccite{Sirunyan_2021}. 
 
 % This chapter starts with briefly reviewing previous measurements of \HWW decays conducted with smaller datasets and outlining the objectives of the updated measurements presented in this chapter. 
-This chapter begins with a brief overview of the analysis.
+This chapter begins with a brief motivation for conducting \HWW analyses and summarizes previous results.
+\Cref{sec:analysis-overview} then provides an overview of the analysis.
 The relevant signal and background processes are characterized in detail in \cref{sec:signal-bkg-characteristics}. 
 \Cref{sec:data-mc-samples} summarizes the data set and simulated samples used.
 \Cref{sec:object-selection} discusses the criteria used to select the physics objects in the final state, and \cref{sec:event-categorization} elaborates on how the events are selected and categorized. 
@@ -44,8 +31,10 @@ It is worth noting that the author's biggest contribution was to the analysis of
 % - different flavor decays: introduce labelling: \HWWdet 
 % - This chapter describes the details of the HWW measurement that went into the 10 year combination
 
-%%%%%%%%%%%%%%%%%%
-% Maybe add section: Overview of analysis and motivation?    
+\section{Motivation and Previous Results}
+\label{sec:motivation}
+\input{\chapterdir/hwwsections/motivation}
+
 \section{Analysis Overview}
 \label{sec:analysis-overview}
 \input{\chapterdir/hwwsections/analysis-overview}

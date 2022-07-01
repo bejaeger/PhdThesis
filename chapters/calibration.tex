@@ -4,7 +4,9 @@
 % As seen in the anatomy section, particle interaction probabilities vary by a huge span. This necessitates a precise knowledge of the detector and resolutions of measurements. Things like Pile-up are a nuisance in this endeavor, also seen in the anatomy section, and needs to be properly accounted for.
 The SM of particle physics makes predictions about the dynamics of quarks and gluons, yet these particles cannot be directly measured in the detector. Quarks and gluons hadronize to form hadrons which give rise to particle showers in the detector that are reconstructed as jets.
 While \cref{chap:experiment} focused on the experimental setup to measure the signals deposited by hadrons, and \cref{chap:objects} described how the signals are reconstructed to form jets, this chapter gives an overview of the procedures that are used in the ATLAS experiment to calibrate the energy of measured jets. Only calibrated jets allow making meaningful comparisons between experimental measurements and theoretical predictions.
-The experimentally measured jet is calibrated to the level of the particle jet. The calibration is experimentally challenging due to the rich environment at hadron colliders as well as the complicated nature of hadronic interactions in the detector. The intricacies of how the detector responds to incoming particle showers is therefore first described in \cref{sec:detector-response}. \Cref{sec:jes-calibration} then describes the multi-stage procedure to calibrate the energy of PFlow jets and EMTopo jets to the scale of the particle jet, which is known as the \emph{jet energy scale}, or \emph{JES}.
+The experimentally measured jet is calibrated to the level of the particle jet. The calibration is experimentally challenging due to the rich environment at hadron colliders as well as the complicated nature of hadronic interactions in the detector. 
+
+The intricacies of how the detector responds to incoming particle showers is first described in \cref{sec:detector-response}. \Cref{sec:jes-calibration} then describes the multi-stage procedure to calibrate the energy of PFlow jets and EMTopo jets to the scale of the particle jet, which is known as the \emph{jet energy scale}, or \emph{JES}.
 It is also crucial to measure the \emph{jet energy resolution}, or \emph{JER}, i.e., the precision with which the energy of a jet can be measured. \Cref{sec:jer} introduces how the JER can be parametrized and \cref{sec:jer-measurement} discusses how the ATLAS collaboration measures the JER in data from \RunTwo for PFlow jets and EMTopo jets, respectively. Particular focus is given on the measurement of the noise term of the JER, which arises due to both multiple pile-up interactions and electronic noise. \Cref{sec:jer-in-analysis} concludes this chapter with a description of how the measured JER is used in physics analyses.
 %  and \cref{sec:improvements-jer-measurement} gives an outlook on potential future improvements for the JER measurements.
 
@@ -90,7 +92,7 @@ The energy scale at this stage can be considered as the \emph{pile-up subtracted
 What follows is a purely MC-based calibration of the entire four-momentum of the jet, derived with simulated dijet events. The energy and direction of the reconstructed jets is corrected to on average match the ones of particle-level jets (truth jets).
 To this end, truth jets are matched to reconstructed jets with $\pT > 7\,\GeV$, by requiring them to be within $\Delta R = 0.3$. In addition, no other activity is allowed in the vicinity of the jets, which is ensured by requiring the reconstructed (truth) jets to have no other reconstructed (truth) jet with $\pT > 7\,\GeV$ within $\Delta R = 0.6$ ($\Delta R = 1.0$).
 The average jet response is then quantified by the mean of a Gaussian fit to the core of the $\EPUsub / \Etrue$ response distribution and derived in bins of \Etrue.
-The jet calibration factor, also denoted \emph{JES factor} throughout this thesis, is taken as the inverse of the average energy response parametrised as a function of \EPUsub.
+The jet calibration factor, also denoted \emph{JES factor} throughout this thesis, is taken as the inverse of the average energy response parametrized as a function of \EPUsub.
 The exact procedure, referred to as \emph{numerical inversion}, is outlined in \ccite{PERF-2011-03}. The resulting average response is shown in \cref{fig:jes-calibration-jet-response} for different bins of \etadet. A similar procedure is used to correct biases in the reconstructed jet $\etadet$, which is detailed in \ccite{JETM-2018-05}.
 Jets calibrated with the MC-based corrections are considered to be at the \emph{JES scale} and referred to as PFlow+JES jets or EM+JES jets in the following.
 
@@ -127,7 +129,7 @@ The double ratio is parametrized as a function of \pTref and the final calibrati
 \section{Parametrisation of the Jet Energy Resolution}
 \label{sec:jer}
 Multiple physics and experimental effects contribute to a sizeable JER. They scale differently with increasing energy of the jet. For calorimeter-based measurements, the effects can be grouped into three categories captured by three parameters: the \emph{noise term} ($N$), the \emph{stochastic term} ($S$), and the \emph{constant term} ($C$).
-The relative JER can then be parametrised as
+The relative JER can then be parametrized as
 \begin{equation}
     \label{eq:jer-parametrisation}
     \frac{\sigma_{p_{\rm T}}}{p_{\rm T}} = \frac{N}{p_{\rm T}} \oplus \frac{S}{\sqrt{p_{\rm T}}} \oplus C,
@@ -255,7 +257,7 @@ The noise term is therefore derived independently, as described below.
 \end{figure}
 
 
-\subsection{Measurement of the Noise Term}
+\subsection{Measurement of the noise term}
 \label{sec:noise-term-meas}
 %The goal of the noise term measurement is to isolate and measure the impact of different noise contributions to the JER. 
 %The noise present at calorimeter-cell level was discussed in \cref{sec:calo-clustering}. 
@@ -529,7 +531,7 @@ Also, the uncertainty from comparing \Nmuzero with the alternative estimation ($
 \end{figure}
 
 
-\subsection{Jet Energy Resolution Combination}
+\subsection{Combined measurement of the jet energy resolution}
 \label{subsec:jer-combination}
 The JER combination is performed by fitting the dijet \insitu measurements (see \cref{subsec:dijet-balance}) with the functional form shown in \cref{eq:jer-parametrisation} with the noise term fixed to the values found in the noise term measurement (see \cref{sec:noise-term-meas}).
 
