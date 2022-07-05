@@ -128,7 +128,7 @@ The double ratio is parametrized as a function of \pTref and the final calibrati
 
 \section{Parametrisation of the Jet Energy Resolution}
 \label{sec:jer}
-Multiple physics and experimental effects contribute to a sizeable JER. They scale differently with increasing energy of the jet. For calorimeter-based measurements, the effects can be grouped into three categories captured by three parameters: the \emph{noise term} ($N$), the \emph{stochastic term} ($S$), and the \emph{constant term} ($C$).
+Multiple physics and experimental effects contribute to a sizable JER. They scale differently with increasing energy of the jet. For calorimeter-based measurements, the effects can be grouped into three categories captured by three parameters: the \emph{noise term} ($N$), the \emph{stochastic term} ($S$), and the \emph{constant term} ($C$).
 The relative JER can then be parametrized as
 \begin{equation}
     \label{eq:jer-parametrisation}
@@ -162,7 +162,7 @@ These contributions are approximately independent of the jet energy and thus sca
 In the case of PFlow jets, additional effects come into play that can have non-trivial effects on the JER.
 First it should be noted that some of the aforementioned effects are mitigated with PFlow jets because the calorimeter measurements are partially replaced by more precise track measurements from the ID. 
 The impact on the JER from the tracks is expected to be small.
-However, an additional contribution to the PFlow JER comes from the sizeable amount of incorrectly subtracted energy in the PFlow algorithm.
+However, an additional contribution to the PFlow JER comes from the sizable amount of incorrectly subtracted energy in the PFlow algorithm.
 This amount is captured in a term known as \emph{confusion term} and fluctuations of it contribute to the JER. Details on the confusion term can be found in \ccite{PERF-2015-09}. It is unfeasible to derive from first principle how this effect scales with increasing energy of the jet and thus empirical studies need to be performed.
 
 \paragraph{Other non-trivial effects} on the JER are introduced by the jet energy calibration, most notably the MC-based correction as well as the GSC.
@@ -181,7 +181,7 @@ This can be tested in MC simulated dijet events, where the JER can be derived fr
     \label{eq:response-jer}
     \responsejer = \sigma \left( \frac{\pTcalib}{\pTtruth} \right) / \mu \left( \frac{\pTcalib}{\pTtruth} \right).
 \end{equation}
-The width and mean are taken from a Gaussian fit to the core of the distribution of the truth response. An example is shown in \cref{fig:truth-response}. The division by the mean in \cref{eq:response-jer} corrects for the residual non-closure of the jet calibration, which is sizeable at low \pT\footnote{For jets at JES scale, the response diverges from unity by a maximum of about $5\%\,(3\%, 1\%)$ at $\pTtrue = 20\,(30, 50)\,\GeV$~\cite{JETM-2018-05}.}. 
+The width and mean are taken from a Gaussian fit to the core of the distribution of the truth response. An example is shown in \cref{fig:truth-response}. The division by the mean in \cref{eq:response-jer} corrects for the residual non-closure of the jet calibration, which is sizable at low \pT\footnote{For jets at JES scale, the response diverges from unity by a maximum of about $5\%\,(3\%, 1\%)$ at $\pTtrue = 20\,(30, 50)\,\GeV$~\cite{JETM-2018-05}.}. 
 The JER estimated with this method is referred to as \emph{Response JER} in the following and can only be derived in MC simulation.
 
 \begin{figure}[t]
@@ -230,7 +230,7 @@ The noise term for PFlow jets stays sub-dominant even at low \pT, while for EMTo
 \section{Measurement of the Jet Energy Resolution in Data}
 \label{sec:jer-measurement}
 For \RunTwo, the ATLAS collaboration uses a combination of two types of measurements to determine the JER in data. The measurements involve several steps that are summarized in the flow chart shown in \cref{fig:flow-chart-jer} and are explained in this section.
-The first type of measurement is an \insitu method, similar to the \insitu jet energy calibration, and measures the JER over the full \pT range using dijet events, which is explained in \cref{subsec:dijet-balance}. The uncertainties of this method become sizeable at low \pT which is why a second measurement is carried out, that measures the noise term of the JER independently. This reduces the JER uncertainties at low \pT where the noise term is most important. \Cref{sec:noise-term-meas} describes the noise term measurement in great detail, as it was carried out by the author of this thesis.
+The first type of measurement is an \insitu method, similar to the \insitu jet energy calibration, and measures the JER over the full \pT range using dijet events, which is explained in \cref{subsec:dijet-balance}. The uncertainties of this method become sizable at low \pT which is why a second measurement is carried out, that measures the noise term of the JER independently. This reduces the JER uncertainties at low \pT where the noise term is most important. \Cref{sec:noise-term-meas} describes the noise term measurement in great detail, as it was carried out by the author of this thesis.
 Both measurements are finally combined in a statistical combination referred to as the \emph{JER combination}, which is described in \cref{subsec:jer-combination}.
 
 \subsection{Jet energy resolution measurement using dijet events}
@@ -265,7 +265,7 @@ The noise term is therefore derived independently, as described below.
 The goal of the noise term measurement is to quantify how much the fluctuations of noise contribute to the JER.
 This requires to isolate the noise effects from other contributions to the JER which is challenging, especially when considering reconstruction threshold effects for example in the topo-clustering algorithm:
 The energy of a calorimeter cell may be raised above the threshold to be included in the 420 topo-clustering algorithm (see \cref{sec:calo-clustering}) only because of an interplay of noise and other effects. The measurement of the noise term therefore relies on certain assumptions, that are mentioned in the relevant sections below.
-%, which results in sizeable systematic uncertainties on the measurement.
+%, which results in sizable systematic uncertainties on the measurement.
 %In the JER combination, the noise term measurement still reduces the JER uncertainties at low \pT.
 
 The full noise term of the JER can be decomposed into two terms,
@@ -509,7 +509,7 @@ The results of the noise term measurement for PFlow jets, including a breakdown 
 % From Paper: The systematic uncertainties enter the combined JER fit unsymmetrized in 𝜂 but are symmetrized during the statistical combination, and so the one-sided components are symmetrized in Figure 28 to illustrate their final contribution to the total uncertainty.
 %\input{tables/calibration/noise-term-uncertainties}
 It can be seen, that the uncertainties on \Npileup, in particular the non-closure uncertainty, are dominant and become very large at \absetaGT{2.5}. This is where the detector granularity becomes significantly coarser and the calorimeter-cell noise thresholds have an increased impact on the JER. This causes the assumptions in the random cones method to become less valid, which is captured by a large non-closure uncertainty.
-Also, the uncertainty from comparing \Nmuzero with the alternative estimation ($\mu=0$ fit instability) becomes sizeable.
+Also, the uncertainty from comparing \Nmuzero with the alternative estimation ($\mu=0$ fit instability) becomes sizable.
 
 
 %that the contribution of pile-up to the JER is independent of the presence of a hard scatter becomes less valid. The closure uncertainty covers this effect.
@@ -543,7 +543,7 @@ The combined \insitu measurement shows significantly smaller uncertainties than 
 The final JER uncertainties are presented in \cref{fig:jer-combination-incl-noise-term-b}.
 The uncertainties from the noise term measurement are propagated to the final results by varying the value of $N$ corresponding to each uncertainty source and repeating the fit. %The varied $N$ corresponds to the result that is obtained from the noise term measurement when the respective uncertainty is varied by one standard deviation.
 The same procedure is applied to the uncertainties from the dijet \insitu measurement.
-The uncertainties on the noise term have a sizeable contribution at low \pT, but remain sub-dominant compared to the uncertainties from the dijet measurement.
+The uncertainties on the noise term have a sizable contribution at low \pT, but remain sub-dominant compared to the uncertainties from the dijet measurement.
 % Mention correlation scheme? Therefore I have to explain the combination a bit more!
 % An eigenvalue decomposition is performed to reduce the final number of nuisance parameters. This is done analogously to the eigenvalue decomposition used in the JES calibration for which a more detailed explanation can be found in \ccite{JETM-2018-05}.
 
