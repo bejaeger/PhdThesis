@@ -239,6 +239,9 @@ cleanpdf:
 once: 
 	pdflatex $(BASENAME).tex
 
+bibl: 
+	biber $(BASENAME)
+
 format: 
 	pdflatex -ini -jobname="format" "&pdflatex" mylatexformat.ltx """Phd-Thesis-Format.tex"""
 

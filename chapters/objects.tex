@@ -2,14 +2,14 @@
 \chapter{Physics Object Reconstruction and Identification}
 \label{chap:objects}
 
-Due to the complex phenomenology of $pp$ collisions and the high luminosities at the LHC, the ATLAS detector is exposed to enormous particle multiplicities. It is therefore challenging to correctly interpret the detector signals recorded for each bunch crossing and accurately reconstruct the different \emph{physics objects} that are produced.
+Due to the complex phenomenology of $pp$ collisions and the high luminosities at the LHC, the ATLAS detector is exposed to enormous particle multiplicities. It is therefore challenging to correctly interpret the detector signals recorded for each bunch crossing and to accurately reconstruct the various \emph{physics objects}.
 Reconstructed physics objects represent both elementary particles, such as electrons, muons, or photons, and composite particles, such as \emph{jets}; or quantities derived using the entire event information like the \emph{missing transverse energy}.
 The ATLAS experiment uses a variety of sophisticated reconstruction and identification algorithms\footnote{Reconstruction algorithms are implemented within the extensive ATLAS software suite~\cite{ATL-SOFT-PUB-2021-001}.} to reconstruct these physics objects.
 % that are constantly being improved, 
 %like jets or quantities derived using the entire event information like missing transverse energy.
 This chapter provides details on the algorithms relevant for the work presented in this thesis.
 
-\Minote{}{Maybe I want to explicitely mention the chapters: First two chapters outline basic reconstructions that are used in object reconstructions, jets, electrons and photons, muons, missing et}
+\Cref{sec:tracks-vertex,sec:calo-clustering} introduce the algorithms used to reconstruct tracks and calorimeter clusters, respectively. These basic objects are input to the algorithms used to reconstruct the physics objects, which are presented in the remainder of this chapter. Specifically the reconstruction algorithms used for jets are presented in \cref{sec:jet-reco}, those for electrons and photons in \cref{sec:electron-photon-reconstruction}, those for muons in \cref{sec:muon-reconstruction}, and those for the missing transverse energy in \cref{sec:met}. 
 
 % - section tracks and calorimeter clustering describes the procedure that reconstructs the ingredients for further object reconstruction. Then the physics objects are explained, starting with jets, electrons and photons, as well as muons and missing tranverse energy.
 %The event reconstruction can be broadly divided into two stages: a reconstruction step which includes energy calibrations, and an identification process, where the reconstructed objects are identified with physics objects as well as an origin, which also includes the resolution of ambiguities present in the reconstruction step.
@@ -22,6 +22,7 @@ This chapter provides details on the algorithms relevant for the work presented 
 
 
 \section{Inner Detector Tracks and Vertex Reconstruction}
+\label{sec:tracks-vertex}
 The charged-particle hits measured in the ID are used to build tracks that are input to further reconstruction algorithms.
 The track reconstruction uses a sequence of pattern recognition algorithms that are described in much more detail in \ccite{Cornelissen:1020106,Cornelissen_2008}. The sequences primarily consist of a so-called \emph{inside-out} algorithm and an \emph{outside-in} algorithm.
 
@@ -94,6 +95,7 @@ The cells are calibrated at the electromagnetic scale (\emph{EM scale}) which me
 
 
 \section{Jets}
+\label{sec:jet-reco}
 \emph{Jets} are the experimental manifestation of quarks and gluons.
 They consist of collimated sprays of particles in the detector and are abundant at the LHC.
 %, originating from the hadronization of quarks and gluons, 

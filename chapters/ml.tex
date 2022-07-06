@@ -322,20 +322,20 @@ The available dataset for training is generally split into multiple subsets to a
 The following three subsets are typically defined, each fulfilling a particular task:
 \begin{itemize}
     \item Training set: the subset used to fit the model parameters.
-    \item Validation set: the subset used to tune the set of hyperparameters. As well, it is evaluated alongside the training set during the training to ``monitor'' the progress with an unbiased evaluation without affecting the training itself. This is useful, for example, to compare the loss function at each iteration with the loss of the training set. 
-    \item Test set: the subset used for final tests of generalization and to deploy the model. 
+    \item Validation set: the subset used to tune the set of hyperparameters and test the generalization of the model. As well, it is evaluated alongside the training set during the training to ``monitor'' the progress with an unbiased evaluation without affecting the training itself. This is useful for identifying signs of overtraining.
+    \item Test set: the subset used to deploy the model. 
 \end{itemize}
 
 A naive approach is to split the dataset once, train the model with the training set, tune the hyperparameters by evaluating the performance on the validation set, and test how well the model performs on the fully independent test set. 
 This, however, comes at the cost of loosing statistical precision in each of the sets. 
-To overcome this, a method known as \emph{cross validation} can be used that trains multiple models that are later combined, each with a different definition of the train, validation, and test set.
-There are multiple forms of cross validation. The one used in the work presented in this thesis is known as \emph{k-fold cross validation}, in which $k$ models are trained. A schematic of the dataset split for $k=5$ is shown in \cref{fig:k-fold-method}. 
+To overcome this, a method known as \emph{cross validation} can be used that trains multiple models that are later used in combination, each with a different definition of the train, validation, and test set.
+There are multiple forms of cross validation. The one used in the work presented in this thesis is referred to as mixed \emph{k-fold cross validation}, in which $k$ models are trained. A schematic of the dataset split for $k=5$ is shown in \cref{fig:k-fold-method}. 
 While cross validation comes with a significant increase in computing time, it allows exploiting more of the available statistical power in the training and the evaluation of the performance metrics.
 % - Two purposes in HEP: maximize training statistics, ability to use full MC set, that is have an unbiased estimator for each MC event.
 % - cross validation to avoid any bias from using the prediction of an event that was also learned using the same event.
 % - k-fold cross validation to prevent any bias but still exploit significant portion of available dataset for training \cref{fig:k-fold-method}.
 Another major advantage of cross validation is particularly important for HEP physics analyses. 
-Here, the dataset used for the training is usually required for further statistical interpretations. In such cases, it is best practice to use the test set for further analysis as it removes any potential bias that may occur when data samples are evaluated with a model that was trained with the same data sample.
+Here, the dataset used for the training is usually required for further statistical interpretations. In such cases, the test set can be used for further analysis to remove potential biases that may occur when the training set or the validation set was used.\footnote{If the training set was used in the inference step, a bias is potentially introduced by evaluating the samples with a model that was trained with the same sample. If the validation set is used, the model was specifically chosen based on a hyperparameter optimization procedure, which also introduces a potential bias.}
 When cross validation is used each data sample falls in one of the test sets, such that the entire dataset can be used for further analysis while avoiding potential biases.
 % best practice to avoid using the model output of a data sample if the model was trained with the same data sample. The
 
