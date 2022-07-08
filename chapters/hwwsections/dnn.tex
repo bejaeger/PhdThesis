@@ -165,7 +165,6 @@ The distributions also nicely visualize the different shapes of the VBF signal a
 % The VBF DNN distribution as used in the statistical analysis can be found in \cref{subsec:fina-model-validation}
 % Model choice: Choose model with highest significance in validation set!
 % Model validation: Validate model comparing against test set!
-\captionsetup[subfloat]{captionskip=7pt} % space between subfloat caption and image
 % Plots made with SFUsMLKit on cedar with:
 % ./plot.py -c configs/HWW/winningSubmission.cfg --trainingFolderName dropout-02-5-fold-aggressive-lr-schedule-2-fine-scan-ewww-scan-etafix/210805_9_0.12_8226149877761426764
 \begin{figure}[t]
@@ -229,7 +228,6 @@ The \pT of the three leading jets (\pTjone, \pTjtwo,\pTjthree, where \pTjthree i
 Because of the two high-energy jets expected in the VBF production, the VBF signal causes slightly larger \pTjone and \pTjtwo values than the background processes (\cref{fig:dnn-inputs-post-fit-8,fig:dnn-inputs-post-fit-9}).
 The \pTjthree observable takes on average smaller values for the VBF signal (\cref{fig:dnn-inputs-post-fit-10}) because of the small hadronic activity in the rapidity gap spanned by the jets. The \pTjthree variable is particularly meaningful because it is the only observable that provides information about whether a third jet is present.
 
-\captionsetup[subfloat]{captionskip=5pt} % space between subfloat caption and image
 \begin{figure}[h!t]
     \centering
     \subfloat[$\mjj$]{
@@ -316,7 +314,6 @@ The first is the total transverse momentum, \pttot, defined as the magnitude of 
             Distributions of 5 of the 15 DNN input variables, targeting the \HWW decay and top-quark suppression. The distributions are shown in the nominal VBF SR for simulated samples only. The solid orange line shows the expected VBF signal scaled by a factor of 50. The last bin of the distributions include the overflow.
             \label{fig:dnn-inputs-post-fit2} }}
 \end{figure}
-\captionsetup[subfloat]{captionskip=7pt} % space between subfloat caption and image
 
 \paragraph{}
 \noindent The distributions above illustrate the VBF signal discrimination in linear dimension. The major advantage of using a neural network-based approach compared to a traditional cut-based analysis is the ability to take into account multidimensional correlations between the input variables. \Cref{fig:dnn-features-correlations} indicates the two-dimensional correlations between the 15 input variables for the VBF signal and the backgrounds. It can be seen that the strengths of the correlations differs for several pairs of observables, in particular for the $m_{\ell_\alpha j_\beta}$ (with $\alpha, \beta = 1, 2$) and the \pTjthree observables.
