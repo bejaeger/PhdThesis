@@ -127,11 +127,12 @@ In practice, a jet is defined by two choices: the \emph{jet constituents}, i.e. 
 
 \FloatBarrier
 \begin{figure}
-    \newImageResizeCustom{0.7}{figures/reconstruction/jet-evolution-2.png}
-    \caption{Sketch of the evolution of a jet in the detector, highlighting the three distinct stages: parton jet, particle jet, and calorimeter jet. Taken from \ccite{jetEvoReference}.}
+    \ifthenelse{\boolean{draft}}
+    {\newImageResizeCustom{0.6}{figures/reconstruction/jet-evolution-low-qual.jpg}}
+    {\newImageResizeCustom{0.6}{figures/reconstruction/jet-evolution-high-qual.jpg}}
+    \caption{Sketch of the evolution of a jet in the detector, highlighting the three distinct stages: parton jet, particle jet, and calorimeter jet. Adapted from \ccite{jetEvoReference}.}
     \label{fig:jet-evolution}
 \end{figure}
-\Minote{}{Replace jet evolution figure.}
 
 \subsubsection{Jet algorithm}
 \label{subsubsec:jet-algorithm}

@@ -65,7 +65,8 @@ where the NPs are normalized and scaled, such that they have a mean of zero and 
 The effect of most NPs is modelled by varied templates -- i.e. varied values of $\text{E}[n_i]$ -- corresponding to the $\pm 1$ variation of the respective NP. This is done by either propagating the effect of a previously measured uncertainty through the analysis -- as is typically the case for uncertainties related to the experiment -- or -- for the majority of uncertainties related to theory -- by comparing different theoretical models with each other and defining one standard deviation ad-hoc from the space of available theoretical models.
 There are different statistical techniques to provide a continuous description of the effect of each NP.
 %A continuous description of the effect of each NP is required.
-In the work presented in this thesis, piece-wise interpolation is used. \TDinote{}{Double-check piece-wise interpolation and add reference}.
+In the work presented in this thesis, piece-wise linear interpolation is used for this purpose. 
+\TDinote{}{Add sentence about shape uncertainties varying yields in bins so that shape of distribution is altered, and normalization uncertainties, having the same relative effect in the bins in each bin?}
 
 The third and last term in \cref{eq:likelihood-three-terms}, \Lstat, accounts for the finite statistical precision of the MC template. For each bin, one uncertainty component is considered in the MC template, following the light version of the Barlow and Beeston procedure~\cite{BARLOW1993219}. 
 The statistical uncertainties encoded with the NPs $\pmb{\gamma}$ enter the likelihood as
@@ -74,8 +75,6 @@ The statistical uncertainties encoded with the NPs $\pmb{\gamma}$ enter the like
 \end{equation}
 where $\beta_i$ corresponds to $1 / \sigma_{\text{rel}, i}$, with $\sigma_{\text{rel}, i}$ being the relative statistical uncertainty in bin $i$. 
 
-\TDinote{}{Check whether this is indeed a Gaussian}
-\TDinote{}{Talk about shape uncertainties and normalization uncertainties?}
 % - Explain three terms: 
 %     1. Extended Maximum Likelihood (see paper: https://www.sciencedirect.com/science/article/abs/pii/0168900290913348?via%3Dihub)
 %         - Signal regions
@@ -159,8 +158,9 @@ In high energy physics, the $p$-value is often converted to Gaussian standard de
     Z = \Phi^{-1} ( 1 - p_0) \overset{\ref{eq:p-value-approx}}{=} \sqrt{q_0},
 \end{equation}
 where $\Phi^{-1}$ is the inverse of the Gaussian cumulative distribution function. 
+This value is referred to as \emph{discovery significance} in the following. 
 
-It is useful to find a simple approximation for the metric in \cref{eq:Z0}, which is referred to as \emph{discovery significance}. 
+It is useful to find a simple approximation of the discovery significance. 
 This can be constructed by considering a simple counting experiment with one measurement region and disregarding all uncertainties. In this case, the likelihood function can be written as
 \begin{equation}
   \Likelihood(\mu) = \frac{(\mu s +b)^n}{n!} e^{-(\mu s+b)},
