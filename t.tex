@@ -26,7 +26,8 @@
 \newboolean{draft}
 
 \date{\today}
-\title{Precision Measurements of $H \to WW^*$ Cross Sections using Machine Learning with the ATLAS Experiment}
+%\title{Precision Measurements of $H \to WW^*$ Cross Sections using Machine Learning with the ATLAS Experiment}
+\title{Precision Measurements of Higgs Boson Production in Decays to $W$ Bosons using Machine Learning with the ATLAS Experiment}
 \thesistype{Thesis}
 \author{Benjamin Jäger}
 \previousdegrees{%
@@ -60,7 +61,14 @@
 %-------------------------------------------------------------------------------
 \begin{document}
 
-\setboolean{draft}{false}   
+\setboolean{draft}{false}
+
+% Set offset fo caption!
+\newcommand\mycaptionoffset{2}   
+\captionsetup[subfloat]{captionskip=\mycaptionoffset pt}
+\newcommand{\resetcaptionoffset}{
+	\captionsetup[subfloat]{captionskip=\mycaptionoffset pt}
+}
 
 \frontmatter
 \pagestyle{plain}
@@ -68,57 +76,57 @@
 
 \makecommittee
 
+\newcommand{\chapterdir}{chapters}
+\include{\chapterdir/abstract}
+
 \tableofcontents
 
 % List of to-do notes.
-%\listoftodos
-
-%\newcommand{\chapterdir}{chapters}
-\newcommand{\chapterdir}{chapters}
-%\include{\chapterdir/abstract}
+\listoftodos
 
 \mainmatter
 \pagestyle{fancy}
 % -------------------------------------------------------------------------------
-% \include{\chapterdir/introduction}
+\include{\chapterdir/introduction}
 
-% \part{Background}
+\part{Background}
 % % % % % % -------------------------------------------------------------------------------
-% \include{\chapterdir/theory}
+\include{\chapterdir/theory}
 
 % % % % % -------------------------------------------------------------------------------
 \include{\chapterdir/higgs}
 
-% \part{Experimental Setup}
-% % % % % % %-------------------------------------------------------------------------------
-% \include{\chapterdir/experiment}
+\part{Experimental Methods}
+% % % % % %-------------------------------------------------------------------------------
+\include{\chapterdir/experiment}
 
-% % % % % % %-------------------------------------------------------------------------------
-% \include{\chapterdir/objects}
+% % % % % %-------------------------------------------------------------------------------
+\include{\chapterdir/objects}
 
 % % % % % % % % ---------------------------------------
-% \include{\chapterdir/calibration}
+\include{\chapterdir/calibration}
 
-% \part{Statistical Methods}
-% % % % % % % %-------------------------------------------------------------------------------
-% \include{\chapterdir/statistics}
+\part{Statistical Methods}
+% % % % % % %-------------------------------------------------------------------------------
+\include{\chapterdir/statistics}
 
-% % % % % % % %-------------------------------------------------------------------------------
-% \include{\chapterdir/ml}
+% % % % % % %-------------------------------------------------------------------------------
+\include{\chapterdir/ml}
 
-% \part{\HWW Cross-section Measurements}
-% % % % % %-------------------------------------------------------------------------------
-% \include{\chapterdir/hww}
+\part{\HWW Cross-section Measurements}
+% % % % %-------------------------------------------------------------------------------
+\include{\chapterdir/hww}
 
-% \bookmarksetup{startatroot}
-% % % % % %-------------------------------------------------------------------------------
-% \include{\chapterdir/conclusion}
+\bookmarksetup{startatroot}
+% % % % %-------------------------------------------------------------------------------
+\include{\chapterdir/conclusion}
 
-%-------------------------------------------------------------------------------
-\section*{Acknowledgements}
-%-------------------------------------------------------------------------------
-$To\,\,come$
-% - CERN and the community. Never been as inspired. 
+% -------------------------------------------------------------------------------
+% \section*{Acknowledgements}
+% -------------------------------------------------------------------------------
+% \include{\chapterdir/acknowledgements}
+% $To be added$
+% % - CERN and the community. Never been as inspired. 
 
 %-------------------------------------------------------------------------------
 \clearpage
@@ -126,7 +134,7 @@ $To\,\,come$
 \appendix
 \part*{Appendix}
 
-%-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 \include{\chapterdir/appendix}
 
