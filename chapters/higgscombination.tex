@@ -1,0 +1,92 @@
+\chapter{Summary of Combined Measurements of Higgs Boson Interactions}
+% \chapter{$H\rightarrow W^{\pm}W^{\mp^*}$ Cross-Sections Measurements}
+% \chapter{Measurements of $H\rightarrow W^{\pm}W^{\mp^*}$ Cross sections}
+\label{chap:comb}
+
+The analysis of \HWW decays presented in \cref{chap:hww} is combined with other measurements of Higgs boson production and decays. This is crucial to probe every aspect of the rich phenomenology of Higgs boson physics (see \cref{chap:higgs}).
+The results from the ATLAS collaboration are published in \ccite{NaturePaper} and as the title of the paper states establish a ``detailed map of Higgs boson interactions [\ldots] ten years after the discovery''. 
+Together with similar measurements performed by the CMS collaboration~\cite{CMSNaturePaper} they represent the most precise and comprehensive measurements of the properties of the Higgs boson to date.
+This chapter summarizes the results of the ATLAS collaboration, highlighting the impact of the \HWW analysis.
+All measurements are found to be consistent with the SM expectations, thereby setting strong constraints on couplings to new particles beyond the SM.  
+
+\section{Input Measurements and Fit Procedure}
+The combined measurement is performed using the results of the analyses of various Higgs boson decay modes.
+This includes the diboson decay modes: \HZZ, $H \to \gamma\gamma$, \HWW, and $H \to Z\gamma$; as well as the fermion decay modes: $H \to b\bar{b}$, $H \to \tau\bar{\tau}$, $H \to \mu\mu$, and $H \to c\bar{c}$. 
+Different Higgs boson production modes are considered for each analysis including ggF, VBF, $VH$, $t\bar{t}H$, $tH$, and $bbH$. 
+Most input measurements use the full set of \RunTwo data recorded by the ATLAS experiment at the LHC, corresponding to 139\ifb.
+
+The combined measurements are performed by fitting a combined likelihood formed by the product of the likelihood function of each of the input measurements. 
+The systematic uncertainties affecting multiple measurements are treated coherently in the combined fit to take into account the correlations between the NPs. 
+Several combined fits are performed, testing different scenarios that differ, for example, in the definition of signal strengths in the likelihood.
+
+% \section{Global Signal Strength Measurement}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Cross-Section Measurements}
+When assuming that all production and decay processes scale with the same signal strength $\mu$, the fully inclusive Higgs boson signal strength is measured to be 
+\begin{equation*}
+   \mu =1.05 \pm 0.06 = 1.05\pm 0.03\, (\text{stat.})\, \pm 0.03\, (\text{exp.})\, \pm 0.04\, (\text{sig.\ th.})\, \pm 0.02\, (\text{bkg.\ th.}).
+\end{equation*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Prod mode cross section
+The cross sections of the different Higgs boson production modes times branching fraction are measured for specific combinations of production and decay processes. 
+The results of a combined fit are shown in \cref{fig:prod-per-channel} and reveal the varying precision with which different Higgs boson processes have been measured to date. 
+The contribution from the \HWW\ analysis is among the most important for the measurement of the ggF and VBF production modes.
+%As can be seen, 
+\begin{figure}
+  \newImageResizeCustom{1}{figures/theory/higgs-measurements/fig4.pdf}
+  \caption{Ratio of observed rate to predicted SM event rate for different combinations of
+  Higgs boson production and decay processes. The horizontal bar on each point denotes the 68\% confidence interval. The narrow grey bands indicate the theory uncertainties in the SM cross section times the branching
+fraction predictions. The $p$-value for compatibility of the measurement and the SM prediction is
+72\%. Figure and caption taken from \ccite{NaturePaper}.}
+  \label{fig:prod-per-channel}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Decay fractions
+% \todo{Maybe putting the decay fraction results is not necessary here!}
+% The Higgs decay branching fractions can be measured by fixing the production mode cross section to the respective SM expectation and assuming that there are no non-SM decays. The results can be seen in \cref{fig:br-per-channel}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% - Latest STXS combination (from nature)
+The kinematic properties of Higgs boson production are measured following the Stage 1.2 STXS scheme. 
+The results are shown in \cref{fig:stxs-stage12}. 
+The classification of Higgs boson production into 5 classes ($t\bar{t}H$, $tH$, $qq\to Hqq$, $pp\to VH$, and $gg\to H$) is detailed in \ccite{NaturePaper}. 
+In particular, the measurements of $qq\to Hqq$ production at large \mjj benefit significantly from the input of the \HWW analysis. 
+\TDinote{}{Messungen ergaenzen sich nicely gegenseitig.}
+% From nature paper
+% Higgs boson production is first classified according to the nature of the initial state and the associated particles, the latter including the decay products of $W$ and $Z$ bosons if they are present. These classes are: $t\bar{t}H$ and $tH$ processes; $qq'\to Hqq'$ processes, with contributions from both VBF and quark-initiated $VH$ (where $V=W, Z$) production with a hadronic decay of the vector boson; $pp\to VH$ production with a leptonic decay of the vector boson ($V(\ell\ell,\ell\nu)H$), including $gg\to ZH \to \ell\ell H$ production; and finally the ggF process combined with $gg\to ZH \to q\bar{q}H$ production to form a single $gg\to H$ process. The contribution of the $b\bar{b}H$ production process is taken into account as a $1\%$~\cite{YR4} increase of the \ggtoH\ yield in each kinematic region, since the acceptances for both processes are similar for all input analyses~\cite{YR4}.
+
+\begin{figure}
+  \newImageResizeCustom{1}{figures/theory/higgs-measurements/fig8.pdf}
+  \caption{Observed and predicted Higgs boson production cross sections in different
+  kinematic regions. The vertical bar on each point denotes the 68\% confidence interval. The $p$-value for compatibility of the combined measurement and the SM prediction is 94\%. Kinematic regions are defined separately for each production process, based on the jet multiplicity, the transverse momentum of the Higgs ($p_{\textrm{T}}^H$) and vector bosons ($p_{\textrm{T}}^W$ and $p_{\textrm{T}}^Z$) and the two-jet invariant mass ($m_{jj}$).
+The `VH-enriched' and `VBF-enriched' regions with the respective requirements of $m_{jj}\in[60, 120)$ \GeV\ and $m_{jj}\notin[60,120)$ \GeV\ are enhanced in signal events from $VH$ and VBF productions, respectively. Figure and caption taken from \ccite{NaturePaper}.
+  }
+  \label{fig:stxs-stage12}
+\end{figure}
+
+\section{Higgs Boson Coupling Strenghts}
+% The couplings of the Higgs boson to individual particles can be measured by parametrizing the cross sections and branching fractions for the individual Higgs boson processes in terms of coupling-strength modifiers, $\kappa$, following the $\kappa$ framework~\cite{LHCHandbookV3}. 
+% For a production (decay) via the coupling to a given particle $p$, the modifier $\kappa_p$ is defined as $\kappa_p^2 = \sigma_p / \sigma_p^\text{SM}$ ($\kappa_p^2 = \Gamma_p/\Gamma_p^\text{SM}$), where $\Gamma_p$ is the partial decay width into a pair of particles $p$.\cite{NaturePaper}
+%Different statistical models with varying assumptions that are detailed in \cite{NaturePaper} may be considered. 
+The couplings of the Higgs boson to individual particles are measured for different scenarios following the $\kappa$ framework introduced in \cref{subsec:coupling-measurements}.
+Assuming that there are only SM processes that interact exactly as predicted, and independently measuring coupling-strength modifiers for all included particles ($\kappa_W$, $\kappa_Z$, $\kappa_t$, $\kappa_b$, $\kappa_c$, $\kappa_\tau$, and $\kappa_\mu$), the results can be visualized as shown in \cref{fig:h-couplings}. 
+This finds good consistency of the internal structure of the SM, but at the same time reveals that the uncertainties on the measurements are still sizable. 
+The $\kappa_W$ modifier is measured with relative uncertainties of about 5-10\%, depending on the model assumed. 
+This measurement is largely driven by the VBF, \HWW analysis, because it is sensitive to $\kappa_W$ in both the production and decay mode.
+The VBF production mode is parametrized as $\kappa_\mathrm{VBF}^2 = 0.733 \kappa^2_W + 0.267 \kappa^2_Z$ in the combined measurement.
+
+If the measurement is performed using only two independent coupling-strength modifiers, one for the vector bosons, $\kappa_V = \kappa_W = \kappa_Z$, and one for all fermions, $\kappa_F$, the results are $\kappa_V = 1.035 \pm 0.031$ and $\kappa_F = 0.95 \pm 0.05$. 
+%and Higgs boson to fermion coupling, $\kappa_{F}$, are measured with a relative uncertainty of the order of 10\% and 20\%, respectively. 
+% The VBF, \HWW analysis provides the most sensitive input to measure both $\kappa_W$ and $\kappa_V$, since the $HW$ vertex appears twice in the diagram. The VBF production mode enters the parametrization in the $\kappa$ framework (\cref{eq:kappa-parametrization}) as $\kappa_\mathrm{VBF}^2 = 0.733 \kappa^2_W + 0.267 \kappa^2_Z$~\cite{NaturePaper}. 
+\begin{figure}
+  \newImageResizeCustom{0.7}{figures/theory/higgs-measurements/fig6_paper.pdf}
+  \caption{
+    Reduced Higgs boson coupling strength modifiers and their uncertainties. They are defined as $\kappa_F \cdot m_F / \text{vev}$ for fermions
+($F=t,b,\tau,\mu$) and $\sqrt{\kappa_V}\cdot m_V/\text{vev}$ for vector bosons as a
+function of their masses $m_F$ and $m_V$. Two fit scenarios with $\kappa_c =
+\kappa_t$ (colored circle markers), or $\kappa_c$ left free-floating in the fit (grey
+cross markers) are shown. Loop-induced processes are assumed to have the SM structure, and Higgs boson decays to non-SM particles are not allowed. The vertical bar on each point denotes the 68\% confidence interval. The $p$-value for compatibility of the combined measurement and the SM prediction are 56\% and 65\% for the respective scenarios. The lower panel shows the values of the coupling strength modifiers. The grey arrow points in the direction of the best-fit value and the corresponding grey uncertainty bar extends beyond the lower panel range. Figure and caption taken from \ccite{NaturePaper}.}
+  \label{fig:h-couplings}
+\end{figure}
