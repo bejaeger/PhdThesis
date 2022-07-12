@@ -1,6 +1,5 @@
 % From nature
 % The statistical analysis of the data relies on a likelihood formalism, where the likelihood functions describing each of the input measurements are multiplied to obtain a combined likelihood. The observed yield in each category of reconstructed events follows a Poisson distribution whose parameter is the sum of the predicted signal and background contributions. The predicted signal yield is split into the different production and decay processes, so it can be parameterized as a function of dedicated parameters of interest depending on the tested model.
-
 % This chapter presents cross-section measurements of \HWWdet decays, with the Higgs boson produced via the ggF and VBF production mode, using the full dataset collected at \RunTwo of the LHC. 
 % Prior measurements of these processes were performed by the ATLAS collaboration. 
 % Using data from \RunOne of the LHC the \HWW process was established by reporting its observation with a discovery significance of 6.1 standard deviations~\cite{HIGG-2013-13}. 
@@ -8,16 +7,17 @@
 % The analysis presented here uses the full \RunTwo dataset and in addition to the increase in dataset size implements several improvements compared to the previous \RunTwo results. Most noteworthy, the discrimination of the VBF signal is performed using a deep neural network (DNN) instead of a boosted decision tree, ggF events with two or more jets in the final state are included in the measurement, and measurements of cross sections in the kinematic regions defined in the STXS framework are reported for the first time using \HWW events~\cite{HWWPaper}. 
 % The analysis is published in \ccite{HWWPaper} and yields some of the most precise Higgs cross-section meausurements to date.\footnote{Comparable results based on the full \RunTwo dataset have also been reported by the CMS collaboration~\cite{Sirunyan_2021}.}
 % The results are also used as input to a combined Higgs boson measurement published in \ccite{NaturePaper} where they make an essential contribution.
-
 % This is obseved:
 % $11.4^{2.2}_{-2.1}$ pb and $0.50^{0.29}_{-0.28}$
 % 12.0 ± 1.4 pb and 0.75 +0.19 −0.16 pb,
-
 The full \RunTwo dataset of the LHC recorded by the ATLAS experiment allows for precise measurements of ggF and VBF Higgs boson production cross-sections.
 All measurements presented are consistent with the SM predictions. 
 % The measurement of in total 11 Higgs boson production cross sections split in different kinematic regions have been performed by the ATLAS collaboration for the first time using \HWW decays. 
 The measurement of in total 11 STXS cross sections have been performed by the ATLAS collaboration for the first time using \HWW decays. 
 While the results of the inclusive cross-section measurements are largely dominated by systematic uncertainties, the measurement of 6 of the 11 STXS cross sections are still dominated by statistical uncertainties. 
+
+The analysis presented is also crucial input to a combination of measurements of different Higgs boson production and decay channels, the results of which are summarized in \cref{chap:comb}.
+
 % Furthermore, the VBF production mode is observed with a discovery significance of above $5\,\sigma$ for the first time using only \HWW decays.
 
 % Previous \RunTwo results of the ATLAS collaboration reported corresponding cross sections of the ggF and VBF production mode of $11.4^{2.2}_{-2.1}$~pb and $0.50^{0.29}_{-0.28}$~pb~\cite{HIGG-2016-07}.
@@ -40,19 +40,17 @@ Both the ggF and VBF measurements also benefit from improvements in the estimati
 Furthermore, improvements in the ATLAS reconstruction software, identification algorithms, and improved object calibration measurements are of benefit. 
 An example of the latter is the JER measurement presented in \cref{chap:calibration}. 
 
-The analysis presented is also crucial input to a combination of measurements of Higgs boson interactions, the results of which are summarized in \cref{chap:comb}.
-
-\subsection{Impact of analysis in combined measurements}
-The analysis presented is also crucial input to combined Higgs boson measurements~\cite{NaturePaper}, where several analyses are combined that study different combinations of Higgs boson production and decay processes. These results are summarized in \cref{chap:higgs} and briefly recapped here.
-% The ones with the largest contributions are analyses of $H \to ZZ$, $H \to \gamma\gamma$, and $H \to \tau\tau$ decays that consider Higgs boson production via all major production modes. 
-The combined measurements of both inclusive VBF and ggF cross sections as well as STXS cross sections benefit greatly from the inputs of the \HWW analysis.
-% In particular, measurements of \HWW decays provide the most precise measurements of the coupling of the Higgs boson to vector bosons, especially due to the VBF measurement.
-%, since the $HVV$ vertex appears twice in the VBF, \HWW diagram (see \cref{sec:signal-bkg-characteristics}). 
-Using the $\kappa$ framework (see \cref{subsec:coupling-measurements}), the coupling-strength modifier between the Higgs boson and vector bosons ($\kappa_V$, with $V = W, Z$) is measured to be $\kappa_{V} = 1.035 \pm 0.031$, assuming $\kappa_V = \kappa_W, \kappa_Z$.
-Treating the coupling to $W$ and $Z$ bosons independently, the $\kappa_W$ modifier is measured with relative uncertainties of about 5-10\%, depending on the model assumed. 
-The VBF, \HWW analysis provides the most sensitive input to measure both $\kappa_W$ and $\kappa_V$, since the $HW$ vertex appears twice in the diagram. The VBF production mode enters the parametrization in the $\kappa$ framework (\cref{eq:kappa-parametrization}) as $\kappa_\mathrm{VBF}^2 = 0.733 \kappa^2_W + 0.267 \kappa^2_Z$~\cite{NaturePaper}. 
-All results of the combined measurements are found to be consistent with the SM expectations, thereby setting strong constraints on couplings to new particles beyond the SM.  
-% The predicted signal yield is split into the different production and decay processes, so it can be parameterized as a function of dedicated parameters of interest depending on the tested model.
+% \subsection{Impact of analysis in combined measurements}
+% The analysis presented is also crucial input to combined Higgs boson measurements~\cite{NaturePaper}, where several analyses are combined that study different combinations of Higgs boson production and decay processes. These results are summarized in \cref{chap:higgs} and briefly recapped here.
+% % The ones with the largest contributions are analyses of $H \to ZZ$, $H \to \gamma\gamma$, and $H \to \tau\tau$ decays that consider Higgs boson production via all major production modes. 
+% The combined measurements of both inclusive VBF and ggF cross sections as well as STXS cross sections benefit greatly from the inputs of the \HWW analysis.
+% % In particular, measurements of \HWW decays provide the most precise measurements of the coupling of the Higgs boson to vector bosons, especially due to the VBF measurement.
+% %, since the $HVV$ vertex appears twice in the VBF, \HWW diagram (see \cref{sec:signal-bkg-characteristics}). 
+% Using the $\kappa$ framework (see \cref{subsec:coupling-measurements}), the coupling-strength modifier between the Higgs boson and vector bosons ($\kappa_V$, with $V = W, Z$) is measured to be $\kappa_{V} = 1.035 \pm 0.031$, assuming $\kappa_V = \kappa_W, \kappa_Z$.
+% Treating the coupling to $W$ and $Z$ bosons independently, the $\kappa_W$ modifier is measured with relative uncertainties of about 6-10\%, depending on the model assumed. 
+% The VBF, \HWW analysis provides the most sensitive input to measure both $\kappa_W$ and $\kappa_V$, since the $HW$ vertex appears twice in the diagram. The VBF production mode enters the parametrization in the $\kappa$ framework (\cref{eq:kappa-parametrization}) as $\kappa_\mathrm{VBF}^2 = 0.733 \kappa^2_W + 0.267 \kappa^2_Z$~\cite{NaturePaper}. 
+% All results of the combined measurements are found to be consistent with the SM expectations, thereby setting strong constraints on couplings to new particles beyond the SM.  
+% % The predicted signal yield is split into the different production and decay processes, so it can be parameterized as a function of dedicated parameters of interest depending on the tested model.
 
 \subsection{Possible future improvements}
 Due to the increased size of the available dataset, the statistical uncertainties are reduced with respect to the previous results.
