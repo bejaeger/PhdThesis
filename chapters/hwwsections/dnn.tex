@@ -8,13 +8,12 @@ The relevant supervised ML techniques are introduced in \cref{chap:ml}.
 
 \subsection{Methodology}
 %Developing a neural network model for a physics analysis is a multi-stage and cyclic procedure.
-The development of the VBF DNN involves several steps and, given the empirical nature of practical ML, a cyclic workflow is adopted to optimize the training settings.
+The development of the VBF DNN involves several steps and, given the empirical nature of practical ML, a cyclic workflow is adopted to optimize the training settings\footnote{It should be noted that the training procedure has been modified several times during the course of the author's PhD, due to both improvements in the self-developed software and historical developments of the \HWW\ analysis (for example changes in MC simulated samples). If not mentioned otherwise, the results and procedures presented correspond to the final VBF DNN deployed in the \HWW\ analysis.}.
 The procedures taken are roughly summarized by the following steps:
 
 \begin{enumerate}
     \item In the first step, the training data are prepared, so they can be easily used with industry-standard ML software\footnote{The author developed a software framework that makes use of state-of-the-art open-source ML libraries and manages the full ML cycle efficiently.
-    The entire software suite used is summarized in \cref{app:dnn:software-suite}.
-    It should also be noted that the training procedure has been modified several times during the course of the author's PhD, due to both improvements in the self-developed software and historical developments of the \HWW\ analysis (for example changes in MC simulated samples). If not mentioned otherwise, the results and procedures presented correspond to the final VBF DNN deployed in the \HWW\ analysis.}. To this end, the simulated samples that are listed in \cref{subsec:simulated-event-samples} are transformed accordingly. Details on the training data and the data preparation are given in \cref{subsec:training-data}.
+    The entire software suite used is summarized in \cref{app:dnn:software-suite}.}. To this end, the simulated samples that are listed in \cref{subsec:simulated-event-samples} are transformed accordingly. Details on the training data and the data preparation are given in \cref{subsec:training-data}.
     \item The second step is the main part of the DNN development and involves the training, validation, and optimization of the DNN.
           This iterative workflow leads to the choice of input variables used in the DNN as well as the choice of hyperparameters and is presented in \cref{subsec:performance-metrics,subsec:hyper-parameters,subsec:input-variables-opt}.
           In this step, all choices are based on simplified performance metrics prior to deploying the DNN in the statistical analysis.
@@ -22,7 +21,7 @@ The procedures taken are roughly summarized by the following steps:
           %This also provides insights into how well the metric used to select a DNN model in step 2 reflect the results from the statistical analysis in order to improve them. 
 \end{enumerate}
 %  to determine optimal training fractions. An example of such a study optimizing the EW~$WW$ training fraction is discussed in \cref{app:sec:ewww-sample-fraction-optimization}.
-The final DNN model is selected when no further improvements can be made by repeating step 2 and 3. It should be noted that the tasks involved in step 3 are time-consuming and computing-intensive, which limits the number of cycles that can realistically be carried out. 
+The final DNN model is selected when no further improvements can be made by repeating step 2 and 3. The tasks necessary in step 3 are time-consuming and computing-intensive, which limits the number of cycles that can realistically be carried out. 
 The model selected also needs to be validated, which is discussed in \cref{subsec:fina-model-validation}.
 
 % that improvements of the self-developed software, together with historical developments of the entire \HWW\ analysis, lead to several modifications of the training setup over time. 
@@ -129,7 +128,7 @@ The distribution of the DNN output for the validation set is shown in \cref{fig:
         \newImageResizeCustom{0.47}{figures/hww/dnn/CutVBF_SR_reTrained_default_optBinning_zoom.pdf}
         \label{fig:dnn-val-set-b}
     }
-    \caption{DNN output distribution for the validation set of the training data for (a) the full range of DNN output values and an equidistant binning and (b) the range [0.6-1.0] with high VBF signal purity and a binning chosen to mitigate the effects of statistical fluctuations. Details on the binning as well as the significance metric are provided in the text.}
+    \caption{DNN output distribution for the validation set of the training data for (a) the full range of DNN output values and an equidistant binning and (b) the range 0.6-1.0 with high VBF signal purity and a binning chosen to mitigate the effects of statistical fluctuations. Details on the binning as well as the significance metric indicated in the figure are provided in the text.}
     \label{fig:dnn-val-set}
 \end{figure}
 As can be seen, the VBF signal purity improves as the DNN output value increases.
@@ -174,7 +173,7 @@ The distributions also nicely visualize the different shapes of the VBF signal a
     \subfloat[] {
         \newImageResizeCustom{0.49}{figures/hww/dnn/train_vs_test_dnn_score_zoom_non-normalized_non-log.pdf}
     }
-    \caption{Comparison of the DNN output distributions for the training set and test set of the training data for (a) the full range of DNN output values and (b) the region with high VBF signal purity.}
+    \caption{Comparison of the DNN output distributions for the training set and test set of the training data for (a) the full range of DNN output values and (b) the range 0.6-1.0 with high VBF signal purity.}
     \label{fig:dnn-train-vs-test}
 \end{figure}
 
@@ -270,7 +269,7 @@ The \pTjthree observable takes on average smaller values for the VBF signal (\cr
         \includegraphics[width=0.32\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-thirdJetPt-lin.pdf} \hfill
         \label{fig:dnn-inputs-post-fit-10}
     }
-    {\caption{Distributions of 10 of the 15 DNN input variables, targeting the VBF topology. The distributions are shown in the nominal VBF SR for simulated samples only. The solid orange line shows the expected VBF signal scaled by a factor of 50. The last bin of the distributions include the overflow.
+    {\caption{Distributions of 10 of the 15 DNN input variables, targeting the VBF topology. The distributions are shown in the nominal VBF SR for simulated samples only. The solid orange line shows the expected VBF signal scaled by a factor of 50. 
             \label{fig:dnn-inputs-post-fit1} }}
 \end{figure}
 
@@ -311,7 +310,7 @@ The first is the total transverse momentum, \pttot, defined as the magnitude of 
         \label{fig:dnn-inputs-post-fit2-5}
     }
     {\caption{
-            Distributions of 5 of the 15 DNN input variables, targeting the \HWW decay and top-quark suppression. The distributions are shown in the nominal VBF SR for simulated samples only. The solid orange line shows the expected VBF signal scaled by a factor of 50. The last bin of the distributions include the overflow.
+            Distributions of 5 of the 15 DNN input variables, targeting the \HWW decay and top-quark suppression. The distributions are shown in the nominal VBF SR for simulated samples only. The solid orange line shows the expected VBF signal scaled by a factor of 50. 
             \label{fig:dnn-inputs-post-fit2} }}
 \end{figure}
 
@@ -383,9 +382,9 @@ A final cross-check is performed by studying the modelling of the input variable
 Given the fact that only the normalization component and only a subset of systematic uncertainties are considered, they show acceptable consistency between data and MC simulation.
 
 \newcommand{\srdnnlowplotdir}{figures/220605-Thesis/sr/dnn25-scaledvbf-nfs3x3/plots}
-\sixPlots{Distributions of (a) \mjj, (b) \dyjj, (c) \mlonejone, (d), \mll, (e) \lepetacent, and (f) \METSig in the VBF SR selecting only the region below DNN output $= 0.25$. The solid orange line shows the expected VBF signal scaled by a factor of 200. The \Ztautau and top-quark processes are normalized using pre-fit normalization factors extracted from their corresponding CRs (NF$_{\Ztautau} = 1.00 \pm 0.04$, NF$_{\text{top}} = 1.00 \pm 0.01$). The last bin of the distributions include the overflow. The yellow band corresponds to the square root of the sum in quadrature of the MC statistical uncertainties and the normalization component of the dominant experimental systematic uncertainties (JER, JES, Flavor-tagging, and \MET uncertainties). The various uncertainty components are discussed in more detail in \cref{sec:systematics}.
+\sixPlots{Distributions of (a) \mjj, (b) \dyjj, (c) \mlonejone, (d), \mll, (e) \lepetacent, and (f) \METSig in the VBF SR selecting only the region below DNN output $= 0.25$. The solid orange line shows the expected VBF signal scaled by a factor of 200. The \Ztautau and top-quark processes are normalized using pre-fit normalization factors extracted from their corresponding CRs (NF$_{\Ztautau} = 1.00 \pm 0.04$, NF$_{\text{top}} = 1.00 \pm 0.01$). The yellow band corresponds to the square root of the sum in quadrature of the MC statistical uncertainties and the normalization component of the dominant experimental systematic uncertainties (JER, JES, Flavor-tagging, and \MET uncertainties). The various uncertainty components are discussed in more detail in \cref{sec:systematics}.
 }{fig:srdnn25:dnn-inputs}{\srdnnlowplotdir/run2-emme-CutVBFSR_25DNN-Mjj-log.pdf}{\srdnnlowplotdir/run2-emme-CutVBFSR_25DNN-DYjj-lin.pdf}{\srdnnlowplotdir/run2-emme-CutVBFSR_25DNN-DPhill-lin.pdf}{\srdnnlowplotdir/run2-emme-CutVBFSR_25DNN-Mll-lin.pdf}{\srdnnlowplotdir/../../dnn25-scaledvbf-lepcent-nfs3x3/plots/run2-emme-CutVBFSR_25DNN-contOLV-lin.pdf}{\srdnnlowplotdir/run2-emme-CutVBFSR_25DNN-METSig_broad-lin.pdf}
 
 These validation studies establish the DNN output as a meaningful observable, so that it can be used as final discriminant in the statistical analysis.
 More studies of the DNN observable and its input variables, in particular for the regions used in the STXS analysis, can be found in \cref{app:dnn:input-vars}.
-The final VBF discriminant after a fit to the data is shown in \cref{sec:hww-results}, specifically in \cref{fig:VBF_DNN} for the nominal VBF SR and in \cref{fig:aux:VBF-STXS-SRs} for the VBF STXS SRs. 
+The final VBF discriminant after a fit to the data is shown in \cref{sec:hww-results}, specifically in \cref{fig:VBF_DNN} in the nominal VBF SR and in \cref{fig:aux:VBF-STXS-SRs} in the VBF STXS SRs. 

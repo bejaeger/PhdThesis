@@ -3,8 +3,8 @@
 % \chapter{Measurements of $H\rightarrow W^{\pm}W^{\mp^*}$ Cross sections}
 \label{chap:comb}
 The analysis of \HWW decays presented in \cref{chap:hww} is part of a broad Higgs precision program at the LHC that aims at establishing a precise experimental map of Higgs boson interactions.
-For this purpose, statistical combinations are performed of several Higgs boson measurements that use different combinations of Higgs boson production and decay modes.
-This is crucial to probe every aspect of the rich phenomenology of Higgs boson physics and allows for the most precise measurements of the properties of the Higgs boson. 
+For this purpose, statistical combinations are performed of several individual measurements that analyze different Higgs boson processes.
+This is crucial to probe every aspect of the rich phenomenology of Higgs boson physics and enables the most precise measurements of the properties of the Higgs boson. 
 
 The analysis of \HWW decays is an essential input to the latest combined measurements of the ATLAS collaboration~\cite{NaturePaper}.
 Together with similar measurements performed by the CMS collaboration~\cite{CMSNaturePaper} the results constitute the most precise and comprehensive measurements of the production and decay processes of the Higgs boson, as well as the couplings of the Higgs boson to other fundamental particles.
@@ -33,9 +33,9 @@ which is dominated by signal and background theoretical uncertainties.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Prod mode cross section
-The cross sections times branching fraction of different Higgs boson production modes are measured for each combination of production and decay processes. 
-The results of the combined fit are shown in \cref{fig:prod-per-channel} and reveal the varying precision with which the individual Higgs boson processes have been measured to date. 
-The contribution from the \HWW\ analysis is among the most important for the measurement of ggF production and yields the most precise measurement of VBF production based on a single channel.
+The cross sections times branching fraction per individual Higgs boson production and decay channels are also measured in a combined fit.
+The results are shown in \cref{fig:prod-per-channel} and reveal the varying precision with which the individual Higgs boson processes can be measured with the ATLAS experiment.
+The contribution from the \HWW\ analysis is among the most important for the measurement of ggF\footnote{Because the $b\bar{b}H$ production is hard to distinguish from the ggF production, both processes are grouped together in this measurement, with $b\bar{b}H$ contributing only about 1\% to the total ggF+$b\bar{b}H$ production.~\cite{NaturePaper}} production and yields the most precise measurement of VBF production based on a single channel. 
 The majority of the measurements are dominated by statistical uncertainties (16/24). The rest of the measurements are either dominated by systematic uncertainties (5/24) or have both uncertainty components contribute similarly (3/24). 
 %As can be seen, 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -51,7 +51,7 @@ The results are shown in \cref{fig:stxs-stage12}.
 Almost all measurements are largely dominated by statistical uncertainties. 
 
 These measurements can be compared to the STXS measurement performed with only \HWW decays summarized in \cref{fig:11-POI_measurement}. 
-The \HWW analysis contributes the most to the measurement of the $qq\to Hqq$ (or EW~$qqH$) and $gg \to H$ signals defined as discussed in \cref{subsec:STXS-categorization}.\footnote{The signal definition for the other three classes ($t\bar{t}H$, $tH$, $pp\to VH$) is detailed in \ccite{NaturePaper}.}
+The \HWW analysis contributes the most to the measurement of the $qq\to Hqq$ (or EW~$qqH$) and $gg \to H$ (or $ggH$) signals defined as discussed in \cref{subsec:STXS-categorization}.\footnote{The signal definitions for the other three classes ($t\bar{t}H$, $tH$, $pp\to VH$) are detailed in \ccite{NaturePaper}.}
 The partitioning in kinematic regions is in some cases finer in the combined measurement than in the \HWW analysis, since the combination of different decay modes provides increased statistical precision.
 The combination allows measuring the $gg \to H$ production bins with a significantly increased precision and granularity compared to using only \HWW decays. 
 This is mostly due to the inputs from analyses of $H \to ZZ^*$ and $H \to \gamma\gamma$ decays.
@@ -61,8 +61,8 @@ The measurements of $qq\to Hqq$ production at large \mjj, on the other hand, is 
 These results\footnote{Together with the corresponding results of the CMS collaboration~\cite{CMSNaturePaper}.} constitute the most stringent test to date of the predictions of the SM for the kinematic properties of Higgs boson production.
 % From nature paper
 % Higgs boson production is first classified according to the nature of the initial state and the associated particles, the latter including the decay products of $W$ and $Z$ bosons if they are present. These classes are: $t\bar{t}H$ and $tH$ processes; $qq'\to Hqq'$ processes, with contributions from both VBF and quark-initiated $VH$ (where $V=W, Z$) production with a hadronic decay of the vector boson; $pp\to VH$ production with a leptonic decay of the vector boson ($V(\ell\ell,\ell\nu)H$), including $gg\to ZH \to \ell\ell H$ production; and finally the ggF process combined with $gg\to ZH \to q\bar{q}H$ production to form a single $gg\to H$ process. The contribution of the $b\bar{b}H$ production process is taken into account as a $1\%$~\cite{YR4} increase of the \ggtoH\ yield in each kinematic region, since the acceptances for both processes are similar for all input analyses~\cite{YR4}.
-\begin{figure}
-    \newImageResizeCustom{0.75}{figures/higgs-combination/comb-inclusive-xsecs.pdf}
+\begin{figure}[b]
+    \newImageResizeCustom{0.7}{figures/higgs-combination/comb-inclusive-xsecs.pdf}
     \caption{Cross sections times branching fraction for different production processes in each relevant decay mode, normalised to their SM predictions. The black error bars, blue boxes and yellow boxes show the total, systematic, and statistical uncertainties in the measurements, respectively. The gray bands show the theory uncertainties on the predictions. The level of compatibility between the measurement and the SM prediction corresponds to a $p$-value of 72\%. 
     The main contributions to the combined measurement from the \HWW analysis presented in this thesis are highlighted with colored boxes. 
     Figure and caption adapted from \ccite{NaturePaper}.}
@@ -88,16 +88,18 @@ These results\footnote{Together with the corresponding results of the CMS collab
 % The couplings of the Higgs boson to individual particles can be measured by parametrizing the cross sections and branching fractions for the individual Higgs boson processes in terms of coupling-strength modifiers, $\kappa$, following the $\kappa$ framework~\cite{LHCHandbookV3}. 
 % For a production (decay) via the coupling to a given particle $p$, the modifier $\kappa_p$ is defined as $\kappa_p^2 = \sigma_p / \sigma_p^\text{SM}$ ($\kappa_p^2 = \Gamma_p/\Gamma_p^\text{SM}$), where $\Gamma_p$ is the partial decay width into a pair of particles $p$.\cite{NaturePaper}
 %Different statistical models with varying assumptions that are detailed in \cite{NaturePaper} may be considered. 
-The couplings of the Higgs boson to individual particles are measured for different scenarios following the $\kappa$ framework (see \cref{subsec:coupling-measurements}).
+The couplings of the Higgs boson to other fundamental particles are measured for different scenarios using the $\kappa$ framework (see \cref{subsec:coupling-measurements}).
 Assuming that there are only SM processes that interact exactly as predicted, and independently measuring coupling-strength modifiers for all included particles ($\kappa_W$, $\kappa_Z$, $\kappa_t$, $\kappa_b$, $\kappa_c$, $\kappa_\tau$, and $\kappa_\mu$), the results can be visualized as shown in \cref{fig:h-couplings}. 
-This shows a remarkable consistency of the internal structure of the SM, although the uncertainties in the measurements are still sizable. 
+This shows a remarkable consistency of the internal structure of the SM. 
+The uncertainties in the measurements are, however, still sizable. 
 
 The $\kappa_W$ modifier is measured with relative uncertainties of about 6-10\%, depending on the model assumed. 
 When $\kappa_c$ is set equal to $\kappa_t$, the measurement yields $\kappa_W = 1.05 \pm 0.06$.
-This measurement is largely driven by the VBF, \HWW analysis, because it is sensitive to $\kappa_W$ in both the production and decay mode.\footnote{The VBF production mode is parametrized as $\kappa_\mathrm{VBF}^2 = 0.733 \kappa^2_W + 0.267 \kappa^2_Z$ in the combined measurement.}
+This measurement is largely driven by the VBF, \HWW analysis, because it is sensitive to $\kappa_W$ in both the production and decay mode.\footnote{The VBF production mode is parametrized as $\kappa_\mathrm{VBF}^2 = 0.733 \kappa^2_W + 0.267 \kappa^2_Z$ in the combined measurement~\cite{NaturePaper}.}
 
 If the measurement is performed using only two independent coupling-strength modifiers, one for the vector bosons, $\kappa_V = \kappa_W = \kappa_Z$, and one for all fermions, $\kappa_F$, the results are $\kappa_V = 1.035 \pm 0.031$ and $\kappa_F = 0.95 \pm 0.05$. 
-The measurements of $\kappa_W$ and $\kappa_V$ provide the most precise measurements of these Higgs boson properties to date.
+
+The measurements of $\kappa_W$, $\kappa_V$, and $\kappa_F$ provide the most precise measurements of these Higgs boson properties to date.
 %and Higgs boson to fermion coupling, $\kappa_{F}$, are measured with a relative uncertainty of the order of 10\% and 20\%, respectively. 
 % The VBF, \HWW analysis provides the most sensitive input to measure both $\kappa_W$ and $\kappa_V$, since the $HW$ vertex appears twice in the diagram. The VBF production mode enters the parametrization in the $\kappa$ framework (\cref{eq:kappa-parametrization}) as $\kappa_\mathrm{VBF}^2 = 0.733 \kappa^2_W + 0.267 \kappa^2_Z$~\cite{NaturePaper}. 
 
