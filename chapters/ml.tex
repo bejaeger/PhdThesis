@@ -82,7 +82,7 @@ This technique is used in the analysis of \HWW decays presented in \cref{chap:hw
 \section{Core Concepts of Machine Learning}
 \label{sec:core-concepts}
 The basic task of a machine learning algorithm is to find a function $f: X \rightarrow Y$, that maps some higher-dimensional data $X$ onto some target label $Y$, while optimizing a metric of choosing.
-This metric is known as \emph{loss function} (also \emph{cost function}), labelled as $L(y, f(x))$.
+This metric is known as \emph{loss function} (also called \emph{cost function}), labelled as $L(y, f(x))$.
 The function that optimizes the loss function is found in a process referred to as \emph{training}, in which a learning algorithm is applied to a set of sample data, known as \emph{training data}.
 The training proceeds over several cycles through the entire training data, which are known as \emph{epochs}. 
 In the case of supervised learning, the training data must be labelled which in HEP is easily achieved by using MC simulated samples. 
@@ -207,7 +207,7 @@ First, the initial weights, $\pmb{w}^{(0)}$, are chosen randomly. Then, the weig
 \end{equation}
 where $\pmb{w}^{(\tau)}$ denotes the weights at iteration $\tau$ corresponding to one weight update cycle.
 The size of the update is controlled by the parameter $\eta$, known as the \emph{learning rate}, which is multiplied with the gradient of the loss function, $\nabla_{\pmb{w}^{(\tau)}} L(\pmb{w}^{(\tau)})$.
-The loss function quantifies the difference between the true values (also \emph{target values}) of the labelled sample data, $t_n$, and the values predicted by the current NN model, $y_n \equiv y(\pmb{x}_n, \pmb{w})$. 
+The loss function quantifies the difference between the true values (also called \emph{target values}) of the labelled sample data, $t_n$, and the values predicted by the current NN model, $y_n \equiv y(\pmb{x}_n, \pmb{w})$. 
 % A typical choice is the sum-of-squares loss function,
 % \begin{equation}
 %     \label{eq:mean-squared-loss}
