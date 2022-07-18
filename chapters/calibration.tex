@@ -96,7 +96,7 @@ The exact procedure, referred to as \emph{numerical inversion}, is outlined in \
 Jets calibrated with the MC-based corrections are considered to be at the \emph{JES scale} and referred to as PFlow+JES jets or EM+JES jets in the following.
 
 \begin{figure}
-    \newImageResizeHalf{figures/calibration/jes-calibration-jet-response.pdf}
+    \newImageResizeCustom{0.55}{figures/calibration/jes-calibration-jet-response.pdf}
     \caption{The average energy response as a function of reconstructed jet (a) \etadet and (b) energy \Ereco. Each value is obtained from the corresponding parameterized function derived with the Pythia8 MC sample and only jets satisfying $\pT > 20\,GeV$ are shown. Taken from \ccite{JETM-2018-05}.}
     \label{fig:jes-calibration-jet-response}
 \end{figure}
@@ -200,19 +200,19 @@ The noise term for PFlow jets stays sub-dominant even at low \pT, while for EMTo
 \begin{figure}[t]
     \subfloat[] {
         \label{fig:jer-parametrisation-a}
-        \newImageResizeHalf{figures/calibration/NoiseTerm_withPileupResolution_EMPFlowJets_mc16d_00eta07_nominalFit.pdf}
+        \newImageResizeCustom{0.46}{figures/calibration/NoiseTerm_withPileupResolution_EMPFlowJets_mc16d_00eta07_nominalFit.pdf}
     }
     \subfloat[] {
         \label{fig:jer-parametrisation-b}
-        \newImageResizeHalf{figures/calibration/Breakdown-of-JER-parameters-MC16dMCJERPFlow.pdf}
+        \newImageResizeCustom{0.46}{figures/calibration/Breakdown-of-JER-parameters-MC16dMCJERPFlow.pdf}
     } \\
     \subfloat[] {
         \label{fig:jer-parametrisation-c}
-        \newImageResizeHalf{figures/calibration/NoiseTerm_withPileupResolution_EMTopoJets_mc16d_00eta07_nominalFit.pdf}
+        \newImageResizeCustom{0.46}{figures/calibration/NoiseTerm_withPileupResolution_EMTopoJets_mc16d_00eta07_nominalFit.pdf}
     }
     \subfloat[] {
         \label{fig:jer-parametrisation-d}
-        \newImageResizeHalf{figures/calibration/Breakdown-of-JER-parameters-MC16dMCJER.pdf}
+        \newImageResizeCustom{0.46}{figures/calibration/Breakdown-of-JER-parameters-MC16dMCJER.pdf}
     }
     \caption{Response JER derived for fully calibrated (a) PFlow+JES jets and (c) EM+JES jets, including a fit with the parametrisation shown in \cref{eq:jer-parametrisation}. A breakdown of the effect of the different terms in the fitting function is also shown for the results obtained with (b) PFlow+JES jets and (d) EM+JES jets.}
     \label{fig:jer-parametrisation}
@@ -349,11 +349,11 @@ Since the effect is constant with pile-up and independent of the energy of the j
 
 \begin{figure}[t]
     \subfloat[] {
-        \newImageResizeHalf{figures/calibration/zero-bias-event-deposits.pdf}
+        \newImageResizeCustom{0.46}{figures/calibration/zero-bias-event-deposits.pdf}
         \label{fig:random-cones-balance-a}
     }
     \subfloat[] {
-        \newImageResizeHalf{figures/calibration/random-cones-difference.pdf}
+        \newImageResizeCustom{0.46}{figures/calibration/random-cones-difference.pdf}
         \label{fig:random-cones-balance-b}
     }
     \caption{(a) Sum of transverse momenta of neutral and selected charged particle flow objects in an area of $\Delta \eta \times \Delta \phi = 0.2 \times 0.2$ from a zero-bias event from the 2017 dataset. (b) Difference of the transverse momentum within two random cones with radius $R = 0.4$ using neutral and selected charged particle flow objects for the zero-bias dataset recorded in 2017.
@@ -432,10 +432,14 @@ Additional uncertainties on \Npileup were tested and found to be negligible. The
 
 \begin{figure}[t]
     \subfloat[] {
-        \newImageResizeHalf{figures/calibration/const-noise-vs-eta.pdf}
+        \resizebox{0.5\textwidth}{!}{
+            \includegraphics[trim=35 120 0 120]{figures/calibration/const-noise-vs-eta-new.pdf}
+        }
     }
     \subfloat[] {
-        \newImageResizeHalf{figures/calibration/const-noise-vs-mu.pdf}
+        \resizebox{0.5\textwidth}{!}{
+            \includegraphics[trim=35 120 0 120]{figures/calibration/const-noise-vs-mu-new.pdf}
+        }
     }
     \caption{Constituent-scale pile-up noise in \antikt $R=0.4$ jets (a) as a function of \absetadet and (b) as a function of $\mu$. Results are derived using the random cones method with either neutral and selected charged particle flow objects or topo-clusters at the electromagnetic scale as inputs. (a)
         Previously published in \ccite{PublicPlotsJER}.}
@@ -555,11 +559,11 @@ Above $\pT=100\,\GeV$ and beyond detector regions of $\etadet = 2.5$ (not shown)
 \FloatBarrier
 \begin{figure}[t]
     \subfloat[] {
-        \newImageResizeHalf{figures/calibration/combination-incl-noise-term-contribution.pdf}
+        \newImageResizeCustom{0.46}{figures/calibration/combination-incl-noise-term-contribution.pdf}
         \label{fig:jer-combination-incl-noise-term-a}
     }
     \subfloat[] {
-        \newImageResizeHalf{figures/calibration/combination-unc-incl-noise-term-contribution.pdf}
+        \newImageResizeCustom{0.46}{figures/calibration/combination-unc-incl-noise-term-contribution.pdf}
         \label{fig:jer-combination-incl-noise-term-b}
     }
     \caption{(a) The relative jet energy resolution as a function of \pT for fully calibrated PFlow+JES jets. The error bars on points indicate the total uncertainties on the derivation of the relative resolution in dijet events, adding in quadrature statistical and systematic components. The expectation from Monte Carlo simulation is compared with the relative resolution as evaluated in data through the combination of the dijet balance and random cone techniques. (b) Absolute uncertainty on the relative jet energy resolution as a function of \pTjet. Uncertainties from the two \insitu measurements and from the data/MC simulation difference are shown separately. Figure and caption taken from \ccite{JETM-2018-05}.}
@@ -567,11 +571,11 @@ Above $\pT=100\,\GeV$ and beyond detector regions of $\etadet = 2.5$ (not shown)
 \end{figure}
 \begin{figure}[t]
     \subfloat[] {
-        \newImageResizeHalf{figures/calibration/jer-combination-vs-pt.pdf}
+        \newImageResizeCustom{0.46}{figures/calibration/jer-combination-vs-pt.pdf}
         \label{fig:jer-combination-results-a}
     }
     \subfloat[] {
-        \newImageResizeHalf{figures/calibration/jer-unc-vs-pt.pdf}
+        \newImageResizeCustom{0.46}{figures/calibration/jer-unc-vs-pt.pdf}
         \label{fig:jer-combination-results-b}
     }
     \caption{The relative jet energy resolution for fully calibrated PFlow+JES jets (blue curve) and EM+JES jets (green curve) (a) as a function of \pTjet and (b) as a function of $\eta$. Figure and caption taken from \ccite{JETM-2018-05}.}

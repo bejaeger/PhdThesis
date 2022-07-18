@@ -1,10 +1,10 @@
 \renewcommand{\arraystretch}{1.4}
   \begin{tabular}{c|| c| c| c| c}
- \dbline
+ \toprule
 %  Category          & $\ZeroJet30$ & $\OneJet30$ & $\TwoJet30$, VBF \\
   Category          & ggF \ZeroJet SR & ggF \OneJet SR & ggF \TwoJet SR & VBF \TwoJet SR \\
 
-  \hline\hline
+  \midrule
   \multirow{2}{*}{ Preselection}     &
   \multicolumn{4}{c}{
   \begin{tabular}{c}
@@ -15,13 +15,13 @@
   }\\
   \cline{2-5}
   & \multicolumn{3}{c|}{$\pTmiss\,{>}\,20~\GeV$}  & \\
- \hline\hline
+ \midrule
 %  Background rejection  & $\Nbjetbetween=0$                    & \multicolumn{2}{c}{$\Nbjetsub=0$}       \\
   \multirow{3}{*}{Background rejection}  & \multicolumn{4}{c}{$\Nbjetsub=0$}       \\
   \cline{2-5}
                         & $\dphillMET > \pi/2$  &  \multicolumn{3}{c}{$\mtt\,{<}\,m_Z - 25~\GeV$} \\\cline{3-5}
  	                & $\pTll\,{>}\,30~\GeV$                 &  $\maxmtlep\,{>}\,50~\GeV$  & \multicolumn{2}{c}{ }    \\
-  \hline\hline
+  \midrule
   \multirow{6}{*}{\!\!\!\!\!
     \begin{tabular}{c}
    $\hwwenmn$  \\  topology
@@ -35,10 +35,10 @@
                            & \multicolumn{2}{c|}{ } & or & \\
                            & \multicolumn{2}{c|}{ } & $\dyjj > 1.2$ & \\
 %                   & \multicolumn{2}{c}{$85~\GeV\,{<}\,\mT\,{<}\,125~\GeV$} \\
- \hline\hline
+ \midrule
 Discriminating fit variable   & \multicolumn{3}{c|}{$\mt$}    & DNN   \\
 % DNN input variables     &  \multicolumn{3}{c|}{ }       & $\dyjj$, $\mjj$, $\lepetacent$, $\mlonejone$, $\mlonejtwo$, $\mltwojone$, $\mltwojtwo$\\
 %                         &  \multicolumn{3}{c|}{ }       & $\pTjone$, $\pTjtwo$, $\pTjthree$, $\dphill$, $\mll$, $\mt$ \\
 %                         &  \multicolumn{3}{c|}{ }       & $\pttot$, $\METSig$ \\
-  \dbline
+  \bottomrule
   \end{tabular}

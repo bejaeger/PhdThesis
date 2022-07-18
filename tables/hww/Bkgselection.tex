@@ -1,11 +1,11 @@
 \renewcommand{\arraystretch}{1.4}
 \begin{tabular}{c|| c | c | c | c}
-    \dbline
+    \toprule
     %\hline\hline
     %  CR                         & $\ZeroJet$                      & $\OneJet$      & TwoJet ggF             & $\TwoJet$, VBF\\
     CR                                  & \ZeroJet ggF                                         & \OneJet ggF                                                   & \TwoJet ggF                    & \TwoJet VBF                    \\
     %\hline
-    \hline\hline
+    \midrule
     \multirow{8}{*}{$qq\rightarrow WW$} & \multicolumn{3}{c|}{$\Nbjetsub=0$}                   &                                                                                                                                 \\ \cline{2-4}
                                         & $\dphillMET > \pi/2$                                 & \multicolumn{2}{c|}{$\mll\,{>}\,80~\GeV$}                     &                                                                 \\ \cline{3-4}
                                         & $\pTll\,{>}\,30~\GeV$                                & $|\mtt-m_Z|\,{>}\,25~\GeV$                                    & $\mtt<m_Z-25~\GeV$             &                                \\
@@ -14,7 +14,7 @@
                                         &                                                      &                                                               & or fail outside-lepton veto    &                                \\ \cline{4-4}
                                         &                                                      &                                                               & $|\mjj-85| > 15~\GeV$          &                                \\
                                         &                                                      &                                                               & or\ \ \ \ $\dyjj > 1.2$        &                                \\
-    \hline\hline
+    \midrule
     %\hline
     %  top quark     & \multicolumn{2}{c}{$\trkmet\,{>}20\GeV$} \\
     \multirow{10}{*}{Top quark}   & \multirow{2}{*}{$\Nbjetbetween>0$}                   & $\Nbjetnom = 1$                                               & \multirow{2}{*}{$\Nbjetsub=0$} & \multirow{2}{*}{$\Nbjetsub=1$} \\
@@ -28,7 +28,7 @@
                                         &                                                      &                                                               & $|\mjj-85| > 15~\GeV$          &                                \\
                                         &                                                      &                                                               & or\ \ \ \ $\dyjj > 1.2$        &                                \\
     %\hline
-    \hline\hline
+    \midrule
     \multirow{8}{*}{$Z/\gamma^{\ast}$}  & \multicolumn{4}{c}{\phantom{ccccc}$\Nbjetsub=0$}                                                                                                                                       \\ \cline{2-5}
                                         & \multicolumn{2}{c|}{\phantom{ccccc}$\mll < 80~\GeV$} & $\mll\,{<}\,55~\GeV$                                          & $\mll\,{<}\,70~\GeV$                                            \\\
                                         & \multicolumn{2}{c|}{no $\pTmiss$ requirement}        &                                                               &                                                                 \\\cline{2-4}
@@ -40,6 +40,6 @@
     %\hline
     %$VV$    & same-sign leptons     & same-sign leptons     \\
     %        & all SR cuts           & all SR cuts           \\
-    \dbline
+    \bottomrule
     %\hline\hline
 \end{tabular}
