@@ -40,7 +40,8 @@
 \semester{Fall 2022}
 \date{August 30th, 2022}
 
-% \keywords{Higgs boson, vector-boson fusion, gluon fusion, \hww, cross section measurement, simplified template cross sections, data-driven background esimate, \ffm.}
+\keywords{Higgs boson, vector-boson fusion, gluon fusion, VBF, ggF, HWW, W decays, cross section measurement, simplified template cross sections, DNN, neural network, machine learning, combined Higgs, W boson.}
+
 %TODO
 \committee{%
 	\chair{Malcom Kennett}{Associate Professor, Physics}
@@ -79,74 +80,80 @@
 \newcommand{\chapterdir}{chapters}
 \include{\chapterdir/abstract}
 
+\addcontentsline{toc}{chapter}{Contents}%
 \tableofcontents
 
-% List of to-do notes.
-%\listoftodos
+%This is an optional page. Remove the following lines if you don't have any tables.
+\addcontentsline{toc}{chapter}{List of Tables}%
+\listoftables
+\clearpage
+
+%This is an optional page. Remove the following lines if you don't have any figures.
+\addcontentsline{toc}{chapter}{List of Figures}%\listoffigures
+\listoffigures
+\clearpage
 
 \mainmatter
 \pagestyle{fancy}
-% % -------------------------------------------------------------------------------
-% \include{\chapterdir/introduction}
+% -------------------------------------------------------------------------------
+\include{\chapterdir/introduction}
 
-% \part{Background}
-% % % % % % % -------------------------------------------------------------------------------
+\part{Background}
+% % % % % % -------------------------------------------------------------------------------
 \include{\chapterdir/theory}
 
 % % % % % % -------------------------------------------------------------------------------
 \include{\chapterdir/higgs}
 
-% \part{Experimental Methods}
+\part{Experimental Methods}
+% % % % % %-------------------------------------------------------------------------------
+\include{\chapterdir/experiment}
+
+% % % % % %-------------------------------------------------------------------------------
+\include{\chapterdir/objects}
+
+% % % % % % % % ---------------------------------------
+\include{\chapterdir/calibration}
+
+\part{Statistical Methods}
 % % % % % % %-------------------------------------------------------------------------------
-% \include{\chapterdir/experiment}
+\include{\chapterdir/statistics}
 
 % % % % % % %-------------------------------------------------------------------------------
-% \include{\chapterdir/objects}
+\include{\chapterdir/ml}
 
-% % % % % % % % % ---------------------------------------
-% \include{\chapterdir/calibration}
+%\part{\HWW Cross-section Measurements}
+\part{Measurements of Higgs Boson Interactions}
+% % % % %-------------------------------------------------------------------------------
+\include{\chapterdir/hww}
 
-% \part{Statistical Methods}
-% % % % % % % %-------------------------------------------------------------------------------
-% \include{\chapterdir/statistics}
+% % % % %-------------------------------------------------------------------------------
+\include{\chapterdir/higgscombination}
 
-% % % % % % % %-------------------------------------------------------------------------------
-% \include{\chapterdir/ml}
+\bookmarksetup{startatroot}
+% % % % %-------------------------------------------------------------------------------
+\include{\chapterdir/conclusion}
 
-% %\part{\HWW Cross-section Measurements}
-% \part{Measurements of Higgs Boson Interactions}
-% % % % % %-------------------------------------------------------------------------------
-% \include{\chapterdir/hww}
+%-------------------------------------------------------------------------------
+\clearpage
+\addcontentsline{toc}{part}{Appendix}
+\appendix
+\part*{Appendix}
 
-% % % % % %-------------------------------------------------------------------------------
-% \include{\chapterdir/higgscombination}
+% -------------------------------------------------------------------------------
 
-% \bookmarksetup{startatroot}
-% % % % % %-------------------------------------------------------------------------------
-% \include{\chapterdir/conclusion}
+\include{\chapterdir/appendix}
 
-% %-------------------------------------------------------------------------------
-% \clearpage
-% \addcontentsline{toc}{part}{Appendix}
-% \appendix
-% \part*{Appendix}
-
-% % -------------------------------------------------------------------------------
-
-% \include{\chapterdir/appendix}
-
-% %-------------------------------------------------------------------------------
-% % If you use biblatex and either biber or bibtex to process the bibliography
-% % just say \printbibliography here.
-% \addcontentsline{toc}{part}{Bibliography}
-% \printbibliography
-% If you want to use the traditional BibTeX you need to use the syntax below.
-% \bibliographystyle{obsolete/bst/atlasBibStyleWoTitle}
-% \bibliography{Phd-Thesis,bib/ATLAS,bib/CMS,bib/ConfNotes,bib/PubNotes}
+%-------------------------------------------------------------------------------
+% If you use biblatex and either biber or bibtex to process the bibliography
+% just say \printbibliography here.
+\bookmarksetup{startatroot}
+\addcontentsline{toc}{chapter}{Bibliography}
+\printbibliography
 %-------------------------------------------------------------------------------
 
 % -------------------------------------------------------------------------------
-\addcontentsline{toc}{part}{Acknowledgements}
+\addcontentsline{toc}{chapter}{Acknowledgements}
 \chapter*{Acknowledgements}
 \input{\chapterdir/acknowledgements}
 

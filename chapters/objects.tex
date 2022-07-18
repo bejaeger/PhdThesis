@@ -89,7 +89,7 @@ The cells are calibrated at the electromagnetic scale (\emph{EM scale}) which me
     }    \subfloat[total noise]
     {    \newImageResizeHalf{figures/reconstruction/cells-total-noise.png}
     }
-    \caption{Noise in calorimeter cells from (a) electronic noise at $\mu=0$ and (b) total noise including pile-up noise at instantaneous luminosities of $\mathcal{L} = \SI{e34}{\per\cm\per\s}$ corresponding to peak pile-up conditions of around $\mu\approx20$. The noise is shown per calorimeter layer: the presampler (PS), the three electromagnetic calorimeter layers (EM1-EM3), the layers of the hadronic tiles (Tile1-Tile3) and end-caps (HEC1-HEC4), and the forward calorimeter layers (FCal1-FCal3). Taken from \ccite{ATL-LARG-PUB-2008-002}.}
+    \caption[Noise in the calorimeter cells from different sources.]{Noise in calorimeter cells from (a) electronic noise at $\mu=0$ and (b) total noise including pile-up noise at instantaneous luminosities of $\mathcal{L} = \SI{e34}{\per\cm\per\s}$ corresponding to peak pile-up conditions of around $\mu\approx20$. The noise is shown per calorimeter layer: the presampler (PS), the three electromagnetic calorimeter layers (EM1-EM3), the layers of the hadronic tiles (Tile1-Tile3) and end-caps (HEC1-HEC4), and the forward calorimeter layers (FCal1-FCal3). Taken from \ccite{ATL-LARG-PUB-2008-002}.}
     \label{fig:calo-noise}
 \end{figure}
 
@@ -130,7 +130,7 @@ In practice, a jet is defined by two choices: the \emph{jet constituents}, i.e. 
     \ifthenelse{\boolean{draft}}
     {\newImageResizeCustom{0.6}{figures/reconstruction/jet-evolution-low-qual.jpg}}
     {\newImageResizeCustom{0.6}{figures/reconstruction/jet-evolution-high-qual.jpg}}
-    \caption{Sketch of the evolution of a jet in the detector, highlighting the three distinct stages: parton jet, particle jet, and calorimeter jet. Adapted from \ccite{jetEvoReference}.}
+    \caption[Sketch of the evolution of a jet in the detector.]{Sketch of the evolution of a jet in the detector, highlighting the three distinct stages: parton jet, particle jet, and calorimeter jet. Adapted from \ccite{jetEvoReference}.}
     \label{fig:jet-evolution}
 \end{figure}
 
@@ -217,7 +217,7 @@ The tracks considered for the energy subtraction constitute the CPFOs.
 \FloatBarrier
 \begin{figure}[t]
     \newImageResize{figures/reconstruction/pflow-algorithm.pdf}
-    \caption{Flow chart of the particle flow algorithm. More details are given in the text. Taken from \ccite{PERF-2016-06}.}
+    \caption[Flow chart of the particle flow algorithm.]{Flow chart of the particle flow algorithm. More details are given in the text. Taken from \ccite{PERF-2016-06}.}
     \label{fig:pflow-algorithm}
 \end{figure}
 
@@ -243,7 +243,7 @@ Applying basic selections on these variables yields a high efficiency exceeding 
 \FloatBarrier
 \begin{figure}[t]
     \newImageResize{figures/reconstruction/pile-up-jets-illustration.pdf}
-    \caption{Illustration of an event containing a hard-scatter (HS) jet, a QCD pile-up (PU) jet, and a stochastic pile-up jet. The $\Delta \text{R}_{\text{pT}}$ observable allows to distinguish QCD pile-up jets from stochastic pile-up jets, based on the fraction of total jet energy stemming from charged particles in the jet. The figure is taken from \ccite{PERF-2016-06}, where more information on the observable can be found.}
+    \caption[Illustration of a $pp$ collision event including pile-up jets.]{Illustration of a $pp$ collision event containing a hard-scatter (HS) jet, a QCD pile-up (PU) jet, and a stochastic pile-up jet. The $\Delta \text{R}_{\text{pT}}$ observable allows to distinguish QCD pile-up jets from stochastic pile-up jets, based on the fraction of total jet energy stemming from charged particles in the jet. The figure is taken from \ccite{PERF-2016-06}, where more information on the observable can be found.}
     \label{fig:pile-up-jets-illustration}
 \end{figure}
 
