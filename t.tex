@@ -86,69 +86,69 @@
 
 \mainmatter
 \pagestyle{fancy}
-% -------------------------------------------------------------------------------
-\include{\chapterdir/introduction}
+% % -------------------------------------------------------------------------------
+% \include{\chapterdir/introduction}
 
-\part{Background}
+% \part{Background}
+% % % % % % % -------------------------------------------------------------------------------
+% \include{\chapterdir/theory}
+
 % % % % % % -------------------------------------------------------------------------------
-\include{\chapterdir/theory}
+% \include{\chapterdir/higgs}
 
-% % % % % -------------------------------------------------------------------------------
-\include{\chapterdir/higgs}
-
-\part{Experimental Methods}
-% % % % % %-------------------------------------------------------------------------------
-\include{\chapterdir/experiment}
-
-% % % % % %-------------------------------------------------------------------------------
-\include{\chapterdir/objects}
-
-% % % % % % % % ---------------------------------------
-\include{\chapterdir/calibration}
-
-\part{Statistical Methods}
+% \part{Experimental Methods}
 % % % % % % %-------------------------------------------------------------------------------
-\include{\chapterdir/statistics}
+% \include{\chapterdir/experiment}
 
 % % % % % % %-------------------------------------------------------------------------------
-\include{\chapterdir/ml}
+% \include{\chapterdir/objects}
 
-%\part{\HWW Cross-section Measurements}
-\part{Measurements of Higgs Boson Interactions}
-% % % % %-------------------------------------------------------------------------------
-\include{\chapterdir/hww}
+% % % % % % % % % ---------------------------------------
+% \include{\chapterdir/calibration}
 
-% % % % %-------------------------------------------------------------------------------
-\include{\chapterdir/higgscombination}
+% \part{Statistical Methods}
+% % % % % % % %-------------------------------------------------------------------------------
+% \include{\chapterdir/statistics}
 
-\bookmarksetup{startatroot}
-% % % % %-------------------------------------------------------------------------------
-\include{\chapterdir/conclusion}
+% % % % % % % %-------------------------------------------------------------------------------
+% \include{\chapterdir/ml}
 
-% -------------------------------------------------------------------------------
-% \chapter*{Acknowledgements}
-% \addcontentsline{toc}{part}{Acknowledgements}
-% \include{\chapterdir/acknowledgements}
+% %\part{\HWW Cross-section Measurements}
+% \part{Measurements of Higgs Boson Interactions}
+% % % % % %-------------------------------------------------------------------------------
+% \include{\chapterdir/hww}
 
-%-------------------------------------------------------------------------------
-\clearpage
-\addcontentsline{toc}{part}{Appendix}
-\appendix
-\part*{Appendix}
+% % % % % %-------------------------------------------------------------------------------
+% \include{\chapterdir/higgscombination}
 
-% -------------------------------------------------------------------------------
+% \bookmarksetup{startatroot}
+% % % % % %-------------------------------------------------------------------------------
+% \include{\chapterdir/conclusion}
 
-\include{\chapterdir/appendix}
+% %-------------------------------------------------------------------------------
+% \clearpage
+% \addcontentsline{toc}{part}{Appendix}
+% \appendix
+% \part*{Appendix}
 
-%-------------------------------------------------------------------------------
-% If you use biblatex and either biber or bibtex to process the bibliography
-% just say \printbibliography here.
-\addcontentsline{toc}{part}{Bibliography}
-\printbibliography
+% % -------------------------------------------------------------------------------
+
+% \include{\chapterdir/appendix}
+
+% %-------------------------------------------------------------------------------
+% % If you use biblatex and either biber or bibtex to process the bibliography
+% % just say \printbibliography here.
+% \addcontentsline{toc}{part}{Bibliography}
+% \printbibliography
 % If you want to use the traditional BibTeX you need to use the syntax below.
 % \bibliographystyle{obsolete/bst/atlasBibStyleWoTitle}
 % \bibliography{Phd-Thesis,bib/ATLAS,bib/CMS,bib/ConfNotes,bib/PubNotes}
 %-------------------------------------------------------------------------------
+
+% -------------------------------------------------------------------------------
+\addcontentsline{toc}{part}{Acknowledgements}
+\chapter*{Acknowledgements}
+\input{\chapterdir/acknowledgements}
 
 %-------------------------------------------------------------------------------
 % Author list - comment in this line when you are ready to include it.
