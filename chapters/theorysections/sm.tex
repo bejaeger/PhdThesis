@@ -11,7 +11,7 @@ The SM is a collection of relativistic quantum field theories (QFT) that describ
 % The discovery of the long sought-after Higgs boson in 2012 by the ATLAS and CMS collaborations~\cite{Aad:2012tfa,Chatrchyan:2012xdj} marks the highlight of this success story. 
 %The success story culminated in the discovery of a new particle by the ATLAS and CMS collaborations in 2012~\cite{HIGG-2012-27,CMS-HIG-12-028}. 
 % To date, ten years after this discovery, all experimental measurements show consistency of the observed particle with the properties of the long sought-after Higgs boson predicted by the SM.
-The fundamental particles (also called \emph{elementary particles}) are grouped according to their quantum numbers, and their interactions are described by the requirement of local gauge invariance with respect to the non-Abelian gauge group
+The fundamental particles (also called \emph{elementary particles}) are grouped according to their quantum numbers, and their interactions are described by the requirement of local gauge invariance with respect to the gauge group
 \begin{equation}
   \label{eq:sm-gauge-group}
   \text{SU(3)}_C \times \text{SU(2)}_L \times \text{U(1)}_Y,
@@ -117,8 +117,8 @@ independently at every space-time point, where $T(x)$ is the generator of a cert
 % Pich
 % This is only possible if one adds an extra piece to the Lagrangian, transforming in such a way as to cancel the ∂μθ term in Eq. (6).
 % In order to maintain the symmetry, the Lagrangian may need to be manipulated by introducing new fields.
-Gauge theories require the addition of so-called gauge fields, which give rise to particle interactions that give rise to the fundamental forces of nature. 
-Historically, the first local gauge theory that was established is QED. It follows a U(1) local gauge symmetry and entails the photon as the associated gauge field. 
+Local gauge theories require the introduction of \emph{covariant derivates} to make the Lagrangian invariant under local gauge transformations. These covariant derivatives include gauge fields which give rise to particle interactions that give rise to the fundamental forces of nature. 
+Historically, QED is the first local gauge theory that was established. It follows a U(1) local gauge symmetry and entails the photon as the associated gauge field. 
 The SM can be elegantly described by demanding local gauge invariance with the symmetry group as shown in \cref{eq:sm-gauge-group}, and explains the existence of all gauge bosons mentioned in the previous section. 
 The fermions, in contrast, are added a priori to the theory and do not follow from fundamental principles.
 %The following sections provide an overview of the Lagrangian of the SM, by going through the different symmetry groups. 
@@ -156,7 +156,7 @@ The Lagrangian that is invariant under $\psi_f \rightarrow e^{i \omega(x)} \psi_
   \label{eq:Lagrangianqed}
 \end{equation}
 where the sum goes over all electrically charged fermions with masses $m_f$, and $\gamma^\mu$ refers to the four $4 \times 4$ gamma matrices.
-Here, $D_\mu = \partial_\mu + ieA_\mu$ is the \emph{covariant derivative}, which includes the gauge field $A_\mu$ which is associated with the photon. The requirement of local gauge symmetry prohibits terms quadratic in $A_\mu$, resulting in the prediction of the photon being massless.\footnote{Terms in the Lagrangian that are quadratic in a certain field give rise to particle masses.}
+Here, $D_\mu = \partial_\mu + ieA_\mu$ is the covariant derivative, which includes the gauge field $A_\mu$ which is associated with the photon. The requirement of local gauge symmetry prohibits terms quadratic in $A_\mu$, resulting in the prediction of the photon being massless.\footnote{Terms in the Lagrangian that are quadratic in a certain field give rise to particle masses.}
 The so-called \emph{field tensor}, defined as $F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu$, provides an elegant mathematical object representing the electromagnetic field. It can be used, for example, to describe Maxwell's equations of classical electrodynamics.
 
 The symmetry group associated to QED is denoted U(1)$_{\text{QED}}$ and the conserved quantity is the electric charge.\footnote{This is a reflection of Noether's theorem, which states that each symmetry is related to a conserved quantity.}
@@ -184,7 +184,7 @@ The field tensors $G_{\mu\nu}^a$ are defined as
   G_{\mu\nu}^a = \partial_\mu G_\nu^a - \partial_\nu G_\mu^a - g_s f^{abc}G_\mu^b G_\nu^c,
 \end{equation}
 where $f^{abc}$ are the structure constants of SU(3)$_C$, with $a, b, c = 1, \ldots, 8$. 
-The term involving $f^{abc}$ includes an implicit some over similar latin-character indices. It arises from the non-commuting elements of the SU(3)$_C$ group and gives rise to triple and quartic gluon self-interactions. 
+The term involving $f^{abc}$ includes an implicit sum over similar latin-character indices. It arises from the non-commuting elements of the SU(3)$_C$ group and gives rise to triple and quartic gluon self-interactions. 
 % Triple and quartic self-interactions are part of QCD because gluons themselves carry a combination of a color and anti-color. 
 % Invariant under ... transformation, where ... are the group generators
 Similar to photons, the gluons are massless because no terms quadratic in the gluon fields are allowed because of the requirement of local gauge invariance. 
@@ -291,7 +291,7 @@ Another mechanism is required to explain the existence of the masses of the gaug
 A principle known as \emph{spontaneous symmetry breaking}, that was first explored in the field of condensed-matter physics, can be used to generate mass terms for the weak gauge bosons without violating local gauge invariance.
 This was first formulated by three independent research teams in 1964: Brout and Englert~\cite{PhysRevLett.13.321}, Higgs~\cite{PhysRevLett.13.508,HIGGS1964132}, and Guralnik, Hagan, and Kibble \cite{PhysRevLett.13.585}.\footnote{Their work was inspired by previous advancements in the theory of superconductivity~\cite{PhysRev.108.1175} and specifically P. W. Anderson, who proposed the mechanism of spontaneous symmetry breaking for generating mass terms in a non-relativistic scenario already in 1963~\cite{PhysRev.130.439}.}
 Today the mechanism is most often called \emph{Higgs mechanism} or \emph{electroweak symmetry breaking} (ESWB).
-The basic principle is to allow the state of lowest energy to violate local gauge invariance while maintaining the gauge symmetry of the Lagrangian itself.
+The basic principle is to allow the state of lowest energy to hide local gauge invariance while maintaining the gauge symmetry of the Lagrangian itself.
 
 % From Peskin and Schroeder
 % - In the theory of sup erconductiv􏰁 ity􏰔 for example􏰔 the Ab elian gauge invariance of electromagnetism is broken by pairs of electrons that condense in the ground state of a metal􏰎
@@ -394,14 +394,14 @@ which predicts that the interaction between the Higgs boson and the massive gaug
 
 \subsection{Fermion masses}
 \label{subsec:fermion-masses}
-The previous section explained how the Higgs mechanism naturally gives rise to mass terms for the $\Wpm$ and $Z$ bosons. The finite fermion masses, however, do not directly follow and the simple inclusion of fermion mass terms is forbidden because they would violate SU(2)$_L$ gauge invariance.
+The previous section explained how the Higgs mechanism naturally gives rise to mass terms for the $\Wpm$ and $Z$ bosons. 
+%The finite fermion masses, however, do not directly follow and the simple inclusion of fermion mass terms is forbidden because they would violate SU(2)$_L$ gauge invariance.
 % , given that a term
 % \begin{equation}
 %   -m_f \bar{\psi} \psi = -m_f \left( \bar{\psi}_R\psi_L + \bar{\psi}_L\psi_R \right)
 %   \label{eq:fermionmassterm}
 % \end{equation}
 % because $\psi_L$ transforms as a doublet and $\psi_R$ as a singlet. 
-
 The masses of the fermions can be explained with an ad-hoc solution by introducing interaction terms between the left-handed fermion fields and the Higgs field, both appearing as doublets under SU(2)$_L$ transformations.
 %This is possible because both the left-handed fermions and the Higgs field appear as doublets under 
 For leptons, only electrons, muons, taus, that appear in the lower part of the SU(2)$_L$ doublet (see \cref{tab:ewfermioncontent}), require mass terms, as neutrinos are assumed to be massless in the SM\footnote{See \cref{sec:limitations} for a brief discussion on neutrino masses.}.
@@ -428,6 +428,7 @@ The \emph{Yukawa couplings} are labelled as $Y_l^i$ for leptons and as $Y_{\text
 %   \label{eq:lyukawa}
 % \end{equation}
 % where $\psi_{l}$ stands for lepton fields and $\psi_{q}$ for the quark fields.
+
 The mass terms appear from \cref{eq:lyukawa} once a ground state of $\phi$ is chosen and the Yukawa terms have been diagonalized, resulting in nine independent parameters $Y_f$. 
 They take the form
 \begin{equation}

@@ -31,7 +31,7 @@ As illustrated in \cref{fig:ppcol}, a hard $pp$ scattering process is characteri
 The partons participating in the hard scatter carry a momentum fraction of the proton described by \emph{parton distribution functions} (PDFs).
 The hard scatter is accompanied by the so-called \emph{underlying event}, which consists of low energy interactions between the proton remnants that are not taking part in the hard scatter.
 The partons in the initial and final states can radiate in the form of \emph{inital-state radiation} (ISR) and \emph{final-state radiation} (FSR), and a single parton can also split into two. Together this is referred to as \emph{parton showering}.
-The final-state partons then undergo a process called \emph{hadronization} (also called \emph{fragmentation}), due to the confining nature of QCD. They end up forming a spray of color-neutral hadrons, which are known as particle \emph{jets}.
+The final-state partons then undergo a process called \emph{hadronization} (also called \emph{fragmentation}), due to the confining nature of QCD. They end up forming a spray of color-neutral hadrons, which are known as particle \emph{jets}. Many more details on the above-mentioned aspects can be found in standard textbooks on collider physics such as \ccite{Ellis:1991qj}. 
 
 \begin{figure}[h]
   \newImageResizeCustom{0.8}{figures/anatomy/schematic_ppcollision.png}
@@ -42,7 +42,8 @@ The final-state partons then undergo a process called \emph{hadronization} (also
 
 \subsection{Collision rates}
 \label{subsec:collision-rates}
-The whole physics program at collider experiments can more or less be broken down into the measurement of event rates. 
+%The whole physics program at collider experiments can more or less be broken down into
+The main task of collider experiments is the measurement of event rates. 
 %Comparing the event rates measured in data with the predictions from simulations allow for meaningful statistical inferences.
 For a given process $p$, the event rate can be written as
 \begin{equation}
@@ -57,7 +58,7 @@ The cross section expresses the likelihood of any particular interaction to occu
   \sigma = \frac{|M|^2}{F} \int \text{d}Q,
 \end{equation}
 where $M$ is the so-called matrix element, d$Q$ the Lorentz-invariant phase-space factor, and $F$ the Lorentz-invariant flux factor \cite{Halzen:1984mc}. 
-The matrix element contains all the dynamical information of the process under investigation and represents the probability of going from a specific initial state to a final state. 
+The matrix element contains all the dynamical information of the process under investigation, and the square of it represents the probability of going from a certain initial state to a final state. 
 The luminosity, $\mathcal{L}$, is a measure of the number of particles per unit area and time and is a crucial performance indicator for particle colliders. It only depends on parameters of the accelerator and is given by
 %is the proportionality constant that multiplies the cross section to determine the \emph{event rate} and 
 \begin{equation}
@@ -82,14 +83,13 @@ is typically quoted to quantify the size of a dataset collected at a collider ex
 
 
 % The incoming partons interact according to the laws of QCD.
-An important feature of QCD is the energy dependence of the strong coupling constant, $\alpha_s$, as shown in \cref{fig:alphas}.\footnote{The $\alpha_s$ constant is also sometimes referred to as ``running'' coupling constant as it is, in fact, not a constant.} 
-Especially the behavior at low energies where $\alpha_s$ diverges has important consequences, as it requires to separate the treatment of physics at low energies and high energies: While at high energies perturbative calculations of the matrix elements can be applied, the physics at low energies (known as \emph{soft QCD}) can only be described by non-perturbative models.
-This behavior is also known as \emph{asymptotic freedom} and implies that strongly interacting particles behave like free particles at high energies. Conversely, at small energies, the particles have a strong coupling, which leads to confinement of quarks inside hadrons.
-
+An important feature of QCD is the energy dependence of the strong coupling constant, $\alpha_s$, as shown in \cref{fig:alphas}.\footnote{The $\alpha_s$ constant is also sometimes referred to as ``running'' coupling constant as it is, in fact, not a constant.} Especially the behavior at low energies where $\alpha_s$ diverges has important consequences, as it requires to separate the treatment of physics at low energies and high energies. 
+At high energies, perturbative calculations of the matrix elements can be applied because $\alpha_s$ becomes small. This behavior is also known as \emph{asymptotic freedom} and implies that strongly interacting particles behave like free particles at high energies. 
+Conversely, the physics at low energies (known as \emph{soft QCD}) can only be described by non-perturbative models because the particles have a strong coupling. This leads to confinement of quarks inside hadrons.
 
 %\footnote{The fact that $\alpha_s$ becomes smaller at high energies is also known as \emph{asymptotic freedom} and implies that strongly interacting particles behave like free particles at high energies. Conversely, at small energies, the particles have a strong coupling. This characteristic of QCD leads to \emph{confinement} of quarks inside hadrons.}
 
-Given these considerations, the cross section of a hard-scattering process between two protons, $p_1$ and $p_2$, can be written as
+Given these considerations, as well as the fact that protons are compound states of partons, the cross section of a hard-scattering process between two protons, $p_1$ and $p_2$, can be written as
 \begin{equation}
   \sigma(p_1p_2 \to Y) = \sum_{i,j} \int_0^1 \mathrm{d}x_1 \int_0^1 \mathrm{d}x_2 f_i(x_1,\mu_F^2) f_j(x_2,\mu_F^2) \hat{\sigma}_{ij \rightarrow Y}(x_1p_1,x_2p_2,\mu_F,\mu_R), 
   \label{eq:hhxsec}
@@ -163,7 +163,7 @@ Various textbooks, for example \ccite{Peskin:1995ev}, provide detailed discussio
 %\todo{say more about collinear and soft divergencies? -> Ja wegen infrared safe später beim jet algorithm}
 % There exist different approaches for choosing the scale $\mu_R$, at which the coupling $\alpha_s$ is evaluated, known as \emph{renormalization schemes}, but there is no prove of any of them being correct.
 
-\Cref{fig:xsec} shows the $pp$ collision cross sections for various processes, displaying the huge span of values over many orders of magnitudes. 
+\Cref{fig:xsec} shows the $pp$ collision cross sections for various processes, displaying the huge range of cross-section measurements over many orders of magnitudes. 
 Given a center-of-mass energy of 13\,\TeV\ and a luminosity of $10^{33}\mathrm{cm^{-1}s^{-1}}$, the production of Higgs bosons, for example, is highly suppresed ($10^{-2}\,\text{events}/s$) compared to the total cross section ($10^8\,\text{events}/s$).
 This necessitates a precise knowledge of the experimental setup and measurement resolutions. An example of an energy resolution measurement is discussed in \cref{chap:calibration} of this thesis. 
 
@@ -199,7 +199,7 @@ This necessitates a precise knowledge of the experimental setup and measurement 
 
 % They are an essential ingredient for extracting physics parameters from the collision data, as described later in this section.
 
-The $pp$ interactions and the interactions of the particles with the detector are probabilistic by nature.
+The $pp$ interactions and the interactions of the particles with the detector follow the rules of QFT and are therefore probabilistic by nature.
 Simulated $pp$ collision events are therefore generated with the \emph{Monte Carlo} (MC) method to compare the data against what is expected from the SM.
 %given the current knowledge of particle physics.
 %  are therefore used 
