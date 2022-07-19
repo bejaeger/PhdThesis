@@ -26,9 +26,10 @@
 %-------------------------------------------------------------------------------
 %\documentclass[PAPER, atlasdraft=true, texlive=2018, UKenglish]{atlasdoc}
 %\documentclass[twoside,a4paper,11pt,smallheadings,BCOR5mm,UKenglish]{scrbook}
-\documentclass[twoside,11pt,smallheadings,BCOR5mm,american]{scrbook}
+% \documentclass[twoside,11pt,smallheadings,BCOR5mm,american]{scrbook}
 %\documentclass[smallheadings,american]{scrbook}
 %\documentclass[twoside,a4paper,11pt,smallheadings,BCOR5mm,american]{sfuthesis}
+\documentclass{sfuthesis}
 
 %\documentclass[PAPER, coverpage, atlasdraft=true, texlive=2016, american]{atlasdoc}
 \usepackage[english]{babel}  %deutsche Überschriften etc.
@@ -52,6 +53,7 @@
 \usepackage{fancyvrb}
 \usepackage{ulem} % durchstreichen von text
 \usepackage{fancyhdr}
+\renewcommand{\headrulewidth}{0pt}
 \usepackage[export]{adjustbox}
 \usepackage{fncychap}
 \usepackage{feynmp}
@@ -78,7 +80,8 @@
 \usepackage[figuresright]{rotating}
 \usepackage{pgfplots}
 \usepackage{makecell}
-\addtokomafont{disposition}{\rmfamily} 
+
+%\addtokomafont{disposition}{\rmfamily} 
 
 %\usepackage{tabularx}
 %\usepackage{cite} clash with ATLAS
@@ -146,8 +149,7 @@
 
 
 % \usepackage[capitalize]{cleveref} clashed with ATLAS
-
-\usepackage{titlesec}
+% \usepackage{titlesec}
 
 
 
@@ -290,16 +292,16 @@
 %   footnote-heavy Chicago style.
 %
 
-\def\footnoterule{\relax}
-\setlength{\skip\footins}{\baselineskip}
-\setlength{\footnotesep}{\baselineskip}
+% \def\footnoterule{\relax}
+% \setlength{\skip\footins}{\baselineskip}
+% \setlength{\footnotesep}{\baselineskip}
 
-%\RequirePackage{tocloft}
-\RequirePackage[titletoc]{appendix}
-\renewcommand{\contentsname}{Table of Contents}
-\newcommand{\addtoToC}[1]{\addcontentsline{toc}{chapter}{#1}}
+% %\RequirePackage{tocloft}
+% \RequirePackage[titletoc]{appendix}
+% \renewcommand{\contentsname}{Table of Contents}
+% \newcommand{\addtoToC}[1]{\addcontentsline{toc}{chapter}{#1}}
 
-\usepackage{sfuthesis}
+% \usepackage{sfuthesis}
 
 
 %   PAGINATION  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -310,13 +312,13 @@
 %
 %\pagestyle{plain}
 
-\apptocmd{\frontmatter}{%
-    \pagenumbering{roman}
-}
+% \apptocmd{\frontmatter}{%
+%     \pagenumbering{roman}
+% }
 
-\apptocmd{\mainmatter}{%
-    \pagenumbering{arabic}
-}
+% \apptocmd{\mainmatter}{%
+%     \pagenumbering{arabic}
+% }
 
 %-------------------------------------------------------------------------------
 %-------------------------------------------------------------------------------
