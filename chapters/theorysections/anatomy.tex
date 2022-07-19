@@ -24,14 +24,14 @@ The theoretical predictions for the observables are quantified using simulated $
 % What is that sentence???
 % As we will see we can separate the process of calculating cross sections between quarks and other soft QCD things.
 
-\subsection{Overview of proton-proton collision event}
+\subsection{Overview of a proton-proton collision event}
 \label{subsec:pp-collision-overview}
 %A schematic overview of a \emph{hard} $pp$ scattering process is illustrated in \cref{fig:ppcol}.
-As illustrated in \cref{fig:ppcol}, a hard $pp$ scattering process is characterized by a parton-parton interaction with large momentum transfer, known as \emph{hard scatter}, and further low energy processes.
+As illustrated in \cref{fig:ppcol}, a hard $pp$ scattering process is characterized by a parton-parton interaction with large momentum transfer, known as a \emph{hard scatter}, and further low energy processes.
 The partons participating in the hard scatter carry a momentum fraction of the proton described by \emph{parton distribution functions} (PDFs).
 The hard scatter is accompanied by the so-called \emph{underlying event}, which consists of low energy interactions between the proton remnants that are not taking part in the hard scatter.
 The partons in the initial and final states can radiate in the form of \emph{inital-state radiation} (ISR) and \emph{final-state radiation} (FSR), and a single parton can also split into two. Together this is referred to as \emph{parton showering}.
-The final-state partons then undergo a process called \emph{hadronization} (also called \emph{fragmentation}), due to the confining nature of QCD. They end up forming a spray of color-neutral hadrons, which are known as particle \emph{jets}. Many more details on the above-mentioned aspects can be found in standard textbooks on collider physics such as \ccite{Ellis:1991qj}. 
+The final-state partons then undergo a process known as \emph{fragmentation} (also called \emph{hadronization}), due to the confining nature of QCD. They end up forming a spray of color-neutral hadrons, which are known as particle \emph{jets}. Many more details on the above-mentioned aspects can be found in standard textbooks on collider physics such as \ccite{Ellis:1991qj}. 
 
 \begin{figure}[h]
   \newImageResizeCustom{0.8}{figures/anatomy/schematic_ppcollision.png}
@@ -59,10 +59,10 @@ The cross section expresses the likelihood of any particular interaction to occu
 \end{equation}
 where $M$ is the so-called matrix element, d$Q$ the Lorentz-invariant phase-space factor, and $F$ the Lorentz-invariant flux factor \cite{Halzen:1984mc}. 
 The matrix element contains all the dynamical information of the process under investigation, and the square of it represents the probability of going from a certain initial state to a final state. 
-The luminosity, $\mathcal{L}$, is a measure of the number of particles per unit area and time and is a crucial performance indicator for particle colliders. It only depends on parameters of the accelerator and is given by
+The luminosity, $\mathcal{L}$, is a measure of the number of particles per unit area and time and is a crucial performance parameter for particle colliders. It only depends on parameters of the accelerator and is given by
 %is the proportionality constant that multiplies the cross section to determine the \emph{event rate} and 
 \begin{equation}
-  \mathcal{L} = f_rn_b\frac{N_p^2}{A},
+  \mathcal{L} = f_rn_b\frac{N_A N_B}{A},
 \end{equation}
 where $N_A$ and $N_B$ are the numbers of particles in the colliding bunches $A$ and $B$ respectively, $f_r$ is the rotational frequency of the two bunches, $n_b$ the total number of bunches inside the accelerator, and $A$ the area of interaction. Assuming Gaussian shaped beam profiles the area of interaction can be written as $A = 4\pi \sigma_x \sigma_y$, where $\sigma_{x/y}$ are the horizontal and vertical beam widths.
 The \emph{integrated luminosity}, 
@@ -84,7 +84,7 @@ is typically quoted to quantify the size of a dataset collected at a collider ex
 
 % The incoming partons interact according to the laws of QCD.
 An important feature of QCD is the energy dependence of the strong coupling constant, $\alpha_s$, as shown in \cref{fig:alphas}.\footnote{The $\alpha_s$ constant is also sometimes referred to as ``running'' coupling constant as it is, in fact, not a constant.} Especially the behavior at low energies where $\alpha_s$ diverges has important consequences, as it requires to separate the treatment of physics at low energies and high energies. 
-At high energies, perturbative calculations of the matrix elements can be applied because $\alpha_s$ becomes small. This behavior is also known as \emph{asymptotic freedom} and implies that strongly interacting particles behave like free particles at high energies. 
+At high energies, perturbative calculations of the matrix elements can be used because $\alpha_s$ becomes small. This behavior is also known as \emph{asymptotic freedom} and implies that strongly interacting particles behave like free particles at high energies. 
 Conversely, the physics at low energies (known as \emph{soft QCD}) can only be described by non-perturbative models because the particles have a strong coupling. This leads to confinement of quarks inside hadrons.
 
 %\footnote{The fact that $\alpha_s$ becomes smaller at high energies is also known as \emph{asymptotic freedom} and implies that strongly interacting particles behave like free particles at high energies. Conversely, at small energies, the particles have a strong coupling. This characteristic of QCD leads to \emph{confinement} of quarks inside hadrons.}
@@ -155,7 +155,7 @@ The drawback is that another arbitrary scale is introduced to the theoretical ca
 However, the more orders are included in the cross-section calculations, the less strong is the dependence on $\mu_F$ and $\mu_R$. 
 The remaining dependence at fixed order is typically included as a systematic uncertainty in physics measurements.
 %There are remaining dependencies at fixed order. Resulting systematic uncertainties are most often quantified by varying the scales over some reasonable range and are incorporated in the analysis.
-In practice, the value of $\mu_F$ and $\mu_R$ is often chosen to be identical, with a typical value near the scale of momentum transfer for the hard scattering process under consideration.
+In practice, the values of $\mu_F$ and $\mu_R$ are often chosen to be identical, with a typical value near the scale of momentum transfer for the hard scattering process under consideration.
 Various textbooks, for example \ccite{Peskin:1995ev}, provide detailed discussions on the details of the renormalization procedure.
 % From Arnold:
 % Thus, in order to deal with the UV and collinear divergences, two non-physical scales are introduced. The dependence of observables on the choice of these scales naturally decreases with increasing accuracy of the calculations; it eventually vanishes when all-orders of the perturbative series are considered. A common choice is μ2 F = μ2 R = Q2, where Q2 represents the hard scale of the process under consideration; e.g. Q2 = M2 for the production of a resonance with mass M, or Q2 = p2 T in the case of the pair-production of massless particles with transverse momentum pT.
@@ -163,8 +163,8 @@ Various textbooks, for example \ccite{Peskin:1995ev}, provide detailed discussio
 %\todo{say more about collinear and soft divergencies? -> Ja wegen infrared safe später beim jet algorithm}
 % There exist different approaches for choosing the scale $\mu_R$, at which the coupling $\alpha_s$ is evaluated, known as \emph{renormalization schemes}, but there is no prove of any of them being correct.
 
-\Cref{fig:xsec} shows the $pp$ collision cross sections for various processes, displaying the huge range of cross-section measurements over many orders of magnitudes. 
-Given a center-of-mass energy of 13\,\TeV\ and a luminosity of $10^{33}\mathrm{cm^{-1}s^{-1}}$, the production of Higgs bosons, for example, is highly suppresed ($10^{-2}\,\text{events}/s$) compared to the total cross section ($10^8\,\text{events}/s$).
+\Cref{fig:xsec} shows the $pp$ collision cross sections for various processes, displaying a huge range of cross-section measurements over many orders of magnitudes. 
+Given a center-of-mass energy of 13\,\TeV\ and a luminosity of $10^{33}\mathrm{cm^{-1}s^{-1}}$, the production of Higgs bosons, for example, is highly suppressed ($10^{-2}\,\text{events}/s$) compared to the total cross section ($10^8\,\text{events}/s$).
 This necessitates a precise knowledge of the experimental setup and measurement resolutions. An example of an energy resolution measurement is discussed in \cref{chap:calibration} of this thesis. 
 
 % An important feature is that the cross sections are not dependent on the renormalization scale, as well as the factorization scale, when infinite orders in $\alpha_s$ would be included. 
@@ -215,10 +215,10 @@ The following provides details on the different aspects the simulation needs to 
 % A good MC simulation will cover all aspects of particle evolution detailed in Section 2.1, including matrix element calculation, hadronization and showering of final states, and simulation of detector geometry and response.
 \paragraph{Matrix element}
 Matrix element calculations are performed with MC generators that randomly sample from the SM expectations to generate hard scatter events. 
-There are different MC generators that come with varying precision in perturbation theory. 
+There are different MC generators that come with varying precision in perturbation theory. The generators used for the \HWW analysis are summarized in \cref{sec:data-mc-samples}.
 
 \paragraph{Parton showering}
-\emph{Parton showering} occurs because there is a finite quantum probability for a single parton to split into two. The \emph{QCD splitting functions} \cite{Altarelli:1977zs} provide the theoretical foundation for dedicated parton-shower models which accurately describe this behavior.
+\emph{Parton showering} occurs because there is a finite quantum probability for a single parton to split into two. The \emph{QCD splitting functions} \cite{Altarelli:1977zs} provide the theoretical foundation for dedicated parton-shower models which describe this process.
 %There is also the possibility of hard gluon being emitted in the initial or final state, which spoils the measurement of the total transverse momentum of the event.
 \paragraph{Hadronization}
 The partons hadronize when their energy decreases and the strong coupling becomes large. There are several phenomenological approaches for modelling this non-perturbative process, one of which is the \emph{Lund-String-Model}~\cite{Andersson:1983ia}. 
@@ -229,7 +229,7 @@ The particles produced in the scattering process or in the process of hadronizat
 \paragraph{Underlying event}
 The hard scatter is accompanied by many soft processes from the remaining partons in the colliding protons. These interactions produce signals in the detector that overlay the hard scattering process and need to be accounted for in the simulation.
 \paragraph{Pile-up}
-A nuisance in particular at $pp$ colliders is the overlap of the signals of more than one scattering event in the detector. This is known as \emph{pile-up}. A distinction is drawn between \emph{in-time pile-up}, referring to the amount of multiple interactions per bunch crossing, and \emph{out-of-time pile-up}, referring to overlapping events from previous $pp$ collisions or following bunches due to the limited time resolution of the detector.
+A nuisance in particular at $pp$ colliders is the overlap of the signals of more than one scattering event in the detector. This is known as \emph{pile-up}. A distinction is drawn between \emph{in-time pile-up}, referring to the amount of multiple interactions per bunch crossing, and \emph{out-of-time pile-up}, referring to overlapping events from previous $pp$ collisions or following bunches due to the long response time of parts of the detector.
 Pile-up collisions predominantly consist of inelastic, low energy transfer $pp$ collision events. 
 Their impact is typically taken into account by simulating them separately and overlaying them with the generated hard scatter.
 \paragraph{Detector simulation}

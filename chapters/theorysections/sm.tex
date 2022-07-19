@@ -107,7 +107,7 @@ The Lagrangian is generally a function of the fields $\psi$, their derivatives $
 The fields are generally dependent on the space-time coordinate, $\psi \rightarrow \psi(x)$.\footnote{For cleaner notation, these dependencies are not explicitly mentioned throughout this thesis.}
 
 For a given field $\psi$, the principles of QFT demand to include all possible interaction terms in the Lagrangian that are related to the field\footnote{This follows what is sometimes referred to as the ``totalitarian principle'' of quantum mechanics, that satirically states: ``Everything not forbidden is compulsory'', meaning that everything allowed by the laws of physics must actually happen or exist.}.
-The number and type of terms that can be included in the SM, however, is strongly constraint by requiring the theory to be invariant under symmetry transformations of the fields following the SM gauge group shown in \cref{eq:sm-gauge-group}.
+The number and type of terms that can be included in the SM, however, is strongly constrained by requiring the theory to be invariant under symmetry transformations of the fields following the SM gauge group shown in \cref{eq:sm-gauge-group}.
 The SM is governed by the principle of \emph{local gauge invariance}, which implies that the physical content of the theory stays the same when performing transformations of the particle fields according to
 \begin{equation}
   \psi \rightarrow e^{iT(x)} \psi
@@ -117,7 +117,7 @@ independently at every space-time point, where $T(x)$ is the generator of a cert
 % Pich
 % This is only possible if one adds an extra piece to the Lagrangian, transforming in such a way as to cancel the ∂μθ term in Eq. (6).
 % In order to maintain the symmetry, the Lagrangian may need to be manipulated by introducing new fields.
-Local gauge theories require the introduction of \emph{covariant derivates} to make the Lagrangian invariant under local gauge transformations. These covariant derivatives include gauge fields which give rise to particle interactions that give rise to the fundamental forces of nature. 
+Local gauge theories require the introduction of \emph{covariant derivates} to make the Lagrangian invariant under local gauge transformations. These covariant derivatives include gauge fields which give rise to particle interactions identified as the fundamental forces of nature. 
 Historically, QED is the first local gauge theory that was established. It follows a U(1) local gauge symmetry and entails the photon as the associated gauge field. 
 The SM can be elegantly described by demanding local gauge invariance with the symmetry group as shown in \cref{eq:sm-gauge-group}, and explains the existence of all gauge bosons mentioned in the previous section. 
 The fermions, in contrast, are added a priori to the theory and do not follow from fundamental principles.
@@ -184,7 +184,7 @@ The field tensors $G_{\mu\nu}^a$ are defined as
   G_{\mu\nu}^a = \partial_\mu G_\nu^a - \partial_\nu G_\mu^a - g_s f^{abc}G_\mu^b G_\nu^c,
 \end{equation}
 where $f^{abc}$ are the structure constants of SU(3)$_C$, with $a, b, c = 1, \ldots, 8$. 
-The term involving $f^{abc}$ includes an implicit sum over similar latin-character indices. It arises from the non-commuting elements of the SU(3)$_C$ group and gives rise to triple and quartic gluon self-interactions. 
+The term involving $f^{abc}$ includes an implicit sum over similar latin-character indices. It arises from the non-commuting elements of the SU(3)$_C$ group and gives rise to triple and quartic gluon self-interactions, which separates QCD from QED. 
 % Triple and quartic self-interactions are part of QCD because gluons themselves carry a combination of a color and anti-color. 
 % Invariant under ... transformation, where ... are the group generators
 Similar to photons, the gluons are massless because no terms quadratic in the gluon fields are allowed because of the requirement of local gauge invariance. 
@@ -289,8 +289,8 @@ Another mechanism is required to explain the existence of the masses of the gaug
 %An additional mechanism is needed in the SM to explain the finite masses of the weak gauge bosons. 
 
 A principle known as \emph{spontaneous symmetry breaking}, that was first explored in the field of condensed-matter physics, can be used to generate mass terms for the weak gauge bosons without violating local gauge invariance.
-This was first formulated by three independent research teams in 1964: Brout and Englert~\cite{PhysRevLett.13.321}, Higgs~\cite{PhysRevLett.13.508,HIGGS1964132}, and Guralnik, Hagan, and Kibble \cite{PhysRevLett.13.585}.\footnote{Their work was inspired by previous advancements in the theory of superconductivity~\cite{PhysRev.108.1175} and specifically P. W. Anderson, who proposed the mechanism of spontaneous symmetry breaking for generating mass terms in a non-relativistic scenario already in 1963~\cite{PhysRev.130.439}.}
-Today the mechanism is most often called \emph{Higgs mechanism} or \emph{electroweak symmetry breaking} (ESWB).
+This was first formulated in particle physics by three independent research teams in 1964: Brout and Englert~\cite{PhysRevLett.13.321}, Higgs~\cite{PhysRevLett.13.508,HIGGS1964132}, and Guralnik, Hagan, and Kibble \cite{PhysRevLett.13.585}.\footnote{Their work was inspired by previous advancements in the theory of superconductivity~\cite{PhysRev.108.1175} and specifically P. W. Anderson, who proposed the mechanism of spontaneous symmetry breaking for generating mass terms in a non-relativistic scenario already in 1963~\cite{PhysRev.130.439}.}
+Today the mechanism is most often called \emph{BEH mechanism} or \emph{electroweak symmetry breaking} (ESWB).
 The basic principle is to allow the state of lowest energy to hide local gauge invariance while maintaining the gauge symmetry of the Lagrangian itself.
 
 % From Peskin and Schroeder
@@ -451,7 +451,7 @@ To summarize the previous sections, the final Standard Model Lagrangian is obtai
    & \quad - \sum_{i} Y_l^i \bar{\psi}^{i}_{L} \phi \psi^{i}_{R} - \sum_{ij} \left( Y_{\text{u-type}}^{ij} \bar{\psi}^{i}_{L} \phi \psi^{i}_{\text{u-type},R} + Y_{\text{d-type}}^{ij} \bar{\psi}^{i}_{L} \phi^C \psi^{j}_{\text{d-type}, R} \right) + \text{h.c.},  \\
    & \quad + |D_\mu\phi|^2 - \mu^2\phi^\dagger\phi + \lambda \left(\phi^\dagger\phi \right)^2
 \end{align}
-The covariant derivate includes all gauge fields,
+The covariant derivative includes all gauge fields,
 \begin{equation}
   D_\mu = \partial_\mu + i g_s \frac{\lambda^a}{2} G_\mu^a + igT^aW_\mu^a + ig'\frac{Y}{2}B_\mu.
 \end{equation}

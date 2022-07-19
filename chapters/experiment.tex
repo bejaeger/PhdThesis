@@ -10,7 +10,7 @@ This chapter first provides an overview of the LHC, followed by a detailed descr
 %The two major technical components are \emph{radiofrequency cavities} (RF cavities) with oscillating electromagnetic fields to accelerate the particles as well as organizing them in so-called \emph{bunches}\footnote{RF cavities oscillate at a given frequency. Particles arriving early (late), will be decelerated (accelerated) so that the particles are kept together in discrete packages called bunches.} and magnet systems to bend, steer, and focus the particles' trajectories. The peak particle energy reached by a hadron collider is thereby limited by the maximum field strength of the bending magnets.
 The LHC was designed and built for more than two decades starting in the early 1980s by more than $10000$ international researchers, engineers, and technicians from more than $100$ different countries.
 The LHC is located in a near-circular tunnel\footnote{The same tunnel was used by the former LEP collider~\cite{LEPDesignReport}.} an average of \SI{100}{\m} below the France-Switzerland border close to Geneva (Switzerland). It has a circumference of \SI{26.7}{\km} and in its main mode of operation collides protons\footnote{The LHC also produces heavy-ion collisions in dedicated running periods} with a center-of-mass energy of $\comEn = \SI{13}{\TeV}$\footnote{The LHC design center-of-mass energy is $\comEn = \SI{14}{\TeV}$.}.
-The protons are accelerated with 16 \emph{radiofrequency cavities}, that have oscillating electromagnetic fields and group the protons in \emph{bunches}\footnote{The radiofrequency cavities oscillate at a design frequency of \SI{400}{\mega\hertz}. The particles that arrive early (late), are decelerated (accelerated) so that the particles are kept together in discrete packages called bunches.}.
+The protons are accelerated with 16 \emph{radiofrequency cavities}, that have oscillating electromagnetic fields and group the protons in \emph{bunches}\footnote{The radiofrequency cavities oscillate at a design frequency of \SI{40}{\mega\hertz}. The particles that arrive early (late), are decelerated (accelerated) so that the particles are kept together in discrete packages called bunches.}.
 These bunches occupy two separate but nearby rings to form counter-rotating particle beams.
 The LHC is designed to contain a maximum of 2808 bunches that are separated by a bunch spacing of \SI{25}{\ns}. Each bunch consists of about \SI{e11}{protons} which results in a design instantaneous luminosity of $\instLumi = \SI{e34}{\per\cm\per\s}$.\footnote{The machine and beam parameters of the LHC can vary between different data-taking cycles. More details can be found in \cref{sec:run-2-data-taking}.}
 More than 1200 superconducting dipole magnets are used to force the particle beams on a curved trajectory.
@@ -20,17 +20,14 @@ The ATLAS\footnote{A Toroidal Lhc ApparatuS} and CMS\footnote{Compact Muon Solen
 Before the protons enter the LHC, they pass through a series of smaller accelerators. A schematic of the entire accelerator complex is shown in \cref{fig:accelerator-complex}.
 The protons are extracted by ionising hydrogen atoms and first accelerated in the linear accelerator \emph{Linac2} (Linear accelerator 2)\footnote{Starting in 2020, Linac2 will be replaced by a new linear accelerator, Linac4 (Linear accelerator 4). More information can be found in \ccite{CERN-AB-2006-084}.}. Three synchrotrons follow: the \emph{BOOSTER} (Proton Synchrotron Booster), the \emph{PS} (Proton Synchrotron), and the \emph{SPS} (Super Proton Synchrotron).
 They have an increasingly larger circumference and gradually increase the energy of the proton beams.
-The proton beams from the SPS are finally injected into the LHC with an energy of $450\,\GeV$. The filling and ramp-up phases until stable beams are brought to collision at their final energies take around 45 minutes. The experiments at the LHC record the collision events for ideally about 8-10 hours or more, until the intensity of the beams becomes too low, making it more efficient to dump the beam and start a new cycle.
+The proton beams from the SPS are finally injected into the LHC with an energy of $450\,\GeV$. The filling and ramp-up phases until stable beams are brought to collision at their final energies take around 45 minutes. The experiments at the LHC record the collision events for ideally about 8-10 hours or more, until the intensity of the beams becomes too low, making it more efficient to dump the beams and start a new cycle.
 
 The operation of the LHC is broken down into different runs that last several years with differing running conditions.
-\Cref{tab:lhc-lumi-overview-years} shows basic characteristics of the $pp$ collisions produced in so-called \RunOne and \RunTwo of the LHC, that occured between 2011-2012 and 2015-2018, respectively. After a technical shutdown between 2018 and 2022, the LHC is expected to continue to operate with \RunThr at a center-of-mass energy of $\sqrt{s} = \SI{13.6}{\TeV}$.
+\Cref{tab:lhc-lumi-overview-years} shows basic characteristics of the $pp$ collisions produced in so-called \RunOne and \RunTwo of the LHC, that occured between 2011-2012 and 2015-2018, respectively. After a technical shutdown between 2018 and 2022, the LHC continued to operate with \RunThr at a center-of-mass energy of $\sqrt{s} = \SI{13.6}{\TeV}$ in July 2022.
 Details on the \RunTwo data taking period and the performance of the ATLAS data acquisition are given in \cref{sec:run-2-data-taking}.
 
 \FloatBarrier
 \input{tables/experiment/lhc-runs}
-
-
-
 
 \begin{figure}
     %\includegraphics{figures/experiment/accelerator-complex.jpg}
@@ -38,12 +35,6 @@ Details on the \RunTwo data taking period and the performance of the ATLAS data 
     \caption[Illustration of the accelerator complex at CERN.]{Illustration of the accelerator complex at CERN, including the Linac2, BOOSTER, PS, and SPS that serve as pre-accelerators before the protons are injected into the LHC. Adapted from \ccite{Christiane:1260465}.}
     \label{fig:accelerator-complex}
 \end{figure}
-
-
-
-
-
-
 
 \section{The ATLAS Experiment}
 The ATLAS experiment is operated by a community of about 3000 scientific authors from 181 institutions and 41 countries~\cite{AtlasCollab}, making it one of the largest scientific collaborations in the world.
@@ -72,7 +63,7 @@ To enable momentum measurements of charged particles, the tracking devices are i
 
 Calorimeters measure the energy of particles by fully absorbing them and transferring their energy to electrical signals.
 The ATLAS calorimeter is a so-called \emph{sampling calorimeter} where each of these tasks is handled by a dedicated material.
-Layers of high-density \emph{passive material} are predominantly responsible for stopping the particles and are alternated with layers of \emph{active material} that focus on measuring the signals induced by the particles.
+Layers of high-density \emph{passive material} are predominantly responsible for stopping the particles and creating showers of secondary particles. These are alternated with layers of \emph{active material} that focus on measuring the signals induced by the particles.
 The total signal measured is proportional to the energy of the incident particle.
 
 % comment from Mike (should be incorporated now!)
@@ -91,7 +82,7 @@ A distinction is made between \emph{electromagnetic showers} and \emph{hadronic 
 % The incident particles interact with the absorbers through several mechanisms which results in cascades of secondary particles known as \emph{showers}. 
 Electromagnetic showers are initiated by electrons, positrons, and photons and are dominated by interactions through \emph{bremsstrahlung} (photon emission) and electron-positron \emph{pair-production}.
 %The repeated process of emitting photons (bremsstrahlung) and producing electron-positron pairs (pair-production) forms a cascade of particles with gradually decreasing energy in the detector.
-A material can be characterized by its radiation length, $X_0$, which denotes the length over which an electron or positron loses on average all but  $1/e$ of its energy via bremssstrahlung. Since the probability for interacting via bremsstrahlung is proportional to $1 / m^2$, where $m$ is the mass of the particle, muons deposit only a small fraction of their energy in the calorimeters and thus cannot be stopped.\footnote{While muons deposit only a small fraction of their energy in the calorimeters, it is important to consider these energy losses. This becomes more important as the energy of the muon increases, because the amount of energy lost due to bremsstrahlung increases with the energy of the muon. See also \cref{sec:muon-reconstruction}.}
+A material can be characterized by its radiation length, $X_0$, which denotes the length over which an electron or positron loses on average all but  $1/e$ of its energy via bremssstrahlung and pair-production. Since the probability for emitting bremsstrahlung is proportional to $1 / m^2$, where $m$ is the mass of the particle, muons deposit only a small fraction of their energy in the calorimeters and thus cannot be stopped.\footnote{While muons deposit only a small fraction of their energy in the calorimeters, it is important to consider these energy losses. This becomes more important as the energy of the muon increases, because the amount of energy lost due to bremsstrahlung increases with the energy of the muon. See also \cref{sec:muon-reconstruction}.}
 
 Hadronic showers are more complex due to the rich nature of hadronic interactions. An incident hadron initiates showers by inelastic hadronic interactions with nuclei. In the process, several new particles are created, most of which are mesons.
 The penetration depth of hadrons in a given material is characterized by their \emph{interaction length}, $\lambda$, which describes the length that a hadron travels on average without interacting.
@@ -103,7 +94,7 @@ More details on the characteristics of hadronic showers and their implications f
 % \paragraph{Calorimeter showering} occurs when incident particles interact with the passive material through different mechanisms which results in cascades of secondary particles.
 The active layers in the ATLAS calorimeter measure the signals from the particles participating in the showers. They consist of either \emph{liquid argon} (LAr) or plastic scintillating tiles.
 
-The LAr-based systems are embedded in cryostats and measure the current induced by ionising particles. Readout electrodes are placed in the liquid and collect the charge within a timeframe of about \SI{450}{\nano\second}. The resulting signal is shown in \cref{fig:LAr-signal-pulse}. The pulse in the detector is first shaped to have a long negative tail in order to reduce the sensitivity to signals caused by $pp$ collisions from neighbouring bunches. The signal is then readout by sampling it four times at \SI{40}{\mega\hertz}. The pulse height is proportional to the energy of the traversing particle and energy calibrations are derived using data from dedicated runs~\cite{Abreu:1303004}.
+The LAr-based systems are embedded in cryostats and measure the current induced by ionising particles. Readout electrodes are placed in the liquid and collect the charge within a timeframe of about \SI{450}{\nano\second}. The resulting signal is shown in \cref{fig:LAr-signal-pulse}. The pulse in the detector is first shaped to have a long negative tail in order to reduce the sensitivity to signals caused by $pp$ collisions from neighbouring beam bunches. The signal is then readout by sampling it four times at \SI{40}{\mega\hertz}. The pulse height is proportional to the energy of the traversing particle and energy calibrations are derived using data from dedicated runs~\cite{Abreu:1303004}.
 % so that it can be converted to an energy measurement using calibrations derived from dedicated runs.~\cite{Abreu:1303004}
 
 %In the LAr-based systems, that are embedded in cryostats, the incident charged particles ionize the liquid inducing a current that is measured at electrodes.
@@ -124,13 +115,13 @@ The ATLAS detector, illustrated in \cref{fig:ATLASlayout}, is \SI{44}{\meter} lo
 Several layers are arranged in a cylindrical structure around the beam axis.
 %The different layers serve different functions and complement each other to form a detector system that is able to measure a wide range of physics processes.
 The \emph{inner detector} (ID) is the innermost layer and serves as a tracking device surrounded by a large \emph{solenoid magnet}.
-A large \emph{calorimeter system} is placed outside the solenoid and stops almost all electromagnetic and hadronically interacting particles.
+A large \emph{calorimeter system} is placed outside the solenoid and stops almost all electromagnetically and hadronically interacting particles.
 The outermost part forms the \emph{muon spectrometer} (MS) which is designed to reconstruct muon tracks using large \emph{muon chambers} with \emph{toroid magnets} placed in between.
 % to enable muon momentum measurements.
 
 After introducing the ATLAS coordinate system below, the design and functionality of the different components is described in the remainder of this section.
 While most of these sections are kept very brief, more details are provided on the calorimeter system, as it is the crucial component for the calibration measurement presented in the subsequent \cref{chap:calibration}.
-More information about the ATLAS detector can be found in \ccite{PERF-2007-01}, which this section heavily relies on.
+More information about the ATLAS detector can be found in \ccite{PERF-2007-01}, on which this section heavily relies.
 
 %Some of the detector components are also used to trigger on interesting physics events which is discussed thereafter.
 %After describing the ATLAS coordinate system, a description of the tracking devices, the ID and the MS, followed by details on the calorimeter system.
@@ -148,10 +139,10 @@ More information about the ATLAS detector can be found in \ccite{PERF-2007-01}, 
 \end{sidewaysfigure}
 
 \subsection{The ATLAS coordinate system}
-The ATLAS experiment uses a right-handed cartesian coordinate system to describe the hard-scattering processes. The origin is set at the nominal interaction point, which is at the geometrical centre of the ATLAS detector. The $z$-axis is along the beam direction, the $y$-axis points upwards, and the $x$-axis points to the centre of the LHC. The azimuthal angle $\phi$ is measured against the $x$-axis in the $x$-$y$ plane and the polar angle $\theta$ is the angle taken from the beam axis.
+The ATLAS experiment uses a right-handed cartesian coordinate system to describe the hard-scattering processes. The origin is set at the nominal interaction point, which is at the geometrical centre of the ATLAS detector. The $z$-axis is along the beam direction, the $y$-axis points upwards, and the $x$-axis points to the centre of the LHC. The azimuthal angle $\phi$ is measured with respect to the $x$-axis in the $x$-$y$ plane and the polar angle $\theta$ is the angle taken from the beam axis.
 Final-state particles of $pp$ collision events are often Lorentz-boosted along the $z$-axis.
 This is why the transverse component of the energy, $\ETvec = \ET \hat{n}$, or momentum, $\pTvec = \pT \hat{n}$, are often considered. They are determined by the projection of the total energy or momentum onto the $x$-$y$ plane.
-The position of a particle in the $z$-$y$ plane is typically described with the \emph{pseudorapidity} $\eta$, defined as\footnote{For massive objects the \emph{rapidity} $y = \frac{1}{2} \text{ln} \left( \frac{E + p_Z }{E-p_z} \right)$ is used, where $E$ is the energy and $p_z$ the momentum in $z$-direction. The rapidity is approximated by the pseudorapidity for $m \ll E$, which is typically the case in for physics objects in high energy physics.}
+The position of a particle in the $z$-$y$ plane is typically described with the \emph{pseudorapidity} $\eta$, defined as\footnote{For massive objects the \emph{rapidity} $y = \frac{1}{2} \text{ln} \left( \frac{E + p_Z }{E-p_z} \right)$ is used, where $E$ is the energy and $p_z$ the momentum in $z$-direction. The rapidity is approximated by the pseudorapidity for $m \ll E$, which is the case for many physics objects in high energy physics.}
 \begin{equation}
     \eta = - \text{ln} \left( \tan \left( \frac{\theta}{2} \right) \right).
 \end{equation}
@@ -176,7 +167,7 @@ In the central (barrel) region the tracking detectors are arranged in cylinders 
 The ID covers a range \absetaST{2.5} and is immersed in a \SI{2}{\tesla} magnetic field provided by a \SI{5.8}{\m} long solenoid magnet.
 The first tracking layer in the barrel is the insertable $b$-layer (IBL)~\cite{ATLAS-TDR-19,PIX-2018-001}, that was installed before \RunTwo and is especially important for the reconstruction of the interaction vertices.
 Three layers of silicon \emph{pixels} in the barrel and each end-cap typically provide four space points for each charged particle.
-Four layers (nine layers) of silicon-microstrip \emph{semiconductor trackers} (SCT) in the barrel (each end-cap) are composed of double layers of strips arranged at an angle of \SI{40}{\milli\radian} relative to each other. Four double layers are crossed by each track to provide additional four space points.
+Four layers (nine layers) of silicon-microstrip \emph{semiconductor trackers} (SCT) in the barrel (each end-cap) are composed of double layers of strips arranged at an angle of \SI{40}{\milli\radian} relative to each other. Four double layers are crossed by each track to provide an additional four space points.
 The fine granularity of the pixel and microstrip sensors provide high-precision measurements with resolutions in $R$-$\phi \times z$ ($R$-$\phi \times R$) of $10 \times 115\,\mu\text{m}$ and $17 \times 580\,\mu\text{m}$ for the pixel and microstrip barrels (end-caps), respectively.
 The \emph{transition radiation tracker} TRT consists of a large number of straw tubes filled with xenon-based gas that provide on average 36 additional hits. The TRT covers a range \absetaST{2.0} and provides information in only the $R$-$\phi$ plane with a resolution of \SI{130}{\micro\meter}.
 Apart from the position measurement, the TRT also generates and detects the amount of transition radiation, that is produced by high-energy charged particles when crossing two media of different dielectric constants. For this purpose, the TRT is interleaved with fibres and foils that provide the transition-radiation photons, which helps to differentiate electrons from charged pions.
@@ -212,13 +203,13 @@ Apart from the position measurement, the TRT also generates and detects the amou
 
 \subsection{The calorimeter system}
 \label{subsec:calorimeter}
-The primary task of the ATLAS sampling calorimeter is to measure the energy of particles, but it is also sensitive to the position and direction of incident particles. The latter is enabled by the segmentation of the calorimeter into different cells in the $\eta-\phi$ plane and into several layers in the longitudinal direction.
+The primary task of the ATLAS sampling calorimeter is to measure the energy of particles, but it is also sensitive to the position and direction of incident particles. The latter is enabled by the segmentation of the calorimeter into many cells in the $\eta-\phi$ plane and into several layers in the longitudinal direction.
 This also allows quantifying other characteristics of the showers, which is used for particle identification (see \cref{chap:objects}).
 The calorimeter signals provide fast information, which makes them also suitable for trigger purposes, which is described further below.
 
 A schematic view of the calorimeter system is shown in \cref{fig:ATLAScalorimeters}.
 It can be divided into a \emph{LAr electromagnetic calorimeter} (ECAL), that targets the measurement of electromagnetic showers, and a hadronic calorimeter, that measures and contains hadronic activity. The hadronic calorimeter is further subdivided into the scintillator \emph{tile calorimeter}, the \emph{LAr hadronic end-caps} (HEC), and the \emph{LAr forward calorimeters} (Fcal).
-The entire system covers a large angle of \absetaST{4.9} with different materials used in different \abseta regions due to changing conditions.
+The entire system covers a large angle of \absetaST{4.9} with different materials used in different \abseta regions due to changing conditions such as particle multiplicities.
 Depending on the \abseta region, the ECAL and hadronic calorimeter provide a stopping power of $22-38\,X_0$ and $7-10\,\lambda$, respectively.
 This limits the level of punch-through to the muon system almost entirely, except for the irreducible level of muons and neutrinos. % remain irreducible. the irreducible level of muons and neutrinos.
 A summary of the most important material characteristics of the different segments is shown in \cref{tab:calorimeter-characteristics}.
@@ -228,13 +219,13 @@ Details on the detector coverage and granularity are given in \cref{tab:ATLAScal
 \input{tables/experiment/calorimeter-characteristics}
 
 \subsubsection{LAr electromagnetic calorimeters}
-The ECAL is arranged in an accordion-shaped structure to ensure full coverage in $\phi$.
+The ECAL is arranged in an accordion-shaped structure to ensure full coverage in $\phi$ without cracks.
 It is subdivided into a barrel part covering \absetaST{1.475} and an end-cap on each side in the range \absetaBT{1.375}{3.2}.
 
 The barrel consists of two identical segments along the $z$-axis with a small gap of \SI{4}{\milli\meter} in between at $z=0$. A schematic of one of the barrel modules is shown in \cref{fig:ATLASmodules-a}. Each module is segmented in three layers in depth with varying granularity.
-The first layer is finely segmented in $\Delta \eta$ which provides essential inputs for photon and neutral pion identification. The second layer is finer in $\Delta \phi$ and larger in depth and measures the bulk of the electromagnetic showers. The third and coarsest layer in $\Delta \eta$ is designed to measure the broad tail of the electromagnetic showers.
+The first layer is finely segmented in $\Delta \eta$ which provides essential inputs for photon and neutral pion identification. The second layer is finer in $\Delta \phi$ than the first layer and larger in depth and measures the bulk of the electromagnetic showers. The third and coarsest layer in $\Delta \eta$ is designed to measure the broad tail of the electromagnetic showers.
 %Together, the three segments provide a stopping power of 24 radiation lengths ($X_0$) 
-The high granularity provides valuable space point measurements in addition to the data from the ID, reduces the sensitivity to \pileup, and allows handling of large collision rates.
+The high granularity provides valuable space point measurements in addition to the data from the ID and reduces the sensitivity to \pileup, therefore allowing to handle large collision rates.
 
 % Comment MIKE: It is also a matter of rate capability and reducing sensitivity to pileup.
 
@@ -250,7 +241,7 @@ The high granularity provides valuable space point measurements in addition to t
 In the transition region between the barrel and end-caps (\absetaBT{1.37}{1.52}), also known as the ``crack'', there is a lot of material amounting to several $X_0$ in front of the calorimeter, which renders photon and electron identification difficult.
 
 The end-caps consist of wheels placed on each side of the barrel.
-They are composed of three layers in depth for the range \absetaST{2.5} and two layers for \absetaBT{2.5}{3.2} with varying thickness of the lead absorber. Details on the readout granularity is shown in \cref{tab:ATLAScalorimeter-parameters}.
+They are composed of three layers in depth for the range \absetaST{2.5} and two layers for \absetaBT{2.5}{3.2} with varying thickness of the lead absorber. Details on the readout granularity are shown in \cref{tab:ATLAScalorimeter-parameters}.
 
 To account for the energy that particles lose upstream of the ECAL, when traversing the ID and solenoid magnet, a presampler consisting of a thin LAr layer is placed in front of the ECAL in the range \absetaST{1.8}.
 
@@ -274,7 +265,7 @@ A single module of the tile barrel is shown in \cref{fig:ATLASmodules-b}, depict
 The HEC provides a coverage of \absetaBT{1.5}{3.2} and is segmented in two layers in depth. It consists of one end-cap wheel on each side of the detector. See Table 3.3 for details of the design.
 
 \subsubsection{LAr forward calorimeter}
-At very large angles (\absetaBT{3.1}{4.9}) the calorimeter needs to be especially resistant against radiation. The FCal consists of three thick absorber layers. The first layer targets measurements of electromagnetic showers, the second two provide necessary stopping power for hadrons.
+At very large pseudorapidities (\absetaBT{3.1}{4.9}) the calorimeter needs to be especially resistant against radiation. The FCal consists of three thick absorber layers. The first layer targets measurements of electromagnetic showers, the second two provide necessary stopping power for hadrons.
 
 % - LAr forward cals for both EM and HAD up to eta = 4.9. 
 % - need to be especially resistant against radiation
@@ -285,7 +276,7 @@ At very large angles (\absetaBT{3.1}{4.9}) the calorimeter needs to be especiall
 
 \begin{figure}
     \newImageScale{figures/experiment/ATLAScalorimeters.jpg}{.3}
-    \caption[Schematic of the ATLAS calorimeters showing the different subcomponents.]{Schematic of the ATLAS calorimeters showing the different subcomponents. Details on are provided in the text. Taken from \ccite{PERF-2007-01}.}
+    \caption[Schematic of the ATLAS calorimeters showing the different subcomponents.]{Schematic of the ATLAS calorimeters showing the different subcomponents. Details are provided in the text. Taken from \ccite{PERF-2007-01}.}
     \label{fig:ATLAScalorimeters}
 \end{figure}
 
@@ -341,10 +332,10 @@ The selections are based on the available data from various detector subsystems.
 The \RunTwo trigger system consists of a two-stage approach:
 The hardware-based \emph{Level-1} (L1) trigger reduces the rate of collision events from \SI{40}{\mega\hertz} to \SI{100}{\kilo\hertz} and provides inputs to the software-based \emph{High-level trigger} (HLT), implemented in a large dedicated computer farm, which makes further selections to reduce the rate to around \SI{1000}{\hertz}.
 
-The L1 trigger uses information from both, the full MS and the entire calorimeter system but with reduced granularity.
-The muon trigger chambers (RPCs and TGCs) detect muons with high transverse momenta, while the showering information from the calorimeters is used to search for electrons, photons, jets, hadronically decaying \tauleptons, as well large missing or total transverse energy.\footnote{The definition and reconstruction procedure of these physics objects are described in \cref{chap:objects}.}
+The L1 trigger uses information from both the full MS and the entire calorimeter system but with reduced granularity.
+The muon trigger chambers (RPCs and TGCs) detect muons with high transverse momenta, while the showering information from the calorimeters is used to search for electrons, photons, jets, hadronically decaying \tauleptons, as well as large missing or total transverse energy.\footnote{The definition and reconstruction procedures of these physics objects are described in \cref{chap:objects}.}
 By adjusting the identification criteria and thresholds used for the different objects, the trigger rates for different event signatures can be controlled.
-Events with certain signatures such as high-\pT jets or large missing transverse energy often occur more frequently than desired for readout. In these cases the related triggers can be \emph{prescaled} by a certain factor to only select one out of many events of that type\footnote{The decision which event is read out is randomized to avoid possible biases}. This enables a controlled data collection as running conditions change.\footnote{All events with at least one identified electron, muon or large missing transverse momentum are \emph{unprescaled}.}
+Events with certain signatures such as high-\pT jets or large missing transverse energy often occur more frequently than desired for readout. In these cases the related triggers can be \emph{prescaled} by a certain factor to only select one out of many events of that type\footnote{The decision on which event is read out is randomized to avoid possible biases}. This enables a controlled data collection as running conditions change.\footnote{All events with at least one identified electron, muon or large missing transverse momentum are \emph{unprescaled}.}
 In addition to reducing the event rate, the L1 trigger defines \emph{Regions-of-interest} (ROIs) in the $\eta$-$\phi$ plane to locate the interesting features.
 The HLT analyzes the detector signals in the ROIs performing ``offline-like'' full event reconstruction using all detector subsystems with their full granularity. The ROIs typically make up around \SI{2}{\percent} of the total event data.
 The events selected by the HLT are subsequently stored to disk.
@@ -374,7 +365,7 @@ More information on the ATLAS trigger system can be found in \ccite{ATLAS-TDR-16
 \subsection{Detector simulation}
 %Simulations of the ATLAS detector are required in order to generate full Monte Carlo events that can be compared to actual experimental data.
 The ATLAS detector simulation is based on \textsc{Geant4}~\cite{Agostinelli:2002hh}.
-The simulations considers all aspects of the ATLAS detector such as the response of each individual detector system, the effect of material placed throughout the detector, detector imperfections, as well as data and trigger conditions.
+The simulation considers all aspects of the ATLAS detector such as the response of each individual detector system, the effect of material placed throughout the detector, detector imperfections, as well as data and trigger conditions.
 % From Deep Learning and its applications in physics
 %In the language of statistics and machine learning, the full simulation chain would be considered a generative model for the data as they can be used to generate synthetic data of the same complexity and format as the actual collision data.
 %Due to the complexity of the experiment a \emph{full simulation} is a very computing-intensive process. The ATLAS simulation infrastructure also allows for \emph{fast simulations} using simplified descriptions of the detector systems. This provides the opportunity for lower processing times with the drawback of decreased accuracies.
