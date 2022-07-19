@@ -49,16 +49,16 @@ One of the two prompt lepton candidates is required to fail the full identificat
 The contributions of backgrounds with misidentified leptons (Mis-Id background) are estimated by subtracting the  expected number of events in the control sample with the expected contribution from processes with two true, prompt leptons, and then multiplying it with the corresponding fake factors.
 The full expression can be written as,
 \begin{equation}
-    \label{eq:fake-estimation}
+    \label{app:eq:fake-estimation}
     N_{\text{id,id}}^{\text{Mis-Id}} = FF \left( N_{\text{id,\sout{id}}}^{\text{data}} - N_{\text{id,\sout{id}}}^{\text{2 true prompt}} \right) - FF_1FF_2 \left( N_{\text{\sout{id},\sout{id}}}^{\text{data}} - N_{\text{\sout{id},\sout{id}}}^{\text{2 true prompt}} \right),
 \end{equation}
 where $N_{\text{id,\sout{id}}}^{\text{data}}$ and $N_{\text{\sout{id},\sout{id}}}^{\text{data}}$ are, respectively, the number of expected events with one or two anti-identified leptons measured in the control data sample, and $N_{\text{id,\sout{id}}}^{\text{2 true prompt}}$ and $N_{\text{\sout{id},\sout{id}}}^{\text{2 true prompt}}$ are, respectively, the number of expected events with two true, prompt leptons measured in simulated event samples.
 The fake factors $FF$ and $FF_{1/2}$ are applied according to which leptons are anti-identified, that is, whether it is the electron, the muon, or both.
 They are dependent on the \pT of the anti-identified lepton and, in the case of a misidentified muon, $\abseta$, i.e. $FF \to FF(\pT, \abseta)$.
-The second term on the right-hand side of \cref{eq:fake-estimation} provides a correction for events where both of the leptons are misidentified, a contribution that is double-counted in the first term. A rigorous mathematical derivation of \cref{eq:fake-estimation} goes beyond the scope of this thesis and the interested reader is referred to \ccite{HIGG-2013-13,HIGG-2016-07,KonstiThesis}.
+The second term on the right-hand side of \cref{app:eq:fake-estimation} provides a correction for events where both of the leptons are misidentified, a contribution that is double-counted in the first term. A rigorous mathematical derivation of \cref{app:eq:fake-estimation} goes beyond the scope of this thesis and the interested reader is referred to \ccite{HIGG-2013-13,HIGG-2016-07,KonstiThesis}.
 
 \subsection{Derivation of nominal fake factors in \Zjets-enriched sample}
-\label{subsubsec:zjets-ffs}
+\label{app:subsubsec:zjets-ffs}
 The fake factors are estimated using a data sample enriched in \Zjets events and a three-lepton selection (referred to as \Zjets selection), that targets events with two leptons originating from the $Z$ boson decay and a jet that serves as candidate for being misidentified as a lepton (referred to as Mis-Id candidate).
 %A three-lepton selection, referred to as \Zjets selection, is therefore applied. 
 All leptons must satisfy \ptGT{15}\,GeV.
@@ -70,12 +70,12 @@ If more than one pair of leptons satisfies these requirements, the pair with the
 The respective other lepton in the event serves as the Mis-Id candidate.
 The fake factor is then defined as the ratio of events, where this Mis-Id candidate is fully identified, $N_{\text{id}}^{\text{data}}$, and anti-identified, $N_{\text{\sout{id}}}^{\text{data}}$, each time subtracting the expected number of events with three true, prompt leptons that are not originating from \Zjets processes,
 \begin{equation}
-    \label{eq:ff}
+    \label{app:eq:ff}
     FF = \frac{ N_{\text{id}}^{\text{data}} - N_{\text{id}}^{\text{non-\Zjets}}}{N_{\text{\sout{id}}}^{\text{data}} - N_{\text{\sout{id}}}^{\text{non-\Zjets}}}.
 \end{equation}
 The events with three true, prompt leptons, $N_{\text{id/\sout{id}}}^{\text{non-Zjets}}$, are estimated using simulated samples and are dominated by leptonically decaying $WZ$ production.
 To reduce the contamination of this process, a requirement of $m_T^W = \sqrt{2E^{\textrm{miss}}_\textrm{T} E^{\text{Mis-Id cand.}}_\textrm{T} (1-\cos\phi)} < 50\;\textrm{GeV}$ is additionally applied in the \Zjets selection.
-The resulting fake factors are summarized in \cref{tab:ZjetsFF-uncertainties}.
+The resulting fake factors are summarized in \cref{app:tab:ZjetsFF-uncertainties}.
 The fake factors are derived separately for electrons and muons. The electron fake factors are split into four different \pT bins and are measured inclusively for the entire \abseta range.
 The muon fake factors are also derived in four \pT bins and two \abseta regions \absetaST{1.05} and \absetaGT{1.05}. The value of the last \pT bin with \ptGT{50}\,GeV is derived by an extrapolation from the respective previous bin, due to the limited statistical precision at high \pT.
 
@@ -86,26 +86,26 @@ Although the number of events in that category accounts for only $\mathcal{O}(1\
     Applying such a requirement in addition to the \Zjets selection, however, leads to an insufficient event yield to derive reasonable fake factors. The triggered fake factors are therefore derived in a sample enriched in dijet events.
     The dijet selection requires each event to have at least one Mis-Id candidate with \ptGT{15}~\,~GeV and one jet with \ptGT{25}~\,~GeV. To ensure a back-to-back topology between the lepton and the jet, the two objects must have an angular separation $\Delta \phi(\text{lep}, \text{jet}) > 2.5$.
     In order to suppress the contamination from non-dijet processes, mostly coming from \Wjets processes, the events are required to have $\MET < 30$\,GeV and the transverse mass between the lepton and the missing transverse energy must satisfy $m_T < 60\,$GeV.
-    The fake factors are then derived analogous to \cref{eq:ff}, but subtracting non-dijet events in the numerator and denominator.
+    The fake factors are then derived analogous to \cref{app:eq:ff}, but subtracting non-dijet events in the numerator and denominator.
     % The overall number of events that are subject to a trigger bias is very small.
     % \begin{equation}
-    %     \label{eq:ff-dijet}
+    %     \label{app:eq:ff-dijet}
     %     FF^{\text{dijet}} = \frac{ N_{\text{id}}^{\text{data}} - N_{\text{id}}^{\text{non-dijet}}}{N_{\text{\sout{id}}}^{\text{data}} - N_{\text{\sout{id}}}^{\text{non-dijet}}}.
     % \end{equation}
 
 
     \subsection{Corrections and uncertainties}
     Uncertainties in the estimation of the Mis-Id background in the analysis are account for via uncertainties in the fake factors.
-    The fake factor uncertainties can be grouped into three main components: statistical uncertainties, uncertainties in the normalization of non-\Zjets processes that are subtracted in \cref{eq:ff}, and uncertainties due to the different flavor composition of jets in \Zjets processes compared to \Wjets processes.
+    The fake factor uncertainties can be grouped into three main components: statistical uncertainties, uncertainties in the normalization of non-\Zjets processes that are subtracted in \cref{app:eq:ff}, and uncertainties due to the different flavor composition of jets in \Zjets processes compared to \Wjets processes.
     The latter uncertainty arises due to a correction that must be applied to the fake factors derived in \Zjets events.
-    Each uncertainty component and correction is discussed below, and their impact is summarized in \cref{tab:ZjetsFF-uncertainties}.
+    Each uncertainty component and correction is discussed below, and their impact is summarized in \cref{app:tab:ZjetsFF-uncertainties}.
 
 
     \subsubsection{Statistical uncertainty}
-    The statistical uncertainties refer to the uncertainties in the data sample used to derive the fake factors as shown in \cref{eq:ff}.
+    The statistical uncertainties refer to the uncertainties in the data sample used to derive the fake factors as shown in \cref{app:eq:ff}.
 
     \subsubsection{$EW$ subtraction uncertainty}
-    The contribution of non-\Zjets processes subtracted in \cref{eq:ff} is primarily due to $WZ$ processes but also $ZZ$ and $Z\gamma$ processes can enter the \Zjets selection.
+    The contribution of non-\Zjets processes subtracted in \cref{app:eq:ff} is primarily due to $WZ$ processes but also $ZZ$ and $Z\gamma$ processes can enter the \Zjets selection.
     Theoretical uncertainties in the normalization of these processes are derived and propagated, leading to systematic uncertainties in the fake factor.
     In order to reduce the impact of theoretical uncertainties associated to the $WZ$ process, the normalization of the $WZ$ contribution is extracted from a control region. The CR is defined by inverting the $m_T^W$ selection to $m_T^W > 50\,$GeV and requiring the Mis-Id candidate to pass the full identification criteria. This region is very pure in $WZ$ events so that a precise normalization factor of $0.99 \pm 0.01$ can be extracted and applied in the \Zjets selection. The impact of the uncertainties affecting similarly the normalization in the \Zjets selection and the $WZ$ CR selection can thus be reduced.
 
@@ -134,7 +134,7 @@ Although the number of events in that category accounts for only $\mathcal{O}(1\
         \caption[Summary of the fake factors from the $Z$+jets estimate with uncertainties.]{Summary of the fake factors from the $Z$+jets estimate with uncertainties. All uncertainties are quoted in percent on the nominal value. More information on the different uncertainty components is given in the text.
             % \textit{Value} denotes the nominal fake factor value. \textit{Statistical} denotes the statistical uncertainties on the fake factors including the extrapolation uncertainty for the highest muon \pT bin. \textit{EW Subtraction} denotes the uncertainty due to the electroweak backgrounds that enter the $Z$+jets fake factor estimate. \textit{Sample Composition} denotes the uncertainty that accounts for differences in fake factors between $Z$+jets and $W$+jets processes, and includes both statistical and systematic uncertainty on the correction factors. The column \textit{Total} sums all individual contributions in quadrature to give an overview of the total uncertainty of the fake factor. In the fit, however, the EW subtraction and sample composition uncertainties are treated as correlated between different bins, while the statistical uncertainty is uncorrelated.
         }
-        \label{tab:ZjetsFF-uncertainties}
+        \label{app:tab:ZjetsFF-uncertainties}
         % Nominal values, statistical uncertainties and EWSUBTR uncertainties produced on tag kon_improveZjetsFFStats_v2
     \end{table}
 
@@ -143,7 +143,7 @@ Although the number of events in that category accounts for only $\mathcal{O}(1\
     \section{Distributions of the VBF DNN input variables with selections on the DNN}
     \label{app:dnn:input-vars}
 
-    To show the effect of the DNN on the DNN input variables, \cref{fig:dnn-inputs-vbf-top1,fig:dnn-inputs-vbf-top2,fig:dnn-inputs-vbf-top3,fig:dnn-inputs-hwwdecay,fig:dnn-inputs-top-sup} show distributions of the DNN input variables with different selections on the DNN output.
+    To show the effect of the DNN on the DNN input variables, \cref{app:fig:dnn-inputs-vbf-top1,app:fig:dnn-inputs-vbf-top2,app:fig:dnn-inputs-vbf-top3,app:fig:dnn-inputs-hwwdecay,app:fig:dnn-inputs-top-sup} show distributions of the DNN input variables with different selections on the DNN output.
     This nicely shows the kinematics and topologies the DNN selects to define regions pure in the VBF signal.
 
     \begin{figure}[ht]
@@ -165,7 +165,7 @@ Although the number of events in that category accounts for only $\mathcal{O}(1\
         } \\
         {\caption{Distributions of $\mjj$, $\dyjj$, $\lepetacent$ in the VBF \TwoJet signal region.
             Each row corresponds to one variable with different selections made on the DNN output as indicated in the figure. The solid orange line shows the expected VBF signal scaled by a factor of (left) 50, (center) 5, and (right) without any scaling.
-            \label{fig:dnn-inputs-vbf-top1} }}
+            \label{app:fig:dnn-inputs-vbf-top1} }}
     \end{figure}
 
 
@@ -193,7 +193,7 @@ Although the number of events in that category accounts for only $\mathcal{O}(1\
         }
         {\caption{Distributions of $\mlonejone$, $\mltwojone$, $\mlonejtwo$, and $\mltwojtwo$ in the VBF \TwoJet signal region.
                 Each row corresponds to one variable with different selections made on the DNN output as indicated in the figure. The solid orange line shows the expected VBF signal scaled by a factor of (left) 50, (center) 5, and (right) without any scaling.
-                \label{fig:dnn-inputs-vbf-top2} }}
+                \label{app:fig:dnn-inputs-vbf-top2} }}
     \end{figure}
 
 
@@ -216,7 +216,7 @@ Although the number of events in that category accounts for only $\mathcal{O}(1\
         }
         {\caption{Distributions of $\pTjone$, $\pTjtwo$, and $\pTjthree$ in the VBF \TwoJet signal region.
                 Each row corresponds to one variable with different selections made on the DNN output as indicated in the figure. The solid orange line shows the expected VBF signal scaled by a factor of (left) 50, (center) 5, and (right) without any scaling.
-                \label{fig:dnn-inputs-vbf-top3}}}
+                \label{app:fig:dnn-inputs-vbf-top3}}}
     \end{figure}
 
 
@@ -239,7 +239,7 @@ Although the number of events in that category accounts for only $\mathcal{O}(1\
         }
         {\caption{Distributions of $\dphill$, $\mll$, $\mT$ in the VBF \TwoJet signal region.
                 Each row corresponds to one variable with different selections made on the DNN output as indicated in the figure. The solid orange line shows the expected VBF signal scaled by a factor of (left) 50, (center) 5, and (right) without any scaling.
-                \label{fig:dnn-inputs-hwwdecay} }}
+                \label{app:fig:dnn-inputs-hwwdecay} }}
     \end{figure}
 
 
@@ -258,12 +258,12 @@ Although the number of events in that category accounts for only $\mathcal{O}(1\
         } \\
         {\caption{Distributions of $\pttot$ and $\METSig$ in the VBF \TwoJet signal region.
             Each row corresponds to one variable with different selections made on the DNN output as indicated in the figure. The solid orange line shows the expected VBF signal scaled by a factor of (left) 50, (center) 5, and (right) without any scaling.
-            \label{fig:dnn-inputs-top-sup} }}
+            \label{app:fig:dnn-inputs-top-sup} }}
     \end{figure}
 
     \FloatBarrier
     \section{DNN output distributions in the VBF STXS CRs}
-    \Cref{fig:dnn-output-vbf-stxs} shows the distributions of the DNN output in the top-quark and \Ztautau CRs used in the VBF, STXS analysis prior to the statistical analyiss.
+    \Cref{app:fig:dnn-output-vbf-stxs} shows the distributions of the DNN output in the top-quark and \Ztautau CRs used in the VBF, STXS analysis prior to the statistical analyiss.
     The distributions confirm that the data are modelled well by the MC simulation.
 
     \begin{figure}[h!]
@@ -288,7 +288,7 @@ Although the number of events in that category accounts for only $\mathcal{O}(1\
         }
         \caption{
             Distributions of the DNN output in (a)-(c) the top-quark CRs and (d)-(f) the \Ztautau CRs used in the VBF STXS analysis with the selections indicated for each subfigure. The yellow band corresponds to the square root of the sum in quadrature of the MC statistical uncertainties and the normalization component of the dominant experimental systematic uncertainties (JER, JES, Flavor-tagging, and \MET uncertainties). The various uncertainty components are discussed in more detail in \cref{sec:systematics}.}
-        \label{fig:dnn-output-vbf-stxs}
+        \label{app:fig:dnn-output-vbf-stxs}
     \end{figure}
 
     \FloatBarrier
@@ -328,30 +328,30 @@ Although the number of events in that category accounts for only $\mathcal{O}(1\
     \section{Distributions in the ggF \ZeroJet and \OneJet Category}
     \label{app:event-selection-ggf}
 
-    The distributions shown in \cref{fig:ggf:Plots:selections} illustrate the event selections made to define the ggF \ZeroJet and \OneJet category. This motivates the selections and reveals the background processes that are primarily suppressed by each requirement.
+    The distributions shown in \cref{app:fig:ggf:Plots:selections} illustrate the event selections made to define the ggF \ZeroJet and \OneJet category. This motivates the selections and reveals the background processes that are primarily suppressed by each requirement.
 
     \begin{figure}[!h]
         \centering
         \subfloat[]{
             \includegraphics[width=0.47\textwidth]{\paperfiguredir/ggF/ZeroJet/CutGGF_Ptll_0jet-Mll}
-            \label{fig:ggf:Plots:selections-a}
+            \label{app:fig:ggf:Plots:selections-a}
         }
         \subfloat[]{
             \includegraphics[width=0.47\textwidth]{\paperfiguredir/ggF/ZeroJet/CutGGF_bVeto_0jet-DPhill}
-            \label{fig:ggf:Plots:selections-b}
+            \label{app:fig:ggf:Plots:selections-b}
         } \\
         \subfloat[]{
             \includegraphics[width=0.47\textwidth]{\paperfiguredir/ggF/OneJet/CutGGF_ZttVeto_1jet-Mll}
-            \label{fig:ggf:Plots:selections-c}
+            \label{app:fig:ggf:Plots:selections-c}
         }
         \subfloat[]{
             \includegraphics[width=0.47\textwidth]{\paperfiguredir/ggF/OneJet/CutGGF_TopoMll_1jet-DPhill}
-            \label{fig:ggf:Plots:selections-d}
+            \label{app:fig:ggf:Plots:selections-d}
         }
         \caption{
             Distributions of (a) \mll\ and (b) \dphill\ in the \ZeroJet category as well as (c) \mll\ and (d) \dphill\ in the \OneJet category, after the preselection and background rejection steps, and also after the selection on \mll\ for the \dphill plots. The dashed lines indicate where the selection on the observable is made. The hatched band shows the normalization component of the total pre-fit uncertainty, assuming SM Higgs boson production. The bottom panels show the normalized distributions for the signal and backgrounds, from which it can be inferred which background processes are primarily removed by the indicated selections.
             Figure and caption taken from \ccite{HWWPaper}.
-            \label{fig:ggf:Plots:selections}
+            \label{app:fig:ggf:Plots:selections}
         }
     \end{figure}
 
@@ -360,7 +360,7 @@ Although the number of events in that category accounts for only $\mathcal{O}(1\
     \section{Post-fit distributions in all CRs}
     \label{app:post-fit-cr-dists}
 
-    \Cref{fig:Top_CRs,fig:Ztt_CRs,fig:WW_CRs} show the post-fit distributions of the CRs that enter the 2-PoI fit for the measurement of the inclusive VBF and ggF production cross section.
+    \Cref{app:fig:Top_CRs,app:fig:Ztt_CRs,app:fig:WW_CRs} show the post-fit distributions of the CRs that enter the 2-PoI fit for the measurement of the inclusive VBF and ggF production cross section.
     Excellent agreement between the data and the SM predictions are observed.
     \begin{figure}[htp]
         \centering
@@ -382,7 +382,7 @@ Although the number of events in that category accounts for only $\mathcal{O}(1\
             The hatched band shows the total uncertainty, assuming SM Higgs boson production.
             Some contributions are too small to be visible.
             Figure and caption taken from \ccite{HWWPaper}.
-            \label{fig:WW_CRs}
+            \label{app:fig:WW_CRs}
         }
     \end{figure}
     \begin{figure}[htp]
@@ -406,7 +406,7 @@ Although the number of events in that category accounts for only $\mathcal{O}(1\
             The hatched band shows the total uncertainty, assuming SM Higgs boson production.
             Some contributions are too small to be visible.
             Figure and caption taken from \ccite{HWWPaper}.
-            \label{fig:Top_CRs}
+            \label{app:fig:Top_CRs}
         }
     \end{figure}
     \begin{figure}[htp]
@@ -430,7 +430,7 @@ Although the number of events in that category accounts for only $\mathcal{O}(1\
             The hatched band shows the total uncertainty, assuming SM Higgs boson production.
             Some contributions are too small to be visible.
             Figure and caption taken from \ccite{HWWPaper}.
-            \label{fig:Ztt_CRs}
+            \label{app:fig:Ztt_CRs}
         }
     \end{figure}
 
@@ -438,9 +438,9 @@ Although the number of events in that category accounts for only $\mathcal{O}(1\
     \FloatBarrier
     \section{Observed number of events and normalization factors}
 
-    The observed number of events in each nominal signal category as well as the post-fit MC yields as obtained from the 2-PoI fit are shown in \cref{tab:ggF_VBF_yields}.
-    The fitted NFs are shown in \cref{tab:CRs_NF}.
-    The relative uncertainty on a given NF used to normalize a certain process is larger than the relative uncertainty on the corresponding yield in \cref{tab:ggF_VBF_yields} because of large anti-correlations between systematic uncertainties in the CRs and SRs.
+    The observed number of events in each nominal signal category as well as the post-fit MC yields as obtained from the 2-PoI fit are shown in \cref{app:tab:ggF_VBF_yields}.
+    The fitted NFs are shown in \cref{app:tab:CRs_NF}.
+    The relative uncertainty on a given NF used to normalize a certain process is larger than the relative uncertainty on the corresponding yield in \cref{app:tab:ggF_VBF_yields} because of large anti-correlations between systematic uncertainties in the CRs and SRs.
 
     \begin{table}[ht]
         \centering
@@ -450,7 +450,7 @@ Although the number of events in that category accounts for only $\mathcal{O}(1\
             The sum of all the contributions may differ from the total value due to rounding.
             Moreover, the uncertainty in the total yield differs from the sum in quadrature of the single-process uncertainties due to the effect of anticorrelations between the sources of their systematic uncertainties, which are larger than their MC statistical uncertainties.
             Table and caption taken from \ccite{HWWPaper}.
-            \label{tab:ggF_VBF_yields}
+            \label{app:tab:ggF_VBF_yields}
         }
        \scalebox{0.95}{
             \begin{tabular}{lS[table-format=5,table-number-alignment=right]@{$\,\pm\,$}
@@ -493,7 +493,7 @@ Although the number of events in that category accounts for only $\mathcal{O}(1\
             The quoted uncertainties include both the statistical and systematic contributions.
             Table and caption taken from \ccite{HWWPaper}.
         }
-        \label{tab:CRs_NF}
+        \label{app:tab:CRs_NF}
         \scalebox{1.0}{
             \begin{tabular}{c c c c}
                 \toprule
@@ -514,7 +514,7 @@ Although the number of events in that category accounts for only $\mathcal{O}(1\
     \section{Detailed results of the STXS measurement}
     \label{app:stxs-measurement}
 
-    \Cref{tab:STXS-XSecs} presents the central values and uncertainties of each STXS cross section measured, and \cref{fig:stxs:uncertainty-breakdown} indicates the uncertainties broken down into their individual components.
+    \Cref{app:tab:STXS-XSecs} presents the central values and uncertainties of each STXS cross section measured, and \cref{app:fig:stxs:uncertainty-breakdown} indicates the uncertainties broken down into their individual components.
     
     \begin{table}[htp]
         \caption[Best-fit values and uncertainties of the STXS measurement.]{
@@ -528,7 +528,7 @@ Although the number of events in that category accounts for only $\mathcal{O}(1\
                 \input{tables/hww/results/stxs-measurement.tex}
             }
         \end{center}
-        \label{tab:STXS-XSecs}
+        \label{app:tab:STXS-XSecs}
     \end{table}
 
     \begin{figure}[h]
@@ -537,7 +537,7 @@ Although the number of events in that category accounts for only $\mathcal{O}(1\
         \caption{Contributions of statistical, background theory, signal theory, and experimental systematic uncertainties to the measured STXS cross sections, shown relative to the SM predicted cross section. The relative uncertainty on the SM cross section, which is not included in the measurement, is also shown for comparison.
         Figure and caption taken from \ccite{HWWPaper}.
         }
-        \label{fig:stxs:uncertainty-breakdown}
+        \label{app:fig:stxs:uncertainty-breakdown}
     \end{figure}
 
     \clearpage
@@ -545,7 +545,7 @@ Although the number of events in that category accounts for only $\mathcal{O}(1\
     \section{STXS Stage-1.2 Framework}
     \label{app:stxs-measurements-aux}
 
-    \Cref{fig:stxs:stage-12-definition} shows the definitions of the fiducial kinematic regions in the Stage-1.2 STXS framework, including an indication of the merged regions measured in the \HWW analysis.
+    \Cref{app:fig:stxs:stage-12-definition} shows the definitions of the fiducial kinematic regions in the Stage-1.2 STXS framework, including an indication of the merged regions measured in the \HWW analysis.
 
     \begin{figure}[h]
         \centering
@@ -556,7 +556,7 @@ Although the number of events in that category accounts for only $\mathcal{O}(1\
             \newImageResizeCustom{0.8}{figures/hww/stxs/VBFSTXS-measured.pdf}
         } \\
         \caption{Definition of fiducial kinematic regions in the Stage-1.2 STXS framework for (a) $ggH$ and (b) EW~$qqH$ production. The colored boxes indicate the merged regions measured in the \HWW analysis.}
-        \label{fig:stxs:stage-12-definition}
+        \label{app:fig:stxs:stage-12-definition}
     \end{figure}
 
 
@@ -576,7 +576,7 @@ Although the number of events in that category accounts for only $\mathcal{O}(1\
     To harmonize the \TwoJet SRs the selection criteria of the nominal ggF \TwoJet and VBF \TwoJet SRs shown in \cref{tab:HWWselection} are slightly adapted.
     The proposed common \TwoJet SR is defined without a \pTmiss requirement, the \mll\ and \dphill\ criteria are relaxed to $\mll < 70\,$GeV and $\dphill < 2.2$, and all CJV and OLV requirements are dropped. All other requirements are kept.
 
-    The bins used in the statistical analysis are defined based on regions in the two-dimensional discriminant spanned by DNN$_\mathrm{out}^\mathrm{ggF}$ and DNN$_\mathrm{out}^\mathrm{VBF}$. A schematic of this partitioning is shown in \cref{app:hwwejet-schematic-partitioning}.
+    The bins used in the statistical analysis are defined based on regions in the two-dimensional discriminant spanned by DNN$_\mathrm{out}^\mathrm{ggF}$ and DNN$_\mathrm{out}^\mathrm{VBF}$. A schematic of this partitioning is shown in \cref{app:fig:hwwejet-schematic-partitioning}.
     First, the ggF- and VBF-sensitive regions are separated by a linear separation line defined as DNN$_\mathrm{out}^\mathrm{ggF}= 1/18 \times \text{DNN}_\mathrm{out}^\mathrm{VBF} - 6/180$.
     A histogram in the VBF-sensitive region (DNN$_\mathrm{out}^\mathrm{ggF} < 1/18 * \text{DNN}_\mathrm{out}^\mathrm{VBF} - 6/180$) is then defined based on the projection of the two-dimensional discriminant onto the DNN$_\mathrm{out}^\mathrm{VBF}$ axis, and the same binning algorithm is used as in the nominal VBF SR to define the final discriminant for the statistial analysis. This discriminant looks very similar to the one used in the current VBF \TwoJet SR that is based on a DNN trained for binary classification.
     The ggF-sensitive region (DNN$_\mathrm{out}^\mathrm{ggF}> 1/18 * \text{DNN}_\mathrm{out}^\mathrm{VBF} - 6/180$) is further split into three bins dependent on the DNN$_\mathrm{out}^\mathrm{VBF}$, specifically $0 < \text{DNN}_\mathrm{out}^\mathrm{VBF} < 0.1$, $0.1 < \text{DNN}_\mathrm{out}^\mathrm{VBF} < 0.2$, and $\text{DNN}_\mathrm{out}^\mathrm{VBF} > 0.2$.
@@ -623,7 +623,7 @@ Future analyses are expected to benefit from adopting this or a similar analysis
 \begin{figure}[t]
     \newImageResizeCustom{0.7}{figures/hww/2d-discriminant/schematic-region-separation.pdf}
     \caption{Schematic of partitioning in two-dimensional discriminant spanned by the two output nodes ``DNN VBF output'' and ``DNN ggF output'' of a multiclass DNN, representing the VBF-likeness and the ggF-likeness of an event.}
-    \label{app:hwwejet-schematic-partitioning}
+    \label{app:fig:hwwejet-schematic-partitioning}
 \end{figure}
 
 % %-----------------------------------------------------------------------

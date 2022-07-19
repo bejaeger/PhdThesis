@@ -1,6 +1,6 @@
 \chapter{Statistical Analysis Techniques}
 \label{chap:statistics}
-Collider experiments such as the ATLAS detector at the LHC, simply put, are counting experiments. 
+Collider experiments such as the ATLAS detector at the LHC, simply put, are \emph{counting experiments}.
 Sophisticated statistical methods are used to extract physics parameters such as cross sections from the counting experiments while accounting for all underlying uncertainties. 
 % to express the counting measurements in terms of physics parameters such as cross sections and to allow for a full consideration of the underlying uncertainties. 
 This chapter briefly outlines the statistical concepts used in the cross-section measurement of \HWW\ decays presented in \cref{chap:hww}.
@@ -23,7 +23,7 @@ This chapter is based to a large extent on \ccite{Cowan:2010js}.
 %The measurement regions typically constitute different bins of a distribution of an observable, but can also include  different phase space regions to measure certain properties from the data. 
 %The measurement regions can be different bins of a distribution as well as different phase space regions selected according to kinematic and topological requirements.
 The physical processes that contribute to a particular analysis are typically divided into signal processes and background processes, with the exact distinction depending on the goals of the statistical analysis.
-Given a binned data distribution with $n_i$ data events per bin $i$, the corresponding expectation value can be written as
+Given a binned data distribution of a particular observable with $n_i$ data events per bin $i$, the corresponding expectation value can be written as
 \begin{equation}
     \text{E}[n_i] = \sum_{\sigma \in \pmb{\sigma}} \mu_\sigma s_{\sigma,i}(\pmb{\theta}_s, \pmb{\gamma}) + \sum_{\beta \in \pmb{\beta}} \nu_\beta b_{\beta,i}(\pmb{\theta}_b, \pmb{\gamma}),
 \end{equation}
@@ -55,7 +55,7 @@ The first term, \Lmeas, measures the probability of measuring $n_i$ data events 
 \begin{equation}
     \Lmeas = \prod_{i \in \text{bins}} \text{Pois}(n_i | E[n_i] ),
 \end{equation}
-where the product goes over all phase space regions and histogram bins (together simply called bins) included in the measurement. The bins typically include a binned distribution of an observable in a signal-sensitive phase space region that discriminates well between signal and background, and regions that are pure in specific background categories and selected according to kinematic and topological requirements. The latter bins serve as subsidiary measurements that allow determining the normalization of certain background categories from the data.
+where the product goes over all phase space regions and histogram bins of an observable (together simply called bins) included in the measurement. The histogram bins correspond to a binned distribution of an observable, for example, in a signal-sensitive phase space region that discriminates well between signal and background. The other phase space regions are typically selected such that they are pure in specific background categories. They serve as subsidiary measurements and allow determining the normalization of certain background categories from the data.
 
 The second term, \Lsyst, encodes the effect of the systematic uncertainties in the likelihood. Most commonly standard Gaussian functions are used,
 \begin{equation}
@@ -114,6 +114,7 @@ where $\lambda(\mu)$ is the \emph{likelihood ratio} defined as
     \lambda(\mu) = \frac{ \Likelihood \left( \mu, \hat{\hat{\pmb{\theta}}} \right) } { \Likelihood \left( \hat{\mu} , \hat{\pmb{\theta}} \right) }.
 \end{equation}
 Here, the values $\hat{\hat{\pmb{\theta}}}$ correspond to the NP values that minimize the negative logarithm of the likelihood for a given value of the signal strength $\mu$, and $\hat{\pmb{\theta}}$ are defined as shown in \cref{eq:best-fit-values}. 
+According to the Neyman-Pearson lemma~\cite{10.2307/91247}, the likelihood ratio is the most powerful statistical test to reject a certain null-hypothesis against an alternative hypothesis.
 
 The agreement between data and the hypothesized value of $\mu$ is quantified with the $p$-value, which indicates the probability of finding data that is equally or less compatible than the observed data, assuming that the null hypothesis is correct.
 The $p$-value can be computed as
@@ -150,7 +151,7 @@ with $f \left( q_0 | \mu = 0 \right)$ generally unknown. In the large sample lim
     p_0 = 1 - \Phi( \sqrt{q_0}),
 \end{equation}
 where $\Phi$ is the Gaussian cumulative distribution function. 
-In high energy physics, the $p$-value is often converted to Gaussian standard deviations, labelled as $Z$, by using the relation
+In HEP, the $p$-value is often converted to Gaussian standard deviations, labelled as $Z$, by using the relation
 \begin{equation}
     \label{eq:Z0}
     Z = \Phi^{-1} ( 1 - p_0) \overset{\ref{eq:p-value-approx}}{=} \sqrt{q_0},

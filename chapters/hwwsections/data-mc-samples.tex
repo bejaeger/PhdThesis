@@ -16,9 +16,9 @@ This section first characterizes the data that are analyzed and then discusses t
 The $pp$ collision data analyzed were recorded by the ATLAS experiment during \RunTwo of the LHC between 2015 and 2018, and correspond to an integrated luminosity of 139\,\ifb\ at a center-of-mass energy $\sqrt{s} = 13\,\TeV$.
 The events were recorded when all relevant detector components were fully operational, and are considered as being of ``good'' data quality (see \cref{sec:run-2-data-taking}).
 
-Given the targeted final state featuring one electron and one muon, a combination of unprescaled single-lepton triggers and a $e$--$\mu$ dilepton trigger~\cite{TRIG-2018-05,TRIG-2018-01} is used to select the data samples.
+Given the targeted final state featuring one electron and one muon, unprescaled single-lepton triggers and a $e$--$\mu$ dilepton trigger~\cite{TRIG-2018-05,TRIG-2018-01} are combined with a logical OR to select the data samples. 
 The minimum \pT threshold for single-lepton triggers is 24\,GeV for electrons and 20\,GeV for muons for data from the first year of data taking, and 26~GeV for both lepton flavors for the remainder of \RunTwo.
-The $e$--$\mu$ dilepton trigger uses a \pT threshold of 17\,GeV for electrons and 14\,GeV for muons.
+The $e$--$\mu$ dilepton trigger uses a \pT threshold of 17\,GeV for electrons and 14\,GeV for muons. This allows lowering the \pT thresholds for the leptons and thus increases the efficiency at low \pT.
 
 \subsection{Simulated event samples}
 \label{subsec:simulated-event-samples}
@@ -44,7 +44,7 @@ Since the simulation infrastructure is described in great detail in the original
   \centering
   \caption[Overview of the simulation tools used to generate all relevant processes.]{
     Overview of simulation tools used to generate signal and background processes, as well as to model the UEPS. The PDF sets are also summarized.
-    Alternative event generators or quantities varied to estimate systematic uncertainties are shown in parentheses. Table and caption taken from \cref{HWWPaper}.}
+    Alternative event generators or quantities varied to estimate systematic uncertainties are shown in parentheses. Table and caption taken from \ccite{HWWPaper}.}
     \label{tab:mcsamples}
     \resizebox{\textwidth}{!}{
       \input{tables/hww/samples}

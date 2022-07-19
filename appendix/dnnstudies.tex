@@ -24,7 +24,6 @@ Furthermore, the performance was studied of DNN models trained with all 15 varia
 
 The physics-motivated optimization of the input variables was followed by the rather technical optimization of the neural-network architecture.
 The performances of different setups are shown in \cref{tab:architecture-opt}. All results are very comparable to each other. Among the best performing architectures, the one with the least layers is chosen, which corresponds to the architecture labelled ``A4''. The results were produced with the set of variables labelled ``S3'' in \cref{tab:input-var-opt}.
-% The reader is also referred to \cref{app:dnn:erratum} for another insight on the network architecture.
 
 \begin{table}[h]
     \centering
@@ -66,7 +65,7 @@ The performances of different setups are shown in \cref{tab:architecture-opt}. A
 
 \subsection{Optimization of the EW~$WW$ training fraction}
 \label{app:sec:ewww-sample-fraction-optimization}
-In a previous iteration of the VBF, \HWW\ analysis it was found that theoretical uncertainties related to particular processes dominate the final measurement uncertainties. In particular EW~$WW$ processes that mimic the VBF signal signature contributed significantly in the highest DNN bin, which lead to large uncertainties.
+In a previous iteration of the VBF, \HWW\ analysis it was found that theoretical uncertainties related to particular processes dominate the final measurement uncertainties. In particular EW~$WW$ processes that mimic the VBF signal signature contributed significantly in the DNN bin with the largest DNN output (referred to as highest DNN bin), which lead to large uncertainties.
 This prompted a change in the training procedure that places more emphasis on suppressing the EW~$WW$ background by increasing the training fraction, $S_\mathrm{frac}$, of the EW~$WW$ sample in the training.
 In addition, an adapted performance metric, \ZVBFunc, was introduced to take into account theoretical uncertainties on the different processes when comparing different DNN trainings.
 For this metric, approximate uncertainties are assumed for each process, see \cref{tab:rough-uncertainties}, by studying the total systematic uncertainties on the expected number of events in the highest DNN bin. They are included in the calculation of $Z0(s, b, \sigma)$ (\cref{eq:simple-sign}) via the $\sigma$ parameter.

@@ -89,7 +89,7 @@ Finally, the \METSig observable is used in the DNN deployed in the VBF category.
 \label{subsec:overlap-removal}
 
 The event reconstruction can lead to ambiguous definitions of the reconstructed objects.\footnote{This is mostly due to the fact that the same sets of lower-level reconstructed objects such as tracks or calorimeter clusters are used in multiple reconstruction algorithms for example for electrons, photons, or jets.}
-To resolve these ambiguities and avoid double consideration of detector signals, a dedicated \emph{overlap removal} procedure is performed for each event~\cite{HWWPaper}:
+To resolve these ambiguities and avoid double consideration of detector signals, a dedicated \emph{overlap removal} procedure is performed for each event, which aims at selecting the reconstructed objects that are more likely to reflect their true origin~\cite{HWWPaper}:
 \begin{itemize}
     \item If two electrons share an ID track, the electron with lower \ET is removed.
           %\item An electron is removed that shares an ID track with a muon.

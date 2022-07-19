@@ -42,8 +42,8 @@ For this reason, more and more traditional HEP analysis techniques in are being 
 % The advent of deep neural networks in the beginning of the 21$^{\text{th}}$ century was facilitated by the growing amount of both computing resources and data, as well as software advancements.
 % The various ML applications in HEP are detailed in the literature \cite{MLinHEPReview,Guest_2018,MLforNewPhysics}.
 % Some examples where ML tools already find adoption in the ATLAS collaboration include hit reconstruction tasks and track finding~\cite{PERF-2012-05}, object identification such as flavor-tagging \cite{ATL-PHYS-PUB-2017-013}, or classification of entire events as performed by various physics analyses of the ATLAS collaboration.
-This chapter introduces the concepts necessary to develop a binary classifier by using \emph{supervised learning} techniques with \emph{neural networks}\footnote{Neural networks are the most widely used machine learning models to date, due to their great flexibility and ability to approximate arbitrary, non-linear functions.}.
-This technique is used in the analysis of \HWW decays presented in \cref{chap:hww}, where a \emph{deep neural network} (DNN)\footnote{A deep neural network is conceptually equivalent to a neural network, but is commonly used to denote models with many parameters.} is trained to distinguish VBF, \HWW events from other types of events.
+This chapter introduces the concepts necessary to develop a binary classifier by using \emph{supervised learning} techniques with \emph{neural networks}\footnote{Neural networks are the most widely used machine learning models to date, due to their great flexibility and ability to approximate arbitrary, nonlinear functions~\cite{HORNIK1989359}. The latter is known as the universal approximation theorem.}.
+This technique is used in the analysis of \HWW decays presented in \cref{chap:hww}, where a \emph{deep neural network} (DNN)\footnote{A deep neural network is conceptually equivalent to a neural network, but is commonly used to denote models with many parameters.} is trained to distinguish VBF, \HWW events from other types of events that are orders of magnitude more likely to occur.
 
 \Cref{sec:core-concepts} introduces the core concepts and relevant terminology used in ML.
 \Cref{sec:intro-neural-nets} describes the structure of neural networks, before \cref{sec:nn-training} explains the learning procedure with which the networks are trained. \Cref{sec:hyperpar-opt} provides details on how a neural network model is optimized and deployed in practice.
@@ -85,10 +85,11 @@ The basic task of a machine learning algorithm is to find a function $f: X \righ
 This metric is known as \emph{loss function} (also called \emph{cost function}), labelled as $L(y, f(x))$.
 The function that optimizes the loss function is found in a process referred to as \emph{training}, in which a learning algorithm is applied to a set of sample data, known as \emph{training data}.
 The training proceeds over several cycles through the entire training data, which are known as \emph{epochs}. 
-In the case of supervised learning, the training data must be labelled which in HEP is easily achieved by using MC simulated samples. 
+In the case of supervised learning, the training data must be labelled which in HEP is easily achieved by using MC simulated samples and their truth information. 
 The space of functions to choose from in the training is constrained by a \emph{model} with adjustable parameters that are optimized during the training.
-While in the past, many HEP applications were based on \emph{boosted decision trees} (BDTs), the most widely adopted models today are based on (deep) neural networks.
-% Neural networks, especially deep neural networks (DNNs), are the most widely used machine learning models today and ubiquitous in HEP and many other technology-related fields due to their great flexibility and ability to approximate more complex, non-linear functions. 
+While in the past, many HEP applications were based on \emph{boosted decision trees} (BDTs), the most widely adopted models today are based on (deep) neural networks, which are more powerful discriminators because of their ability to approximate any nonlinear function~\cite{HORNIK1989359}.
+
+% Neural networks, especially deep neural networks (DNNs), are the most widely used machine learning models today and ubiquitous in HEP and many other technology-related fields due to their great flexibility and ability to approximate more complex, nonlinear functions. 
 %Details on DNNs are given below, as they are used in the work presented in this thesis.
 % % From [1] see above:
 % - Search for function f : X -> Y, that maps the higher-dimensional observed data X on some target label Y of lower dimension, while optimizing a metric of choosing. 
@@ -140,7 +141,7 @@ A natural choice for binary classification is a logistic sigmoid,
 which restricts the output to values between zero and one and can thus be interpreted probabilistically.
 Both functions are shown in \cref{fig:sigmoid-relu}.
 
-\begin{figure}[t]
+\begin{figure}[ht]
     \subfloat[Logistic sigmoid] {
         \newImageResizeCustom{0.45}{figures/plots/sigmoid.pdf}
     }
@@ -160,7 +161,7 @@ Both functions are shown in \cref{fig:sigmoid-relu}.
 
 
 
-\begin{figure}[t]
+\begin{figure}[ht]
     \newImageResizeCustom{0.9}{figures/data-analysis/neural-network-architecture.pdf}
     \caption{Example illustration of a fully-connected neural network. The three dots indicate that neural networks can be defined with an arbitrary number of neurons and hidden layers.}
     \label{fig:neural-net}
@@ -178,7 +179,7 @@ Both functions are shown in \cref{fig:sigmoid-relu}.
 \section{Neural Network Training}
 \label{sec:nn-training}
 % Read also here: http://neuralnetworksanddeeplearning.com/chap1.html#learning_with_gradient_descent
-\begin{figure}[t]
+\begin{figure}[ht]
     \subfloat[Illustration of a simple neural network.] {
         \newImageResizeCustom{0.7}{figures/data-analysis/simple-nn.pdf}
     }
@@ -271,9 +272,9 @@ However, this is not possible for most metrics because the loss function must be
 To validate the methodology, it is therefore meaningful to show that the loss function optimized during the training is correlated with the performance metric. 
 \Cref{fig:loss-vs-sign} shows the anti-correlating behavior between the cross-entropy loss, as defined in \cref{eq:cross-entropy-loss}, and the discovery significance, as defined in \cref{eq:discovery-significance}.
 
-\begin{figure}[t]
+\begin{figure}[ht]
     \newImageResizeCustom{0.6}{figures/data-analysis/loss_v_significance_thesis.pdf}
-    \caption{Cross-entropy loss and discovery significance as a function of training epochs, averaged over three separate trainings. The shaded band corresponds to the standard deviation of the three trainings. The discovery significance is calculated based on a histogram with 20 bins of the DNN output distribution by taking the square root of the sum of the significances calculated in each of the bins according to \cref{eq:discovery-significance}.}
+    \caption{Cross-entropy loss and discovery significance as a function of training epochs, averaged over three separate trainings. The shaded band corresponds to the standard deviation of the three trainings. The discovery significance is calculated based on a histogram with 20 bins of the DNN output distribution by taking the square root of the sum of the significance calculated in each of the bins according to \cref{eq:discovery-significance}.}
     \label{fig:loss-vs-sign}
 \end{figure}
 %For binary classification, the cross-entropy loss is most commonly chosen. 
