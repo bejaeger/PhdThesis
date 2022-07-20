@@ -126,6 +126,9 @@
 % % \renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}{}}
 %\renewcommand{\chaptermark}[1]{\markboth{\textnormal{\thechapter\ #1}}{}}
 %\renewcommand{\sectionmark}[1]{\markright{\textnormal{\thesection\ #1}}{}}
+
+\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{\partname\ \thepart\ \hfill \chaptername\ \thechapter.\ #1}}{}}
+
 % % % \lhead[\fancyplain{}{\thepage}]
 % % % {\fancyplain{}{\sc\rightmark}}
 % % % \rhead[\fancyplain{}{\hspace{15ex}{\sc\leftmark}}] %% !!! redefined below !!!
@@ -136,5 +139,5 @@
 {\fancyplain{}{}}
 
 % \cfoot{}
-% \addtolength{\headheight}{3pt}
+\addtolength{\headheight}{4pt}
 

@@ -138,6 +138,7 @@
 \clearpage
 \addcontentsline{toc}{part}{Appendix}
 \appendix
+\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{Appendix \hfill \chaptername\ \thechapter.\ #1}}{}}
 \part*{Appendix}
 
 % -------------------------------------------------------------------------------
@@ -154,6 +155,7 @@
 
 % -------------------------------------------------------------------------------
 \addcontentsline{toc}{chapter}{Acknowledgements}
+\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{Acknowledgements}}{}}
 \chapter*{Acknowledgements}
 \input{\chapterdir/acknowledgements}
 
