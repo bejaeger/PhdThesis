@@ -77,28 +77,46 @@
 
 \makecommittee
 
+\pagestyle{fancy}
 \newcommand{\chapterdir}{chapters}
 \include{\chapterdir/abstract}
 
-\addcontentsline{toc}{chapter}{Contents}%
-\tableofcontents
 
-%This is an optional page. Remove the following lines if you don't have any tables.
+\tocloftpagestyle{fancy}
+% Have to do this cheat to get the style of the chapter right!
+\renewcommand{\contentsname}{}
+\addcontentsline{toc}{chapter}{Table of Contents}%
+\chapter*{Table of Contents}
+% Following does not work
+% \renewcommand{\chaptermark}[1]{\markboth{Table of Contents}}{}
+\vspace{-9em}
+\tableofcontents
+\clearpage
+
+\renewcommand{\listtablename}{}
 \addcontentsline{toc}{chapter}{List of Tables}%
+% \renewcommand{\chaptermark}[1]{\markboth{List of Tables}}{}
+\chapter*{List of Tables}
+\vspace{-8em}
 \listoftables
 \clearpage
 
-%This is an optional page. Remove the following lines if you don't have any figures.
+\renewcommand{\listfigurename}{}
 \addcontentsline{toc}{chapter}{List of Figures}%\listoffigures
+% \renewcommand{\chaptermark}[1]{\markboth{List of Figures}}{}
+\chapter*{List of Figures}
+\vspace{-8em}
 \listoffigures
 \clearpage
 
 \mainmatter
-\pagestyle{fancy}
+
+\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{\hfill \chaptername\ \thechapter.\ #1}}{}}
 % -------------------------------------------------------------------------------
 \include{\chapterdir/introduction}
 
 \part{Background}
+\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{\partname\ \thepart\ \hfill \chaptername\ \thechapter.\ #1}}{}}
 % % % % % % -------------------------------------------------------------------------------
 \include{\chapterdir/theory}
 
@@ -135,14 +153,12 @@
 \include{\chapterdir/conclusion}
 
 %-------------------------------------------------------------------------------
+% APPENDIX
 \clearpage
 \addcontentsline{toc}{part}{Appendix}
 \appendix
 \renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{Appendix \hfill \chaptername\ \thechapter.\ #1}}{}}
 \part*{Appendix}
-
-% -------------------------------------------------------------------------------
-
 \include{\chapterdir/appendix}
 
 %-------------------------------------------------------------------------------
@@ -151,14 +167,15 @@
 \bookmarksetup{startatroot}
 \addcontentsline{toc}{chapter}{Bibliography}
 \printbibliography
+\clearpage
 %-------------------------------------------------------------------------------
 
 % -------------------------------------------------------------------------------
 \addcontentsline{toc}{chapter}{Acknowledgements}
 \renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{Acknowledgements}}{}}
 \chapter*{Acknowledgements}
+\pagestyle{plain}
 \input{\chapterdir/acknowledgements}
-
 %-------------------------------------------------------------------------------
 % Author list - comment in this line when you are ready to include it.
 % \clearpage

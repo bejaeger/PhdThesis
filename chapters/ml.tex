@@ -148,10 +148,9 @@ Both functions are shown in \cref{fig:sigmoid-relu}.
     \subfloat[ReLU] {
         \newImageResizeCustom{0.45}{figures/plots/relu.pdf}
     }
-    \caption{Plots of two typical activation functions used in neural networks. The definitions can be found in the text.}
+    \caption[Neural network activation functions]{Plots of two typical activation functions used in neural networks.}
     \label{fig:sigmoid-relu}
 \end{figure}
-
 
 % The choice of activation functions as well as the number of layers and neurons is known as the \emph{network architecture} in a feedforward NN. 
 %The weights $\pmb{w}$ of the NN are the free parameters that are to be optimized during the training process.
@@ -163,7 +162,7 @@ Both functions are shown in \cref{fig:sigmoid-relu}.
 
 \begin{figure}[ht]
     \newImageResizeCustom{0.9}{figures/data-analysis/neural-network-architecture.pdf}
-    \caption{Example illustration of a fully-connected neural network. The three dots indicate that neural networks can be defined with an arbitrary number of neurons and hidden layers.}
+    \caption[Illustration of a fully-connected neural network.]{Example illustration of a fully-connected neural network. The three dots indicate that neural networks can be defined with an arbitrary number of neurons and hidden layers.}
     \label{fig:neural-net}
 \end{figure}
 
@@ -192,7 +191,7 @@ Both functions are shown in \cref{fig:sigmoid-relu}.
     \subfloat[Example gradient calculations]{
         \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad
         }
-    \caption{Example of a simple neural network used to illustrate the backpropagation algorithm.}
+    \caption[Illustration of a simple neural network.]{Example of a simple neural network used to illustrate the backpropagation algorithm. More information can be found in the text.}
     \label{fig:simple-nn}
 \end{figure}
 % The work presented in this thesis uses supervised learning techniques to train a binary classifier that distinguishes between signal-like and background-like events. 
@@ -274,7 +273,7 @@ To validate the methodology, it is therefore meaningful to show that the loss fu
 
 \begin{figure}[ht]
     \newImageResizeCustom{0.6}{figures/data-analysis/loss_v_significance_thesis.pdf}
-    \caption{Cross-entropy loss and discovery significance as a function of training epochs, averaged over three separate trainings. The shaded band corresponds to the standard deviation of the three trainings. The discovery significance is calculated based on a histogram with 20 bins of the DNN output distribution by taking the square root of the sum of the significance calculated in each of the bins according to \cref{eq:discovery-significance}.}
+    \caption[Loss and significance as a function of training epochs.]{Cross-entropy loss and discovery significance as a function of training epochs, averaged over three separate trainings. The shaded band corresponds to the standard deviation of the three trainings. The discovery significance is calculated based on a histogram with 20 bins of the DNN output distribution by taking the square root of the sum of the significance calculated in each of the bins according to \cref{eq:discovery-significance}.}
     \label{fig:loss-vs-sign}
 \end{figure}
 %For binary classification, the cross-entropy loss is most commonly chosen. 
@@ -328,7 +327,7 @@ To overcome this, a method known as \emph{cross validation} can be used that tra
 There are multiple forms of cross validation. The one used in the work presented in this thesis is referred to as \emph{mixed k-fold cross validation}, in which $k$ models are trained. A schematic of the dataset split for $k=5$ is shown in \cref{fig:k-fold-method}. 
 \begin{figure}[ht]
     \newImageResizeCustom{0.7}{figures/data-analysis/k-fold-illustration.pdf}
-    \caption{Schematic showing the split of the training data into a training (train), validation (val), and test set in a 5-fold cross-validation with interleaved validation and test sets.}
+    \caption[Schematic of the different sets in a 5-fold cross-validation procedure.]{Schematic showing the split of the training data into a training (train), validation (val), and test set in a 5-fold cross-validation with interleaved validation and test sets.}
     \label{fig:k-fold-method}
 \end{figure}
 While cross validation comes with a significant increase in computing time, it allows exploiting more of the available statistical power in the training and the evaluation of the performance metrics.

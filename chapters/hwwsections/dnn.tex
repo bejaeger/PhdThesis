@@ -112,7 +112,7 @@ The VBF DNN is trained using the $k$-fold cross validation method with $k=5$ and
     \subfloat[] {
         \newImageResizeCustom{0.47}{figures/hww/dnn/accuracy_thesis.pdf}
     }
-    \caption{(a) Cross-entropy loss and (b) binary accuracy evaluated for both the training set and validation set as a function of training epochs. The metrics are averaged over five different trainings performed as part of a 5-fold cross-validation procedure, with the shaded band corresponding to the standard deviation.}
+    \caption[Loss and accuracy for the training and validation set as a function of training epochs.]{(a) Cross-entropy loss and (b) binary accuracy evaluated for both the training set and validation set as a function of training epochs. The metrics are averaged over five different trainings performed as part of a 5-fold cross-validation procedure, with the shaded band corresponding to the standard deviation.}
     \label{fig:monitoring}
 \end{figure}
 The curves shown look as expected from a well converging training with a suitable set of hyperparameters and no sign of overfitting\footnote{Overfitting would be reflected in a diverging validation loss after a certain epoch.} is observed. These metrics are not used for comparing the performance of different trainings, but are useful measures to improve the training settings, for example, to choose a suitable learning rate.  
@@ -128,7 +128,7 @@ The distribution of the DNN output for the validation set is shown in \cref{fig:
         \newImageResizeCustom{0.47}{figures/hww/dnn/CutVBF_SR_reTrained_default_optBinning_zoom.pdf}
         \label{fig:dnn-val-set-b}
     }
-    \caption{DNN output distribution for the validation set of the training data for (a) the full range of DNN output values and an equidistant binning and (b) the range 0.6-1.0 with high VBF signal purity and a binning chosen to mitigate the effects of statistical fluctuations. Details on the binning as well as the significance metric indicated in the figure are provided in the text.}
+    \caption[DNN output distributions for the validation set of the training data.]{DNN output distribution for the validation set of the training data for (a) the full range of DNN output values and an equidistant binning and (b) the range 0.6-1.0 with high VBF signal purity and a binning chosen to mitigate the effects of statistical fluctuations. Details on the binning as well as the significance metric indicated in the figure are provided in the text.}
     \label{fig:dnn-val-set}
 \end{figure}
 As can be seen, the VBF signal purity improves as the DNN output value increases.
@@ -173,7 +173,7 @@ The distributions also nicely visualize the different shapes of the VBF signal a
     \subfloat[] {
         \newImageResizeCustom{0.48}{figures/hww/dnn/train_vs_test_dnn_score_zoom_non-normalized_non-log.pdf}
     }
-    \caption{Comparison of the DNN output distributions for the training set and test set of the training data for (a) the full range of DNN output values and (b) the range 0.6-1.0 with high VBF signal purity.}
+    \caption[Comparison of the DNN output distributions for the training set and test set of the training data.]{Comparison of the DNN output distributions for the training set and test set of the training data for (a) the full range of DNN output values and (b) the range 0.6-1.0 with high VBF signal purity.}
     \label{fig:dnn-train-vs-test}
 \end{figure}
 
@@ -269,7 +269,7 @@ The \pTjthree observable takes on average smaller values for the VBF signal (\cr
         \includegraphics[width=0.315\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-thirdJetPt-lin.pdf} \hfill
         \label{fig:dnn-inputs-post-fit-10}
     }
-    {\caption{Distributions of 10 of the 15 DNN input variables, targeting the VBF topology. The distributions are shown in the nominal VBF SR for simulated samples only. The solid orange line shows the expected VBF signal scaled by a factor of 50. 
+    {\caption[Distributions of 10 of the 15 DNN input variables, targeting the VBF topology.]{Distributions of 10 of the 15 DNN input variables, targeting the VBF topology. The distributions are shown in the nominal VBF SR for simulated samples only. The solid orange line shows the expected VBF signal scaled by a factor of 50. 
             \label{fig:dnn-inputs-post-fit1} }}
 \end{figure}
 
@@ -309,7 +309,7 @@ The first is the total transverse momentum, \pttot, defined as the magnitude of 
         \includegraphics[width=0.315\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-METSig_broad-lin.pdf} \hfill
         \label{fig:dnn-inputs-post-fit2-5}
     }
-    {\caption{
+    {\caption[Distributions of 5 of the 15 DNN input variables, targeting the \HWW decay and top-quark suppression.]{
             Distributions of 5 of the 15 DNN input variables, targeting the \HWW decay and top-quark suppression. The distributions are shown in the nominal VBF SR for simulated samples only. The solid orange line shows the expected VBF signal scaled by a factor of 50. 
             \label{fig:dnn-inputs-post-fit2} }}
 \end{figure}
@@ -325,7 +325,7 @@ The first is the total transverse momentum, \pttot, defined as the magnitude of 
     \subfloat[] {
         \newImageResizeCustom{0.47}{figures/hww/dnn/correlation-matrix-bkg.pdf}
     }
-    \caption{Correlation matrix of the input features used in the VBF DNN for (a) the VBF signal and (b) the background processes.}
+    \caption[Correlation matrix of the input variables used in the VBF DNN.]{Correlation matrix of the input variables used in the VBF DNN for (a) the VBF signal and (b) the background processes.}
     \label{fig:dnn-features-correlations}
 \end{figure}
 
@@ -341,7 +341,7 @@ The slight overrepresentation of $p$-values in the ranges $0.005 < p < 0.05$ (22
 %The distributions confirm that the simulated samples model the correlations in the data reasonably well.  \todo{Validate region and adapt plot}
 \begin{figure}[ht]
     \includegraphics[width=\textwidth,trim=45 0 45 0]{figures/hww/dnn/correlations_PROF_SR.pdf}
-    \caption{Visualization of the two-dimensional correlations between all combinations of DNN input variables, based on profiles of each of the distributions in the VBF-enriched \TwoJet SR. For all combinations of input variables $X_i$ and $X_j$, the distributions of both $\langle X_i \rangle$ vs $X_j$ and $\langle X_i \rangle$ vs $X_j$ are shown. The uncertainties are statistical only. The color for each plot encodes the $\chi^2$ probability, $p$, evaluated for each comparison: green represents $p > 0.05$, yellow represents $0.005 < p < 0.05$, and red represents $p < 0.005$.}
+    \caption[Visualization of the two-dimensional correlations between all combinations of DNN input variables.]{Visualization of the two-dimensional correlations between all combinations of DNN input variables, based on profiles of each of the distributions in the VBF-enriched \TwoJet SR. For all combinations of input variables $X_i$ and $X_j$, the distributions of both $\langle X_i \rangle$ vs $X_j$ and $\langle X_i \rangle$ vs $X_j$ are shown. The uncertainties are statistical only. The color for each plot encodes the $\chi^2$ probability, $p$, evaluated for each comparison: green represents $p > 0.05$, yellow represents $0.005 < p < 0.05$, and red represents $p < 0.005$.}
     \label{fig:dnn-features-profiles}
 \end{figure}
 % \begin{figure}[th]
@@ -371,7 +371,7 @@ However, before the data are analyzed in the signal sensitive range of the DNN, 
         \includegraphics[width=0.47\textwidth]{figures/220605-Thesis/sr/dnn/plots/run2-emme-CutVBF_SR-DNNoutputG_blindRegion-log.pdf}
         \label{fig:dnn:dnn-val-in-crs-d}
     }
-    {\caption{Distributions of the DNN output in (a) the top-quark CR, (b) the \Ztautau CR, (c) the $WW$ VR, and (d) the VBF SR with a requirement DNN output $<0.25$. The \Ztautau and top-quark processes are normalized using pre-fit normalization factors extracted from their corresponding CRs (NF$_{\Ztautau} = 1.00 \pm 0.04$, NF$_{\text{top}} = 1.00 \pm 0.01$). The yellow band corresponds to the square root of the sum in quadrature of the MC statistical uncertainties and the normalization component of the dominant experimental systematic uncertainties (JER, JES, Flavor-tagging, and \MET uncertainties). The various uncertainty components are discussed in more detail in \cref{sec:systematics}.
+    {\caption[Distributions of the DNN output in various regions with a requirement of DNN output $<0.25$.]{Distributions of the DNN output in (a) the top-quark CR, (b) the \Ztautau CR, (c) the $WW$ VR, and (d) the VBF SR with a requirement DNN output $<0.25$. The \Ztautau and top-quark processes are normalized using pre-fit normalization factors extracted from their corresponding CRs (NF$_{\Ztautau} = 1.00 \pm 0.04$, NF$_{\text{top}} = 1.00 \pm 0.01$). The yellow band corresponds to the square root of the sum in quadrature of the MC statistical uncertainties and the normalization component of the dominant experimental systematic uncertainties (JER, JES, Flavor-tagging, and \MET uncertainties). The various uncertainty components are discussed in more detail in \cref{sec:systematics}.
             \label{fig:dnn:dnn-val-in-crs} }}
 \end{figure}
 No evidence of significant discrepancy between the data and the MC simulation is found. 
@@ -383,7 +383,7 @@ Given the fact that only the normalization component and only a subset of system
 
 \newcommand{\srdnnlowplotdir}{figures/220605-Thesis/sr/dnn25-scaledvbf-nfs3x3/plots}
 \sixPlots{Distributions of (a) \mjj, (b) \dyjj, (c) \mlonejone, (d), \mll, (e) \lepetacent, and (f) \METSig in the VBF SR selecting only the region below DNN output $= 0.25$. The solid orange line shows the expected VBF signal scaled by a factor of 200. The \Ztautau and top-quark processes are normalized using pre-fit normalization factors extracted from their corresponding CRs (NF$_{\Ztautau} = 1.00 \pm 0.04$, NF$_{\text{top}} = 1.00 \pm 0.01$). The yellow band corresponds to the square root of the sum in quadrature of the MC statistical uncertainties and the normalization component of the dominant experimental systematic uncertainties (JER, JES, Flavor-tagging, and \MET uncertainties). The various uncertainty components are discussed in more detail in \cref{sec:systematics}.
-}{fig:srdnn25:dnn-inputs}{\srdnnlowplotdir/run2-emme-CutVBFSR_25DNN-Mjj-log.pdf}{\srdnnlowplotdir/run2-emme-CutVBFSR_25DNN-DYjj-lin.pdf}{\srdnnlowplotdir/run2-emme-CutVBFSR_25DNN-DPhill-lin.pdf}{\srdnnlowplotdir/run2-emme-CutVBFSR_25DNN-Mll-lin.pdf}{\srdnnlowplotdir/../../dnn25-scaledvbf-lepcent-nfs3x3/plots/run2-emme-CutVBFSR_25DNN-contOLV-lin.pdf}{\srdnnlowplotdir/run2-emme-CutVBFSR_25DNN-METSig_broad-lin.pdf}
+}{fig:srdnn25:dnn-inputs}{\srdnnlowplotdir/run2-emme-CutVBFSR_25DNN-Mjj-log.pdf}{\srdnnlowplotdir/run2-emme-CutVBFSR_25DNN-DYjj-lin.pdf}{\srdnnlowplotdir/run2-emme-CutVBFSR_25DNN-DPhill-lin.pdf}{\srdnnlowplotdir/run2-emme-CutVBFSR_25DNN-Mll-lin.pdf}{\srdnnlowplotdir/../../dnn25-scaledvbf-lepcent-nfs3x3/plots/run2-emme-CutVBFSR_25DNN-contOLV-lin.pdf}{\srdnnlowplotdir/run2-emme-CutVBFSR_25DNN-METSig_broad-lin.pdf}{Distributions of (a) \mjj, (b) \dyjj, (c) \mlonejone, (d), \mll, (e) \lepetacent, and (f) \METSig in the VBF SR selecting only the region below DNN output $= 0.25$.}
 
 These validation studies establish the DNN output as a meaningful observable, so that it can be used as final discriminant in the statistical analysis.
 More studies of the DNN observable and its input variables, in particular for the regions used in the STXS analysis, can be found in Appendix~\ref{app:dnn:input-vars}.

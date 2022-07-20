@@ -89,7 +89,7 @@ Conversely, the physics at low energies (known as \emph{soft QCD}) can only be d
 
 %\footnote{The fact that $\alpha_s$ becomes smaller at high energies is also known as \emph{asymptotic freedom} and implies that strongly interacting particles behave like free particles at high energies. Conversely, at small energies, the particles have a strong coupling. This characteristic of QCD leads to \emph{confinement} of quarks inside hadrons.}
 
-Given these considerations, as well as the fact that protons are compound states of partons, the cross section of a hard-scattering process between two protons, $p_1$ and $p_2$, can be written as
+Given these considerations, as well as the fact that protons are compound states of partons, the cross section of a hard-scattering process between two protons, $p_1$ and $p_2$, can be written as~\cite{Ellis:1991qj}
 \begin{equation}
   \sigma(p_1p_2 \to Y) = \sum_{i,j} \int_0^1 \mathrm{d}x_1 \int_0^1 \mathrm{d}x_2 f_i(x_1,\mu_F^2) f_j(x_2,\mu_F^2) \hat{\sigma}_{ij \rightarrow Y}(x_1p_1,x_2p_2,\mu_F,\mu_R), 
   \label{eq:hhxsec}
@@ -123,7 +123,7 @@ The so-called \emph{DGLAP (Dokshitzer-Gribov-Lipatov-Altarelli-Parisi) evolution
 %The determination of the matrix element (ME) is done with so called \emph{Feynman rules}, which 
 The partonic cross section, $\hat{\sigma}_{ij \rightarrow Y}$, depends on the factorization scale, $\mu_F$, as well as another scale called \emph{renormalization scale}, $\mu_R$.
 %Choosing its value sufficiently large, allows calculating the partonic cross section as a perturbation series in the running  coupling $\alpha_s$,
-When $\mu_F$ is chosen sufficiently large, the partonic cross sections can be calculated as a perturbation series of the strong coupling $\alpha_s$,
+When $\mu_F$ is chosen sufficiently large, the partonic cross sections can be calculated as a perturbation series of the strong coupling $\alpha_s$~\cite{Ellis:1991qj},
 \begin{equation}
   \hat{\sigma}_{ij \rightarrow Y} = \alpha^k_S \sum_{n=0}^{m} c^{(n)}\alpha_s^n,
   \label{eq:alphaexp}
@@ -152,7 +152,7 @@ The infinities can be absorbed in the SM by a procedure known as \emph{renormali
 The renormalization scale acts as a cut-off energy scale above which the processes that introduce infinities are not contributing anymore. 
 The essential property of renormalization is that the physics descriptions below that cut off are independent of the dynamics of the theory above it. 
 The drawback is that another arbitrary scale is introduced to the theoretical calculations in addition to the factorization scale.
-However, the more orders are included in the cross-section calculations, the less strong is the dependence on $\mu_F$ and $\mu_R$. 
+In general, however, the more orders are included in the cross-section calculations, the less strong is the dependence on $\mu_F$ and $\mu_R$. 
 The remaining dependence at fixed order is typically included as a systematic uncertainty in physics measurements.
 %There are remaining dependencies at fixed order. Resulting systematic uncertainties are most often quantified by varying the scales over some reasonable range and are incorporated in the analysis.
 In practice, the values of $\mu_F$ and $\mu_R$ are often chosen to be identical, with a typical value near the scale of momentum transfer for the hard scattering process under consideration.
@@ -218,12 +218,23 @@ Matrix element calculations are performed with MC generators that randomly sampl
 There are different MC generators that come with varying precision in perturbation theory. The generators used for the \HWW analysis are summarized in \cref{sec:data-mc-samples}.
 
 \paragraph{Parton showering}
-\emph{Parton showering} occurs because there is a finite quantum probability for a single parton to split into two. The \emph{QCD splitting functions} \cite{Altarelli:1977zs} provide the theoretical foundation for dedicated parton-shower models which describe this process.
+Parton showering occurs because there is a finite quantum probability for a single parton to split into two. 
+The \emph{QCD splitting functions}~\cite{Altarelli:1977zs} provide the theoretical foundation to describe this process and are used in dedication parton-shower algorithms.
+The probability for emitting soft and collinear radiation diverges, respectively, for low energies and small angles. 
+Physical observables are therefore chosen such that they are insensitive to these processes and a cut off is applied in the parton-shower algorithms to avoid modelling this radiation explicitly.
+% The theoretical foundation for the parton-shower models is provided by the \emph{QCD splitting functions}~\cite{Altarelli:1977zs}.
 %There is also the possibility of hard gluon being emitted in the initial or final state, which spoils the measurement of the total transverse momentum of the event.
+
+\paragraph{Matching} 
+While the matrix element calculations take into account hard radiation that can be calculated perturbatively, the parton-shower algorithms rely on perturbative approximations of soft and collinear radiation. 
+Combining both regimes appropriately without double-counting is challenging.
+To achieve this, different matching methods that rely on certain assumptions are used in different MC simulations. An overview can be found, for example, in \ccite{QCDIntroSchool}.
+
 \paragraph{Hadronization}
 The partons hadronize when their energy decreases and the strong coupling becomes large. There are several phenomenological approaches for modelling this non-perturbative process, one of which is the \emph{Lund-String-Model}~\cite{Andersson:1983ia}. 
 It is based on the fact that the force between two strongly interacting particles is constant, implying that the potential increases linearly with increasing distance.
 At a certain distance between the partons the potential energy is sufficient to create a quark-antiquark pair out of the vacuum. This procedure is repeated until neutral-colored hadrons are formed.
+The Lund-String-Model is used, for example, in the \Pythia event generator. Other generators such as \HERWING\ or \Sherpa make use of an alternative model for hadron formation called \emph{cluster model}. Details can be found in \ccite{Buckley_2011}. 
 \paragraph{Decays}
 The particles produced in the scattering process or in the process of hadronization are often unstable and further decay. Many of these decays, for example decaying $b$-hadrons, provide useful information about the event. %Dedicated algorithms exist to find the particles which initiate the decay chains.
 \paragraph{Underlying event}

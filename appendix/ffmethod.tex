@@ -1,0 +1,124 @@
+This section describes how the background from lepton misidentifications is estimated using the fake factor method.
+
+\section{Control sample definition}
+The control sample is distinguished from the nominal selection by using an alternative lepton selection.
+One of the two prompt lepton candidates is required to fail the full identification criteria defined in \cref{sec:object-selection} but satisfies a looser set of criteria, referred to as \emph{anti-identified} lepton.
+%\Cref{tab:leptonID} summarizes the lepton selections for fully identified and anti-identified leptons. 
+%Paper
+%They are estimated using a data-driven technique8 where 464 control samples are established in which all nominal selections are applied with the exception that one of 465 the two lepton candidates fails to meet the full identification criteria defined in Section 4, but satisfies a 466 looser set of identification criteria (referred to as an anti-identified lepton).
+% \begin{table}
+%     \scalebox{0.77}{
+%         \begin{tabular}{c|c||c|c}
+%             \toprule
+%             % \dbline
+%             \multicolumn{2}{c||}{Electron}                                       & \multicolumn{2}{c}{Muon}                                                                                                      \\
+%             identified                                                           & anti-identified                                  & identified                          & anti-identified                      \\
+%             \midrule
+%             % \sgline
+%             \multicolumn{2}{c||}{$\pt  > 15 \mathrm{GeV}$}                     & \multicolumn{2}{c}{$\pt   > 15 \mathrm{GeV}$ }                                                                              \\
+%             \multicolumn{2}{c||}{$|\eta|  <2.47$,excluding  $1.37<|\eta|< 1.52$} & \multicolumn{2}{c}{$|\eta|  <2.5$}                                                                                            \\
+%             \multicolumn{2}{c||}{$|z_{0}\sin\theta|<0.5$ mm }                    & \multicolumn{2}{c}{$|z_{0}\sin\theta|<0.5$ mm }                                                                               \\
+%             \multicolumn{2}{c||}{$|d_{0}|/\sigma(d_{0})<5$ }                     & $|d_{0}|/\sigma(d_{0}) <  3$                     & $|d_{0}|/\sigma(d_{0}) <  15$                                              \\
+%             Pass LHTight if $\pt < 25 \;\mathrm{GeV}$                            & \multirow{3}{*}{Pass LHLoose}                    & \multirow{3}{*}{Pass Quality Tight} & \multirow{3}{*}{Pass Quality Medium} \\
+%             Pass LHMedium if $\pt > 25 \;\mathrm{GeV}$                           &                                                  &                                     &                                      \\
+%             Pass FCTight isolation                                               &                                                  & Pass FCTight isolation              &                                      \\
+%             \multicolumn{2}{c||}{ {\scshape Author} $= 1$}                       &                                                  &                                                                            \\
+%                                                                                  & Veto against identified electron                 &                                     & Veto against identified muon         \\
+%             % \dbline
+%             \bottomrule
+%         \end{tabular}
+%     }
+%     \caption{Selection criteria for fully identified and anti-identified leptons.}
+%     \label{tab:leptonID}
+% \end{table}
+
+\section{Extrapolation to analysis regions}
+The contributions of backgrounds with misidentified leptons (Mis-Id background) are estimated by subtracting the  expected number of events in the control sample with the expected contribution from processes with two true, prompt leptons, and then multiplying it with the corresponding fake factors.
+The full expression can be written as,
+\begin{equation}
+    \label{app:eq:fake-estimation}
+    N_{\text{id,id}}^{\text{Mis-Id}} = FF \left( N_{\text{id,\sout{id}}}^{\text{data}} - N_{\text{id,\sout{id}}}^{\text{2 true prompt}} \right) - FF_1FF_2 \left( N_{\text{\sout{id},\sout{id}}}^{\text{data}} - N_{\text{\sout{id},\sout{id}}}^{\text{2 true prompt}} \right),
+\end{equation}
+where $N_{\text{id,\sout{id}}}^{\text{data}}$ and $N_{\text{\sout{id},\sout{id}}}^{\text{data}}$ are, respectively, the number of expected events with one or two anti-identified leptons measured in the control data sample, and $N_{\text{id,\sout{id}}}^{\text{2 true prompt}}$ and $N_{\text{\sout{id},\sout{id}}}^{\text{2 true prompt}}$ are, respectively, the number of expected events with two true, prompt leptons measured in simulated event samples.
+The fake factors $FF$ and $FF_{1/2}$ are applied according to which leptons are anti-identified, that is, whether it is the electron, the muon, or both.
+They are dependent on the \pT of the anti-identified lepton and, in the case of a misidentified muon, $\abseta$, i.e. $FF \to FF(\pT, \abseta)$.
+The second term on the right-hand side of \cref{app:eq:fake-estimation} provides a correction for events where both of the leptons are misidentified, a contribution that is double-counted in the first term. A rigorous mathematical derivation of \cref{app:eq:fake-estimation} goes beyond the scope of this thesis and the interested reader is referred to \ccite{HIGG-2013-13,HIGG-2016-07,KonstiThesis}.
+
+\section{Derivation of nominal fake factors in \Zjets-enriched sample}
+\label{app:subsubsec:zjets-ffs}
+The fake factors are estimated using a data sample enriched in \Zjets events and a three-lepton selection (referred to as \Zjets selection), that targets events with two leptons originating from the $Z$ boson decay and a jet that serves as candidate for being misidentified as a lepton (referred to as Mis-Id candidate).
+%A three-lepton selection, referred to as \Zjets selection, is therefore applied. 
+All leptons must satisfy \ptGT{15}\,GeV.
+The two leptons of opposite charge and same flavor that qualify as $Z$ decay particles are chosen to be the ones that have an invariant mass close the $Z$ boson mass. If these two leptons are electrons (muons), a requirement of $80 < m_{ee} < 110\,$GeV ($70 < m_{\mu\mu} < 110\,$GeV) is applied.
+The two leptons are required to be fully identified except of the isolation requirement that is loosened to the ``Loose'' working point selections and the identification working point that is modified to ``Loose'' for electrons and ``Medium'' for muons.
+Relaxing these criteria allows for a better statistical precision in the fake factor derivation.
+In addition, at least one of the two leptons must be associated to the online object that triggered the single-lepton trigger used in the analysis as described in \cref{sec:data-mc-samples}.
+If more than one pair of leptons satisfies these requirements, the pair with the invariant mass closest to the $Z$ boson mass is chosen.
+The respective other lepton in the event serves as the Mis-Id candidate.
+The fake factor is then defined as the ratio of events, where this Mis-Id candidate is fully identified, $N_{\text{id}}^{\text{data}}$, and anti-identified, $N_{\text{\sout{id}}}^{\text{data}}$, each time subtracting the expected number of events with three true, prompt leptons that are not originating from \Zjets processes,
+\begin{equation}
+    \label{app:eq:ff}
+    FF = \frac{ N_{\text{id}}^{\text{data}} - N_{\text{id}}^{\text{non-\Zjets}}}{N_{\text{\sout{id}}}^{\text{data}} - N_{\text{\sout{id}}}^{\text{non-\Zjets}}}.
+\end{equation}
+The events with three true, prompt leptons, $N_{\text{id/\sout{id}}}^{\text{non-Zjets}}$, are estimated using simulated samples and are dominated by leptonically decaying $WZ$ production.
+To reduce the contamination of this process, a requirement of $m_T^W = \sqrt{2E^{\textrm{miss}}_\textrm{T} E^{\text{Mis-Id cand.}}_\textrm{T} (1-\cos\phi)} < 50\;\textrm{GeV}$ is additionally applied in the \Zjets selection.
+The resulting fake factors are summarized in \cref{app:tab:ZjetsFF-uncertainties}.
+The fake factors are derived separately for electrons and muons. The electron fake factors are split into four different \pT bins and are measured inclusively for the entire \abseta range.
+The muon fake factors are also derived in four \pT bins and two \abseta regions \absetaST{1.05} and \absetaGT{1.05}. The value of the last \pT bin with \ptGT{50}\,GeV is derived by an extrapolation from the respective previous bin, due to the limited statistical precision at high \pT.
+\begin{table}[ht]
+    \begin{center}
+        \input{tables/hww/fakes/FF-summary.tex}
+    \end{center}
+    \caption[Summary of the fake factors from the $Z$+jets estimate with uncertainties.]{Summary of the fake factors from the $Z$+jets estimate with uncertainties. All uncertainties are quoted in percent on the nominal value. More information on the different uncertainty components is given in the text.
+        % \textit{Value} denotes the nominal fake factor value. \textit{Statistical} denotes the statistical uncertainties on the fake factors including the extrapolation uncertainty for the highest muon \pT bin. \textit{EW Subtraction} denotes the uncertainty due to the electroweak backgrounds that enter the $Z$+jets fake factor estimate. \textit{Sample Composition} denotes the uncertainty that accounts for differences in fake factors between $Z$+jets and $W$+jets processes, and includes both statistical and systematic uncertainty on the correction factors. The column \textit{Total} sums all individual contributions in quadrature to give an overview of the total uncertainty of the fake factor. In the fit, however, the EW subtraction and sample composition uncertainties are treated as correlated between different bins, while the statistical uncertainty is uncorrelated.
+    }
+    \label{app:tab:ZjetsFF-uncertainties}
+    % Nominal values, statistical uncertainties and EWSUBTR uncertainties produced on tag kon_improveZjetsFFStats_v2
+\end{table}
+
+\section{Derivation of triggered fake factors in dijet-enriched sample}
+The events in the control sample are selected based on one of three trigger decisions: The dilepton trigger is fired, only one single-lepton trigger is fired by the fully identified lepton, or only one single-lepton trigger is fired by the anti-identified lepton.
+For events falling into the latter category, the trigger requirements are more stringent than the definition of the anti-identified lepton, leading to a bias in the event yield.
+Although the number of events in that category accounts for only $\mathcal{O}(1\%$) or less and the impact on the analysis is therefore small, specific so-called \emph{triggered fake factors} subject to the same bias are derived for these types of events. This is achieved by considering a data sample where the anti-identified lepton fires the single-lepton trigger.
+    Applying such a requirement in addition to the \Zjets selection, however, leads to an insufficient event yield to derive reasonable fake factors. The triggered fake factors are therefore derived in a sample enriched in dijet events.
+    The dijet selection requires each event to have at least one Mis-Id candidate with \ptGT{15}~\,~GeV and one jet with \ptGT{25}~\,~GeV. To ensure a back-to-back topology between the lepton and the jet, the two objects must have an angular separation $\Delta \phi(\text{lep}, \text{jet}) > 2.5$.
+    In order to suppress the contamination from non-dijet processes, mostly coming from \Wjets processes, the events are required to have $\MET < 30$\,GeV and the transverse mass between the lepton and the missing transverse energy must satisfy $m_T < 60\,$GeV.
+    The fake factors are then derived analogous to \cref{app:eq:ff}, but subtracting non-dijet events in the numerator and denominator.
+    % The overall number of events that are subject to a trigger bias is very small.
+    % \begin{equation}
+    %     \label{app:eq:ff-dijet}
+    %     FF^{\text{dijet}} = \frac{ N_{\text{id}}^{\text{data}} - N_{\text{id}}^{\text{non-dijet}}}{N_{\text{\sout{id}}}^{\text{data}} - N_{\text{\sout{id}}}^{\text{non-dijet}}}.
+    % \end{equation}
+
+
+\section{Corrections and uncertainties}
+Uncertainties in the estimation of the Mis-Id background in the analysis are account for via uncertainties in the fake factors.
+The fake factor uncertainties can be grouped into three main components: statistical uncertainties, uncertainties in the normalization of non-\Zjets processes that are subtracted in \cref{app:eq:ff}, and uncertainties due to the different flavor composition of jets in \Zjets processes compared to \Wjets processes.
+The latter uncertainty arises due to a correction that must be applied to the fake factors derived in \Zjets events.
+Each uncertainty component and correction is discussed below, and their impact is summarized in \cref{app:tab:ZjetsFF-uncertainties}.
+
+
+\subsection{Statistical uncertainty}
+The statistical uncertainties refer to the uncertainties in the data sample used to derive the fake factors as shown in \cref{app:eq:ff}.
+
+\subsection{$EW$ subtraction uncertainty}
+The contribution of non-\Zjets processes subtracted in \cref{app:eq:ff} is primarily due to $WZ$ processes but also $ZZ$ and $Z\gamma$ processes can enter the \Zjets selection.
+Theoretical uncertainties in the normalization of these processes are derived and propagated, leading to systematic uncertainties in the fake factor.
+In order to reduce the impact of theoretical uncertainties associated to the $WZ$ process, the normalization of the $WZ$ contribution is extracted from a control region. The CR is defined by inverting the $m_T^W$ selection to $m_T^W > 50\,$GeV and requiring the Mis-Id candidate to pass the full identification criteria. This region is very pure in $WZ$ events so that a precise normalization factor of $0.99 \pm 0.01$ can be extracted and applied in the \Zjets selection. The impact of the uncertainties affecting similarly the normalization in the \Zjets selection and the $WZ$ CR selection can thus be reduced.
+
+    % Uncertainties associated to the $WZ$ process and their impact on the fake factors are estimated with simulated samples and propagated to the final analysis results.
+    % Together they are referred to as the $EW$ subtraction uncertainty.
+
+\subsection{Correction factor and flavor composition uncertainty}
+The nominal fake factors are derived in \Zjets candidate events, because of the ability to define a region very pure in \Zjets events with little contamination from other processes. However, the dominant contribution to the Mis-Id background in this analysis comes from \Wjets processes.
+Because the flavor of the quarks that give rise to the jets in \Zjets processes differs on average from that in \Wjets processes, and the quark flavor is expected to affect the misidentification rate, a \emph{correction factor} (CF) is applied to the nominal fake factors.
+The CF is given as the ratio of fake factors derived in simulated \Wjets events and \Zjets events,
+\begin{equation}
+    CF = \frac{FF^{\Wjets}}{FF^{\Zjets}},
+\end{equation}
+and applied as a multiplicative factor to the fake factor,
+\begin{equation}
+    FF^{\Wjets} = FF^{\Zjets} \times CF.
+\end{equation}
+The same selections are applied to the simulated samples as in the three-lepton \Zjets selection and the CF is derived separately for misidentified electrons and muons.
+The systematic uncertainties associated to the CF are derived by using an alternative MC generator and summed in quadrature with the statistical uncertainty in the simulated \Wjets and \Zjets sample.

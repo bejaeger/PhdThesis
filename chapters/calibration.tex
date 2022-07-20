@@ -117,19 +117,27 @@ Jets that have the GSC applied are considered to be \emph{fully calibrated}, and
 
 \subsection{\textbf{\emph{In~situ}} calibration}
 \label{subsec:insitu-calibration}
-A final calibration step accounts for the residual differences between the jet response in data and MC, caused by imperfections in both the detector simulations and physics modelling. This calibration, known as \emph{\insitu} calibration, is derived by comparing data and MC simulation and only applied to data.
-Different event topologies are exploited that allow to measure the jet response with respect to a well-calibrated reference object. The \insitu response is calculated in data and MC simulation and the final correction factor is given by the following double ratio:
+A final calibration step accounts for the residual differences between the jet response in data and MC simulation, caused by imperfections in both the detector simulations and physics modelling. 
+This calibration, known as \emph{\insitu} calibration, is derived by comparing the jet response in data and MC simulation, applying the following double ratio as the final correction factor:
 \begin{equation}
-    c = \frac{R_{\insitu}^{\text{data}}}{R_{\insitu}^{\text{MC}}} = \frac{ \pTcalibData / \pTrefData}{\pTcalibMC / \pTrefMC}.
+    c = \frac{R_{\insitu}^{\text{data}}}{R_{\insitu}^{\text{MC}}} = \frac{ \langle  \pTcalibData / \pTrefData \rangle }{ \langle \pTcalibMC / \pTrefMC \rangle}.
 \end{equation}
+The average response, $R_{\insitu}$, is taken from the peak location found by fitting the distribution of the ratio of the \pT of a calibrated jet, \pTcalib, and a well-measured reference object, \pTref, with a Gaussian function.
 The double ratio is parametrized as a function of \pTref and the final calibration obtained again with a numerical inversion procedure~\cite{PERF-2011-03}.
+This correction is only applied to data.
 
+% To this end, different event topologies are exploited that allow to measure the jet response with respect to a well-calibrated reference object. 
+% The \insitu jet response is measured by comparing the \pT of a calibrated jet with a well-calibrated reference object. 
+% The \insitu calibration consists of three methods.
+The method currently used in the ATLAS collaboration is known as \emph{missing}-$E_{\rm T}$ \emph{projection fraction} (MPF)~\cite{PERF-2014-02} and uses the full hadronic recoil instead of a single jet as reference object. This makes the calibration robust against pile-up and jet reconstruction thresholds. The MPF calibration is performed using $Z$+jets and $\gamma+$jets with clean back-to-back topologies. 
+The MPF method is complemented by the so-called \emph{multijet balance} method that allows calibrating high-\pT jets by comparing a system of well-calibrated low-\pT jets with a single high-\pT jet~\cite{PERF-2014-02}.
+Both methods are statistically combined to provide a single smooth calibration across \pT. 
+A third \insitu method, known as $\eta$ intercalibration, uses dijet events to correct the energy scale of forward ($0.8 \leq |\etadet| < 4.5$) jets to match those of central ($|\etadet| < 0.8$) jets using the \pT balance in dijet events~\cite{PERF-2014-02}.
 %- Definition of truth jets reconstructed using stable final-state particles
 %Truth jets are reconstructed using stable final-state particles and exclude muons, neutrinos, and particles from pile-up interactions. Truth jets are selected with the same 𝑝T > 7 GeV and |𝜂| < 4.5 thresholds as EMtopo and PFlow jets, and are geometrically matched to those jets using the angular distance Δ𝑅 with the requirement Δ𝑅 < 0.3.
 
 
-
-\section{Parametrisation of the Jet Energy Resolution}
+\section{Parametrization of the Jet Energy Resolution}
 \label{sec:jer}
 Multiple physics and experimental effects contribute to a sizable JER. They scale differently with increasing energy of the jet. For calorimeter-based measurements, the effects can be grouped into three categories captured by three parameters: the \emph{noise term} ($N$), the \emph{stochastic term} ($S$), and the \emph{constant term} ($C$).
 The relative JER can then be parametrized as
@@ -137,8 +145,8 @@ The relative JER can then be parametrized as
     \label{eq:jer-parametrisation}
     \frac{\sigma_{p_{\rm T}}}{p_{\rm T}} = \frac{N}{p_{\rm T}} \oplus \frac{S}{\sqrt{p_{\rm T}}} \oplus C,
 \end{equation}
-which is referred to as $N, S, C$ parametrisation in the following.
-This parametrisation is based on both physics considerations as well as empirical evidence from studies of the JER in MC and data.
+which is referred to as $N, S, C$ parametrization in the following.
+This parametrization is based on both physics considerations as well as empirical evidence from studies of the JER in MC and data.
 The following explains how the three different terms in \cref{eq:jer-parametrisation} can be inferred from physics considerations and what other effects must be considered.
 
 \paragraph{The noise term} captures resolution effects from both energy deposits stemming from pile-up interactions and other noise such as electronic noise.
@@ -169,12 +177,12 @@ However, an additional contribution to the PFlow JER comes from the sizable amou
 This amount is captured in a term known as the \emph{confusion term} and fluctuations of it contribute to the JER. Details on the confusion term can be found in \ccite{PERF-2015-09}. It is unfeasible to derive from first principle how this effect scales with increasing energy of the jet and thus empirical studies need to be performed.
 
 \paragraph{Other non-trivial effects} on the JER are introduced by the jet energy calibration, most notably the MC-based correction as well as the GSC.
-Due to the non-linearity of the calorimeter, the applied JES factor is dependent on the jet \pT as shown in \cref{fig:jes-calibration-jet-response}. This means that also the energy fluctuations to which a jet is subjected are scaled by a larger factor at low \pT than at high \pT, which can spoil the parametrisation shown in \cref{eq:jer-parametrisation}.
+Due to the non-linearity of the calorimeter, the applied JES factor is dependent on the jet \pT as shown in \cref{fig:jes-calibration-jet-response}. This means that also the energy fluctuations to which a jet is subjected are scaled by a larger factor at low \pT than at high \pT, which can spoil the parametrization shown in \cref{eq:jer-parametrisation}.
 As the energy response varies most at low \pT, the noise term is especially affected by this.
 Another complexity is introduced by the GSC, which reduces the JER across the entire \pT range in a way that cannot be derived from first principle. The effect is also important at low \pT and partially compensates for the effects introduced by the MC-based correction.
 
 \paragraph{}
-Despite the mentioned limitations, the JER parametrisation shown in \cref{eq:jer-parametrisation} proves to be an adequate formula to represent the PFlow JER as well as the EMTopo JER.
+Despite the mentioned limitations, the JER parametrization shown in \cref{eq:jer-parametrisation} proves to be an adequate formula to represent the PFlow JER as well as the EMTopo JER.
 % , which can be rested in MC simulated samples.
 %The following describes how the JER can be measured in Monte Carlo and data.
 %It is therefore used in the noise term measurement presented in \cref{sec:noise-term-meas}.
@@ -193,7 +201,7 @@ The JER estimated with this method is referred to as \emph{Response JER} in the 
     \label{fig:truth-response}
 \end{figure}
 
-\Cref{fig:jer-parametrisation-a,fig:jer-parametrisation-c} show the Response JER as a function of \pTtruth for PFlow+JES jets and EM+JES jets, respectively, including the fitting function when using the parametrisation shown in \cref{eq:jer-parametrisation}. It can be seen that the fitting function describes the trend of the JER very well for both jet collections.
+\Cref{fig:jer-parametrisation-a,fig:jer-parametrisation-c} show the Response JER as a function of \pTtruth for PFlow+JES jets and EM+JES jets, respectively, including the fitting function when using the parametrization shown in \cref{eq:jer-parametrisation}. It can be seen that the fitting function describes the trend of the JER very well for both jet collections.
 % It can be seen, that the parametrisation is not optimal but is workable enough!
 An illustration of the effect of the different terms as a function of the jet \pT is shown in \cref{fig:jer-parametrisation-b} and \cref{fig:jer-parametrisation-d}, respectively. The values of the three parameters, $N$, $S$, and $C$, correspond to the values found in the fits shown in \cref{fig:jer-parametrisation-a,fig:jer-parametrisation-c}.
 It can be observed, that the impact of the noise term is considerably smaller for PFlow jets than for EMTopo jets.
@@ -218,7 +226,7 @@ The noise term for PFlow jets stays sub-dominant even at low \pT, while for EMTo
         \label{fig:jer-parametrisation-d}
         \newImageResizeCustom{0.46}{figures/calibration/Breakdown-of-JER-parameters-MC16dMCJER.pdf}
     }
-    \caption[Response JER derived for fully calibrated jets.]{Response JER derived for fully calibrated (a) PFlow+JES jets and (c) EM+JES jets, including a fit with the parametrisation shown in \cref{eq:jer-parametrisation}. A breakdown of the effect of the different terms in the fitting function is also shown for the results obtained with (b) PFlow+JES jets and (d) EM+JES jets.}
+    \caption[Response JER derived for fully calibrated jets.]{Response JER derived for fully calibrated (a) PFlow+JES jets and (c) EM+JES jets, including a fit with the parametrization shown in \cref{eq:jer-parametrisation}. A breakdown of the effect of the different terms in the fitting function is also shown for the results obtained with (b) PFlow+JES jets and (d) EM+JES jets.}
     \label{fig:jer-parametrisation}
 \end{figure}
 
@@ -482,10 +490,10 @@ Additional uncertainties on \Npileup were tested and found to be negligible. The
 The electronic noise is estimated separately from the pile-up noise, as the random cones method does not capture contributions to the JER from effects other than pile-up, mainly because of the effective noise reduction in the 420 topo-clustering algorithm.
 A finite \Nmuzero is still expected in the presence of a hard scatter event.
 For example, when considering a cell that contains signals that are just not enough to exceed the necessary energy thresholds for it to be included in the topo-clustering algorithm, additional electronic noise may lift the signals above the reconstruction threshold such that it is eventually considered in the jet reconstruction.
-The amount of noise expected due to this is estimated by extracting the parameter $N$ from a fit with the $N, S, C$ parametrisation to the Response JER derived in a dedicated MC sample that has no pile-up overlaid.
+The amount of noise expected due to this is estimated by extracting the parameter $N$ from a fit with the $N, S, C$ parametrization to the Response JER derived in a dedicated MC sample that has no pile-up overlaid.
 The results are shown in \cref{tab:prelim-jer-2018-noise-term-inputs}.
 
-Two systematic uncertainties on the extraction of \Nmuzero are considered. The first captures the differences in the JER between data and MC simulation as found in the ATLAS JER measurement in 2010 without pile-up~\cite{PERF-2011-04} and is considered by applying a 20\% relative uncertainty on \Nmuzero. The second and larger uncertainty compares the nominal value of \Nmuzero to the one found using an alternative method. In this alternative method the dijet MC sample with pile-up is first split into several bins of pile-up ($\mu$) and the Response JER then derived in each of those bins. The parameter $N$ is extracted in each $\mu$ bin from a fit to the Response JER with the $N, S, C$ parametrisation. To estimate \Nmuzero, the values of $N$ are extrapolated with both a linear and a quadratic fit to $\mu=0$. The maximum of the differences between the two extrapolated values and the nominal value of \Nmuzero is taken as a conservative systematic uncertainty.
+Two systematic uncertainties on the extraction of \Nmuzero are considered. The first captures the differences in the JER between data and MC simulation as found in the ATLAS JER measurement in 2010 without pile-up~\cite{PERF-2011-04} and is considered by applying a 20\% relative uncertainty on \Nmuzero. The second and larger uncertainty compares the nominal value of \Nmuzero to the one found using an alternative method. In this alternative method the dijet MC sample with pile-up is first split into several bins of pile-up ($\mu$) and the Response JER then derived in each of those bins. The parameter $N$ is extracted in each $\mu$ bin from a fit to the Response JER with the $N, S, C$ parametrization. To estimate \Nmuzero, the values of $N$ are extrapolated with both a linear and a quadratic fit to $\mu=0$. The maximum of the differences between the two extrapolated values and the nominal value of \Nmuzero is taken as a conservative systematic uncertainty.
 Similar to the uncertainties on \Npileup, additional uncertainties on \Nmuzero due to fit range variations or errors from the fit parameters themselves were found to be negligible.
 
 

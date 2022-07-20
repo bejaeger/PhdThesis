@@ -150,9 +150,7 @@
 
 
 % \usepackage[capitalize]{cleveref} clashed with ATLAS
-% \usepackage{titlesec}
-
-
+\usepackage{titlesec}
 
 % The language of the document must be set: usually UKenglish or UKenglish.
 % british and american also work!
@@ -273,10 +271,13 @@
    \usebibmacro{postnote}%
    \bibclosebracket}
 
-
+% For font
 \RequirePackage{lmodern}
 %\RequirePackage{newtxtext}
 % \RequirePackage{newtxmath}
+
+% To remove quotes in title of inproceeding entries in bibtex
+\DeclareFieldFormat[inproceedings]{title}{\it{#1}} 
 
 %---------------------------------------------------------------------------
 % From SFU THESIS TEMPATE
