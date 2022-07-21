@@ -4,7 +4,7 @@ Collider experiments such as the ATLAS detector at the LHC, simply put, are \emp
 Sophisticated statistical methods are used to extract physics parameters such as cross sections from the counting experiments while accounting for all underlying uncertainties. 
 % to express the counting measurements in terms of physics parameters such as cross sections and to allow for a full consideration of the underlying uncertainties. 
 This chapter briefly outlines the statistical concepts used in the cross-section measurement of \HWW\ decays presented in \cref{chap:hww}.
-The \HWW analysis relies on comparisons between the number of events measured in data and their corresponding SM expectation obtained from MC simulated samples. The expectation value is a complex quantity and depends on many parameters. This is discussed in \cref{sec:exp-value}.
+The \HWW analysis relies on comparisons between the number of events measured in data and their corresponding SM expectation obtained from MC simulated samples. The expectation value is a complicated quantity and depends on many parameters. This is discussed in \cref{sec:exp-value}.
 \Cref{sec:likelihood} then describes how the MC simulations are used to construct a statistical template that is fit to the actual data using a maximum likelihood estimation. This allows the extraction of the physics parameters from the fitted MC template.
 The procedure to test different signal hypotheses with frequentist methods, for example to claim the discovery of a new signal, is outlined in \cref{sec:hypothesis-testing}.
 This chapter is based to a large extent on \ccite{Cowan:2010js}.
@@ -49,7 +49,7 @@ The statistical model is based on a likelihood function, or simply \emph{likelih
     \label{eq:likelihood-three-terms}
     \Likelihood = \Lmeas \times \Lsyst \times \Lstat,
 \end{equation}
-that are all multiplied with each other.
+that are all multiplied by each other.
 
 The first term, \Lmeas, measures the probability of measuring $n_i$ data events when $E[n_i]$ are expected assuming Poisson probabilities, 
 \begin{equation}
@@ -62,7 +62,7 @@ The second term, \Lsyst, encodes the effect of the systematic uncertainties in t
     \Lsyst = \prod_{\theta \in \{ \pmb{\theta}_s,\pmb{\theta}_b \}} \text{Gauss}(0 | \theta, 1),
 \end{equation}
 where the NPs are normalized and scaled, such that they have a mean of zero and a unit standard deviation.
-The effect of most NPs is modelled by varied templates -- i.e. varied values of $\text{E}[n_i]$ -- corresponding to the $\pm 1$ variation of the respective NP. This is done by either propagating the effect of a previously measured uncertainty through the analysis -- as is typically the case for uncertainties related to the experiment -- or -- for the majority of uncertainties related to theory -- by comparing different theoretical models with each other and defining one standard deviation ad-hoc from the space of available theoretical models.
+The effect of most NPs is modelled by varied templates -- i.e. varied values of $\text{E}[n_i]$ -- corresponding to the $\pm 1$ variation of the respective NP. This is done by either propagating the effect of a previously measured uncertainty through the analysis -- as is typically the case for uncertainties related to the experiment -- or -- for the majority of uncertainties related to theory -- by comparing different theoretical models with each other and defining one standard deviation ad-hoc from the collection of available theoretical models.
 To provide a continuous description of the effect of each NP, piece-wise linear interpolation is used.
 The effect on $\text{E}[n_i]$ of a single source of uncertainty is typically encoded in terms of two components: the first varies the event yields in each region corresponding to the uncertainty in the overall normalization in that region (\emph{normalization uncertainty}), and the second, if applicable, varies the event yield in each histogram bin corresponding to the uncertainty in the shape of the distribution (\emph{shape uncertainty}).
 

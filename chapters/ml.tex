@@ -35,8 +35,8 @@
 % this classification problem. Once an event is classified as likely to be from a known physics process, it can be
 % filtered out, and remaining events can be further analyzed for hints of new physics.
 
-The success of many Higgs boson measurements depends on the ability to distinguish $pp$ collision events with Higgs boson processes from other types of events, which are typically produced at much higher rates. Given a set of experimentally measured observables, this task can be framed as a classification problem for which modern machine learning (ML) algorithms are particularly well-suited.\footnote{In recent years, ML has become ubiquitous and drives much of human decision-making in many areas of life. This development was facilitated by the growing amount of both computing resources and data, as well as software advancements in the beginning of the 21$^{\text{th}}$ century.}
-The main advantage of ML tools is that they can analyze high-dimensional data simultaneously, which in many cases makes them superior to traditional analysis strategies that often rely on boolean selections on single observables. 
+The success of Higgs boson measurements depends on the ability to distinguish $pp$ collision events with Higgs boson processes from other types of events, which are typically produced at much higher rates. Given a set of experimentally measured observables, this task can be framed as a classification problem for which modern machine learning (ML) algorithms are particularly well-suited.\footnote{In recent years, ML has become ubiquitous and drives much of human decision-making in many areas of life. This development was facilitated by the growing amount of both computing resources and data, as well as software advancements in the beginning of the 21$^{\text{th}}$ century.}
+The main advantage of ML tools is that they can analyze high-dimensional data simultaneously, which in many cases makes them superior to traditional analysis strategies that often rely on a series of boolean selections on a sequence of observables. 
 For this reason, more and more traditional HEP analysis techniques are being replaced by modern ML tools, and this trend is expected to continue.\footnote{A complete overview of ML applications in HEP can be found in the literature, for example in \ccite{MLinHEPReview,Guest_2018,MLforNewPhysics}.}
 % In recent years, machine learning (ML) has become ubiquitous and drives much of human decision making in many areas of life. 
 % The advent of deep neural networks in the beginning of the 21$^{\text{th}}$ century was facilitated by the growing amount of both computing resources and data, as well as software advancements.
@@ -82,10 +82,12 @@ This technique is used in the analysis of \HWW decays presented in \cref{chap:hw
 \section{Core Concepts of Machine Learning}
 \label{sec:core-concepts}
 The basic task of a machine learning algorithm is to find a function $f: X \rightarrow Y$, that maps some higher-dimensional data $X$ onto some target label $Y$, while optimizing a metric of choosing.
-This metric is known as \emph{loss function} (also called \emph{cost function}), labelled as $L(y, f(x))$.
+This metric is known as a \emph{loss function} (also called \emph{cost function}).
 The function that optimizes the loss function is found in a process referred to as \emph{training}, in which a learning algorithm is applied to a set of sample data, known as \emph{training data}.
+In the case of supervised learning, the training data is labelled and the loss function, $L(t_n, f(x))$, quantifies the difference between the true target values of the labelled training data, $t_n$, and the values predicted by the function $f(x)$.
+In HEP, the training data consists of MC simulated samples, using their truth information as labels.
+% The training data therefore must be labelled which in HEP is easily achieved by using MC simulated samples and their truth information. 
 The training proceeds over several cycles through the entire training data, which are known as \emph{epochs}. 
-In the case of supervised learning, the training data must be labelled which in HEP is easily achieved by using MC simulated samples and their truth information. 
 The space of functions to choose from in the training is constrained by a \emph{model} with adjustable parameters that are optimized during the training.
 While in the past, many HEP applications were based on \emph{boosted decision trees} (BDTs), the most widely adopted models today are based on (deep) neural networks, which are more powerful discriminators because of their ability to approximate any nonlinear function~\cite{HORNIK1989359}.
 
@@ -98,7 +100,7 @@ While in the past, many HEP applications were based on \emph{boosted decision tr
 % - The space of functions to choose from is constrained by a model that can come in various forms such as BDTs, support vector machines, or neural networks (see the following chapter).
 
 A major goal in machine learning is \emph{generalization}, i.e., the ability of a trained model to perform well on previously unseen data.
-The opposite is the case if the model parameters are chosen based on signatures unique to the training data. This is known as \emph{overtraining} (or \emph{overfitting}). To prevent a model to be overfitted, various so-called \emph{regularization} techniques can be used during the training.
+The opposite is the case if the model parameters are chosen based on signatures unique to the training data. This is known as \emph{overtraining} (or \emph{overfitting}). To prevent a model from being overfitted, various so-called \emph{regularization} techniques can be used during the training.
 Regularization methods are typically tuned during the training procedure explained further below.
 %based on how well a trained model generalizes, which can be tested with data not used in the training.
 
@@ -106,6 +108,11 @@ Regularization methods are typically tuned during the training procedure explain
 \section{Introduction to Neural Networks}
 \label{sec:intro-neural-nets}
 Neural networks can be visualized as interconnected layers of artificial neurons\footnote{NNs are therefore also called artificial neural networks (ANNs), which is more descriptive but usually used synonymously with the simple form ``neural networks''.}. \Cref{fig:neural-net} illustrates a fully-connected neural network, where each layer receives inputs only from the previous layer. These types of NNs are known as \emph{feedforward} NNs.
+\begin{figure}[ht]
+    \newImageResizeCustom{0.9}{figures/data-analysis/neural-network-architecture.pdf}
+    \caption[Illustration of a fully-connected neural network.]{Example illustration of a fully-connected neural network. The three dots indicate that neural networks can be defined with an arbitrary number of neurons and hidden layers.}
+    \label{fig:neural-net}
+\end{figure}
 The first layer is called the \emph{input layer} and takes the input vector $\pmb{x}$, the last layer is the \emph{output layer} with output $\pmb{y}$, and the layers in between are known as \emph{hidden layers}. 
 Each layer performs a transformation of the data from the respective previous layer based on an \emph{activation function}, labelled as $h^{(l)}(\cdot)$ for the $l^\text{th}$ layer, and weights that connect the artificial neurons to each other. The weights connecting the $(l-1)^{\text{th}}$ layer with the $l^{\text{th}}$ layer can be written as a matrix, $W^{(l)} = \left(w^{(l)}_{jk} \right)$\footnote{In this notation, the weight labelled as $w^{(l)}_{jk}$ connects the $k^\text{th}$ neuron in the $(l-1)^\text{th}$ layer to the $j^\text{th}$ neuron in $(l)^\text{th}$ layer.}. In addition, each neuron except the ones in the input layer has a so-called \emph{bias} weight, described by the bias vector $\pmb{w}^{(l)}_0$.
 % . Hence, the activation function of the input layer can be considered as the identity function, $h^{(0)}(\pmb{x}) \equiv \pmb{x}$. 
@@ -157,16 +164,6 @@ Both functions are shown in \cref{fig:sigmoid-relu}.
 
 % Quote from: http://neuralnetworksanddeeplearning.com/chap1.html
 %- Up to now, we've been discussing neural networks where the output from one layer is used as input to the next layer. Such networks are called feedforward neural networks.
-
-
-
-\begin{figure}[ht]
-    \newImageResizeCustom{0.9}{figures/data-analysis/neural-network-architecture.pdf}
-    \caption[Illustration of a fully-connected neural network.]{Example illustration of a fully-connected neural network. The three dots indicate that neural networks can be defined with an arbitrary number of neurons and hidden layers.}
-    \label{fig:neural-net}
-\end{figure}
-
-
 % \begin{figure}[t]
 %     \newImageResizeCustom{0.7}{figures/data-analysis/single-neuron-illustration.png}
 %     \caption{Illustration of a single artificial neuron, including the inputs, $\pmb{x}$ and $\pmb{w}$, the bias, $b$, and the activation function $a(\cdot)$ as well as output weight.}
@@ -297,8 +294,8 @@ The weight updates are then given as,
 \begin{equation}
     \pmb{w}^{(\tau+1)} = \pmb{w}^\tau - \frac{\eta}{\sqrt{\pmb{G}_\tau + \epsilon}}  \nabla_{\pmb{w}^{(\tau)}} L(\pmb{w}^{(\tau)}), 
 \end{equation}
-where $\epsilon$ is a small, non-zero floating point used to avoid numerical instability.
-Introducing this parameter-specific learning rate largely reduces the dependence on the choice of the initial learning rate, as rare features in the training data are automatically being given more importance than frequently occurring ones, which helps to make the training converge faster and more reliably.
+where $\epsilon$ is a small, non-zero floating-point number used to avoid numerical instability.
+Introducing this parameter-specific learning rate largely reduces the dependence on the choice of the initial learning rate, as rare features in the training data are automatically given more importance than frequently occurring ones, which helps to make the training converge faster and more reliable.
 
 % The intuition behind the algorithm: From https://towardsdatascience.com/learning-parameters-part-5-65a2f3583f7d
 % AdaGrad decays the learning rate very aggressively (as the denominator grows). As a result, after a while, the frequent parameters will start receiving very small updates because of the decayed learning rate.
@@ -308,7 +305,7 @@ Introducing this parameter-specific learning rate largely reduces the dependence
 There are several regularization methods to avoid overfitting and ensure generalization. 
 In the work presented in this thesis, so-called \emph{dropout}~\cite{srivastava_dropout_2014,DBLP:journals/corr/abs-1207-0580} is used for regularization. In this method, a chosen percentage of neurons along with their connections are randomly disabled (or ``dropped'') for each iteration of the training. This means that during each training iteration a different ``thinned'' version of the original network is used effectively, which reduces the risk of overfitting. 
 Other forms of regularization are the so-called $L_2$ regularization, that applies a penalty to the loss function based on the overall size of the weights, or the more practical approach of early stopping, in which the training is stopped as soon as signs of overfitting are observed. 
-Another key factor is the size of the training data itself. The more training samples are available, the less likely it is for the network to be able to adjust to unique features of the training data and thus suffer from overfitting.
+Another key factor is the size of the training data itself. The more training samples are available, the less likely it is for the network to be able to adjust to unique features of a particular training dataset and thus suffer from overfitting.
 
 
 \subsubsection{Dataset split and cross-validation}
@@ -323,7 +320,7 @@ The following three subsets are typically defined, each fulfilling a particular 
 
 A naive approach is to split the dataset once, train the model with the training set, tune the hyperparameters by evaluating the performance on the validation set, and test how well the model performs on the fully independent test set. 
 This, however, comes at the cost of loosing statistical precision in each of the sets. 
-To overcome this, a method known as \emph{cross validation} can be used that trains multiple models that are later used in combination. Each model has a different definition of the train, validation, and test set.
+To overcome this, a method known as \emph{cross validation} can be used that trains multiple models that are later used in combination. Each model has a different definition of the training, validation, and test set.
 There are multiple forms of cross validation. The one used in the work presented in this thesis is referred to as \emph{mixed k-fold cross validation}, in which $k$ models are trained. A schematic of the dataset split for $k=5$ is shown in \cref{fig:k-fold-method}. 
 \begin{figure}[ht]
     \newImageResizeCustom{0.7}{figures/data-analysis/k-fold-illustration.pdf}

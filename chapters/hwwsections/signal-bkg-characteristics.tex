@@ -14,14 +14,14 @@ The features of both the \HWWdet decay and the production mechanisms provide the
     \subfloat[ggF signal] {
         \newImageResizeCustom{0.4}{figures/feynman-graphs/Higgs/HWW/ggF.pdf}
     }
-    \caption[Feynman diagrams for the VBF and ggF signal.]{Representative leading order Feynman diagrams for (a) the VBF signal and (b) the ggF signal process. The coupling of the Higgs boson to vector bosons ($VH$) and quarks ($qH$) are represented, respectively, with shaded and open circles. The $V$ denotes a $W$ or $Z$ boson.} 
+    \caption[Feynman diagrams for the VBF and ggF signal.]{Representative leading order Feynman diagrams for (a) the VBF signal and (b) the ggF signal processes. The coupling of the Higgs boson to vector bosons ($VH$) and quarks ($qH$) are represented, respectively, with shaded and open circles. The $V$ denotes a $W$ or $Z$ boson.} 
     \label{fig:feyn:sig-wwprod}
 \end{figure}
 \resetcaptionoffset
 
 \subsubsection{The \HWWdet decay}
 The Higgs boson couples to a pair of oppositely charged $W$ bosons.
-Because twice the mass of the $W$ boson ($m_W = 80.354 \pm 0.007\,\GeV$ \cite{PDG2020}) is larger than the mass of the Higgs boson, only one of the vector bosons is produced on shell, the respective other is virtual.
+Because twice the mass of the $W$ boson ($m_W = 80.354 \pm 0.007\,\GeV$ \cite{PDG2020}) is larger than the mass of the Higgs boson, only one of the vector bosons is produced on shell, but the other is virtual.
 Because the $W$ bosons are short-lived ($\tau \approx \mathcal{O}(10^{-25}\,\text{s})\,\text{\cite{PDG2020}}$), only their decay products can be measured. 
 The decay modes of the Higgs boson including the final states possible for the subsequent decay of the two $W$ bosons are shown in \cref{fig:h-branching-ratios}. 
 \begin{figure}[th]
@@ -35,8 +35,8 @@ The decay modes of the Higgs boson including the final states possible for the s
 
 The \HWWdet decays make up only about 0.5\% of the total Higgs decays. However, as explained in the following, the leptons from the \HWWdet decay are entangled which leads to a distinct kinematic feature that can be exploited to select these decays efficiently.
 The spin projections of the \Wboson bosons must sum to zero, because the Higgs boson has a spin of zero and angular momentum must be conserved.
-Similarly, the leptons from the \Wboson decays must have spin projections that are aligned. Because the \Wboson boson couples only to left-handed neutrinos, this ultimately leads to an enhanced fraction of \HWWdet events in which the two leptons are emitted in the same direction, i.e. at small angle \dphill.
-\Cref{fig:spin-correlations} illustrates this by showing the different spin configurations possible, including the resulting final state kinematics.\footnote{This provides a slightly simplified picture that disregards interference effects between different \Wboson boson polarisation states. When they are considered, however, similar conclusions can be drawn~\cite{Maina_2021}.}
+Similarly, the leptons from the \Wboson decays must have spin projections that are aligned with each other. Because the \Wboson boson couples only to left-handed neutrinos, this ultimately leads to an enhanced fraction of \HWWdet events in which the two leptons are emitted in the same direction, i.e. at small angle \dphill.
+\Cref{fig:spin-correlations} illustrates this by showing the different spin configurations possible, including the resulting final state kinematics.\footnote{This provides a slightly simplified picture that disregards interference effects between different \Wboson boson polarisation states. When these are considered, however, similar conclusions can be drawn~\cite{Maina_2021}.}
 
 As a consequence, several observables that are sensitive to the angular separation between the leptons and neutrinos can be exploited to distinguish between \HWWdet decays and background events. 
 For example, the magnitude of the vectorial sum of the \pT of both leptons,
@@ -53,12 +53,13 @@ The presence of the neutrinos in the final state has two important consequences:
 First, they lead to events with significant missing transverse energy. This is amplified by the angular correlations described above, as the neutrinos are more likely to be emitted in the same direction. This feature can be especially well exploited by the \METSig observable.
 Second, not enough information is available about the longitudinal momentum of the Higgs boson in order to reconstruct its full mass. The mass of the Higgs boson can therefore be reconstructed only in the transverse plane, which is calculated as
 \begin{equation}
+\label{eq:transverse-mass}
   \Mt = \sqrt{ \left( E_{\mathrm{T}}^{\ell\ell}+\MET \right)^2 - \left| \vpTll + \pmb{E}_{\text{T}}^{\text{miss}} \right|^2 }.
 \end{equation}
 
 \begin{figure}
     \newImageResizeCustom{0.6}{figures/hww/introduction/HWW_angular_correlation.png}
-    \caption[Angular correlations in the \HWWdet\ decay.]{Illustration of the angular correlations in the \HWWdet\ decay. The narrow arrows indicate the flight direction of the particles and the double arrows visualize their spin. The spin projections of the $W$ bosons must sum to zero, and they decay into leptons with spin projections aligned. This results in an enhanced fraction of events that exhibit leptons with a small opening angle and two neutrinos emitted in the respective opposite directions. Taken from Ref.~\cite{HIGG-2013-13}.}
+    \caption[Angular correlations in the \HWWdet\ decay.]{Illustration of the angular correlations in the \HWWdet\ decay. The narrow arrows indicate the flight direction of the particles and the double arrows visualize their spin. The spin projections of the $W$ bosons must sum to zero, and they decay into leptons with spin projections aligned. This results in an enhanced fraction of events that exhibit leptons with a small opening angle and two neutrinos emitted in the opposite directions. Taken from Ref.~\cite{HIGG-2013-13}.}
     \label{fig:spin-correlations}
 \end{figure}
 
@@ -75,7 +76,7 @@ The variable is constructed such that it is $C_\ell < 1$ if the leptons lie with
 It is expected that VBF, \HWW events cause smaller $C_\ell$ values than other processes.
 These prominent features can also be seen in the event display of a VBF, \HWW candidate event shown in \cref{fig:vbf-event-display}. 
 They clearly distinguish VBF events from events produced via the ggF production mode, where no additional jets are expected at leading order. 
-Additional jets may, however, still arise (for both production modes) due to ISR and FSR. 
+Additional jets may, however, still arise (for both production modes) due to ISR, FSR, and the underlying event. 
 
 \begin{figure}
     \ifthenelse{\boolean{draft}}
@@ -138,7 +139,7 @@ A suppression of the $WW$ background can be achieved by exploiting the distinct 
 Furthermore, since both $W$ bosons are produced on-shell the \pT of the lower-\pT lepton is on average larger for non-resonant $WW$ processes than for the signal processes. 
 
 \subsubsection{Electroweak $WW$ background}
-The contribution from $WW$ bosons produced via electroweak interactions (EW $qq \to qqWW$; labelled $WW$ (EW); shown in \cref{fig:hww:feyn-bkgs-EWWW}) is generally small, due to small production cross sections. However, the EW~$WW$ production has a very similar signature as the VBF signal process, resulting in a significant impact in the VBF category, especially at large \mjj where other backgrounds are small. 
+The contribution from $WW$ bosons produced via electroweak interactions (EW $qq \to qqWW$; labelled $WW$ (EW); shown in \cref{fig:hww:feyn-bkgs-EWWW}) is generally small, due to small production cross sections because of multiple weak couplings involved ($\mathcal{O}(\alpha_{\text{EW}^6})$, with $\alpha_{\text{EW}^6}$ referring to the weak coupling constant). However, the EW~$WW$ production has a very similar signature to the VBF signal process, resulting in a significant impact in the VBF category, especially at large \mjj where other backgrounds are small. 
 It therefore constitutes a major background in the measurement of the VBF signal. 
 %at large $m_{jj}$ the contribution can be significant relative to other background processes that fall much more steeply with increasing $m_{jj}$. 
 
@@ -185,7 +186,7 @@ Since the reconstruction and identification efficiencies are reasonably high, th
 The same is true for processes involving three bosons (called \emph{triboson} processes), which contribute only marginally to the analysis regions because of their additional final state particles as well as their overall small production cross section. Their contribution is accounted for together with the other diboson processes, collectively called Other $VV$($V$). 
 
 \subsubsection{Other Higgs boson processes}
-The contributions of \HWW events from other Higgs boson production modes, such as $VH$ or $ttH$, are marginal because of both their small cross sections and the fact that for the majority of events there are additional particles in the final state based on which their contributions are suppressed in this analysis.
+The contributions of \HWW events from other Higgs boson production modes, such as $VH$ or $ttH$, are marginal because of both their small cross sections and the fact that for the majority of events there are additional particles in the final state so that their contributions can be suppressed in this analysis.
 % events can be efficiently rejected.
 Events where the Higgs boson decays into a pair of $\tau$ leptons have similar final states as the \HWWdet\ decays when the $\tau$ leptons decay leptonically. 
 Because of the low branching fractions of both the $H \to \tau\tau$ decays and $\tau$ decays into muons or electrons ($\approx$ 17-18 \% \cite{PDG2020}), as well as the different lepton kinematics in contract to the signal processes, contributions from $H \to \tau\tau$ processes are also small in this analysis. 

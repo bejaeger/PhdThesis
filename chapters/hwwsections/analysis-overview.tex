@@ -1,5 +1,5 @@
-The \HWW events that can be best separated from backgrounds at the LHC are the ones where one of the $W$ bosons decays into an electron and the respective other into a muon.
-This analysis therefore selects events with two different-flavor leptons in the final state targeting the \HWWdet decay.\footnote{By requiring the leptons to be of different flavor the otherwise overwhelming background from Drell-Yan processes can be reduced, see also \cref{sec:signal-bkg-characteristics}. Similarly, the decay channel where one of the $W$ bosons decays hadronically cannot be distinguished from the overwhelming background of $W$ production in association with a jet.} 
+The \HWW events that can be best separated from backgrounds at the LHC are the ones where one of the $W$ bosons decays into an electron and the other into a muon.
+This analysis therefore selects events with two different-flavor leptons in the final state targeting the \HWWdet decay. By requiring the leptons to be of different flavor the otherwise overwhelming background from Drell-Yan processes can be reduced.\footnote{Similarly, the decay channel where one of the $W$ bosons decays hadronically cannot be distinguished from the overwhelming background of $W$ production in association with a jet and is therefore not considered in this analysis.}
 The analysis suffers from large background contributions that are produced at much larger rates at the LHC compared to the signal processes. The most relevant backgrounds come from events with top quarks ($\ttbar/Wt$), non-resonant $WW$ production ($WW$), $W$ production in association with jets where a jet is misidentified as a lepton (Mis-Id), other diboson processes (Other $VV$($V$)), Drell-Yan processes (\Zgamma), and electroweak production of a pair of $W$ bosons ($WW$ (EW)). 
 % \begin{itemize}
 %     \item Top-quarks, both pair production ($t\bar{t}$) and single-top production with a $W$ boson ($Wt$);
@@ -17,20 +17,18 @@ This categorization is illustrated in \cref{fig:signal-categorization}.
     \caption{Schematic of the signal categories defined in the \HWW analysis.}
     \label{fig:signal-categorization}
 \end{figure}
-
 Additional event selection criteria are applied in each of the categories to define the regions in which the measurements are performed (called \emph{signal regions}; SRs).
-The categories targeting the ggF signal use simple event selections to increase the purity of signal events and use the \mT observable as final discriminant. 
+The categories targeting the ggF signal use simple event selections to increase the purity of signal events and use the transverse mass of the Higgs boson (see \cref{eq:transverse-mass}) as final discriminant.
 The VBF \TwoJet category is made orthogonal to the ggF \TwoJet region and uses a DNN that distinguishes VBF signal from non-VBF events as final discriminant.
 The DNN is able to exploit the distinct features of the production and decay signatures of the VBF, \HWW process and therefore allows strong suppression of background contributions in the \TwoJet region, which would not be possible with simple event selections. 
-
-The expected background compositions in each of the SRs are shown in \cref{fig:bkg-composition}.
+The background compositions predicted by MC simulation in each of the SRs are shown in \cref{fig:bkg-composition}.
 \begin{figure}[ht]
     \newImageResizeCustom{0.9}{figures/plots/bkg-fractions/bar-chart-fractions.pdf} \hfill
-    \caption[Estimated background composition in the four signal categories.]{Estimated background composition in the four signal categories prior to the statistical analysis. In the VBF \TwoJet SR, an additional selection of DNN output $>0.87$ is applied to reflect the VBF signal sensitive region. The ggF SRs (VBF SR) do not indicate the ggF (VBF) signal events.}
+    \caption[Estimated background composition in the four signal categories.]{Estimated background composition in the four signal categories prior to the statistical analysis. In the VBF \TwoJet SR, an additional selection of DNN output $>0.87$ is applied to reflect the VBF signal sensitive region. The ggF (VBF) signal is counted as a background in the VBF SR (ggF SR).}
     \label{fig:bkg-composition}
 \end{figure}
-To extract the signal yields and measure their cross sections, MC simulated event templates are fit to the data in a binned 
-likelihood fit performed simultaneously in all measurement regions.
+
+To extract the signal yields and measure their cross sections, MC simulated event templates are fit to the data in a binned likelihood fit performed simultaneously in all measurement regions.
 The STXS measurement uses more SRs than the inclusive cross-section measurement to specifically target the signals divided into different kinematic bins. 
 It should be noted that during the optimization of the analysis, all categories have been first optimized and validated separately before being combined in the statistical analysis.
 

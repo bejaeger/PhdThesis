@@ -61,7 +61,7 @@ Leptons are required to be isolated, which is ensured using maximum thresholds o
 The isolation working points used are on average about 86\% efficient for electrons with $\pT = 30\,$GeV~\cite{EGAM-2018-01} and about 89\% efficient for muons with $20 < \pT < 100\,$GeV~\cite{MUON-2018-03}.
 
 Electron candidates are considered in a range $|\eta| \,{<}\, 2.47$, excluding $1.37\,{<}\,|\eta|\,{<}\,1.52$, which corresponds to the transition region between the barrel and the end-caps of the electromagnetic calorimeter.
-The choice of electron identification criteria is dependent on the \pT\ of the lepton: electrons with $\pT \,{<}\,25\,\GeV$ ($\pT\,{>}\,25\,\GeV$) must satisfy the ``Tight'' likelihood working point (``Medium'' likelihood working point that has an efficiency of about 70\% (85\%) for these electrons.~\cite{EGAM-2018-01}
+The choice of electron identification criteria is dependent on the \pT\ of the lepton: electrons with $\pT \,{<}\,25\,\GeV$ ($\pT\,{>}\,25\,\GeV$) must satisfy the ``Tight'' likelihood working point (``Medium'' likelihood working point) that has an efficiency of about 70\% (85\%) for these electrons.~\cite{EGAM-2018-01}
 A looser selection is applied for electrons with higher \pT because the background contamination from misidentifications is smaller for events with high-\pT electrons.
 
 % NOT SURE ABOUT THAT!?
@@ -72,10 +72,10 @@ The identification is based on a cut-based approach~\cite{MUON-2018-03}, using t
 
 \subsection{Jet selection}
 Jets used in this analysis are reconstructed with the \antikt algorithm with a radius parameter $R = 0.4$ and using particle flow objects as inputs.
-They are fully calibrated corresponding to the descriptions given in \cref{sec:jes-calibration} and must satisfy \absetaST{4.5} and \ptGT{20}GeV.
+They are fully calibrated following the descriptions given in \cref{sec:jes-calibration} and must satisfy \absetaST{4.5} and \ptGT{20}GeV.
 Jets that are used for jet counting, i.e., to categorize the events in different analysis regions, are required to have \ptGT{30}GeV.
 To identify $b$-jets, the DL1r neural network discriminant is employed (see \cref{subsec:flavor-tagging}), using a working point that has an average of 85\% $b$-jet tagging efficiency for jets with \ptGT{20}GeV and \absetaST{2.5}~\cite{FTAG-2018-01}.
-Furthermore, the Jet Vertex Tagger is used to reject jets stemming from pile-up interactions by requiring a minimum value of JVT $> 0.59$ for jets with \ptBT{20}{60}GeV and \absetaST{2.4}.
+Furthermore, the Jet Vertex Tagger is used to reject jets originating from pile-up interactions by requiring a minimum value of JVT $> 0.59$ for jets with \ptBT{20}{60}GeV and \absetaST{2.4}.
 %\TDinote{}{Checkout JVT extension to 120 GeV???}
 
 \subsection{Missing transverse energy}
@@ -89,7 +89,7 @@ Finally, the \METSig observable is used in the DNN deployed in the VBF category.
 \label{subsec:overlap-removal}
 
 The event reconstruction can lead to ambiguous definitions of the reconstructed objects.\footnote{This is mostly due to the fact that the same sets of lower-level reconstructed objects such as tracks or calorimeter clusters are used in multiple reconstruction algorithms for example for electrons, photons, or jets.}
-To resolve these ambiguities and avoid double consideration of detector signals, a dedicated \emph{overlap removal} procedure is performed for each event, which aims at selecting the reconstructed objects that are more likely to reflect their true origin~\cite{HWWPaper}:
+To resolve these ambiguities and avoid double counting of detector signals, a dedicated \emph{overlap removal} procedure is performed for each event, which aims at selecting the reconstructed objects that are more likely to reflect their true origin~\cite{HWWPaper}:
 \begin{itemize}
     \item If two electrons share an ID track, the electron with lower \ET is removed.
           %\item An electron is removed that shares an ID track with a muon.
@@ -112,7 +112,7 @@ The SFs are either applied to the full event (\emph{efficiency SF}) or only to t
 %Only four-momentum SFs can alter the shape of distributions. %, which has important consequences for the statistical analysis.
 Uncertainties on these corrections are propagated to the final statistical analysis.
 
-Another sample correction is applied to correct for differences in the underlying pile-up conditions assumed in the simulated events and that found in data.\footnote{This is needed since the exact data taking conditions were not known when the simulated samples were produced.}
+Another sample correction is applied to correct for differences in the underlying pile-up conditions assumed in the simulated events and those found in data.\footnote{This is needed since the exact data taking conditions were not known when the simulated samples were produced.}
 % In order to compare Monte Carlo simulated events with actual data, the amount of pile-up underlying the hard scatter needs to be account for.
 To this end, a method known as \emph{pile-up reweighting} is performed that assigns a dedicated \emph{pile-up weight} to each event so that the global distribution of the number of pile-up interactions in the simulated event samples matches, on average, that found in data. 
 %Due to different running conditions, the reweighting procedure is performed separately for the data recorded in the years 2015 and 2016, 2017, and 2018.
