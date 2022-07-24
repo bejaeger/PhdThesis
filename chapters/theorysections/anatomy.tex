@@ -33,7 +33,7 @@ The hard scatter is accompanied by the so-called \emph{underlying event}, which 
 The partons in the initial and final states can radiate in the form of \emph{inital-state radiation} (ISR) and \emph{final-state radiation} (FSR), and a single parton can also split into two. Together this is referred to as \emph{parton showering}.
 The final-state partons then undergo a process known as \emph{fragmentation} (also called \emph{hadronization}), due to the confining nature of QCD. They end up forming a spray of color-neutral hadrons, which are known as particle \emph{jets}. Many more details on the above-mentioned aspects can be found in standard textbooks on collider physics such as \ccite{Ellis:1991qj}. 
 
-\begin{figure}[h]
+\begin{figure}[t]
   \newImageResizeCustom{0.8}{figures/anatomy/schematic_ppcollision.png}
   \caption[Schematic view of a proton-proton collision.]{Schematic view of a proton-proton collision. Details can be found in the text. Taken from Ref.~\cite{Bhatti2010}. }
   \label{fig:ppcol}
@@ -75,18 +75,16 @@ is typically quoted to quantify the size of a dataset collected at a collider ex
 \subsection{Partonic cross sections and parton distribution functions}
 \label{subsec:factorisation}
 
-\begin{figure}
-  \newImageResizeCustom{0.60}{figures/anatomy/alphas.png}
-  \caption[Summary of measurements of the strong coupling constant $\alpha_s$.]{Summary of measurements of the strong coupling constant $\alpha_s$ as a function of the energy scale $Q$. Taken from \ccite{PDG2020}. }
-  \label{fig:alphas}
-\end{figure}
-
-
 % The incoming partons interact according to the laws of QCD.
 An important feature of QCD is the energy dependence of the strong coupling constant, $\alpha_s$, as shown in \cref{fig:alphas}.\footnote{The $\alpha_s$ constant is also sometimes referred to as ``running'' coupling constant as it is, in fact, not a constant.} Especially the behavior at low energies where $\alpha_s$ diverges has important consequences, as it requires to separate the treatment of physics at low energies and high energies. 
 At high energies, perturbative calculations of the matrix elements can be used because $\alpha_s$ becomes small. This behavior is also known as \emph{asymptotic freedom} and implies that strongly interacting particles behave like free particles at high energies. 
 Conversely, the physics at low energies (known as \emph{soft QCD}) can only be described by non-perturbative models because the particles have a strong coupling. This leads to confinement of quarks inside hadrons.
 
+\begin{figure}[t]
+  \newImageResizeCustom{0.60}{figures/anatomy/alphas.png}
+  \caption[Summary of measurements of the strong coupling constant $\alpha_s$.]{Summary of measurements of the strong coupling constant $\alpha_s$ as a function of the energy scale $Q$. Taken from \ccite{PDG2020}. }
+  \label{fig:alphas}
+\end{figure}
 %\footnote{The fact that $\alpha_s$ becomes smaller at high energies is also known as \emph{asymptotic freedom} and implies that strongly interacting particles behave like free particles at high energies. Conversely, at small energies, the particles have a strong coupling. This characteristic of QCD leads to \emph{confinement} of quarks inside hadrons.}
 
 Given these considerations, as well as the fact that protons are compound states of partons, the cross section of a hard-scattering process between two protons, $p_1$ and $p_2$, can be written as~\cite{Ellis:1991qj}
@@ -172,13 +170,6 @@ This necessitates a precise knowledge of the experimental setup and measurement 
 %However, it is known that the theoretical error on a quantity, which is calculated to $\mathcal{O(\alpha_s^n}$, is always $\mathcal{O(\alpha_s^{n+1})}$. The remaining theoretical error can be quantified
 %MMHT2014 NNLO PDFs
 
-\begin{figure}
-  \newImageResizeCustom{0.95}{figures/anatomy/xsecs.pdf}
-  \caption[Summary of production cross-sections measurements for $pp$ collisions at different center-of-mass energy.]{
-    Summary of production cross-section measurements for $pp$ collisions at different center-of-mass energies, $\sqrt{s}$. Taken from \ccite{ATL-PHYS-PUB-2022-009}.
-    }
-  \label{fig:xsec}
-\end{figure}
 % Figure 03a:
 % Summary of several Standard Model total and fiducial production cross-section measurements (a) with associated references (b) and (c). The measurements are corrected for branching fractions, compared to the corresponding theoretical expectations. In some cases, the fiducial selection is different between measurements in the same final state for different center-of-mass energies √s, resulting in lower cross section values at higher √s.
 
@@ -210,6 +201,13 @@ The following provides details on the different aspects the simulation needs to 
 % - MC tools are typically utilized for many of these steps.
 % - Parameters of MC are tuned to fit the data, especially for the non-perturbative regime
 % - An overview is given in the following
+\begin{figure}[t]
+  \newImageResizeCustom{0.95}{figures/anatomy/xsecs.pdf}
+  \caption[Summary of production cross-sections measurements for $pp$ collisions at different center-of-mass energy.]{
+    Summary of production cross-section measurements for $pp$ collisions at different center-of-mass energies, $\sqrt{s}$. Taken from \ccite{ATL-PHYS-PUB-2022-009}.
+    }
+  \label{fig:xsec}
+\end{figure}
 
 % Dandoy
 % A good MC simulation will cover all aspects of particle evolution detailed in Section 2.1, including matrix element calculation, hadronization and showering of final states, and simulation of detector geometry and response.

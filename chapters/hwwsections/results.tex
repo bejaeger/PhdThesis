@@ -18,7 +18,8 @@ $}
 %}
 which is consistent with the SM prediction of $10.4\pm 0.5$~pb and $0.81\pm 0.02$~pb for ggF and VBF~\cite{deFlorian:2016spz}, respectively.
 \Cref{fig:LL2D} shows the two-dimensional likelihood contour obtained from performing the 2-PoI fit with different fixed values of \muGGF and \muVBF.
-\begin{figure}[ht]
+\FloatBarrier
+\begin{figure}[t]
   \centering
   \includegraphics[width=0.7\textwidth]{\paperfiguredir/2-POI/ggF_VBF_likelihood_contour_XSec}
   \caption[68\% and 95\% confidence level (CL) two-dimensional contours of $\sigma_{\mathrm{ggF}} \cdot \mathcal{B}_{\hww}$ versus \mbox{$\sigma_{\mathrm{VBF}}\cdot\mathcal{B}_{\hww}$}.]{
@@ -40,7 +41,15 @@ The 1-PoI fit results in a measurement of the combined ggF and VBF production cr
 \end{gather}
 where $11.3\pm 0.5$~pb are expected from the SM predictions.
 \Cref{fig:couplings-POIs} summarizes the results of the inclusive cross-section measurements by presenting the ratio of the cross sections measured divided by the corresponding value predicted by the SM.
-\begin{figure}[htb]
+
+The uncertainties broken down into several components for the inclusive cross section measurements are shown in \cref{tab:UncertaintyBreakdown_2-POI}. 
+The systematic uncertainties dominate the measurements. 
+For the ggF measurement, the theoretical uncertainties are of similar size as the experimental uncertainties.
+The VBF measurement is dominated by theory uncertainties, in particular VBF signal modelling uncertainties.
+The latter is mainly caused by uncertainties related to the modelling of potential jets in addition to the two leading jets, manifesting itself in a large uncertainty due to the choice of parton shower model (see also \cref{subsec:expected-performannce}). The largest contributions from the backgrounds are from uncertainties due to the modelling of top-quark processes, $WW$ production, and the ggF process that can be considered a background in the VBF measurement. 
+
+\FloatBarrier
+\begin{figure}[h!]
   \centering
     \includegraphics[width=0.8\textwidth]{\paperfiguredir/plot-combined-couplings-pois-xsecs-GreenTan-vert}
     \caption[Best-fit values and uncertainties of inclusive ggF and VBF \HWW cross sections.]{
@@ -52,13 +61,7 @@ where $11.3\pm 0.5$~pb are expected from the SM predictions.
     }
 \end{figure}
 
-The uncertainties broken down into several components for the inclusive cross section measurements are shown in \cref{tab:UncertaintyBreakdown_2-POI}. 
-The systematic uncertainties dominate the measurements. 
-For the ggF measurement, the theoretical uncertainties are of similar size as the experimental uncertainties.
-The VBF measurement is dominated by theory uncertainties, in particular VBF signal modelling uncertainties.
-The latter is mainly caused by uncertainties related to the modelling of potential jets in addition to the two leading jets, manifesting itself in a large uncertainty due to the choice of parton shower model (see also \cref{subsec:expected-performannce}). The largest contributions from the backgrounds are from uncertainties due to the modelling of top-quark processes, $WW$ production, and the ggF process that can be considered a background in the VBF measurement. 
-
-\begin{table}[ht]
+\begin{table}[h!]
   \centering
   \caption[Breakdown of uncertainties in the inclusive cross-section measurement.]{
     Breakdown of the main contributions to the total uncertainty in $\sigma_{\mathrm{ggF+VBF}} \cdot \mathcal{B}_{\hww}$, $\sigma_{\mathrm{ggF}} \cdot \mathcal{B}_{\hww}$, and $\sigma_{\mathrm{VBF}} \cdot \mathcal{B}_{\hww}$, relative to the measured value.
@@ -76,16 +79,18 @@ The latter is mainly caused by uncertainties related to the modelling of potenti
 %The results obtained for the cross sections times branching fraction in 11 STXS bins are summarized in \cref{fig:11-POI_measurement}. 
 The results obtained for the 11 STXS cross sections times branching fraction are summarized in \cref{fig:11-POI_measurement}. 
 They are in agreement with the SM predictions, with a $p$-value of 53\%.
-The presentation of more detailed results is left to Appendix~\ref{app:stxs-measurement}. 
+The presentation of more detailed results is given in Appendix~\ref{app:stxs-measurement}. 
 The majority of $ggH$ cross-section measurements (4/6) are dominated by systematic uncertainties, with the background and experimental uncertainties making on average the largest contribution. 
 The measurements of EW~$qqH$ production are mostly dominated by statistical uncertainties (4/5). 
 
 % The cross sections measured for the five STXS bins targeting EW~$qqH$ production are on average lower than the VBF cross section measured in the two-POI fit. Events with high $\mjj$ or high $\pTH$ carry a larger statistical weight than events at low $\mjj$ in the two-POI fit, and in these STXS bins the measured value is close to one.
 \Cref{fig:STXS-correlation} shows the correlations between the cross sections measured. 
-Due to migrations of signal events from a particular STXS bin to multiple reconstructed SRs, the correlations are sizable but small. The maximum value is around 30\% between the high \pTH SRs of the two \TwoJet categories, where the separation at reconstruction-level between STXS bins is particularly difficult. This can also be seen in \cref{sec:event-categorization}, \cref{fig:STXS_Composition}. 
-\begin{figure}[htb]
+Due to migrations of signal events from a particular STXS bin to multiple reconstructed SRs, the correlations are sizable but small. 
+The maximum value is around 30\% between the high \pTH SRs of the two \TwoJet categories, where the separation at reconstruction-level between STXS bins is particularly difficult. This can also be seen in \cref{sec:event-categorization}, \cref{fig:STXS_Composition}. 
+
+\begin{figure}[t]
   \centering
-  \includegraphics[width=0.95\textwidth]{\paperfiguredir/11-POI/plot-STXS-pois-GreenTan-vert.pdf}
+  \includegraphics[width=0.9\textwidth]{\paperfiguredir/11-POI/plot-STXS-pois-GreenTan-vert.pdf}
   \caption[Best-fit values and uncertainties for the $\hww$ cross section measured in each of the STXS bins.]{
     Best-fit values and uncertainties for the $\hww$ cross section measured in each of the STXS bins, normalized to the corresponding SM prediction.
     The black error bars, green boxes and tan boxes show the total, systematic, and statistical uncertainties in the measurements, respectively.
@@ -95,11 +100,9 @@ Due to migrations of signal events from a particular STXS bin to multiple recons
   }
 \end{figure}
 
-% STXS correlation matrix
-%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htb]
+\begin{figure}[h!]
   \centering
-  \scalebox{0.8}{
+  \scalebox{0.65}{
     \input{\paperfiguredir/CorrelationMatrix.tex}
     %\includegraphics[width=1.2\textwidth]{\paperfiguredir/CorrelationMatrix} % Only to be used for the figure extraction script
   }
@@ -109,6 +112,10 @@ Due to migrations of signal events from a particular STXS bin to multiple recons
     \label{fig:STXS-correlation}
   }
 \end{figure}
+
+
+% STXS correlation matrix
+%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Post-fit distributions and signal excess}
 Post-fit distributions are presented that show the expected yields when all parameters are set to their corresponding post-fit values. They also take properly into account all systematic uncertainties. \Cref{fig:VBF_DNN} shows the post-fit DNN output distribution in the VBF SR as obtained from the 2-PoI fit.
@@ -124,7 +131,7 @@ Especially in the high \mjj bins, the measured VBF signal is very prominent abov
 For all distributions shown, the observed yields agree in both shapes and rates with the SM expectations.
 Similarly, post-fit distributions of other observables were studied and are found in excellent agreement with their expectations. The post-fit distributions of the final discriminants in the CRs are provided in Appendix~\ref{app:post-fit-cr-dists}. 
 
-\begin{figure}[htb]
+\begin{figure}[t]
   \centering
   \includegraphics[width=0.65\textwidth]{\paperfiguredir/VBF/SR/PostFit_VBF_DNN_ratios_SR_HWWRun2VBF_HWWVBF.pdf}
   \caption[Post-fit distribution of the DNN output in the VBF signal region.]{
@@ -157,7 +164,7 @@ Similarly, post-fit distributions of other observables were studied and are foun
     The hatched band shows the total uncertainty, assuming SM Higgs boson production.
     The middle panel shows the ratio of the data to the sum of the fitted signal and background.
     The bottom panel displays the difference between the data and the estimated background compared to the simulated signal distribution, where the hatched band indicates the combined statistical and systematic uncertainty for the fitted signal and background.
-    Figure and caption taken from \cref{HWWPaper}. 
+    Figure and caption taken from \ccite{HWWPaper}. 
     \label{fig:ggF_MT}
   }
 \end{figure}
@@ -184,7 +191,7 @@ Similarly, post-fit distributions of other observables were studied and are foun
     Post-fit DNN output distributions in the VBF STXS signal regions with the binning used in the STXS fit.
     The hatched bands indicate the combined statistical and systematic uncertainty for the fitted signal and background.
     The signal process targeted by the respective signal region is labelled as $H_{\text{EW } qqH}^{\mathrm{target}}$, the other signal processes are summed and collectively denoted $H_{\text{EW } qqH}$. 
-    Figure taken and caption adapted from \cref{HWWPaper}. 
+    Figure taken and caption adapted from \ccite{HWWPaper}. 
     \label{fig:aux:VBF-STXS-SRs}
   }
 \end{figure}

@@ -11,7 +11,8 @@ A common event preselection is applied before the events are divided into the se
 All selection criteria that define the nominal SRs are summarized in \cref{tab:HWWselection}. 
 A table with the changes in the event yields when these selections are applied is provided in Appendix~\ref{app:cutflows} for the VBF and ggF \TwoJet categories. 
 
-\begin{table}[!ht]
+\FloatBarrier
+\begin{table}[t]
     \centering
     \caption[Event selection criteria used to define the nominal signal regions.]{
     Event selection criteria used to define the nominal signal regions in the \hww\ analysis. The definitions of the variables can be found in the text.
@@ -26,23 +27,24 @@ A table with the changes in the event yields when these selections are applied i
 \subsection{Preselection and common selections}
 \label{subsec:preselection}
 The transverse momenta of the two leptons must satisfy \ptGT{22}\,GeV and \ptGT{15}\,GeV for the higher-\pT (\emph{leading}) and lower-\pT (\emph{subleading}) lepton, respectively.
-To minimize the contamination from both low-mass meson resonances and low-mass \Ztautau processes, the invariant mass of the dilepton system is required to be $\mll > 10\,\GeV$.
+To minimize the contamination from both low-mass meson resonances and \Ztautau processes with low \mll, the invariant mass of the dilepton system is required to be $\mll > 10\,\GeV$.
 The distribution of the number of jets in the event at this preselection stage is shown in \cref{fig:njet-dist}.
-All histograms in this chapter contain the overflow and underflow events in the first and last bin, respectively, unless otherwise specified.
-\begin{figure}
+All histograms in this chapter contain the underflow and overflow events in the first and last bin, respectively, unless otherwise specified.
+The signal and background composition varies significantly across jet bins, which motivates the split into separate \Njet signal categories.
+% In total four mutually exclusive regions are defined.
+% One region targets the VBF production mode and must satisfy \TwoJet.
+% Three categories are defined targeting the ggF production mode: \ZeroJet, \OneJet, and \TwoJet.
+To exploit the presence of neutrinos in the signal, a minimum threshold criterion of $\pTmiss > 20\,\GeV$ is applied to all the ggF categories.\footnote{This criterion is not applied in the VBF category and instead the \METSig observable is used in the DNN analysis to reject events with no genuine \MET. Details on the DNN analysis are given in \cref{sec:dnn}.} 
+The background from top-quark processes is reduced in all analysis categories by vetoing events that contain a reconstructed $b$-jet with \ptGT{20}\,GeV.
+Furthermore, a selection of $\mtt\,{<}\,m_Z - 25~\GeV$\footnote{The mass of the $Z$ boson, $m_Z$, is set to the central value found in current experimental measurements, 91.1876\,GeV~\cite{PDG2020}.} is applied in the ggF \OneJet, \TwoJet, and VBF \TwoJet categories, to separate the signal categories from the majority of \Zgamma events.
+
+\begin{figure}[t]
   \newImageResizeCustom{0.6}{figures/hww/presel/nJets.pdf}
   \caption[Jet multiplicity distribution after the preselection.]{Jet multiplicity distribution for jets with \ptGT{30}\,GeV and \absetaST{4.5}, after applying the preselection criteria. The solid red line (orange line) shows the expected ggF signal (VBF signal) scaled by a factor of 100 (1000). The various background components are discussed in more detail in the text. 
   The hatched band corresponds to the square root of the sum in quadrature of the MC statistical uncertainties and the normalization component of the dominant experimental systematic uncertainties (JER, JES, Flavor-tagging, and \MET uncertainties). 
   A similar figure is published in \ccite{HWWPaper}.}
   \label{fig:njet-dist}
 \end{figure}
-The signal and background composition varies significantly across jet bins, which motivates the split into separate \Njet signal categories.
-% In total four mutually exclusive regions are defined.
-% One region targets the VBF production mode and must satisfy \TwoJet.
-% Three categories are defined targeting the ggF production mode: \ZeroJet, \OneJet, and \TwoJet.
-To exploit the presence of neutrinos in the signal, a minimum threshold criterion of $\pTmiss > 20\,\GeV$ is applied to all the ggF categories.
-The background from top-quark processes is reduced in all analysis categories by vetoing events that contain a reconstructed $b$-jet with \ptGT{20}\,GeV.
-Furthermore, a selection of $\mtt\,{<}\,m_Z - 25~\GeV$\footnote{The mass of the $Z$ boson, $m_Z$, is set to the central value found in current experimental measurements, 91.1876\,GeV~\cite{PDG2020}.} is applied in the ggF \OneJet, \TwoJet, and VBF \TwoJet categories, to separate the signal categories from the majority of \Zgamma events.
 
 % \Cref{subsec:vbf-category,subsec:ggf-zero-jet-category,subsec:ggf-one-jet-category,subsec:ggf-two-jet-category} provide details on the remaining selections used to define the four analysis SRs that are used to measure the ggF and VBF production cross section. A summary of all selections is given in \cref{tab:event-selection}.\todo{Add table}
 % The four analysis regions are further split into several kinematic bins according to the Stage-1.2 STXS categorization scheme, which is described in \cref{subsec:STXS-categorization}.
@@ -84,7 +86,7 @@ In addition, a selection is made on the invariant mass of the jets $\mjj > 120\,
   \subfloat[]{
     \newImageResizeCustom{0.72}{figures/hww/olv2.pdf}
   }
-  \caption[Illustration of the central-jet veto and the outside-lepton veto.]{Illustration of (a) the central-jet veto and (b) the outside-lepton veto used to select the VBF phase space and separate it from the ggF \TwoJet category. If an event contains a central jet with $\pT > 30$\,GeV as illustrated in (a) or if one of the leptons is at a larger pseudorapidity than both of the jets as shown in (b), it is vetoed from the VBF \TwoJet category and assigned to the ggF \TwoJet category. The range of values of the lepton centrality observable, $C_\ell$, in the different regions is also indicated. 
+  \caption[Illustration of the central-jet veto and the outside-lepton veto.]{Illustration of (a) the central-jet veto and (b) the outside-lepton veto used to select the VBF phase space and separate it from the ggF \TwoJet category. If an event contains a central jet with $\pT > 30$\,GeV as illustrated in (a) or if one of the leptons is at a larger pseudorapidity than both of the jets as shown in (b), it is vetoed from the VBF \TwoJet category and assigned to the ggF \TwoJet category. The range of values in the different regions of the lepton centrality observable, $C_\ell$, is also indicated. It is defined as shown in \cref{eq:lep-centr}. 
   \label{fig:cjv-olv-illustration}
   }
 \end{figure}
@@ -92,7 +94,8 @@ In addition, a selection is made on the invariant mass of the jets $\mjj > 120\,
 \subsection{ggF-enriched \TwoJet category}
 \label{subsec:ggf-two-jet-category}
 The \TwoJet category targeting the ggF process is made mutually exclusive to the VBF-enriched \TwoJet category by requiring events to fail either the CJV or OLV. 
-In addition, events from $V(\to qq) H$ production are highly suppressed by a requirement $|\mjj  - 85| \le 15\,\GeV$ and $\Delta y_{jj} \le 1.2$. 
+In addition, events from $V(\to qq) H$ production are highly suppressed by the requirements $|\mjj  - 85| \le 15\,\GeV$ and $\Delta y_{jj} \le 1.2$. 
+These selections exploit that the $V(\to qq) H$ process, in contrast to the ggF \TwoJet process, have two jets with a large rapidity gap between them and an invariant mass close to the $Z$ or the $W$ boson mass.
 The same \mll\ and \DPhill\ selections as in the \ZeroJet category are also applied in the ggF \TwoJet category, and two subregions are defined with a boundary at $\mll = 30\,\GeV$ for the statistical analysis. 
 
 \subsection{STXS categorization}
@@ -114,6 +117,7 @@ After the merging, a total of 11 fiducial cross sections are measured: 6 for $gg
 % - STXS categorization plot
 % - Expected event yields in each stxs region (or maybe later!?)
 %%%%% From PAPER
+\FloatBarrier
 \begin{figure}[t]
     \newImageResizeCustom{1}{\paperfiguredir/HWW_STXS_Diagram.pdf}
     \caption[STXS bins measured in the \HWW analysis and the corresponding reconstructed signal regions.]{Two sets (Production Mode Stage and Reduced Stage 1.2) of exclusive phase-space regions (production bins) defined at parton level for the measurement of the Higgs boson production cross sections (left and middle-left shaded panels), and the corresponding reconstructed signal regions (right panel). The description of the production bins as well as the corresponding reconstructed signal regions is given in \cref{subsec:STXS-categorization}. The colors of each reconstructed signal region box indicate the STXS bin which provides the largest relative contribution.
@@ -130,11 +134,12 @@ In the EW~$qqH$ categories, the same DNN is used as final discriminant as in the
 All other STXS signal categories to which the analysis is not sensitive are fixed to their SM predictions. 
 The contribution of the different merged STXS bins in all reconstructed SRs is shown in \cref{fig:STXS_Composition}. 
 It can be seen that the largest contribution in each SR comes from the STXS bin that is targeted. 
-\begin{figure}[!h]
+\begin{figure}[h!]
   \centering
-    \includegraphics[width=1\textwidth]{\paperfiguredir/11-POI/STXS_CompositionMap}
+    \includegraphics[width=0.85\textwidth]{\paperfiguredir/11-POI/STXS_CompositionMap}
   \caption[Relative signal composition in terms of the measured STXS bin for each reconstructed signal region.]{
     Relative SM signal composition in terms of the measured STXS bin for each reconstructed signal region. Figure and caption taken from \ccite{HWWPaper}. 
     \label{fig:STXS_Composition}
   }
 \end{figure}
+\FloatBarrier

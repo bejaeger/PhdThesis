@@ -148,7 +148,8 @@ A natural choice for binary classification is a logistic sigmoid,
 which restricts the output to values between zero and one and can thus be interpreted probabilistically.
 Both functions are shown in \cref{fig:sigmoid-relu}.
 
-\begin{figure}[ht]
+\FloatBarrier
+\begin{figure}[t]
     \subfloat[Logistic sigmoid] {
         \newImageResizeCustom{0.45}{figures/plots/sigmoid.pdf}
     }
@@ -175,22 +176,6 @@ Both functions are shown in \cref{fig:sigmoid-relu}.
 \section{Neural Network Training}
 \label{sec:nn-training}
 % Read also here: http://neuralnetworksanddeeplearning.com/chap1.html#learning_with_gradient_descent
-\begin{figure}[ht]
-    \subfloat[Illustration of a simple neural network.] {
-        \newImageResizeCustom{0.7}{figures/data-analysis/simple-nn.pdf}
-    }
-    \vspace{2em}
-    \begin{align*}
-        %\stackrel{\text{(1)}}{=}
-        \frac{\partial L}{{\color{cyan}\partial  w_2}} &=  {\color{red}\frac{\partial L}{\partial y}} \frac{\partial y}{{\color{cyan}\partial w_2}} \\
-        \frac{\partial L}{{\color{blue} \partial w_1}} &=   {\color{red}\frac{\partial L}{\partial y}} \frac{\partial y}{{\color{blue}\partial w_1}} = {\color{red}\frac{\partial L}{\partial y}} \frac{\partial y}{\partial z_1} \frac{\partial z_1}{{\color{blue}\partial w_1}}
-    \end{align*}
-    \subfloat[Example gradient calculations]{
-        \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad
-        }
-    \caption[Illustration of a simple neural network.]{Example of a simple neural network used to illustrate the backpropagation algorithm. More information can be found in the text.}
-    \label{fig:simple-nn}
-\end{figure}
 % The work presented in this thesis uses supervised learning techniques to train a binary classifier that distinguishes between signal-like and background-like events. 
 % Therefore, only a single output node is required, that uses a logistic sigmoid as activation function such that $y = \sigma(x)$, where $\sigma(x)$ is defined as in \cref{eq:logistic-sigmoid}.
 % The network is trained with MC simulated $pp$ collision events that have ground-truth labels called \emph{target values} in the following. The target value, $t_n$, for a given event $n$ has a value of $t_n = 1$, if the event is a simulated signal event, and $t_n = 0$ otherwise.
@@ -241,6 +226,23 @@ It is important to note that the backpropagation algorithm relies on the activat
 %The computation of the gradients is done with a method called \emph{back propagation}~\ccite{Rumelhart_1986}.
 % is therefore used, that derives the gradient of the loss function with respect to each weight, by applying chain-rule differentiation.
 
+\begin{figure}[ht]
+    \subfloat[Illustration of a simple neural network.] {
+        \newImageResizeCustom{0.7}{figures/data-analysis/simple-nn.pdf}
+    }
+    \vspace{2em}
+    \begin{align*}
+        %\stackrel{\text{(1)}}{=}
+        \frac{\partial L}{{\color{cyan}\partial  w_2}} &=  {\color{red}\frac{\partial L}{\partial y}} \frac{\partial y}{{\color{cyan}\partial w_2}} \\
+        \frac{\partial L}{{\color{blue} \partial w_1}} &=   {\color{red}\frac{\partial L}{\partial y}} \frac{\partial y}{{\color{blue}\partial w_1}} = {\color{red}\frac{\partial L}{\partial y}} \frac{\partial y}{\partial z_1} \frac{\partial z_1}{{\color{blue}\partial w_1}}
+    \end{align*}
+    \subfloat[Example gradient calculations]{
+        \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad
+        }
+    \caption[Illustration of a simple neural network.]{Example of a simple neural network used to illustrate the backpropagation algorithm. More information can be found in the text.}
+    \label{fig:simple-nn}
+\end{figure}
+
 \section{Hyperparameter Optimization and Training Procedure} 
 \label{sec:hyperpar-opt}
 In practice, when developing a neural network, significant effort needs to be put into finding a suitable set of network parameters and training parameters (collectively known as \emph{hyperparameters}) so that the chosen \emph{performance metric} is optimized and the network converges to a minimum both rapidly and reliably. 
@@ -268,7 +270,8 @@ However, this is not possible for most metrics because the loss function must be
 To validate the methodology, it is therefore meaningful to show that the loss function optimized during the training is correlated with the performance metric. 
 \Cref{fig:loss-vs-sign} shows the anti-correlating behavior between the cross-entropy loss, as defined in \cref{eq:cross-entropy-loss}, and the discovery significance, as defined in \cref{eq:discovery-significance}.
 
-\begin{figure}[ht]
+\FloatBarrier
+\begin{figure}[t]
     \newImageResizeCustom{0.6}{figures/data-analysis/loss_v_significance_thesis.pdf}
     \caption[Loss and significance as a function of training epochs.]{Cross-entropy loss and discovery significance as a function of training epochs, averaged over three separate trainings. The shaded band corresponds to the standard deviation of the three trainings. The discovery significance is calculated based on a histogram with 20 bins of the DNN output distribution by taking the square root of the sum of the significance calculated in each of the bins according to \cref{eq:discovery-significance}.}
     \label{fig:loss-vs-sign}

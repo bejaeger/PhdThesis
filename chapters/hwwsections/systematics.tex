@@ -1,6 +1,6 @@
 This analysis is affected by several sources of systematic uncertainties.
 They can be grouped into \emph{experimental uncertainties} and \emph{theoretical uncertainties}.
-The experimental uncertainties are related to the detector performance and associated to the identification, reconstruction, and trigger efficiencies, as well as the limited knowledge of the scale and resolution of energy and momentum measurements.
+The experimental uncertainties are related to the detector performance and associated to the physics objects identification and reconstruction, trigger efficiencies, as well as the limited knowledge of the scale and resolution of energy and momentum measurements.
 The theoretical uncertainties for both the signal and background processes arise from the assumptions made in the MC simulations as well as theoretical cross-section calculations. 
 % In a multi-category analysis, the sign and magnitude of these experimental uncertainties are calculated separately in each category.
 All uncertainties are taken into account by constructing respective varied MC templates for the statistical model and using them to define the corresponding nuisance parameters, as described in \cref{chap:statistics}.
@@ -9,13 +9,22 @@ All uncertainties are taken into account by constructing respective varied MC te
 \subsection{Experimental uncertainties}
 Experimental uncertainties are typically derived in separate calibration measurements that typically provide a set of sometimes many sources of uncertainties to be considered in physics analyses.
 For example, the uncertainties related to the jet energy resolution arise from different sources such as pile-up conditions, method non-closures, etc., which is explained in detail in \cref{chap:calibration}.
+A complete list of all experimental uncertainties considered in this analysis is provided in \cref{tab:exp-uncertainties}, including references to the relevant calibration measurements where applicable.
+\begin{table}[h!]
+    \begin{center}
+        \input{tables/hww/uncertainties/exp-systs.tex}
+    \end{center}
+    \caption[Overview of experimental uncertainties.]{Overview of experimental uncertainties considered in the \HWW analysis, including their total number of nuisance parameters (NPs) and a specification whether they represent scale-factor (SF) uncertainties or four-vector (P4) uncertainties.
+    }
+    \label{tab:exp-uncertainties}
+\end{table}
+
 The uncertainties are propagated via scale factor variations, as described in \cref{sec:object-selection}, that either effect the entire event (denoted SF uncertainties) or the four vectors of individual physics objects (denoted P4 uncertainties). 
 While the former is applied to the events as a flat scale factor and thus cannot change the shape of the final discriminant, the latter can cause events to migrate between different histogram bins and thus induce a shape difference between the nominal and the varied template.
 % More details on the uncertainties related to jets, in particular the jet energy resolution, are provided in \cref{chap:calibration}. 
-In the likelihood in the statistical analysis, the experimental uncertainties are constraint by Gaussian functions with widths corresponding to the nominal uncertainties derived.
-A complete list of is provided in \cref{tab:exp-uncertainties}, including references to the relevant calibration measurements where applicable.
+In the likelihood in the statistical analysis, the experimental uncertainties are constrained by Gaussian functions with widths corresponding to the nominal uncertainties derived.
 
-The uncertainty on the luminosity is obtained using the LUCID-2 detector~\cite{ATLAS-CONF-2019-021} and only applied to processes not estimated with CRs. 
+The uncertainty on the luminosity is 1.7\%, obtained using the LUCID-2 detector~\cite{ATLAS-CONF-2019-021}, and only applied to processes estimated using MC simulation. 
 The uncertainty on the pile-up reweighting procedure is estimated by varying the scale factor used for the reweighting. 
 Uncertainties on the physics objects included in the \MET calculation, i.e., electrons, muons, and jets, are propagated to the \MET object. In addition, specific \MET uncertainties are included to account for uncertainties of the \MET soft term.
 The uncertainties on the jet energy resolution correspond to the ones discussed in \cref{chap:calibration}. 
@@ -36,16 +45,6 @@ The uncertainties associated to the background with misidentified leptons are al
 % Dickinson: Nope and very short. Includes 'constraint type' when mentioning systematics
 % From paper:
 % The largest sources of experimental uncertainties affecting the ggF measurement are from the 푏-jet 517 identification, the pile-up modelling, the jet energy resolution, and the Mis-Id background estimate. For the 518 VBF measurement, the largest source of experimental uncertainty comes from the 퐸miss T reconstruction.
-\begin{table}[ht]
-    \begin{center}
-        \input{tables/hww/uncertainties/exp-systs.tex}
-    \end{center}
-    \caption[Overview of experimental uncertainties.]{Overview of experimental uncertainties considered in the \HWW analysis, including their total number of nuisance parameters (NPs) and a specification whether they represent scale-factor (SF) uncertainties or four-vector (P4) uncertainties.
-    }
-    \label{tab:exp-uncertainties}
-\end{table}
-
-
 
 \subsection{Theoretical uncertainties}
 The nominal MC simulations for both the signal and background processes rely on a set of assumptions that must be made because of the imprecise knowledge of various effects. Assumptions include the choice of renormalisation and factorisation scale, the choice of PDFs, the value of experimentally measured parameters like $\alpha_s$, or assumptions about non-perturbative effects such as the parton showering, hadronization, and underlying event model. 
@@ -66,7 +65,7 @@ The parton shower and matrix element matching uncertainty are derived from the s
 Cross-section uncertainties arising from both missing higher-order contributions in the cross-section calculations and migration effects on the ggF cross sections in different \Njets categories are estimated according to the descriptions provided in \ccite{deFlorian:2016spz,Stewart:2011cf,Stewart:2013faa,Liu:2013hba,Boughezal:2013oha,Gangal:2013nxa}.
 This includes uncertainties from the choice of factorization and renormalization scales, the choice of resummation scales, and the ggF migrations between the \ZeroJet and \OneJet regions or between the $N_{\text{jet}} \ge 1$  and \TwoJet categories.
 For the ggF migration uncertainties in the \TwoJet categories the so-called Steward Tackmann procedure is used, where the inclusive cross sections in categories $N_{\text{jet}} \ge N$ and $N_{\text{jet}} \ge N+1$ are assumed to be independent and therefore the uncertainty on the exclusive cross section in the $N_{\text{jet}} = N$ can be estimated by the sum in quadrature of the uncertainties of the inclusive cross sections.
-Furthermore, an uncertainty of 2.2\% is applied to the signal cross sections assumed, to account for the uncertainty on the \HWW branching fraction. 
+Furthermore, an uncertainty of 2.2\% is applied to the signal cross sections times branching fraction assumed, to account for the uncertainty on the \HWW branching fraction. 
 %OR THIS: where uncertainties in exclusive jet bins are estimated based on scale variations in inclusive bins.
 
 \paragraph{STXS signal uncertainties}

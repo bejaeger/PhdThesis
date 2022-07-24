@@ -18,7 +18,7 @@ They are designed to reach field strengths of up to \SI{8.33}{\tesla}, enabling 
 The ATLAS\footnote{A Toroidal Lhc ApparatuS} and CMS\footnote{Compact Muon Solenoid}~\cite{CMS-TDR-08-001} experiments are multipurpose detectors, designed to measure a large variety of physics processes. The LHCb\footnote{Large Hadron Collider beauty} experiment~\cite{1748-0221-3-08-S08005} is dedicated to measuring processes that involve $b$-quarks and ALICE\footnote{A Large Ion Collider Experiment}~\cite{1748-0221-3-08-S08002} focuses on the analysis of heavy-ion collisions.\footnote{There are other smaller experiments operating at the LHC: the TOTEMd (Total Elastic and Diffractive Cross Section Measurement)~\cite{1748-0221-3-08-S08007} and LHCf (Large Hadron Collider forward)~\cite{1748-0221-3-08-S08006} experiments study scattering processes close to the beam line and the MoEDAL (Monopole and Exotics Detector at the LHC) experiment~\cite{1742-6596-631-1-012014} is dedicated to the search for magnetic monopoles.}
 
 Before the protons enter the LHC, they pass through a series of smaller accelerators. A schematic of the entire accelerator complex is shown in \cref{fig:accelerator-complex}.
-The protons are extracted by ionising hydrogen atoms and first accelerated in the linear accelerator \emph{Linac2} (Linear accelerator 2)\footnote{Starting in 2020, Linac2 will be replaced by a new linear accelerator, Linac4 (Linear accelerator 4). More information can be found in \ccite{CERN-AB-2006-084}.}. Three synchrotrons follow: the \emph{BOOSTER} (Proton Synchrotron Booster), the \emph{PS} (Proton Synchrotron), and the \emph{SPS} (Super Proton Synchrotron).
+The protons are extracted by ionizing hydrogen atoms and first accelerated in the linear accelerator \emph{Linac2} (Linear accelerator 2)\footnote{Starting in 2020, Linac2 will be replaced by a new linear accelerator, Linac4 (Linear accelerator 4). More information can be found in \ccite{CERN-AB-2006-084}.}. Three synchrotrons follow: the \emph{BOOSTER} (Proton Synchrotron Booster), the \emph{PS} (Proton Synchrotron), and the \emph{SPS} (Super Proton Synchrotron).
 They have an increasingly larger circumference and gradually increase the energy of the proton beams.
 The proton beams from the SPS are finally injected into the LHC with an energy of $450\,\GeV$. The filling and ramp-up phases until stable beams are brought to collision at their final energies take around 45 minutes. The experiments at the LHC record the collision events for ideally about 8-10 hours or more, until the intensity of the beams becomes too low, making it more efficient to dump the beams and start a new cycle.
 
@@ -26,15 +26,14 @@ The operation of the LHC is broken down into different runs that last several ye
 \Cref{tab:lhc-lumi-overview-years} shows basic characteristics of the $pp$ collisions produced in so-called \RunOne and \RunTwo of the LHC, that occured between 2011-2012 and 2015-2018, respectively. After a technical shutdown between 2018 and 2022, the LHC continued to operate with \RunThr at a center-of-mass energy of $\sqrt{s} = \SI{13.6}{\TeV}$ in July 2022.
 Details on the \RunTwo data taking period and the performance of the ATLAS data acquisition are given in \cref{sec:run-2-data-taking}.
 
-\FloatBarrier
-\input{tables/experiment/lhc-runs}
-
-\begin{figure}
+\begin{figure}[t]
     %\includegraphics{figures/experiment/accelerator-complex.jpg}
     \newImageResize{figures/experiment/accelerator-complex.jpg}
     \caption[Illustration of the accelerator complex at CERN.]{Illustration of the accelerator complex at CERN, including the Linac2, BOOSTER, PS, and SPS that serve as pre-accelerators before the protons are injected into the LHC. Adapted from \ccite{Christiane:1260465}.}
     \label{fig:accelerator-complex}
 \end{figure}
+
+\input{tables/experiment/lhc-runs}
 
 \section{The ATLAS Experiment}
 The ATLAS experiment is operated by a community of about 3000 scientific authors from 181 institutions and 41 countries~\cite{AtlasCollab}, making it one of the largest scientific collaborations in the world.
@@ -94,20 +93,18 @@ More details on the characteristics of hadronic showers and their implications f
 % \paragraph{Calorimeter showering} occurs when incident particles interact with the passive material through different mechanisms which results in cascades of secondary particles.
 The active layers in the ATLAS calorimeter measure the signals from the particles participating in the showers. They consist of either \emph{liquid argon} (LAr) or plastic scintillating tiles.
 
-The LAr-based systems are embedded in cryostats and measure the current induced by ionising particles. Readout electrodes are placed in the liquid and collect the charge within a timeframe of about \SI{450}{\nano\second}. The resulting signal is shown in \cref{fig:LAr-signal-pulse}. The pulse in the detector is first shaped to have a long negative tail in order to reduce the sensitivity to signals caused by $pp$ collisions from neighbouring beam bunches. The signal is then readout by sampling it four times at \SI{40}{\mega\hertz}. The pulse height is proportional to the energy of the traversing particle and energy calibrations are derived using data from dedicated runs~\cite{Abreu:1303004}.
+The LAr-based systems are embedded in cryostats and measure the current induced by ionizing particles. Readout electrodes are placed in the liquid and collect the charge within a timeframe of about \SI{450}{\nano\second}. The resulting signal is shown in \cref{fig:LAr-signal-pulse}. The pulse in the detector is first shaped to have a long negative tail in order to reduce the sensitivity to signals caused by $pp$ collisions from neighbouring beam bunches. The signal is then readout by sampling it four times at \SI{40}{\mega\hertz}. The pulse height is proportional to the energy of the traversing particle and energy calibrations are derived using data from dedicated runs~\cite{Abreu:1303004}.
 % so that it can be converted to an energy measurement using calibrations derived from dedicated runs.~\cite{Abreu:1303004}
 
 %In the LAr-based systems, that are embedded in cryostats, the incident charged particles ionize the liquid inducing a current that is measured at electrodes.
-In the plastic scintillators, the energy of ionising particles is absorbed by the excitation of atoms and re-emitted in the form of light by the de-excitation of atoms. Also, photons produce light by exciting atoms after undergoing electron-positron pair production, Compton scattering, or photoelectric effect, depending on the energy of the photon.\footnote{Pair production dominates at higher energies larger than several \MeV, Compton scattering in the \MeV-range, and the photoelectric effect at lower energies below 1\,\MeV. The exact energy regime depends on the material.}.
+In the plastic scintillators, the energy of ionizing particles is absorbed by the excitation of atoms and re-emitted in the form of light by the de-excitation of atoms. Also, photons produce light by exciting atoms after undergoing electron-positron pair production, Compton scattering, or photoelectric effect, depending on the energy of the photon.\footnote{Pair production dominates at higher energies larger than several \MeV, Compton scattering in the \MeV-range, and the photoelectric effect at lower energies below 1\,\MeV. The exact energy regime depends on the material.}.
 The light is routed with wavelength shifting fibers to two photomultiplier tubes where it is converted to an electric pulse via the photoelectric effect. The pulse can be interpreted as an energy measurement with calibrations derived using data from dedicated runs~\cite{PERF-2007-01}.
 
-\FloatBarrier
 \begin{figure}[t]
     \newImageResizeHalf{figures/experiment/LAr-pulse-shape-red-dots.png}
     \caption[Signal pulse measured in the ATLAS LAr detectors.]{Signal pulse measured in the LAr detectors with and without pulse shaping. The large (red) dots indicate the positions at which the signal is ideally read out. Adapted from \ccite{Abreu:1303004}.}
     \label{fig:LAr-signal-pulse}
 \end{figure}
-
 
 \subsection{Overview of the ATLAS detector}
 % An illustration of the detector is shown in \cref{fig:ATLASlayout}.
@@ -128,7 +125,10 @@ More information about the ATLAS detector can be found in \ccite{PERF-2007-01}, 
 %A combination of these subsystems is used to trigger on interesting physics events which is discussed thereafter.
 %This section concludes with a description of the ATLAS simulation infrastructure. 
 
-\begin{sidewaysfigure}
+\begin{landscape}
+   %\thispagestyle{plain}
+%\begin{sidewaysfigure}
+    \begin{figure}
     \newImageResizeCustom{0.8}{figures/experiment/ATLASdetector.jpg}
     \caption[Schematic of the ATLAS detector showing the various subsystems.]{Schematic of the ATLAS detector showing the various subsystems.
         The innermost layers are used for tracking and consist of the silicon \emph{pixel detector}, the silicon \emph{semiconductor tracker}, and the \emph{transition radiation tracker}.
@@ -136,7 +136,9 @@ More information about the ATLAS detector can be found in \ccite{PERF-2007-01}, 
         The calorimeter system is placed outside the solenoid and includes the \emph{LAr electromagnetic calorimeters}, the hadronic \emph{tile calorimeters}, the \emph{LAr hadronic end-caps}, and the \emph{LAr forward calorimeters}.
         The outermost part forms the muon spectrometer which is designed to reconstruct muon tracks, using large \emph{muon chambers}, and is placed in between \emph{toroid magnets}. Taken from \ccite{PERF-2007-01}.}
     \label{fig:ATLASlayout}
-\end{sidewaysfigure}
+%\end{sidewaysfigure}
+    \end{figure}
+\end{landscape}
 
 \subsection{The ATLAS coordinate system}
 The ATLAS experiment uses a right-handed cartesian coordinate system to describe the hard-scattering processes. The origin is set at the nominal interaction point, which is at the geometrical centre of the ATLAS detector. The $z$-axis is along the beam direction, the $y$-axis points upwards, and the $x$-axis points to the centre of the LHC. The azimuthal angle $\phi$ is measured with respect to the $x$-axis in the $x$-$y$ plane and the polar angle $\theta$ is the angle taken from the beam axis.
@@ -169,15 +171,10 @@ The first tracking layer in the barrel is the insertable $b$-layer (IBL)~\cite{A
 Three layers of silicon \emph{pixels} in the barrel and each end-cap typically provide four space points for each charged particle.
 Four layers (nine layers) of silicon-microstrip \emph{semiconductor trackers} (SCT) in the barrel (each end-cap) are composed of double layers of strips arranged at an angle of \SI{40}{\milli\radian} relative to each other. Four double layers are crossed by each track to provide an additional four space points.
 The fine granularity of the pixel and microstrip sensors provide high-precision measurements with resolutions in $R$-$\phi \times z$ ($R$-$\phi \times R$) of $10 \times 115\,\mu\text{m}$ and $17 \times 580\,\mu\text{m}$ for the pixel and microstrip barrels (end-caps), respectively.
-The \emph{transition radiation tracker} TRT consists of a large number of straw tubes filled with xenon-based gas that provide on average 36 additional hits. The TRT covers a range \absetaST{2.0} and provides information in only the $R$-$\phi$ plane with a resolution of \SI{130}{\micro\meter}.
-Apart from the position measurement, the TRT also generates and detects the amount of transition radiation, that is produced by high-energy charged particles when crossing two media of different dielectric constants. For this purpose, the TRT is interleaved with fibres and foils that provide the transition-radiation photons, which helps to differentiate electrons from charged pions.
-
-% FROM MIKE:
-% It would be good to add a couple of sentences to explain what TR is and how it is generated, e.g. there is a radiator in the detector.
-% But don’t go overboard and describe the guts of TR generation. It is sufficient to say that it is a relativistic effect that is important only for electrons in ATLAS.
-
-\FloatBarrier
-\begin{sidewaysfigure}[t]
+\begin{landscape}
+    %\thispagestyle{plain}
+ %\begin{sidewaysfigure}
+     \begin{figure}[t]
     %\resizebox{\textwidth}{!}{
     \subfloat[central region]{
         %\newImageScale{figures/experiment/ATLASinnerdetector.pdf}{.105}
@@ -190,10 +187,17 @@ Apart from the position measurement, the TRT also generates and detects the amou
     %   }
     \caption[Schematic of the ATLAS inner detector.]{Schematic of the ATLAS inner detector in (a) the central region and (b) the end-cap region, showing the different systems: the IBL (not shown for the end-cap region), the pixel detector, the SCT, and the TRT. Taken from Refs.~\cite{ATL-PHYS-PUB-2015-009} and~\cite{PERF-2007-01}, respectively.}
     \label{fig:ATLASinnerdetector}
-\end{sidewaysfigure}
+\end{figure}
+\end{landscape}
+The \emph{transition radiation tracker} TRT consists of a large number of straw tubes filled with xenon-based gas that provide on average 36 additional hits. The TRT covers a range \absetaST{2.0} and provides information in only the $R$-$\phi$ plane with a resolution of \SI{130}{\micro\meter}.
+Apart from the position measurement, the TRT also generates and detects the amount of transition radiation, that is produced by high-energy charged particles when crossing two media of different dielectric constants. For this purpose, the TRT is interleaved with fibres and foils that provide the transition-radiation photons, which helps to differentiate electrons from charged pions.
 
+% FROM MIKE:
+% It would be good to add a couple of sentences to explain what TR is and how it is generated, e.g. there is a radiator in the detector.
+% But don’t go overboard and describe the guts of TR generation. It is sufficient to say that it is a relativistic effect that is important only for electrons in ATLAS.
 
-
+% \FloatBarrier
+% \begin{sidewaysfigure}[t]
 
 % • They are versatile detectors. Although originally conceived as devices for energy measurement, they can be used to determine the shower position and direction, to identify
 % different particles (for instance to distinguish electrons and photons from pions and
@@ -215,17 +219,21 @@ This limits the level of punch-through to the muon system almost entirely, excep
 A summary of the most important material characteristics of the different segments is shown in \cref{tab:calorimeter-characteristics}.
 Details on the detector coverage and granularity are given in \cref{tab:ATLAScalorimeter-parameters}.
 
-\FloatBarrier
-\input{tables/experiment/calorimeter-characteristics}
-
 \subsubsection{LAr electromagnetic calorimeters}
 The ECAL is arranged in an accordion-shaped structure to ensure full coverage in $\phi$ without cracks.
 It is subdivided into a barrel part covering \absetaST{1.475} and an end-cap on each side in the range \absetaBT{1.375}{3.2}.
 
 The barrel consists of two identical segments along the $z$-axis with a small gap of \SI{4}{\milli\meter} in between at $z=0$. A schematic of one of the barrel modules is shown in \cref{fig:ATLASmodules-a}. Each module is segmented in three layers in depth with varying granularity.
 The first layer is finely segmented in $\Delta \eta$ which provides essential inputs for photon and neutral pion identification. The second layer is finer in $\Delta \phi$ than the first layer and larger in depth and measures the bulk of the electromagnetic showers. The third and coarsest layer in $\Delta \eta$ is designed to measure the broad tail of the electromagnetic showers.
+\begin{figure}[h]
+    \newImageScale{figures/experiment/ATLAScalorimeters.jpg}{.3}
+    \caption[Schematic of the ATLAS calorimeters showing the different subcomponents.]{Schematic of the ATLAS calorimeters showing the different subcomponents. Details are provided in the text. Taken from \ccite{PERF-2007-01}.}
+    \label{fig:ATLAScalorimeters}
+\end{figure}
+\input{tables/experiment/calorimeter-characteristics}
 %Together, the three segments provide a stopping power of 24 radiation lengths ($X_0$) 
 The high granularity provides valuable space point measurements in addition to the data from the ID and reduces the sensitivity to \pileup, therefore allowing to handle large collision rates.
+
 
 % Comment MIKE: It is also a matter of rate capability and reducing sensitivity to pileup.
 
@@ -242,6 +250,11 @@ In the transition region between the barrel and end-caps (\absetaBT{1.37}{1.52})
 
 The end-caps consist of wheels placed on each side of the barrel.
 They are composed of three layers in depth for the range \absetaST{2.5} and two layers for \absetaBT{2.5}{3.2} with varying thickness of the lead absorber. Details on the readout granularity are shown in \cref{tab:ATLAScalorimeter-parameters}.
+\begin{table}[h!]
+    \newImageResize{figures/experiment/calorimeter-specs.png}
+    \caption[Main parameters of the ATLAS calorimeter system.]{Main parameters of the ATLAS calorimeter system. Taken from \ccite{PERF-2007-01}.}
+    \label{tab:ATLAScalorimeter-parameters}
+\end{table}
 
 To account for the energy that particles lose upstream of the ECAL, when traversing the ID and solenoid magnet, a presampler consisting of a thin LAr layer is placed in front of the ECAL in the range \absetaST{1.8}.
 
@@ -272,14 +285,6 @@ At very large pseudorapidities (\absetaBT{3.1}{4.9}) the calorimeter needs to be
 % - 10 interaction lengths with three high-density modules per end-cap.
 % - first is copper for EM measurements, the other two made out of tungsten for hadrons.
 
-
-
-\begin{figure}
-    \newImageScale{figures/experiment/ATLAScalorimeters.jpg}{.3}
-    \caption[Schematic of the ATLAS calorimeters showing the different subcomponents.]{Schematic of the ATLAS calorimeters showing the different subcomponents. Details are provided in the text. Taken from \ccite{PERF-2007-01}.}
-    \label{fig:ATLAScalorimeters}
-\end{figure}
-
 \begin{figure}
     \subfloat[]{
         \newImageResizeCustom{0.53}{figures/experiment/barrel_module.png}
@@ -293,16 +298,10 @@ At very large pseudorapidities (\absetaBT{3.1}{4.9}) the calorimeter needs to be
     \label{fig:ATLASmodules}
 \end{figure}
 
-\begin{table}
-    \newImageResize{figures/experiment/calorimeter-specs.png}
-    \caption[Main parameters of the ATLAS calorimeter system.]{Main parameters of the ATLAS calorimeter system. Taken from \ccite{PERF-2007-01}.}
-    \label{tab:ATLAScalorimeter-parameters}
-\end{table}
-
 
 
 \subsection{The muon spectrometer}
-Muons are minimum-ionising particles and escape the calorimeter system.
+Muons are minimum-ionizing particles and escape the calorimeter system.
 %Therefore, a large MS forms the outermost part of the ATLAS detector. 
 The main purpose of the large MS therefore is to measure muon-track hits for muon reconstruction but also to provide information of a potential muon candidate to the trigger system.
 \Cref{fig:ATLASmuonspectrometer} shows the MS including the large superconducting toroid magnets that are located in between several gaseous muon chambers.

@@ -100,7 +100,8 @@ Similarly, for shape uncertainties that have at least one bin where the up and d
 For the DNN discriminant, a smoothing procedure is applied to background shape uncertainties whose estimates are subject to large statistical fluctuations. 
 The smoothing procedure is based on a bin merging strategy together with the 353QH running median algorithm~\cite{Friedman353QH}. 
 An example of an uncertainty processed in such a way is shown in \cref{fig:dnn:smoothing}.
-\begin{figure}[th]
+
+\begin{figure}[h!]
     \centering
     % \subfloat[]
     %     {
@@ -117,26 +118,11 @@ An example of an uncertainty processed in such a way is shown in \cref{fig:dnn:s
 \subsection{Expected performance and validation of likelihood fit}
 \label{subsec:expected-performannce}
 The analysis strategy is optimized on MC simulated samples and signal-like data events are only analyzed after the statistical model is validated.
-An \emph{Asimov} dataset can be used to evaluate the expected performance of the likelihood fit. It is generated under the SM assumption, i.e., assuming the expected values for the backgrounds and signals ($\mu=1$). 
+An \emph{Asimov} dataset~\cite{Cowan:2010js} can be used to evaluate the expected performance of the likelihood fit. It is generated under the SM assumption, i.e., assuming the expected values for the backgrounds and signals ($\mu=1$). 
 This implies that the values of all fit parameters obtained from a fit (\emph{post-fit} values) to the Asimov dataset correspond to their expected values. 
 The Asimov dataset is used to extract the expected uncertainties on the cross-section measurements and to assess the impact of different sources of uncertainties on the final results. 
 \Cref{fig:fit:breakdown} shows a representative list of NPs and their influence on the VBF cross section, \sigmaVBF. 
-\begin{figure}[th]
-    \centering
-        \newImageResizeCustom{0.6}{figures/plots/breakdown/breakdown_muVBF.pdf}
-    {\caption[Contribution of individual NPs to the total uncertainty of $\sigma_{\mathrm{VBF}}$ as well as NP pulls and constraints.]{Contribution of individual NPs to the total uncertainty of the cross section $\sigma_{\mathrm{VBF}}$ relative to the measured value, shown for (green hashed area) the fit to observed data and (orange solid area) the Asimov dataset in the measurement of the inclusive \muVBF and \muGGF cross sections. The leading 20 NPs are shown in decreasing order of their impact (top x-axis).
-    The uncertainty due to a single NP is computed by taking the square root of the difference in quadrature of the uncertainties on $\sigma_{\mathrm{VBF}}$ resulting from a fit performed with all parameters free-floating and a fit where the respective NP is fixed to its nominal value. 
-    %The impact of a given NP is derived by comparing the uncertainty on $\mu$ resulting from a fully unconditional fit and a fit with the respective NP fixed to its nominal value. The comparison is based on the square root of the difference in quadrature of the two post-fit uncertainties on $\mu$. 
-    The dots indicate the pull (bottom x-axis), i.e. the post-fit values of the NPs, $\hat{\theta}$, relative to their nominal values, $\theta_0$. 
-    The associated error bars show the post-fit uncertainties of the NPs relative to their nominal uncertainties. 
-    The pull is zero by definition for the fit to the Asimov dataset.
-% (b): Breakdown
-% of the contribution of groups of NPs to the uncertainty on the V H
-% PoI. The sum in quadrature of the individual contributions differs
-% from the total uncertainty due to correlations between the NPs. Both
-% Figures are obtained from a (1+1)-PoI fit. Published in Ref. [5].
-    \label{fig:fit:breakdown} }}
-\end{figure}
+
 The uncertainties that include ``ATLAS'' in their names correspond to experimental uncertainties, all other uncertainties are related to theory. 
 % The NPs are ordered in terms of their contribution to the total uncertainty (\emph{breakdown}) on the cross section \sigmaVBF. 
 %The impact is calculated by taking the square root of the difference in quadrature of the uncertainty on $\mu_{\mathrm{VBF}}$ resulting from a fit performed with all parameters floating and a fit where the NP under investigation is fixed to its nominal value. 
@@ -150,12 +136,29 @@ This shows that the uncertainties are represented adequately in the statistical 
 The expected signal strength is extracted to be $\muVBF = 1^{+0.24}_{-0.21}$.
 The expected discovery significance of the VBF signal is $6.2\,\sigma$. 
 
-\Cref{fig:fit:breakdown} also includes the NPs obtained from a fit to the actual data. 
+\Cref{fig:fit:breakdown} also includes the NPs obtained from a fit to the full \RunTwo dataset of the LHC. 
 The \emph{pulls} of the NPs, defined as the difference of the post-fit central values and their corresponding nominal ones, $(\hat{\theta} - \theta_0 ) / \Delta \theta_0$, are relatively small. 
 Furthermore, the constraints and the breakdown of uncertainties are comparable for the results obtained from a fit to Asimov data and actual data. 
 Because of these findings, the statistical model is deemed appropriate for the measurement performed. 
 Similar validation studies have been conducted for the ggF cross-section measurement as well as the STXS measurement and lead to the same conclusions. 
 
+\begin{figure}[t]
+    \centering
+        \newImageResizeCustom{0.65}{figures/plots/breakdown/breakdown_muVBF.pdf}
+    {\caption[Contribution of individual NPs to the total uncertainty of $\sigma_{\mathrm{VBF}}$ as well as NP pulls and constraints.]{Contribution of individual NPs to the total uncertainty of the cross section $\sigma_{\mathrm{VBF}}$ relative to the measured value, shown for (green hashed area) the fit to observed data and (orange solid area) the Asimov dataset in the measurement of the inclusive \muVBF and \muGGF cross sections. The leading 20 NPs are shown in decreasing order of their impact (top x-axis).
+    The uncertainty due to a single NP is computed by taking the square root of the difference in quadrature of the uncertainties on $\sigma_{\mathrm{VBF}}$ resulting from a fit performed with all parameters free-floating and a fit where the respective NP is fixed to its nominal value. 
+    %The impact of a given NP is derived by comparing the uncertainty on $\mu$ resulting from a fully unconditional fit and a fit with the respective NP fixed to its nominal value. The comparison is based on the square root of the difference in quadrature of the two post-fit uncertainties on $\mu$. 
+    The dots indicate the pull (bottom x-axis), i.e. the post-fit values of the NPs, $\hat{\theta}$, relative to their nominal values, $\theta_0$. 
+    The associated error bars show the post-fit uncertainties of the NPs relative to their nominal uncertainties. 
+    The pull is zero by definition for the fit to the Asimov dataset.
+% (b): Breakdown
+% of the contribution of groups of NPs to the uncertainty on the V H
+% PoI. The sum in quadrature of the individual contributions differs
+% from the total uncertainty due to correlations between the NPs. Both
+% Figures are obtained from a (1+1)-PoI fit. Published in Ref. [5].
+    \label{fig:fit:breakdown} }}
+\end{figure}
+\clearpage
 % A listing of the results for the individual parameters obtained in the fit is shown in Fig. 4.25. The total uncertainty has been broken down to the impacts of each individual nuisance parameter (and for certain groups of nuisance parameters). Shown are the breakdowns for the fit to the observed data, as well as for a control fit to an Asimov data set generated with the assumption of μ = 1. The postfit values and uncertainties of the individual nuisance parameters are shown as well, where the constrained nuisance parameters have been normalized to their respective constraints.
 
 % Combination:

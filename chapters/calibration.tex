@@ -63,11 +63,14 @@ which is a useful quantity for calibrating the jet energy, which is explained in
 The goal of the jet energy correction is to correct for the non-linearity as well as the non-compensating nature of the calorimeter and to bring the average jet response to unity.
 To this end, a calibration procedure is performed that consists of several stages. The procedure used to calibrate jets reconstructed with the \antikt algorithm with a radius parameter of $R = 0.4$ is illustrated in \cref{tab:jes-calibration} and is discussed in this section. At each stage, the jet is manipulated at the level of the fully reconstructed object which is represented as a massless four-vector. The energy of a jet can therefore be treated as equivalent to its momentum\footnote{The terms energy and momentum are thus often used interchangeably throughout this thesis}. More details on the calibration procedure can be found in \ccite{JETM-2018-05}.
 
-\begin{table}
-    \newImageResize{figures/calibration/jes-calibration.pdf}
+\FloatBarrier
+\begin{figure}[t]
+    \resizebox{\textwidth}{!}{
+        \includegraphics[trim=0 20 0 0]{figures/calibration/jes-calibration.pdf}
+    }
     \caption[Summary of the different stages of the jet energy calibration.]{Summary of the different stages of the jet energy calibration. Each correction is applied to the four momentum of the jet. Taken from \ccite{JETM-2018-05}.}
     \label{tab:jes-calibration}
-\end{table}
+\end{figure}
 
 %The different steps use either MC simulation or data and are also applied to either MC or data, depending on the correction.
 \subsection{Pile-up correction}
@@ -118,21 +121,23 @@ Jets that have the GSC applied are considered to be \emph{fully calibrated}, and
 \subsection{\textbf{\emph{In~situ}} calibration}
 \label{subsec:insitu-calibration}
 A final calibration step accounts for the residual differences between the jet response in data and MC simulation, caused by imperfections in both the detector simulations and physics modelling. 
-This calibration, known as \emph{\insitu} calibration, is derived by comparing the jet response in data and MC simulation, applying the following double ratio as the final correction factor:
+This calibration, known as \emph{\insitu} calibration, is derived by comparing the jet response in data and MC simulation in event topologies that allow measuring the jet response with respect to a well-calibrated reference object.
+The method currently used in the ATLAS collaboration is known as \emph{missing}-$E_{\rm T}$ \emph{projection fraction} (MPF)~\cite{PERF-2014-02} and uses the full hadronic recoil instead of a single jet as reference object. This makes the calibration robust against pile-up and jet reconstruction thresholds. The MPF calibration is performed using $Z$+jets and $\gamma+$jets with clean back-to-back topologies. 
+The MPF method is complemented by the so-called \emph{multijet balance} method that allows calibrating high-\pT jets ($\pT > 800\,$GeV) by comparing a system of well-calibrated low-\pT jets with a single high-\pT jet~\cite{PERF-2014-02} using multijet events.
+Both methods are statistically combined to provide a single smooth calibration across \pT. 
+A third \insitu method, known as $\eta$ intercalibration, uses dijet events to correct the energy scale of forward ($0.8 \leq |\etadet| < 4.5$) jets to match those of central ($|\etadet| < 0.8$) jets using the \pT balance in dijet events~\cite{PERF-2014-02}.
+
+The following double ratio is applied as the final \insitu correction factor
 \begin{equation}
     c = \frac{R_{\insitu}^{\text{data}}}{R_{\insitu}^{\text{MC}}} = \frac{ \langle  \pTcalibData / \pTrefData \rangle }{ \langle \pTcalibMC / \pTrefMC \rangle}.
 \end{equation}
-The average response, $R_{\insitu}$, is taken from the peak location found by fitting the distribution of the ratio of the \pT of a calibrated jet, \pTcalib, and a well-measured reference object, \pTref, with a Gaussian function.
+The average response, $R_{\insitu}$, is taken from the peak location found by fitting the distribution of the ratio of the \pT of the calibrated probe jet, \pTcalib, and the well-measured reference object, \pTref, with a Gaussian function.
 The double ratio is parametrized as a function of \pTref and the final calibration obtained again with a numerical inversion procedure~\cite{PERF-2011-03}.
 This correction is only applied to data.
 
 % To this end, different event topologies are exploited that allow to measure the jet response with respect to a well-calibrated reference object. 
 % The \insitu jet response is measured by comparing the \pT of a calibrated jet with a well-calibrated reference object. 
 % The \insitu calibration consists of three methods.
-The method currently used in the ATLAS collaboration is known as \emph{missing}-$E_{\rm T}$ \emph{projection fraction} (MPF)~\cite{PERF-2014-02} and uses the full hadronic recoil instead of a single jet as reference object. This makes the calibration robust against pile-up and jet reconstruction thresholds. The MPF calibration is performed using $Z$+jets and $\gamma+$jets with clean back-to-back topologies. 
-The MPF method is complemented by the so-called \emph{multijet balance} method that allows calibrating high-\pT jets by comparing a system of well-calibrated low-\pT jets with a single high-\pT jet~\cite{PERF-2014-02}.
-Both methods are statistically combined to provide a single smooth calibration across \pT. 
-A third \insitu method, known as $\eta$ intercalibration, uses dijet events to correct the energy scale of forward ($0.8 \leq |\etadet| < 4.5$) jets to match those of central ($|\etadet| < 0.8$) jets using the \pT balance in dijet events~\cite{PERF-2014-02}.
 %- Definition of truth jets reconstructed using stable final-state particles
 %Truth jets are reconstructed using stable final-state particles and exclude muons, neutrinos, and particles from pile-up interactions. Truth jets are selected with the same 𝑝T > 7 GeV and |𝜂| < 4.5 thresholds as EMtopo and PFlow jets, and are geometrically matched to those jets using the angular distance Δ𝑅 with the requirement Δ𝑅 < 0.3.
 
@@ -158,13 +163,13 @@ These contributions are approximately independent of the jet energy and thus sca
 \begin{itemize}
     %\setlength{\itemsep}{0.0em}
     % \item Shower fluctuations: fluctuations in the number of particles produced in the shower and in the EM fraction, \fEM.
-    % \item Sampling fluctuations: fluctuations in the number of ionising particles crossing the active layers of the sampling calorimeter.
+    % \item Sampling fluctuations: fluctuations in the number of ionizing particles crossing the active layers of the sampling calorimeter.
     % \item Photo-electron statistics: inefficiencies converting photons to electrical signals in the hadronic tile calorimeter.
     \item Fluctuations in the number of particles produced in the calorimeter shower and in the EM fraction, \fEM.
-    \item Fluctuations in the number of ionising particles crossing the active layers of the sampling calorimeter.
+    \item Fluctuations in the number of ionizing particles crossing the active layers of the sampling calorimeter.
     \item Fluctuations in the inefficiencies in converting photons to electrical signals in the hadronic tile calorimeter.
     \item Fluctuations of the amount of invisible energy from neutron production, binding energy losses, and nuclear excitation losses.
-    \item Fluctuations in the number of heavily ionising particles, such as alpha particles.
+    \item Fluctuations in the number of heavily ionizing particles, such as alpha particles.
 \end{itemize}
 
 \paragraph{The constant term} captures the effect of shower leakage, for example from energy depositions outside the jet radius, and detector inefficiencies. These effects scale with the energy of the jet and thus enter the relative JER as constant.
@@ -207,8 +212,6 @@ An illustration of the effect of the different terms as a function of the jet \p
 It can be observed, that the impact of the noise term is considerably smaller for PFlow jets than for EMTopo jets.
 The noise term for PFlow jets stays sub-dominant even at low \pT, while for EMTopo jets it becomes dominant at $\pT \lesssim 30\,\GeV$. The stochastic term for both jet collections is dominant across a large \pT range up to $\pT = 1000\,\GeV$, which is where the constant term becomes important.
 
-
-
 \begin{figure}[t]
     \subfloat[] {
         \label{fig:jer-parametrisation-a}
@@ -231,13 +234,6 @@ The noise term for PFlow jets stays sub-dominant even at low \pT, while for EMTo
 \end{figure}
 
 \FloatBarrier
-\begin{figure}[t]
-    \newImageResizeCustom{0.9}{figures/calibration/flow-chart-jer.pdf}
-    \caption[Overview of the different stages involved in the JER measurement.]{Overview of the different stages involved in the jet energy resolution measurement. More details are provided in the text.}
-    \label{fig:flow-chart-jer}
-\end{figure}
-
-
 \section{Measurement of the Jet Energy Resolution in Data}
 \label{sec:jer-measurement}
 For \RunTwo, the ATLAS collaboration uses a combination of two types of measurements to determine the JER in data. The measurements involve several steps that are summarized in the flow chart shown in \cref{fig:flow-chart-jer} and are explained in this section.
@@ -260,8 +256,12 @@ The resulting Balance JER derived in dijet data and MC simulation is shown in \c
 As can be seen, the uncertainties become large at low \pT\footnote{Uncertainties on the dijet JER measurement mostly stem from the presence of additional radiation in the events which spoil the perfect back-to-back signature, biases due to the event selection, and uncertainties from the JES.}, and the dijet JER measurement is not able to probe the JER to values much lower than $\pT = 50\,\GeV$, which is the regime at which the noise term becomes important.\footnote{JER measurements that use different event topologies such as \Zjets events are able to provide more precise results also at lower \pT. For the JER measurement presented in this thesis, they were not included due to other complexities. A detailed discussion about this goes beyond the scope of this thesis. However, the independent derivation of the noise term as presented in \cref{sec:noise-term-meas} is still useful, even if other JER measurements are included.}
 The noise term is therefore derived independently, as described below.
 
-\FloatBarrier
-\begin{figure}[ht]
+\begin{figure}[t]
+    \newImageResizeCustom{0.85}{figures/calibration/flow-chart-jer.pdf}
+    \caption[Overview of the different stages involved in the JER measurement.]{Overview of the different stages involved in the jet energy resolution measurement. More details are provided in the text.}
+    \label{fig:flow-chart-jer}
+\end{figure}
+\begin{figure}[h!]
     \newImageResizeHalf{figures/calibration/insitu-jer-dijet-only.pdf}
     \caption[Balance JER as a function of \pT.]{Balance JER as a function of \pT for PFlow+JES jets in the central region of the detector, measured in dijet events and MC simulation using Pythia8. Previously published in \ccite{JETM-2018-05}.}
     \label{fig:insitu-jer-dijet-only}
@@ -272,7 +272,6 @@ The noise term is therefore derived independently, as described below.
 \label{sec:noise-term-meas}
 %The goal of the noise term measurement is to isolate and measure the impact of different noise contributions to the JER. 
 %The noise present at calorimeter-cell level was discussed in \cref{sec:calo-clustering}. 
-
 The goal of the noise term measurement is to quantify how much the fluctuations of noise contribute to the JER.
 This requires to isolate the noise effects from other contributions to the JER which is challenging, especially when considering reconstruction threshold effects for example in the topo-clustering algorithm:
 The energy of a calorimeter cell could be raised above the threshold to be included in the 420 topo-clustering algorithm (see \cref{sec:calo-clustering}) only because of an interplay of noise and other effects. The measurement of the noise term therefore relies on certain assumptions, that are mentioned in the relevant sections below.
@@ -421,7 +420,21 @@ The pile-up noise, \Npileup, is finally quantified by fitting $N/\pT$ to this di
 
 %- Studies of Response JER showed that the pT dependence of the noise term is mitigated by the GSC calibration. The GSC uses on global jet properties that cannot be defined on a constituent level as would be needed for the random cones method. 
 %- Disadvantage of deriving something at constituent scale that is manipulated at the global level.
-
+\begin{figure}[t]
+    \subfloat[] {
+        \resizebox{0.5\textwidth}{!}{
+            \includegraphics[trim=35 120 0 120]{figures/calibration/const-noise-vs-eta-new.pdf}
+        }
+    }
+    \subfloat[] {
+        \resizebox{0.5\textwidth}{!}{
+            \includegraphics[trim=35 120 0 120]{figures/calibration/const-noise-vs-mu-new.pdf}
+        }
+    }
+    \caption[Constituent-scale pile-up noise.]{Constituent-scale pile-up noise in \antikt $R=0.4$ jets (a) as a function of \absetadet and (b) as a function of $\mu$. Results are derived using the random cones method with either neutral and selected charged particle flow objects or topo-clusters at the electromagnetic scale as inputs. (a)
+        Previously published in \ccite{PublicPlotsJER}.}
+    \label{fig:const-scale-noise-results}
+\end{figure}
 
 \paragraph{Cross-check in MC} A cross-check can be performed for the random cones method by comparing the Response JER extracted from two dijet MC samples, one with pile-up and one without pile-up. \Cref{fig:non-closure} shows a comparison of the Reponse JER extracted in the two samples, their quadratic difference, as well as the pile-up noise derived with the random cones method in MC simulation. 
 The quadratic difference of the Response JER measurements in these samples is expected to be dominated by contributions from pile-up.
@@ -441,22 +454,6 @@ Additional uncertainties on \Npileup were tested and found to be negligible. The
 %     \item JES scale factor: the JES conversion factor is varied by using the mean of a Gaussian fit to $\pTcalib / \pTPUsub$ instead of its mean.
 % \end{itemize}
 
-
-\begin{figure}[t]
-    \subfloat[] {
-        \resizebox{0.5\textwidth}{!}{
-            \includegraphics[trim=35 120 0 120]{figures/calibration/const-noise-vs-eta-new.pdf}
-        }
-    }
-    \subfloat[] {
-        \resizebox{0.5\textwidth}{!}{
-            \includegraphics[trim=35 120 0 120]{figures/calibration/const-noise-vs-mu-new.pdf}
-        }
-    }
-    \caption[Constituent-scale pile-up noise.]{Constituent-scale pile-up noise in \antikt $R=0.4$ jets (a) as a function of \absetadet and (b) as a function of $\mu$. Results are derived using the random cones method with either neutral and selected charged particle flow objects or topo-clusters at the electromagnetic scale as inputs. (a)
-        Previously published in \ccite{PublicPlotsJER}.}
-    \label{fig:const-scale-noise-results}
-\end{figure}
 
 % \begin{figure}[t]
 %     \newImageResizeCustom{0.5}{figures/calibration/RandomCones_noise_over_eta_mc16d_MuDependenceStudy.pdf}
@@ -515,7 +512,6 @@ Similar to the uncertainties on \Npileup, additional uncertainties on \Nmuzero d
 %           % TODO: REVIEW THIS!!!!!!!!!!!!!!!!!!
 %     \item Method uncertainty (fit instability): An alternative method to extract the noise at $\mu=0$ is performed. To this end, the dijet sample with pile-up is split into several bins of pile-up ($\mu$) and the Response JER is derived in each of those bins. The parameter $N$ is extracted in each bin from a fit with the $N, S, C$ parametrisation. The value of $N$ is then extrapolated with both a linear and a quadratic fit to $\mu=0$. The maximum of the differences between the two extrapolated values and the nominal value is taken as a systematic uncertainty.
 % \end{itemize}
-
 The measured values of the full noise term for both PFlow jets and EMTopo jets, as well as the breakdown into \Npileup and \Nmuzero, are presented in \cref{tab:prelim-jer-2018-noise-term-inputs}.
 The uncertainties that were described in the sections above are propagated to \Nfull by varying them separately and observing the changes in \Nfull. Uncertainties that were estimated with only one variation are symmetrized.
 The results vary considerably between different $\eta$ regions which is caused by the granularity changes of the calorimeter (see \cref{subsec:calorimeter}). For PFlow jets, it must also be taken into account that tracks can only be used within \absetaST{2.5}, which renders PFlow and EMTopo jets above $\abseta = 2.5$ very similar. This is also reflected in the results shown. While the noise term is considerably smaller for PFlow jets than for EMTopo jets within \absetaST{2.5}, the results become comparable at \absetaGT{2.5}. The uncertainties on the noise term are comparable, with small differences observed between different $\abseta$ regions.
@@ -537,15 +533,6 @@ Also, the uncertainty from comparing \Nmuzero with the alternative estimate ($\m
 % \input{tables/calibration/results/improved-single-n-inputs}
 % \input{tables/calibration/results/pT-dependent-noise-term-inputs}
 
-\input{tables/calibration/results/preliminary-jer-2018-inputs}
-
-\begin{figure}
-    \newImageResizeCustom{0.6}{figures/calibration/noise-term-results-pflow.pdf}
-    \caption[Noise term of the JER and its uncertainties.]{Noise term of the jet energy resolution (JER) and its uncertainties as a function of \abseta. Previously published in \ccite{JETM-2018-05}.}
-    \label{fig:noise-term-results-pflow}
-\end{figure}
-
-
 \subsection{Combined measurement of the jet energy resolution}
 \label{subsec:jer-combination}
 The JER combination is performed by fitting the dijet \insitu measurements (see \cref{subsec:dijet-balance}) with the functional form shown in \cref{eq:jer-parametrisation} with the noise term fixed to the values found in the noise term measurement (see \cref{sec:noise-term-meas}).
@@ -554,6 +541,13 @@ The resulting JER for PFlow jets is shown in \cref{fig:jer-combination-incl-nois
 %The Balance JER taken from MC simulation can be compared to
 The combined \insitu measurement shows significantly smaller uncertainties than the results of either the dijet balance method or the noise term measurement separately, which shows the benefit of the combination procedure.
 %\TDnote{This is due to the fact that the combined measurement performs a simultaneous fit to all $\eta$ regions which leads to some uncertainties in the fit being constraint which is not reflected in the single measurements.}{Double-check this hypothesis.}
+
+\input{tables/calibration/results/preliminary-jer-2018-inputs}
+\begin{figure}[h!]
+    \newImageResizeCustom{0.53}{figures/calibration/noise-term-results-pflow.pdf}
+    \caption[Noise term of the JER and its uncertainties.]{Noise term of the jet energy resolution (JER) and its uncertainties as a function of \abseta. Previously published in \ccite{JETM-2018-05}.}
+    \label{fig:noise-term-results-pflow}
+\end{figure}
 
 The final JER uncertainties are presented in \cref{fig:jer-combination-incl-noise-term-b}.
 The uncertainties from the noise term measurement are propagated to the final results by varying the value of $N$ corresponding to each uncertainty source and repeating the fit. %The varied $N$ corresponds to the result that is obtained from the noise term measurement when the respective uncertainty is varied by one standard deviation.
@@ -568,8 +562,7 @@ At low \pT, PFlow jets outperform EMTopo jets and have a considerably lower JER 
 %, as shown in \cref{fig:jer-combination-results-b}.
 Above $\pT=100\,\GeV$ and beyond detector regions of $\etadet = 2.5$ (not shown), the JER of PFlow jets and EMTopo jets become similar, because the two jet collections themselves become very comparable, as fewer or no tracks are used as inputs to the \antikt algorithm in these regions of phase space. However, one difference remains between PFlow and EMTopo jets, which is the pile-up subtraction step in the jet calibration procedure (see \cref{subsec:pile-up-correction}). This explains the small differences that are still observed between the two jet collections.
 
-\FloatBarrier
-\begin{figure}[t]
+\begin{figure}[ht]
     \subfloat[] {
         \newImageResizeCustom{0.46}{figures/calibration/combination-incl-noise-term-contribution.pdf}
         \label{fig:jer-combination-incl-noise-term-a}
@@ -581,7 +574,7 @@ Above $\pT=100\,\GeV$ and beyond detector regions of $\etadet = 2.5$ (not shown)
     \caption[The relative JER and the absolute uncertainty in the relative JER.]{(a) The relative jet energy resolution as a function of \pT for fully calibrated PFlow+JES jets. The error bars on points indicate the total uncertainties on the derivation of the relative resolution in dijet events, adding in quadrature statistical and systematic components. The expectation from Monte Carlo simulation is compared with the relative resolution as evaluated in data through the combination of the dijet balance and random cone techniques. (b) Absolute uncertainty on the relative jet energy resolution as a function of \pTjet. Uncertainties from the two \insitu measurements and from the data/MC simulation difference are shown separately. Figure and caption taken from \ccite{JETM-2018-05}.}
     \label{fig:jer-combination-incl-noise-term}
 \end{figure}
-\begin{figure}[t]
+\begin{figure}[ht]
     \subfloat[] {
         \newImageResizeCustom{0.46}{figures/calibration/jer-combination-vs-pt.pdf}
         \label{fig:jer-combination-results-a}
@@ -606,6 +599,7 @@ Above $\pT=100\,\GeV$ and beyond detector regions of $\etadet = 2.5$ (not shown)
 %     \label{fig:jer-combination-uncertainties}
 % \end{figure}
 
+\FloatBarrier
 \section{Application of the Measured Jet Energy Resolution in Physics Analyses}
 \label{sec:jer-in-analysis}
 The measured JER is used to improve comparisons between MC simulations and data, both by both correcting the nominal JER of the MC simulations to on average match the one found in data and propagating systematic uncertainties of the JER measurements to the final event selection of physics analyses.

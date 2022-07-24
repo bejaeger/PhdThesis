@@ -111,71 +111,72 @@
 
 \mainmatter
 
-\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{\hfill \chaptername\ \thechapter.\ #1}}{}}
-% -------------------------------------------------------------------------------
-\include{\chapterdir/introduction}
+% \renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{\hfill \chaptername\ \thechapter.\ #1}}{}}
+% % -------------------------------------------------------------------------------
+% \include{\chapterdir/introduction}
 
-\part{Background}
-\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{\partname\ \thepart\ \hfill \chaptername\ \thechapter.\ #1}}{}}
-% % % % % % -------------------------------------------------------------------------------
-\include{\chapterdir/theory}
+% \part{Background}
+% \renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{\partname\ \thepart\ \hfill \chaptername\ \thechapter.\ #1}}{}}
+% % % % % % % -------------------------------------------------------------------------------
+% \include{\chapterdir/theory}
 
-% % % % % % -------------------------------------------------------------------------------
-\include{\chapterdir/higgs}
+% % % % % % % -------------------------------------------------------------------------------
+% \include{\chapterdir/higgs}
 
-\part{Experimental Methods}
-% % % % % %-------------------------------------------------------------------------------
-\include{\chapterdir/experiment}
-
-% % % % % %-------------------------------------------------------------------------------
-\include{\chapterdir/objects}
-
-% % % % % % % % ---------------------------------------
-\include{\chapterdir/calibration}
-
-\part{Statistical Methods}
+% \part{Experimental Methods}
 % % % % % % %-------------------------------------------------------------------------------
-\include{\chapterdir/statistics}
+% \include{\chapterdir/experiment}
 
 % % % % % % %-------------------------------------------------------------------------------
-\include{\chapterdir/ml}
+% \include{\chapterdir/objects}
 
-%\part{\HWW Cross-section Measurements}
-\part{Measurements of Higgs Boson Interactions}
-% % % % %-------------------------------------------------------------------------------
+% % % % % % % % % ---------------------------------------
+% \include{\chapterdir/calibration}
+
+% \part{Statistical Methods}
+% % % % % % % %-------------------------------------------------------------------------------
+% \include{\chapterdir/statistics}
+
+% % % % % % % %-------------------------------------------------------------------------------
+% \include{\chapterdir/ml}
+
+% %\part{\HWW Cross-section Measurements}
+% \part{Measurements of Higgs Boson Interactions}
+% % % % % %-------------------------------------------------------------------------------
 \include{\chapterdir/hww}
 
 % % % % %-------------------------------------------------------------------------------
-\include{\chapterdir/higgscombination}
+% \include{\chapterdir/higgscombination}
 
-\bookmarksetup{startatroot}
-% % % % %-------------------------------------------------------------------------------
-\include{\chapterdir/conclusion}
+% \bookmarksetup{startatroot}
+% \renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{\hfill \chaptername\ \thechapter.\ #1}}{}}
+% % % % % %-------------------------------------------------------------------------------
+% \include{\chapterdir/conclusion}
 
-%-------------------------------------------------------------------------------
-% APPENDIX
-\clearpage
-\addcontentsline{toc}{part}{Appendix}
-\appendix
-\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{Appendix \hfill \chaptername\ \thechapter.\ #1}}{}}
-\part*{Appendix}
-\include{\chapterdir/appendix}
+% %-------------------------------------------------------------------------------
+% % APPENDIX
+% \clearpage
+% \addcontentsline{toc}{part}{Appendix}
+% \appendix
+% \renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{Appendix \hfill \chaptername\ \thechapter.\ #1}}{}}
+% \part*{Appendix}
+% \include{\chapterdir/appendix}
 
-%-------------------------------------------------------------------------------
-% If you use biblatex and either biber or bibtex to process the bibliography
-% just say \printbibliography here.
-\bookmarksetup{startatroot}
-\addcontentsline{toc}{chapter}{Bibliography}
-\printbibliography
-\clearpage
-%-------------------------------------------------------------------------------
+% %-------------------------------------------------------------------------------
+% % If you use biblatex and either biber or bibtex to process the bibliography
+% % just say \printbibliography here.
+% \bookmarksetup{startatroot}
+% \addcontentsline{toc}{chapter}{Bibliography}
+% \printbibliography
+% \clearpage
+% %-------------------------------------------------------------------------------
 
-% -------------------------------------------------------------------------------
-\addcontentsline{toc}{chapter}{Acknowledgements}
-\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{Acknowledgements}}{}}
-\chapter*{Acknowledgements}
-\pagestyle{plain}
-\input{\chapterdir/acknowledgements}
+% % -------------------------------------------------------------------------------
+% \addcontentsline{toc}{chapter}{Acknowledgements}
+% \renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{Acknowledgements}}{}}
+% \chapter*{Acknowledgements}
+% \pagestyle{plain}
+% \input{\chapterdir/acknowledgements}
 %-------------------------------------------------------------------------------
 % Author list - comment in this line when you are ready to include it.
 % \clearpage

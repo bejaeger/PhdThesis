@@ -13,7 +13,7 @@ The following provides an overview of the different estimation strategies.
 % \TDinote{}{Refer to cutflow?}
 
 \subsection{Backgrounds estimated with control regions}
-Regions that are pure enough in a specific process and orthogonal to the signal categories can be used to measure the normalization of that process via an NF by simultaneously fitting these CRs with the SRs (see \cref{chap:statistics}).
+Regions that are pure enough in a specific process and orthogonal to the signal categories can be used to measure the normalization of that process via a \emph{normalization factor} (NF) by simultaneously fitting these CRs with the SRs (see \cref{chap:statistics}).
 The CRs are also used to validate the agreement between MC simulation and data in various variables prior to the fit.
 % The latter is done after deriving pre-fit normalization factors (NFs) for each process that has a corresponding CR.\footnote{Given $N$ CRs and $M > N$ processes, $N$ NFs are derived by solving the set of linear equations that equate the sum of expected number of background events (times the NF, where applicable) and the number of data events. The statistical uncertainties on the NFs are estimated using of toys, that is, repeating the outlined procedure with several randomly varied inputs within the uncertainties. The standard deviation of the resulting distribution is used as an uncertainty on the NFs.}
 % This guarantees a fair comparison between data and MC simulation since potential discrepancies are corrected based on the data. 
@@ -24,6 +24,7 @@ In addition, selections similar to the SR selections are applied, to ensure that
 The precision with which the NFs can be determined is dependent on the purity of the process targeted by a CR in that CR. \Cref{tab:cr-purities} summarizes the purities in all CRs used in the analysis.
 Distributions of \mT for the ggF CRs and the DNN output for the VBF CRs after a fit to data are provided in Appendix~\ref{app:post-fit-cr-dists}. 
 %The pre-fit NFs for the CRs related to the \TwoJet VBF category are shown in \cref{tab:pre-fit}. 
+
 \begin{table}[!ht]
     \caption[Event selection criteria used to define the control regions.]{
         Event selection criteria used to define the control regions in the \HWW\ analysis.
@@ -50,16 +51,15 @@ Distributions of \mT for the ggF CRs and the DNN output for the VBF CRs after a 
     \end{tabular}
 \end{table}
 
-
 \subsubsection{Top backgrounds}
 The $t\bar{t}$ and $Wt$ processes are normalized jointly using the same NF, extracted from dedicated top-quark CRs.
-The relative contribution of $t\bar{t}$ and $Wt$ processes are comparable between the CRs and SRs and its uncertainty is accounted for by treating the relevant sources of uncertainties separately.
+The relative contribution of $t\bar{t}$ and $Wt$ processes is comparable between the CRs and SRs and its uncertainty is accounted for by treating the relevant sources of uncertainties separately.
 
 The top-quark CRs in the \ZeroJet, \OneJet, and VBF-enriched \TwoJet\ category are defined by requiring the presence of $b$-jets.
 For the \ZeroJet\ category, at least one $b$-jet with $20 < \pT < 30\,$GeV is required, i.e.  $\Nbjetbetween > 0$.
 For the \OneJet\ category, exactly one $b$-jet with $\pT > 30\,$GeV and no $b$-jet with $20 < \pT < 30\,$GeV is required, and for the VBF \TwoJet\ category exactly one $b$-jet with $\pT > 30\,$GeV is required.
 These specific selections ensure that the ratio between $t\bar{t}$ and $Wt$ processes is similar between the CR and the SR without compromising the purity of top-quark processes in the CR.
-For the ggF-enriched \TwoJet\ region, an alternative strategy is used that does not rely on $b$-jet requirements, still retains a high purity of top-quark events. The CR is defined by requiring $\mll > 80\,$GeV and $\mTtwo < 165\,$GeV\footnote{A definition of this variable is provided later in this section in \cref{eq:mt2-definition}.}, where the latter selection ensures orthogonality to the $WW$ CR. This definition reduces the uncertainties from flavor tagging selections and is therefore preferable to a CR defined using $b$-jet criteria.
+For the ggF-enriched \TwoJet\ region, an alternative strategy is used that does not rely on $b$-jet requirements, but still retains a high purity of top-quark events. The CR is defined by requiring $\mll > 80\,$GeV and $\mTtwo < 165\,$GeV\footnote{A definition of this variable is provided later in this section in \cref{eq:mt2-definition}.}, where the latter selection ensures orthogonality to the $WW$ CR. This definition reduces the uncertainties from flavor tagging selections and is therefore preferable to a CR defined using $b$-jet criteria.
 Distributions of several variables in the VBF, top-quark CR are shown in \cref{fig:topcr:dnn-inputs}.
 For these comparisons, pre-fit NFs are derived based on the CRs.\footnote{The pre-fit NFs are derived as follows: Given $N$ CRs and $M > N$ processes, $N$ NFs can be derived by solving the set of linear equations that equate the sum of expected number of background events (times the NF for the applicable $N$ processes) and the number of data events. The statistical uncertainties on the NFs are estimated using of toys, i.e., repeating the outlined procedure with several randomly varied inputs within the uncertainties. The standard deviation of the resulting distribution is used as an uncertainty on the NFs.}
 They show an excellent agreement between the data and MC simulation.
@@ -70,6 +70,8 @@ They show an excellent agreement between the data and MC simulation.
 \newcommand{\vrmodellingcaption}[1]{Distributions of (a) \mjj, (b) \dyjj, (c) \mlonejone, (d), \mll, (e) \lepetacent, and (f) \METSig in the VBF, #1. The \Ztautau, top-quark, and $qq \to WW$ processes are normalized using pre-fit normalization factors extracted from their corresponding CRs (NF$_{\Ztautau} = 1.01 \pm 0.04$, NF$_{\text{top}} = 1.00 \pm 0.01$, NF$_{WW} = 0.84 \pm 0.02$). The yellow band corresponds to the square root of the sum in quadrature of the MC statistical uncertainties and the normalization component of the dominant experimental systematic uncertainties (JER, JES, Flavor-tagging, and \MET uncertainties). The various uncertainty components are discussed in more detail in \cref{sec:systematics}.}
 \newcommand{\vrmodellingcaptionshort}[1]{Distributions of (a) \mjj, (b) \dyjj, (c) \mlonejone, (d), \mll, (e) \lepetacent, and (f) \METSig in the VBF, #1.}
 \newcommand{\topcrplotdir}{figures/220605-Thesis/topcr/plots}
+
+\FloatBarrier
 \sixPlots{\crmodellingcaption{top-quark CR}}{fig:topcr:dnn-inputs}{\topcrplotdir/../mjj/plots/run2-emme-CutVBF_TopControl_2jet-Mjj-log.pdf}{\topcrplotdir/run2-emme-CutVBF_TopControl_2jet-DYjj-lin.pdf}{\topcrplotdir/run2-emme-CutVBF_TopControl_2jet-DPhill-lin.pdf}{\topcrplotdir/run2-emme-CutVBF_TopControl_2jet-Mll-lin.pdf}{\topcrplotdir/../lepcent/plots/run2-emme-CutVBF_TopControl_2jet-contOLV-lin.pdf}{\topcrplotdir/run2-emme-CutVBF_TopControl_2jet-METSig_broad-lin.pdf}{\crmodellingcaptionshort{top-quark CR}}
 %{figures/hww/presel/topcr/run2-emme-CutVBF_TopControl_2jet-PtTot-lin.pdf}{figures/hww/presel/topcr/run2-emme-CutVBF_TopControl_2jet-contOLV-lin.pdf}{run2-emme-CutVBF_TopControl_2jet-DNNoutputG_Fit_finelowDNN2-log.pdf}
 
@@ -84,7 +86,7 @@ In order to increase the statistical power of the CRs, some selections made in t
 In the \ZeroJet and \OneJet category, no \pTmiss requirement is applied and the \mll\ selection is relaxed to $\mll < 80\,$GeV.
 In the VBF-enriched \TwoJet category, the $\mll$ requirement is relaxed to $\mll < 70\,$GeV and the region above $\mtautau = m_Z + 25\,$GeV is kept.
 
-Distributions of several variables in the VBF, \Ztautau CR are shown in \cref{fig:topcr:dnn-inputs}. Similar to the VBF, top-quark CR, an excellent agreement between the data and MC simulation is observed. %Similar comparisons are performed for the other \Ztautau CRs. 
+Distributions of several variables in the VBF, \Ztautau CR are shown in \cref{fig:zttcr:dnn-inputs}. Similar to the case for the VBF, top-quark CR, an excellent agreement between the data and MC simulation is observed. %Similar comparisons are performed for the other \Ztautau CRs. 
 
 \newcommand{\zttcrplotdir}{figures/220605-Thesis/zttcr/plots}
 \sixPlots{\crmodellingcaption{\Ztautau CR}}{fig:zttcr:dnn-inputs}{\zttcrplotdir/../mjj/plots/run2-emme-CutVBF_ZtautauControl_2jet-Mjj-log.pdf}{\zttcrplotdir/run2-emme-CutVBF_ZtautauControl_2jet-DYjj-lin.pdf}{\zttcrplotdir/run2-emme-CutVBF_ZtautauControl_2jet-Ml0j0-lin.pdf}{\zttcrplotdir/run2-emme-CutVBF_ZtautauControl_2jet-Mll-lin.pdf}{\zttcrplotdir/../lepcent/plots/run2-emme-CutVBF_ZtautauControl_2jet-contOLV-lin.pdf}{\zttcrplotdir/run2-emme-CutVBF_ZtautauControl_2jet-METSig_broad-lin.pdf}{\crmodellingcaptionshort{\Ztautau CR}}
@@ -102,6 +104,12 @@ For the ggF-enriched \TwoJet category, a CR is nonetheless found by requiring $\
     \mTtwo^2 = \underset{{p\mkern-9.5mu/}_1+{p\mkern-9.5mu/}_2={p\mkern-9.5mu/}_\text{T}}{\textrm{min}} \left[\textrm{max}\{\mt^2(p_\text{T}^a,{p\mkern-9.5mu/}_1),\mt^2(p_\text{T}^b,{p\mkern-9.5mu/}_2)\}\right],
 \end{equation}
 where the minimization goes over all possible two-momenta, ${p\mkern-9.5mu/}_{1,2}$, such that their sum gives the observed missing transverse momentum ${p\mkern-9.5mu/}_\text{T}$, and where each of $p_\text{T}^a$ and $p_\text{T}^b$ is the combined transverse momentum of a charged lepton and a jet~\cite{HWWPaper}.
+% \begin{figure}[ht]
+%     \newImageResizeCustom{0.6}{\paperfiguredir/CRs/MT2_for_ggF2jet_dataMCRatio.pdf}
+%     \caption[Distribution of the \mTtwo\ variable in the ggF-enriched \TwoJet category.]{
+%         Distribution of the \mTtwo\ variable used in the definition of the $WW$ CR for the ggF-enriched \TwoJet category. The dashed line indicates where the selection on the observable is made. The distributions are normalized to their nominal yields, before the final fit to all SRs and CRs (pre-fit normalizations). The hatched band shows the normalization component of the total pre-fit uncertainty. Figure and caption taken from \ccite{HWWPaper}.}
+%     \label{fig:njet-dist}
+%   \end{figure}
 For \ttbar events, the \mTtwo variable has an upper bound around the mass of the top quark, making it possible to reduce the \ttbar contribution by requiring \mTtwo to be sufficiently large.
 For the VBF-enriched \TwoJet category, no $WW$ CR pure enough in $WW$ processes can be defined.
 The $qq \to WW$ background is therefore estimated from simulated samples normalized to their theoretical cross section in the statistical analysis.
@@ -128,7 +136,7 @@ Each selection specified is applied to each type of CR listed in the first colum
         \input{tables/hww/STXSBkgselection.tex}
     }
 \end{table}
-
+\FloatBarrier
 % % NFs table
 % \begin{table}[!h]
 %     \centering
@@ -165,7 +173,7 @@ The rate at which these misidentifications occur is difficult to estimate purely
 Their contributions are therefore estimated using a data-driven technique known as \emph{fake factor method}. In this method, a control data sample is defined and used to extrapolate the expected number of events to the analysis regions via an extrapolation factor known as \emph{fake factor}.
 The control sample is defined with alternative object selection criteria that are orthogonal to the nominal selections and designed to be enriched in candidate events with misidentified leptons.
 The fake factor is derived in a separate analysis and can be regarded as the probability of a lepton being misidentified, given the control sample selections.
-For each signal category, the same event selections are applied to the control sample as in the nominal analysis. Details on the fake factor method including a description of the systematic uncertainties that must be considered are left to Appendix~\ref{app:fake-factor-method}.
+For each signal category, the same event selections are applied to the control sample as in the nominal analysis. Details on the fake factor method including a description of the systematic uncertainties that must be considered are given in Appendix~\ref{app:fake-factor-method}.
 
 
 

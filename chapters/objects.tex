@@ -62,6 +62,15 @@ where \electronicnoise is the electronic noise and \pileupnoise is the noise fro
 % From https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/PERF-2014-07/
 % Probs get it from here cause other one is 50ns bunch crossing...
 % ATL-LARG-PUB-2008-002 -> Should find out what pile-up is expected with design lumi. Design maximum pile-up is 20!
+\begin{figure}[t]
+    \subfloat[electronic noise]
+    {    \newImageResizeHalf{figures/reconstruction/cells-electronic-noise.png}
+    }    \subfloat[total noise]
+    {    \newImageResizeHalf{figures/reconstruction/cells-total-noise.png}
+    }
+    \caption[Noise in the calorimeter cells from different sources.]{Noise in calorimeter cells from (a) electronic noise at $\mu=0$ and (b) total noise including pile-up noise at an instantaneous luminosities of $\mathcal{L} = \SI{e34}{\per\cm\per\s}$ corresponding to peak pile-up conditions of around $\mu\approx20$. The noise is shown per calorimeter layer: the presampler (PS), the three electromagnetic calorimeter layers (EM1-EM3), the layers of the hadronic tiles (Tile1-Tile3) and end-caps (HEC1-HEC4), and the forward calorimeter layers (FCal1-FCal3). Taken from \ccite{ATL-LARG-PUB-2008-002}.}
+    \label{fig:calo-noise}
+\end{figure}
 
 Topo-clusters are formed based on the cell-energy significance, $z_{\text{cell}}$, defined as the level of signal, $E_{\text{cell}}$, above the total noise,
 \begin{equation}
@@ -82,15 +91,6 @@ After the splitting, the topo-clusters represent three-dimensional energy deposi
 %- PLOT: add plots of topo-cluster formation as in Valente's thesis? YES!
 The cells are calibrated at the electromagnetic scale (\emph{EM scale}) which means that the energy of electromagnetic interacting particles is correctly taken into account\footnote{The calibration of calorimeter cells is derived in dedicated test-beam measurements described for example in \ccite{Abat_2010}.}. The calorimeter does not fully account for the energy deposited by hadrons, which has important consequences for energy calibrations, which is discussed in more detail in \cref{chap:calibration}.
 
-\begin{figure}
-    \subfloat[electronic noise]
-    {    \newImageResizeHalf{figures/reconstruction/cells-electronic-noise.png}
-    }    \subfloat[total noise]
-    {    \newImageResizeHalf{figures/reconstruction/cells-total-noise.png}
-    }
-    \caption[Noise in the calorimeter cells from different sources.]{Noise in calorimeter cells from (a) electronic noise at $\mu=0$ and (b) total noise including pile-up noise at an instantaneous luminosities of $\mathcal{L} = \SI{e34}{\per\cm\per\s}$ corresponding to peak pile-up conditions of around $\mu\approx20$. The noise is shown per calorimeter layer: the presampler (PS), the three electromagnetic calorimeter layers (EM1-EM3), the layers of the hadronic tiles (Tile1-Tile3) and end-caps (HEC1-HEC4), and the forward calorimeter layers (FCal1-FCal3). Taken from \ccite{ATL-LARG-PUB-2008-002}.}
-    \label{fig:calo-noise}
-\end{figure}
 
 
 \section{Jets}
@@ -106,7 +106,7 @@ The main challenge of jet physics is to define and calibrate the experimentally 
 This section describes the most important aspects of jet reconstruction in the ATLAS experiment.
 % A useful characteristic of a jet is its origin, in particular, whether the jet is more likely to stem from the hard-scatter vertex or a pile-up vertex. The strategy to identify so-called \emph{pile-up jets} is discussed further below.
 % The information about which hadron a jet originates from, specifically whether a $b$-hadron was involved, is another important metric to characterize and classify different experimental signatures. A description of this process known as \emph{flavor tagging} concludes this section.
-The description of how the energy of the reconstructed jets is calibrated is left to \cref{chap:calibration}.
+The description of how the energy of the reconstructed jets is calibrated is given in \cref{chap:calibration}.
 
 \subsection{Jet definition}
 % The main challenge of jet physics is to define the experimentally measured jet in a way that describes the original parton as accurately as possible. \Qnote{}{original parton or particle jet?}
@@ -124,8 +124,7 @@ In practice, a jet is defined by two choices: the \emph{jet constituents}, i.e. 
 % - A jet is entirely defined by the choice of constituents and the algorithm to group them together.
 % - Different definitions come with different strategies for calibrations, etc.  and are also constantly improved. 
 
-\FloatBarrier
-\begin{figure}
+\begin{figure}[t]
     \ifthenelse{\boolean{draft}}
     {\newImageResizeCustom{0.6}{figures/reconstruction/jet-evolution-low-qual.jpg}}
     {\newImageResizeCustom{0.6}{figures/reconstruction/jet-evolution-high-qual.jpg}}
@@ -192,6 +191,11 @@ In MC simulated $pp$ collisions, another jet definition is often used by using t
 \subsection{The particle flow algorithm}
 \label{subsec:pflow-algorithm}
 The PFlow algorithm is a multi-stage procedure to identify energy deposits in the calorimeter that are likely to be caused by charged particles. The energy of the topo-clusters that can be clearly associated to a track is not considered in the reconstruction of PFlow jets, but their energy is ``\emph{removed}'' (or ``\emph{subtracted}'') from the calorimeter and instead the \pT of the track is used. A flow chart of the different steps of the algorithm is shown in \cref{fig:pflow-algorithm} and the procedure is outlined below. More information can be found in \ccite{PERF-2015-09} and a description of the changes to the PFlow algorithm introduced for \RunTwo is described in \ccite{JETM-2018-05}.
+\begin{figure}[t]
+    \newImageResize{figures/reconstruction/pflow-algorithm.pdf}
+    \caption[Flow chart of the particle flow algorithm.]{Flow chart of the particle flow algorithm. More details are given in the text. Taken from \ccite{PERF-2016-06}.}
+    \label{fig:pflow-algorithm}
+\end{figure}
 
 \subsubsection{Selection of tracks} Tracks considered for the energy subtraction must require stringent criteria: at least nine hits in the silicon detectors and no missing pixel hit when such a hit would be expected~\cite{PERF-2015-09}. They must have \absetaST{2.5} and $\pTtrack < 0.5\,\GeV$ and must not be matched to an electron or muon candidate. A parametrized maximum \pTtrack requirement excludes some tracks with $\pTtrack < 100\,\GeV$ from the algorithm. The parametrization aims at finding the tracks for which the ID measurements can be assumed inferior to the calorimeter measurements. No track above $\pTtrack = 100\,\GeV$ is considered.
 
@@ -213,12 +217,6 @@ The tracks considered for the energy subtraction constitute the CPFOs.
 % The CPFOs are defined as all the tracks that satisfy $|z_0 \sin \theta| < 2$\,mm, where $z_0$ is the distance of the closest approach of the track to the hard-scatter vertex along the $z$-axis.
 % They are input to the \antikt algorithm with $R=0.4$ to form the final set of PFlow jets.
 
-\FloatBarrier
-\begin{figure}[t]
-    \newImageResize{figures/reconstruction/pflow-algorithm.pdf}
-    \caption[Flow chart of the particle flow algorithm.]{Flow chart of the particle flow algorithm. More details are given in the text. Taken from \ccite{PERF-2016-06}.}
-    \label{fig:pflow-algorithm}
-\end{figure}
 
 \subsection{Pile-up jet identification}
 Jets that have an origin other than the hard scatter are classified as pile-up jets.
@@ -235,20 +233,15 @@ To suppress pile-up jets, physics analyses typically require a minimum JVT thres
 The JVT achieves a hard-scatter efficiency that is approximately stable as the number of pile-up interactions increases, identifying about \SI{90}{\percent} hard-scatter jets with a pile-up jet contamination of about \SI{1}{\percent}.
 JVT calibrations are provided by analyzing data from $Z (\rightarrow \mu\mu)$+jets candidate events.
 More information can be found in \ccite{ATLAS-CONF-2014-018}.
-
-
-\subsection{Jet cleaning}
-Jets that have an origin other than the $pp$ collisions may be reconstructed in the detector. They can be caused by coherent calorimeter noise or non-collision backgrounds such as cosmic rays or beam-induced backgrounds. To reject these types of jets a procedure known as \emph{jet cleaning} is applied. To this end, several jet quality criteria are considered that are based on three categories of variables: pulse shape variables of the LAr calorimeter, energy ratio variables considering deposits in different layers of the calorimeter as well as the fraction of the jet that interacts electromagnetically, and track-based variables.
-Applying basic selections on these variables yields a high efficiency exceeding \SI{99}{\percent} for selecting the jets from the $pp$ collisions and rejects a significant portion of jets with different origins. More information can be found in \ccite{ATLAS-CONF-2015-029}.
-
-
-\FloatBarrier
 \begin{figure}[t]
     \newImageResize{figures/reconstruction/pile-up-jets-illustration.pdf}
     \caption[Illustration of a $pp$ collision event including pile-up jets.]{Illustration of a $pp$ collision event containing a hard-scatter (HS) jet, a QCD pile-up (PU) jet, and a stochastic pile-up jet. The $\Delta \text{R}_{\text{pT}}$ observable allows to distinguish QCD pile-up jets from stochastic pile-up jets, based on the fraction of total jet energy stemming from charged particles in the jet. The figure is taken from \ccite{PERF-2016-06}, where more information on the observable can be found.}
     \label{fig:pile-up-jets-illustration}
 \end{figure}
 
+\subsection{Jet cleaning}
+Jets that have an origin other than the $pp$ collisions may be reconstructed in the detector. They can be caused by coherent calorimeter noise or non-collision backgrounds such as cosmic rays or beam-induced backgrounds. To reject these types of jets a procedure known as \emph{jet cleaning} is applied. To this end, several jet quality criteria are considered that are based on three categories of variables: pulse shape variables of the LAr calorimeter, energy ratio variables considering deposits in different layers of the calorimeter as well as the fraction of the jet that interacts electromagnetically, and track-based variables.
+Applying basic selections on these variables yields a high efficiency exceeding \SI{99}{\percent} for selecting the jets from the $pp$ collisions and rejects a significant portion of jets with different origins. More information can be found in \ccite{ATLAS-CONF-2015-029}.
 
 \subsection{Flavor tagging}
 \label{subsec:flavor-tagging}
