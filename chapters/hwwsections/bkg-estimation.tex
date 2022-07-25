@@ -35,7 +35,7 @@ Distributions of \mT for the ggF CRs and the DNN output for the VBF CRs after a 
         \input{tables/hww/Bkgselection.tex}
     }
 \end{table}
-\begin{table}[!ht]
+\begin{table}[h!!]
     \caption[Purity of the targeted process in each control region.]{
         Purity of the targeted process in each control region. The statistical uncertainties are small and therefore not indicated.}
     \label{tab:cr-purities}
@@ -117,6 +117,7 @@ To validate the consistency between MC simulation and data for $qq \to WW$ proce
 The distributions of various observables in the VBF, $WW$ VR is shown in \cref{fig:wwvr:dnn-inputs}.
 
 \newcommand{\wwvrplotdir}{figures/220605-Thesis/wwvr/plots}
+\FloatBarrier
 \sixPlots{\vrmodellingcaption{$WW$ VR}}{fig:wwvr:dnn-inputs}{\wwvrplotdir/../mjj/plots/run2-emme-CutVBF_WWControl_2jet-Mjj-log.pdf}{\wwvrplotdir/run2-emme-CutVBF_WWControl_2jet-DYjj-lin.pdf}{\wwvrplotdir/run2-emme-CutVBF_WWControl_2jet-DPhill-lin.pdf}{\wwvrplotdir/run2-emme-CutVBF_WWControl_2jet-Mll-lin.pdf}{\wwvrplotdir/../lepcent/plots/run2-emme-CutVBF_WWControl_2jet-contOLV-lin.pdf}{\wwvrplotdir/run2-emme-CutVBF_WWControl_2jet-METSig_broad-lin.pdf}{\vrmodellingcaptionshort{$WW$ VR}}
 
 \subsubsection{Control regions for the STXS measurement}
@@ -136,7 +137,7 @@ Each selection specified is applied to each type of CR listed in the first colum
         \input{tables/hww/STXSBkgselection.tex}
     }
 \end{table}
-\FloatBarrier
+
 % % NFs table
 % \begin{table}[!h]
 %     \centering
@@ -174,8 +175,6 @@ Their contributions are therefore estimated using a data-driven technique known 
 The control sample is defined with alternative object selection criteria that are orthogonal to the nominal selections and designed to be enriched in candidate events with misidentified leptons.
 The fake factor is derived in a separate analysis and can be regarded as the probability of a lepton being misidentified, given the control sample selections.
 For each signal category, the same event selections are applied to the control sample as in the nominal analysis. Details on the fake factor method including a description of the systematic uncertainties that must be considered are given in Appendix~\ref{app:fake-factor-method}.
-
-
 
 %%%%%%%%%%%%%%%%%%%%%%%
 % Pre-fit Normalization Factors

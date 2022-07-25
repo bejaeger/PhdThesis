@@ -78,13 +78,15 @@
 
 \pagestyle{fancy}
 \newcommand{\chapterdir}{chapters}
+
+\addtoToC{Abstract}%
 \include{\chapterdir/abstract}
 
 
 \tocloftpagestyle{fancy}
 % Have to do this cheat to get the style of the chapter right!
 \renewcommand{\contentsname}{}
-\addcontentsline{toc}{chapter}{Table of Contents}%
+\addtoToC{Table of Contents}%
 \chapter*{Table of Contents}
 % Following does not work
 % \renewcommand{\chaptermark}[1]{\markboth{Table of Contents}}{}
@@ -93,7 +95,7 @@
 \clearpage
 
 \renewcommand{\listtablename}{}
-\addcontentsline{toc}{chapter}{List of Tables}%
+\addtoToC{List of Tables}%
 % \renewcommand{\chaptermark}[1]{\markboth{List of Tables}}{}
 \chapter*{List of Tables}
 \vspace{-8em}
@@ -101,7 +103,7 @@
 \clearpage
 
 \renewcommand{\listfigurename}{}
-\addcontentsline{toc}{chapter}{List of Figures}%\listoffigures
+\addtoToC{List of Figures}%\listoffigures
 % \renewcommand{\chaptermark}[1]{\markboth{List of Figures}}{}
 \chapter*{List of Figures}
 \vspace{-8em}
@@ -112,11 +114,11 @@
 
 \renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{\hfill \chaptername\ \thechapter.\ #1}}{}}
 % -------------------------------------------------------------------------------
-\include{\chapterdir/introduction}
+% \include{\chapterdir/introduction}
 
-\part{Background}
-\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{\partname\ \thepart\ \hfill \chaptername\ \thechapter.\ #1}}{}}
-% % % % % % -------------------------------------------------------------------------------
+% \part{Background}
+% \renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{\partname\ \thepart\ \hfill \chaptername\ \thechapter.\ #1}}{}}
+% % % % % % % -------------------------------------------------------------------------------
 \include{\chapterdir/theory}
 
 % % % % % % -------------------------------------------------------------------------------
@@ -155,23 +157,25 @@
 %-------------------------------------------------------------------------------
 % APPENDIX
 \clearpage
+\begin{appendices}
+%\phantomsection\part*{Appendices}
 \addcontentsline{toc}{part}{Appendices}
 \appendix
 \renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{Appendices \hfill \chaptername\ \thechapter.\ #1}}{}}
 \part*{Appendices}
 \include{\chapterdir/appendix}
-
+\end{appendices}
 %-------------------------------------------------------------------------------
 % If you use biblatex and either biber or bibtex to process the bibliography
 % just say \printbibliography here.
 \bookmarksetup{startatroot}
-\addcontentsline{toc}{chapter}{Bibliography}
+\addtoToC{Bibliography}
 \printbibliography
 \clearpage
 %-------------------------------------------------------------------------------
 
 % -------------------------------------------------------------------------------
-\addcontentsline{toc}{chapter}{Acknowledgements}
+\addtoToC{Acknowledgements}%
 \renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{Acknowledgements}}{}}
 \chapter*{Acknowledgements}
 \pagestyle{plain}
