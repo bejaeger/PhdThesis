@@ -70,7 +70,7 @@ The CRs are encoded as one bin each in the likelihood.
 \subsection{Treatment of uncertainties}
 The sources of systematic uncertainties are discussed in \cref{sec:stats-analysis}. 
 Most uncertainties are fully correlated between the SRs and CRs in all analysis categories. Only the theoretical uncertainties affecting the backgrounds are uncorrelated between the four different categories. The same is true for the NFs. This is a conservative approach and ensures that potential mismodellings observed in one of the categories do not impact other categories. 
-Different uncertainties are treated differently in the fit, and before the fit is performed, several uncertainties are preprocessed depending on their type and size. 
+Different uncertainties are treated differently in the fit, and before the fit is performed, the uncertainties are scrutinized and possibly preprocessed depending on their type and size using the techniques explained below.
 
 \paragraph{Transfer of uncertainties}
 % From INT note
@@ -89,7 +89,7 @@ The following cases result in an uncertainty for a given sample being pruned fro
 The nominal or alternative samples that have only small yields often lead to large, unphysical variations, due to statistical fluctuations. 
 Therefore, a normalization uncertainty is also pruned if it is larger than 80\%. 
 This criterion is carefully monitored to ensure that no meaningful uncertainty is pruned.
-In addition, some experimental four-momentum uncertainties and uncertainties on STXS signal samples are pruned manually if they are not affected by the above criteria but are clearly dominated by statistical fluctuations and thus deemed unphysical.
+In addition, some experimental four-momentum uncertainties and uncertainties on STXS signal samples are pruned manually if they are not identified by the above criteria but are clearly dominated by statistical fluctuations and thus deemed unphysical.
 Furthermore, the shape component of uncertainties of minor backgrounds ($V\gamma$, \Zgamma) are pruned, mainly because meaningful shape uncertainties cannot be estimated with the available MC samples. 
 
 Statistical fluctuations can also cause the up and down variations to be asymmetric around the nominal value. 
@@ -115,9 +115,9 @@ An example of an uncertainty processed in such a way is shown in \cref{fig:dnn:s
     \label{fig:dnn:smoothing} }}
 \end{figure}
 
-\subsection{Expected performance and validation of likelihood fit}
+\subsection{Expected performance and validation of the likelihood fit}
 \label{subsec:expected-performannce}
-The analysis strategy is optimized on MC simulated samples and signal-like data events are only analyzed after the statistical model is validated.
+The analysis strategy is optimized on MC simulated samples, and signal-like data events are only analyzed after the statistical model is validated.
 An \emph{Asimov} dataset~\cite{Cowan:2010js} can be used to evaluate the expected performance of the likelihood fit. It is generated under the SM assumption, i.e., assuming the expected values for the backgrounds and signals ($\mu=1$). 
 This implies that the values of all fit parameters obtained from a fit (\emph{post-fit} values) to the Asimov dataset correspond to their expected values. 
 The Asimov dataset is used to extract the expected uncertainties on the cross-section measurements and to assess the impact of different sources of uncertainties on the final results. 
@@ -126,7 +126,7 @@ The Asimov dataset is used to extract the expected uncertainties on the cross-se
 The uncertainties that include ``ATLAS'' in their names correspond to experimental uncertainties, all other uncertainties are related to theory. 
 % The NPs are ordered in terms of their contribution to the total uncertainty (\emph{breakdown}) on the cross section \sigmaVBF. 
 %The impact is calculated by taking the square root of the difference in quadrature of the uncertainty on $\mu_{\mathrm{VBF}}$ resulting from a fit performed with all parameters floating and a fit where the NP under investigation is fixed to its nominal value. 
-It becomes apparent that theoretical uncertainties dominate, in particular the signal modelling uncertainties from the choice of both parton shower model and matching procedure between the matrix element and parton shower. 
+It becomes apparent that theoretical uncertainties dominate, in particular the signal modelling uncertainties from the choice of both the parton shower model and the matching procedure between the matrix element and parton shower. 
 The largest background uncertainty is from the choice of \ttbar matching procedure and the leading experimental uncertainties come from the effect of the \MET soft term on the resolution of the \MET observable.  
 %, resulting from large shape differences in the DNN discriminant when the \MET soft term is varied. 
 All said uncertainties are mainly caused by shape differences in the DNN discriminant when the respective source of uncertainty is varied.

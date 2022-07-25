@@ -183,7 +183,7 @@ This nicely shows the kinematics and topologies the DNN selects to define region
                     \input{figures/hww/cutflows/run2-emme-VBF-cutflow-processes-paper-ggF-cutflow-cuts-2jet.tex}
                 }
             }
-            \caption[Expected number of events at different selection stages.]{Expected number of events at different selection stages to define the (a) VBF \TwoJet SRs and CRs and (b) the ggF \TwoJet SRs and CRs. For (a) the selections from the row labelled ``Preselection'' to the row labelled ``OLV'' are applied subsequently; for (b) the selections from the row labelled ``Preselection'' to the row labelled ``fail OLV $||$ fail CJV'' are applied subsequently. All respective other rows include all selections that define the indicated regions as described in \cref{sec:event-selection}.}
+            \caption[Expected number of events at different selection stages.]{Expected number of events at different selection stages to define the (a) VBF \TwoJet SRs and CRs and (b) the ggF \TwoJet SRs and CRs. For (a) the selections from the row labelled ``Preselection'' to the row labelled ``OLV'' are applied subsequently; for (b) the selections from the row labelled ``Preselection'' to the row labelled ``fail OLV $||$ fail CJV'' are applied subsequently. All respective other rows include all selections that define the indicated regions as described in \cref{sec:event-categorization}.}
             \label{app:tab:cutflows}
         \end{table}
     \end{landscape}
@@ -233,7 +233,7 @@ This nicely shows the kinematics and topologies the DNN selects to define region
     \label{app:post-fit-cr-dists}
 
     \Cref{app:fig:Top_CRs,app:fig:Ztt_CRs,app:fig:WW_CRs} show the post-fit distributions of the CRs that enter the 2-PoI fit for the measurement of the inclusive VBF and ggF production cross section.
-    Excellent agreement between the data and the SM predictions are observed.
+    Excellent agreement between the data and the SM predictions is observed.
     \begin{figure}[htp]
         \centering
         \subfloat[]{
@@ -250,7 +250,7 @@ This nicely shows the kinematics and topologies the DNN selects to define region
         % }
         \caption[Post-fit $\mT$ distributions in the ggF $WW$ control regions.]{
             Post-fit $\mT$ distributions in the (a) \ZeroJet, (b) \OneJet, and (c) ggF-enriched \TwoJet $WW$ CRs with signal (normalized to post-fit measurement) and background modeled contributions.
-            The red arrow in the lower panel of (a) indicates that the central value of the data lies above the window. The last bin of each distribution is inclusive (includes the overflow).
+            The red arrows in the lower panel of (a) indicate that the central value of the data lies above or below the window. The last bin of each distribution is inclusive (includes the overflow).
             The hatched band shows the total uncertainty, assuming SM Higgs boson production.
             Some contributions are too small to be visible.
             Figure and caption taken from \ccite{HWWPaper}.
@@ -456,7 +456,7 @@ This nicely shows the kinematics and topologies the DNN selects to define region
     This results in four final discriminants used in the statistical analysis.
 
     A similar categorization is performed for the CRs.
-    First, the separation in four regions based on the two-dimensional discriminant as mentioned above is also applied to the CRs. A top-quark and \Ztautau CR is used in all four regions and a $qq \to WW$ CR is used in the ggF-sensitive region with $0 < \text{DNN}_\mathrm{out}^\mathrm{VBF} < 0.1$. No $qq \to WW$ CR can be defined for the other regions due to limited statistical power.
+    First, the separation in four regions based on the two-dimensional discriminant as mentioned above is also applied to the CRs. One top-quark and one \Ztautau CR is used in each of the four regions and one $qq \to WW$ CR is used in the ggF-sensitive region with $0 < \text{DNN}_\mathrm{out}^\mathrm{VBF} < 0.1$. No $qq \to WW$ CR can be defined for the other regions due to limited statistical power.
     The CRs are defined with the same selections as in the nominal analysis (see \cref{tab:CRsSelection}) with a few exceptions.
     The $qq \to WW$ CR is defined as the ggF \TwoJet CR but without criteria on the CJV and OLV.
     The common top-quark CR is defined with a $b$-tag and uses additional criteria on $\mll < 70\,$GeV and $\dphill < 2.2$ as in the common \TwoJet SR, and removes all CJV and OLV selections. The common \Ztautau\ CR is defined as the VBF, \Ztautau CR but without the CJV and OLV applied.
@@ -474,7 +474,7 @@ This is to be compared to the corresponding results when using the current ggF \
 \end{eqnarray*}
 A reduction of uncertainties of about 7\% and 25\% for the VBF and ggF measurement, respectively, can be observed.
 The improvements for the ggF measurement are mostly due to the change of the discriminant to a DNN, but also benefit from the more efficient separation between the ggF- and VBF-sensitive regions.
-The small improvement of the VBF measurement is in part due to a slightly finer binning used in the fits for the VBF-sensitive region, but also a consequence of the more precise measurement of \muGGF.
+The small improvement of the VBF measurement is in part due to a slightly finer binning used in the fits for the VBF-sensitive region, but is also a consequence of the more precise measurement of \muGGF.
 Future analyses are expected to benefit from adopting this or a similar analysis strategy.
 
 \begin{figure}[ht]
