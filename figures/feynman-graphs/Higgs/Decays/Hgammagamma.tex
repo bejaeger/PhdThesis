@@ -1,0 +1,32 @@
+%!TEX TS-program = lualatex
+\documentclass{standalone}
+
+\usepackage[compat=1.1.0]{tikz-feynman}
+\usetikzlibrary{positioning}
+
+\begin{document}
+\providecommand{\defaultDist}{1.5cm}%
+\providecommand{\topAngle}{30}%
+%
+\begin{tikzpicture}[thick,scale=0.5,every node/.style={scale=0.8}]
+  \begin{feynman}
+    \coordinate[vertex] (v1);
+    \coordinate[vertex] (v2) at ($(v1)+(1,1)$);
+    \coordinate[vertex] (v3) at ($(v1)+(1,-1)$);
+    
+    \coordinate[label=right :$\gamma$] (q1) at ($ (v2) + (1.8,0) $);
+    \coordinate[label=right :$\gamma$] (q2) at ($ (v3) + (1.8,0) $);
+    \coordinate[label=left :$H$] (h1) at ($ (v1) + (-1.8,0) $);
+    \diagram* {
+      (h1) -- [scalar] (v1),
+      (v1) -- [fermion] (v2)
+      -- [fermion] (v3)
+      -- [fermion] (v1),
+      v2 -- [boson] (q1),
+      v3 -- [boson] (q2),
+    };
+  \end{feynman}
+\end{tikzpicture}
+
+
+\end{document}
