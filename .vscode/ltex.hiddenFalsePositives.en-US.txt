@@ -1,0 +1,1 @@
+{"rule":"A_RB_NN","sentence":"^\\QThe locally gauge invariant QCD Lagrangian reads \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\QQCD \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q where the sum runs over all quark fields, \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q, where the fields take the form of spinor triplets.\\E$"}
