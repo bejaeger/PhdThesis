@@ -25,3 +25,5 @@
 *.synctex.gz
 *.tdo
 *.toc
+*/.DS_Store
+.DS_Store
