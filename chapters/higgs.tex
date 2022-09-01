@@ -210,7 +210,7 @@ The neutrinos stemming from the $W$ boson decays, however, prevent to fully reco
 
 % Results of the analysis of \HWW\ decays conducted by the ATLAS collaboration and CMS collaboration for data of \RunOne\ can be found in Ref.~\cite{PhysRevD.92.012006} and Ref.~\cite{2013arXiv1312.1129C}, respectively; a corresponding analysis of \RunTwo\ data is given in \cref{sec:ggfanalysis}, focusing on the gluon fusion production-mode.
 
-Events with $H \to \tau\tau $ decays exhibit a similar final state as the \HWW\ process and especially in the case of leptonically decaying $\tau$-leptons allows for an excellent background rejection. 
+Events with $H \to \tau\tau $ decays exhibit a similar final state as the \HWW\ process and provide sensitive measurements using leptonic or hadronic decays of the $\tau$-leptons or combinations thereof.
 % htautau paper: https://arxiv.org/abs/2201.08269
 
 The analyses of Higgs boson decays to second generation fermions are challenging, either because of very small branching fractions, as is the case for $H \to \mu\mu$ decays, or because of an overwhelming QCD background, as is the case for $H \to c\bar{c}$ decays.
@@ -264,6 +264,7 @@ However, inclusive measurements cannot resolve small deviations from the SM pred
 %As more data has been collected at the LHC in recent years, 
 In order to probe the SM predictions for different phase space regions exclusively, Higgs boson production processes are measured differentially in various kinematic and topological variables.
 Differential measurements use well-defined phase space regions, known as \emph{fiducial regions}, that allow unfolding the detector effects. 
+The unfolding attempts to revert the smearing of final-state kinematics caused by the finite detector resolution.
 This enables comparisons between experimental data and theory at generator level and thus minimizes the dependency on theoretical assumptions\footnote{Theoretical assumptions otherwise introduce uncertainties due to detector acceptance effects, as is the case for inclusive cross-section measurements.}.
 The unfolding is facilitated by relating the expected number of events at detector level to the corresponding number at generator level. It is therefore favored to use simple discriminants for the signal extraction that are well-defined at both detector- and generator level than to use advanced analysis techniques such as neural networks. 
 This limits the sensitivity of differential measurements.
@@ -277,7 +278,7 @@ Another drawback is that it is not easily possible to statistically combine diff
 \subsubsection{Simplified template cross section measurements}
 The \emph{Simplified Template Cross Sections} (STXS) framework provides a way to increase the experimental sensitivity while still allowing for differential measurements of Higgs boson production.
 To achieve this, mutually exclusive kinematic regions of Higgs boson production are defined at generator level. They are known as \emph{STXS bins}. 
-The extraction of the signal split in these STXS bins is then performed in reconstructed regions, which are typically aligned with the definitions of the STXS bins. No unfolding of detector effects is performed which allows using sophisticated analysis techniques like neural networks.
+The extraction of the signal split in these STXS bins is then performed in reconstructed regions, which are typically aligned with the definitions of the STXS bins. No explicit unfolding of detector effects is performed which allows using sophisticated analysis techniques like neural networks to improve the experimental sensitivity.
 The STXS bins are defined based purely on the production mode and kinematics of the Higgs boson, are agnostic to the different Higgs decay channels, and are agreed upon between experiments.
 These design choices allow combining Higgs boson measurements of different decay channels as well as experiments, which enables more precise cross-section measurements.
 % The measurements of the production mode cross sections are performed in regions of phase space defined at the level of the fully reconstructed collision events. They are defined as similar as possible to the generator-level bins. This allows using sophisticated analysis techniques like neural networks.
@@ -304,7 +305,7 @@ The coupling-strength modifiers therefore parametrize deviations from the SM pre
 The $\kappa$ framework assumes that the data originate from a Higgs boson with a mass of 125\,GeV and the kinematics of both the production and decay are assumed to agree with the SM predictions for the Higgs boson.\footnote{For more details on the assumptions and the parametrization of $\kappa_H$, the reader is referred to \ccite{LHCHandbookV3}.}
 The latter assumption, in particular, limits the sensitivity to models beyond the SM that may only affect the SM kinematics. 
 
-An alternative framework to the $\kappa$ framework constists of interpretations of Higgs boson measurements in Effective Field Theories, for example within the framework of Standard Model Effective Field Theory (SMEFT)\footnote{An overview of SMEFT can, for example, be found in \ccite{Brivio_2019}.}.
+An alternative framework to the $\kappa$ framework consists of interpretations of Higgs boson measurements in Effective Field Theories, for example within the framework of Standard Model Effective Field Theory (SMEFT)\footnote{An overview of SMEFT can, for example, be found in \ccite{Brivio_2019}.}.
 In SMEFT, the effects of physics beyond the SM at large energy scales $\Lambda$ -- large compared to the Higgs vacuum expectation value ($\Lambda \gg v$) -- are parametrized at low energies, $E \ll \Lambda$, in terms of effective couplings. 
 This allows for a theory-independent approach to search for deviations of the SM, and relies on fewer assumptions than the $\kappa$ framework. 
 

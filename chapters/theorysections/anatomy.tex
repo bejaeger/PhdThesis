@@ -3,7 +3,7 @@ These predictions can be tested by studying the outcomes of particle collisions 
 The LHC accelerates proton beams, which allows reaching very high center-of-mass energies for the collision events. 
 The collision events have a complex phenomenology, since protons are not elementary particles.
 % The phenomenology of proton-proton collisions ($pp$ collisions) is complex because protons are not elementary particles. 
-Protons are compound states of so-called \emph{partons} made up of quarks and gluons that interact with each other according to the laws of QCD.
+Protons are compound states of so-called \emph{partons} consisting of quarks and gluons whose dynamics are primarily governed by the laws of QCD.
 A correct understanding of QCD processes is therefore essential for the success of physics programs at $pp$ collider experiments.
 
 In this section, the relevant aspects are described to move from QCD calculations to observables that can be measured in collider experiments such as the ATLAS detector.
@@ -30,8 +30,8 @@ The theoretical predictions for the observables are quantified using simulated $
 As illustrated in \cref{fig:ppcol}, a hard $pp$ scattering process is characterized by a parton-parton interaction with large momentum transfer, known as a \emph{hard scatter}, and further low energy processes.
 The partons participating in the hard scatter carry a momentum fraction of the proton described by \emph{parton distribution functions} (PDFs).
 The hard scatter is accompanied by the so-called \emph{underlying event}, which consists of low energy interactions between the proton remnants that are not taking part in the hard scatter.
-The partons in the initial and final states can radiate in the form of \emph{inital-state radiation} (ISR) and \emph{final-state radiation} (FSR), and a single parton can also split into two. Together this is referred to as \emph{parton showering}.
-The final-state partons then undergo a process known as \emph{fragmentation} (also called \emph{hadronization}), due to the confining nature of QCD. They end up forming a spray of color-neutral hadrons, which are known as particle \emph{jets}. Many more details on the above-mentioned aspects can be found in standard textbooks on collider physics such as \ccite{Ellis:1991qj}. 
+The partons in the initial and final states can radiate gluons, a process known as \emph{inital-state radiation} (ISR) and \emph{final-state radiation} (FSR), and gluons can split into quark-antiquark pairs. Together this is referred to as \emph{parton showering}.
+The final-state partons then undergo the processes of \emph{fragmentation} and \emph{hadronization}, due to the confining nature of QCD. They end up forming a spray of color-neutral hadrons, which are known as particle \emph{jets}. Many more details on the above-mentioned aspects can be found in standard textbooks on collider physics such as \ccite{Ellis:1991qj}. 
 
 \begin{figure}[t]
   \newImageResizeCustom{0.8}{figures/anatomy/schematic_ppcollision.png}
@@ -43,13 +43,13 @@ The final-state partons then undergo a process known as \emph{fragmentation} (al
 \subsection{Collision rates}
 \label{subsec:collision-rates}
 %The whole physics program at collider experiments can more or less be broken down into
-The main task of collider experiments is the measurement of event rates. 
+One of the main tasks of collider experiments is the measurement of event rates. 
 %Comparing the event rates measured in data with the predictions from simulations allow for meaningful statistical inferences.
 For a given process $p$, the event rate can be written as
 \begin{equation}
   \frac{\mathrm{d}N}{\mathrm{d}t} = \sigma_p \mathcal{L},
 \end{equation}
-where $\sigma_p$ is the cross section for process $p$, and $\mathcal{L}$ the luminosity.
+where $\sigma_p$ is the cross section for process $p$, and $\mathcal{L}$ the instantaneous luminosity.
 The cross section expresses the likelihood of any particular interaction to occur and can be written as
 % PEskin/Schroeder
 %The likelihood of any particular final state can be expressed in terms of the cross section, a quantity that is intrinsic to the colliding particles and therefore% allows comparison of two dierent experiments with dierent b eam sizes and intensities
@@ -57,7 +57,7 @@ The cross section expresses the likelihood of any particular interaction to occu
   \label{eq:xsec}
   \sigma = \frac{|M|^2}{F} \int \text{d}Q,
 \end{equation}
-where $M$ is the so-called matrix element, d$Q$ the Lorentz-invariant phase-space factor, and $F$ the Lorentz-invariant flux factor \cite{Halzen:1984mc}. 
+where $M$ is the so-called matrix element, d$Q$ the Lorentz-invariant phase-space factor\footnote{Defined as d$Q = \prod_{i = 1}^N \frac{d^3p}{(2\pi)^2 2E_i}$ for a general N-body process.}, and $F$ the Lorentz-invariant flux factor \cite{Halzen:1984mc}. 
 The matrix element contains all the dynamical information of the process under investigation, and the square of it represents the probability of going from a certain initial state to a final state. 
 The luminosity, $\mathcal{L}$, is a measure of the number of particles per unit area and time and is a crucial performance parameter for particle colliders. It only depends on parameters of the accelerator and is given by
 %is the proportionality constant that multiplies the cross section to determine the \emph{event rate} and 
@@ -119,7 +119,7 @@ The so-called \emph{DGLAP (Dokshitzer-Gribov-Lipatov-Altarelli-Parisi) evolution
 
 %The partonic cross-sections can be computed using Feynman rules.
 %The determination of the matrix element (ME) is done with so called \emph{Feynman rules}, which 
-The partonic cross section, $\hat{\sigma}_{ij \rightarrow Y}$, depends on the factorization scale, $\mu_F$, as well as another scale called \emph{renormalization scale}, $\mu_R$.
+The partonic cross section, $\hat{\sigma}_{ij \rightarrow Y}$, depends on the factorization scale, $\mu_F$, as well as another scale called \emph{renormalization scale}, $\mu_R$, defined later.
 %Choosing its value sufficiently large, allows calculating the partonic cross section as a perturbation series in the running  coupling $\alpha_s$,
 When $\mu_F$ is chosen sufficiently large, the partonic cross sections can be calculated as a perturbation series of the strong coupling $\alpha_s$~\cite{Ellis:1991qj},
 \begin{equation}
@@ -216,7 +216,7 @@ Matrix element calculations are performed with MC generators that randomly sampl
 There are different MC generators that come with varying precision in perturbation theory. The generators used for the \HWW analysis are summarized in \cref{sec:data-mc-samples}.
 
 \paragraph{Parton showering}
-Parton showering occurs because there is a finite quantum probability for a single parton to split into two. 
+Parton showering occurs because there is a non-zero quantum probability for a single parton to split into two. 
 The \emph{QCD splitting functions}~\cite{Altarelli:1977zs} provide the theoretical foundation to describe this process and are used in dedicated parton-shower algorithms.
 The probability for emitting soft and collinear radiation diverges, respectively, for low energies and small angles. 
 Physical observables are therefore chosen such that they are insensitive to these processes and a cut off is applied in the parton-shower algorithms to avoid modelling this radiation explicitly.

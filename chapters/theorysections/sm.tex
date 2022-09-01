@@ -65,8 +65,7 @@ The particles can be grouped into two main types:
 \emph{fermions} with half-integer spin and \emph{bosons} with integer spin. The interaction between the fermions (sometimes called \emph{matter particles}) are interpreted as exchanges of \emph{gauge bosons} (also called \emph{force carriers}) that mediate the fundamental forces.
 % \emph{fermions} with half-integer spin (sometimes called \emph{matter particles}) and \emph{bosons} with integer spin (known as the \emph{mediators} or \emph{force carriers} of the fundamental forces).
 
-The fermions can be grouped into three generations, each containing two leptons and two quarks. The different types of leptons and quarks are referred to as (quark or lepton) \emph{flavors}.
-Quarks have an additional property called \emph{color}, which can take three possible values typically labelled as red, green, and blue\footnote{In fact, also linear combinations of the three colors are realized in nature, as discussed later in this chapter.}.
+The fermions can be grouped into three generations, each containing two leptons and two quarks. The different types of leptons and quarks are referred to as (quark or lepton) \emph{flavors}. The fermions can be categorized in terms of their mass and quantum numbers such as \emph{charge} and \emph{hypercharge}. Quarks have an additional property called \emph{color}, which can take three possible values typically labelled as red, green, and blue\footnote{In fact, also linear combinations of the three colors are realized in nature, as discussed later in this chapter.}.
 Additionally, each fermion has a corresponding antiparticle that has the same mass but ``opposite'' internal quantum numbers, i.e., oppositely signed charge and anti-color if applicable.
 \begin{figure}[ht]
   \includegraphics[width=1\textwidth,trim=10 0 10 0]{figures/theory/particles-infographic/particles-infographic.pdf}
@@ -77,7 +76,7 @@ Additionally, each fermion has a corresponding antiparticle that has the same ma
 %The interactions between the fermions can be described by exchanges of so-called \emph{gauge bosons}.
 The SM includes three of the four known fundamental interactions: The \emph{electromagnetic interaction}, the \emph{strong interaction}, and the \emph{weak interaction}. The electromagnetic and the weak interactions are unified in the \emph{electroweak theory}. The fourth known fundamental interaction, \emph{gravitation}, is not part of the SM but can be fully neglected in present particle physics experiments due to its weak strength.
 
-The gauge boson that mediates the electromagnetic interaction is the massless \emph{photon} that interacts with all charged fermions. Electromagnetic interactions are described by the theory of \emph{quantum electrodynamics} (QED). The strong interaction is transmitted via eight massless gluons, following the rules of \emph{quantum chromodynamics} (QCD). QCD acts on matter particles that carry color, that is, quarks and gluons themselves.
+The gauge boson that mediates the electromagnetic interaction is the massless \emph{photon} that interacts with all charged particles. Electromagnetic interactions are described by the theory of \emph{quantum electrodynamics} (QED). The strong interaction is transmitted via eight massless gluons, following the rules of \emph{quantum chromodynamics} (QCD). QCD acts on matter particles that carry color, that is, quarks and gluons themselves.
 Due to a property known as \emph{confinement} in QCD\footnote{Confinement arises due to the energy dependence of the strength of the QCD interactions (see \cref{subsec:factorisation}).}, quarks cannot be found in isolation. They are confined within hadrons that consist, for example, of a quark and an anti-quark (known as \emph{mesons}) or three quarks (known as \emph{baryons}).
 The weak interaction is mediated by three massive gauge bosons, \Wplus, \Wminus, and \Zboson, and acts on all fermions. Similar to gluons, the \Wpm and \Zboson bosons can interact with themselves.
 
@@ -156,7 +155,7 @@ The Lagrangian that is invariant under $\psi_f \rightarrow e^{i \omega(x)} \psi_
   \label{eq:Lagrangianqed}
 \end{equation}
 where the sum goes over all electrically charged fermions with masses $m_f$, and $\gamma^\mu$ refers to the four $4 \times 4$ gamma matrices.
-Here, $D_\mu = \partial_\mu + ieA_\mu$ is the covariant derivative, which includes the gauge field $A_\mu$ which is associated with the photon. The requirement of local gauge symmetry prohibits terms quadratic in $A_\mu$, resulting in the prediction of the photon being massless.\footnote{Terms in the Lagrangian that are quadratic in a certain field give rise to particle masses.}
+Here, $D_\mu = \partial_\mu + ieA_\mu$ is the covariant derivative, which includes the gauge field $A_\mu$ which is associated with the photon. The requirement of local gauge symmetry prohibits terms quadratic in $A_\mu$, resulting in the prediction of the photon being massless.\footnote{Masses of a certain field arise from terms in the Lagrangian that are quadratic in that field.}
 The so-called \emph{field tensor}, defined as $F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu$, provides an elegant mathematical object representing the electromagnetic field. It can be used, for example, to describe Maxwell's equations of classical electrodynamics.
 
 The symmetry group associated to QED is denoted U(1)$_{\text{QED}}$ and the conserved quantity is the electric charge.\footnote{This is a reflection of Noether's theorem, which states that each symmetry is related to a conserved quantity.}
@@ -282,8 +281,8 @@ Another mechanism is required to explain the existence of the masses of the gaug
 %An additional mechanism is needed in the SM to explain the finite masses of the weak gauge bosons. 
 
 A principle known as \emph{spontaneous symmetry breaking}, that was first explored in the field of condensed-matter physics, can be used to generate mass terms for the weak gauge bosons without violating local gauge invariance.
-This was first formulated in particle physics by three independent research teams in 1964: Brout and Englert~\cite{PhysRevLett.13.321}, Higgs~\cite{PhysRevLett.13.508,HIGGS1964132}, and Guralnik, Hagan, and Kibble \cite{PhysRevLett.13.585}.\footnote{Their work was inspired by previous advancements in the theory of superconductivity~\cite{PhysRev.108.1175} and specifically P. W. Anderson, who proposed the mechanism of spontaneous symmetry breaking for generating mass terms in a non-relativistic scenario already in 1963~\cite{PhysRev.130.439}.}
-Today the mechanism is most often called \emph{BEH mechanism} or \emph{electroweak symmetry breaking} (ESWB).
+This was first formulated in particle physics by three independent research teams in 1964: Brout and Englert~\cite{PhysRevLett.13.321}, Higgs~\cite{PhysRevLett.13.508,HIGGS1964132}, and Guralnik, Hagan, and Kibble \cite{PhysRevLett.13.585}. Their work was inspired by previous advancements in the theory of superconductivity~\cite{PhysRev.108.1175} and specifically P. W. Anderson, who proposed the mechanism of spontaneous symmetry breaking for generating mass terms in a non-relativistic scenario already in 1963~\cite{PhysRev.130.439}.
+Today, the mechanism incorporated in the SM is most often called \emph{BEH mechanism} or \emph{electroweak symmetry breaking} (ESWB).
 The basic principle is to allow the state of lowest energy to hide local gauge invariance while maintaining the gauge symmetry of the Lagrangian itself.
 
 % From Peskin and Schroeder
@@ -319,7 +318,7 @@ where $v$ is the non-zero \emph{vacuum expectation value} (\emph{vev}) of the Hi
   \resizebox{0.75\textwidth}{!}{
     \includegraphics[trim=0 15 0 0]{figures/theory/higgs-potential/higgs-potential.pdf}
   }
-  \caption[Illustration of the Higgs potential.]{Illustration of the Higgs potential $V(\phi)$ defined in \cref{eq:higgspotential}. The minimum can be found on a circle in the $(\phi_1, \phi_2)$ plane.
+  \caption[Illustration of the Higgs potential.]{Illustration of the Higgs potential $V(\phi)$ defined in \cref{eq:higgspotential} assuming a simplified Higgs field, a complex singlet scalar $\phi = \phi_1 + i \phi_2$. The minimum can be found on a circle in the $(\phi_1, \phi_2)$ plane.
   }
   \label{fig:higgspotential}
 \end{figure}
