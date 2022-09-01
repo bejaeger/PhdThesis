@@ -86,6 +86,7 @@ The $\rho$ observable is estimated by the median \pT density of jets, calculated
 }
 with radius parameter $R = 0.4$, positive-energy topo-clusters with \absetaST{2} as input, and no JVT requirement applied.
 The jet area is determined using a procedure known as ghost association, where a large number of particles with four-vectors of infinitesimal magnitude are added to the event prior to the jet reconstruction and assigned to the jet with which they are clustered. The area of a jet is then calculated from the number of ghost particles associated to that jet.
+This correction subtracts on average roughly 1-10 GeV from the energy of the original jet, depending on the jet collection considered as well as the pile-up conditions.
 The residual pile-up correction is based on a comparison with geometrically matched truth jets. The energy after all pile-up corrections, can be written as
 \begin{equation}
     \label{eq:pTpusub}
@@ -99,7 +100,9 @@ What follows is a purely MC-based calibration of the four-momentum of the jet, d
 To this end, truth jets are matched to reconstructed jets with $\pT > 7\,\GeV$, by requiring them to be within $\Delta R = 0.3$. In addition, no other activity is allowed in the vicinity of the jets, which is ensured by requiring the reconstructed (truth) jets to have no other reconstructed (truth) jet with $\pT > 7\,\GeV$ within $\Delta R = 0.6$ ($\Delta R = 1.0$).
 The average jet response is then quantified by the mean of a Gaussian fit to the core of the $\EPUsub / \Etrue$ response distribution and derived in bins of \Etrue.
 The jet calibration factor, also denoted \emph{JES factor} throughout this thesis, is taken as the inverse of the average energy response parametrized as a function of \EPUsub.
-The exact procedure, referred to as \emph{numerical inversion}, is outlined in \ccite{PERF-2011-03}. The resulting average response is shown in \cref{fig:jes-calibration-jet-response} for different bins of \etadet. A similar procedure is used to correct biases in the reconstructed jet $\etadet$, which is detailed in \ccite{JETM-2018-05}.
+The exact procedure, referred to as \emph{numerical inversion}, is outlined in \ccite{PERF-2011-03}. The resulting average response is shown in \cref{fig:jes-calibration-jet-response} for different bins of \etadet. 
+The response generally decreases with increasing \etadet because of the lower granularity of the calorimeter at high \etadet and the resulting increased calorimeter cluster reconstruction thresholds, which leads to more undetected energy. 
+A similar procedure is used to correct biases in the reconstructed jet $\etadet$, which is detailed in \ccite{JETM-2018-05}.
 Jets calibrated with the MC-based corrections are considered to be at the \emph{JES scale} and referred to as PFlow+JES jets or EM+JES jets in the following.
 
 \begin{figure}[ht]
@@ -605,7 +608,7 @@ Above $\pT=100\,\GeV$ and beyond detector regions of $\etadet = 2.5$ (not shown)
 The measured JER is used to improve comparisons between MC simulations and data, by both correcting the nominal JER of the MC simulations to on average match the one found in data and propagating systematic uncertainties of the JER measurements to the final event selection of physics analyses.
 To this end, a procedure known as \emph{smearing} is applied in which the transverse momenta of the jets are randomly varied according to a Gaussian function with a certain width, labelled as $\sigma_{\text{smear}}$.
 
-The nominal correction to the JER is only applied in regions of \pT and $\eta$ where the resolution in MC simulation is smaller than in data. In regions where the resolution in MC simulation is larger than in data, no nominal smearing is applied, but the full JER difference is taken as an additional systematic uncertainty.\footnote{Ideally, the JER in the MC simulation should be decreased (``unsmeared'') when it is larger than the one found in data. This, however, is technically challenging and computationally intensive, as it requires the comparison with truth information that is not always accessible in the MC simulation samples. Therefore, a conservative uncertainty is applied instead. This is planned to be revisited for future analyses.}
+The nominal correction to the JER is only applied in regions of \pT and $\eta$ where the resolution in MC simulation is smaller than in data. In regions where the resolution in MC simulation is larger than in data, which is the case for some regions at high $\eta$, no nominal smearing is applied. The full JER difference is taken as an additional systematic uncertainty in these cases.\footnote{Ideally, the JER in the MC simulation should be decreased (``unsmeared'') when it is larger than the one found in data. This, however, is technically challenging and computationally intensive, as it requires the comparison with truth information that is not always accessible in the MC simulation samples. Therefore, a conservative uncertainty is applied instead. This is planned to be revisited for future analyses.} 
 
 The systematic uncertainties are propagated by applying a Gaussian smearing with width
 \begin{equation}
