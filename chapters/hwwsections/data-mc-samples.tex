@@ -5,7 +5,7 @@
 
 \newcommand{\quotebox}[1]{
 \begin{mdframed}[backgroundcolor=blue!8!gray!8,rightline=false,leftline=false,topline=false,bottomline=false]
-{\LARGE``}{#1}{{\LARGE''}}~\cite{HWWPaper}
+{\LARGE``}{\normalsize #1}{{\LARGE''}}~\cite{HWWPaper}
 \end{mdframed}
 }
 
@@ -117,7 +117,7 @@ The MC prediction is normalized to cross sections calculated at NNLO in QCD with
 The ggF, VBF, and $VH$ Higgs boson samples use the \texttt{PDF4LHC15}~\cite{Butterworth:2015oua} PDF set and the AZNLO tune~\cite{STDM-2012-23} of \PYTHIAV{8}. The sample normalizations account for the decay branching fractions calculated with \textsc{HDECAY}~\cite{Djouadi:1997yw, Spira:1997dg, Djouadi:2006bz} and \textsc{PROPHECY4F}~\cite{Bredenstein:2006ha, Bredenstein:2006rh, Bredenstein:2006nk} assuming a Higgs boson mass of $\SI{125.09}{\GeV}$~\cite{HIGG-2014-14}. An uncertainty of 2.16\%~\cite{deFlorian:2016spz} is assigned to the \hww branching fraction, which includes the uncertainty on the Higgs boson mass. All Higgs boson samples are generated with a Higgs boson mass of 125 GeV, with the uncertainty on the Higgs boson mass being negligible for kinematic distributions.
 
 The production of \ttH\ events is modelled using the \powhegbox~v2~\cite{Frixione:2007nw,Nason:2004rx,Frixione:2007vw,Alioli:2010xd,Hartanto:2015uka} generator at NLO with the \nnpdfnlo~\cite{Ball:2014uwa} PDF set.
-The events are interfaced to \PYTHIAV{8.230}~\cite{Sjostrand:2014zea}~using the A14 tune~\cite{ATL-PHYS-PUB-2014-021}.
+The events are interfaced to \PYTHIAV{8.230}~\cite{Sjostrand:2014zea} using the A14 tune~\cite{ATL-PHYS-PUB-2014-021}.
 The prediction is normalized to the cross section computed at NLO QCD and NLO EW accuracy~\cite{deFlorian:2016spz}.
 % The decays of bottom and charm hadrons are performed by \evtgen~v1.6.0~\cite{EvtGen}.
 The sample is inclusive in Higgs decay modes and the cross section is computed assuming a Higgs boson mass of $\SI{125.09}{\GeV}$.}
@@ -168,7 +168,7 @@ The \nnpdfnnlo set of PDFs is used, along with the dedicated set of tuned parton
 
 \subsubsection{Electroweak $WW$ samples}
 \quotebox{Electroweak $WW$ production in association with two jets ($WWjj$) is
-generated using \MGFiveNLO~\cite{Alwall:2014hca} with LO matrix elements using the \texttt{NNPDF2.3LO} PDF set.
+generated using \\ \MGFiveNLO~\cite{Alwall:2014hca} with LO matrix elements using the \texttt{NNPDF2.3LO} PDF set.
 For the nominal sample, \MGFiveNLO\ is interfaced with \PYTHIAV{8.244} using the
 A14 tune to model the parton shower, hadronization, and underlying event. An
 alternative sample is utilized to evaluate the shower model uncertainty, for

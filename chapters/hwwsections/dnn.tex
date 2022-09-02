@@ -39,7 +39,8 @@ The model selected also needs to be validated, which is discussed in \cref{subse
 
 \subsection{Training data and data preparation}
 \label{subsec:training-data}
-All MC simulated events are used for the training if they pass the preselection criteria (see \cref{subsec:preselection}), have no identified $b$-jet in the event with $\pT > 20\,$GeV, and satisfy $\TwoJet$. To increase the amount of sample events with which the DNN is trained, no other VBF-specific selections are applied prior to the training. This has proven to be particularly beneficial in the development of DNNs, which perform better the larger the dataset available for the training.
+All MC simulated events are used for the training if they pass the preselection criteria (see \cref{subsec:preselection}), have no identified $b$-jet in the event with $\pT > 20\,$GeV, and satisfy $\TwoJet$. To increase the amount of sample events with which the DNN is trained, no other VBF-specific selections are applied prior to the training. 
+It was found that this improves the performance of the DNN compared to using only the simulated events in the VBF SR for the training.\footnote{This finding agrees with conclusions drawn in other domains, that DNNs generally perform better the larger the dataset available for the training.}
 %This increases the size of the training data 
 %This has proven advantageous compared to a training using, for example, only events in the VBF-enriched \TwoJet category. 
 The sizes of the available training samples are shown in \cref{tab:DNNtrainingstats} along with other specifications that are discussed below.
@@ -91,7 +92,7 @@ The latter weight is determined by specifying a desired \emph{training fraction}
 \begin{equation}
     S_\text{frac} = w_\text{proc} \frac{\sum_{p} w_\text{phys}}{ \sum w_\text{phys}},
 \end{equation}
-where the sum in the numerator goes over all events of process $p$, and the sum in the denominator over the entire training data. The training fraction provides a meaningful way to encode the importance of different processes and to remove sample imbalances in the training data. 
+where the sum in the numerator goes over all events of process $p$, and the sum in the denominator over the entire training data. The training fraction provides a meaningful way to encode the importance of different processes and to remove sample imbalances in the training data. The specific values chosen for this analysis are presented in \cref{subsec:hyper-parameters}.
 %They have been optimized as explained below.
 % The chosen values for the final VBF DNN are shown in \cref{tab:DNNtrainingstats}.
 % They have been optimized as discussed in \cref{}.
@@ -104,8 +105,7 @@ where the sum in the numerator goes over all events of process $p$, and the sum 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Performance metric explanation
 The VBF DNN is trained using the $k$-fold cross validation method with $k=5$ and the training data are split as explained in \cref{subsec:par:kfold-crossval}.
-\Cref{fig:monitoring} shows the loss and binary accuracy\footnote{The binary accuracy is defined by counting a VBF signal event (background event) as correctly classified if the DNN output value is larger (smaller) 0.5.
-} evaluated during the training for the training and validation set.
+\Cref{fig:monitoring} shows the loss and binary accuracy evaluated during the training for the training and validation set. The binary accuracy is defined by counting a VBF signal event (background event) as correctly classified if the DNN output value is larger (smaller) 0.5.
 \begin{figure}[t]
     \subfloat[] {
         \newImageResizeCustom{0.47}{figures/hww/dnn/loss_thesis.pdf}
@@ -162,8 +162,10 @@ The bins are found iteratively by moving the lower bound of a candidate bin to s
 % \end{enumerate}
 
 The test set of the cross-validation split is used to deploy the model in the analysis as well as to test the level of generalization.
-\Cref{fig:dnn-train-vs-test} shows comparison plots between the training and the test set, confirming good agreement between the two and thus ruling out the occurrence of severe overfitting.\footnote{It is worth noting that even if some overfitting occured, it would not introduce any errors or biases in the analysis, since the test set of the cross-validation method is used to evaluate the simulated samples in the final analysis. It would merely indicate that the DNN training is not fully oprimized.}
+\Cref{fig:dnn-train-vs-test} shows comparison plots between the training and the test set, confirming good agreement between the two and thus ruling out the occurrence of severe overfitting.\footnote{It is worth noting that even if some overfitting occurred, it would not introduce any errors or biases in the analysis, since the test set of the cross-validation method is used to evaluate the simulated samples in the final analysis. It would merely indicate that the DNN training is not optimal.}
 The distributions also nicely show the different shapes of the VBF signal and the backgrounds.
+These distributions were also studied for each individual fold of the cross-validation procedure and similar conclusions could be drawn. The shapes between the different folds were also found to be compatible with each other. 
+
 % The VBF DNN distribution as used in the statistical analysis can be found in \cref{subsec:fina-model-validation}
 % Model choice: Choose model with highest significance in validation set!
 % Model validation: Validate model comparing against test set!

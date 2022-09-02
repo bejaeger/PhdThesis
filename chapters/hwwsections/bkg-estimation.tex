@@ -120,6 +120,8 @@ The distributions of various observables in the VBF, $WW$ VR is shown in \cref{f
 \FloatBarrier
 \sixPlots{\vrmodellingcaption{$WW$ VR}}{fig:wwvr:dnn-inputs}{\wwvrplotdir/../mjj/plots/run2-emme-CutVBF_WWControl_2jet-Mjj-log.pdf}{\wwvrplotdir/run2-emme-CutVBF_WWControl_2jet-DYjj-lin.pdf}{\wwvrplotdir/run2-emme-CutVBF_WWControl_2jet-DPhill-lin.pdf}{\wwvrplotdir/run2-emme-CutVBF_WWControl_2jet-Mll-lin.pdf}{\wwvrplotdir/../lepcent/plots/run2-emme-CutVBF_WWControl_2jet-contOLV-lin.pdf}{\wwvrplotdir/run2-emme-CutVBF_WWControl_2jet-METSig_broad-lin.pdf}{\vrmodellingcaptionshort{$WW$ VR}}
 
+\FloatBarrier
+
 \subsubsection{Control regions for the STXS measurement}
 \label{subsubsec:stxs-crs}
 For the STXS measurement, the CRs defined above are further split into separate CRs that are aligned with the STXS SRs. Due to the limited statistical precision, the same split as in the SRs cannot be performed for the CRs. Thus, a compromise is made between statistical power and granularity, leading to a total number of 21 CRs in the ggF categories and 6 CRs in the VBF categories.
@@ -170,8 +172,8 @@ These include the background contributions from $gg \to WW$, EW~$WW$, Other $VV$
 \subsection{Backgrounds with misidentified leptons}
 \label{subsec:misid-bkg}
 The $W$+jets and multijet processes enter the SRs if one ($W$+jets) or two (multijet) leptons are misidentified.
-The rate at which these misidentifications occur is difficult to estimate purely based on simulated event samples.
-Their contributions are therefore estimated using a data-driven technique known as \emph{fake factor method}. In this method, a control data sample is defined and used to extrapolate the expected number of events to the analysis regions via an extrapolation factor known as \emph{fake factor}.
+It is challenging to find a general prescription of the processes that lead to a jet being misidentified as a lepton because they are related to nonperturbative QCD and details of the detector simulation. 
+The rate at which these misidentifications occur is therefore estimated using a data-driven technique known as \emph{fake factor method}. In this method, a control data sample is defined and used to extrapolate the expected number of events to the analysis regions via an extrapolation factor known as \emph{fake factor}.
 The control sample is defined with alternative object selection criteria that are orthogonal to the nominal selections and designed to be enriched in candidate events with misidentified leptons.
 The fake factor is derived in a separate analysis and can be regarded as the probability of a lepton being misidentified, given the control sample selections.
 For each signal category, the same event selections are applied to the control sample as in the nominal analysis. Details on the fake factor method including a description of the systematic uncertainties that must be considered are given in Appendix~\ref{app:fake-factor-method}.
