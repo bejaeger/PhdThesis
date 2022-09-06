@@ -343,6 +343,28 @@ The pile-up noise is measured by first determining the noise at the scale of the
 
 %the energy found within two cones of radius \Rrandomcone is summed and compared to each other. This provides a measure of the fluctuations due to pile-up.
 \paragraph{Random cones method} The random cones method can be used to measure the energy fluctuations expected from pile-up within a cone of radius \Rrandomcone. The momentum distribution of particle flow objects of a single zero-bias data event is shown in \cref{fig:random-cones-balance-a}.
+\begin{figure}[t]
+    \subfloat[] {
+        \newImageResizeCustom{0.46}{figures/calibration/zero-bias-event-deposits-orig.pdf}
+        \label{fig:random-cones-balance-a}
+    }
+    \subfloat[] {
+        \newImageResizeCustom{0.46}{figures/calibration/random-cones-difference.pdf}
+        \label{fig:random-cones-balance-b}
+    }
+    \subfloat{
+        \hspace{-32.13em}    
+        \includegraphics[width=0.00153\textwidth,valign=t]{figures/calibration/worm.png}
+    }
+    \caption[Sum of transverse momenta of particle flow objects and difference of the transverse momentum within two random cones.]{(a) Sum of transverse momentum of neutral and selected charged particle flow objects in an area of $\Delta \eta \times \Delta \phi = 0.2 \times 0.2$ from a zero-bias event from the 2017 dataset. (b) Difference of the transverse momentum within two random cones with radius $R = 0.4$ using neutral and selected charged particle flow objects for the zero-bias dataset recorded in 2017.
+        Previously published in \ccite{SinglePublicPlotZeroBiasDeposits,PublicPlotsJER}.}
+    \label{fig:random-cones-balance}
+\end{figure}
+% \begin{figure*}[h]
+%     \vspace{-500em}
+%     \hspace{-10em}
+%     \newImageResizeCustom{0.1}{figures/calibration/worm.png}
+% \end{figure*}
 %The method is based on the assumption that the pile-up activity is spherically symmetric and independent of the hard scatter.
 For each zero-bias event, the energies of all jet constituents (either PFlow objects or topo-clusters) found within two non-overlapping circular cones of radius \Rrandomcone are summed.
 The random cones are placed at random $\phi$ and at random \abseta within a selected range.
@@ -360,20 +382,6 @@ The difference between data and MC is observed to be significant ($\approx 20\,\
 % \footnote{The results of the studies remain inconclusive how much of the remaining discrepancy is in the QCD model at the matrix element level, or how much is in the subsequent particle evolution & detector simulation, and it is likely a combination of effects.}
 Since the effect is constant with pile-up and independent of the energy of the jet, the jet calibration can greatly mitigate the impact of this mismodelling.
 %As \pTrandomcone corresponds to the sum of energies at the scale of the jet constituents, \Npileup corresponds to the noise at the scale of the constituents.
-
-\begin{figure}[t]
-    \subfloat[] {
-        \newImageResizeCustom{0.46}{figures/calibration/zero-bias-event-deposits.pdf}
-        \label{fig:random-cones-balance-a}
-    }
-    \subfloat[] {
-        \newImageResizeCustom{0.46}{figures/calibration/random-cones-difference.pdf}
-        \label{fig:random-cones-balance-b}
-    }
-    \caption[Sum of transverse momenta of particle flow objects and difference of the transverse momentum within two random cones.]{(a) Sum of transverse momentum of neutral and selected charged particle flow objects in an area of $\Delta \eta \times \Delta \phi = 0.2 \times 0.2$ from a zero-bias event from the 2017 dataset. (b) Difference of the transverse momentum within two random cones with radius $R = 0.4$ using neutral and selected charged particle flow objects for the zero-bias dataset recorded in 2017.
-        Previously published in \ccite{SinglePublicPlotZeroBiasDeposits,PublicPlotsJER}.}
-    \label{fig:random-cones-balance}
-\end{figure}
 
 \paragraph{Constituent scale noise} The constituent scale noise derived in the previous step needs to be scaled to the JES scale.
 %, which requires the same calibration factor to be applied as in the MC-based jet calibration to the particle level (see \cref{sec:jes-calibration}).

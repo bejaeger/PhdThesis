@@ -20,12 +20,7 @@ The CRs are also used to validate the agreement between MC simulation and data i
 
 All CR selections are summarized in \cref{tab:CRsSelection}.
 The CRs are defined separately for each analysis category and have at least one criterion that ensures orthogonality between the CRs and SRs.
-In addition, selections similar to the SR selections are applied, to ensure that the events in the SRs and CRs have similar kinematics and topologies.
-The precision with which the NFs can be determined is dependent on the purity of the process targeted by a CR in that CR. \Cref{tab:cr-purities} summarizes the purities in all CRs used in the analysis.
-Distributions of \mT for the ggF CRs and the DNN output for the VBF CRs after a fit to data are provided in Appendix~\ref{app:post-fit-cr-dists}. 
-%The pre-fit NFs for the CRs related to the \TwoJet VBF category are shown in \cref{tab:pre-fit}. 
-
-\begin{table}[!ht]
+\begin{table}[h!]
     \caption[Event selection criteria used to define the control regions.]{
         Event selection criteria used to define the control regions in the \HWW\ analysis.
         Every control region selection starts from the selection labeled ``Preselection'' in Table~\ref{tab:HWWselection}. Details on the variables used are given in the text.}
@@ -35,7 +30,12 @@ Distributions of \mT for the ggF CRs and the DNN output for the VBF CRs after a 
         \input{tables/hww/Bkgselection.tex}
     }
 \end{table}
-\begin{table}[h!!]
+\noindent In addition, selections similar to the SR selections are applied, to ensure that the events in the SRs and CRs have similar kinematics and topologies.
+The precision with which the NFs can be determined is dependent on the purity of the process targeted by a CR in that CR. \Cref{tab:cr-purities} summarizes the purities in all CRs used in the analysis.
+Distributions of \mT for the ggF CRs and the DNN output for the VBF CRs after a fit to data are provided in Appendix~\ref{app:post-fit-cr-dists}. 
+%The pre-fit NFs for the CRs related to the \TwoJet VBF category are shown in \cref{tab:pre-fit}. 
+
+\begin{table}[t]
     \caption[Purity of the targeted process in each control region.]{
         Purity of the targeted process in each control region. The statistical uncertainties are small and therefore not indicated.}
     \label{tab:cr-purities}
@@ -119,8 +119,6 @@ The distributions of various observables in the VBF, $WW$ VR is shown in \cref{f
 \newcommand{\wwvrplotdir}{figures/220605-Thesis/wwvr/plots}
 \FloatBarrier
 \sixPlots{\vrmodellingcaption{$WW$ VR}}{fig:wwvr:dnn-inputs}{\wwvrplotdir/../mjj/plots/run2-emme-CutVBF_WWControl_2jet-Mjj-log.pdf}{\wwvrplotdir/run2-emme-CutVBF_WWControl_2jet-DYjj-lin.pdf}{\wwvrplotdir/run2-emme-CutVBF_WWControl_2jet-DPhill-lin.pdf}{\wwvrplotdir/run2-emme-CutVBF_WWControl_2jet-Mll-lin.pdf}{\wwvrplotdir/../lepcent/plots/run2-emme-CutVBF_WWControl_2jet-contOLV-lin.pdf}{\wwvrplotdir/run2-emme-CutVBF_WWControl_2jet-METSig_broad-lin.pdf}{\vrmodellingcaptionshort{$WW$ VR}}
-
-\FloatBarrier
 
 \subsubsection{Control regions for the STXS measurement}
 \label{subsubsec:stxs-crs}

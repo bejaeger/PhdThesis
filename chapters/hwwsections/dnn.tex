@@ -224,10 +224,7 @@ The biggest impact on the performance of the VBF DNN have the input variables us
 Several sets of observables were studied for use as DNN input variables which is summarized in Appendix~\ref{app:dnn:opt-studies}.
 The one with the highest significance $Z0_\mathrm{VBF}$ as evaluated on the validation set is chosen, and corresponds to a set of in total 15 variables.
 Their distributions are shown in \cref{fig:dnn-inputs-post-fit1,fig:dnn-inputs-post-fit2}.
-Furthermore, the distributions of these variables for different selections on the DNN output are provided in Appendix~\ref{app:dnn:input-vars}. 
-The observables exploit various features of the VBF signal process (see \cref{subsec:signal-bkg-characterisation}) that can be grouped into three categories:
-
-\begin{figure}[h!t]
+\begin{figure}[th!]
     \centering
     \subfloat[$\mjj$]{
         \includegraphics[width=0.315\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-Mjj-lin.pdf} \hfill
@@ -272,28 +269,7 @@ The observables exploit various features of the VBF signal process (see \cref{su
     {\caption[Distributions of 10 of the 15 DNN input variables, targeting the VBF topology.]{Distributions of 10 of the 15 DNN input variables, targeting the VBF topology. The distributions are shown in the nominal VBF SR for simulated samples only. The solid orange line shows the expected VBF signal scaled by a factor of 50. 
             \label{fig:dnn-inputs-post-fit1} }}
 \end{figure}
-
-\paragraph{VBF topology}
-A set of 10 of the 15 input variables target the distinct VBF topology: The \mjj and \dyjj observable, and the sum of the lepton centralities, \lepetacent, show clear discrimination power against the background processes (see \cref{fig:dnn-inputs-post-fit-1,fig:dnn-inputs-post-fit-2,fig:dnn-inputs-post-fit-3}). More subtle differences between the VBF signal and the background distributions can be seen for the invariant masses of all four possible lepton-jet pairs between the leptons and the two leading jets (\mlonejone, \mlonejtwo, \mltwojone, \mltwojtwo). These observables are expected to take on average slightly larger values for the VBF signal (\cref{fig:dnn-inputs-post-fit-4,fig:dnn-inputs-post-fit-5,fig:dnn-inputs-post-fit-6,fig:dnn-inputs-post-fit-7}), in particular compared to \ttbar processes where two of the lepton-jet combinations have an upper threshold of 173\,\GeV, assuming that the jets originate from the top-quark decays.
-The \pT of the three leading jets (\pTjone, \pTjtwo,\pTjthree, where \pTjthree is set to 0 if there is no third jet present in the event) provide additional discrimination.
-Because of the two high-energy jets expected in the VBF production, the VBF signal causes slightly larger \pTjone and \pTjtwo values than the background processes (\cref{fig:dnn-inputs-post-fit-8,fig:dnn-inputs-post-fit-9}).
-The \pTjthree observable takes on average smaller values for the VBF signal (\cref{fig:dnn-inputs-post-fit-10}) because of the small hadronic activity in the rapidity gap spanned by the jets. The \pTjthree variable is particularly meaningful because it is the only observable that provides information about whether a third jet is present.
-
-\paragraph{\HWW decay}
-The distinct features of the \HWW decay (see \cref{subsec:signal-bkg-characterisation}) are exploited with the \dphill, \mll, and \mT variables.
-The separation between the VBF signal and the backgrounds is clearly visible (see \cref{fig:dnn-inputs-post-fit2-1,fig:dnn-inputs-post-fit2-2,fig:dnn-inputs-post-fit2-3}).
-
-\paragraph{Top-background suppression}
-Two additional observables are used that take into account information about the entire event.
-The first is the total transverse momentum, \pttot, defined as the magnitude of the vectorial sum of the \pT of all selected objects\footnote{Specifically, $\pttot = | \vpTlone + \vpTltwo + \vmet + \sum_{i \in \text{jets}} \vpTjetsi |$}. It helps to discriminate events with significant soft-gluon radiation for example in \ttbar events. The second observable is the \METSig that provides discrimination between events with real undetected high-\pT particles, such as neutrinos, and events where the \MET is the result of resolution effects. Both observables take on average smaller values for the VBF signal than the sum of backgrounds (see \cref{fig:dnn-inputs-post-fit2-4,fig:dnn-inputs-post-fit2-5}).
-% \begin{figure}[h]
-%     \centering
-%     {\caption{Distributions of $\mlonejone$, $\mltwojone$, $\mlonejtwo$, and $\mltwojtwo$ in the VBF signal region.
-%             Each row shows one variable with different cuts on the DNN output distribution being applied in different columns.
-%             \label{app:fig:dnn-inputs-vbf-top2} }}
-% \end{figure}
-
-\begin{figure}[t]
+\begin{figure}[h!]
     \centering
     \subfloat[$\dphill$]{
         \includegraphics[width=0.315\textwidth]{figures/hww/dnn/blinded/run2-emme-CutVBF_SR-DPhill-lin.pdf} \hfill
@@ -319,6 +295,28 @@ The first is the total transverse momentum, \pttot, defined as the magnitude of 
             Distributions of 5 of the 15 DNN input variables, targeting the \HWW decay and top-quark suppression. The distributions are shown in the nominal VBF SR for simulated samples only. The solid orange line shows the expected VBF signal scaled by a factor of 50. 
             \label{fig:dnn-inputs-post-fit2} }}
 \end{figure}
+Furthermore, the distributions of these variables for different selections on the DNN output are provided in Appendix~\ref{app:dnn:input-vars}. 
+The observables exploit various features of the VBF signal process (see \cref{subsec:signal-bkg-characterisation}) that can be grouped into three categories:
+
+\paragraph{VBF topology}
+A set of 10 of the 15 input variables target the distinct VBF topology: The \mjj and \dyjj observable, and the sum of the lepton centralities, \lepetacent, show clear discrimination power against the background processes (see \cref{fig:dnn-inputs-post-fit-1,fig:dnn-inputs-post-fit-2,fig:dnn-inputs-post-fit-3}). More subtle differences between the VBF signal and the background distributions can be seen for the invariant masses of all four possible lepton-jet pairs between the leptons and the two leading jets (\mlonejone, \mlonejtwo, \mltwojone, \mltwojtwo). These observables are expected to take on average slightly larger values for the VBF signal (\cref{fig:dnn-inputs-post-fit-4,fig:dnn-inputs-post-fit-5,fig:dnn-inputs-post-fit-6,fig:dnn-inputs-post-fit-7}), in particular compared to \ttbar processes where two of the lepton-jet combinations have an upper threshold of 173\,\GeV, assuming that the jets originate from the top-quark decays.
+The \pT of the three leading jets (\pTjone, \pTjtwo,\pTjthree, where \pTjthree is set to 0 if there is no third jet present in the event) provide additional discrimination.
+Because of the two high-energy jets expected in the VBF production, the VBF signal causes slightly larger \pTjone and \pTjtwo values than the background processes (\cref{fig:dnn-inputs-post-fit-8,fig:dnn-inputs-post-fit-9}).
+The \pTjthree observable takes on average smaller values for the VBF signal (\cref{fig:dnn-inputs-post-fit-10}) because of the small hadronic activity in the rapidity gap spanned by the jets. The \pTjthree variable is particularly meaningful because it is the only observable that provides information about whether a third jet is present.
+
+\paragraph{\HWW decay}
+The distinct features of the \HWW decay (see \cref{subsec:signal-bkg-characterisation}) are exploited with the \dphill, \mll, and \mT variables.
+The separation between the VBF signal and the backgrounds is clearly visible (see \cref{fig:dnn-inputs-post-fit2-1,fig:dnn-inputs-post-fit2-2,fig:dnn-inputs-post-fit2-3}).
+
+\paragraph{Top-background suppression}
+Two additional observables are used that take into account information about the entire event.
+The first is the total transverse momentum, \pttot, defined as the magnitude of the vectorial sum of the \pT of all selected objects\footnote{Specifically, $\pttot = | \vpTlone + \vpTltwo + \vmet + \sum_{i \in \text{jets}} \vpTjetsi |$}. It helps to discriminate events with significant soft-gluon radiation for example in \ttbar events. The second observable is the \METSig that provides discrimination between events with real undetected high-\pT particles, such as neutrinos, and events where the \MET is the result of resolution effects. Both observables take on average smaller values for the VBF signal than the sum of backgrounds (see \cref{fig:dnn-inputs-post-fit2-4,fig:dnn-inputs-post-fit2-5}).
+% \begin{figure}[h]
+%     \centering
+%     {\caption{Distributions of $\mlonejone$, $\mltwojone$, $\mlonejtwo$, and $\mltwojtwo$ in the VBF signal region.
+%             Each row shows one variable with different cuts on the DNN output distribution being applied in different columns.
+%             \label{app:fig:dnn-inputs-vbf-top2} }}
+% \end{figure}
 
 The distributions above illustrate the VBF signal discrimination in linear dimension. The major advantage of using a neural network-based approach compared to a traditional cut-based analysis is the ability to take into account multidimensional correlations between the input variables. \Cref{fig:dnn-features-correlations} indicates the two-dimensional correlations between the 15 input variables for the VBF signal and the backgrounds. It can be seen that the strengths of the correlations differs for several pairs of observables, in particular for the $m_{\ell_\alpha j_\beta}$ (with $\alpha, \beta = 1, 2$) and the \pTjthree observables.
 % Include DNN figures (many plots!)
